@@ -277,20 +277,20 @@ input.lastname {
  * Header:
  */
 .wrapper,
-.pageheader .content,
+.header .content,
 .pagefooter .content {
 	margin: 0 auto;
 	position: relative;
 	width: 960px;
 }
-.pageheader {
+.header {
 	position: absolute;
 	height: 88px;
 	top: 0;
 	left: 0;
 	width: 100%;
 }
-.pageheader .logo {
+.header .logo {
 	display: block;
 	background: url(../img/logo.gif) 0 0 no-repeat;
 	width: 153px;
@@ -301,7 +301,7 @@ input.lastname {
 	top: 18px;
 	left: 8px;
 }
-.pageheader .heading {
+.header .heading {
 	width:100%;
 	overflow:hidden;
 	margin:0;
@@ -354,10 +354,10 @@ input.lastname {
 	font-weight:700;
 	text-decoration:none;
 }
-.pageheader div.international {
+.header div.international {
 	width:auto;
 }
-.pageheader .country .center {
+.header .country .center {
 	padding-right:66px;
 }
 .selectArea {
@@ -1335,13 +1335,13 @@ span.icon {
 	 has/hasno JS
 	 ========================================================================== */
 
-html.js .pageheader div.selectArea {
+html.js .header div.selectArea {
 	display:block;
 }
-html.js .pageheader div.international select, 
-html.js .pageheader div.international input, 
-html.js .pageheader div.language select, 
-html.js .pageheader div.language input {
+html.js .header div.international select, 
+html.js .header div.international input, 
+html.js .header div.language select, 
+html.js .header div.language input {
 	display:none;
 }
 html.no-js div.language {

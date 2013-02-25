@@ -76,7 +76,7 @@ var Main = function ($) {
 			$('body').bind('click', function () {
 				priv.HideAllOptions();
 			});
-			$('#header div.selectArea').bind('click', function () {
+			$('.js-country-selector').bind('click', function () {
 				if ($(this).hasClass('active-select')) {
 					priv.HideAllOptions();
 					$(this).removeClass('active-select');
