@@ -861,11 +861,6 @@ div.language select {
 /*
  * Center Page Layout:
  */
-.radius {
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
 .twocol {
 	width: 100%;
 	overflow: hidden;
@@ -1328,6 +1323,14 @@ span.icon {
 	*zoom: 1;
 }
 
+/*
+ * Border radius
+ */
+.rounded {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
 /* ==========================================================================
 	 has/hasno JS
 	 ========================================================================== */
