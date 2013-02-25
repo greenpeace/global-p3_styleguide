@@ -307,9 +307,7 @@ input.lastname {
 	margin:0;
 	padding:6px 0 0;
 }
-#skipLinks, .hidden { /*hidden top navigation for accessibility*/
-	display: none;
-}
+
 /*
  * Country and Language Select:
  */
