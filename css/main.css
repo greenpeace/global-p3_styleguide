@@ -7,20 +7,20 @@
  */
 
 /* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
+	 Base styles: opinionated defaults
+	 ========================================================================== */
 
 html,
 button,
 input,
 select,
 textarea {
-    color: #222;
+	color: #222;
 }
 
 body {
-    font-size: 12px;
-    line-height: normal;
+	font-size: 12px;
+	line-height: normal;
 }
 p {
 	font: 12px Verdana,Geneva,Arial,Helvetica,sans-serif;
@@ -33,13 +33,13 @@ p {
  */
 
 ::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+	background: #b3d4fc;
+	text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+	background: #b3d4fc;
+	text-shadow: none;
 }
 
 /*
@@ -47,12 +47,12 @@ p {
  */
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
 }
 
 /*
@@ -60,7 +60,7 @@ hr {
  */
 
 img {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 /*
@@ -68,9 +68,9 @@ img {
  */
 
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+	border: 0;
+	margin: 0;
+	padding: 0;
 }
 
 /*
@@ -78,23 +78,23 @@ fieldset {
  */
 
 textarea {
-    resize: vertical;
+	resize: vertical;
 }
 
 /* ==========================================================================
-   Chrome Frame prompt
-   ========================================================================== */
+	 Chrome Frame prompt
+	 ========================================================================== */
 
 .chromeframe {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
 }
 
 /* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+	 Author's custom styles
+	 ========================================================================== */
 /*
  * General:
  */
@@ -123,7 +123,7 @@ a:hover {
 	margin: 5px 0 0;
 	color: #56b004;
 	border: 1px solid white;
-  background: white;
+	background: white;
 	font: bold 12px/18px Helvetica,"Trebuchet MS",sans-serif;
 }
 .button.send,
@@ -132,20 +132,20 @@ a:hover {
 	border: 1px solid #f06d00;
 	background: none;
 
-  background-color: #f72800!important;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f72800), to(#ffa809));
-  background: -webkit-linear-gradient(top, #ffa809, #f72800);
-  background: -moz-linear-gradient(top, #ffa809, #f72800);
-  background: -ms-linear-gradient(top, #ffa809, #f72800);
-  background: -o-linear-gradient(top, #ffa809, #f72800);
+	background-color: #f72800!important;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f72800), to(#ffa809));
+	background: -webkit-linear-gradient(top, #ffa809, #f72800);
+	background: -moz-linear-gradient(top, #ffa809, #f72800);
+	background: -ms-linear-gradient(top, #ffa809, #f72800);
+	background: -o-linear-gradient(top, #ffa809, #f72800);
 }
 .button.send:hover {
-  background-color: #DF1C00;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DF1C00), to(#ff8400));
-  background: -webkit-linear-gradient(top, #ff8400, #DF1C00);
-  background: -moz-linear-gradient(top, #ff8400, #DF1C00);
-  background: -ms-linear-gradient(top, #ff8400, #DF1C00);
-  background: -o-linear-gradient(top, #ff8400, #DF1C00);
+	background-color: #DF1C00;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DF1C00), to(#ff8400));
+	background: -webkit-linear-gradient(top, #ff8400, #DF1C00);
+	background: -moz-linear-gradient(top, #ff8400, #DF1C00);
+	background: -ms-linear-gradient(top, #ff8400, #DF1C00);
+	background: -o-linear-gradient(top, #ff8400, #DF1C00);
 }
 /*
  * Form (general):
@@ -217,10 +217,10 @@ span.error {
 }
 .form header,
 .form footer {
-  font-size: 11px;
-  line-height: 20px;
-  min-height: 20px;
-  margin: 0 0 12px;
+	font-size: 11px;
+	line-height: 20px;
+	min-height: 20px;
+	margin: 0 0 12px;
 	font:10px/20px Verdana, Geneva, Arial, Helvetica, sans-serif;
 	padding: 14px;
 	border-bottom: 2px dotted grey;
@@ -229,10 +229,10 @@ span.error {
 	font-size:16px;
 }
 .form .row {
-  font-size: 11px;
-  line-height: 20px;
-  min-height: 20px;
-  margin: 0 0 12px;
+	font-size: 11px;
+	line-height: 20px;
+	min-height: 20px;
+	margin: 0 0 12px;
 	font:10px/20px Verdana, Geneva, Arial, Helvetica, sans-serif;
 }
 .row label {
@@ -247,12 +247,12 @@ span.error {
 	vertical-align: top;
 }
 .row span {
-  font-style: italic;
-  font-weight: normal;
-  display: block;
-  line-height: normal;
-  clear: both;
-  float: none;
+	font-style: italic;
+	font-weight: normal;
+	display: block;
+	line-height: normal;
+	clear: both;
+	float: none;
 }
 .row .edit-box {
 	float: left;
@@ -702,8 +702,8 @@ div.language select {
 	border-bottom-left-radius: 4px;
 	
 	-webkit-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
-	-moz-box-shadow:    2px 0px 0px rgba(50, 50, 50, 0.25);
-	box-shadow:         2px 0px 0px rgba(50, 50, 50, 0.25);
+	-moz-box-shadow:	2px 0px 0px rgba(50, 50, 50, 0.25);
+	box-shadow:		 2px 0px 0px rgba(50, 50, 50, 0.25);
 
 	margin-right:4px;
 	color: #055905;
@@ -948,9 +948,9 @@ p a {
 	float:left;
 	position:relative;
 	
-	-moz-transition:  all .4s ease-in;
-	-webkit-transition:  all .4s ease-in;
-	-o-transition:  all .4s ease-in;
+	-moz-transition:	all .4s ease-in;
+	-webkit-transition:	all .4s ease-in;
+	-o-transition:	all .4s ease-in;
 	transition: all .4s ease-in;
 }
 /*
@@ -1212,15 +1212,15 @@ span.icon {
 	border-radius: 3px;
 	text-shadow: 1px 1px 0px rgba(228,239,192, 1);
 	-webkit-box-shadow: 3px 3px 11px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    3px 3px 11px rgba(50, 50, 50, 0.75);
-	box-shadow:         3px 3px 11px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:	3px 3px 11px rgba(50, 50, 50, 0.75);
+	box-shadow:		 3px 3px 11px rgba(50, 50, 50, 0.75);
 	background: #e4efc0;
-	background: -moz-linear-gradient(top,  #e4efc0 0%, #abbd73 100%);
+	background: -moz-linear-gradient(top,	#e4efc0 0%, #abbd73 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4efc0), color-stop(100%,#abbd73));
-	background: -webkit-linear-gradient(top,  #e4efc0 0%,#abbd73 100%);
-	background: -o-linear-gradient(top,  #e4efc0 0%,#abbd73 100%);
-	background: -ms-linear-gradient(top,  #e4efc0 0%,#abbd73 100%);
-	background: linear-gradient(to bottom,  #e4efc0 0%,#abbd73 100%);
+	background: -webkit-linear-gradient(top,	#e4efc0 0%,#abbd73 100%);
+	background: -o-linear-gradient(top,	#e4efc0 0%,#abbd73 100%);
+	background: -ms-linear-gradient(top,	#e4efc0 0%,#abbd73 100%);
+	background: linear-gradient(to bottom,	#e4efc0 0%,#abbd73 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4efc0', endColorstr='#abbd73',GradientType=0 );
 }
 .notification a {
@@ -1231,26 +1231,26 @@ span.icon {
 }
 
 /* ==========================================================================
-   Helper classes
-   ========================================================================== */
+	 Helper classes
+	 ========================================================================== */
 
 /*
  * Image replacement
  */
 
 .ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    /* IE 6/7 fallback */
-    *text-indent: -9999px;
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	/* IE 6/7 fallback */
+	*text-indent: -9999px;
 }
 
 .ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 150%;
+	content: "";
+	display: block;
+	width: 0;
+	height: 150%;
 }
 
 /*
@@ -1258,8 +1258,8 @@ span.icon {
  */
 
 .hidden {
-    display: none !important;
-    visibility: hidden;
+	display: none !important;
+	visibility: hidden;
 }
 
 /*
@@ -1267,14 +1267,14 @@ span.icon {
  */
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 /*
@@ -1284,12 +1284,12 @@ span.icon {
 
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
 }
 
 /*
@@ -1297,7 +1297,7 @@ span.icon {
  */
 
 .invisible {
-    visibility: hidden;
+	visibility: hidden;
 }
 
 /*
@@ -1305,21 +1305,21 @@ span.icon {
  *
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
+ *	`contenteditable` attribute is included anywhere else in the document.
+ *	Otherwise it causes space to appear at the top and bottom of elements
+ *	that receive the `clearfix` class.
  * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
+ *	`:before` to contain the top-margins of child elements.
  */
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+	content: " "; /* 1 */
+	display: table; /* 2 */
 }
 
 .clearfix:after {
-    clear: both;
+	clear: both;
 }
 
 /*
@@ -1328,12 +1328,12 @@ span.icon {
  */
 
 .clearfix {
-    *zoom: 1;
+	*zoom: 1;
 }
 
 /* ==========================================================================
-   has/hasno JS
-   ========================================================================== */
+	 has/hasno JS
+	 ========================================================================== */
 
 html.js .pageheader div.selectArea {
 	display:block;
@@ -1349,8 +1349,8 @@ html.no-js div.language {
 }
 
 /* ==========================================================================
-   IE overrides (lower then 8)
-   ========================================================================== */
+	 IE overrides (lower then 8)
+	 ========================================================================== */
 .lt-ie8 .twocol {
 	margin-top: 0;
 }
@@ -1375,17 +1375,17 @@ html.no-js div.language {
 	bottom: -13px;
 }
 /* ==========================================================================
-   Media Queries.  
-   ========================================================================== */
+	 Media Queries.	
+	 ========================================================================== */
 
 @media only screen and (min-width: 1150px) {
 	#share_rail {
 		margin: 20px 0 0 -102px;
 		position:fixed;
 		
-		-moz-transition:  all .4s ease-in;
-		-webkit-transition:  all .4s ease-in;
-		-o-transition:  all .4s ease-in;
+		-moz-transition:	all .4s ease-in;
+		-webkit-transition:	all .4s ease-in;
+		-o-transition:	all .4s ease-in;
 		transition: all .4s ease-in;
 	}
 	/*vertical and horizontal can be used to display different content*/
@@ -1403,80 +1403,80 @@ html.no-js div.language {
 }
 
 @media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
+		 (-o-min-device-pixel-ratio: 5/4),
+		 (-webkit-min-device-pixel-ratio: 1.25),
+		 (min-resolution: 120dpi) {
+	/* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
-   Print styles.
-   Inlined to avoid required HTTP connection: h5bp.com/r
-   ========================================================================== */
+	 Print styles.
+	 Inlined to avoid required HTTP connection: h5bp.com/r
+	 ========================================================================== */
 
 @media print {
-    * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
+	* {
+		background: transparent !important;
+		color: #000 !important; /* Black prints faster: h5bp.com/s */
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
 
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
+	a,
+	a:visited {
+		text-decoration: underline;
+	}
 
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
 
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
 
-    /*
-     * Don't show links for images, or javascript/internal links
-     */
+	/*
+	 * Don't show links for images, or javascript/internal links
+	 */
 
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
+	.ir a:after,
+	a[href^="javascript:"]:after,
+	a[href^="#"]:after {
+		content: "";
+	}
 
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
+	pre,
+	blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
 
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
+	thead {
+		display: table-header-group; /* h5bp.com/t */
+	}
 
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
+	tr,
+	img {
+		page-break-inside: avoid;
+	}
 
-    img {
-        max-width: 100% !important;
-    }
+	img {
+		max-width: 100% !important;
+	}
 
-    @page {
-        margin: 0.5cm;
-    }
+	@page {
+		margin: 0.5cm;
+	}
 
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
+	p,
+	h2,
+	h3 {
+		orphans: 3;
+		widows: 3;
+	}
 
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
 }
