@@ -942,10 +942,9 @@ p a {
 /*
  * Share (floating):
  */
-#share_rail {
+.share.rail {
 	float:left;
 	position:relative;
-	
 	-moz-transition:	all .4s ease-in;
 	-webkit-transition:	all .4s ease-in;
 	-o-transition:	all .4s ease-in;
@@ -954,14 +953,14 @@ p a {
 /*
  * vertical and horizontal can be used to display different widgets, rest is done with media query
  */
-#share_rail .vertical {
+.share.rail .vertical {
 	display: none;
 }
-#share_rail .horizontal {
+.share.rail .horizontal {
 	display: block;
 }
 
-#share_rail .sbutton {
+.share.rail .sbutton {
 	float: left;
 	padding: 0 15px 6px 0;
 }
@@ -1377,23 +1376,22 @@ html.no-js div.language {
 	 ========================================================================== */
 
 @media only screen and (min-width: 1150px) {
-	#share_rail {
+	.share.rail {
 		margin: 20px 0 0 -102px;
 		position:fixed;
-		
 		-moz-transition:	all .4s ease-in;
 		-webkit-transition:	all .4s ease-in;
 		-o-transition:	all .4s ease-in;
 		transition: all .4s ease-in;
 	}
 	/*vertical and horizontal can be used to display different content*/
-	#share_rail .vertical {
+	.share.rail .vertical {
 		display: block;
 	}
-	#share_rail .horizontal {
+	.share.rail .horizontal {
 		display: none;
 	}
-	#share_rail .sbutton {
+	.share.rail .sbutton {
 		margin: 0;
 		padding: 0 0 6px 0;
 		float: none;
