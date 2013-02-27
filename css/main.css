@@ -292,7 +292,7 @@ input.lastname {
 }
 .header .logo {
 	display: block;
-	background: url(../img/logo.gif) 0 0 no-repeat;
+	background: url(../img/logo.png) 0 0 no-repeat;
 	width: 153px;
 	height: 25px;
 	text-indent: -999px;
@@ -1021,15 +1021,14 @@ span.icon {
 	background-position: 0 -28px;
 }
 
-
 .paper {
 	position:relative;
 	margin:0 0 5px 2px;
 	z-index:0;
 	min-width:75px;
   border:1px solid #eaeaea;
--webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
 .paper-content {
@@ -1096,7 +1095,7 @@ box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
 	float: left;
 }
 .logo-box .logo {
-	background: url(../img/logo-mini.gif) 0 0 no-repeat;
+	background: url(../img/logo.png) 0 -26px no-repeat;
 	width: 89px;
 	height: 14px;
 	margin: 2px 7px 0 4px;
