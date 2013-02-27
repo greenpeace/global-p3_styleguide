@@ -360,12 +360,12 @@ input.lastname {
 .header .country .center {
 	padding-right:66px;
 }
-.selectArea {
+.select-area {
 	position:relative;
 	float:left;
 	display: none;
 }
-.selectArea .left {
+.select-area .left {
 	position:absolute;
 	top:0;
 	left:0;
@@ -375,13 +375,13 @@ input.lastname {
 .lang-go {
 	float: left;
 }
-.selectArea a.selectButton {
+.select-area a.select-button {
 	position:absolute;
 	top:0;
 	right:-1px;
 	outline:none;
 }
-.selectArea .center img {
+.select-area .center img {
 	float:left;
 }
 .country {
@@ -407,7 +407,7 @@ input.lastname {
 	line-height:17px;
 	padding:2px 56px 0 10px;
 }
-.country a.selectButton {
+.country a.select-button {
 	background:url(../img/selects.png) right 0 no-repeat;
 	height:22px;
 	position:absolute;
@@ -450,7 +450,7 @@ input.lastname {
 	border: 1px solid #61B905;
 	color:#56B004;
 }
-.international .active-select a.selectButton {
+.international .active-select a.select-button {
 	background:transparent url(../img/selects.png) right -22px no-repeat;
 	width:54px;
 }
@@ -484,7 +484,7 @@ input.lastname {
 	height:18px;
 	border: 1px solid transparent;
 }
-.lang a.selectButton {
+.lang a.select-button {
 	background:transparent url(../img/selects.png) right -44px no-repeat;
 	top:0;
 	width:20px;
@@ -497,7 +497,7 @@ input.lastname {
 	color:#56B004;
 	height:20px;
 }
-.language .active-select a.selectButton {
+.language .active-select a.select-button {
 	background:transparent url(../img/selects.png) right -66px no-repeat;
 }
 .drop-lang {
@@ -514,16 +514,16 @@ input.lastname {
 	padding-left:6px;
 	font-size:14px;
 }
-.top-holder .selectArea {
+.top-holder .select-area {
 	float:right;
 	height:22px;
 }
-.top-holder .selectArea .left {
+.top-holder .select-area .left {
 	background:url(../img/select2-l.gif) no-repeat;
 	height:22px!important;
 	width:100%;
 }
-.top-holder .selectArea a.selectButton {
+.top-holder .select-area a.select-button {
 	right:0;
 	outline:none;
 	background:url(../img/select2-arrow.gif) no-repeat;
@@ -1331,7 +1331,7 @@ box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
 	 has/hasno JS
 	 ========================================================================== */
 
-html.js .header div.selectArea {
+html.js .header div.select-area {
 	display:block;
 }
 html.js .header div.international select, 
