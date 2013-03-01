@@ -1,0 +1,88 @@
+
+/*
+ * Share (floating):
+ */
+.share.rail {
+	float:left;
+	position:relative;
+	-moz-transition:	all .4s ease-in;
+	-webkit-transition:	all .4s ease-in;
+	-o-transition:	all .4s ease-in;
+	transition: all .4s ease-in;
+}
+/*
+ * vertical and horizontal can be used to display different widgets, rest is done with media query
+ */
+.share.rail .vertical {
+	display: none;
+}
+.share.rail .horizontal {
+	display: block;
+}
+
+.share.rail .sbutton {
+	float: left;
+	padding: 0 15px 6px 0;
+}
+div.share-now .fb_edge_comment_widget iframe, 
+div.share_topbar .fb_edge_comment_widget iframe {
+	height:auto!important;
+}
+div.share-now .iframe, 
+div.share_topbar iframe {
+	height:20px!important;
+}
+
+.sbutton .btn {
+	position: relative;
+	background-color: #f8f8f8;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#dedede));
+	background-image: -moz-linear-gradient(top,#fff,#dedede);
+	background-image: -o-linear-gradient(top,#fff,#dedede);
+	background-image: -ms-linear-gradient(top,#fff,#dedede);
+	background-image: linear-gradient(top,#fff,#dedede);
+	border: #ccc solid 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	color: #333;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+
+	cursor: pointer;
+	display: inline-block;
+	height: 20px;
+	padding: 0 5px 0 22px;
+	font-size: 11px;
+	line-height: 18px;
+	color: #363;
+	text-align: center;
+	font-weight: normal;
+}
+.sbutton .btn:hover {
+	background-color: #bebebe;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#bebebe));
+	background-image: -moz-linear-gradient(top,#fff,#bebebe);
+	background-image: -o-linear-gradient(top,#fff,#bebebe);
+	background-image: -ms-linear-gradient(top,#fff,#bebebe);
+	background-image: linear-gradient(top,#fff,#bebebe);
+	text-decoration: none;
+}
+span.icon {
+	background:transparent url(../img/bg-icons.png) 0 0 no-repeat;
+	position:absolute;
+	top:3px;
+	left:3px;
+	height:14px;
+	width:14px;
+}
+.btn.email .icon {
+	background-position: 0 0;
+}
+.btn.sharesimple .icon {
+	background-position: 0 -14px;
+}
+.btn.rss .icon {
+	background-position: 0 -28px;
+}
+

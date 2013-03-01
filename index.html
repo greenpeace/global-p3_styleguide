@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>HTML/CSS Styleguide</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+	<style type="text/css">
+		.sidebar { position:absolute; height:100%; width:20%; background:#EEE; }
+		.content { position:absolute; height:100%; width:80%; left:20%;overflow:hidden;}
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".nav a").click(function() {
+				$('.preview').attr('src',(($(this).attr('nodeurl'))+'.html'));
+			});
+		});
+	</script>
+</head>
+<body>
+<div class="container">
+<div class="sidebar">
+<h1>HTML/CSS Styleguide</h1>
+<div class="nav">
+	<ul>
+		<li>
+			<h2>Pages</h2>
+			<ul>
+				<li><a href="#" nodeurl="action-template">[t11] action template</a></li>
+				<li>[t04] arcticle</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</div>
+<div class="content">
+	<iframe class="preview" src="help" name="subwindow" width="100%" height="100%" frameborder="0" style="padding:0;margin:0;overflow:auto;"></iframe> 
+</div>
+</div>
+</body>
+</html>

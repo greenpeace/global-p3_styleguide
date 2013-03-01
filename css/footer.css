@@ -1,0 +1,53 @@
+/*
+ * Footer:
+ */
+.pagefooter {
+	width: 100%;
+	background: #66CC00;
+	margin: 0;
+	color: white;
+	min-width:1024px;
+}
+.pagefooter.small {
+	height: 67px;
+}
+.copy-box {
+	padding: 30px 0 0;
+}
+.copy-box a {
+	color: white;
+}
+.logo-box {
+	float: left;
+	margin: 1px 0 0;
+}
+.logo-box span {
+	line-height: 14px;
+	float: left;
+}
+.logo-box .logo {
+	background: url(../img/logo.png) 0 -26px no-repeat;
+	width: 89px;
+	height: 14px;
+	margin: 2px 7px 0 4px;
+	text-indent: -999px;
+	display:inline-block;
+	float: left;
+	overflow: hidden;
+}
+.copy-box ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.privacy {
+	float: left;
+}
+.bottom-menu {
+	float: right;
+}
+.privacy li,
+.bottom-menu li {
+	float: left;
+	padding: 0 0 0 16px;
+}
