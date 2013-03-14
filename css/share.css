@@ -1,6 +1,8 @@
-
+/* ==========================================================================
+	 Share and Social Buttons
+	 ========================================================================== */
 /*
- * Share (floating):
+ * Share Rail floating on the left / or top
  */
 .share.rail {
 	float:left;
@@ -9,17 +11,16 @@
 	-webkit-transition:	all .4s ease-in;
 	-o-transition:	all .4s ease-in;
 	transition: all .4s ease-in;
+  min-height:50px;
 }
-/*
- * vertical and horizontal can be used to display different widgets, rest is done with media query
- */
+/* vertical and horizontal can be used to display different widgets, 
+		rest is done with media query */
 .share.rail .vertical {
 	display: none;
 }
 .share.rail .horizontal {
 	display: block;
 }
-
 .share.rail .sbutton {
 	float: left;
 	padding: 0 15px 6px 0;

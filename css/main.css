@@ -1,11 +1,3 @@
-/*
- * HTML5 Boilerplate
- *
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
 /* ==========================================================================
 	 Base styles: opinionated defaults
 	 ========================================================================== */
@@ -45,7 +37,6 @@ p {
 /*
  * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
  */
-
 img {
 	vertical-align: middle;
 }
@@ -78,8 +69,6 @@ a:hover {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
-
-
 
 .action .heading {
 	width:520px;
@@ -137,9 +126,6 @@ p a {
 	margin: 0 0 14px;
 }
 
-
-
-
 /*
  * Main Content:
  */
@@ -150,6 +136,8 @@ p a {
 	background: url(../img/bkcement4.jpg) 0 0 repeat-y;
 	padding: 10px;
 }
+
+/* breadcrumbs */
 .breadcrumbs {
 	margin: 0;
 	padding: 0 0 10px 10px;
@@ -237,21 +225,5 @@ p a {
 	text-shadow: none;
 }
 
-/* ==========================================================================
-	 has/hasno JS
-	 ========================================================================== */
-
-html.js .header div.select-area {
-	display:block;
-}
-html.js .header div.international select, 
-html.js .header div.international input, 
-html.js .header div.language select, 
-html.js .header div.language input {
-	display:none;
-}
-html.no-js div.language {
-	min-width: 184px;
-}
 
 

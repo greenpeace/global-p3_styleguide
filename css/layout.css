@@ -18,3 +18,11 @@
 	padding: 10px 0;
 	background:url(../img/bg-action.png);
 }
+
+.footer-holder,
+.content-holder {
+	position: relative;
+	width: 960px;
+	margin: 88px auto 0 auto;
+}
+

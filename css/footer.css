@@ -1,14 +1,14 @@
 /*
  * Footer:
  */
-.pagefooter {
+.footer {
 	width: 100%;
 	background: #66CC00;
 	margin: 0;
 	color: white;
 	min-width:1024px;
 }
-.pagefooter.small {
+.footer.small {
 	height: 67px;
 }
 .copy-box {

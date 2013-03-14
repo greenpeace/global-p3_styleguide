@@ -103,3 +103,21 @@
 		page-break-after: avoid;
 	}
 }
+
+/* ==========================================================================
+	 has/hasno JS
+	 ========================================================================== */
+
+html.js .header div.select-area {
+	display:block;
+}
+html.js .header div.international select, 
+html.js .header div.international input, 
+html.js .header div.language select, 
+html.js .header div.language input {
+	display:none;
+}
+html.no-js div.language {
+	min-width: 184px;
+}
+
