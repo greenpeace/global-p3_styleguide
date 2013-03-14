@@ -102,23 +102,25 @@
 }
 
 /*
- * Color palette from the styleguide
+ * Color palette from the styleguide + design color set
  * By order of luminance
  */
 /* Greens */
 .greens-txt-1, 
 .greens-sec-txt { color: #003300; }
-.greens-txt-2   { color: #055905;}
+.greens-txt-2   { color: #055905; }
 .greens-txt-3   { color: #467f0d; }
 .greens-txt-4   { color: #559f0c; }
-.greens-txt-5, 
+.greens-txt-5   { color: #56b105; } 
+.greens-txt-6,
 .greens-txt-pri { color: #66cc00; }
 .greens-bg-1, 
 .greens-sec-bg  { background-color: #003300; }
 .greens-bg-2    { background-color: #055905; }
 .greens-bg-3    { background-color: #467f0d; }
-.greens-bg-4    { background-color: #559f0c; }
-.greens-bg-5, 
+.greens-bg-4    { background-color: #559f0c; } 
+.greens-bg-5    { background-color: #56b105; } 
+.greens-bg-6, 
 .greens-bg-pri  { background-color: #66cc00; }
 /* Oranges */
 .oranges-txt-1, 

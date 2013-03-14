@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
 <head>
 	<meta charset="utf-8"/>
 	<title>HTML/CSS Styleguide</title>
@@ -7,14 +7,31 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<link rel="stylesheet" type="text/css" href="css/normalize.css"/>
 	<style type="text/css">
-		.sidebar { position:absolute; height:100%; width:20%; background:#EEE; }
-		.content { position:absolute; height:100%; width:80%; left:20%;overflow:hidden;}
+		ul { padding:0;} h3 { color:#999;}
+		h1 { background:transparent url(img/logo-black-s.png) 0 0 no-repeat; width:175px; height:31px; } h1 span { display:none;} 
+		.sidebar { position:absolute; height:100%; width:14.5%; background:#EEE; overflow:auto; padding-left:.5%;}
+		.content { position:absolute; height:100%; width:85%; left:15%; overflow:auto;}
+		.fullview .sidebar { position:absolute; height:100%; width:1%; background:#EEE; overflow:auto; padding-left:0;}
+		.sidebar-content { display:block;} .fullview .sidebar-content { display:none;} 
+		.fullview .content { position:absolute; height:100%; width:99%; left:1%; overflow:auto;}
+		.toggle { float:right;padding:0 5px;height:99%;background:#CCC;text-decoration:none;}
 	</style>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$(".nav a").click(function() {
+			/* switch pages */
+			$(".js-switch-templates").click(function() {
 				$('.preview').attr('src',(($(this).attr('nodeurl'))+'.html'));
+			});
+			/* toggle sidebar */
+			$(".js-show-hide").click(function(){
+        if($(this).hasClass('show')) {
+					$('.container').removeClass('fullview');
+					$(this).removeClass('show').addClass('hide').html(' «');
+				} else {
+					$('.container').addClass('fullview');
+					$(this).removeClass('hide').addClass('show').html(' »');
+				}
 			});
 		});
 	</script>
@@ -22,21 +39,38 @@
 <body>
 <div class="container">
 <div class="sidebar">
-<h1>HTML/CSS Styleguide</h1>
-<div class="nav">
-	<ul>
-		<li>
-			<h2>Pages</h2>
+	<a href="#" class="js-show-hide hide toggle"> «</a>
+	<div class="sidebar-content">
+		<h1><span>Greenpeace</span></h1>
+		<h2>HTML/CSS Guide</h2>
+		<div class="nav">
 			<ul>
-				<li><a href="#" nodeurl="action-template">[t11] action template</a></li>
-				<li>[t04] arcticle</li>
+				<li>
+					<h3>Templates</h3>
+					<ul>
+						<li><a href="#" class="js-switch-templates" nodeurl="action-template">[t11] action template</a></li>
+						<li>[t04a] arcticle</li>
+						<li>[t04b] blog entry</li>
+						<li>[t04c] image</li>
+						<li>[t09]  login</li>
+						<li>[t02]  hub</li>
+					</ul>
+				</li>
+				<li>
+					<h3>Base Elements</h3>
+					<ul>
+						<li>Typography</li>
+						<li>Open Spaces</li>
+						<li>Form</li>
+						<li>Colors</li>
+					</ul>
+				</li>
 			</ul>
-		</li>
-	</ul>
-</div>
+		</div>
+	</div>
 </div>
 <div class="content">
-	<iframe class="preview" src="help" name="subwindow" width="100%" height="100%" frameborder="0" style="padding:0;margin:0;overflow:auto;"></iframe> 
+	<iframe class="preview" src="action-template" name="subwindow" width="100%" height="99%" frameborder="0" style="padding:0;margin:0;overflow:auto;"></iframe> 
 </div>
 </div>
 </body>
