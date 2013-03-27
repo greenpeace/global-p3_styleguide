@@ -7,11 +7,11 @@
 		'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
 		'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
 		'timeStamp', 'trace', 'warn'];
-	var length = methods.length;
+	var l = methods.length;
 	var console = (window.console = window.console || {});
 
-	while (length--) {
-		method = methods[length];
+	while (l--) {
+		method = methods[l];
 
 		// Only stub undefined methods.
 		if (!console[method]) {
