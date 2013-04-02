@@ -26,13 +26,12 @@
 	margin: auto;
 }
 
+/*
+ * links and logo
+ */
 .header a {
 	color: #fff;
 }
-
-/*
- * logo
- */
 .header .logo {
 	display: block;
 	background: url(../img/logo.png) 0 0 no-repeat;
@@ -93,7 +92,11 @@
  */
 .language-selector {
   float: right;
-	display: none;
+	margin:.75em 0 .5em 0;
+}
+.language-selector .dropdown-label {
+	color:#FFF;
+	font-weight:bold;
 }
 
 /*

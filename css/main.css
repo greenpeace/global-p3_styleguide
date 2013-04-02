@@ -129,9 +129,6 @@ p a {
 /*
  * Main Content:
  */
-.wrapper {
-	padding: 88px 0 0;/*make way for header*/
-}
 .main {
 	background: url(../img/bkcement4.jpg) 0 0 repeat-y;
 	padding: 10px;

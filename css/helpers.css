@@ -176,6 +176,7 @@
 .paper-content {
 	background-color:#fbfbfb;
   padding:10px;
+	min-height:25px;
 }
 .paper:before,
 .paper:after,
