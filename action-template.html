@@ -55,11 +55,48 @@
 			 <div class="share rail">
 				<div class="paper">
 					<div class="paper-content">
-						<div class="sbutton vertical">Show<br> only<br> when<br> vertical</div>
-						<div class="sbutton horizontal">Show only<br> when horizontal</div>
-						<div class="sbutton"><a href="#" class="btn email"><span class="icon"></span>Email</a></div>
-						<div class="sbutton"><a href="#" class="btn sharesimple"><span class="icon"></span>Share</a></div>
-						<div class="sbutton"><a href="#" class="btn rss"><span class="icon"></span>RSS</a></div>
+						<ul class="horizontal social-buttons">
+							<li class="facebook">
+								<div class="fb-like" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial"
+	 								data-href="http://www.greenpeace.org/international">
+								</div>
+							</li>
+							<li class="twitter">
+								<a href="https://twitter.com/share" class="twitter-share-button" 
+									data-url="http://www.greenpeace.org/international/" 
+									data-text="Write to international banks, BNP Paribas and HSBC, and demand they withdraw their funding from the Jaitpaur nuclear project." 
+									data-via="Greenpeace" data-count="box" data-hashtags="nonukes">Tweet</a>
+							</li>
+		          <li class="google">
+								<g:plusone size="medium" annotation="bubble" callback="plusoneClick" class="plusone"
+									href="http://www.greenpeace.org/international/en/campaigns/climate-change/arctic-impacts/Save-The-Arctic-North-Pole-Expedition/">
+								</g:plusone>
+							</li>
+							<li class="email"><a class="small-button" href="#"><span class="icon email"></span>Email</a></li>
+							<li class="share"><a class="small-button" href="#" ><span class="icon sharesimple"></span>Share</a></li>
+							<li class="rss"><a class="small-button" href="#" ><span class="icon rss"></span>RSS</a></li>
+						</ul>
+						<ul class="vertical social-buttons">
+							<li class="facebook">
+								<div class="fb-like" data-send="false" data-layout="box_count" data-width="50" data-show-faces="false" data-font="arial"
+	 								data-href="http://www.greenpeace.org/international">
+								</div>
+							</li>
+							<li class="twitter">
+								<a href="https://twitter.com/share" class="twitter-share-button" 
+									data-url="http://www.greenpeace.org/international/" 
+									data-text="Write to international banks, BNP Paribas and HSBC, and demand they withdraw their funding from the Jaitpaur nuclear project." 
+									data-via="Greenpeace" data-count="vertical" data-hashtags="nonukes">Tweet</a>
+							</li>
+		          <li class="google">
+								<g:plusone size="tall" callback="plusoneClick" class="plusone"
+									href="http://www.greenpeace.org/international/en/campaigns/climate-change/arctic-impacts/Save-The-Arctic-North-Pole-Expedition/">
+								</g:plusone>
+							</li>
+							<li class="email"><a class="small-button" href="#"><span class="icon email"></span>Email</a></li>
+							<li class="share"><a class="small-button" href="#" ><span class="icon sharesimple"></span>Share</a></li>
+							<li class="rss"><a class="small-button" href="#" ><span class="icon rss"></span>RSS</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -810,9 +847,41 @@
 	//$('.notification a').click(function(){
 	//	 $(".notification").hide();
 	//});
-$(function () {				
 
+// Lazy loading of social network stuffs
+function loadTwitter() {
+	if($(".twitter-share-button").length > 0){
+		if (typeof (twttr) != 'undefined') {
+			twttr.widgets.load();
+		} else {
+			$.getScript('http://platform.twitter.com/widgets.js');
+		}
+	}
+}
+function loadFacebook() {
+	if (typeof (FB) != 'undefined') {
+		FB.XBFML({ status: true, cookie: true, xfbml: true });
+	} else {
+		$.getScript("http://connect.facebook.net/en_US/all.js#xfbml=1", function () {
+			FB.init({ status: true, cookie: true, xfbml: true });
+		});
+	}
+}
+function loadGooglePlus() {
+	if (typeof (gapi) != 'undefined') {
+		$(".g-plusone").each(function () {
+			gapi.plusone.render($(this).get(0));
+		});
+	} else {
+		$.getScript('https://apis.google.com/js/plusone.js');
+	}
+}
+$(window).load(function () {
+		loadTwitter();
+		loadFacebook();
+		loadGooglePlus();
 });
+
 </script>
 <script type="text/javascript"> /*
 	var _gaq = _gaq || [];

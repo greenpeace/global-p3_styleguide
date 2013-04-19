@@ -6,36 +6,33 @@
  */
 .share.rail {
 	float:left;
-	position:relative;
 	-moz-transition:	all .4s ease-in;
 	-webkit-transition:	all .4s ease-in;
 	-o-transition:	all .4s ease-in;
 	transition: all .4s ease-in;
   min-height:50px;
 }
-/* vertical and horizontal can be used to display different widgets, 
-		rest is done with media query */
-.share.rail .vertical {
-	display: none;
-}
-.share.rail .horizontal {
-	display: block;
-}
-.share.rail .sbutton {
+
+
+/* main tray */
+.share.rail .paper,
+.share.rail .paper-content {
 	float: left;
-	padding: 0 15px 6px 0;
 }
-div.share-now .fb_edge_comment_widget iframe, 
-div.share_topbar .fb_edge_comment_widget iframe {
-	height:auto!important;
-}
-div.share-now .iframe, 
-div.share_topbar iframe {
-	height:20px!important;
+.share.rail .paper-content {
+	background-color: #fbfbfb;
+	padding: 7px;
+	min-height: 25px;
+	text-align:center;
 }
 
-.sbutton .btn {
-	position: relative;
+/* buttons */
+.social-buttons {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+.small-button {
 	background-color: #f8f8f8;
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#dedede));
 	background-image: -moz-linear-gradient(top,#fff,#dedede);
@@ -46,21 +43,20 @@ div.share_topbar iframe {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
-	color: #333;
+	color: #363;
 	font-weight: bold;
 	text-shadow: 0 1px 0 rgba(255,255,255,.5);
 
 	cursor: pointer;
-	display: inline-block;
-	height: 20px;
-	padding: 0 5px 0 22px;
-	font-size: 11px;
-	line-height: 18px;
-	color: #363;
-	text-align: center;
+	display: block;
+	text-align: left;
 	font-weight: normal;
+	font-size:11px;
+	width:50px;
+	height: 15px;
+	padding: 1px;
 }
-.sbutton .btn:hover {
+.small-button:hover {
 	background-color: #bebebe;
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#bebebe));
 	background-image: -moz-linear-gradient(top,#fff,#bebebe);
@@ -69,21 +65,67 @@ div.share_topbar iframe {
 	background-image: linear-gradient(top,#fff,#bebebe);
 	text-decoration: none;
 }
-span.icon {
+.small-button .icon {
 	background:transparent url(../img/bg-icons.png) 0 0 no-repeat;
-	position:absolute;
-	top:3px;
-	left:3px;
+	float:left;
 	height:14px;
 	width:14px;
+	margin:0px;
+	padding-right:3px;
 }
-.btn.email .icon {
+.small-button .email.icon {
 	background-position: 0 0;
 }
-.btn.sharesimple .icon {
+.small-button .sharesimple.icon {
 	background-position: 0 -14px;
 }
-.btn.rss .icon {
+.small-button .rss.icon {
 	background-position: 0 -28px;
+}
+
+/* horizontal display */
+.share.rail .horizontal {
+	display: block;
+}
+.share.rail .horizontal li{
+	float:left;
+	padding-top:3px;
+	margin: 0px 10px;
+}
+.share.rail .horizontal .google {
+	width:70px;
+}
+.share.rail .horizontal .twitter {
+	width:90px;
+}
+/* vertical display, see also media query*/
+.share.rail .vertical {
+	display: none;
+}
+.share.rail .vertical li {
+	margin: 5px 0px;
+}
+.share.rail .vertical .small-button {
+	margin: 5px 0px 5px 3px;
+}
+@media only screen and (min-width: 1150px) {
+	.share.rail {
+		width:80px;
+		margin: 20px 0 0 -105px;
+		position:fixed;
+		-moz-transition:	all .4s ease-in;
+		-webkit-transition:	all .4s ease-in;
+		-o-transition:	all .4s ease-in;
+		transition: all .4s ease-in;
+	}
+	/*vertical and horizontal can be used to display different content*/
+	.share.rail .vertical {
+		display: block;
+	}
+	.share.rail .horizontal {
+		display: none;
+	}
+	.share.rail .small-button {
+	}
 }
 

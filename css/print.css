@@ -1,29 +1,7 @@
 /* ==========================================================================
-	 Media Queries.	
+	 Print styles.
+	 Inlined to avoid required HTTP connection: h5bp.com/r
 	 ========================================================================== */
-
-@media only screen and (min-width: 1150px) {
-	.share.rail {
-		margin: 20px 0 0 -102px;
-		position:fixed;
-		-moz-transition:	all .4s ease-in;
-		-webkit-transition:	all .4s ease-in;
-		-o-transition:	all .4s ease-in;
-		transition: all .4s ease-in;
-	}
-	/*vertical and horizontal can be used to display different content*/
-	.share.rail .vertical {
-		display: block;
-	}
-	.share.rail .horizontal {
-		display: none;
-	}
-	.share.rail .sbutton {
-		margin: 0;
-		padding: 0 0 6px 0;
-		float: none;
-	}
-}
 
 @media print,
 		 (-o-min-device-pixel-ratio: 5/4),
@@ -31,11 +9,6 @@
 		 (min-resolution: 120dpi) {
 	/* Style adjustments for high resolution devices */
 }
-
-/* ==========================================================================
-	 Print styles.
-	 Inlined to avoid required HTTP connection: h5bp.com/r
-	 ========================================================================== */
 
 @media print {
 	* {
