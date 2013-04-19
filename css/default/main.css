@@ -51,7 +51,7 @@ img {
 body {
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:12px;
-/*	background: black url(../img/bg-body.gif) 0 0 repeat-x;*/
+/*	background: black url(../../img/bg-body.gif) 0 0 repeat-x;*/
 }
 a {
 	text-decoration: none;
@@ -130,7 +130,7 @@ p a {
  * Main Content:
  */
 .main {
-	background: url(../img/bkcement4.jpg) 0 0 repeat-y;
+	background: url(../../img/bkcement4.jpg) 0 0 repeat-y;
 	padding: 10px;
 }
 
@@ -148,7 +148,7 @@ p a {
 	font-weight: bold;
 }
 .breadcrumbs li a {
-	background: url(../img/bullet1.gif) no-repeat 100% 4px;
+	background: url(../../img/bullet1.gif) no-repeat 100% 4px;
 	font-size: 10px;
 	color: white;
 	padding: 0 9px 0 0;

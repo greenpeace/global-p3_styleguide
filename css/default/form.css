@@ -46,7 +46,7 @@ p.error {
 	font-weight: bold;
 }
 span.error {
-	background: #fbd0d3 url(../img/attention.gif) no-repeat scroll 2px;
+	background: #fbd0d3 url(../../img/attention.gif) no-repeat scroll 2px;
 	border: 1px solid #db0000;
 	color: #db0000;
 	padding: 2px 2px 2px 22px;

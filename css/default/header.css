@@ -34,7 +34,7 @@
 }
 .header .logo {
 	display: block;
-	background: url(../img/logo.png) 0 0 no-repeat;
+	background: url(../../img/logo.png) 0 0 no-repeat;
 	width: 153px;
 	height: 25px;
 	position: absolute;
@@ -54,7 +54,7 @@
 .country-selector .dropdown-controller a,
 .country-selector .dropdown-controller a:hover {
 	display: block;
-	background: #66CC00 url(../img/selects.png) 200px -1px no-repeat;
+	background: #66CC00 url(../../img/selects.png) 200px -1px no-repeat;
   padding: 1px 2px 3px 2px;
 	height: 14px;
 	width: 248px;
@@ -65,7 +65,7 @@
 }
 .country-selector .dropdown-controller a.dropdown-open,
 .country-selector .dropdown-controller a.dropdown-open:hover {
-	background: #FFF url(../img/selects.png) 200px -24px no-repeat;
+	background: #FFF url(../../img/selects.png) 200px -24px no-repeat;
 	color: #66CC00;
   border: 2px solid #FFF;
 }
@@ -136,21 +136,21 @@
 	text-indent: -9999px;
 	border: none;
 	cursor: pointer;
-	background: transparent url(../img/btn-search.gif) no-repeat 0 0;
+	background: transparent url(../../img/btn-search.gif) no-repeat 0 0;
 }
 .search-button-ready-hover, .search-button-ready, .search-button-hover, .search-button, .form-button-ready-hover, .form-button-ready, .form-button-hover, .form-button {
-	background: transparent url(../img/btn-default-right.png) no-repeat scroll right top;
+	background: transparent url(../../img/btn-default-right.png) no-repeat scroll right top;
 	float: right;
 	height: 22px;
 	padding: 0 4px 0 0;
 }
 .search-button-ready-hover span, .search-button-ready span, .search-button-hover span, .search-button span, .form-button-ready-hover span, .form-button-ready span, .form-button-hover span, .form-button span {
-	background: transparent url(../img/btn-default-left.png) no-repeat scroll left top;
+	background: transparent url(../../img/btn-default-left.png) no-repeat scroll left top;
 	height: 22px;
 	display: block;
 }
 .search-button-ready-hover span, .search-button-ready span, .search-button-hover span, .search-button span {
-	background: transparent url(../img/btn-default-left-search.png) no-repeat scroll left top;
+	background: transparent url(../../img/btn-default-left-search.png) no-repeat scroll left top;
 	padding: 0 0 0 15px;
 }
 .search-button-ready-hover input, .search-button-ready input, .search-button-hover input, .search-button input, .form-button-ready-hover input, .form-button-ready input, .form-button-hover input, .form-button input, .form-button-ready a, .form-button-ready-hover a {
@@ -346,12 +346,12 @@
 .navigation .drop-content ul li a.drop,
 .navigation .drop-content ul li:hover ul li a.drop, .navigation .drop-content ul li.hover ul li a.drop, .navigation .drop-content ul ul li a.drop,
 .navigation .drop-content ul li:hover ul li:hover ul li a.drop2, .navigation .drop-content ul li.hover ul li.hover ul li a.drop2 {
-	background: url(../img/nav-arrow.png) no-repeat 95% 0;
+	background: url(../../img/nav-arrow.png) no-repeat 95% 0;
 }
 .navigation .drop-content ul li:hover a.drop, .navigation .drop-content ul li.hover a.drop, .navigation .drop-content ul li a.drop:hover,
 .navigation .drop-content ul li:hover li:hover a.drop, .navigation .drop-content ul li.hover li.hover a.drop, .navigation .drop-content ul ul li a.drop:hover,
 .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2, .navigation .drop-content ul li.hover ul li.hover ul li.hover a.drop2 {
-	background: #57b105 url(../img/nav-arrow.png) no-repeat 95% -25px;
+	background: #57b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
 }
 /*
  * Sign in: 

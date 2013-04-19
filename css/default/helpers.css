@@ -189,21 +189,21 @@
 .paper:before {
 	top:-2px;
 	left:-2px;
-	background:transparent url(../img/paper-corners.png) no-repeat left top;
+	background:transparent url(../../img/paper-corners.png) no-repeat left top;
 }
 .paper-content:before {
 	top:-2px;
 	right:-2px;
-	background:transparent url(../img/paper-corners.png) no-repeat right top;
+	background:transparent url(../../img/paper-corners.png) no-repeat right top;
 }
 .paper:after {
 	bottom:-2px;
 	left:-2px;
-	background:transparent url(../img/paper-corners.png) no-repeat left bottom;
+	background:transparent url(../../img/paper-corners.png) no-repeat left bottom;
 }
 .paper-content:after {
 	bottom:-2px;
 	right:-2px;
-	background:transparent url(../img/paper-corners.png) no-repeat right bottom;
+	background:transparent url(../../img/paper-corners.png) no-repeat right bottom;
 }
 
