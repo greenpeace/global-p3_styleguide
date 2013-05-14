@@ -1,0 +1,155 @@
+/*
+ * Form (general):
+ */
+.form input,
+.form select,
+.form textarea {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 1px solid #61B905;
+	background: white;
+	width: 270px;
+	font: 10px/20px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	min-height: 20px;
+	padding: 0 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.form textarea {
+	line-height: normal;
+	padding: 5px;
+	min-height: 200px;
+}
+.form select,
+.form option {
+	min-height: 20px;
+	padding: 0;
+}
+.form input[type=radio],
+.form input[type=button],
+.form input[type=radio]:focus,
+.form input[type=button]:focus,
+.form .error input[type=radio],
+.form .error input[type=button] {
+	border: none;
+	background: transparent;
+	width:auto;
+}
+.form .error input {
+	border: 1px solid #db0000;
+}
+.form .error label,
+p.error {
+	color: #db0000;
+	font-weight: bold;
+}
+span.error {
+	background: #fbd0d3 url(../../img/v02/attention.gif) no-repeat scroll 2px;
+	border: 1px solid #db0000;
+	color: #db0000;
+	padding: 2px 2px 2px 22px;
+	margin: 2px 0 0;
+	min-height: 14px;
+	line-height: 18px;
+	font-size: 10px;
+	font-style: normal;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+	border: 1px solid #61B905;
+	background: #ffffce;
+	outline: 0;
+}
+.form header,
+.form footer {
+	font-size: 11px;
+	line-height: 20px;
+	min-height: 20px;
+	margin: 0 0 12px;
+	font:10px/20px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	padding: 14px;
+	border-bottom: 2px dotted grey;
+}
+.form header h3 {
+	font-size:16px;
+}
+.form .row {
+	font-size: 11px;
+	line-height: 20px;
+	min-height: 20px;
+	margin: 0 0 12px;
+	font:10px/20px Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+.row label {
+	width:168px;
+	display:block;
+	float:left;
+	text-align:right;
+	padding: 0 9px 0 0;
+}
+.row label.radio {
+	width: auto;
+	vertical-align: top;
+}
+.row span {
+	font-style: italic;
+	font-weight: normal;
+	display: block;
+	line-height: normal;
+	clear: both;
+	float: none;
+}
+.row .edit-box {
+	float: left;
+	margin: 0;
+	display: block;
+}
+/*
+ * Form (specific):
+ */
+input.firstname {
+	width: 120px;
+	margin: 0 5px 0 0;
+}
+input.lastname {
+	width: 145px;
+}
+.form .button.send {
+	float: right;
+	margin: 0 75px 0 0;
+}
+.button.donate {
+	margin: 5px 0 0;
+	color: #56b004;
+	border: 1px solid white;
+	background: white;
+	font: bold 12px/18px Helvetica,"Trebuchet MS",sans-serif;
+}
+.button.send,
+#nav li a:hover.button.donate {
+	color: white;
+	border: 1px solid #f06d00;
+	background: none;
+
+	background-color: #f72800!important;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f72800), to(#ffa809));
+	background: -webkit-linear-gradient(top, #ffa809, #f72800);
+	background: -moz-linear-gradient(top, #ffa809, #f72800);
+	background: -ms-linear-gradient(top, #ffa809, #f72800);
+	background: -o-linear-gradient(top, #ffa809, #f72800);
+}
+.button.send:hover {
+	background-color: #DF1C00;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DF1C00), to(#ff8400));
+	background: -webkit-linear-gradient(top, #ff8400, #DF1C00);
+	background: -moz-linear-gradient(top, #ff8400, #DF1C00);
+	background: -ms-linear-gradient(top, #ff8400, #DF1C00);
+	background: -o-linear-gradient(top, #ff8400, #DF1C00);
+}
+

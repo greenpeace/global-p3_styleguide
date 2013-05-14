@@ -1,0 +1,131 @@
+/* ==========================================================================
+	 Share and Social Buttons
+	 ========================================================================== */
+/*
+ * Share Rail floating on the left / or top
+ */
+.share.rail {
+	float:left;
+	-moz-transition:	all .4s ease-in;
+	-webkit-transition:	all .4s ease-in;
+	-o-transition:	all .4s ease-in;
+	transition: all .4s ease-in;
+  min-height:50px;
+}
+
+
+/* main tray */
+.share.rail .paper,
+.share.rail .paper-content {
+	float: left;
+}
+.share.rail .paper-content {
+	background-color: #fbfbfb;
+	padding: 7px;
+	min-height: 25px;
+	text-align:center;
+}
+
+/* buttons */
+.social-buttons {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+.small-button {
+	background-color: #f8f8f8;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#dedede));
+	background-image: -moz-linear-gradient(top,#fff,#dedede);
+	background-image: -o-linear-gradient(top,#fff,#dedede);
+	background-image: -ms-linear-gradient(top,#fff,#dedede);
+	background-image: linear-gradient(top,#fff,#dedede);
+	border: #ccc solid 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	color: #363;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+
+	cursor: pointer;
+	display: block;
+	text-align: left;
+	font-weight: normal;
+	font-size:11px;
+	width:50px;
+	height: 15px;
+	padding: 1px;
+}
+.small-button:hover {
+	background-color: #bebebe;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#bebebe));
+	background-image: -moz-linear-gradient(top,#fff,#bebebe);
+	background-image: -o-linear-gradient(top,#fff,#bebebe);
+	background-image: -ms-linear-gradient(top,#fff,#bebebe);
+	background-image: linear-gradient(top,#fff,#bebebe);
+	text-decoration: none;
+}
+.small-button .icon {
+	background:transparent url(../../img/v02/bg-icons.png) 0 0 no-repeat;
+	float:left;
+	height:14px;
+	width:14px;
+	margin:0px;
+	padding-right:3px;
+}
+.small-button .email.icon {
+	background-position: 0 0;
+}
+.small-button .sharesimple.icon {
+	background-position: 0 -14px;
+}
+.small-button .rss.icon {
+	background-position: 0 -28px;
+}
+
+/* horizontal display */
+.share.rail .horizontal {
+	display: block;
+}
+.share.rail .horizontal li{
+	float:left;
+	padding-top:3px;
+	margin: 0px 10px;
+}
+.share.rail .horizontal .google {
+	width:70px;
+}
+.share.rail .horizontal .twitter {
+	width:90px;
+}
+/* vertical display, see also media query*/
+.share.rail .vertical {
+	display: none;
+}
+.share.rail .vertical li {
+	margin: 5px 0px;
+}
+.share.rail .vertical .small-button {
+	margin: 5px 0px 5px 3px;
+}
+@media only screen and (min-width: 1150px) {
+	.share.rail {
+		width:80px;
+		margin: 20px 0 0 -105px;
+		position:fixed;
+		-moz-transition:	all .4s ease-in;
+		-webkit-transition:	all .4s ease-in;
+		-o-transition:	all .4s ease-in;
+		transition: all .4s ease-in;
+	}
+	/*vertical and horizontal can be used to display different content*/
+	.share.rail .vertical {
+		display: block;
+	}
+	.share.rail .horizontal {
+		display: none;
+	}
+	.share.rail .small-button {
+	}
+}
+
