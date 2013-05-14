@@ -1,10 +1,12 @@
-=============================================================
 TODO
-=============================================================
+https://trello.com/b/TdCI4w6Z
 
-* Lazy loading of twitter and facebook stuffs
-* Change all the px to em's
-* Create a font for icons that are monochomes / bicolor
+High
+[ ] Lazy loading of twitter and facebook stuffs (hugo researching)
+[ ] Change all the px to em's / move default size to 16px
+[ ] fat footer
+[ ] semantic grid
 
-
+Low
+[ ] Create a font for icons that are monochomes / bicolor
 

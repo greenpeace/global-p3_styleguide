@@ -15,6 +15,7 @@
 		.sidebar-content { display:block;} .fullview .sidebar-content { display:none;} 
 		.fullview .content { position:absolute; height:100%; width:99%; left:1%; overflow:auto;}
 		.toggle { float:right;padding:0 5px;height:99%;background:#CCC;text-decoration:none;}
+		ul ul ul { list-style-type:disc; margin:2px 10px 5px 10px; padding-left:10px; font-size:12px;}
 	</style>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -49,7 +50,12 @@
 				<li>
 					<h3>Templates</h3>
 					<ul>
-						<li><a href="action-template" class="js-switch-templates" nodeurl="action-template">[t11] action template</a></li>
+						<li>[t11] action template
+							<ul>
+								<li><a href="action-template-v01" class="js-switch-templates" nodeurl="action-template-v01">v01 - Relephant Draft</a></li>
+								<li><a href="action-template-v02" class="js-switch-templates" nodeurl="action-template-v02">v02 - Remy have a go at it</a></li>
+							</ul>
+						</li>
 						<li>[t04a] arcticle</li>
 						<li>[t04b] blog entry</li>
 						<li>[t04c] image</li>
@@ -71,7 +77,7 @@
 	</div>
 </div>
 <div class="content">
-	<iframe class="preview" src="action-template" name="subwindow" width="100%" height="99%" frameborder="0" style="padding:0;margin:0;overflow:auto;"></iframe> 
+	<iframe class="preview" src="README" name="subwindow" width="100%" height="99%" frameborder="0" style="padding:0;margin:0;overflow:auto;"></iframe> 
 </div>
 </div>
 </body>
