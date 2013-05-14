@@ -1,14 +1,19 @@
-Greenpeace Code Rewrite HTML5/CSS3
-====================================
+Quicklinks
+-----------------------
+
+Project Board: https://trello.com/b/TdCI4w6Z
+Wireframes: http://bit.ly/13vlXsS
+
 
 TODO
-------------------------------------
+-----------------------
 
-* Lazy loading of twitter and facebook stuffs
-* Responsive breakpoint
-* differenciate baseline theme and allow extensions
-* Change all the px to em's
-* Create a font for icons that are monochomes / bicolor stufs
-* Merge incos and existing sprites where possible
+High
+[ ] Lazy loading of twitter and facebook stuffs (hugo researching)
+[ ] Change all the px to em's / move default size to 16px
+[ ] fat footer
+[ ] semantic grid
 
+Low
+[ ] Create a font for icons that are monochomes / bicolor
 
