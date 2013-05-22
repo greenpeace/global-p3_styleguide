@@ -1,0 +1,210 @@
+/* ==========================================================================
+	 ACtion Template or Action Related Widgets
+	 ========================================================================== */
+/* change some default behaviors */
+.action-template h1 {
+	margin-bottom:.25em;
+}
+
+.action-template #breadcrumbs {
+	display:none;
+}
+#action-submit-quick.submit {
+	float:left;
+	margin-left:15.5em;
+	margin-top:-2.34em;
+}
+#action-ask p {
+	margin:0;
+}
+#action-submit-full.submit  {
+	margin-top:.5em;
+	font-size:1.25em;
+}
+
+/*
+	Small Prints
+
+	Description  : checkbox is hidden
+	Compatible   : ?
+	Since        : ?
+*/
+#action-smallprints {
+	margin:.25em 0;
+}
+#action-smallprints label,
+#action-smallprints input[type=checkbox] {
+	display:none;
+}
+#action-smallprints input + label {
+	display:inline;
+	font-size:0.875em; /* 14px */
+}
+
+/*
+	Action Counter
+
+	Description  : counter with both graphical and text only
+	Compatible   : ?
+	Since        : ?
+*/
+#action-counter {
+	margin:1em 0;
+}
+#action-counter-graphical {
+	display:none;
+	background:#d7d2d2;
+}
+#action-counter-graphical .completed {
+	background:#fba239;
+	display:block;
+	text-align:right;
+	color:#FFF;
+	font-weight:bold;
+	font-size:1.125em;
+	padding:.111em .444em;
+}
+#action-counter-graphical .objectives {
+	display:none;
+}
+#action-counter-textual {
+	margin:.25em 0;
+}
+
+/*
+	Social Login
+
+	Description  : social login buttons
+	Compatible   : ?
+	Since        : ?
+
+	.facebook		facebook icon
+	.google			google icon
+*/
+#main-section .social.login span {
+	display:none;
+}
+#main-section .social.login a {
+	height:22px; /* 22px */
+	width:60px; /* 60px */
+	display:inline-block;
+	line-height:1em;
+	border:1px solid #CCC;
+	margin-bottom:-.4em;
+	padding:0 6px;
+	border-radius:2px;
+}
+#main-section .social.login a.facebook {
+	background:transparent url(../../img/v03/sociallogin.png) center 0 no-repeat;
+}
+#main-section .social.login a.google {
+	background:transparent url(../../img/v03/sociallogin.png) center -22px no-repeat;
+}
+
+
+/*
+	Recent Signers
+
+	Description  : recent signers widget
+	Compatible   : ?
+	Since        : ?
+*/
+#action-recent-signers ul {
+	padding:0;
+}
+#action-recent-signers li {
+	list-style-type:none;
+}
+#action-recent-signers .since {
+	width:8em;
+	display:inline-block;
+}
+#action-recent-signers .name:after {
+	content:",";
+}
+#action-recent-signers .country {
+	color:#777;
+}
+#action-recent-signers .flag {
+	margin-right:.25em;
+}
+
+/* ==========================================================================
+	 ACtion Template Media Queries
+	 ========================================================================== */
+/* Smart Phones below 320px */
+@media only screen 
+and (max-width : 320px) {
+	#action-form-authentication .submit {
+		position:relative;
+		float:none;
+		margin-left:0;
+		margin-top:.4em;
+	}
+	.input .tooltip span {
+		visibility:visible;
+		padding-bottom:.4em;
+		position:relative;
+		margin:-1.5em 0 0 1.5em;
+		display:inline-block;
+	}
+}
+
+/* Tablets ----------- */
+@media only screen 
+and (min-width : 768px),
+only screen
+and (min-width : 1024px) {
+	#action-h2,
+	#action-ask,
+	#action-form {
+		clear:right;
+		float:right;
+		width:320px;
+		margin-left:3em;
+	}
+  #action-counter,
+  #action-details,
+  #action-recent-signers,
+  #action-multimedia-teaser {
+		width:320px;
+		float:left;
+	}
+  #action-multimedia-teaser {
+		margin-top:-2.33em; /* -h2: 1.5 + .83 */
+	}
+	#action-h2 {
+		margin-top:0; /* -h2: 1.5 + .83 */
+	}
+	#action-counter-graphical {
+		display:block;
+	}
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1024px) {
+	#action-h2,
+	#action-ask,
+	#action-form,
+  #action-counter,
+  #action-details,
+  #action-recent-signers,
+  #action-multimedia-teaser {
+		width:450px;
+	}
+}
+/* Large screens -----------
+@media only screen 
+and (min-width : 1600px) {
+	#action-form {
+		float:right;
+	}
+  #action-details,
+  #action-multimedia-teaser {
+		width:570px;
+		float:left;
+		clear:both;
+	}
+} */
+

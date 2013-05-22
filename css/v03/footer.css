@@ -1,0 +1,59 @@
+/* ==========================================================================
+	 Footer
+	 ========================================================================== */
+/* Small footer */
+.footer.small  {
+	background:#66CC00;
+	color:#FFF;
+	font-size:0.875em; 		 /* 14px */
+	height:4.7857142857em; /* 67px */
+}
+.footer.small .copy-box {
+	padding: 2.1428571429em 0 0; /* 30px */
+}
+.footer.small .copy-box a {
+	color: white;
+}
+.footer.small .logo-box {
+	float: left;
+	margin: 1px 0 0;
+}
+.footer.small .logo-box span {
+	line-height: 1em;
+	float: left;
+}
+.footer.small .logo-box .logo {
+	background: url(../../img/v03/logo.png) 0 -26px no-repeat;
+	width: 89px;
+	height: 16px;
+	margin: 0 .5em 0 .2857142857em;
+	text-indent: -999px;
+	display:inline-block;
+	float: left;
+	overflow: hidden;
+}
+.footer.small .copy-box ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.footer.small .privacy {
+	float: left;
+}
+.footer.small .bottom-menu {
+	float: right;
+}
+.footer.small .privacy li,
+.footer.small .bottom-menu li {
+	float: left;
+	padding: 0 0 0 1.1428571429em;
+}
+
+
+@media only screen
+and (max-width : 320px)  {
+	.section {
+		width:200px;
+		font-size:0.8125em; /* 13px */
+	}
+}

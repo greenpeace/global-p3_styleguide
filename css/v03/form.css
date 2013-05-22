@@ -1,0 +1,285 @@
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+::selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+/*
+	Generic Form Item
+
+	Description  : labels and input are wrapped in a <div.text>
+	Compatible   : FF2+, Chrome1+, IE?, Opera?, Safari?
+	Since        : version 3.0
+
+	:hover       - subtle hover highlight
+	:active      - inset box shadow
+	.disabled    - grey out to indicate it cannot be used
+*/
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=search],
+textarea {
+	font-family:'Lato',Verdana, Geneva, Arial, Helvetica, sans-serif;
+  color:#333;
+	background:#FFF;
+	border:1px solid #CCC;
+	width:14em; /* 20 char (default input length) x .7em (average char length) */
+	padding:.278em .5em .278em .5em; /* 5px 9px */
+	display:inline-block;
+  zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+  *display: inline;
+  margin-bottom:.5em;
+	-webkit-appearance:none;
+}
+
+/*
+	TextField
+
+	Description  : labels and input are wrapped in a div with the type of the class
+	Compatible   : FF2+, Chrome1+,
+	Since        : version 3.0
+
+	:hover       - subtle hover highlight
+	:active      - inset box shadow
+	.disabled    - grey out to indicate it cannot be used
+*/
+label {
+	font-weight:bold;
+  padding:.2em;
+	display:block;
+}
+textarea,
+.password input[type=password],
+.search input[type=search],
+.search input[type=email],
+.text input[type=text] {
+  border-top:1px solid #999;
+}
+textarea,
+.password input[type=password]:hover,
+.search input[type=search]:hover,
+.email input[type=email]:hover,
+.text input[type=text]:hover {
+  border:1px solid #999;
+}
+textarea:focus,
+.password input[type=password]:focus,
+.search input[type=search]:focus,
+.email input[type=email]:focus,
+.text input[type=text]:focus {
+  -webkit-box-shadow: inset 1px 1px 2px rgba(255,255,255,.2);
+  -moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
+	border:1px solid #66CC00;
+}
+
+.textarea.disabled textarea,
+.textarea.disabled textarea:hover,
+.textarea.disabled textarea:focus,
+.input.disabled input[type=password],
+.input.password.disabled input[type=password]:hover,
+.input.password.disabled input[type=password]:focus,
+.input.disabled input[type=email],
+.input.email.disabled input[type=email]:hover,
+.input.email.disabled input[type=email]:focus,
+.input.disabled input[type=search],
+.input.search.disabled input[type=search]:hover,
+.input.search.disabled input[type=search]:focus,
+.input.disabled input[type=text],
+.input.text.disabled input[type=text]:hover,
+.input.text.disabled input[type=text]:focus {
+	border:1px solid #CCC;
+  -webkit-box-shadow: 0 0 0 0;
+  -moz-box-shadow: 0 0 0 0;
+  box-shadow: 0 0 0 0;
+  cursor:normal;
+  background:#F3F3F3;
+}
+
+/*
+	Required Textfield
+
+	Description  : Label and input are wrapped in <div.text.required>. Additional <span> with a star is included. Input also get the required class.
+	Compatible   : FF2+, Chrome1+, IE?, Opera?, Safari?
+	Since        : version 3.0
+
+	.required    - additional red star
+*/
+.required label:after {
+	content:" *";
+	color:#D40000;
+	font-weight:bold;
+}
+
+/*
+	Large textarea Textfield
+
+	Description  : textarea.textarea is pretty much the same than div.input.text.
+	Compatible   : FF2+, Chrome1+, IE?, Opera?, Safari?
+	Since        : version 3.0
+
+	.required    - additional red star
+	.lager       - make the box bigger
+*/
+textarea {
+	height:3.6em; /* 4 char (default input length) x 1em (average char length) + .6em (padding) */
+}
+.textarea.large textarea {
+	width:30em;
+	height:7em;
+}
+
+/*
+	Messages for validation error and example
+
+	Description  : <div.text.error>, <div.text.success>, can be used to add status messages or example. 
+								 Additional messages are wrapped in <.error-message>, <.success-messages>
+	Compatible   : FF2+, Chrome1+, IE?, Opera?, Safari?
+	Since        : version 3.0
+
+	.success     - can be used for instant validation feedback
+	.notice      - can be used for example messages prior validation
+	.error       - error messages used for validation issues
+*/
+.message {
+	font-weight:bold;
+	border-bottom:1px solid;
+}
+.input .message {
+	font-size: .8125em; /* 13px */
+  padding:0 0 .8em 0;
+	background-color:transparent;
+  border:0;
+}
+.input.error label {
+	color: #D40000;
+}
+.input .message.error {
+	color: #D40000;
+}
+.input input.error,
+.input textarea.error {
+	border:1px solid #D40000;
+}
+.input .inline.message {
+	display:inline-block;
+}
+
+/*
+	Tooltips 
+
+	Description  : .input .tooltip span, inline on hover message
+	Compatible   : ?
+	Since        : ?
+*/
+.input .tooltip {
+	display:inline;
+	font-weight:normal;
+}
+.input .tooltip:before {
+	padding:2px 6px;
+	content:"?";
+	border-radius:10px;
+	border:1px solid #CCC;
+	font-weight:bold;
+	color:#777;
+}
+.input .tooltip:hover:before {
+	padding:2px 6px;
+	content:"?";
+	border-radius:10px;
+	border:1px solid #777;
+	background:#CCC;
+	font-weight:bold;
+}
+.input .tooltip span {
+	visibility:hidden;
+	position:absolute;
+	max-width:200px;
+	padding-left:10px;
+}
+
+.input .tooltip:hover span {
+	visibility:visible;
+}
+
+/* do not show javascript needed warning if js is enabled 
+	 this needs modernizr to work
+*/
+.js .message.nojs {
+  display:none;
+}
+
+/*
+	Radio
+
+	Description  : ?
+	Compatible   : ?
+	Since        : version 3.0
+*/
+.checkboxlist label,
+.radiolist label {
+	font-size:1.25em;
+}
+.checkboxlist .input.checkbox label,
+.radiolist .input.radio label {
+	display:inline;
+}
+input[type=checkbox] {
+	display:inline;
+}
+input[type=checkbox] + label {
+  font-weight:normal;
+	display:inline;
+}
+
+/*
+	Select
+
+	Description  : ?
+	Compatible   : ?
+	Since        : version 3.0
+*/
+select {
+  padding-left:.2em;
+	width:15em;
+}
+select:hover {
+  padding-left:.2em;
+}
+.select .select-styling {
+	font-family:'Lato',Verdana, Geneva, Arial, Helvetica, sans-serif;
+  color:#333;
+	background:#FFF;
+	border:1px solid #CCC;
+	width:14em; /* 20 char (default input length) x .7em (average char length) */
+	padding:.278em .5em .278em .5em; /* 5px 9px */
+	display:inline-block;
+  zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+  *display: inline;
+  margin-bottom:.5em;
+	-webkit-appearance:none;
+}
+.select select {
+	background:transparent;
+	border:0;
+	padding:0;
+  color:#333;
+	margin:0;
+	width:14em; /* 20 char (default input length) x .7em (average char length) */
+}
+
+/* system fields */
+.system.fields {
+	display:none;
+}

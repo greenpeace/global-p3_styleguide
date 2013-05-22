@@ -30,6 +30,11 @@ video {
 	*display: inline;
 	*zoom: 1;
 }
+/* For cases where we use HTML5 video directly through <video> tags. */
+video {
+  width: 100% !important;
+  height: auto !important;
+}
 
 /**
  * Prevent modern browsers from displaying `audio` without controls.
@@ -48,6 +53,10 @@ audio:not([controls]) {
 	display: none;
 }
 
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
 /* ==========================================================================
    Base
    ========================================================================== */
