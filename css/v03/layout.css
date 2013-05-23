@@ -15,7 +15,7 @@
 	padding-top:.5em;	
 	margin-bottom:3em;
 }
-.section {
+.page-section {
 	margin:auto;
 	width:960px;
 }
@@ -23,7 +23,7 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen
 and (max-width : 320px)  {
-	.section {
+	.page-section {
 		width:200px;
 		font-size:0.8125em; /* 13px */
 	}
@@ -31,7 +31,7 @@ and (max-width : 320px)  {
 @media only screen 
 and (min-width : 320px) 
 and (max-width : 480px) {
-	.section {
+	.page-section {
 		width:310px;
 		font-size:0.875em; /* 14px */
 	}
@@ -39,7 +39,7 @@ and (max-width : 480px) {
 @media only screen 
 and (min-width : 480px) 
 and (max-width : 768px) {
-	.section {
+	.page-section {
 		width:460px;
 		font-size:0.9375em; /* 15px */
 	}
@@ -52,8 +52,8 @@ and (max-device-width : 1024px)
 @media only screen 
 and (min-width : 768px) 
 and (max-width : 1024px) {
-	.section {
-		width:700px;
+	.page-section {
+		page-width:700px;
 		font-size:0.9375em; /* 15px */
 	}
 }
@@ -61,7 +61,7 @@ and (max-width : 1024px) {
 /* Desktops and laptops ----------- */
 @media only screen 
 and (min-width : 1024px) {
-	.section {
+	.page-section {
 		width:960px;
 		font-size:0.9375em; /* 15px */
 	}
@@ -70,7 +70,7 @@ and (min-width : 1024px) {
 /* Large screens ----------- */
 @media only screen 
 and (min-width : 1600px) {
-	.section {
+	.page-section {
 		width:960px;
 		font-size:1em; /* 16px */
 	}

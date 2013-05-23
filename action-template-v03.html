@@ -31,11 +31,12 @@
 <body itemscope itemtype="https://schema.org/WebPage">
 <div id="root-container" class="action-template petition">
 
-<!-- main content -->
+<!-- Main content -->
 <div id="main-container" class="container">
-<div id="main-section" class="section clearfix">
+<div id="main-section" class="page-section clearfix">
 
-	<div id="breadcrumbs">
+	<!-- Breadcrumbs -->
+	<div id="breadcrumbs" class="block">
 		<ul class="breadcrumbs-holder" itemprop="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">
 			<li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Home">Home</a></li>
 			<li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="What we do">What we do</a></li>
@@ -45,21 +46,24 @@
 		</ul>
 	</div>
 
-	<h1 id="action-h1">Action main title</h1>
-	<h2 id="action-h2">Call to action title</h2>
+	<!-- Titles -->
+	<h1 id="action-h1" class="block">Action main title</h1>
+	<h2 id="action-h2" class="block">Call to action title</h2>
 
-	<div id="action-multimedia-teaser">
+	<div id="action-multimedia-teaser" class="block">
 		<!--iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/bBJ9RnbK8G4" frameborder="0" allowfullscreen></iframe-->
 		<img src="img/v03/teaser.jpg" alt="a humpback whale in the indian ocean" style="width:100%;"/>
 	</div>
 
-	<div id="action-ask">
+	<!-- Action ask / intro -->
+	<div id="action-ask" class="block">
 		<p>
 			This is a very short description of what the petition is all about. This is both the change we want to see in the world and what you are actually doing.
 		</p>
 	</div>
 
-	<div id="action-form">
+	<!-- Action form -->
+	<div id="action-form" class="block">
 		<form action="#" id="Pledge" method="post" accept-charset="utf-8">
 			<div id="action-system-fields" class="system fields">
 				<input type="hidden" name="_method" value="POST"><!-- value would be PUT on edit -->
@@ -126,7 +130,8 @@
 		</form>
 	</div>
 
-	<div id="action-counter" class="counter">
+	<!-- Action counter -->
+	<div id="action-counter" class="counter block">
 		<div id="action-counter-graphical">
 			<span class="objectives">4000</span>
 			<span style="width:50%;" class="completed">2000</span>
@@ -134,7 +139,8 @@
 		<div id="action-counter-textual">2000 have joined so far. The target is 4000.</div>
 	</div>
 
-	<div id="action-recent-signers">
+	<!-- Recent signers -->
+	<div id="action-recent-signers" class="block">
 		<h3>Recent Signers</h3>
 		<ul>
 			<li>
@@ -164,8 +170,8 @@
 		</ul>
 	</div>
 
-	<div id="action-details" class="letter">
-		<h3>to: the high deputy of stuffs</h3>
+	<!-- Action details block -->
+	<div id="action-details" class="block">
 		<p>
 			It was one of those days when we felt like change was in the air – even if it was a small victory it was an important one.
 			Yesterday, we confirmed that notorious palm oil producer and forest destroyer, Duta Palma, has (finally) been ejected from
@@ -189,16 +195,63 @@
 		</p>
 	</div>
 
+	<!-- Social buttons with counters -->
+	<div id="action-social-share" class="block">
+		<h3>Share with your friends</h3>
+		<ul>
+			<li class="facebook">
+				<div class="counter">
+					<span>100K</span><i class="tip"></i>
+				</div>
+				<div class="action">
+					<a href="#"><span>like</span></a>
+				</div>
+			</li>
+			<li class="twitter">
+				<div class="counter">
+					<span>20</span><i class="tip"></i>
+				</div>
+				<div class="action">
+					<a href="#"><span>tweet</span></a>
+				</div>
+			</li>
+			<li class="google">
+				<div class="counter">
+					<span>20</span><i class="tip"></i>
+				</div>
+				<div class="action">
+					<a href="#"><span>+1</span></a>
+				</div>
+			</li>
+			<li class="linkedin">
+				<div class="counter">
+					<span>2</span><i class="tip"></i>
+				</div>
+				<div class="action">
+					<a href="#"><span>share</span></a>
+				</div>
+			</li>
+			<li class="pinterest">
+				<div class="counter">
+					<span>2K</span><i class="tip"></i>
+				</div>
+				<div class="action">
+					<a href="#"><span>pinit!</span></a>
+				</div>
+			</li>
+		</ul>
+	</div>
+
 </div>
 </div>
 
-<!-- header -->
+<!-- Header -->
 <header>
 	<div class="header container">
 
-		<!-- first header: logo, country selector, search and media links -->
+		<!-- First header: logo, country selector, search and media links -->
 		<div class="heading first">
-			<div class="heading-holder section">
+			<div class="heading-holder page-section">
 				<a href="/international/en/" title="Greenpeace" class="logo">
 					<span class="visuallyhidden">Greenpeace</span>
 				</a>
@@ -275,7 +328,7 @@
 
 	  <!-- Second heading navigation and signup -->
 		<div class="heading second">
-			<div class="heading-holder section">
+			<div class="heading-holder page-section">
 				<nav>
 					<ul class="navigation" id="nav">
 					</ul>
@@ -286,10 +339,10 @@
 	</div>
 </header>
 
-<!-- footer -->
-	<footer>
+<!-- Footer -->
+<footer>
 	<div class="footer container small">
-		<div class="footer-holder section">
+		<div class="footer-holder page-section">
 			<div class="copy-box">
 				<div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2010</span></div>
 				<ul class="privacy">
@@ -305,25 +358,30 @@
 			</div>
 		</div>
 	</div>
-	</footer>
+</footer>
 
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<!--script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script--> 
-<script src="/js/v02/vendor/dropdown.js"></script>
-<script type="text/javascript"> /*
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-57175-1']);
-	_gaq.push(['_setDomainName', '.greenpeace.org']);
-	_gaq.push(['_setAllowLinker', true]);
-	_gaq.push(['_setAllowHash', false]);
-	_gaq.push(['_setSiteSpeedSampleRate', 10]);
-	_gaq.push(['_trackPageview']);
-	(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})(); */
-</script>
+
+<!-- Javascript -->
+<div class="scripts">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<!--script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script--> 
+	<script src="js/v02/vendor/dropdown.js"></script>
+	<script type="text/javascript"> /*
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-57175-1']);
+		_gaq.push(['_setDomainName', '.greenpeace.org']);
+		_gaq.push(['_setAllowLinker', true]);
+		_gaq.push(['_setAllowHash', false]);
+		_gaq.push(['_setSiteSpeedSampleRate', 10]);
+		_gaq.push(['_trackPageview']);
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})(); */
+	</script>
+</div>
+
 </body>
 </html>

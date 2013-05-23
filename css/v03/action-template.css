@@ -128,6 +128,92 @@
 #action-recent-signers .flag {
 	margin-right:.25em;
 }
+#action-social-share {
+	
+}
+/*
+	Social Button
+
+	Description  : share buttons with counters
+	Compatible   : ?
+	Since        : ?
+*/
+#action-social-share {
+	clear:both;
+}
+#action-social-share ul {
+	list-style-type:none;
+	padding:0;
+}
+#action-social-share li {
+	display:inline-block;
+	margin-right:.25em;
+}
+#action-social-share .counter span {
+	border:1px solid #CCC;
+	display:block;
+	text-align:center;
+	width:48px;
+	padding:.5em 0;
+	font-size:.875em;
+	border-radius:2px;
+}
+#action-social-share .action a {
+	display:block;
+	text-align:center;
+	width:50px;
+	height:25px;
+	padding:.5em;
+	padding:0;
+	margin-top:10px;
+	border-radius:2px;
+}
+/* 
+	flat style icons 
+	Credit: David Bushell http://dbushell.com @dbushell
+*/
+#action-social-share .action a span {
+	display:none;
+}
+#action-social-share .facebook a {
+	background:transparent url(../../img/v03/social-map.png) 0 -90px no-repeat;
+}
+#action-social-share .google a {
+	background:transparent url(../../img/v03/social-map.png) 0 -45px no-repeat;
+}
+#action-social-share .twitter a {
+	background:transparent url(../../img/v03/social-map.png) 0 0 no-repeat;
+}
+#action-social-share .pinterest a {
+	background:transparent url(../../img/v03/social-map.png) 0 -175px no-repeat;
+}
+#action-social-share .linkedin a {
+	background:transparent url(../../img/v03/social-map.png) 0 -135px no-repeat;
+}
+/* some fake bubble tip shenanigans */
+#action-social-share .counter .tip:before{
+	width:1px; height:1px;
+	position:absolute;
+	margin-left:17px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #CCC;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  display: inline-block;
+	content:" ";
+}
+#action-social-share .counter .tip:after{
+	width:1px; height:1px;
+	position:absolute;
+	margin-left:17px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #CCC;
+  border-top-color: rgba(255, 255, 255, 1);
+  display: inline-block;
+	content:" ";
+	margin-top:-2px;
+}
 
 /* ==========================================================================
 	 ACtion Template Media Queries
@@ -155,19 +241,21 @@ and (max-width : 320px) {
 and (min-width : 768px),
 only screen
 and (min-width : 1024px) {
+	.block {
+		width:320px;
+	}
 	#action-h2,
 	#action-ask,
 	#action-form {
 		clear:right;
 		float:right;
-		width:320px;
 		margin-left:3em;
 	}
   #action-counter,
   #action-details,
   #action-recent-signers,
+	#action-social-share,
   #action-multimedia-teaser {
-		width:320px;
 		float:left;
 	}
   #action-multimedia-teaser {
@@ -184,13 +272,7 @@ and (min-width : 1024px) {
 /* Desktops and laptops ----------- */
 @media only screen 
 and (min-width : 1024px) {
-	#action-h2,
-	#action-ask,
-	#action-form,
-  #action-counter,
-  #action-details,
-  #action-recent-signers,
-  #action-multimedia-teaser {
+	.block {
 		width:450px;
 	}
 }

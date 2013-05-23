@@ -23,9 +23,9 @@
 	float: left;
 }
 .footer.small .logo-box .logo {
-	background: url(../../img/v03/logo.png) 0 -26px no-repeat;
+	background: url(../../img/v03/image-map.png) 0 -25px no-repeat;
 	width: 89px;
-	height: 16px;
+	height: 15px;
 	margin: 0 .5em 0 .2857142857em;
 	text-indent: -999px;
 	display:inline-block;
@@ -48,7 +48,6 @@
 	float: left;
 	padding: 0 0 0 1.1428571429em;
 }
-
 
 @media only screen
 and (max-width : 320px)  {

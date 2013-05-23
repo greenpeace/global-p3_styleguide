@@ -32,14 +32,13 @@
 }
 .header .logo {
 	display: block;
-	background: url(../../img/v03/logo.png) 0 0 no-repeat;
+	background: url(../../img/v03/image-map.png) 0 0 no-repeat;
 	width: 153px;
 	height: 25px;
 	position: absolute;
 	top: 18px;
 	left: 8px;
 }
-
 
 /*
  * Country selector
@@ -53,7 +52,7 @@
 .country-selector .dropdown-controller a,
 .country-selector .dropdown-controller a:hover {
 	display: block;
-	background: #66CC00 url(../../img/v02/selects.png) 200px -1px no-repeat;
+	background: #66CC00 url(../../img/v03/image-map.png) 200px -42px no-repeat;
   padding: 1px 2px 3px 2px;
 	height: 14px;
 	width: 248px;
@@ -64,7 +63,7 @@
 }
 .country-selector .dropdown-controller a.dropdown-open,
 .country-selector .dropdown-controller a.dropdown-open:hover {
-	background: #FFF url(../../img/v02/selects.png) 200px -24px no-repeat;
+	background: #FFF url(../../img/v03/image-map.png) 200px -64px no-repeat;
 	color: #66CC00;
   border: 2px solid #FFF;
 }
