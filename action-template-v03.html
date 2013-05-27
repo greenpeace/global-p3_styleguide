@@ -64,7 +64,7 @@
 
 	<!-- Action form -->
 	<div id="action-form" class="block">
-		<form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="ga-track-abandonment">
+		<form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
 			<div id="action-system-fields" class="system fields">
 				<input type="hidden" name="_method" value="POST"><!-- value would be PUT on edit -->
 				<input type="text" name="hihoney" plaseholder="say hi honey"><!-- honeypot -->
@@ -436,7 +436,7 @@
 		$(document).ready(function() { 
 			var formName = '';
 			var fieldName = '';
-			$('.ga-track-abandonment :input').blur(function () {
+			$('.js-track-abandonment :input').blur(function () {
 				formName = ($(this).closest('form').attr('id'));
 				fieldName = ($(this).attr('name'));
 				if(fieldName != undefined && formName != undefined) {
