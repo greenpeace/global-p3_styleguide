@@ -408,21 +408,31 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<!--script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script--> 
 	<script src="js/v02/vendor/dropdown.js"></script>
-	<script type="text/javascript"> /*
+	<script type="text/javascript"> 
+/*
+		// GA Global and local account tracking
 		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-57175-1']);
+		_gaq.push(['_setAccount', 'UA-3355226-9']);
 		_gaq.push(['_setDomainName', '.greenpeace.org']);
 		_gaq.push(['_setAllowLinker', true]);
 		_gaq.push(['_setAllowHash', false]);
 		_gaq.push(['_setSiteSpeedSampleRate', 10]);
-		_gaq.push(['_trackPageview']);
-		(function() {
+    _gaq.push(['_trackPageview']);
+
+		_gaq.push(['b._setAccount', 'UA-XXXXX-X']);
+    _gaq.push(['b._setDomainName', '.greenpeace.org']);
+    _gaq.push(['b._setAllowLinker', true]);
+    _gaq.push(['b._setAllowHash', false]);
+		_gaq.push(['b._setSiteSpeedSampleRate', 10]);
+    _gaq.push(['b._trackPageview']);
+
+    (function() {
 			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
-	// Form Abandonment
-	(function($) {
+		})();
+
+		// Form Abandonment
 		$(document).ready(function() { 
 			var formName = '';
 			var fieldName = '';
@@ -439,8 +449,7 @@
 				}
 			});
 		});
-	})(jQuery);
-	*/
+*/
 	</script>
 </div>
 
