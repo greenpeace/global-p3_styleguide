@@ -27,6 +27,7 @@ and (max-width : 320px)  {
 		width:200px;
 		font-size:0.8125em; /* 13px */
 	}
+	.tools,
 	.country-selector {
 		display:none;
 	}
@@ -38,6 +39,7 @@ and (max-width : 480px) {
 		width:310px;
 		font-size:0.875em; /* 14px */
 	}
+	.tools,
 	.country-selector {
 		display:none;
 	}
@@ -48,6 +50,9 @@ and (max-width : 768px) {
 	.page-section {
 		width:460px;
 		font-size:0.9375em; /* 15px */
+	}
+	.tools {
+		display:none;
 	}
 }
 /* iPads (portrait and landscape) ----------- 
