@@ -5,6 +5,7 @@ body {
 	color:#333;
 }
 p {
+	font-size:.875em;  /* 14px/16 */
 }
 a {
 	text-decoration: none;
@@ -14,18 +15,20 @@ a:hover {
 }
 
 h1 {
-	font: 1.75em Arial,Helvetica,sans-serif; /* 28px */
-	margin-top:0.555555556em; /* 10px */
+	font-size: 1.75em; /* 28px/16 */
+	font-family: Arial,Helvetica,sans-serif; 
+	margin-top:.625em; /* 10px/16 */
 	color:#66CC00;
-	font-weight:bold;
+	font-weight:normal;
 }
 h2 {
-	font: 1.375em Arial,Helvetica,sans-serif; /* 14px */
+	font-size: 1.375em; /* 22px/16 */
+	font-family: Arial,Helvetica,sans-serif; 
 	color:#003300;
 	font-weight:bold;
 }
 h3 {
-	font: 0.875em Arial,Helvetica,sans-serif; /* 14px */
+	font: 1em Arial,Helvetica,sans-serif; /* 14px */
 	color:#003300;
 	font-weight:bold;
 }

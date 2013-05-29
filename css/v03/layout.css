@@ -74,7 +74,7 @@ and (max-width : 1024px) {
 and (min-width : 1024px) {
 	.page-section {
 		width:960px;
-		font-size:0.9375em; /* 15px */
+		font-size:1em; /* 16px */
 	}
 }
 
