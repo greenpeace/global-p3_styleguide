@@ -1,33 +1,33 @@
 /* ==========================================================================
 	 ACtion Template or Action Related Widgets
 	 ========================================================================== */
+
+/* page level configuration shortcuts */
+.no-quick-login .first-time.login {
+	display:none
+}
+
 /* change some default behaviors */
+
+.action-template #main-section {
+	background:#FFF;
+	padding-bottom:3em;
+}
 .action-template h1 {
-	margin-bottom:.25em;
+	margin-bottom:.5em;
 }
 
-.action-template #breadcrumbs {
-	display:none;
+#action-form-message label {
+  display:block;
+	font-size:.9em;
+	margin-top:.225em;
 }
-#action-submit-quick.submit {
-	float:left;
-	margin-left:15.5em;
-	margin-top:-2.34em;
-}
-#action-ask p {
-	margin:0;
-}
-#action-submit-full.submit  {
-	margin-top:.5em;
-	font-size:1.25em;
-}
-
 /*
 	Small Prints
 
-	Description  : checkbox is hidden
-	Compatible   : ?
-	Since        : ?
+	Description	: checkbox is hidden
+	Compatible	 : ?
+	Since				: ?
 */
 #action-smallprints {
 	margin:.25em 0;
@@ -45,16 +45,16 @@
 /*
 	Action Counter
 
-	Description  : counter with both graphical and text only
-	Compatible   : ?
-	Since        : ?
+	Description	: counter with both graphical and text only
+	Compatible	 : ?
+	Since				: ?
 */
 #action-counter {
 	margin:0.4em 0;
 }
 #action-counter-graphical {
 	display:none;
-	background:#d7d2d2;
+	background:#e9ecf3;
 	
 }
 #action-counter-graphical .completed {
@@ -79,9 +79,9 @@
 /*
 	Social Login
 
-	Description  : social login buttons
-	Compatible   : ?
-	Since        : ?
+	Description	: social login buttons
+	Compatible	 : ?
+	Since				: ?
 
 	.facebook		facebook icon
 	.google			google icon
@@ -95,24 +95,23 @@
 	display:inline-block;
 	line-height:1em;
 	border:1px solid #CCC;
-	margin-bottom:-.4em;
+	margin-bottom:-.5em;
 	padding:0 6px;
 	border-radius:2px;
 }
 #main-section .social.login a.facebook {
-	background:transparent url(../../img/v03/sociallogin.png) center 0 no-repeat;
+	background:#fffdff url(../../img/v03/sociallogin.png) center 0 no-repeat;
 }
 #main-section .social.login a.google {
-	background:transparent url(../../img/v03/sociallogin.png) center -22px no-repeat;
+	background:#fffdff url(../../img/v03/sociallogin.png) center -22px no-repeat;
 }
-
 
 /*
 	Recent Signers
 
-	Description  : recent signers widget
-	Compatible   : ?
-	Since        : ?
+	Description	: recent signers widget
+	Compatible	 : ?
+	Since				: ?
 */
 #action-recent-signers ul {
 	padding:0;
@@ -137,153 +136,170 @@
 #action-recent-signers .flag {
 	margin-right:.25em;
 }
-#action-social-share {
-	
-}
-/*
-	Social Button
 
-	Description  : share buttons with counters
-	Compatible   : ?
-	Since        : ?
-*/
-#action-social-share {
-	clear:both;
-}
-#action-social-share ul {
-	list-style-type:none;
-	padding:0;
-}
-#action-social-share li {
-	display:inline-block;
-	margin-right:.25em;
-}
-#action-social-share .counter span {
-	border:1px solid #CCC;
-	display:block;
-	text-align:center;
-	width:48px;
-	padding:.5em 0;
-	font-size:.875em;
-	border-radius:2px;
-}
-#action-social-share .action a {
-	display:block;
-	text-align:center;
-	width:50px;
-	height:25px;
-	padding:.5em;
-	padding:0;
-	margin-top:10px;
-	border-radius:2px;
-}
-/* 
-	flat style icons 
-	Credit: David Bushell http://dbushell.com @dbushell
-*/
-#action-social-share .action a span {
-	display:none;
-}
-#action-social-share .facebook a {
-	background:transparent url(../../img/v03/social-map.png) 0 -90px no-repeat;
-}
-#action-social-share .google a {
-	background:transparent url(../../img/v03/social-map.png) 0 -45px no-repeat;
-}
-#action-social-share .twitter a {
-	background:transparent url(../../img/v03/social-map.png) 0 0 no-repeat;
-}
-#action-social-share .pinterest a {
-	background:transparent url(../../img/v03/social-map.png) 0 -175px no-repeat;
-}
-#action-social-share .linkedin a {
-	background:transparent url(../../img/v03/social-map.png) 0 -135px no-repeat;
-}
-/* some fake bubble tip shenanigans */
-#action-social-share .counter .tip:before{
-	width:1px; height:1px;
-	position:absolute;
-	margin-left:17px;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #CCC;
-  border-top-color: rgba(0, 0, 0, 0.2);
-  display: inline-block;
-	content:" ";
-}
-#action-social-share .counter .tip:after{
-	width:1px; height:1px;
-	position:absolute;
-	margin-left:17px;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #CCC;
-  border-top-color: rgba(255, 255, 255, 1);
-  display: inline-block;
-	content:" ";
-	margin-top:-2px;
-}
 
 /* ==========================================================================
 	 ACtion Template Media Queries
 	 ========================================================================== */
-/* Smart Phones below 320px */
-@media only screen 
-and (max-width : 320px) {
+/* See breakpoint from layout.css */
+@media 
+only screen and (max-width : 320px),
+only screen and (min-width : 320px) and (max-width : 480px),
+only screen and (min-width : 480px) and (max-width : 768px) {
 	#action-form-authentication .submit {
 		position:relative;
 		float:none;
 		margin-left:0;
 		margin-top:.4em;
 	}
-	.input .tooltip span {
-		visibility:visible;
-		padding-bottom:.4em;
-		position:relative;
-		margin:-1.5em 0 0 1.5em;
-		display:inline-block;
+
+	/* input length to fit the screen */
+	.action-template textarea,
+	.action-template input {
+		width:90%;
+	}
+	.action-template select {
+		width:94%;
+	}
+	.action-template .submit.full {
+		width:105%;
+		font-size:1.25em;
+	}
+
+	/* hide stuffs on mobile */
+	#action-recent-signers {
+		display:none;
 	}
 }
 
 /* Tablets ----------- */
-@media only screen 
-and (min-width : 768px),
-only screen
-and (min-width : 1024px) {
-	.block {
-		width:320px;
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+	/* page section = 700 + 15 + 15px */
+	#action-h1 {
+		float:left;
+		clear:both;
+		width:100%;
 	}
+	/* east side */
+	#action-h2,
+	#action-ask,
+	#action-form,
+	#action-recent-signers {
+		clear:right;
+		float:right;
+		width:260px;
+		padding:0 20px;
+		margin:0;
+	}
+	/* west side */
+	#action-counter,
+	#action-details,
+	#action-social-share,
+	#action-multimedia-teaser {
+		float:left;
+		clear:left;
+		width:380px;
+	}
+	/* background box shenanigans */
 	#action-h2,
 	#action-ask,
 	#action-form {
-		clear:right;
-		float:right;
-		margin-left:3em;
-		
+		background:#e9ecf3;
 	}
-  #action-counter,
-  #action-details,
-  #action-recent-signers,
-	#action-social-share,
-  #action-multimedia-teaser {
-		float:left;
-	}
-  #action-multimedia-teaser {
-		margin-top:-2.33em; /* -h2: 1.5 + .83 */
+	#action-ask p {
+		margin-bottom:0;
 	}
 	#action-h2 {
-		margin-top:0; /* -h2: 1.5 + .83 */
+		padding-top:20px;
 	}
+	#action-form {
+		padding-bottom:20px;
+	}
+	/* counter */
 	#action-counter-graphical {
 		display:block;
+	}
+	/* input length to fit the screen */
+	.action-template textarea,
+	.action-template input {
+		width:90%;
+	}
+	.action-template select {
+		width:94%;
+	}
+	.action-template .submit.full {
+		width:110%;
+		font-size:1.25em;
 	}
 }
 
 /* Desktops and laptops ----------- */
-@media only screen 
-and (min-width : 1024px) {
-	.block {
-		width:450px;
+@media only screen and (min-width : 1024px) {
+	/* page section = 940 + 20 + 20px */
+	#action-h1 {
+		float:left;
+		clear:both;
+		width:100%;
+	}
+	/* east side */
+	#action-h2,
+	#action-ask,
+	#action-form,
+	#action-recent-signers {
+		clear:right;
+		float:right;
+		width:340px;
+		padding:0 20px;
+		margin:0;
+	}
+	/* background box shenanigans */
+	#action-h2,
+	#action-ask,
+	#action-form {
+		background:#e9ecf3;
+	}
+	#action-ask p {
+		margin-bottom:0;
+	}
+	#action-h2 {
+		padding-top:20px;
+	}
+	#action-form {
+		padding-bottom:20px;
+	}
+
+	/* west side */
+	#action-counter,
+	#action-details,
+	#action-social-share,
+	#action-multimedia-teaser {
+		float:left;
+		clear:left;
+		width:520px; /* + 40px margin */
+	}
+	#action-counter-graphical {
+		display:block;
+	}
+	/* input length to fit the sidebar */
+	.action-template textarea,
+	.action-template input[type=text] {
+		width:19em;
+	}
+	.action-template select {
+		width:20em;
+	}
+	.action-template textarea {
+		width:23.5em;
+	}
+	.action-template .submit.full input{
+		width:16.75em;
+	}
+	.action-template #action-submit-quick.submit {
+		margin-right:0;
+	}
+	.action-template #action-submit-full.submit	{
+		margin-top:.5em;
+		font-size:1.25em;
 	}
 }
 /* Large screens -----------
@@ -292,8 +308,8 @@ and (min-width : 1600px) {
 	#action-form {
 		float:right;
 	}
-  #action-details,
-  #action-multimedia-teaser {
+	#action-details,
+	#action-multimedia-teaser {
 		width:570px;
 		float:left;
 		clear:both;

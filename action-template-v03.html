@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>			 <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>				 <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8"/>
@@ -27,13 +27,24 @@
 	<link rel="stylesheet" type="text/css" href="css/v03/50d77ffa-7278-41fc-a4bb-1b63d7a10fcf.css"/>
 
 	<script src="js/default/vendor/modernizr-2.6.2.min.js"></script>
+	<style>
+		.action-template #main-container {
+			background:transparent url(img/v03/background.jpg) center 0 no-repeat;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+	</style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
-<div id="root-container" class="action-template petition">
+
+<!--div id="root-container" class="action-template petition no-social-share no-email-login no-breadcrumbs no-navigation" -->
+<div id="root-container" class="action-template petition no-quick-login">
 
 <!-- Main content -->
 <div id="main-container" class="container">
-<div id="main-section" class="page-section clearfix">
+<div id="main-section" class="page-section">
 
 	<!-- Breadcrumbs -->
 	<div id="breadcrumbs" class="block">
@@ -47,8 +58,8 @@
 	</div>
 
 	<!-- Titles -->
-	<h1 id="action-h1" class="block">Action main title 1</h1>
-	<h2 id="action-h2" class="block">Call to action title</h2>
+	<h1 id="action-h1" class="block">Save the Cameroon Rainforest - stop the Herakles Farms' project</h1>
+	<h2 id="action-h2" class="block">Write to the CEO of Herakles</h2>
 
 	<div id="action-multimedia-teaser" class="block">
 		<!--iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/bBJ9RnbK8G4" frameborder="0" allowfullscreen></iframe-->
@@ -58,7 +69,7 @@
 	<!-- Action ask / intro -->
 	<div id="action-ask" class="block">
 		<p>
-			This is a very short description of what the petition is all about. This is both the change we want to see in the world and what you are actually doing.
+			Demand that the comapny drops its palm oil plan in Cameroon.
 		</p>
 	</div>
 
@@ -71,14 +82,11 @@
 			</div>
 			<div id="action-form-authentication">
 				<div class="social login">
-					<p>You can also login with <a href="#" class="facebook"><span>facebook</span></a> or <a href="#" class="google"><span>google</span></a></p>
+					<p>Please enter your email bellow. You can also login with <a href="#" class="facebook"><span>facebook</span></a> or <a href="#" class="google"><span>google</span></a></p>
 				</div>
 				<div class="input required text email">
 					<label for="UserEmail">Email</label>
-					<input name="data[User][email]" class="required" maxlength="64" type="text" id="UserEmail" placeholder="Email">
-				</div>
-				<div id="action-submit-quick" class="submit">
-					<input type="submit" value="send">
+					<input name="data[User][email]" class="required" maxlength="64" type="text" id="UserEmail" placeholder="Email*">
 				</div>
 			</div>
 			<div id="action-form-register">
@@ -87,20 +95,20 @@
 				</div>
 				<div class="input text required firstname">
 					<label for="UserFirstname">Firstname</label>
-					<input name="data[User][firstname]" class="required" maxlength="64" type="text" id="UserFirstname" placeholder="Firstname">
+					<input name="data[User][firstname]" class="required" maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
 				</div>
 				<div class="input text required lastname">
 					<label for="UserLastname">Lastname</label>
-					<input name="data[User][lastname]" class="required" maxlength="64" type="text" id="UserLastname" placeholder="Lastname">
+					<input name="data[User][lastname]" class="required" maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
 				</div>
-				<div class="input text required phone">
+				<div class="input text required phone error">
 					<label for="UserPhone">Mobile Phone</label>
-					<input name="data[User][phone]" class="required" maxlength="64" type="text" id="UserPhone" placeholder="Phone"/>
-					<div class="tooltip message"><span>We need your phone number to send you update about the campaign.</span></div>
+					<input name="data[User][phone]" class="required" maxlength="64" type="text" id="UserPhone" placeholder="Phone*"/>
+					<div class="tooltip info message"><span>We need your phone number to send you update about the campaign.</span></div>
 				</div>
 				<div class="input text required postcode error">
 					<label for="UserPostcode">Postcode</label>
-					<input name="data[User][postcode]" class="required" maxlength="64" type="text" id="UserPostcode" placeholder="Postcode"/>
+					<input name="data[User][postcode]" class="required" maxlength="64" type="text" id="UserPostcode" placeholder="Postcode*"/>
 					<div class="error message"><span>This is not a valid poscode. Ex. 1066XT.</span></div>
 				</div>
 				<div class="select required country">
@@ -114,16 +122,32 @@
 						</select>
 					</div>
 				</div>
+				<div id="action-form-message">
+				<div class="textearea">
+					<label for="ActionMessage">Your message</label>
+					<textarea rows="5" id="ActionMessage">
+Dear Mr Wrobel,
+
+I am writting to express my strong opposition the Herakles Farm's project, throug it's
+subsidiary the Global Sustainable Oil Cameroom (SGSOC) is to estable the largest palm
+oil plantatino in the rainforest of Cameroon. THe proejct no only threaten local
+livelyhoods but also poses a serious environmental hazard for the faune and flora.
+
+Please don't let this happen. Thank you.
+					</textarea>
+				</div>
+				</div>
 				<div id="action-smallprints">
 					<div class="input checkbox">
 						<label for="UserCheckbox">Small prints</label>
 						<input type="checkbox" name="checkbox" id="UserCheckbox" checked="checked" />
 						<label for="UserCheckbox">When sending this petition you are also joining our campaign to protect the Arctic
-						 from offshore drilling and industrial fishing. <a href="#">Click here</a> for more info.</label>
+						from offshore drilling and industrial fishing. <a href="#">Click here</a> for more info.</label>
 					</div>
 				</div>
-				<div id="action-submit-full" class="submit">
-					<input type="submit" value="send">
+
+				<div id="action-submit-full" class="submit full">
+					<input type="submit" value="send" class="primary">
 				</div>
 			</div>
 		</form>
@@ -136,6 +160,32 @@
 			<span style="width:50%;" class="completed">2000</span>
 		</div>
 		<div id="action-counter-textual">2000 have joined so far. The target is 4000.</div>
+	</div>
+
+	<!-- Action details block -->
+	<div id="action-details" class="block">
+		<p><strong>A US comapny is planning to tear down a chunk of the rainforest the size of 100,000 soccer field for palm oil project.</strong></p>
+		<p>
+			It was one of those days when we felt like change was in the air – even if it was a small victory it was an important one.
+			Yesterday, we confirmed that notorious palm oil producer and forest destroyer, Duta Palma, has (finally) been ejected from
+			the Roundtable on Sustainable Palm Oil 
+			– an organisation with the declared aim of ensuring environmentally responsible palm oil production. 
+			You might remember Duta Palma: we’ve been investigating and uncovering their practices for the last few years, revealing as recently 
+			as three weeks ago the company’s rogue activities in Indonesia.
+			This company has a long history of deforestation, community conflict, illegality, and non-compliance with RSPO regulations. 
+			But finally – and for what it’s worth – Duta Palma no longer has a stamp of approval from the RSPO.
+		</p>
+		<p>
+			Despite the nuclear disaster at Fukushima witnessed by the world, there are plans to build a major nuclear power station in a highly
+			earthquake-prone region on the west coast of India. The Jaitapur nuclear plant can only be built with financing from banks like BNP 
+			sParibas and HSBC.
+			May 11 marks not only two months since the initial disaster at the Fukushima nuclear power plant - but is also the Annual General
+			Meeting of BNP Paribas and HSBC's Strategy Day.
+			You can write to the boards of these international banks, asking them to help us stop this risky and unnecessary nuclear project in India.
+			Want to be sure they get your message?
+			Follow up your e-mail message with a phone call to your local BNP Paribas or HSBC office. We have talking points and phone numbers 
+			for you here. The more the banks hear your message the better!
+		</p>
 	</div>
 
 	<!-- Recent signers -->
@@ -169,33 +219,8 @@
 		</ul>
 	</div>
 
-	<!-- Action details block -->
-	<div id="action-details" class="block">
-		<p>
-			It was one of those days when we felt like change was in the air – even if it was a small victory it was an important one.
-			Yesterday, we confirmed that notorious palm oil producer and forest destroyer, Duta Palma, has (finally) been ejected from
-			 the Roundtable on Sustainable Palm Oil 
-			– an organisation with the declared aim of ensuring environmentally responsible palm oil production. 
-			You might remember Duta Palma: we’ve been investigating and uncovering their practices for the last few years, revealing as recently 
-			as three weeks ago the company’s rogue activities in Indonesia.
-			This company has a long history of deforestation, community conflict, illegality, and non-compliance with RSPO regulations. 
-			But finally – and for what it’s worth – Duta Palma no longer has a stamp of approval from the RSPO.
-		</p>
-		<p>
-			Despite the nuclear disaster at Fukushima witnessed by the world, there are plans to build a major nuclear power station in a highly
-			earthquake-prone region on the west coast of India. The Jaitapur nuclear plant can only be built with financing from banks like BNP 
-			sParibas and HSBC.
-			May 11 marks not only two months since the initial disaster at the Fukushima nuclear power plant - but is also the Annual General
-			Meeting of BNP Paribas and HSBC's Strategy Day.
-			You can write to the boards of these international banks, asking them to help us stop this risky and unnecessary nuclear project in India.
-			Want to be sure they get your message?
-			Follow up your e-mail message with a phone call to your local BNP Paribas or HSBC office. We have talking points and phone numbers 
-			for you here. The more the banks hear your message the better!
-		</p>
-	</div>
-
 	<!-- Social buttons with counters -->
-	<div id="action-social-share" class="block">
+	<div id="action-social-share" class="block social-share">
 		<h3>Share with your friends</h3>
 		<ul>
 			<li class="facebook">
@@ -353,7 +378,7 @@
 						<form action="#" id="search" method="post" accept-charset="utf-8">
 						<div class="input text search">
 							<label for="SearchText">Search</label>
-							<input name="data[Search][text]" class="required" maxlength="64" type="text" id="SearchText" placeholder="Search"/>
+							<input name="data[Search][text]" class="required" maxlength="64" type="text" id="SearchText" placeholder="search"/>
 						</div>
 						<div id="search-submit" class="submit">
 							<span><input type="submit" value="" /></span>
@@ -366,12 +391,11 @@
 			</div>
 		</div>
 
-	  <!-- Second heading navigation and signup -->
+		<!-- Second heading navigation and signup -->
 		<div class="heading second">
 			<div class="heading-holder page-section">
 				<nav>
 					<ul class="navigation" id="nav">
-						<li class="hidden"><a href="#skiplinks">Back to top</a></li>
 						<li><a href="/international/en/" title="Home"><span>Home</span></a></li>
 						<li>
 							<a href="/international/en/about/" title="About us"><span>About us</span></a>
@@ -552,7 +576,7 @@
 								</div>
 							</div>
 						</li>
-						<!--li><a href="/international/en/supportus/" class=" donate" title="Donate" target="_blank">Donate</a></li-->
+						<li><a href="/international/en/supportus/" class="donate primary button" title="Donate" target="_blank">Donate</a></li>
 					</ul>
 					<!--ul class="sign" id="signin">
 						<li><a href="/international/en/My/login/?returnUrl=%2finternational%2fen%2fTesting%2f5019-HTML5-Sample-Candidtate%2f" title="Sign in"> Sign in</a></li>
@@ -567,11 +591,152 @@
 
 <!-- Footer -->
 <footer>
+	<div class="footer container first highlight">
+		<div class="footer-holder page-section">
+			<ul>
+				<li>
+					<a href="#">
+						<img src="http://www.greenpeace.org/international/Global/international/artwork/other/2011/footer/unfriendcoal_btn.jpg" alt="Help get Facebook to unfriend coal" height="71" width="72">
+						<span>Help get Facebook to unfriend coal</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="http://www.greenpeace.org/international/Templates/Planet3/Styles/images/temp/img2.gif" alt="Marine reserves" height="71" width="72">
+						<span contenteditable="inherit">Save whales &amp; sharks - Marine reserves now!</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="http://www.greenpeace.org/international/Global/international/artwork/other/2011/footer/rw3.jpg" alt="Ask Princes Tuna to stop canning ocean destruction" height="71" width="72">
+						<span contenteditable="inherit">Help build the new Rainbow Warrior</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="http://www.greenpeace.org/africa/Templates/Planet3/Styles/images/temp/img4.gif" alt="Deep Green" height="71" width="72">
+						<span contenteditable="inherit">Monthly feature from Greepeace's unofficial historian, Rex Weyler</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer container second sitemap">
+		<div class="footer-holder page-section">
+			<ul class="links">
+				<li>
+					<ul class="what-we-do">
+						<li><h4>What we do</h4></li>
+						<li><a href="#">Climate change</a></li>
+						<li><a href="#">Forests</a></li>
+						<li><a href="#">Oceans</a></li>
+						<li><a href="#">Agriculture</a></li>
+						<li><a href="#">Toxic Pollution</a></li>
+						<li><a href="#">Nuclear</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="about-us">
+						<li><h4>About us</h4></li>
+						<li><a href="#">Press center</a></li>
+						<li><a href="#">Introduction</a></li>
+						<li><a href="#">Victories</a></li>
+						<li><a href="#">Ships</a></li>
+						<li><a href="#">Frequently Asked Questions</a></li>
+						<li><a href="#">Work for Greenpeace</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="multimedia">
+						<li><h4>Multimedia</h4></li>
+						<li><a href="#">Photos</a></li>
+						<li><a href="#">Videos</a></li>
+						<li><a href="#">Desktop wallpapers</a></li>
+						<li><a href="#">Photo essays</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="sites-in-english">
+						<li><h4>National and regional wbsite in English</h4></li>
+						<li><a href="#">Africa</a></li>
+						<li><a href="#">Australia</a></li>
+						<li><a href="#">Canada</a></li>
+						<li><a href="#">China</a></li>
+						<li><a href="#">India</a></li>
+						<li><a href="#">Mediterranean</a></li>
+						<li><a href="#">New Zealand</a></li>
+						<li><a href="#">United Kingdom</a></li>
+						<li><a href="#">United States</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="around-the-world">
+						<li><a href="#" class="map">Greenpeace around the world</a></li>
+					</ul>
+				</li>
+				<li class="take-action">
+					<ul>
+						<li><h4>Take Actions</h4></li>
+						<li><a href="#">Ask Princes Tuna to Stop canning ocean destruction</a></li>
+						<li><a href="#">Hel get facebook.com off coal</a></li>
+						<li><a href="#">Stop nuclear investments</a></li>
+						<li><a href="#">More ways to get inolved</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="hot-this-month">
+						<li><h4>Hot this month</h4></li>
+						<li><a href="#">Calling for Pacific marine reserves in Taiwan</a></li>
+						<li><a href="#">Video: Give Earth a hand</a></li>
+						<li><a href="#">Help get facebook.com off coal</a></li>
+						<li><a href="#">About the floods in Queensland</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="greenpeace-online social">
+						<li><h4>Greenpeace Online</h4></li>
+						<li><a href="#" class="facebook">Facebook</a></li>
+						<li><a href="#" class="flickr">Flickr</a></li>
+						<li><a href="#" class="twitter">Twitter</a></li>
+						<li><a href="#" class="youtube">Youtube</a></li>
+						<li><a href="#" class="rss">RSS</a></li>
+					</ul>
+				</li>
+				<li class="facts">
+					<ul class="organization">
+						<li><h4>Facts & Figures</h4></li>
+						<li>Founded in 1971</li>
+						<li>Three ships in the oceans</li>
+						<li>Offices in 40 countries</li>
+						<li class="number-of-supporters">Millions of supporters world-wide</li>
+						<li><a href="#" class="button primary">Become a supporter!</a></li>
+					</ul>
+					<ul class="ships">
+						<li class="ship rainbow-warrior">
+							<span class="name">Rainbow Warrior</span>
+							<span class="class">sailing vessel,</span>
+							<span class="active-since">active since 1989.</span>
+						</li>
+						<li class="ship artic-sunrise">
+							<span class="name">Artic Sunrise</span>
+							<span class="class">ice breaker,</span>
+							<span class="active-since">active since 1997.</span>
+						</li>
+						<li class="ship esperanza">
+							<span class="name">Esperanza</span>
+							<span class="name-meaning">means "hope",</span>
+							<span class="active-since">active since 2002.</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
 	<div class="footer container small">
 		<div class="footer-holder page-section">
 			<div class="copy-box">
-				<div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2010</span></div>
-				<ul class="privacy">
+				<div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2013</span></div>
+				<ul class="legal-menu">
 					<li><a href="/international/en/Help/privacy/">Privacy statement</a></li>
 					<li><a title="copyright policy" href="/international/en/Help/copyright2/">Copyright</a></li>
 				</ul>
@@ -588,10 +753,10 @@
 
 </div>
 
-<!-- Javascript -->
+<!-- Javascript - - >
 <div class="scripts">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-	<!--script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script--> 
+	<script>window.jQuery || document.write('<script src="js/vendor/default/jquery-1.9.0.min.js"><\/script>')</script> 
 	<script src="js/v02/vendor/dropdown.js"></script>
 	<script type="text/javascript"> 
 /*
@@ -602,16 +767,16 @@
 		_gaq.push(['_setAllowLinker', true]);
 		_gaq.push(['_setAllowHash', false]);
 		_gaq.push(['_setSiteSpeedSampleRate', 10]);
-    _gaq.push(['_trackPageview']);
+		_gaq.push(['_trackPageview']);
 
 		_gaq.push(['b._setAccount', 'UA-XXXXX-X']);
-    _gaq.push(['b._setDomainName', '.greenpeace.org']);
-    _gaq.push(['b._setAllowLinker', true]);
-    _gaq.push(['b._setAllowHash', false]);
+		_gaq.push(['b._setDomainName', '.greenpeace.org']);
+		_gaq.push(['b._setAllowLinker', true]);
+		_gaq.push(['b._setAllowHash', false]);
 		_gaq.push(['b._setSiteSpeedSampleRate', 10]);
-    _gaq.push(['b._trackPageview']);
+		_gaq.push(['b._trackPageview']);
 
-    (function() {
+		(function() {
 			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
@@ -636,7 +801,7 @@
 		});
 */
 	</script>
+ -->
 </div>
-
 </body>
 </html>

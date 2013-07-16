@@ -1,6 +1,7 @@
 /* breadcrumbs */
 #breadcrumbs ul {
 	padding:0;
+	margin-bottom:0;
 	font-size:.875em;
 }
 #breadcrumbs li {
@@ -10,7 +11,7 @@
 	list-style: none;
 }
 #breadcrumbs li:before {
-	content:">";
+	content:"›";
 	padding-right:.25em;
 }
 #breadcrumbs li:first-child:before {

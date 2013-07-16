@@ -1,0 +1,86 @@
+/*
+	Social Button
+
+	Description	: share buttons with counters
+	Compatible	 : ?
+	Since				: ?
+*/
+.social-share {
+	clear:both;
+}
+.social-share ul {
+	list-style-type:none;
+	padding:0;
+}
+.social-share li {
+	display:inline-block;
+	margin-right:.25em;
+}
+.social-share .counter span {
+	border:1px solid #CCC;
+	display:block;
+	text-align:center;
+	width:48px;
+	padding:.5em 0;
+	font-size:.875em;
+	border-radius:2px;
+}
+.social-share .action a {
+	display:block;
+	text-align:center;
+	width:50px;
+	height:25px;
+	padding:.5em;
+	padding:0;
+	margin-top:10px;
+	border-radius:2px;
+}
+/* 
+	flat style icons 
+	Credit: David Bushell http://dbushell.com @dbushell
+*/
+.social-share .action a span {
+	display:none;
+}
+.social-share .facebook a {
+	background:transparent url(../../img/v03/social-map.png) 0 -90px no-repeat;
+}
+.social-share .google a {
+	background:transparent url(../../img/v03/social-map.png) 0 -45px no-repeat;
+}
+.social-share .twitter a {
+	background:transparent url(../../img/v03/social-map.png) 0 0 no-repeat;
+}
+.social-share .pinterest a {
+	background:transparent url(../../img/v03/social-map.png) 0 -175px no-repeat;
+}
+.social-share .linkedin a {
+	background:transparent url(../../img/v03/social-map.png) 0 -135px no-repeat;
+}
+/* some fake bubble tip shenanigans */
+.social-share .counter {
+	background:#FFF;
+}
+.social-share .tip:before{
+	width:1px; height:1px;
+	position:absolute;
+	margin-left:17px;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid #CCC;
+	border-top-color: rgba(0, 0, 0, 0.2);
+	display: inline-block;
+	content:" ";
+}
+.social-share .tip:after{
+	width:1px; height:1px;
+	position:absolute;
+	margin-left:17px;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid #CCC;
+	border-top-color: rgba(255, 255, 255, 1);
+	display: inline-block;
+	content:" ";
+	margin-top:-2px;
+}

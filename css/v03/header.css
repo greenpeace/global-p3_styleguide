@@ -55,18 +55,18 @@
 .country-selector .dropdown-controller a:hover {
 	display: block;
 	background: #66CC00 url(../../img/v03/image-map.png) 200px -42px no-repeat;
-  padding: 1px 2px 3px 2px;
+	padding: 1px 4px 3px 2px;
 	height: .875em; /* 14px */
 	width: 15em; /* 248px */
 	color: #FFF;
 	text-decoration: none;
-  border: 2px solid #66CC00;
+	border: 2px solid #66CC00;
 }
 .country-selector .dropdown-controller a.dropdown-open,
 .country-selector .dropdown-controller a.dropdown-open:hover {
 	background: #FFF url(../../img/v03/image-map.png) 200px -64px no-repeat;
 	color: #66CC00;
-  border: 2px solid #FFF;
+	border: 2px solid #FFF;
 }
 .country-selector .dropdown .dropdown-list {
 	width: 15.9375em; /* 255px */
@@ -80,13 +80,13 @@
 
 .promoted-links ul,
 .language-selector {
-  float: right;
+	float: right;
 	margin:.5em 0;
 	font-size:.8125em; /* 13px */
 }
 
 .promoted-links ul {
-  list-style-type: none;
+	list-style-type: none;
 }
 .promoted-links ul li {
 	display: inline;
@@ -136,13 +136,14 @@
 	border: 0;
 	background: none;
 	float:left;
-	width:15em;
+	width:17.143em;/* 240px */
 	margin:0;
-	padding:0 0 0 .5em;
-  -webkit-box-shadow: inset 0px 0px 0px rgba(255,255,255,0);
-  -moz-box-shadow: inset 0px 0px 0px rgba(0,0,0,0);
-  box-shadow: inset 0px 0px 0px rgba(0,0,0,0);
+	padding:0 0 0 .571em; /* 8px */
+	-webkit-box-shadow: inset 0px 0px 0px rgba(255,255,255,0);
+	-moz-box-shadow: inset 0px 0px 0px rgba(0,0,0,0);
+	box-shadow: inset 0px 0px 0px rgba(0,0,0,0);
 	margin-top:2px;
+	font-size:.875em;/* 14px */
 }
 .search-form .submit {
 	float:right;
