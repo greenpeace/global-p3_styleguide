@@ -34,14 +34,12 @@
             // http://stackoverflow.com/questions/16572123/javascript-regex-invalid-range-in-character-class
             alphaPlus: /^[A-Za-z\u00C0-\u017F\d\.\-\'\,\/]*$/,
             numeric: /^[\d]*$/,
-            alpha: /^[\w]*$/,
+            alpha: /^[\w]*$/
         }
     }
 
     _p3.validation = function(el, config) {
 
-        // merge the default and the given data using 'deep' extend feature
-        // see. http://api.jquery.com/jQuery.extend/
         config = $.extend(true, defaults, config || {});
 
         Modernizr.load({
@@ -51,29 +49,30 @@
             ],
             complete: function() {
                 $.getJSON(config.jsonURL, function(data) {
+                    
                     $.extend(true, config, data || {});
 
-//                    console.log(config);
-                    var tests = $.makeArray(config.tests);
-
                     // Foreach data.tests ...
-                    $.each(config.tests, function (name, regexp) {
-                        console.log(name + ' ' +regexp);
-//                        $.map(test, function (regexp, name) {
+                    $.each(config.tests, function (name, regexp) {                        
+                        // Don't trust the user entered data
+                        try {
+                            // Create a new validator method
                             $.validator.addMethod(name, function(value, element) {
-                                console.log('Testing '+value+' against '+regexp);
+//                                console.log('Testing '+value+' against '+regexp);
                                 var reg = new RegExp(regexp);
                                 return this.optional(element) || reg.test(value);
                             });     
-//                        });
-                        
+//                            console.log("Added test '" +name + "': '" + regexp + "'");
+                        } catch(err) {
+//                            console.log("Failed to add test '" + name + "' with regex '" + regexp + "'");
+                        }
+                                                
                     });
                     
-                    // And go
                     $(el).validate(config);
 
                 }).error(function() {
-                    // Placeholder for failure to obtain JSON
+                    // Failed to obtain JSON, fallback to html5 validation
                     console.log('JSON failed to load: ' + config.jsonURL);
 
                     //$('input[type=submit]',el).attr('disabled','disabled').addClass('disabled');
