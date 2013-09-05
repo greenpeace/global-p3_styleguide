@@ -31,6 +31,7 @@ input[type=text],
 input[type=password],
 input[type=email],
 input[type=search],
+input[type=tel],
 textarea {
 	font-family:'Lato',Verdana, Geneva, Arial, Helvetica, sans-serif;
 	color:#333;
@@ -67,21 +68,24 @@ textarea,
 input[type=password],
 input[type=search],
 input[type=email],
-input[type=text] {
+input[type=text],
+input[type=tel] {
 	border-top:1px solid #ccc;
 }
 textarea,
 input[type=password]:hover,
 input[type=search]:hover,
 input[type=email]:hover,
-input[type=text]:hover {
+input[type=text]:hover,
+input[type=tel]:hover {
 	border:1px solid #999;
 }
 textarea:focus,
 input[type=password]:focus,
 input[type=search]:focus,
 input[type=email]:focus,
-input[type=text]:focus {
+input[type=text]:focus,
+input[type=tel]:focus {
 	-webkit-box-shadow: inset 1px 1px 2px rgba(255,255,255,.2);
 	-moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
 	box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
