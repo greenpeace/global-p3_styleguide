@@ -53,7 +53,7 @@
                     $.extend(true, config, data || {});
 
                     // Foreach data.tests ...
-                    $.each(config.tests, function (name, regexp) {                        
+                    $.each(config.tests, function (name, regexp) {
                         // Don't trust the user entered data
                         try {
                             // Create a new validator method
