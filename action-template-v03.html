@@ -27,6 +27,12 @@
 	<link rel="stylesheet" type="text/css" href="css/v03/50d77ffa-7278-41fc-a4bb-1b63d7a10fcf.css"/>
 
 	<script src="js/default/vendor/modernizr-2.6.2.min.js"></script>
+<!--    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>-->
+        <script src="js/v03/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/v03/lib/jquery.validate.js"></script>
+        <script src="js/v03/p3.validation.js"></script>
+        <script src="js/v03/main.js"></script>
+
 	<style>
 		.action-template #main-container {
 			background:transparent url(img/v03/background.jpg) center 0 no-repeat;
@@ -86,7 +92,7 @@
 				</div>
 				<div class="input required text email">
 					<label for="UserEmail">Email</label>
-					<input name="data[User][email]" class="required" maxlength="64" type="text" id="UserEmail" placeholder="Email*">
+					<input name="data[User][email]" class="required email" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
 				</div>
 			</div>
 			<div id="action-form-register">
@@ -95,21 +101,21 @@
 				</div>
 				<div class="input text required firstname">
 					<label for="UserFirstname">Firstname</label>
-					<input name="data[User][firstname]" class="required" maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
+					<input name="data[User][firstname]" class="required alphaPlus" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
 				</div>
 				<div class="input text required lastname">
 					<label for="UserLastname">Lastname</label>
-					<input name="data[User][lastname]" class="required" maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
+					<input name="data[User][lastname]" class="required alpha" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
 				</div>
 				<div class="input text required phone error">
 					<label for="UserPhone">Mobile Phone</label>
-					<input name="data[User][phone]" class="required" maxlength="64" type="text" id="UserPhone" placeholder="Phone*"/>
+					<input name="data[User][phone]" class="required numeric" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
 					<div class="tooltip info message"><span>We need your phone number to send you update about the campaign.</span></div>
 				</div>
 				<div class="input text required postcode error">
 					<label for="UserPostcode">Postcode</label>
-					<input name="data[User][postcode]" class="required" maxlength="64" type="text" id="UserPostcode" placeholder="Postcode*"/>
-					<div class="error message"><span>This is not a valid poscode. Ex. 1066XT.</span></div>
+					<input name="data[User][postcode]" class="required alphanumeric" required maxlength="64" type="text" id="UserPostcode" placeholder="Postcode*"/>
+					<div class="error message"><span>This is not a valid postcode. Ex. 1066XT.</span></div>
 				</div>
 				<div class="select required country">
 					<label for="UserCountry">Country</label>
@@ -753,8 +759,9 @@ Please don't let this happen. Thank you.
 
 </div>
 
-<!-- Javascript - - >
-<div class="scripts">
+<!-- Javascript -->
+<!--
+    <div class="scripts">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/vendor/default/jquery-1.9.0.min.js"><\/script>')</script> 
 	<script src="js/v02/vendor/dropdown.js"></script>
@@ -801,7 +808,8 @@ Please don't let this happen. Thank you.
 		});
 */
 	</script>
- -->
+
 </div>
+ -->
 </body>
 </html>
