@@ -7,6 +7,12 @@
 			--section : self-centered major area
 				--block : major component of an area
 */
+
+body {
+  position: relative;
+  overflow: hidden;
+}
+
 #root-container {
 	overflow-x:hidden;
 }
@@ -28,7 +34,6 @@
 }
 
 /* mobile first no show */
-.heading.second,
 .tools,
 #breadcrumbs,
 .country-selector,
