@@ -178,39 +178,46 @@ and (min-width : 768px) {
  */
 
 ul.navigation {
-  margin-top: 0px;  /* overrides ul default margin */
+		margin-top: 0px;  /* overrides ul default margin */
+		padding-left: 0px;
+}
+
+#main-nav { /* container for mobile menu */
+	background: none #1D1D1D; /* dark background color of the mobile menu */
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 94%;
+	max-width: 350px;
+	padding: 1em 3%;
+}
+
+#main-nav { /* mobile menu when not visible */
+/*	right: -50000px;*/
 }
 
 .navigation { /* mobile menu when visible */
-  background: none #1D1D1D; /* dark background color of the mobile menu */
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 94%;
-  max-width: 350px;
-  padding: 1em 3%;
 }
 
-.navigation { /* mobile menu when not visible */
-  right: -50000px;
+.navigation { 
 }
 
 .navigation li a {
-  display: block;
-  padding: .8em 1em;
-  background: none #101010;
-  font-weight: bold;
-  margin-bottom: .4em;
+	display: block;
+	padding: .8em 1em;
+	background: none #101010;
+	font-weight: bold;
+	margin-bottom: .4em;
 }
 
 .navigation li .drop-content a {
-  font-weight: normal;
-  background: none transparent;
-  margin-left: 3%;
+	font-weight: normal;
+	background: none transparent;
+	margin-left: 3%;
 }
 
 .navigation li ul {
-  padding-left: 0px;
+	padding-left: 0px;
 }
 
 /*
@@ -218,16 +225,22 @@ ul.navigation {
  */
 @media only screen 
 and (min-width : 768px) {
-  ul.navigation {
+	
+	#main-nav {
           position: static;
+          width: auto;
+          max-width: none;
+					background: none transparent;
+					padding: 0;
+	}
+	
+  ul.navigation {
           margin: -1px 0 0 0;
           padding: 0 0 0 10px;
           list-style: none;
           float: left;
           max-width: 42.5em; /* 625px */
           background: none transparent;
-          width: auto;
-          max-width: none;
   }
   .navigation li {
           float: left;
