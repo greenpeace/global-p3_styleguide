@@ -193,13 +193,7 @@ ul.navigation {
 }
 
 #main-nav { /* mobile menu when not visible */
-/*	right: -50000px;*/
-}
-
-.navigation { /* mobile menu when visible */
-}
-
-.navigation { 
+	right: -50000px;
 }
 
 .navigation li a {
