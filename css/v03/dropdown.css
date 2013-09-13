@@ -75,7 +75,9 @@
 	white-space: nowrap;
 }
 .dropdown .dropdown-list li a:hover,
-.dropdown .dropdown-list span:hover {
+.dropdown .dropdown-list span:hover,
+.dropdown .dropdown-list li a:focus,
+.dropdown .dropdown-list span:focus {
 	background-color: #4d535f;
 	color: #FFF;
 	cursor: pointer;

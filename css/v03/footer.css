@@ -120,7 +120,8 @@
 .footer.sitemap .links li ul li a {
   color: #DDD;
 }
-.footer.sitemap .links li ul li a:hover {
+.footer.sitemap .links li ul li a:hover,
+.footer.sitemap .links li ul li a:focus {
   color:#FFF;
 }
 .footer.sitemap .links a.map {

@@ -259,7 +259,7 @@ and (min-width : 768px) {
           padding: 0 .83333333333em; /* 10px/12 */
           white-space: nowrap;
   }
-  .navigation li a.current-item, .navigation li a.active-item, .navigation li a:hover {
+  .navigation li a.current-item, .navigation li a.active-item, .navigation li a:hover, .navigation li a:focus {
           text-decoration: none;
           background: #6c0;
           -webkit-border-bottom-right-radius: 4px;
@@ -274,12 +274,13 @@ and (min-width : 768px) {
           margin-right: 4px;
           color: #055905;
   }
-  .navigation li a.current-item span, .navigation li a.active-item span, .navigation li a.hover span, .navigation li a:hover span {
+  .navigation li a.current-item span, .navigation li a.active-item span, .navigation li a.hover span,
+	.navigation li a:hover span, .navigation li a:focus span {
           overflow: hidden;
           position: relative;
           color: #055905;
   }
-  .navigation li a:hover span {
+  .navigation li a:hover span, .navigation li a:focus span {
           position: relative;
           color: #055905;
   }
@@ -334,7 +335,9 @@ and (min-width : 768px) {
           overflow: hidden;
   }
   .navigation .drop-content ul li:hover a,
-  .navigation .drop-content ul li a:hover {
+  .navigation .drop-content ul li a:hover,
+	.navigation .drop-content ul li:focus a,
+  .navigation .drop-content ul li a:focus {
           background: #57b105;
           color: #fff;
           -webkit-border-radius: 0;
@@ -344,7 +347,8 @@ and (min-width : 768px) {
           -moz-box-shadow: none;
           box-shadow: none;
   }
-  .navigation .drop-content ul li:hover ul {
+  .navigation .drop-content ul li:hover ul,
+	.navigation .drop-content ul li:focus ul{
           display: block;
   }
   .navigation .drop-content ul ul {
@@ -359,15 +363,20 @@ and (min-width : 768px) {
           padding: 0;
   }
   .navigation .drop-content ul li:hover ul li:hover a,
-  .navigation .drop-content ul ul li a:hover {
+  .navigation .drop-content ul ul li a:hover,
+	.navigation .drop-content ul li:focus ul li:focus a,
+  .navigation .drop-content ul ul li a:focus{
           background: #57b105;
           color: #fff;
   }
-  .navigation .drop-content ul ul li:hover ul {
+  .navigation .drop-content ul ul li:hover ul,
+	.navigation .drop-content ul ul li:focus ul{
           display: block;
   }
   .navigation .drop-content ul li:hover ul li a,
+	.navigation .drop-content ul li:focus ul li a,
   .navigation .drop-content ul li:hover ul li:hover ul li a,
+	.navigation .drop-content ul li:focus ul li:focus ul li a,
   .navigation .drop-content ul ul ul li a {
           background: none;
           color: #000;
@@ -376,7 +385,9 @@ and (min-width : 768px) {
           width: 16.66667em; /* 200px/12 */
   }
   .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
-  .navigation .drop-content ul ul ul li a:hover {
+	.navigation .drop-content ul li:focus ul li:focus ul li:focus a,
+  .navigation .drop-content ul ul ul li a:hover
+  .navigation .drop-content ul ul ul li a:focus {
           background: #57b105;
           color: #fff;
   }
@@ -388,15 +399,21 @@ and (min-width : 768px) {
   }
   .navigation .drop-content ul li a.drop,
   .navigation .drop-content ul li:hover ul li a.drop,
+	.navigation .drop-content ul li:focus ul li a.drop,
   .navigation .drop-content ul ul li a.drop,
-  .navigation .drop-content ul li:hover ul li:hover ul li a.drop2 {
+  .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
+	.navigation .drop-content ul li:focus ul li:focus ul li a.drop2{
           background: url(../../img/v02/nav-arrow.png) no-repeat 95% 0;
   }
   .navigation .drop-content ul li:hover a.drop,
+  .navigation .drop-content ul li:focus a.drop,
   .navigation .drop-content ul li a.drop:hover,
   .navigation .drop-content ul li:hover li:hover a.drop,
+  .navigation .drop-content ul li:focus li:focus a.drop,
   .navigation .drop-content ul ul li a.drop:hover,
-  .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2 {
+	.navigation .drop-content ul ul li a.drop:focus,
+  .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
+  .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2	{
           background: #57b105 url(../../img/v02/nav-arrow.png) no-repeat 95% -25px;
   }
 }
