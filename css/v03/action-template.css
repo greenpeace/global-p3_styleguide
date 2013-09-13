@@ -282,7 +282,9 @@ only screen and (min-width : 480px) and (max-width : 768px) {
 	}
 	/* input length to fit the sidebar */
 	.action-template textarea,
-	.action-template input[type=text] {
+	.action-template input[type=text],
+	.action-template input[type=email],
+	.action-template input[type=tel] {
 		width:19em;
 	}
 	.action-template select {
