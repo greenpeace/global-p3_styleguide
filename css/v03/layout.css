@@ -44,6 +44,15 @@ body {
 	display:none;
 }
 
+/* images scaling with size */
+
+
+#action-multimedia-teaser img {
+	width: 100%;
+	height: auto;
+	max-width: 570px; /* image is 540px wide */
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen
 and (max-width : 320px)	{
