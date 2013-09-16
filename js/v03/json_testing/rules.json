@@ -22,6 +22,6 @@
         }
     },
     "tests": {
-        "alphanumeric": "^[\\d\\w]*$"
+        "alphanumeric": "^[\\p{L}\\p{N}]+$"
     }
 }

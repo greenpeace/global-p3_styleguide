@@ -29,13 +29,14 @@
         jsonURL: 'https://www.greenpeace.org/api/p3/pledge/config.json',
         showSummary: true,
         tests: {
-            // Matches all alphanumeric characters, including accents plus . , - ' / 
+            // Matches all unicode alphanumeric characters, including accents
+            // plus . , - ' / 
             // Note for end users: when overriding or creating tests,
-            // character strings must be doulbe escaped: \\ instead of \
+            // character strings must be double escaped: \\ instead of \
             // http://stackoverflow.com/questions/16572123/javascript-regex-invalid-range-in-character-class
-            alphaPlus: /^[A-Za-z\u00C0-\u017F\d\.\-\'\,\/]*$/,
-            numeric: /^[\d]*$/,
-            alpha: /^[\w]*$/
+            alphaPlus: "^\[\\p{L}\\p{N}\\.\\-\\'\\,\\/\]+$",
+            numeric: "^\\p{N}+$",
+            alpha: "^\\p{L}+$"
         },
         errorElement: 'span',
         errorPlacement: function (error, element) {
@@ -69,11 +70,11 @@
                         try {
                             // Create a new validator method
                             $.validator.addMethod(name, function(value, element) {
-//                                console.log('Testing '+value+' against '+regexp);
-                                var reg = new RegExp(regexp);
+                                console.log('Testing '+value+' against '+regexp);
+                                var reg = new XRegExp(regexp);
                                 return this.optional(element) || reg.test(value);
                             });     
-//                            console.log("Added test '" +name + "': '" + regexp + "'");
+                            console.log("Added test '" +name + "': '" + regexp + "'");
                         } catch(err) {
 //                            console.log("Failed to add test '" + name + "' with regex '" + regexp + "'");
                         }
