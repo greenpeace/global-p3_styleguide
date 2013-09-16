@@ -37,7 +37,7 @@ textarea {
 	color:#333;
 	background:#FFF;
 	border:1px solid #CCC;
-	width:14em; /* 20 char (default input length) x .7em (average char length) */
+	width:19em; /* 20 char (default input length) x .7em (average char length) */
 	padding:.4em .5em .3em .5em;
 	display:inline-block;
 	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
@@ -151,24 +151,27 @@ textarea {
 	.info				- can be used for example messages prior validation
 	.error			 - error messages used for validation issues
 */
+form .tooltip,
 form .message {
 	font-size: .813em; /* 13px */
-	padding:0 0 1em 0;
+	padding:0;
 	background-color:transparent;
 	border:0;
 }
-form .error label,
-form .message.error {
-	color: #D40000;
+form .message .error {
+        display:block;
+        padding: 0 0.5em 1em;
+        color: #D40000;
 }
-form .message.info {
-	color: #4d535f;
+form .info {
+        position:relative;
+        color: #4d535f;
 }
 form .error:before,
-form .message.info:before {
+form .info:before {
 	display:inline-block;
 	text-align:center;
-	vertical-align:center;
+	vertical-align:middle;
 	width:.75em;
 	height:.75em;
 	padding:0 .125em .25em .125em;
@@ -178,21 +181,25 @@ form .message.info:before {
 	color:#fff;
 	line-height:100%;
 }
-form .message.info:before {
+form .info:before {
 	content:"i";
 	background:#baccd9;
 	color:#fff;
 }
-form .message.error:before {
+form .message .error:before {
 	content:"!";
 	background:#D40000;
 	color:#fff;
+        margin-right:0.5em;
 }
-form .message.error span,
-form .message.info span {
+form .message .error span,
+form .info span {
 	display:block;
 	margin:-1.25em 1.5em 0 1.5em;
 	border-radius:2px;
+}
+form input.error {
+    border:1px solid #D40000;
 }
 
 /* if large screen display info as tooltips */
@@ -214,8 +221,7 @@ form .message.info span {
 		display:block;
 		position:absolute;
 		max-width:200px;
-		background:#FFF;
-		margin-left:200px;
+		background:#FFF;		
 		float:left;
 		padding:.5em;
 	}
