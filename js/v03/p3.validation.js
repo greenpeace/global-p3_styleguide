@@ -25,8 +25,9 @@
 ;
 (function($) {
     var _p3 = $.p3 || {},
-    defaults = {
+            defaults = {
         jsonURL: 'https://www.greenpeace.org/api/p3/pledge/config.json',
+        showSummary: true,
         tests: {
             // Matches all alphanumeric characters, including accents plus . , - ' / 
             // Note for end users: when overriding or creating tests,
@@ -35,12 +36,20 @@
             alphaPlus: /^[A-Za-z\u00C0-\u017F\d\.\-\'\,\/]*$/,
             numeric: /^[\d]*$/,
             alpha: /^[\w]*$/
-        }
-    }
-
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            $(element).parent().find('div.message').html(error);
+        }        
+    };
+    
     _p3.validation = function(el, config) {
 
         config = $.extend(true, defaults, config || {});
+        
+        if (config.showSummary) {
+            config.summaryElement = $('.errorSummary',el).length ? $('.errorSummary',el) : $(el).prepend('<div class="errorSummary"></div>');
+        }
 
         Modernizr.load({
             test: window.JSON,
@@ -49,6 +58,8 @@
             ],
             complete: function() {
                 $.getJSON(config.jsonURL, function(data) {
+                    var messageDiv = '<div class="message"></div>',
+                    $el = $(el);
                     
                     $.extend(true, config, data || {});
 
@@ -69,7 +80,19 @@
                                                 
                     });
                     
-                    $(el).validate(config);
+                    // Add message div to required fields
+                    // if it doesn't already exist in template
+                    $el.find('div.input.required').each( function () {
+                        var $this = $(this);
+
+                        if (!$this.find('div.message').length) {
+                            $this.append(messageDiv);
+                        }
+                        
+                    });                   
+                        
+                    // And finally go ahead and validate the form
+                    $el.validate(config);
 
                 }).error(function() {
                     // Failed to obtain JSON, fallback to html5 validation
