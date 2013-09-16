@@ -25,7 +25,7 @@
 ;
 (function($) {
     var _p3 = $.p3 || {},
-            defaults = {
+    defaults = {
         jsonURL: 'https://www.greenpeace.org/api/p3/pledge/config.json',
         showSummary: true,
         tests: {
