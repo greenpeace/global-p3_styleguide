@@ -6,7 +6,7 @@
 	background:#66CC00;
 	color:#FFF;
 	font-size:0.875em; 		 /* 14px */
-	height:4.7857142857em; /* 67px */
+/*	height:4.7857142857em; /* 67px */*/
 }
 .footer.small .copy-box {
 	padding: 2.1428571429em 0 0; /* 30px */
@@ -16,7 +16,7 @@
 }
 .footer.small .logo-box {
 	float: left;
-	margin: 1px 0 0;
+	margin: 1px 0 2em;
 }
 .footer.small .logo-box span {
 	line-height: 1em;
@@ -37,16 +37,50 @@
 	padding: 0;
 	list-style: none;
 }
+
 .footer.small .legal-menu {
-	float: left;
+	clear: both;
 }
-.footer.small .bottom-menu {
-	float: right;
+
+.footer.small .legal-menu li a {
+	text-align: center;
+	border-top: 1px solid #ECF4DC;
 }
-.footer.small .legal-menu li,
-.footer.small .bottom-menu li {
-	float: left;
-	padding: 0 0 0 1.1428571429em;
+
+.footer.small .legal-menu li a,
+.footer.small .bottom-menu li a {
+	display: block;
+	padding: 1em 2%;
+}
+
+
+@media only screen and (min-width : 480px) {
+	
+	.footer.small .legal-menu {
+		float: left;
+	}
+	
+	.footer.small .bottom-menu {
+		float: right;
+	}
+	
+	.footer.small ul.legal-menu, .footer.small ul.bottom-menu {
+		margin-top: -0.5em;
+		clear: none;
+	}
+	 
+	.footer.small .legal-menu li,
+	.footer.small .bottom-menu li {
+		float: left;
+		padding: 0 0 0 1.1428571429em;
+	}	
+	
+	.footer.small .legal-menu li a,
+	.footer.small .bottom-menu li a {
+		padding: .5em 2%;
+		border: 0px solid transparent;
+		text-align: left;
+	}		
 }
 
 
