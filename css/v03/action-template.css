@@ -3,7 +3,7 @@
 	 ========================================================================== */
 
 /* page level configuration shortcuts */
-.no-quick-login .first-time.login {
+.no-quick-login first-time-login {
 	display:none
 }
 
@@ -72,7 +72,6 @@
 #action-counter-graphical {
 	display:none;
 	background:#e9ecf3;
-	
 }
 #action-counter-graphical .completed {
 	background:#66cc00;
@@ -103,10 +102,10 @@
 	.facebook		facebook icon
 	.google			google icon
 */
-#main-section .social.login span {
+#main-section .social-login span {
 	display:none;
 }
-#main-section .social.login a {
+#main-section .social-login a {
 	height:22px; /* 22px */
 	width:60px; /* 60px */
 	display:inline-block;
@@ -116,10 +115,10 @@
 	padding:0 6px;
 	border-radius:2px;
 }
-#main-section .social.login a.facebook {
+#main-section .social-login a.facebook {
 	background:#fffdff url(../../img/v03/sociallogin.png) center 0 no-repeat;
 }
-#main-section .social.login a.google {
+#main-section .social-login a.google {
 	background:#fffdff url(../../img/v03/sociallogin.png) center -22px no-repeat;
 }
 
