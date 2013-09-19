@@ -7,6 +7,12 @@
 			--section : self-centered major area
 				--block : major component of an area
 */
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
 #root-container {
 	overflow-x:hidden;
 }
@@ -15,8 +21,9 @@
 	padding-top:.5em;
 }
 .page-section {
-	margin:auto;
-	padding:0 1.25em;
+	margin-left:auto;
+	margin-right: auto;
+	padding:0 5%;
 }/* clearfix */
 .page-section:before, 
 .page-section:after {
@@ -28,7 +35,6 @@
 }
 
 /* mobile first no show */
-.heading.second,
 .tools,
 #breadcrumbs,
 .country-selector,
@@ -38,11 +44,20 @@
 	display:none;
 }
 
+/* images scaling with size */
+
+
+#action-multimedia-teaser img {
+	width: 100%;
+	height: auto;
+	max-width: 570px; /* image is 540px wide */
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen
 and (max-width : 320px)	{
 	.page-section {
-		width:200px;
+		width:90%;
 		font-size:0.8125em; /* 13px */
 	}
 }
@@ -50,15 +65,16 @@ and (max-width : 320px)	{
 and (min-width : 320px) 
 and (max-width : 480px) {
 	.page-section {
-		width:300px;
+		width:90%;
 		font-size:0.875em; /* 14px */
+		max-width: 320px;
 	}
 }
 @media only screen 
 and (min-width : 480px) 
 and (max-width : 768px) {
 	.page-section {
-		width:440px;
+		max-width:460px;
 		font-size:0.9375em; /* 15px */
 	}
 }
@@ -74,6 +90,11 @@ and (min-width : 768px) {
 	}
 	#main-section {
 		margin-top:87px; /* 60px - 27px of bottom-menu */
+	}
+	.page-section {
+		padding: 0 3%;
+		width: 90%;
+		max-width: 800px;
 	}
 }
 
@@ -97,6 +118,7 @@ and (min-width : 1024px) {
 	.page-section {
 		width:920px;
 		font-size:1em; /* 16px */
+		max-width: none;
 	}
 	.footer.sitemap,
 	.footer.highlight,
