@@ -62,9 +62,11 @@
 	display:block;
 	text-align:right;
 	color:#FFF;
+        text-shadow:1px 1px 0 #4f4f4f;
 	font-weight:bold;
 	font-size:1.125em;
-	padding:.311em .444em;
+	padding:.311em 0;
+        text-indent:0.2em;        
 }
 #action-counter-graphical .objectives {
 	display:none;
