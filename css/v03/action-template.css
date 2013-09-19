@@ -9,6 +9,14 @@
 
 /* change some default behaviors */
 
+.action-template #main-container {
+	background:transparent url(img/v03/background.jpg) center 0 no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
 .action-template #main-section {
 	background:#FFF;
 	padding-bottom:3em;
