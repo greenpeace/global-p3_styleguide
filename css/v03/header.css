@@ -10,7 +10,7 @@
 .heading {
 	width: 100%;
 }
-.heading.first {
+.heading-first {
 	background: #66CC00;
 	height: 3.75em; /* 60px */
 }
