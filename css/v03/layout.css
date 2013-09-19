@@ -38,9 +38,9 @@ body {
 .tools,
 #breadcrumbs,
 .country-selector,
-.footer.sitemap,
-.footer.highlight,
-.footer.small .bottom-menu {
+.footer-sitemap,
+.footer-highlight,
+.footer-small .bottom-menu {
 	display:none;
 }
 
@@ -120,9 +120,9 @@ and (min-width : 1024px) {
 		font-size:1em; /* 16px */
 		max-width: none;
 	}
-	.footer.sitemap,
-	.footer.highlight,
-	.footer.small .bottom-menu {
+	.footer-sitemap,
+	.footer-highlight,
+	.footer-small .bottom-menu {
 		display:block;
 	}
 }
