@@ -81,6 +81,10 @@
 		border: 0px solid transparent;
 		text-align: left;
 	}		
+
+	.footer .footer-holder {
+		width:960px;
+	}
 }
 
 
@@ -101,9 +105,7 @@
   border-bottom:3px solid #C7C7C6;
   padding:10px 0 15px 0;
 }
-.footer .footer-holder {
-	width:960px;
-}
+
 .footer-highlight {
   padding: 15px 0 15px 20px;
 }
