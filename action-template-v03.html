@@ -9,7 +9,7 @@
 	<title>Help save the whales | Greenpeace International</title>
 	<meta name="description" content="Write to international banks, BNP Paribas and HSBC, and demand they withdraw their funding from the Jaitpaur nuclear project."/>
 	<meta name="keywords" content="greenpeace, whales, nuclear, fukushima"/>
-	<meta name="viewport" content="width=device-width"/>
+	<meta name="viewport" content="width=device-width" initial-scale=1.0"/>
 	<meta name="robots" content="all"/>
 
 	<meta property="og:url" content="http://www.greenpeace.org/international/en/campaigns/nuclear/stop-radioactive-investment/Help-stop-the-next-Fukushima-disaster/"/>
@@ -28,15 +28,6 @@
 
 	<script src="js/default/vendor/modernizr-2.6.2.min.js"></script>
 
-	<style>
-		.action-template #main-container {
-			background:transparent url(img/v03/background.jpg) center 0 no-repeat;
-			-webkit-background-size: cover;
-			-moz-background-size: cover;
-			-o-background-size: cover;
-			background-size: cover;
-		}
-	</style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
 
@@ -82,7 +73,7 @@
 				<input type="text" name="hihoney" plaseholder="say hi honey"><!-- honeypot -->
 			</div>
 			<div id="action-form-authentication">
-				<div class="social login">
+				<div class="social social-login login">
 					<p>Please enter your email bellow. You can also login with <a href="#" class="facebook"><span>facebook</span></a> or <a href="#" class="google"><span>google</span></a></p>
 				</div>
 				<div class="input required text email">
@@ -91,7 +82,7 @@
 				</div>
 			</div>
 			<div id="action-form-register">
-				<div class="first-time login">
+				<div class="first-time first-time-login login">
 					<p>First time here? Please fill out the form below.</p>
 				</div>
 				<div class="input text required firstname">
@@ -274,7 +265,7 @@ Please don't let this happen. Thank you.
 	<div class="header container">
 
 		<!-- First header: logo, country selector, search and media links -->
-		<div class="heading first">
+		<div class="heading heading-first">
 			<div class="heading-holder page-section">
 				<a href="/international/en/" title="Greenpeace" class="logo">
 					<span class="visuallyhidden">Greenpeace</span>
@@ -392,196 +383,198 @@ Please don't let this happen. Thank you.
 		</div>
 
 		<!-- Second heading navigation and signup -->
-		<div class="heading second">
+		<div class="heading heading-second">
 			<div class="heading-holder page-section">
 				<nav>
-					<ul class="navigation" id="nav">
-						<li><a href="/international/en/" title="Home"><span>Home</span></a></li>
-						<li>
-							<a href="/international/en/about/" title="About us"><span>About us</span></a>
-							<div class="drop-holder">
-								<div class="drop-content">
-									<ul>
-										<li><a href="/international/en/about/victories/" title="Greenpeace victories">Greenpeace victories</a></li>
-										<li>
-											<a href="/international/en/about/history/" class="drop" title="History and Successes">History and Successes</a>
-											<ul>
-												<li><a href="/international/en/about/history/Victories-timeline/" title="Victories timeline">Victories timeline</a></li>
-												<li><a href="/international/en/about/history/founders/" title="The Founders">The Founders</a></li>
-												<li><a href="/international/en/about/history/amchitka-hunter/" title="The founding voyage">The founding voyage</a></li>
-												<li><a href="/international/en/about/history/the-bombing-of-the-rainbow-war/" title="The bombing of the Rainbow Warrior">The bombing of the Rai...</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="/international/en/about/our-core-values/" class="drop" title="Core values">Core values</a>
-											<ul>
-												<li><a href="/international/en/about/our-core-values/transparency-and-accountabilit/" title="Transparency and Accountability">Transparency and Accou...</a></li>
-											</ul>
-										</li>
-										<li><a href="/international/en/about/Greenpeace-and-You/" title="Greenpeace and You">Greenpeace and You</a></li>
-										<li>
-											<a href="/international/en/about/ships/" class="drop" title="Our Ships">Our Ships</a>
-											<ul>
-												<li><a href="/international/en/about/ships/the-rainbow-warrior/" title="The	Rainbow Warrior">The	Rainbow Warrior</a></li>
-												<li><a href="/international/en/about/ships/the-esperanza/" title="The	Esperanza">The	Esperanza</a></li>
-												<li><a href="/international/en/about/ships/the-arctic-sunrise/" title="The	Arctic Sunrise">The	Arctic Sunrise</a></li>
-												<li><a href="/international/en/about/ships/our-inflatables/" title="Our inflatables">Our inflatables</a></li>
-												<li><a href="/international/photosvideos/ship-webcams" title="Ship webcams">Ship webcams</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="/international/en/about/how-is-greenpeace-structured/" class="drop" title="Organisation">Organisation</a>
-											<ul>
-												<li><a href="/international/en/about/how-is-greenpeace-structured/governance-structure/" title="Governance structure">Governance structure</a></li>
-												<li><a href="/international/en/about/how-is-greenpeace-structured/management/" title="Management structure">Management structure</a></li>
-												<li><a href="/international/en/about/how-is-greenpeace-structured/financial/" title="Financial structure">Financial structure</a></li>
-												<li><a href="/international/en/about/how-is-greenpeace-structured/legal-structure/" title="Legal structure">Legal structure</a></li>
-												<li><a href="/international/en/about/how-is-greenpeace-structured/reports/" title="Annual reports">Annual reports</a></li>
-											</ul>
-										</li>
-										<li><a href="/international/en/about/worldwide/" title="Greenpeace worldwide">Greenpeace worldwide</a></li>
-										<li><a href="/international/en/about/faq/" title="FAQs">FAQs</a></li>
-										<li><a href="/international/en/about/jobs/" title="Work for Greenpeace">Work for Greenpeace</a></li>
-									</ul>
+				  <div id="main-nav">
+						<ul class="navigation" id="nav">
+							<li><a href="/international/en/" title="Home"><span>Home</span></a></li>
+							<li>
+								<a href="/international/en/about/" title="About us"><span>About us</span></a>
+								<div class="drop-holder">
+									<div class="drop-content">
+										<ul>
+											<li><a href="/international/en/about/victories/" title="Greenpeace victories">Greenpeace victories</a></li>
+											<li>
+												<a href="/international/en/about/history/" class="drop" title="History and Successes">History and Successes</a>
+												<ul>
+													<li><a href="/international/en/about/history/Victories-timeline/" title="Victories timeline">Victories timeline</a></li>
+													<li><a href="/international/en/about/history/founders/" title="The Founders">The Founders</a></li>
+													<li><a href="/international/en/about/history/amchitka-hunter/" title="The founding voyage">The founding voyage</a></li>
+													<li><a href="/international/en/about/history/the-bombing-of-the-rainbow-war/" title="The bombing of the Rainbow Warrior">The bombing of the Rai...</a></li>
+												</ul>
+											</li>
+											<li>
+												<a href="/international/en/about/our-core-values/" class="drop" title="Core values">Core values</a>
+												<ul>
+													<li><a href="/international/en/about/our-core-values/transparency-and-accountabilit/" title="Transparency and Accountability">Transparency and Accou...</a></li>
+												</ul>
+											</li>
+											<li><a href="/international/en/about/Greenpeace-and-You/" title="Greenpeace and You">Greenpeace and You</a></li>
+											<li>
+												<a href="/international/en/about/ships/" class="drop" title="Our Ships">Our Ships</a>
+												<ul>
+													<li><a href="/international/en/about/ships/the-rainbow-warrior/" title="The	Rainbow Warrior">The	Rainbow Warrior</a></li>
+													<li><a href="/international/en/about/ships/the-esperanza/" title="The	Esperanza">The	Esperanza</a></li>
+													<li><a href="/international/en/about/ships/the-arctic-sunrise/" title="The	Arctic Sunrise">The	Arctic Sunrise</a></li>
+													<li><a href="/international/en/about/ships/our-inflatables/" title="Our inflatables">Our inflatables</a></li>
+													<li><a href="/international/photosvideos/ship-webcams" title="Ship webcams">Ship webcams</a></li>
+												</ul>
+											</li>
+											<li>
+												<a href="/international/en/about/how-is-greenpeace-structured/" class="drop" title="Organisation">Organisation</a>
+												<ul>
+													<li><a href="/international/en/about/how-is-greenpeace-structured/governance-structure/" title="Governance structure">Governance structure</a></li>
+													<li><a href="/international/en/about/how-is-greenpeace-structured/management/" title="Management structure">Management structure</a></li>
+													<li><a href="/international/en/about/how-is-greenpeace-structured/financial/" title="Financial structure">Financial structure</a></li>
+													<li><a href="/international/en/about/how-is-greenpeace-structured/legal-structure/" title="Legal structure">Legal structure</a></li>
+													<li><a href="/international/en/about/how-is-greenpeace-structured/reports/" title="Annual reports">Annual reports</a></li>
+												</ul>
+											</li>
+											<li><a href="/international/en/about/worldwide/" title="Greenpeace worldwide">Greenpeace worldwide</a></li>
+											<li><a href="/international/en/about/faq/" title="FAQs">FAQs</a></li>
+											<li><a href="/international/en/about/jobs/" title="Work for Greenpeace">Work for Greenpeace</a></li>
+										</ul>
+									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<a href="/international/en/campaigns/" title="What we do" class="current-item"><span>What we do</span></a>
-							<div class="drop-holder">
-								<div class="drop-content">
-									<ul>
-										<li>
-											<a href="/international/en/campaigns/climate-change/" class="drop" title="Climate change">Climate change</a>
-											<ul>
-												<li><a href="/international/en/campaigns/climate-change/arctic-impacts/" title="Arctic">Arctic</a></li>
-												<li><a href="/international/en/campaigns/climate-change/energyrevolution/" title="Energy [R]evolution">Energy [R]evolution</a></li>
-												<li><a href="/international/en/campaigns/climate-change/cleanourcloud/" title="Clean our Cloud">Clean our Cloud</a></li>
-												<li><a href="/international/en/campaigns/climate-change/cool-it/" title="Cool IT">Cool IT</a></li>
-												<li><a href="/international/en/campaigns/climate-change/oil/" title="Oil ">Oil </a></li>
-												<li><a href="/international/en/campaigns/climate-change/coal/" title="Quit Coal">Quit Coal</a></li>
-												<li><a href="/international/en/campaigns/climate-change/impacts/" title="Climate impacts">Climate impacts</a></li>
-												<li><a href="/international/en/campaigns/climate-change/solutions/" title="Solutions">Solutions</a></li>
-												<li><a href="/international/en/campaigns/climate-change/our_work/" title="Project work">Project work</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="/international/en/campaigns/forests/" class="drop" title="Forests">Forests</a>
-											<ul>
-												<li><a href="/international/en/campaigns/forests/threats/" title="Threats">Threats</a></li>
-												<li><a href="/international/en/campaigns/forests/solutions/" title="Solutions">Solutions</a></li>
-												<li><a href="/international/en/campaigns/forests/political/" title="Political solutions">Political solutions</a></li>
-												<li><a href="/international/en/campaigns/forests/asia-pacific/" title="Indonesia">Indonesia</a></li>
-												<li><a href="/international/en/campaigns/forests/amazon/" title="Amazon">Amazon</a></li>
-												<li><a href="/international/en/campaigns/forests/africa/" title="Congo Basin">Congo Basin</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="/international/en/campaigns/oceans/" class="drop" title="Oceans">Oceans</a>
-											<ul>
-												<li><a href="/international/en/campaigns/oceans/marine-reserves/" title="Marine reserves">Marine reserves</a></li>
-												<li><a href="/international/en/campaigns/oceans/polar-seas/" title="Polar Oceans">Polar Oceans</a></li>
-												<li><a href="/international/en/campaigns/oceans/overfishing/" title="Overfishing">Overfishing</a></li>
-												<li><a href="/international/en/campaigns/oceans/pirate-fishing/" title="Pirate fishing">Pirate fishing</a></li>
-												<li><a href="/international/en/campaigns/oceans/tuna/" title="Tuna ">Tuna </a></li>
-												<li><a href="/international/en/campaigns/oceans/whaling/" title="Whales">Whales</a></li>
-												<li><a href="/international/en/campaigns/oceans/seafood/" title="Seafood">Seafood</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="/international/en/campaigns/agriculture/" class="drop" title="Agriculture">Agriculture</a>
-											<ul>
-												<li><a href="/international/en/campaigns/agriculture/problem/" title="The Problem">The Problem</a></li>
-												<li><a href="/international/en/campaigns/agriculture/solution-ecological-farming/" title="The Solution">The Solution</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="/international/en/campaigns/toxics/" class="drop" title="Toxic pollution">Toxic pollution</a>
-											<ul>
-												<li><a href="/international/en/campaigns/toxics/detox/" title="Detox Campaign">Detox Campaign</a></li>
-												<li><a href="/international/en/campaigns/toxics/water/" title="Water">Water</a></li>
-												<li><a href="/international/en/campaigns/toxics/electronics/" title="Greener Electronics ">Greener Electronics </a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="/international/en/campaigns/nuclear/" class="drop" title="Nuclear">Nuclear</a>
-											<ul>
-												<li><a href="/international/en/campaigns/nuclear/Fukushima-nuclear-disaster/" title="Fukushima nuclear disaster">Fukushima nuclear disa...</a></li>
-												<li><a href="/international/en/campaigns/nuclear/safety/" title="Safety">Safety</a></li>
-												<li><a href="/international/en/campaigns/nuclear/waste/" title="Nuclear waste">Nuclear waste</a></li>
-												<li><a href="/international/en/campaigns/nuclear/proliferation/" title="Proliferation">Proliferation</a></li>
-												<li><a href="/international/en/campaigns/nuclear/nomorechernobyls/" title="No more Chernobyls">No more Chernobyls</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="/international/en/campaigns/peace/" class="drop" title="Peace and disarmament ">Peace and disarmament </a>
-											<ul>
-												<li><a href="/international/en/campaigns/peace/abolish-nuclear-weapons/" title="Abolish nuclear weapons">Abolish nuclear weapons</a></li>
-												<li><a href="/international/en/campaigns/peace/iran-crisis-open-letter/" title="Disruptive diplomacy, not shock and awe">Disruptive diplomacy, ...</a></li>
-												<li><a href="/international/en/campaigns/peace/solutions/" title="Solutions">Solutions</a></li>
-											</ul>
-										</li>
-									</ul>
+							</li>
+							<li>
+								<a href="/international/en/campaigns/" title="What we do" class="current-item"><span>What we do</span></a>
+								<div class="drop-holder">
+									<div class="drop-content">
+										<ul>
+											<li>
+												<a href="/international/en/campaigns/climate-change/" class="drop" title="Climate change">Climate change</a>
+												<ul>
+													<li><a href="/international/en/campaigns/climate-change/arctic-impacts/" title="Arctic">Arctic</a></li>
+													<li><a href="/international/en/campaigns/climate-change/energyrevolution/" title="Energy [R]evolution">Energy [R]evolution</a></li>
+													<li><a href="/international/en/campaigns/climate-change/cleanourcloud/" title="Clean our Cloud">Clean our Cloud</a></li>
+													<li><a href="/international/en/campaigns/climate-change/cool-it/" title="Cool IT">Cool IT</a></li>
+													<li><a href="/international/en/campaigns/climate-change/oil/" title="Oil ">Oil </a></li>
+													<li><a href="/international/en/campaigns/climate-change/coal/" title="Quit Coal">Quit Coal</a></li>
+													<li><a href="/international/en/campaigns/climate-change/impacts/" title="Climate impacts">Climate impacts</a></li>
+													<li><a href="/international/en/campaigns/climate-change/solutions/" title="Solutions">Solutions</a></li>
+													<li><a href="/international/en/campaigns/climate-change/our_work/" title="Project work">Project work</a></li>
+												</ul>
+											</li>
+											<li>
+												<a href="/international/en/campaigns/forests/" class="drop" title="Forests">Forests</a>
+												<ul>
+													<li><a href="/international/en/campaigns/forests/threats/" title="Threats">Threats</a></li>
+													<li><a href="/international/en/campaigns/forests/solutions/" title="Solutions">Solutions</a></li>
+													<li><a href="/international/en/campaigns/forests/political/" title="Political solutions">Political solutions</a></li>
+													<li><a href="/international/en/campaigns/forests/asia-pacific/" title="Indonesia">Indonesia</a></li>
+													<li><a href="/international/en/campaigns/forests/amazon/" title="Amazon">Amazon</a></li>
+													<li><a href="/international/en/campaigns/forests/africa/" title="Congo Basin">Congo Basin</a></li>
+												</ul>
+											</li>
+											<li>
+												<a href="/international/en/campaigns/oceans/" class="drop" title="Oceans">Oceans</a>
+												<ul>
+													<li><a href="/international/en/campaigns/oceans/marine-reserves/" title="Marine reserves">Marine reserves</a></li>
+													<li><a href="/international/en/campaigns/oceans/polar-seas/" title="Polar Oceans">Polar Oceans</a></li>
+													<li><a href="/international/en/campaigns/oceans/overfishing/" title="Overfishing">Overfishing</a></li>
+													<li><a href="/international/en/campaigns/oceans/pirate-fishing/" title="Pirate fishing">Pirate fishing</a></li>
+													<li><a href="/international/en/campaigns/oceans/tuna/" title="Tuna ">Tuna </a></li>
+													<li><a href="/international/en/campaigns/oceans/whaling/" title="Whales">Whales</a></li>
+													<li><a href="/international/en/campaigns/oceans/seafood/" title="Seafood">Seafood</a></li>
+												</ul>
+											</li>
+											<li>
+												<a href="/international/en/campaigns/agriculture/" class="drop" title="Agriculture">Agriculture</a>
+												<ul>
+													<li><a href="/international/en/campaigns/agriculture/problem/" title="The Problem">The Problem</a></li>
+													<li><a href="/international/en/campaigns/agriculture/solution-ecological-farming/" title="The Solution">The Solution</a></li>
+												</ul>
+											</li>
+											<li>
+												<a href="/international/en/campaigns/toxics/" class="drop" title="Toxic pollution">Toxic pollution</a>
+												<ul>
+													<li><a href="/international/en/campaigns/toxics/detox/" title="Detox Campaign">Detox Campaign</a></li>
+													<li><a href="/international/en/campaigns/toxics/water/" title="Water">Water</a></li>
+													<li><a href="/international/en/campaigns/toxics/electronics/" title="Greener Electronics ">Greener Electronics </a></li>
+												</ul>
+											</li>
+											<li>
+												<a href="/international/en/campaigns/nuclear/" class="drop" title="Nuclear">Nuclear</a>
+												<ul>
+													<li><a href="/international/en/campaigns/nuclear/Fukushima-nuclear-disaster/" title="Fukushima nuclear disaster">Fukushima nuclear disa...</a></li>
+													<li><a href="/international/en/campaigns/nuclear/safety/" title="Safety">Safety</a></li>
+													<li><a href="/international/en/campaigns/nuclear/waste/" title="Nuclear waste">Nuclear waste</a></li>
+													<li><a href="/international/en/campaigns/nuclear/proliferation/" title="Proliferation">Proliferation</a></li>
+													<li><a href="/international/en/campaigns/nuclear/nomorechernobyls/" title="No more Chernobyls">No more Chernobyls</a></li>
+												</ul>
+											</li>
+											<li>
+												<a href="/international/en/campaigns/peace/" class="drop" title="Peace and disarmament ">Peace and disarmament </a>
+												<ul>
+													<li><a href="/international/en/campaigns/peace/abolish-nuclear-weapons/" title="Abolish nuclear weapons">Abolish nuclear weapons</a></li>
+													<li><a href="/international/en/campaigns/peace/iran-crisis-open-letter/" title="Disruptive diplomacy, not shock and awe">Disruptive diplomacy, ...</a></li>
+													<li><a href="/international/en/campaigns/peace/solutions/" title="Solutions">Solutions</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<a href="/international/en/news/" title="News"><span>News</span></a>
-							<div class="drop-holder">
-								<div class="drop-content">
-									<ul>
-										<li>
-											<a href="/international/en/news/Blogs/" class="drop" title="Blogs">Blogs</a>
-											<ul>
-												<li><a href="/international/en/news/Blogs/Kumi-Naidoo/" title="Kumi Naidoo">Kumi Naidoo</a></li>
-												<li><a href="/international/en/news/Blogs/makingwaves/" title="Making Waves">Making Waves</a></li>
-												<li><a href="/international/en/news/Blogs/nuclear-reaction/" title="Nuclear reaction">Nuclear reaction</a></li>
-												<li><a href="/international/en/news/Blogs/Cool-IT/" title="Cool IT">Cool IT</a></li>
-											</ul>
-										</li>
-										<li><a href="/international/en/news/features/" title="Feature Stories">Feature Stories</a></li>
-									</ul>
+							</li>
+							<li>
+								<a href="/international/en/news/" title="News"><span>News</span></a>
+								<div class="drop-holder">
+									<div class="drop-content">
+										<ul>
+											<li>
+												<a href="/international/en/news/Blogs/" class="drop" title="Blogs">Blogs</a>
+												<ul>
+													<li><a href="/international/en/news/Blogs/Kumi-Naidoo/" title="Kumi Naidoo">Kumi Naidoo</a></li>
+													<li><a href="/international/en/news/Blogs/makingwaves/" title="Making Waves">Making Waves</a></li>
+													<li><a href="/international/en/news/Blogs/nuclear-reaction/" title="Nuclear reaction">Nuclear reaction</a></li>
+													<li><a href="/international/en/news/Blogs/Cool-IT/" title="Cool IT">Cool IT</a></li>
+												</ul>
+											</li>
+											<li><a href="/international/en/news/features/" title="Feature Stories">Feature Stories</a></li>
+										</ul>
+									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<a href="/international/en/multimedia/" title="Multimedia"><span>Multimedia</span></a>
-							<div class="drop-holder">
-								<div class="drop-content">
-									<ul>
-										<li><a href="/international/en/multimedia/photos/" title="Photos">Photos</a></li>
-										<li><a href="/international/en/multimedia/videos/" title="Videos">Videos</a></li>
-										<li><a href="/international/en/multimedia/slideshows/" title="Slideshows">Slideshows</a></li>
-										<li><a href="/international/en/multimedia/photo-essays/" title="Photo Essays">Photo Essays</a></li>
-										<li><a href="/international/en/multimedia/goodies/" title="Goodies">Goodies</a></li>
-										<li>
-											<a href="/international/en/multimedia/ship-webcams/" class="drop" title="Ship webcams">Ship webcams</a>
-											<ul>
-												<li><a href="/international/en/multimedia/ship-webcams/Rainbow-Warrior-Webcam/" title="Rainbow Warrior Webcam">Rainbow Warrior Webcam</a></li>
-												<li><a href="/international/en/multimedia/ship-webcams/Arctic-Sunrise-Webcam/" title="Arctic Sunrise Webcam">Arctic Sunrise Webcam</a></li>
-												<li><a href="/international/en/multimedia/ship-webcams/Esperanza-Webcam/" title="Esperanza webcam">Esperanza webcam</a></li>
-											</ul>
-										</li>
-									</ul>
+							</li>
+							<li>
+								<a href="/international/en/multimedia/" title="Multimedia"><span>Multimedia</span></a>
+								<div class="drop-holder">
+									<div class="drop-content">
+										<ul>
+											<li><a href="/international/en/multimedia/photos/" title="Photos">Photos</a></li>
+											<li><a href="/international/en/multimedia/videos/" title="Videos">Videos</a></li>
+											<li><a href="/international/en/multimedia/slideshows/" title="Slideshows">Slideshows</a></li>
+											<li><a href="/international/en/multimedia/photo-essays/" title="Photo Essays">Photo Essays</a></li>
+											<li><a href="/international/en/multimedia/goodies/" title="Goodies">Goodies</a></li>
+											<li>
+												<a href="/international/en/multimedia/ship-webcams/" class="drop" title="Ship webcams">Ship webcams</a>
+												<ul>
+													<li><a href="/international/en/multimedia/ship-webcams/Rainbow-Warrior-Webcam/" title="Rainbow Warrior Webcam">Rainbow Warrior Webcam</a></li>
+													<li><a href="/international/en/multimedia/ship-webcams/Arctic-Sunrise-Webcam/" title="Arctic Sunrise Webcam">Arctic Sunrise Webcam</a></li>
+													<li><a href="/international/en/multimedia/ship-webcams/Esperanza-Webcam/" title="Esperanza webcam">Esperanza webcam</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<a href="/international/en/getinvolved/" title="Get involved"><span>Get involved</span></a>
-							<div class="drop-holder">
-								<div class="drop-content">
-									<ul>
-										<li><a href="/international/en/getinvolved/Stop-Scientific-Whaling/" title="Stop Scientific Whaling">Stop Scientific Whaling</a></li>
-									</ul>
+							</li>
+							<li>
+								<a href="/international/en/getinvolved/" title="Get involved"><span>Get involved</span></a>
+								<div class="drop-holder">
+									<div class="drop-content">
+										<ul>
+											<li><a href="/international/en/getinvolved/Stop-Scientific-Whaling/" title="Stop Scientific Whaling">Stop Scientific Whaling</a></li>
+										</ul>
+									</div>
 								</div>
-							</div>
-						</li>
-						<li><a href="/international/en/supportus/" class="donate primary button" title="Donate" target="_blank">Donate</a></li>
-					</ul>
-					<!--ul class="sign" id="signin">
-						<li><a href="/international/en/My/login/?returnUrl=%2finternational%2fen%2fTesting%2f5019-HTML5-Sample-Candidtate%2f" title="Sign in"> Sign in</a></li>
-						<li> New here? <a href="/international/en/My/Signup/" title="Sign up!"> Sign up!</a></li>
-					</ul-->
+							</li>
+							<li><a href="/international/en/supportus/" class="donate primary button" title="Donate" target="_blank">Donate</a></li>
+						</ul>
+						<!--ul class="sign" id="signin">
+							<li><a href="/international/en/My/login/?returnUrl=%2finternational%2fen%2fTesting%2f5019-HTML5-Sample-Candidtate%2f" title="Sign in"> Sign in</a></li>
+							<li> New here? <a href="/international/en/My/Signup/" title="Sign up!"> Sign up!</a></li>
+						</ul-->
+					</div>
 				</nav>
 			</div>
 		</div>
@@ -591,7 +584,7 @@ Please don't let this happen. Thank you.
 
 <!-- Footer -->
 <footer>
-	<div class="footer container first highlight">
+	<div class="footer container first footer-highlight">
 		<div class="footer-holder page-section">
 			<ul>
 				<li>
@@ -621,7 +614,7 @@ Please don't let this happen. Thank you.
 			</ul>
 		</div>
 	</div>
-	<div class="footer container second sitemap">
+	<div class="footer container second footer-sitemap">
 		<div class="footer-holder page-section">
 			<ul class="links">
 				<li>
@@ -732,7 +725,7 @@ Please don't let this happen. Thank you.
 			</ul>
 		</div>
 	</div>
-	<div class="footer container small">
+	<div class="footer container footer-small">
 		<div class="footer-holder page-section">
 			<div class="copy-box">
 				<div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2013</span></div>
@@ -757,6 +750,7 @@ Please don't let this happen. Thank you.
 
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/v03/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+<script src="js/default/compat/narrow.js"></script>
 <script src="js/v03/vendor/xregexp-min.js"></script>
 <script src="js/v03/lib/xregexp-unicode.min.js"></script>
 <script src="js/v03/lib/jquery.validate.js"></script>

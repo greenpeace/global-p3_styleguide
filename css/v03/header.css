@@ -10,7 +10,7 @@
 .heading {
 	width: 100%;
 }
-.heading.first {
+.heading-first {
 	background: #66CC00;
 	height: 3.75em; /* 60px */
 }
@@ -19,13 +19,13 @@
 	margin: auto;
 }
 
-.second .heading-holder { /* allows mobile menu to absolute it's way to the top */
+.heading-second .heading-holder  { /* allows mobile menu to absolute it's way to the top */
   position: static;
 }
 
 @media only screen 
 and (min-width : 768px) {
-  .heading.second {
+  .heading-second {
         height: 1.6875em; /* 27px */
         background: #57b105;   
         border-top: 1px solid #4EA600;
