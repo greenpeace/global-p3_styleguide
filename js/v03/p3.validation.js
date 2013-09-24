@@ -1,29 +1,15 @@
-// Avoid `console` errors in browsers that lack a console.
-(function() {
-    var method;
-    var noop = function() {
-    };
-    var methods = [
-        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-        'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-        'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-        'timeStamp', 'trace', 'warn'];
-    var l = methods.length;
-    var console = (window.console = window.console || {});
-
-    while (l--) {
-        method = methods[l];
-
-        // Only stub undefined methods.
-        if (!console[method]) {
-            console[method] = noop;
-        }
-    }
-}());
-
-// Validation plugin 0.1
-;
+/**!
+ * @name p3.Validation
+ * @fileOverview Validates form data agains XRegExp rules obtained remotely
+ * @author <a href="mailto:hello@raywalker.it">Ray Walker</a>
+ * @version 0.1
+ * @example
+ * $.p3.counter('#action-form'[, options]);
+ */
+/* global Modernizr, XRegExp */
 (function($) {
+    'use strict';
+    
     var _p3 = $.p3 || {},
     defaults = {
         jsonURL: 'https://www.greenpeace.org/api/p3/pledge/config.json',
@@ -34,7 +20,7 @@
             // Note for end users: when overriding or creating tests,
             // character strings must be double escaped: \\ instead of \
             // http://stackoverflow.com/questions/16572123/javascript-regex-invalid-range-in-character-class
-            alphaPlus: "^\[\\p{L}\\p{N}\\.\\-\\'\\,\\/\]+$",
+            alphaPlus: "^[\\p{L}\\p{N}\\.\\-\\'\\,\\/]+$",
             numeric: "^\\p{N}+$",
             alpha: "^\\p{L}+$"
         },
@@ -103,7 +89,7 @@
                 });
             }
         });
-    }
+    };
     
     // Overwrite previous namespaced object
     $.p3 = _p3;
