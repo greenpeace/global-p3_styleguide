@@ -1,10 +1,10 @@
 /**!
- * @name p3.Validation
- * @fileOverview Validates form data agains XRegExp rules obtained remotely
+ * @name p3.validation
+ * @fileOverview Validates form data agains XRegExp rules obtained via JSON endpoint
  * @author <a href="mailto:hello@raywalker.it">Ray Walker</a>
  * @version 0.1
  * @example
- * $.p3.counter('#action-form'[, options]);
+ * $.p3.validation('#action-form'[, options]);
  */
 /* global Modernizr, XRegExp */
 (function($) {
@@ -24,6 +24,7 @@
             numeric: "^\\p{N}+$",
             alpha: "^\\p{L}+$"
         },
+        fallbackHTML5: true,
         errorElement: 'span',
         errorPlacement: function (error, element) {
             $(element).parent().find('div.message').html(error);
@@ -45,8 +46,9 @@
             ],
             complete: function() {
                 $.getJSON(config.jsonURL, function(data) {
-                    var messageDiv = '<div class="message"></div>',
-                    $el = $(el);
+                    var messageDiv = '<div class="message"></div>',                    
+                    $el = $(el),
+                    $form = $el.is('form') ? $el : $('form',el);
                     
                     $.extend(true, config, data || {});
 
@@ -56,11 +58,11 @@
                         try {
                             // Create a new validator method
                             $.validator.addMethod(name, function(value, element) {
-                                console.log('Testing '+value+' against '+regexp);
+//                                console.log('Testing '+value+' against '+regexp);
                                 var reg = new XRegExp(regexp);
                                 return this.optional(element) || reg.test(value);
                             });     
-                            console.log("Added test '" +name + "': '" + regexp + "'");
+//                            console.log("Added test '" +name + "': '" + regexp + "'");
                         } catch(err) {
 //                            console.log("Failed to add test '" + name + "' with regex '" + regexp + "'");
                         }
@@ -69,7 +71,7 @@
                     
                     // Add message div to required fields
                     // if it doesn't already exist in template
-                    $el.find('div.input.required').each( function () {
+                    $form.find('div.input.required').each( function () {
                         var $this = $(this);
 
                         if (!$this.find('div.message').length) {
@@ -77,15 +79,19 @@
                         }
                         
                     });                   
-                        
                     // And finally go ahead and validate the form
-                    $el.validate(config);
+                    $form.validate(config);
 
                 }).error(function() {
                     // Failed to obtain JSON, fallback to html5 validation
-                    console.log('JSON failed to load: ' + config.jsonURL);
-
-                    //$('input[type=submit]',el).attr('disabled','disabled').addClass('disabled');
+                    console.log('WARNING: JSON failed to load from: ' + config.jsonURL);
+                    if (config.fallbackHTML5) {
+                        console.log('WARNING: Using native HTML5 validation')
+                    } else {
+                        
+                        $('input[type=submit]',el).attr('disabled','disabled').addClass('disabled');
+                        throw new Error('Form input disabled');
+                    }
                 });
             }
         });

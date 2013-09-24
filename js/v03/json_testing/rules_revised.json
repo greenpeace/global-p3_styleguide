@@ -1,0 +1,27 @@
+{
+    "status": "",
+    "errors": {},
+    "actionname": "api test",
+    "rules": {
+        "firstname": "required",
+        "lastname": "required",
+        "email": {
+            "required": true,
+            "minlength": "6",
+            "email": true
+        }
+    },
+    "messages": {
+        "firstname": "Enter your first name",
+        "lastname": "Enter your last name",
+        "phone": "Please enter your phone number",
+        "postcode": "Please enter your postcode",
+        "email": {
+            "required": "Please enter a valid email address",
+            "minlength": "Please enter a valid email address"
+        }
+    },
+    "tests": {
+        "alphanumeric": "^[\\p{L}\\p{N}]+$"
+    }
+}
