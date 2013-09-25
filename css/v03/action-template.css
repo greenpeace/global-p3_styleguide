@@ -58,7 +58,12 @@
 	font-size:0.875em; /* 14px */
 	line-height:1.4em;
 }
-
+#action-smallprints .remember {
+    margin-top:0.5em;
+}
+#action-smallprints .remember input[type=checkbox] {
+    display: inline;
+}
 /*
 	Action Counter
 
