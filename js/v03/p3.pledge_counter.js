@@ -1,11 +1,18 @@
 /**!
- * @name Greenpeace Pledge Signing Counter animation for template version 0.3
- * @fileOverview Animated pledge count percentage bar & text.
- *              Can be event driven or directly invoked, enabling the JSON data to be reused with another plugin (eg Recent Signers) 
- * @version 0.1
- * @author Ray Walker <hello@raywalker.it>
- * @example
- * $.p3.counter('#action-counter'[, options]);
+ * 
+ * 
+ * @fileOverview    Greenpeace Pledge Signing Counter for Action Template v0.3
+ *                  Animated pledge percentage bar & text, 
+ *                  Can be event driven or directly invoked, enabling the JSON
+ *                  data to be reused with another plugin (eg Recent Signers)                                   
+ * @version         0.1
+ * @author          Ray Walker <hello@raywalker.it>
+ * @copyright       Copyright 2013, Greenpeace International
+ * @license         MIT License (opensource.org/licenses/MIT)
+ * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
+ *                  <a href="http://modernizr.com/">Modernizr</a>
+ * @example         $.p3.counter('#action-counter'[, options]);
+ * 
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
@@ -17,19 +24,18 @@
         uuid: false,                                    /* Use this to specify the UUID of the pledge in the returned JSON, 
                                                          * else the script will search the passed element for a data-pledge-uuid attribute and use that, 
                                                          * and if both are null, it will default to processing the first pledge it finds */
-        meterElement: '.completed',                     /* Selector for the bar to animated */
-        textElement: '#action-counter-textual',         /* Selector for the text to update, eg 100 have joined so far. The target is 200 */
-        fetchFrequency: 30000,                          /* time to wait to fetch next value from server (in milliseconds) */
-        updateSpeed: 25,                                /* this is the value update speed (in milliseconds). Change this value to make animation faster or slower */
+        meterElement:       '.completed',               /* Selector for the bar to animated */
+        textElement:        '#action-counter-textual',  /* Selector for the text to update, eg 100 have joined so far. The target is 200 */
+        fetchFrequency:     30000,                      /* time to wait to fetch next value from server (in milliseconds) */
+        updateSpeed:        25,                         /* this is the value update speed (in milliseconds). Change this value to make animation faster or slower */
         initialAnimationTotalDuration: 2500,            /* change this value to set the total duration of the first fetch animation (how many milliseconds takes
                                                            the progress bar from 0 to the current value */
-        animationDuration: 0,                           /* change this value to set the duration of the progress animation. Set it to 0 to make no animation */
-        dataElement: 'body',                            /* Element where the pledge JSON is stored */
-        dataNamespace: 'pledgeCounter',                 /* Namespace to use for stored JSON - change this if using multiple counters per page */
-        eventDriven: false,                             /* set to true to trigger update externally */
-        fetchDataEvent:     'fetchPledgeData',          /* trigger this event to fetch begin processing JSON data */
+        dataElement:        'body',                     /* Element where the pledge JSON is stored */
+        dataNamespace:      'pledgeCounter',            /* Namespace to use for stored JSON - change this if using multiple counters per page */
+        eventDriven:        false,                      /* set to true to trigger update externally */
+        fetchDataEvent:     'fetchPledgeData',          /* trigger this event to fetch JSON data from the endpoint */
         fetchCompleteEvent: 'fetchPledgeDataComplete',  /* trigger this event if you have fetched data externally and just want to parse and update display */
-        jsonURL: 'https://www.greenpeace.org/api/p3/pledge/config.json'
+        jsonURL:            'https://www.greenpeace.org/api/p3/pledge/config.json'
     };
     
     _p3.pledge_counter = function(el, options) {
@@ -41,7 +47,7 @@
         paused = false,
         currentValue = 0,
         step = 0,
-        progress = { // stores parsed pledge data
+        progress = {
             count: 0,
             target: 0
         },
@@ -148,6 +154,11 @@
             updateProgress();
         },
         fetchJSON = function () {
+            $.ajaxSetup ({
+                // Disable caching of AJAX responses
+                cache: false
+            });
+            
             $.getJSON(config.jsonURL, function(json) {
                 parsePledgeData(json);
             });

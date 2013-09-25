@@ -1,19 +1,27 @@
 /**!
- * @name p3.validation
- * @fileOverview Validates form data agains XRegExp rules obtained via JSON endpoint
- * @author <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version 0.1
- * @example
- * $.p3.validation('#action-form'[, options]);
+ * p3.validation.js
+ * 
+ * @fileOverview Wrapper over the jquery.validation.js plugin for Greenpeace 
+ *               Action Template v03.
+ *               Validates form data against XRegExp rules obtained via JSON endpoint
+ * @author      <a href="mailto:hello@raywalker.it">Ray Walker</a>
+ * @version     0.1
+ * @copyright	Copyright 2013, Greenpeace International
+ * @license	MIT License (opensource.org/licenses/MIT)
+ * @requires    <a href="http://jquery.com/">jQuery 1.7+</a>,
+ *              <a href="http://modernizr.com/">Modernizr</a>,
+ *              <a href="http://xregexp.com/">XRegExp</a>
+ *              <a href="http://jqueryvalidation.org/">jQuery Validate</a>
+ * @example     $.p3.validation('#action-form'[, options]);
+ * 
  */
 /* global Modernizr, XRegExp */
 (function($) {
     'use strict';
     
-    var _p3 = $.p3 || {},
+    var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
     defaults = {
-        jsonURL: 'https://www.greenpeace.org/api/p3/pledge/config.json',
-        showSummary: true,
+        jsonURL: 'https://www.greenpeace.org/api/p3/pledge/config.json',        
         tests: {
             // Matches all unicode alphanumeric characters, including accents
             // plus . , - ' / 
@@ -23,22 +31,27 @@
             alphaPlus: "^[\\p{L}\\p{N}\\.\\-\\'\\,\\/]+$",
             numeric: "^\\p{N}+$",
             alpha: "^\\p{L}+$"
-        },
+        },   
+       // Not implemented
+        showSummary: false,
+        // Enable HTML5 fallback if the JSON query fails
         fallbackHTML5: true,
+        // Error element to use instead of jquery.validate default <label>
         errorElement: 'span',
+        // Overrides jquery.validate default positioning
         errorPlacement: function (error, element) {
             $(element).parent().find('div.message').html(error);
-        }        
+        }
     };
     
-    _p3.validation = function(el, config) {
+    _p3.validation = function(el, options) {
 
-        config = $.extend(true, defaults, config || {});
+        var config = $.extend(true, defaults, options || {});
         
         if (config.showSummary) {
             config.summaryElement = $('.errorSummary',el).length ? $('.errorSummary',el) : $(el).prepend('<div class="errorSummary"></div>');
         }
-
+        
         Modernizr.load({
             test: window.JSON,
             nope: [
@@ -51,7 +64,6 @@
                     $form = $el.is('form') ? $el : $('form',el);
                     
                     $.extend(true, config, data || {});
-
                     // Foreach data.tests ...
                     $.each(config.tests, function (name, regexp) {
                         // Don't trust the user entered data
@@ -86,9 +98,8 @@
                     // Failed to obtain JSON, fallback to html5 validation
                     console.log('WARNING: JSON failed to load from: ' + config.jsonURL);
                     if (config.fallbackHTML5) {
-                        console.log('WARNING: Using native HTML5 validation')
-                    } else {
-                        
+                        console.log('WARNING: Using native HTML5 validation');
+                    } else {                        
                         $('input[type=submit]',el).attr('disabled','disabled').addClass('disabled');
                         throw new Error('Form input disabled');
                     }

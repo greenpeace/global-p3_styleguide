@@ -1,12 +1,17 @@
 /**!
- * Greenpeace Email-only Pledge signing version 0.1
+ * Greenpeace Email-only Pledge Signing for Action Template v0.3
  * 
- * @fileOverview Checks if visitor can sign in using only an email address
- *               Prompts for missing fields
- * @version 0.1
- * @author Ray Walker <hello@raywalker.it>
- * @example
- * $.p3.pledge_with_email_only('#action-form'[, options]);
+ * @fileOverview    Checks if visitor can sign in using only an email address
+ *                  Prompts for missing fields
+ * @copyright       Copyright 2013, Greenpeace International
+ * @license         MIT License (opensource.org/licenses/MIT)
+ * @version         0.1
+ * @author          Ray Walker <hello@raywalker.it>
+ * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
+ *                  <a href="http://modernizr.com/">Modernizr</a>,
+ *                  <a href="https://github.com/greenpeace/client-code-styleguide/blob/master/js/v03/p3.validation.js">p3.validation.js</a>
+ * @example         $.p3.pledge_with_email_only('#action-form'[, options]);
+ * 
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
@@ -15,10 +20,15 @@
     
     var _p3 = $.p3 || {},
     defaults = {
+        /* Selector for the email input field */
         emailField: '#UserEmail',
-        identifyUserBy: 'email',                                                    /* Valid options are 'email', 'uuid' */
+        /* Valid options: 'email', 'uuid' (uuid not yet implemented) */
+        identifyUserBy: 'email',
+        /* Data attribute for user identifier (unused) */
         userDataAttr: 'user',
-        pageDataAttr: 'uuid',                                                     /* Valid options: 'uuid', 'id', 'name' */
+        /* Data attribute for action page identifier.
+         * Valid options: 'uuid', 'id', 'name' */
+        pageDataAttr: 'uuid',                                                     
         expiryDataAttr: 'expiry',
         registrationFields: '#action-form-register',                               
         exceptionFields: '#action-form-message, #action-smallprints',
@@ -35,13 +45,46 @@
         $emailField = $(config.emailField),
         $submit = $('input[type=submit]',$form),
         checkSigner = true,
+        getParameter = function (url, parameter) {
+            var urlparts = url.split('?');   /* prefer to use l.search if you have a location/link object */
+            if (urlparts.length >= 2) {
+                var prefix = encodeURIComponent(parameter) + '=',
+                parts = urlparts[1].split(/[&;]/g);
+                for (var i = 0; ++i < parts.length; )  {  
+                    if (parts[i].lastIndexOf(prefix, 0) !== -1) {
+                        return parts[i].replace(prefix,'');
+                    }
+                }
+            }
+        },
+        removeParameter = function (url, parameter) {
+            var urlparts = url.split('?');   /* prefer to use l.search if you have a location/link object */
+            if (urlparts.length >= 2) {
+                var prefix = encodeURIComponent(parameter) + '=',
+                parts = urlparts[1].split(/[&;]/g);
+                // reverse iteration as may be destructive
+                for (var i = parts.length; i-- > 0; )  {             
+                    // idiom for string.startsWith
+                    if (parts[i].lastIndexOf(prefix, 0) !== -1)     {
+                        parts.splice(i, 1);
+                    }
+                }
+                url = urlparts[0];
+                if (parts.length) {
+                    url = url + '?' + parts.join('&');
+                }
+            }            
+            return url;
+        },        
         query = {
             user: '',
-            page: $el.data(config.pageDataAttr) || config.pageUUID || config.pageID|| config.pageName,
-            expiry: $el.data(config.expiryDataAttr) || config.expiry
-        },       
+            page: getParameter(config.signerCheckURL, 'page') || $el.data(config.pageDataAttr) || config.pageUUID || config.pageID|| config.pageName || '',
+            expiry: getParameter(config.signerCheckURL, 'expiry') || $el.data(config.expiryDataAttr) || config.expiry || ''
+        },
         setPageIdentifier = function () {
-            if (!query.page) {
+            config.signerCheckURL = removeParameter(config.signerCheckURL,'user');
+            
+            if (query.page === '') {
                 throw new Error('Page identifier not found');
             }            
         },
@@ -52,31 +95,33 @@
                 break;
             case 'uuid':
                 throw new Error('uuid not implemented');
+            default:
+                throw new Error('config.identifyUserBy: ' + config.identifyUserBy + ' invalid');
             }
         },
         setExpiryDate = function () {
-            if (!query.expiry) {
+            config.signerCheckURL = removeParameter(config.signerCheckURL,'expiry');
+            if (query.expiry === '') {
                 console.log('WARNING: No expiry date set');
-            }  
+            }
         },
         /**
          * @description Performs the json query against signer check endpoint
-         * @returns {boolean} True if user can pledge using only email address
+         * @returns     {boolean} True if user can pledge using only email address
          */
         canSign = function() {
             $submit.prop('disabled','disabled').addClass('disabled');
-            var parameters = {
-                user: encodeURIComponent(query.user),
-                page: query.page
-            };
+                        
+            $.each(query, function () {
+                if (this.length) {
+                    encodeURIComponent(this);
+                }                
+            });                        
             
-            $.ajaxSetup ({
-                // Disable caching of AJAX responses
-                cache: false
-            });
-            
-            $.getJSON(config.jsonURL, parameters, function (response) {
-                setTimeout( function () { $submit.removeProp('disabled').removeClass('disabled') }, 250);
+            $.getJSON(config.signerCheckURL, query, function (response) {
+                setTimeout(function() {
+                    $submit.removeProp('disabled').removeClass('disabled');
+                }, 250);
                 if (response.status === 'success') {
                     return true;
                 } else if (response.errors.pledge) {
@@ -88,7 +133,7 @@
                     showMissingFields(response);
                     return false;
                 }
-            }).error(function (e) {
+            }).error(function () {
                 throw new Error('Signer API request failed');
             });
         },
@@ -104,7 +149,7 @@
                         $input = $('input', $field);
 
                         if (!$message.length) {
-                            $field.append(messageText)
+                            $field.append(messageText);
                             $message = $('.message', $field);
                         }
                         $message.html('<span class="error" for="'+$input.attr('id')+'">' + errorText + '</span>');
@@ -126,7 +171,7 @@
             
             setPageIdentifier();
             setExpiryDate();
-            
+
             // Initialise validation plugin
             $.p3.validation($form, {
                 jsonURL: config.validationRulesURL,
