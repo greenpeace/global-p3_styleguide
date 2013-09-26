@@ -21,21 +21,21 @@
     var _p3 = $.p3 || {},
     defaults = {
         /* Selector for the email input field */
-        emailField: '#UserEmail',
+        emailField:             '#UserEmail',
         /* Valid options: 'email', 'uuid' (uuid not yet implemented) */
-        identifyUserBy: 'email',
+        identifyUserBy:         'email',
         /* Data attribute for user identifier (unused) */
-        userDataAttr: 'user',
+        userDataAttr:           'user',
         /* Data attribute for action page identifier.
          * Valid options: 'uuid', 'id', 'name' */
-        pageDataAttr: 'uuid',                                                     
-        expiryDataAttr: 'expiry',
-        registrationFields: '#action-form-register',                               
-        exceptionFields: '#action-form-message, #action-smallprints',
-        signerCheckURL: 'https://www.greenpeace.org/api/public/pledges/signercheck.json',
-        validationRulesURL: 'https://www.greenpeace.org/api/p3/pledge/config.json',
-        animationDuration: 350,
-        fallbackHTML5: false
+        pageDataAttr:           'uuid',                                                   
+        expiryDataAttr:         'expiry',
+        registrationFields:     '#action-form-register',                               
+        exceptionFields:        '#action-form-message, #action-smallprints',
+        signerCheckURL:         'https://www.greenpeace.org/api/public/pledges/signercheck.json',
+        validationRulesURL:     'https://www.greenpeace.org/api/p3/pledge/config.json',
+        animationDuration:      350,
+        fallbackHTML5:          false
     };
     
     _p3.pledge_with_email_only = function(el, options) {
@@ -45,36 +45,39 @@
         $emailField = $(config.emailField),
         $submit = $('input[type=submit]',$form),
         checkSigner = true,
+        getSplitURL = function (url) {
+            console.log('split: ' + url);
+            var urlparts = url.split('?');
+            return {
+                url: urlparts[0],
+                parameters: (urlparts.length >= 2) ? urlparts[1].split(/[&;]/g) : {}
+            };
+        },
         getParameter = function (url, parameter) {
-            var urlparts = url.split('?');   /* prefer to use l.search if you have a location/link object */
-            if (urlparts.length >= 2) {
-                var prefix = encodeURIComponent(parameter) + '=',
-                parts = urlparts[1].split(/[&;]/g);
-                for (var i = 0; ++i < parts.length; )  {  
-                    if (parts[i].lastIndexOf(prefix, 0) !== -1) {
-                        return parts[i].replace(prefix,'');
+            var parts = getSplitURL(url);
+            if (parts.parameters.length) {
+                var prefix = encodeURIComponent(parameter) + '=';                
+                for (var i = 0; ++i < parts.parameters.length; )  {  
+                    if (parts.parameters[i].lastIndexOf(prefix, 0) !== -1) {
+                        return parts.parameters[i].replace(prefix,'');
                     }
                 }
             }
         },
         removeParameter = function (url, parameter) {
-            var urlparts = url.split('?');   /* prefer to use l.search if you have a location/link object */
-            if (urlparts.length >= 2) {
-                var prefix = encodeURIComponent(parameter) + '=',
-                parts = urlparts[1].split(/[&;]/g);
+            var parts = getSplitURL(url);
+            if (parts.parameters.length) {
+                var prefix = encodeURIComponent(parameter) + '='; 
                 // reverse iteration as may be destructive
-                for (var i = parts.length; i-- > 0; )  {             
+                for (var i = parts.parameters.length; i-- > 0; )  {             
                     // idiom for string.startsWith
-                    if (parts[i].lastIndexOf(prefix, 0) !== -1)     {
-                        parts.splice(i, 1);
+                    if (parts.parameters[i].lastIndexOf(prefix, 0) !== -1)     {
+                        console.log("Removing parameter "+parameter+" from "+url);
+                        parts.parameters.splice(i, 1);
                     }
                 }
-                url = urlparts[0];
-                if (parts.length) {
-                    url = url + '?' + parts.join('&');
-                }
-            }            
-            return url;
+            }
+            return parts.url + (parts.parameters.length > 0 ? '?' + parts.parameters.join('&') : '');
         },        
         query = {
             user: '',
@@ -82,13 +85,14 @@
             expiry: getParameter(config.signerCheckURL, 'expiry') || $el.data(config.expiryDataAttr) || config.expiry || ''
         },
         setPageIdentifier = function () {
-            config.signerCheckURL = removeParameter(config.signerCheckURL,'user');
+            config.signerCheckURL = removeParameter(config.signerCheckURL,'page');
             
             if (query.page === '') {
                 throw new Error('Page identifier not found');
             }            
         },
         setUserIdentifier = function () {
+            config.signerCheckURL = removeParameter(config.signerCheckURL,'user');
             switch (config.identifyUserBy) {
             case 'email':
                 query.user = $emailField.val();
