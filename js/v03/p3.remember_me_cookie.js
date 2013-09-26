@@ -46,8 +46,8 @@
 
         var config = $.extend(true, defaults, settings || {}),
         $form = $(el).is('form') ? $(el) : $('form:first', el),
-        $rememberMe = $(config.rememberMeSelector, $form),        
-        $emailField = $form.find(config.emailSelector).first(),
+        $rememberMe = $(config.rememberMeSelector, $form).first(),        
+        $emailField = $(config.emailSelector, $form).first(),
         keepRememberMe = (config.keepRememberMeState && M.localstorage) ? true : false;
         
         $.cookie.defaults = { expires: config.expires, secure: config.secure };
