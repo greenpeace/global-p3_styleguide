@@ -1,6 +1,5 @@
 {
-    "status": "",
-    "errors": {},
+    "status": "success",
     "actionname": "api test",
     "rules": {
         "firstname": "required",
