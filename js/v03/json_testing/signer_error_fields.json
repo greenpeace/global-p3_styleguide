@@ -3,7 +3,9 @@
     "errors": {
         "user": {
             "phone": "Please provide your phone number",
-            "lastname": "Please enter your last name"
+            "lastname": "Please enter your last name",
+            "postcode": "Please enter your postcode",
+            "website":  "Please enter your website"
         }
     },
     "user": {
@@ -17,7 +19,8 @@
         "firstname": true,
         "lastname": false,
         "country": true,
-        "phone": false
+        "phone": false,
+        "postcode": false
     },
     "page": {
         "uuid": "550e8401-e29b-41d4-a716-446678440294",

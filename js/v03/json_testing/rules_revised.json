@@ -3,16 +3,31 @@
     "actionname": "api test",
     "rules": {
         "firstname": "required",
-        "lastname": "required",
+        "lastname": {
+            "alphaPlus": true,
+            "required": true,
+            "minlength": 4
+        },
         "email": {
             "required": true,
             "minlength": "6",
             "email": true
+        },
+        "website": {
+            "required": true,
+            "website": true
+        },
+        "postcode": {
+            "required": true,
+            "alphanumeric": true
         }
     },
     "messages": {
         "firstname": "Enter your first name",
-        "lastname": "Enter your last name",
+        "lastname": {
+            "required": "Please enter your last name",
+            "minlength": "Last name not long enough (min length 4)"
+        },
         "phone": "Please enter your phone number",
         "postcode": "Please enter your postcode",
         "email": {
@@ -21,6 +36,7 @@
         }
     },
     "tests": {
-        "alphanumeric": "^[\\p{L}\\p{N}]+$"
+        "alphanumeric": "^[\\p{L}\\p{N}]+$",
+        "website": "(http(s)?://)?([\\w-]+\\.)+[\\w-]+[.com]+(/[/?%&=]*)?"
     }
 }
