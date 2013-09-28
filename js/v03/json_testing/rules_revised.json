@@ -33,7 +33,8 @@
         "firstname": "Enter your first name",
         "lastname": {
             "required": "Please enter your last name",
-            "minlength": "Last name not long enough (min length 4)"
+            "minlength": "Last name not long enough (min length 4)",
+            "alphaPlus": "Please enter a valid name"
         },
         "phone": "Please enter your phone number",
         "postcode": "Please enter your postcode",
