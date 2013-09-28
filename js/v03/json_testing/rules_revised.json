@@ -40,6 +40,9 @@
         "email": {
             "required": "Please enter a valid email address",
             "minlength": "Please enter a valid email address"
+        },
+        "website": {
+            "required": "Please enter your website address"
         }
     },
     "tests": {
