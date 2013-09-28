@@ -33,14 +33,14 @@
         "firstname": "Enter your first name",
         "lastname": {
             "required": "Please enter your last name",
-            "minlength": "Last name not long enough (min length 4)",
+            "minlength": "Last name not long enough (min length {0})",
             "alphaPlus": "Please enter a valid name"
         },
         "phone": "Please enter your phone number",
         "postcode": "Please enter your postcode",
         "email": {
             "required": "Please enter a valid email address",
-            "minlength": "Please enter a valid email address"
+            "minlength": "Please enter a valid email address (at least 6 characters)"
         },
         "website": {
             "required": "Please enter your website address",
