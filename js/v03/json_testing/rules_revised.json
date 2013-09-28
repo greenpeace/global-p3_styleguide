@@ -42,7 +42,8 @@
             "minlength": "Please enter a valid email address"
         },
         "website": {
-            "required": "Please enter your website address"
+            "required": "Please enter your website address",
+            "website": "Please enter a valid website address"
         }
     },
     "tests": {
