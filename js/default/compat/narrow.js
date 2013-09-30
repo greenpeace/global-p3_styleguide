@@ -6,6 +6,7 @@
  */
 function checkNarrow(){
   var size = {
+    threetwo: 320,
     four: 400,
     five: 500,
     six: 600,
@@ -14,8 +15,9 @@ function checkNarrow(){
     sevensome: 768,
     eightfive: 850,
     nine: 900,
-    tablet: 500,
-    desktop: 950
+    tablet: 480,
+    desktop: 1024,
+    large: 1600
   };
   jQuery.each(size, function(cls, size) {
     if (jQuery(window).width() >= size) {
