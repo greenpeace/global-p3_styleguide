@@ -58,7 +58,7 @@
         });
   
         $.p3.pledge_with_email_only('#action-form', {
-            signerCheckURL: 'js/v03/json_testing/signer_error_fields.json?user=fish&page=chickens&expiry=42',
+            signerCheckURL: 'js/v03/json_testing/signer_error_pledge.json?user=fish&page=chickens&expiry=42',
             pageUUID: '550e8401-e29b-41d4-a716-446678440294',
             validationRulesURL: 'js/v03/json_testing/rules_revised.json'
         });

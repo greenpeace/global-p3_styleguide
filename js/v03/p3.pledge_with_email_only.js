@@ -128,7 +128,16 @@
                     return true;
                 } else if (response.errors.pledge) {
                     /* @todo This notification is not very user friendly */
-                    alert(response.errors.pledge.unique);
+//                    alert(response.errors.pledge.unique);
+                    var $emailContainer = $emailField.parents('.input.email:first'),
+                    $messageField = $('.message', $emailContainer);                    
+                    
+                    if (!$messageField.length) {
+                        $emailContainer.append('<div class="message"></div>');                        
+                        $messageField = $('.message', $emailContainer);
+                    }
+                    $messageField.append('<span class="error" for="'+$emailField.attr('id')+'">' + response.errors.pledge.unique + '</span>');
+                    $emailField.addClass('error');
                     return false;
                 } else {
                     checkSigner = false;
