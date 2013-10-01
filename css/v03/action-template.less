@@ -58,7 +58,12 @@
 	font-size:0.875em; /* 14px */
 	line-height:1.4em;
 }
-
+#action-smallprints .remember {
+    margin-top:0.5em;
+}
+#action-smallprints .remember input[type=checkbox] {
+    display: inline;
+}
 /*
 	Action Counter
 
@@ -70,6 +75,7 @@
 	margin:0.4em 0;
 }
 #action-counter-graphical {
+        transition:all 100ms ease-out;
 	display:none;
 	background:#e9ecf3;
 }
@@ -78,9 +84,11 @@
 	display:block;
 	text-align:right;
 	color:#FFF;
+        text-shadow:1px 1px 0 #4f4f4f;
 	font-weight:bold;
 	font-size:1.125em;
-	padding:.311em .444em;
+	padding:.311em 0;
+        text-indent:0.2em;        
 }
 #action-counter-graphical .objectives {
 	display:none;
