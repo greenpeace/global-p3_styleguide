@@ -193,7 +193,8 @@ ul.navigation {
 }
 
 #main-nav { /* mobile menu when not visible */
-	right: -50000px;
+	right: -50000px; /* JS will change this value 0 */
+	display: none; /* JS will change this value to block*/
 }
 
 .navigation li a {
@@ -226,6 +227,7 @@ and (min-width : 768px) {
           max-width: none;
 					background: none transparent;
 					padding: 0;
+					display: block;
 	}
 	
   ul.navigation {
