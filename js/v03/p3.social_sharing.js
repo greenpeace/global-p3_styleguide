@@ -11,6 +11,8 @@
  *                  <a href="http://modernizr.com/">Modernizr</a>,
  * @example         $.p3.social_sharing('#action-social-share'[, options]);
  * 
+ * @todo            Create a modal iframe dialogue for sharing
+ * 
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */

@@ -10,7 +10,7 @@
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
  *                  <a href="https://github.com/greenpeace/client-code-styleguide/blob/master/js/v03/p3.validation.js">p3.validation.js</a>
- * @example         $.p3.pledge_with_email_only('#action-form'[, options]);
+ * @example         $.p3.pledge_with_email_only('#action-form' [, options]);
  * 
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
@@ -46,7 +46,6 @@
         $submit = $('input[type=submit]',$form),
         checkSigner = true,
         getSplitURL = function (url) {
-            console.log('split: ' + url);
             var urlparts = url.split('?');
             return {
                 url: urlparts[0],
@@ -72,7 +71,6 @@
                 for (var i = parts.parameters.length; i-- > 0; )  {             
                     // idiom for string.startsWith
                     if (parts.parameters[i].lastIndexOf(prefix, 0) !== -1)     {
-                        console.log("Removing parameter "+parameter+" from "+url);
                         parts.parameters.splice(i, 1);
                     }
                 }
@@ -119,7 +117,7 @@
             $.each(query, function () {
                 if (this.length) {
                     encodeURIComponent(this);
-                }                
+                }
             });                        
             
             $.getJSON(config.signerCheckURL, query, function (response) {
@@ -129,8 +127,8 @@
                 if (response.status === 'success') {
                     return true;
                 } else if (response.errors.pledge) {
-                    /* @todo Already signed: show explanatory information */
-                    alert('Already signed!');
+                    /* @todo This notification is not very user friendly */
+                    alert(response.errors.pledge.unique);
                     return false;
                 } else {
                     checkSigner = false;
