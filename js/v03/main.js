@@ -21,7 +21,14 @@
     }
 }());
 
-
+/**!
+ * 
+ * 
+ * @param {object} $ jQuery
+ * @param {object} M Modernizr
+ * @returns {undefined}
+ */
+/* globals jQuery, Modernizr */
 (function($, M) {
     'use strict';
     var pledgeJSON = 'js/v03/json_testing/pledges.json';
@@ -33,22 +40,23 @@
 //            jsonURL: 'js/v03/json_testing/rules_revised.json',
 //        });
         
-// Show placeholders using javascript ?        
-// 
-//        M.load({
-//            test: M.input.placeholder,
-//            nope: [
-//                'js/default/compat/placeholders.min.js'
-//            ],
-//            complete: function() {
-//                // Doesn't like 
-//                $('input[placeholder]').each(function () {
-//                    $(this).focus();                    
-//                });
-//                
-//                $('body').focus();
-//            }
-//        });
+        // Show placeholders using javascript: unpleasant hack!
+        M.load({
+            test: M.input.placeholder,
+            nope: [
+                'js/default/compat/placeholders.min.js'
+            ],
+            complete: function() {
+                // placeholders plugin doesn't like hidden fields, 
+                // so force focus on them
+                $('input').each(function () {
+                    $(this).focus();
+                });
+                
+                // And back to the body
+                $('body').focus();
+            }
+        });
                
         $.p3.remember_me_cookie('#action-form');
         
@@ -58,7 +66,7 @@
         });
   
         $.p3.pledge_with_email_only('#action-form', {
-            signerCheckURL: 'js/v03/json_testing/signer_error_pledge.json?user=fish&page=chickens&expiry=42',
+            signerCheckURL: 'js/v03/json_testing/signer_error_fields.json?user=fish&page=chickens&expiry=42',
             pageUUID: '550e8401-e29b-41d4-a716-446678440294',
             validationRulesURL: 'js/v03/json_testing/rules_revised.json'
         });
