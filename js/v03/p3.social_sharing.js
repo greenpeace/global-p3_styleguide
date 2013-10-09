@@ -76,7 +76,6 @@
             while (rgx.test(x1)) {
                 x1 = x1.replace(rgx, '$1' + ',' + '$2');
             }
-            console.log(typeof int);
             return x1 + x2;
         }
 
