@@ -212,7 +212,6 @@
   html #action-ask,
   html #action-form,
   html #action-recent-signers {
-    clear: right;
     float: right;
     width: 260px;
     padding: 0 20px;
@@ -281,7 +280,6 @@
 .sevensome #action-ask,
 .sevensome #action-form,
 .sevensome #action-recent-signers {
-  clear: right;
   float: right;
   width: 260px;
   padding: 0 20px;
@@ -346,7 +344,6 @@
   html #action-ask,
   html #action-form,
   html #action-recent-signers {
-    clear: right;
     float: right;
     width: 340px;
     padding: 0 20px;
@@ -421,7 +418,6 @@
 .desktop #action-ask,
 .desktop #action-form,
 .desktop #action-recent-signers {
-  clear: right;
   float: right;
   width: 340px;
   padding: 0 20px;
