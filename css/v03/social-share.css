@@ -84,3 +84,9 @@
 	content:" ";
 	margin-top:-2px;
 }
+
+/* IE specific */
+.lt-ie8 .social-share li {
+	display:inline;
+	margin-right:.5em;   
+}
