@@ -35,6 +35,7 @@
           // setMainMenuActiveState();
         });
       }
+      $(this).blur();
       e.preventDefault();
       return false;
     });
@@ -53,10 +54,10 @@
         } else {
           ul.show();
         }
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
       }
-      e.preventDefault();
-      e.stopPropagation();
-      return false;
     });
 
     // reset the visibility when we hit the breakpoint 'desktop'
@@ -83,9 +84,12 @@
         mobileMenuIcon.hide();
         mainMenu.css({minHeight: '0px'});
         $('body').removeClass('mobilemenu-open');
-        // close any open submenus when switching to desktop
-        // but show the submenus of the active trail
-        $('ul ul', mainMenu).hide();
+        // reset the display, i.e. remove the element style
+        // otherwise the dropdown css in header.css will not work properly
+        // after the mobilemenu was used
+        $('ul ul', mainMenu).css('display', '');
+        $('.drop-holder', mainMenu).css('display', '');
+
         _mobilemenu.breakpoint_passed = true;
       }
       // we switch from desktop to tablet/mobile
