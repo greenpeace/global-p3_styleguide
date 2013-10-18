@@ -42,7 +42,8 @@
 #action-smallprints {
   margin: .25em 0;
 }
-#action-smallprints label, #action-smallprints input[type=checkbox] {
+#action-smallprints label,
+#action-smallprints input[type=checkbox] {
   display: none;
 }
 #action-smallprints input + label {
@@ -168,7 +169,8 @@
   margin-top: .4em;
 }
 /* input length to fit the screen */
-.action-template textarea, .action-template input {
+.action-template textarea,
+.action-template input {
   width: 90%;
 }
 .action-template select {
@@ -224,7 +226,9 @@
     clear: left;
     width: 380px;
   }
-  html #action-h2, html #action-ask, html #action-form {
+  html #action-h2,
+  html #action-ask,
+  html #action-form {
     background: #e9ecf3;
   }
   html #action-ask p {
@@ -239,7 +243,8 @@
   html #action-counter-graphical {
     display: block;
   }
-  html .action-template textarea, html .action-template input {
+  html .action-template textarea,
+  html .action-template input {
     width: 90%;
   }
   html .action-template select {
@@ -290,7 +295,9 @@
   clear: left;
   width: 380px;
 }
-.sevensome #action-h2, .sevensome #action-ask, .sevensome #action-form {
+.sevensome #action-h2,
+.sevensome #action-ask,
+.sevensome #action-form {
   background: #e9ecf3;
 }
 .sevensome #action-ask p {
@@ -305,7 +312,8 @@
 .sevensome #action-counter-graphical {
   display: block;
 }
-.sevensome .action-template textarea, .sevensome .action-template input {
+.sevensome .action-template textarea,
+.sevensome .action-template input {
   width: 90%;
 }
 .sevensome .action-template select {
@@ -344,7 +352,9 @@
     padding: 0 20px;
     margin: 0;
   }
-  html #action-h2, html #action-ask, html #action-form {
+  html #action-h2,
+  html #action-ask,
+  html #action-form {
     background: #e9ecf3;
   }
   html #action-ask p {
@@ -369,22 +379,23 @@
   html #action-counter-graphical {
     display: block;
   }
-  html .action-template textarea, html .action-template input[type=text] {
+  html #action-form .action-template textarea,
+  html #action-form .action-template input[type=text] {
     width: 19em;
   }
-  html .action-template select {
+  html #action-form .action-template select {
     width: 20em;
   }
-  html .action-template textarea {
+  html #action-form .action-template textarea {
     width: 23.5em;
   }
-  html .action-template .submit.full input {
+  html #action-form .action-template .submit.full input {
     width: 16.75em;
   }
-  html .action-template #action-submit-quick.submit {
+  html #action-form .action-template #action-submit-quick.submit {
     margin-right: 0;
   }
-  html .action-template #action-submit-full.submit {
+  html #action-form .action-template #action-submit-full.submit {
     margin-top: .5em;
     font-size: 1.25em;
   }
@@ -416,7 +427,9 @@
   padding: 0 20px;
   margin: 0;
 }
-.desktop #action-h2, .desktop #action-ask, .desktop #action-form {
+.desktop #action-h2,
+.desktop #action-ask,
+.desktop #action-form {
   background: #e9ecf3;
 }
 .desktop #action-ask p {
@@ -441,22 +454,23 @@
 .desktop #action-counter-graphical {
   display: block;
 }
-.desktop .action-template textarea, .desktop .action-template input[type=text] {
+.desktop #action-form .action-template textarea,
+.desktop #action-form .action-template input[type=text] {
   width: 19em;
 }
-.desktop .action-template select {
+.desktop #action-form .action-template select {
   width: 20em;
 }
-.desktop .action-template textarea {
+.desktop #action-form .action-template textarea {
   width: 23.5em;
 }
-.desktop .action-template .submit.full input {
+.desktop #action-form .action-template .submit.full input {
   width: 16.75em;
 }
-.desktop .action-template #action-submit-quick.submit {
+.desktop #action-form .action-template #action-submit-quick.submit {
   margin-right: 0;
 }
-.desktop .action-template #action-submit-full.submit {
+.desktop #action-form .action-template #action-submit-full.submit {
   margin-top: .5em;
   font-size: 1.25em;
 }
