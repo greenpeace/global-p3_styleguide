@@ -2,7 +2,7 @@
 (function($) {
   $(window).load(function() {
     // generate buttons hidden
-    $('#main-nav').before('<a href="#" id="mobilemenu-icon">Men&uuml;</a>');
+    $('.heading-first .logo').parent().append('<a href="#" id="mobilemenu-icon">Men&uuml;</a>');
     $('#main-nav').prepend('<a href="#" id="mobilemenu-close">close</a>');
     $('#mobilemenu-icon').hide();
     $('#mobilemenu-close').hide();
