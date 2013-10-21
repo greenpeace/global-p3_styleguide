@@ -268,7 +268,7 @@ ul.navigation {
   width: 40px;
   position: absolute;
   top: 10px;
-  right: 0;
+  right: 0.5em;
 }
 @media only screen and (min-width: 768px) {
   html {
