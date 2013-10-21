@@ -49,7 +49,8 @@
   text-align: center;
   border-top: 1px solid #ECF4DC;
 }
-.footer-small .legal-menu li a, .footer-small .bottom-menu li a {
+.footer-small .legal-menu li a,
+.footer-small .bottom-menu li a {
   display: block;
   padding: 1em 2%;
 }
@@ -60,15 +61,18 @@
   html .footer-small .bottom-menu {
     float: right;
   }
-  html .footer-small ul.legal-menu, html .footer-small ul.bottom-menu {
+  html .footer-small ul.legal-menu,
+  html .footer-small ul.bottom-menu {
     margin-top: -1em;
     clear: none;
   }
-  html .footer-small .legal-menu li, html .footer-small .bottom-menu li {
+  html .footer-small .legal-menu li,
+  html .footer-small .bottom-menu li {
     float: left;
     padding: 0 0 0 0.1428571429em;
   }
-  html .footer-small .legal-menu li a, html .footer-small .bottom-menu li a {
+  html .footer-small .legal-menu li a,
+  html .footer-small .bottom-menu li a {
     padding: 1em 0.5em;
     border: 0px solid transparent;
     text-align: left;
@@ -84,15 +88,18 @@
 .tablet .footer-small .bottom-menu {
   float: right;
 }
-.tablet .footer-small ul.legal-menu, .tablet .footer-small ul.bottom-menu {
+.tablet .footer-small ul.legal-menu,
+.tablet .footer-small ul.bottom-menu {
   margin-top: -1em;
   clear: none;
 }
-.tablet .footer-small .legal-menu li, .tablet .footer-small .bottom-menu li {
+.tablet .footer-small .legal-menu li,
+.tablet .footer-small .bottom-menu li {
   float: left;
   padding: 0 0 0 0.1428571429em;
 }
-.tablet .footer-small .legal-menu li a, .tablet .footer-small .bottom-menu li a {
+.tablet .footer-small .legal-menu li a,
+.tablet .footer-small .bottom-menu li a {
   padding: 1em 0.5em;
   border: 0px solid transparent;
   text-align: left;
@@ -102,7 +109,8 @@
   font-size: 12px;
 }
 /* first and second footer */
-.footer ul, .footer li {
+.footer ul,
+.footer li {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -163,7 +171,8 @@
 .footer-sitemap .links li ul li a {
   color: #DDD;
 }
-.footer-sitemap .links li ul li a:hover, .footer-sitemap .links li ul li a:focus {
+.footer-sitemap .links li ul li a:hover,
+.footer-sitemap .links li ul li a:focus {
   color: #FFF;
 }
 .footer-sitemap .links a.map {
@@ -211,4 +220,22 @@
 }
 .footer.last ul.links {
   float: right;
+}
+.lt-ie8 .desktop .footer-sitemap ul.links li {
+  display: inline;
+}
+.lt-ie8 .desktop .footer-sitemap ul.links li ul {
+  height: 250px;
+}
+.lt-ie8 .desktop .footer-sitemap ul.links li ul.hot-this-month,
+.lt-ie8 .desktop .footer-sitemap ul.links li ul.social,
+.lt-ie8 .desktop .footer-sitemap ul.links li ul.organization,
+.lt-ie8 .desktop .footer-sitemap ul.links li ul.ships {
+  height: auto;
+}
+.lt-ie8 .desktop .footer-sitemap ul.links li ul li {
+  display: block;
+}
+.lt-ie9 .desktop .footer-sitemap .facts .ship {
+  padding-left: 0;
 }
