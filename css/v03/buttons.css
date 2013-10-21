@@ -52,7 +52,7 @@ a.button {
 }
 
 /* primary buttons are orange */
-.header .button.donate,
+.sevensome .header .button.donate,
 .button.primary,
 input[type=submit].primary,
 input.button.primary,
@@ -134,7 +134,7 @@ a.button.disabled:active {
 }
 
 /* header button */
-.header .button {
+.sevensome .header .button {
 	font-size:12px;
 	padding:3px 1px;
 	margin-top:3px;
