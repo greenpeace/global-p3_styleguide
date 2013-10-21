@@ -254,13 +254,20 @@ ul.navigation {
   display: block;
   position: absolute;
   padding: 0.8em;
-  right: 0em;
+  right: 0;
   top: 0;
   text-align: center;
-
+  width: 20px;
+  height: 20px;
+  text-indent: -50000px;
+  background: url(../../img/v03/arrow.png) no-repeat center center transparent;
 }
 .mobilemenu-open #main-nav li.has-submenu .submenu-open {
-  background-color: #3d3d3d;
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .sevensome_macro(){
