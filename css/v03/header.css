@@ -74,7 +74,7 @@
   position: absolute;
   right: 0;
   width: 51px;
-  height: 18px;
+  height: 18 px;
   text-indent: -50000px;
   line-height: 0;
   color: transparent;
@@ -193,6 +193,7 @@
   border-radius: 3px;
   margin: 2px;
   border: 1px solid #66CC00;
+  cursor: pointer;
 }
 /* search form in the mobile menu */
 #main-nav .search-form {
