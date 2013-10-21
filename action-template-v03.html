@@ -28,7 +28,7 @@
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
         <script>window.Modernizr || document.write('<script src="js/default/vendor/modernizr-2.6.2.min.js"><\/script>');</script>
-
+        
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
 
@@ -98,6 +98,10 @@
 					<label for="UserPhone">Mobile Phone</label>
 					<input name="phone" class="required numeric" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
 					<div class="tooltip info"><span>We need your phone number to send you update about the campaign.</span></div>
+				</div>
+                                <div class="input text required website error">
+					<label for="UserWebsite">Website</label>
+					<input name="website" class="required" required maxlength="64" type="text" id="UserWebsite" placeholder="Website*"/>
 				</div>
 				<div class="input text required postcode error">
 					<label for="UserPostcode">Postcode</label>
@@ -767,6 +771,7 @@ Please don't let this happen. Thank you.
 <script src="js/v03/p3.validation.js"></script>
 <script src="js/v03/p3.pledge_counter.js"></script>
 <script src="js/v03/p3.pledge_with_email_only.js"></script>
+<script src="js/v03/p3.social_sharing.js"></script>
 <script src="js/v03/main.js"></script>
 <script src="js/v03/mobilemenu.js"></script>
 

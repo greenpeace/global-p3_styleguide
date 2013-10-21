@@ -12,7 +12,8 @@
  * 
  * @fileOverview        Auto fills email field from cookie
  *                      if user has previously opted in
- *                      Also stores 'remember me' state from previous pledges
+ *                      Stores 'remember me' state from previous pledges
+ *                      if browser supports localStorage (all except IE 6-7)
  * @author              <a href="mailto:hello@raywalker.it">Ray Walker</a>
  * @version             0.1
  * @copyright           Copyright 2013, Greenpeace International
@@ -52,8 +53,10 @@
         
         $.cookie.defaults = { expires: config.expires, secure: config.secure };
         
+        // Set the email field to the value of the cookie
         $emailField.val($.cookie(config.cookieName));
         
+        // Monitor form submission, and store email field if 'rememberMe' is set
         $form.submit(function () {
             if ($rememberMe.is(':checked')) {
                 $.cookie(config.cookieName, $emailField.val());
@@ -61,12 +64,14 @@
                 $.removeCookie(config.cookieName);
             }
             
+            // Remember 'rememberMe' for the next form
             if (keepRememberMe) {                
                 localStorage.rememberMeGP = $rememberMe.is(':checked') ? 'true' : 'false';
             }
             
         });
         
+        // Set 'rememberMe' if the value is stored locally
         if (keepRememberMe && "undefined" !== localStorage.rememberMeGP) {
             $rememberMe.prop('checked', localStorage.rememberMeGP === 'true' ? true : false);                
         }

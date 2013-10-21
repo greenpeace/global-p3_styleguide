@@ -2,7 +2,7 @@
   "status": "error", 
   "errors": {
     "pledge" : {
-      "unique" : "the pledge was already signed"
+      "unique" : "The pledge was already signed"
     }
   },
   "user": {
