@@ -58,8 +58,7 @@
   position: absolute;
   font-size: 1em;
 }
-.country-selector .dropdown-controller a,
-.country-selector .dropdown-controller a:hover {
+.country-selector .dropdown-controller a, .country-selector .dropdown-controller a:hover {
   display: block;
   background: #66cc00 url(../../img/v03/image-map.png) 200px -42px no-repeat;
   padding: 1px 4px 3px 2px;
@@ -73,8 +72,7 @@
   text-decoration: none;
   border: 2px solid #66CC00;
 }
-.country-selector .dropdown-controller a.dropdown-open,
-.country-selector .dropdown-controller a.dropdown-open:hover {
+.country-selector .dropdown-controller a.dropdown-open, .country-selector .dropdown-controller a.dropdown-open:hover {
   background: #ffffff url(../../img/v03/image-map.png) 200px -64px no-repeat;
   color: #66CC00;
   border: 2px solid #FFF;
@@ -93,8 +91,7 @@
 /*
  * Language Selector and Additional Nav
  */
-.promoted-links ul,
-.language-selector {
+.promoted-links ul, .language-selector {
   float: right;
   margin: .5em 0;
   font-size: .8125em;
@@ -144,9 +141,7 @@
 .search-form label {
   display: none;
 }
-.search-form .text input[type=text],
-.search-form .text input[type=text]:hover,
-.search-form .text input[type=text]:focus {
+.search-form .text input[type=text], .search-form .text input[type=text]:hover, .search-form .text input[type=text]:focus {
   border: 0;
   background: none;
   float: left;
@@ -409,8 +404,7 @@ ul.navigation {
     position: relative;
     color: #055905;
   }
-  html .navigation li a:hover span,
-  html .navigation li a:focus span {
+  html .navigation li a:hover span, html .navigation li a:focus span {
     position: relative;
     color: #055905;
   }
@@ -419,12 +413,10 @@ ul.navigation {
   
     margin-left: 0;
   }
-  html .navigation li:hover .drop-holder,
-  html .navigation li.hover .drop-holder {
+  html .navigation li:hover .drop-holder, html .navigation li.hover .drop-holder {
     display: block;
   }
-  html .navigation li:hover .drop-content ul ul ul,
-  html .navigation li.hover .drop-content ul ul ul {
+  html .navigation li:hover .drop-content ul ul ul, html .navigation li.hover .drop-content ul ul ul {
     display: none;
   }
   html .navigation .drop-holder {
@@ -499,8 +491,7 @@ ul.navigation {
     -moz-box-shadow: none;
     box-shadow: none;
   }
-  html .navigation .drop-content ul li:hover ul,
-  html .navigation .drop-content ul li:focus ul {
+  html .navigation .drop-content ul li:hover ul, html .navigation .drop-content ul li:focus ul {
     display: block;
   }
   html .navigation .drop-content ul ul {
@@ -521,8 +512,7 @@ ul.navigation {
     background: #57b105;
     color: #fff;
   }
-  html .navigation .drop-content ul ul li:hover ul,
-  html .navigation .drop-content ul ul li:focus ul {
+  html .navigation .drop-content ul ul li:hover ul, html .navigation .drop-content ul ul li:focus ul {
     display: block;
   }
   html .navigation .drop-content ul li:hover ul li a,
@@ -540,9 +530,7 @@ ul.navigation {
     /* 200px/12 */
   
   }
-  html .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
-  html .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
-  html .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
+  html .navigation .drop-content ul li:hover ul li:hover ul li:hover a, html .navigation .drop-content ul li:focus ul li:focus ul li:focus a, html .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
     background: #57b105;
     color: #fff;
   }
@@ -666,8 +654,7 @@ ul.navigation {
   position: relative;
   color: #055905;
 }
-.sevensome .navigation li a:hover span,
-.sevensome .navigation li a:focus span {
+.sevensome .navigation li a:hover span, .sevensome .navigation li a:focus span {
   position: relative;
   color: #055905;
 }
@@ -676,12 +663,10 @@ ul.navigation {
 
   margin-left: 0;
 }
-.sevensome .navigation li:hover .drop-holder,
-.sevensome .navigation li.hover .drop-holder {
+.sevensome .navigation li:hover .drop-holder, .sevensome .navigation li.hover .drop-holder {
   display: block;
 }
-.sevensome .navigation li:hover .drop-content ul ul ul,
-.sevensome .navigation li.hover .drop-content ul ul ul {
+.sevensome .navigation li:hover .drop-content ul ul ul, .sevensome .navigation li.hover .drop-content ul ul ul {
   display: none;
 }
 .sevensome .navigation .drop-holder {
@@ -756,8 +741,7 @@ ul.navigation {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.sevensome .navigation .drop-content ul li:hover ul,
-.sevensome .navigation .drop-content ul li:focus ul {
+.sevensome .navigation .drop-content ul li:hover ul, .sevensome .navigation .drop-content ul li:focus ul {
   display: block;
 }
 .sevensome .navigation .drop-content ul ul {
@@ -778,8 +762,7 @@ ul.navigation {
   background: #57b105;
   color: #fff;
 }
-.sevensome .navigation .drop-content ul ul li:hover ul,
-.sevensome .navigation .drop-content ul ul li:focus ul {
+.sevensome .navigation .drop-content ul ul li:hover ul, .sevensome .navigation .drop-content ul ul li:focus ul {
   display: block;
 }
 .sevensome .navigation .drop-content ul li:hover ul li a,
@@ -797,9 +780,7 @@ ul.navigation {
   /* 200px/12 */
 
 }
-.sevensome .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
-.sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
-.sevensome .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
+.sevensome .navigation .drop-content ul li:hover ul li:hover ul li:hover a, .sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a, .sevensome .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
   background: #57b105;
   color: #fff;
 }
