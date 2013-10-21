@@ -2,7 +2,7 @@
 (function($) {
   $(window).load(function() {
     // generate buttons hidden
-    $('.heading-first .logo').parent().append('<a href="#" id="mobilemenu-icon">Men&uuml;</a>');
+    $('.heading-first .logo').parent().append('<a href="#" id="mobilemenu-icon">Menu</a>');
     $('#main-nav').prepend('<a href="#" id="mobilemenu-close">close</a>');
     $('#mobilemenu-icon').hide();
     $('#mobilemenu-close').hide();
@@ -76,6 +76,11 @@
         setMainMenuMinHeight($('body').innerHeight());
       }
 
+      // make sure icon and close button are visible when on mobile
+      if (!_mobilemenu.breakpoint_passed && !$('body').hasClass('sevensome')) {
+        mobileMenuIcon.show();
+        mobileMenuClose.show();
+      }
       // we switch from mobile/tablet to desktop
       if (!_mobilemenu.breakpoint_passed && $('body').hasClass('sevensome')) {
         $('body').css({right: '0px'});
