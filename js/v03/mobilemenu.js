@@ -115,6 +115,7 @@
         // after the mobilemenu was used
         $('ul ul', mainMenu).css('display', '');
         $('.drop-holder', mainMenu).css('display', '');
+        mainMenu.css('overflow', '');
 
         _mobilemenu.breakpoint_passed = true;
       }
