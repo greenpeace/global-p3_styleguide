@@ -253,6 +253,11 @@ ul.navigation {
   /* JS will change this value to block*/
 
 }
+/* no mobile menu on IE < 9 */
+.lt-ie9 #main-nav {
+  right: 0px;
+  display: block;
+}
 .navigation li a {
   display: block;
   padding: .8em 1em;
@@ -843,4 +848,257 @@ ul.navigation {
 .sevensome .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
   background: #57b105 url(../../img/v02/nav-arrow.png) no-repeat 95% -25px;
+}
+/* browser specific */
+.lt-ie9 {
+  /*
+ * Header
+ */
+
+  /*
+ * Main Navigation on Desktop with dropdown
+ */
+
+}
+.lt-ie9 .heading-second {
+  height: 1.6875em;
+  /* 27px */
+
+  background: #57b105;
+  border-top: 1px solid #4EA600;
+}
+.lt-ie9 #main-nav {
+  position: static;
+  width: auto;
+  max-width: none;
+  background: none transparent;
+  padding: 0;
+  display: block;
+}
+.lt-ie9 ul.navigation {
+  margin: -1px 0 0 0;
+  padding: 0 0 0 10px;
+  list-style: none;
+  float: left;
+  max-width: 42.5em;
+  /* 625px */
+
+  background: none transparent;
+}
+.lt-ie9 .navigation li {
+  float: left;
+  padding: 0 .1666666666em;
+  /* 2px/12 */
+
+  position: relative;
+  z-index: 101;
+}
+.lt-ie9 .navigation li a {
+  float: left;
+  cursor: pointer;
+  display: inline;
+  padding: 0;
+  background: none transparent;
+}
+.lt-ie9 .navigation li a span {
+  float: left;
+  font-family: Helvetica, "Trebuchet MS", sans-serif;
+  font-size: .75em;
+  /*12px */
+
+  line-height: 2.41667em;
+  /* 29px/12 */
+
+  font-weight: bold;
+  color: #fff;
+  padding: 0 .83333333333em;
+  /* 10px/12 */
+
+  white-space: nowrap;
+}
+.lt-ie9 .navigation li a.current-item,
+.lt-ie9 .navigation li a.active-item,
+.lt-ie9 .navigation li a:hover,
+.lt-ie9 .navigation li a:focus {
+  text-decoration: none;
+  background: #6c0;
+  -webkit-border-bottom-right-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -webkit-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+  box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+  margin-right: 4px;
+  color: #055905;
+}
+.lt-ie9 .navigation li a.current-item span,
+.lt-ie9 .navigation li a.active-item span,
+.lt-ie9 .navigation li a.hover span,
+.lt-ie9 .navigation li a:hover span,
+.lt-ie9 .navigation li a:focus span {
+  overflow: hidden;
+  position: relative;
+  color: #055905;
+}
+.lt-ie9 .navigation li a:hover span, .lt-ie9 .navigation li a:focus span {
+  position: relative;
+  color: #055905;
+}
+.lt-ie9 .navigation li .drop-content a {
+  /* overrides the mobile styling */
+
+  margin-left: 0;
+}
+.lt-ie9 .navigation li:hover .drop-holder, .lt-ie9 .navigation li.hover .drop-holder {
+  display: block;
+}
+.lt-ie9 .navigation li:hover .drop-content ul ul ul, .lt-ie9 .navigation li.hover .drop-content ul ul ul {
+  display: none;
+}
+.lt-ie9 .navigation .drop-holder {
+  display: none;
+  position: absolute;
+  top: 1.75em;
+  /* 28px */
+
+  left: -6.25em;
+  /* 100px */
+
+  z-index: 100;
+}
+.lt-ie9 .navigation .drop-content {
+  height: 23.125em;
+  /* 370px */
+
+  width: 0;
+  background: transparent none;
+}
+.lt-ie9 .navigation .drop-content ul {
+  margin: 0 0 0 6.5em;
+  /* 104px */
+
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  border: solid 1px #57b105;
+}
+.lt-ie9 .navigation .drop-content ul li {
+  float: none;
+  width: 13.125em;
+  /* 210px */
+
+  vertical-align: middle;
+  background-color: #fff;
+  padding: 0;
+}
+.lt-ie9 .navigation .drop-content ul li a {
+  float: none;
+  display: block;
+  background: none;
+  font-size: .75em;
+  height: 1.91667em;
+  /* 23px/12 */
+
+  line-height: 1.91667em;
+  /* 23px/12 */
+
+  padding: 0 0 0 .83333333em;
+  /* 10px/12 */
+
+  cursor: pointer;
+  color: #000;
+  position: relative;
+  margin: 0;
+  width: 16.66667em;
+  /* 200px/12 */
+
+  overflow: hidden;
+}
+.lt-ie9 .navigation .drop-content ul li:hover a,
+.lt-ie9 .navigation .drop-content ul li a:hover,
+.lt-ie9 .navigation .drop-content ul li:focus a,
+.lt-ie9 .navigation .drop-content ul li a:focus {
+  background: #57b105;
+  color: #fff;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.lt-ie9 .navigation .drop-content ul li:hover ul, .lt-ie9 .navigation .drop-content ul li:focus ul {
+  display: block;
+}
+.lt-ie9 .navigation .drop-content ul ul {
+  margin: 0;
+  background-position: 0 100%;
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -1px;
+}
+.lt-ie9 .navigation .drop-content ul ul li {
+  padding: 0;
+}
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover a,
+.lt-ie9 .navigation .drop-content ul ul li a:hover,
+.lt-ie9 .navigation .drop-content ul li:focus ul li:focus a,
+.lt-ie9 .navigation .drop-content ul ul li a:focus {
+  background: #57b105;
+  color: #fff;
+}
+.lt-ie9 .navigation .drop-content ul ul li:hover ul, .lt-ie9 .navigation .drop-content ul ul li:focus ul {
+  display: block;
+}
+.lt-ie9 .navigation .drop-content ul li:hover ul li a,
+.lt-ie9 .navigation .drop-content ul li:focus ul li a,
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li a,
+.lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li a,
+.lt-ie9 .navigation .drop-content ul ul ul li a {
+  background: none;
+  color: #000;
+  padding: 0 0 0 .83333333em;
+  /* 10px/12 */
+
+  margin: 0;
+  width: 16.66667em;
+  /* 200px/12 */
+
+}
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a, .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a, .lt-ie9 .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
+  background: #57b105;
+  color: #fff;
+}
+.lt-ie9 .navigation li a.active span,
+.lt-ie9 .navigation li a:hover span,
+.lt-ie9 .navigation li a:focus span,
+.lt-ie9 .navigation li a.current-item span,
+.lt-ie9 .navigation li a.active-item span {
+  margin-right: -4px;
+}
+.lt-ie9 .navigation .drop-content ul li a.drop,
+.lt-ie9 .navigation .drop-content ul li:hover ul li a.drop,
+.lt-ie9 .navigation .drop-content ul li:focus ul li a.drop,
+.lt-ie9 .navigation .drop-content ul ul li a.drop,
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
+.lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li a.drop2 {
+  background: url(../../img/v02/nav-arrow.png) no-repeat 95% 0;
+}
+.lt-ie9 .navigation .drop-content ul li:hover a.drop,
+.lt-ie9 .navigation .drop-content ul li:focus a.drop,
+.lt-ie9 .navigation .drop-content ul li a.drop:hover,
+.lt-ie9 .navigation .drop-content ul li:hover li:hover a.drop,
+.lt-ie9 .navigation .drop-content ul li:focus li:focus a.drop,
+.lt-ie9 .navigation .drop-content ul ul li a.drop:hover,
+.lt-ie9 .navigation .drop-content ul ul li a.drop:focus,
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
+.lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
+  background: #57b105 url(../../img/v02/nav-arrow.png) no-repeat 95% -25px;
+}
+.lt-ie9 #main-section {
+  margin-top: 89px;
 }

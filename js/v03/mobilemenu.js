@@ -1,6 +1,10 @@
 
 (function($) {
   $(window).load(function() {
+    if ($('html').hasClass('lt-ie9')) {
+      return;
+    }
+
     // generate buttons hidden
     $('.heading-first .logo').parent().append('<a href="#" id="mobilemenu-icon">Menu</a>');
     $('#main-nav').prepend('<a href="#" id="mobilemenu-close">close</a>');

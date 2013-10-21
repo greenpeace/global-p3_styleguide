@@ -232,6 +232,11 @@ ul.navigation {
 	right: -50000px; /* JS will change this value 0 */
 	display: none; /* JS will change this value to block*/
 }
+/* no mobile menu on IE < 9 */
+.lt-ie9 #main-nav {
+	right: 0px;
+	display: block;
+}
 
 .navigation li a {
 	display: block;
@@ -537,4 +542,12 @@ and (min-width : 768px) {
 
 .sevensome {
   .sevensome_macro;
+}
+
+/* browser specific */
+.lt-ie9 {
+  .sevensome_macro;
+}
+.lt-ie9 #main-section {
+  margin-top: 89px;
 }
