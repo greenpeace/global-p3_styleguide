@@ -503,6 +503,7 @@ ul.navigation {
   }
   html .navigation li a.active span,
   html .navigation li a:hover span,
+  html .navigation li a:focus span,
   html .navigation li a.current-item span,
   html .navigation li a.active-item span {
     margin-right: -4px;
@@ -759,6 +760,7 @@ ul.navigation {
 }
 .sevensome .navigation li a.active span,
 .sevensome .navigation li a:hover span,
+.sevensome .navigation li a:focus span,
 .sevensome .navigation li a.current-item span,
 .sevensome .navigation li a.active-item span {
   margin-right: -4px;
