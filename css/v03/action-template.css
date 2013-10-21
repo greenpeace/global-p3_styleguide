@@ -484,3 +484,7 @@ and (min-width : 1600px) {
 		clear:both;
 	}
 } */
+/* Browser specific hacks --------- */
+.lt-ie7 .sevensome #action-form .submit {
+  width: 100%;
+}
