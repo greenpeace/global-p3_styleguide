@@ -19,6 +19,11 @@
       var mainMenu = $('#main-nav');
       var mainMenuWidth = mainMenu.innerWidth();
       $('ul ul', mainMenu).hide();
+
+      // add class has-submenu on li
+      $('li ul', mainMenu).closest('li').addClass('has-submenu');
+      $('li.has-submenu > a', mainMenu).append('<span class="submenu-icon">v</span>');
+
       if (mainMenu.is(':visible')) {
         $('body').animate({right: '0px'}, 300, function() {
           mainMenu.hide();
@@ -42,19 +47,25 @@
 
     // if the link clicked has a ul.menu sibling (i.e. a submenu)
     // we want to show the submenu
-    $('html').on('click', '.mobilemenu-open #main-nav li a', function(e) {
-      var ul = $(this).siblings('ul');
-      var holder = $(this).siblings('.drop-holder');
+    $('html').on('click', '.mobilemenu-open #main-nav li a .submenu-icon', function(e) {
+      var a = $(this).parent();
+      var li = a.closest('li.has-submenu');
+      var ul = a.siblings('ul');
+      var holder = a.siblings('.drop-holder');
       if (holder.length > 0) {
         ul = $('.drop-content > ul', holder);
       }
       if (ul.length > 0) {
         if (ul.is(':visible')) {
           ul.hide();
+          $(this).removeClass('submenu-open');
         } else {
           ul.show();
+          $(this).addClass('submenu-open');
         }
-        e.preventDefault();
+        // lose focus
+        a.blur();
+        // stop propagation - we do not want to follow link when click on submenu-icon
         e.stopPropagation();
         return false;
       }

@@ -222,6 +222,7 @@ ul.navigation {
   background: none #101010;
   font-weight: bold;
   margin-bottom: .4em;
+  position: relative;
 }
 .navigation li .drop-content a {
   font-weight: normal;
@@ -269,6 +270,20 @@ ul.navigation {
   position: absolute;
   top: 10px;
   right: 0.5em;
+}
+#main-nav li.has-submenu .submenu-icon {
+  display: none;
+}
+.mobilemenu-open #main-nav li.has-submenu .submenu-icon {
+  display: block;
+  position: absolute;
+  padding: 0.8em;
+  right: 0em;
+  top: 0;
+  text-align: center;
+}
+.mobilemenu-open #main-nav li.has-submenu .submenu-open {
+  background-color: #3d3d3d;
 }
 @media only screen and (min-width: 768px) {
   html {
