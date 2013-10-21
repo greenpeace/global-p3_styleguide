@@ -213,20 +213,31 @@
   float:right;
 }
 
-.lt-ie8 .desktop .footer-sitemap {
-  ul.links {
-    li {
-      display: inline;
+.lt-ie8 {
+  .footer {
+    zoom:1;
+   }
+  .tablet .footer-small {
+    padding-bottom: 2em;
+  }
+  .desktop .footer-small {
+    padding-bottom: 1em;
+  }
+  .desktop .footer-sitemap {
+    ul.links {
+      li {
+	display: inline;
   
-      ul {
-        height: 250px;
-      }
-      ul.hot-this-month, ul.social,
-      ul.organization, ul.ships {
-        height: auto;
-      }
-      ul li {
-        display: block;
+	ul {
+	  height: 250px;
+	}
+	ul.hot-this-month, ul.social,
+	ul.organization, ul.ships {
+	  height: auto;
+	}
+	ul li {
+	  display: block;
+	}
       }
     }
   }

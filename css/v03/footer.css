@@ -221,6 +221,15 @@
 .footer.last ul.links {
   float: right;
 }
+.lt-ie8 .footer {
+  zoom: 1;
+}
+.lt-ie8 .tablet .footer-small {
+  padding-bottom: 2em;
+}
+.lt-ie8 .desktop .footer-small {
+  padding-bottom: 1em;
+}
 .lt-ie8 .desktop .footer-sitemap ul.links li {
   display: inline;
 }
