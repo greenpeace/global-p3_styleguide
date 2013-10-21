@@ -18,6 +18,10 @@
     $('#mobilemenu-icon,  #mobilemenu-close').click(function(e) {
       var mainMenu = $('#main-nav');
       var mainMenuWidth = mainMenu.innerWidth();
+      // move search form into mobile menu
+      var searchForm =  $('.tools .search-form').detach();
+      $('#nav', mainMenu).before(searchForm);
+
       $('ul ul', mainMenu).hide();
 
       // add class has-submenu on li
@@ -78,6 +82,7 @@
       var mainMenu = $('#main-nav');
       var mobileMenuClose = $('#mobilemenu-close');
       var mobileMenuIcon = $('#mobilemenu-icon');
+      var searchForm;
 
       // % on padding will change the main-nav size --> recalc
       if($('body').hasClass('mobilemenu-open')) {
@@ -98,6 +103,11 @@
         mainMenu.show();
         mobileMenuClose.hide();
         mobileMenuIcon.hide();
+
+        // move search form back into tools menu
+        searchForm =  $('.search-form', mainMenu).detach();
+        $('.heading-first .tools').append(searchForm);
+
         mainMenu.css({minHeight: '0px'});
         $('body').removeClass('mobilemenu-open');
         // reset the display, i.e. remove the element style
@@ -113,6 +123,11 @@
         mainMenu.hide();
         mobileMenuClose.show();
         mobileMenuIcon.show();
+
+        // move search form into mobile menu
+        searchForm =  $('.tools .search-form').detach();
+        $('#nav', mainMenu).before(searchForm);
+
         $('body').css({right: '0px'});
         $('body').removeClass('mobilemenu-open');
         $('ul ul', mainMenu).show();

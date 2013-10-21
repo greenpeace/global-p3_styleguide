@@ -184,6 +184,28 @@
   margin: 2px;
   border: 1px solid #66CC00;
 }
+/* search form in the mobile menu */
+#main-nav .search-form {
+  float: none;
+  width: auto;
+  height: auto;
+  margin-bottom: 0.4em;
+}
+#main-nav .search-form form {
+  width: 100%;
+}
+#main-nav .search-form .text input[type=text], #main-nav .search-form .text input[type=text]:hover, #main-nav .search-form .text input[type=text]:focus {
+  width: 90%;
+  font-size: 1em;
+  /* 14px */
+
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+}
+#main-nav .search-form #search-submit {
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+}
 /*
  * Main Navigation
  */
