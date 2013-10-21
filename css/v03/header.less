@@ -44,7 +44,7 @@
  * Country selector
  */
 .country-selector {
-	width: 15.625em; /* 250px */
+	//width: 15.625em; /* 250px */
 	left: 11.25em; /* 180px */
 	top: 1.125em; /* 18px */
 	position: absolute;
@@ -53,22 +53,41 @@
 .country-selector .dropdown-controller a,
 .country-selector .dropdown-controller a:hover {
 	display: block;
-	background: #66CC00 url(../../img/v03/image-map.png) 200px -42px no-repeat;
-	padding: 1px 4px 3px 2px;
+	padding: 1px 0 3px 2px;
 	height: .875em; /* 14px */
-	width: 15em; /* 248px */
+	//width: 15em; /* 248px */
 	color: #FFF;
 	text-decoration: none;
 	border: 2px solid #66CC00;
+	padding-right: 60px;
+	position: relative;
+}
+.country-selector .dropdown-controller a .country-img,
+.country-selector .dropdown-controller a:hover .country-img {
+	background: #66CC00 url(../../img/v03/image-map.png) left -42px no-repeat;
+	position: absolute;
+	right: 0;
+	width: 51px;
+	height: 18px;
+	text-indent: -50000px;
+	line-height: 0;
+	color: transparent;
 }
 .country-selector .dropdown-controller a.dropdown-open,
 .country-selector .dropdown-controller a.dropdown-open:hover {
-	background: #FFF url(../../img/v03/image-map.png) 200px -64px no-repeat;
+	background-color: #FFF;
 	color: #66CC00;
 	border: 2px solid #FFF;
 }
+.country-selector .dropdown-controller a.dropdown-open .country-img,
+.country-selector .dropdown-controller a.dropdown-open:hover .country-img {
+	background: #FFF url(../../img/v03/image-map.png) 0 -64px no-repeat;
+}
+.country-selector .dropdown {
+	width: 100%; 
+	}
 .country-selector .dropdown .dropdown-list {
-	width: 18.2143em; /* 255px */
+	//width: 18.2143em; /* 255px */
 	margin-top: 0.1429em; /* 2px */
 	font-size:0.875em; /* 14px */
 }
