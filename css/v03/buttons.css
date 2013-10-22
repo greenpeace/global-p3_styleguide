@@ -139,4 +139,13 @@ a.button.disabled:active {
 	padding:3px 1px;
 	margin-top:3px;
 }
+.lt-ie7 .sevensome a.donate {
+	color:#fff;
+	text-shadow: 0 0 2px #9a9a9a;
+	background: #f99713; /* Old browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99713', endColorstr='#e56b2b',GradientType=0 ); /* IE6-9 */
+	border:1px solid #f06818;
+	width: 6em;
+	text-align: center;
+}
 
