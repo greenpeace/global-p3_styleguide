@@ -73,7 +73,7 @@ label {
 .search-form label {
   font-weight: normal;
 }
-.lt-ie10 .mobilemenu-open .search-form label {
+.no-placeholder .mobilemenu-open .search-form label {
   display: none;
 }
 textarea,
