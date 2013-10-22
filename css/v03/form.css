@@ -67,6 +67,11 @@ label {
 }
 .no-placeholder label {
   display: block;
+  font-size: .9em;
+  margin-top: .225em;
+}
+.search-form label {
+  font-weight: normal;
 }
 .lt-ie10 .mobilemenu-open .search-form label {
   display: none;
@@ -154,7 +159,8 @@ textarea {
 	.info				- can be used for example messages prior validation
 	.error			 - error messages used for validation issues
 */
-form .tooltip, form .message {
+form .tooltip,
+form .message {
   font-size: .813em;
   /* 13px */
 
@@ -171,7 +177,8 @@ form .info {
   position: relative;
   color: #4d535f;
 }
-form .error:before, form .info:before {
+form .error:before,
+form .info:before {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -195,7 +202,8 @@ form .message .error:before {
   color: #fff;
   margin-right: 0.5em;
 }
-form .message .error span, form .info span {
+form .message .error span,
+form .info span {
   display: block;
   margin: -1.25em 1.5em 0 1.5em;
   border-radius: 2px;
@@ -267,10 +275,12 @@ form input.error {
 	Compatible	: ?
 	Since				: version 3.0
 */
-.checkboxlist label, .radiolist label {
+.checkboxlist label,
+.radiolist label {
   font-size: 1.25em;
 }
-.checkboxlist .input.checkbox label, .radiolist .input.radio label {
+.checkboxlist .input.checkbox label,
+.radiolist .input.radio label {
   display: inline;
 }
 input[type=checkbox] {
@@ -287,7 +297,8 @@ input[type=checkbox] + label {
 	Compatible	: ?
 	Since				: version 3.0
 */
-select, select:hover {
+select,
+select:hover {
   padding-left: .2em;
   width: 15em;
   margin-bottom: 10px;
