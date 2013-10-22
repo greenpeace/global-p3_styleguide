@@ -197,6 +197,9 @@
   border: 1px solid #66CC00;
   cursor: pointer;
 }
+.search-form .submit span:active {
+  background: transparent url(../../img/v03/image-map.png) -151px -9px no-repeat;
+}
 /* search form in the mobile menu */
 #main-nav .search-form {
   float: none;
