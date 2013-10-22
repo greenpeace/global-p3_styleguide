@@ -22,6 +22,9 @@
   position: relative;
   margin: auto;
 }
+.lt-ie8 .heading .heading-holder {
+  z-index: 999;
+}
 .heading-second .heading-holder {
   /* allows mobile menu to absolute it's way to the top */
 
@@ -946,7 +949,8 @@ ul.navigation {
   position: relative;
   color: #055905;
 }
-.lt-ie9 .navigation li a:hover span, .lt-ie9 .navigation li a:focus span {
+.lt-ie9 .navigation li a:hover span,
+.lt-ie9 .navigation li a:focus span {
   position: relative;
   color: #055905;
 }
@@ -955,10 +959,12 @@ ul.navigation {
 
   margin-left: 0;
 }
-.lt-ie9 .navigation li:hover .drop-holder, .lt-ie9 .navigation li.hover .drop-holder {
+.lt-ie9 .navigation li:hover .drop-holder,
+.lt-ie9 .navigation li.hover .drop-holder {
   display: block;
 }
-.lt-ie9 .navigation li:hover .drop-content ul ul ul, .lt-ie9 .navigation li.hover .drop-content ul ul ul {
+.lt-ie9 .navigation li:hover .drop-content ul ul ul,
+.lt-ie9 .navigation li.hover .drop-content ul ul ul {
   display: none;
 }
 .lt-ie9 .navigation .drop-holder {
@@ -1033,7 +1039,8 @@ ul.navigation {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.lt-ie9 .navigation .drop-content ul li:hover ul, .lt-ie9 .navigation .drop-content ul li:focus ul {
+.lt-ie9 .navigation .drop-content ul li:hover ul,
+.lt-ie9 .navigation .drop-content ul li:focus ul {
   display: block;
 }
 .lt-ie9 .navigation .drop-content ul ul {
@@ -1054,7 +1061,8 @@ ul.navigation {
   background: #57b105;
   color: #fff;
 }
-.lt-ie9 .navigation .drop-content ul ul li:hover ul, .lt-ie9 .navigation .drop-content ul ul li:focus ul {
+.lt-ie9 .navigation .drop-content ul ul li:hover ul,
+.lt-ie9 .navigation .drop-content ul ul li:focus ul {
   display: block;
 }
 .lt-ie9 .navigation .drop-content ul li:hover ul li a,
@@ -1072,7 +1080,9 @@ ul.navigation {
   /* 200px/12 */
 
 }
-.lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a, .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a, .lt-ie9 .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
+.lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
+.lt-ie9 .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
   background: #57b105;
   color: #fff;
 }
