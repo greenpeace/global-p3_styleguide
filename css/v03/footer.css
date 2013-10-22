@@ -138,6 +138,9 @@
   height: 71px;
   float: left;
 }
+.footer-highlight li a:focus span, .footer-highlight li a:hover span {
+  text-decoration: underline;
+}
 /* sitemap */
 .footer-sitemap {
   background-color: #005200;
@@ -171,8 +174,7 @@
 .footer-sitemap .links li ul li a {
   color: #DDD;
 }
-.footer-sitemap .links li ul li a:hover,
-.footer-sitemap .links li ul li a:focus {
+.footer-sitemap .links li ul li a:hover, .footer-sitemap .links li ul li a:focus {
   color: #FFF;
 }
 .footer-sitemap .links a.map {
