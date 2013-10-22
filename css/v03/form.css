@@ -281,7 +281,7 @@ form input.error {
     right: auto;
   }
 }
-.desktop-wide .input .tooltip span {
+.wide .input .tooltip span {
   min-width: 200px;
   bottom: auto;
   right: auto;
