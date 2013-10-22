@@ -61,12 +61,15 @@
 /* globals jQuery, Modernizr */
 (function($, M) {
     'use strict';
-    var pledgeURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledge/pledges/?fish=42&page=269648', // Demonstration showing parameters passed in the URL (including spurious parameter)
-    validationURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledge/validation/', // Demonstrating a blank URL, which will have required parameters added in the function call
-    parameters = {
+    var parameters = {
         page: 269648,
         key:  '78d245e17c455859b4863ad34674f2b8'
-    };
+    },
+    // Demonstration showing parameters passed in the URL (including spurious parameter)
+    pledgeURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledge/pledges/?fish=42&page=269648',
+    localPledgeURL = 'js/v03/json_testing/pledges.json',
+    // Demonstrating a blank URL, which will have required parameters added in the function call
+    validationURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledge/validation/';
 
     $.ajaxSetup({cache: 1});
 
@@ -83,7 +86,7 @@
 
         // Animate pledge counter
         $.p3.pledge_counter('#action-counter', {
-            jsonURL:    pledgeURL,
+            jsonURL:    localPledgeURL,
             params:     parameters
         });
 
@@ -96,18 +99,23 @@
         });
 
         // Update social share counts
-//        $.p3.social_sharing('#action-social-share', {
-//            jsonURL: 'js/v03/json_testing/social_simple.json',
-//            networks: {
-//                twitter: {
-//                    title: window.document.title
-//                },
-//                pinterest: {
-//                    image: 'http://www.greenpeace.org/international/Global/international/artwork/other/2010/openspace/bigspace-photo.jpg',
-//                    description: window.document.title
-//                }
-//            }
-//        });
+        $.p3.social_sharing('#action-social-share', {
+            jsonURL: 'js/v03/json_testing/social_simple.json',
+            networks: {
+                twitter: {
+                    title: window.document.title
+                },
+                pinterest: {
+                    image: 'http://www.greenpeace.org/international/Global/international/artwork/other/2010/openspace/bigspace-photo.jpg',
+                    description: window.document.title
+                }
+            }
+        });
+
+        $.p3.recent_signers('#action-recent-signers', {
+            jsonURL: localPledgeURL,
+            params: parameters
+        });
 
     });
 
