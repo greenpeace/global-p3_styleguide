@@ -10,6 +10,7 @@
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
  *                  <a href="https://github.com/greenpeace/client-code-styleguide/blob/master/js/v03/p3.validation.js">p3.validation.js</a>
+ *                  p3.request.js
  * @example         $.p3.pledge_with_email_only('#action-form' [, options]);
  *
  */
@@ -39,7 +40,7 @@
                 fallbackHTML5:          false,
                 /* GET variables to be added to both the signer check and form validation requests */
                 params:                 {},
-                messageElement:             '<div class="message"></div>'
+                messageElement:         '<div class="message"></div>'
             };
 
     _p3.pledge_with_email_only = function(el, options) {
