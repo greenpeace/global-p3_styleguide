@@ -17,6 +17,7 @@ function checkNarrow(){
     nine: 900,
     tablet: 480,
     desktop: 1024,
+    desktop-wide: 1350,
     large: 1600
   };
   jQuery.each(size, function(cls, size) {

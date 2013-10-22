@@ -233,6 +233,12 @@ form input.error {
     background: #FFF;
     float: left;
     padding: .5em;
+    -moz-box-shadow: 0px 0px 8px #111;
+    -webkit-box-shadow: 0px 0px 8px #111;
+    box-shadow: 0px 0px 8px #111;
+    bottom: 1.5em;
+    right: -86px;
+    width: 130px;
   }
   html .input .tooltip:hover span {
     visibility: visible;
@@ -258,9 +264,27 @@ form input.error {
   background: #FFF;
   float: left;
   padding: .5em;
+  -moz-box-shadow: 0px 0px 8px #111;
+  -webkit-box-shadow: 0px 0px 8px #111;
+  box-shadow: 0px 0px 8px #111;
+  bottom: 1.5em;
+  right: -86px;
+  width: 130px;
 }
 .desktop .input .tooltip:hover span {
   visibility: visible;
+}
+@media only screen and (min-width: 1350px) {
+  html .input .tooltip span {
+    min-width: 200px;
+    bottom: auto;
+    right: auto;
+  }
+}
+.desktop-wide .input .tooltip span {
+  min-width: 200px;
+  bottom: auto;
+  right: auto;
 }
 /* do not show javascript needed warning if js is enabled 
 	 this needs modernizr to work

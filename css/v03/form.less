@@ -235,11 +235,24 @@ form input.error {
 		background:#FFF;		
 		float:left;
 		padding:.5em;
+    -moz-box-shadow: 0px 0px 8px #111;
+    -webkit-box-shadow: 0px 0px 8px #111;
+    box-shadow: 0px 0px 8px #111;
+    bottom: 1.5em;
+    right: -86px;
+		width: 130px;
 	}
 	.input .tooltip:hover span {
 		visibility:visible;
 	}
 
+}
+.form_desktop_wide() {
+	.input .tooltip span {
+		min-width: 200px;
+    bottom: auto;
+    right: auto;
+	}
 }
 /* if large screen display info as tooltips */
 @media only screen and (min-width : 1024px) {
@@ -249,6 +262,14 @@ form input.error {
 }
 .desktop {
   .form_desktop;
+}
+@media only screen and (min-width : 1350px) {
+  html {
+    .form_desktop_wide;
+  }
+}
+.desktop-wide {
+  .form_desktop_wide;
 }
 
 /* do not show javascript needed warning if js is enabled 
