@@ -59,7 +59,8 @@
 }
 .lt-ie7 .dropdown-scroll .dropdown-list,
 .lt-ie7 .dropdown-scroll .dropdown-panel {
-	height: 350px;
+	height: expression( this.scrollHeight > 349 ? "350px" : "auto" );
+	zoom: 1;
 	overflow: auto;
 }
 
