@@ -1,29 +1,27 @@
 /**!
- * 
- * 
+ *
+ *
  * @fileOverview    Greenpeace Pledge Signing Counter for Action Template v0.3
- *                  Animated pledge percentage bar & text, 
+ *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, enabling the JSON
- *                  data to be reused with another plugin (eg Recent Signers)                                   
- * @version         0.1
+ *                  data to be reused with another plugin (eg Recent Signers)
+ * @version         0.2
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
- *                  <a href="http://modernizr.com/">Modernizr</a>
+ *                  <a href="http://modernizr.com/">Modernizr</a>,
+ *                  $.p3.request
  * @example         $.p3.counter('#action-counter'[, options]);
- * 
+ *
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
-(function($, M) {
+(function($, M, window, undefined) {
     'use strict';
-    
+
     var _p3 = $.p3 || {},
     defaults = {
-        uuid: false,                                    /* Use this to specify the UUID of the pledge in the returned JSON, 
-                                                         * else the script will search the passed element for a data-pledge-uuid attribute and use that, 
-                                                         * and if both are null, it will default to processing the first pledge it finds */
         meterElement:       '.completed',               /* Selector for the bar to animated */
         textElement:        '#action-counter-textual',  /* Selector for the text to update, eg 100 have joined so far. The target is 200 */
         fetchFrequency:     30000,                      /* time to wait to fetch next value from server (in milliseconds) */
@@ -35,15 +33,15 @@
         eventDriven:        false,                      /* set to true to trigger update externally */
         fetchDataEvent:     'fetchPledgeData',          /* trigger this event to fetch JSON data from the endpoint */
         fetchCompleteEvent: 'fetchPledgeDataComplete',  /* trigger this event if you have fetched data externally and just want to parse and update display */
-        jsonURL:            'https://www.greenpeace.org/api/p3/pledge/config.json'
+        jsonURL:            'https://www.greenpeace.org/api/p3/pledge/config.json',
+        params:             {}
     };
-    
+
     _p3.pledge_counter = function(el, options) {
-        
+
         var config = $.extend(true, defaults, options || {}),
         $meter = $(config.meterElement, el),
         $text = $(config.textElement, el),
-        pledgeIdentifier = config.uuid || $(el).attr('data-pledge-uuid'),
         paused = false,
         currentValue = 0,
         step = 0,
@@ -51,6 +49,7 @@
             count: 0,
             target: 0
         },
+        request = $.p3.request(config.jsonURL),
         updateProgress = function () {
             if (paused) {
                 // We're already updating, come back later
@@ -60,9 +59,9 @@
                 return;
             }
             paused = true;
-            
+
             var value = progress.count;
-            
+
             if (value < currentValue) {
                 currentValue = 0;
             }
@@ -71,7 +70,7 @@
                 step = 1;
             }
             $text.text(addCommas(progress.count) + ' have joined so far. The target is ' + addCommas(progress.target) + '.');
-            
+
             animateProgress();
         },
         animateProgress = function () {
@@ -83,10 +82,10 @@
 //                if (config.eventDriven) {
 //                    setTimeout( function () {
 //                        $(window).trigger(config.fetchDataEvent);
-//                    }, config.fetchFrequency);                  
+//                    }, config.fetchFrequency);
 //                } else {
 //                    setTimeout(fetchJSON, config.fetchFrequency);
-//                }                
+//                }
                 return;
             }
 
@@ -97,11 +96,11 @@
             }
 
             var percent = currentValue / progress.target * 100;
-            
+
             if (percent > 100) {
                 percent = 100;
             }
-            
+
             if (M.csstransforms) {
                 $meter.css({
                     width: percent + '%'
@@ -112,7 +111,7 @@
                 }, (config.updateSpeed - 5 >= 0) ? config.updateSpeed : 0, function () {
                     $meter.html(addCommas(currentValue) + '&nbsp;');
                 });
-            }            
+            }
 
             setTimeout(animateProgress, config.updateSpeed);
         },
@@ -122,48 +121,45 @@
             x1 = x[0],
             x2 = x.length > 1 ? '.' + x[1] : '',
             rgx = /(\d+)(\d{3})/;
-    
+
             while (rgx.test(x1)) {
                 x1 = x1.replace(rgx, '$1' + ',' + '$2');
             }
             return x1 + x2;
         },
         parsePledgeData = function (json) {
-            var jsonData = ("undefined" === json) ? $(config.dataElement).data(config.dataNamespace) : json;
-            
-            if (pledgeIdentifier) {
-                var found = false;
-//                console.log(pledgeIdentifier);
-                $.each(jsonData.pledges, function(i, data) {
-                    if(data.uuid === pledgeIdentifier) {
-//                        console.log('Pledge found ' + data.uuid);
-                        progress.count = data.action.count;
-                        progress.target = data.action.target;        
-                        found = true;
-                        return false;
-                    }
+            // read data from parameter or element
+            var jsonData = (undefined === json) ? $(config.dataElement).data(config.dataNamespace) : json;
+
+            if (!jsonData || json.status === 'error' || !jsonData.pledges[0].action) {
+                console.log('ERROR');
+                $.each(json.errors, function (key, value) {
+                   console.log(key + ' => ' + value);
                 });
-                if (!found) {
-                    throw new Error('Pledge not found: ' + pledgeIdentifier);
-                }
-            } else {
-                progress.count = jsonData.pledges[0].action.count;
-                progress.target = jsonData.pledges[0].action.target;
-            }            
-            
+                throw new Error('Errors in pledge data.');
+            }
+
+            progress.count = jsonData.pledges[0].action.count;
+            progress.target = jsonData.pledges[0].action.target;
+
+            if (isNaN(progress.count) || isNaN(progress.target)) {
+                // doesn't exist, or wrong format
+                console.log('ERROR: progress data not found, aborting.');
+                return false;
+            }
+
+            // Display results
             updateProgress();
         },
         fetchJSON = function () {
-            $.ajaxSetup ({
-                // Disable caching of AJAX responses
-                cache: false
-            });
-            
-            $.getJSON(config.jsonURL, function(json) {
+            var params = $.extend(true, request.parameters, config.params);
+            $.getJSON(request.url, params, function(json) {
                 parsePledgeData(json);
+            }).error( function (e) {
+                throw new Error(e);
             });
         };
-        
+
         // initialise
         M.load({
             test: window.JSON,
@@ -176,9 +172,9 @@
                 }
                 if (config.eventDriven) {
                     // Event driven fetch and processing means we can decouple data
-                    // from this plugin, allowing us to reuse the data without 
+                    // from this plugin, allowing us to reuse the data without
                     // performing multiple requests
-                    $(window).on(config.fetchDataEvent, function() {                        
+                    $(window).on(config.fetchDataEvent, function() {
                         // trigger this event to initiate a fetch
                         fetchJSON();
                     });
@@ -186,22 +182,22 @@
                     $(window).on(config.fetchCompleteEvent, function() {
                         // trigger this event if the JSON has already been fetched and is ready to parse
                         parsePledgeData();
-                    });                    
+                    });
                 } else {
                     fetchJSON();
                 }
             }
-        });        
-        
+        });
+
         return {
             config: config,
             parseJSON: parsePledgeData,
             fetchJSON: fetchJSON
         };
-        
-    };    
-    
+
+    };
+
     // Overwrite p3 namespace if no errors
     $.p3 = _p3;
-    
-}(jQuery, Modernizr));
+
+}(jQuery, Modernizr, this));
