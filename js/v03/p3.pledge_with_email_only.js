@@ -5,7 +5,7 @@
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.2
+ * @version         0.2.1
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -36,12 +36,27 @@
                 /* Duration to animate the display of hidden missing fields
                  * Set to 0 to disable */
                 animationDuration:      350,
-                /* Enable basic HTML5 form validation if the json URL request fails */
-                fallbackHTML5:          false,
+                /* Disable form input if an error occurs */
+                disableOnError:         false,
                 /* GET variables to be added to both the signer check and form validation requests */
                 params:                 {},
-                messageElement:         '<div class="message"></div>'
+                messageElement:         '<div class="message"></div>',
+                errors: {
+                    tests: {
+                        user:    /is missing/i,
+                        fields:  /some fields are missing/i
+                    }
+                }
             };
+
+    // Custom selector to match country codes to country names
+    $.expr[":"].p3_empty = function(el) {
+        var $el = $(el);
+        if ($el.attr('name') === undef) {
+            return false;
+        }
+        return $el.val() === '';
+    };
 
     _p3.pledge_with_email_only = function(el, options) {
         var config = $.extend(true, defaults, options || {}),
@@ -82,7 +97,7 @@
          */
         setExpiryDate = function() {
             if (query.parameters.expiry === undef) {
-                console.log('WARNING: No expiry date set');
+                console.log('WARNING: $.p3.pledge_with_email_only :: No expiry date set');
             }
         },
         /**
@@ -97,7 +112,7 @@
                 // Re-enable form input
                 setTimeout(function() {
                     $submit.removeProp('disabled').removeClass('disabled');
-                }, 250);
+                }, 50);
                 if (response.status === 'success') {
                     /* User can sign using email only */
                     return true;
@@ -119,8 +134,14 @@
                     showMissingFields(response);
                     return false;
                 }
-            }).error(function() {
-                throw new Error('Signer API request failed');
+            }).fail(function() {
+                if (!config.disableOnError) {
+                    console.log('WARNING : $.p3.pledge_with_email_only :: Failed to load JSON, all form inputs re-enabled');
+                    showFormFields();
+                    $submit.removeProp('disabled').removeClass('disabled');
+                } else {
+                    throw new Error('$.p3.pledge_with_email_only.js :: Signer API request failed');
+                }
             });
         },
         /**
@@ -134,37 +155,55 @@
             $.each(response.errors, function(type, fields) {
                 switch (type) {
                     case 'user':
-                        $(config.registrationFields).prepend(config.messageElement);
-                        $.each(fields, function(label, errorText) {
-                            var $field = $('.' + label, $form),
-                            $message = $('.message', $field),
-                            $input = $('input', $field);
+                        if (config.errors.tests.user.test(fields)) {
+                            // User is missing, show all fields
+                            showFormFields();
+                            // Focus first empty field
+                            $('input.required:p3_empty:first', $form).focus();
 
-                            if (!$message.length) {
-                                $field.append(messageText);
-                                $message = $('.message', $field);
-                            }
-                            // Show error message
-                            $message.html('<span class="error" for="' + $input.attr('id') + '">' + errorText + '</span>');
-                            // Enable field
-                            $input.addClass('error').removeProp('disabled');
-                            // Add error class to parent field and display the field
-                            $field.addClass('error').show(config.animationDuration);
-                        });
-                        // Focus first error field
-                        $('.input.error:first input').focus();
+                        } else if (config.errors.tests.fields.test(fields)) {
+
+                            $(config.registrationFields).prepend(config.messageElement);
+
+                            $.each(fields, function(label, errorText) {
+                                var $field = $('.' + label, $form),
+                                $message = $('.message', $field),
+                                $input = $('input', $field);
+
+                                if (!$message.length) {
+                                    $field.append(messageText);
+                                    $message = $('.message', $field);
+                                }
+                                // Show error message
+                                $message.html('<span class="error" for="' + $input.attr('id') + '">' + errorText + '</span>');
+                                // Enable field
+                                $input.addClass('error').removeProp('disabled');
+                                // Add error class to parent field and display the field
+                                $field.addClass('error').show(config.animationDuration);
+                            });
+
+                            // Focus first error field
+                            $('.input.error:first input', $form).focus();
+
+                        }
                         break;
                     case 'pledge':
-                        console.log('Pledge already signed!');
+//                        console.log('WARNING: $.p3.pledge_with_email_only :: Pledge already signed!');
                         break;
                     default:
                         throw new Error('Unhandled error type: ' + type);
                 }
             });
         },
+        hideFormFields = function () {
+            $(config.registrationFields + ' > :not(' + config.exceptionFields + ', #action-submit-full)').hide().find('input').prop('disabled', 'disabled');
+        },
+        showFormFields = function () {
+            $(config.registrationFields + ' > :not(' + config.exceptionFields + ', #action-submit-full)').show(config.animationDuration).find('input').removeProp('disabled');
+        },
         init = function() {
             // Hide unwanted form elements
-            $(config.registrationFields + ' > :not(' + config.exceptionFields + ', #action-submit-full)').hide().find('input').prop('disabled', 'disabled');
+            hideFormFields();
 
             setPageIdentifier();
             setExpiryDate();
@@ -183,7 +222,7 @@
                         form.submit();
                     }
                 },
-                fallbackHTML5: config.fallbackHTML5
+                disableOnError: config.disableOnError
             });
         };
 
