@@ -1,6 +1,7 @@
 // Avoid `console` errors in browsers that lack a console.
 !function(){"use strict";for(var a,b=function(){},c=["assert","clear","count","debug","dir","dirxml","error","exception","group","groupCollapsed","groupEnd","info","log","markTimeline","profile","profileEnd","table","time","timeEnd","timeStamp","trace","warn"],d=c.length,e=window.console=window.console||{};d--;)a=c[d],e[a]||(e[a]=b)}();
 
+
 /**!
  * $.p3.request
  *
@@ -12,6 +13,7 @@
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
  * @requires        <a href="http://jquery.com/">jQuery</a>
  * @usage           $.p3.request('http://fish.com?type=salmon');
+ * @version         0.1
  * @param           {string} url jQuery
  * @returns         {object} { url: 'http://fish.com', parameters: { type: 'salmon' } }
  */
@@ -20,7 +22,11 @@
     var _p3 = $.p3 || {};
 
     _p3.request = function(url) {
-        var parts = url.split('?'),
+        var request = {
+          url: false,
+          parameters: false
+        },
+        parts = [],
         getRequestParams = function() {
             var params = {};
 
@@ -36,14 +42,18 @@
         },
         getRequestURL = function() {
             return (parts[0].length) ? parts[0] : url;
-        },
-        location = getRequestURL(),
-        parameters = getRequestParams();
-
-        return {
-            url: location,
-            parameters: parameters
         };
+
+        if (url) {
+          parts = url.split('?');
+        } else {
+          return request;
+        }
+
+        request.url = getRequestURL(),
+        request.parameters = getRequestParams();
+
+        return request;
     };
 
     $.p3 = _p3;
@@ -66,10 +76,11 @@
         key:  '78d245e17c455859b4863ad34674f2b8'
     },
     // Demonstration showing parameters passed in the URL (including spurious parameter)
-    pledgeURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledge/pledges/?fish=42&page=269648',
+    pledgeURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/',
     localPledgeURL = 'js/v03/json_testing/pledges.json',
+    signerCheckURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/signercheck/',
     // Demonstrating a blank URL, which will have required parameters added in the function call
-    validationURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledge/validation/';
+    validationURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/validation/';
 
     $.ajaxSetup({cache: 1});
 
@@ -86,14 +97,14 @@
 
         // Animate pledge counter
         $.p3.pledge_counter('#action-counter', {
-            jsonURL:    localPledgeURL,
+            jsonURL:    pledgeURL,
             params:     parameters
         });
 
         // Check if we can sign this pledge using email field only
         // Includes form validation via $.p3.validation
         $.p3.pledge_with_email_only('#action-form', {
-            signerCheckURL:     'js/v03/json_testing/signer_error_fields.json',
+            signerCheckURL:     signerCheckURL,
             validationRulesURL: validationURL,
             params:             parameters
         });
