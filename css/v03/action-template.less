@@ -358,6 +358,28 @@ and (min-width : 1600px) {
 } */
 
 /* Browser specific hacks --------- */
-.lt-ie7 .sevensome #action-form .submit {
-	width: 100%;
+.lt-ie7 {
+	.sevensome #action-form {
+		textarea, input {
+			width: 98%;
+		}
+		.submit {
+			width: 100%;
+		}
+	}
+	#action-smallprints {
+		.shortlabel,
+		.smallprint input {
+			display: none;
+		}
+		.remember input {
+			width: auto;
+		}
+		.longlabel{
+			display: inline;
+			font-size: 0.875em;
+			line-height: 1.4em;
+			font-weight: normal;
+		}
+	}
 }

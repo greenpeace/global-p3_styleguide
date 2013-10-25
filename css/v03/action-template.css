@@ -485,6 +485,23 @@ and (min-width : 1600px) {
 	}
 } */
 /* Browser specific hacks --------- */
+.lt-ie7 .sevensome #action-form textarea,
+.lt-ie7 .sevensome #action-form input {
+  width: 98%;
+}
 .lt-ie7 .sevensome #action-form .submit {
   width: 100%;
+}
+.lt-ie7 #action-smallprints .shortlabel,
+.lt-ie7 #action-smallprints .smallprint input {
+  display: none;
+}
+.lt-ie7 #action-smallprints .remember input {
+  width: auto;
+}
+.lt-ie7 #action-smallprints .longlabel {
+  display: inline;
+  font-size: 0.875em;
+  line-height: 1.4em;
+  font-weight: normal;
 }

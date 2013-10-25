@@ -18,6 +18,9 @@
 	position: relative;
 	margin: auto;
 }
+.lt-ie8 .heading .heading-holder {
+	z-index: 999;
+}
 
 .heading-second .heading-holder  { /* allows mobile menu to absolute it's way to the top */
   position: static;
@@ -74,6 +77,7 @@
 	text-indent: -50000px;
 	line-height: 0;
 	color: transparent;
+	cursor: pointer;
 }
 .country-selector .dropdown-controller a.dropdown-open,
 .country-selector .dropdown-controller a.dropdown-open:hover {
@@ -184,6 +188,9 @@
 	margin:2px;
 	border:1px solid #66CC00;
 	cursor: pointer;
+}
+.search-form .submit span:active {
+	background:transparent url(../../img/v03/image-map.png) -151px -9px no-repeat;
 }
 
 /* search form in the mobile menu */
