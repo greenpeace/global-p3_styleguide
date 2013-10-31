@@ -2,6 +2,7 @@
 TODOs
 ---------------------------------------
 
++ some images are not in the imagemap
 + p3.form_tracking is not a plugin
 + p3.narrow is not a plugin
 + p3.narrow should be loaded only if Mediaquery are not supported work
