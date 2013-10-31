@@ -1,9 +1,6 @@
 /* ==========================================================================
      ACtion Template or Action Related Widgets
    ========================================================================== */
-html {
-  overflow: hidden;
-}
 /* page level configuration shortcuts */
 .no-quick-login first-time-login {
   display: none;
