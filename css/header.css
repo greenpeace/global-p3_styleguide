@@ -7,7 +7,6 @@
   width: 100%;
   height: 5.5em;
   /* 88px */
-
 }
 .heading {
   width: 100%;
@@ -16,7 +15,6 @@
   background: #66CC00;
   height: 3.75em;
   /* 60px */
-
 }
 .heading .heading-holder {
   position: relative;
@@ -27,7 +25,6 @@
 }
 .heading-second .heading-holder {
   /* allows mobile menu to absolute it's way to the top */
-
   position: static;
 }
 /*
@@ -38,7 +35,7 @@
 }
 .header .logo {
   display: block;
-  background: url(../../img/v03/image-map.png) 0 0 no-repeat;
+  background: url(../img/image-map.png) 0 0 no-repeat;
   width: 153px;
   height: 25px;
   position: absolute;
@@ -51,10 +48,8 @@
 .country-selector {
   left: 11.25em;
   /* 180px */
-
   top: 1.125em;
   /* 18px */
-
   position: absolute;
   font-size: 1em;
 }
@@ -67,7 +62,6 @@
   padding: 1px 0 3px 2px;
   height: .875em;
   /* 14px */
-
   color: #FFF;
   text-decoration: none;
   border: 2px solid #66CC00;
@@ -75,7 +69,7 @@
 }
 .country-selector .dropdown-controller a .country-img,
 .country-selector .dropdown-controller a:hover .country-img {
-  background: #66cc00 url(../../img/v03/image-map.png) left -42px no-repeat;
+  background: #66cc00 url(../img/image-map.png) left -42px no-repeat;
   position: absolute;
   right: 0;
   width: 51px;
@@ -93,7 +87,7 @@
 }
 .country-selector .dropdown-controller a.dropdown-open .country-img,
 .country-selector .dropdown-controller a.dropdown-open:hover .country-img {
-  background: #ffffff url(../../img/v03/image-map.png) 0 -64px no-repeat;
+  background: #ffffff url(../img/image-map.png) 0 -64px no-repeat;
 }
 .country-selector .dropdown {
   width: 100%;
@@ -101,10 +95,8 @@
 .country-selector .dropdown .dropdown-list {
   margin-top: 0.1429em;
   /* 2px */
-
   font-size: 0.875em;
   /* 14px */
-
 }
 /*
  * Language Selector and Additional Nav
@@ -115,7 +107,6 @@
   margin: .5em 0;
   font-size: .8125em;
   /* 13px */
-
 }
 .promoted-links ul {
   list-style-type: none;
@@ -137,7 +128,7 @@
   width: 12px;
   height: 10px;
   display: inline-block;
-  background: transparent url(../../img/v03/image-map.png) -30px -45px no-repeat;
+  background: transparent url(../img/image-map.png) -30px -45px no-repeat;
   margin-left: 3px;
   padding-left: 5px;
 }
@@ -168,18 +159,15 @@
   float: left;
   width: 17.143em;
   /* 240px */
-
   margin: 0;
   padding: 0 0 0 .571em;
   /* 8px */
-
   -webkit-box-shadow: inset 0px 0px 0px rgba(255, 255, 255, 0);
   -moz-box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0);
   box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0);
   margin-top: 2px;
   font-size: .875em;
   /* 14px */
-
 }
 .search-form .submit {
   float: right;
@@ -192,7 +180,7 @@
   height: 15px;
 }
 .search-form .submit span {
-  background: transparent url(../../img/v03/image-map.png) -136px -24px no-repeat;
+  background: transparent url(../img/image-map.png) -136px -24px no-repeat;
   width: 15px;
   height: 15px;
   display: block;
@@ -202,7 +190,7 @@
   cursor: pointer;
 }
 .search-form .submit span:active {
-  background: transparent url(../../img/v03/image-map.png) -151px -9px no-repeat;
+  background: transparent url(../img/image-map.png) -151px -9px no-repeat;
 }
 /* search form in the mobile menu */
 #main-nav .search-form {
@@ -220,7 +208,6 @@
   width: 90%;
   font-size: 1em;
   /* 14px */
-
   padding-top: 0.4em;
   padding-bottom: 0.4em;
 }
@@ -234,15 +221,12 @@
 ul.navigation {
   margin-top: 0px;
   /* overrides ul default margin */
-
   padding-left: 0px;
 }
 #main-nav {
   /* container for mobile menu */
-
   background: none #1D1D1D;
   /* dark background color of the mobile menu */
-
   position: absolute;
   top: 0px;
   right: 0px;
@@ -252,13 +236,10 @@ ul.navigation {
 }
 #main-nav {
   /* mobile menu when not visible */
-
   right: -50000px;
   /* JS will change this value 0 */
-
   display: none;
   /* JS will change this value to block*/
-
 }
 /* no mobile menu on IE < 9 */
 .lt-ie9 #main-nav {
@@ -295,7 +276,7 @@ ul.navigation {
   margin-left: 6%;
 }
 #mobilemenu-close {
-  background: url("../../img/v03/message_x.png") no-repeat scroll center center #1d1d1d;
+  background: url("../img/message_x.png") no-repeat scroll center center #1d1d1d;
   color: rgba(0, 0, 0, 0);
   display: block;
   height: 40px;
@@ -306,7 +287,7 @@ ul.navigation {
   width: 40px;
 }
 #mobilemenu-icon {
-  background: url("../../img/v03/menu_icon.png") no-repeat scroll center center #a1cc76;
+  background: url("../img/menu_icon.png") no-repeat scroll center center #a1cc76;
   border: 1px solid #5BB700;
   border-radius: 5px 5px 5px 5px;
   color: #565456;
@@ -333,7 +314,7 @@ ul.navigation {
   width: 20px;
   height: 20px;
   text-indent: -50000px;
-  background: url(../../img/v03/arrow.png) no-repeat center center transparent;
+  background: url(../img/arrow.png) no-repeat center center transparent;
 }
 .mobilemenu-open #main-nav li.has-submenu .submenu-open {
   -moz-transform: rotate(90deg);
@@ -345,18 +326,15 @@ ul.navigation {
 @media only screen and (min-width: 768px) {
   html {
     /*
-   * Header
-   */
-  
+ * Header
+ */
     /*
-   * Main Navigation on Desktop with dropdown
-   */
-  
+ * Main Navigation on Desktop with dropdown
+ */
   }
   html .heading-second {
     height: 1.6875em;
     /* 27px */
-  
     background: #57b105;
     border-top: 1px solid #4EA600;
   }
@@ -375,14 +353,12 @@ ul.navigation {
     float: left;
     max-width: 42.5em;
     /* 625px */
-  
     background: none transparent;
   }
   html .navigation li {
     float: left;
     padding: 0 .1666666666em;
     /* 2px/12 */
-  
     position: relative;
     z-index: 101;
   }
@@ -398,15 +374,12 @@ ul.navigation {
     font-family: Helvetica, "Trebuchet MS", sans-serif;
     font-size: .75em;
     /*12px */
-  
     line-height: 2.41667em;
     /* 29px/12 */
-  
     font-weight: bold;
     color: #fff;
     padding: 0 .83333333333em;
     /* 10px/12 */
-  
     white-space: nowrap;
   }
   html .navigation li a.current-item,
@@ -443,7 +416,6 @@ ul.navigation {
   }
   html .navigation li .drop-content a {
     /* overrides the mobile styling */
-  
     margin-left: 0;
   }
   html .navigation li:hover .drop-holder,
@@ -459,23 +431,19 @@ ul.navigation {
     position: absolute;
     top: 1.75em;
     /* 28px */
-  
     left: -6.25em;
     /* 100px */
-  
     z-index: 100;
   }
   html .navigation .drop-content {
     height: 23.125em;
     /* 370px */
-  
     width: 0;
     background: transparent none;
   }
   html .navigation .drop-content ul {
     margin: 0 0 0 6.5em;
     /* 104px */
-  
     padding: 0;
     list-style: none;
     position: absolute;
@@ -485,7 +453,6 @@ ul.navigation {
     float: none;
     width: 13.125em;
     /* 210px */
-  
     vertical-align: middle;
     background-color: #fff;
     padding: 0;
@@ -497,20 +464,16 @@ ul.navigation {
     font-size: .75em;
     height: 1.91667em;
     /* 23px/12 */
-  
     line-height: 1.91667em;
     /* 23px/12 */
-  
     padding: 0 0 0 .83333333em;
     /* 10px/12 */
-  
     cursor: pointer;
     color: #000;
     position: relative;
     margin: 0;
     width: 16.66667em;
     /* 200px/12 */
-  
     overflow: hidden;
   }
   html .navigation .drop-content ul li:hover a,
@@ -561,11 +524,9 @@ ul.navigation {
     color: #000;
     padding: 0 0 0 .83333333em;
     /* 10px/12 */
-  
     margin: 0;
     width: 16.66667em;
     /* 200px/12 */
-  
   }
   html .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
   html .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
@@ -604,16 +565,13 @@ ul.navigation {
   /*
  * Header
  */
-
   /*
  * Main Navigation on Desktop with dropdown
  */
-
 }
 .sevensome .heading-second {
   height: 1.6875em;
   /* 27px */
-
   background: #57b105;
   border-top: 1px solid #4EA600;
 }
@@ -632,14 +590,12 @@ ul.navigation {
   float: left;
   max-width: 42.5em;
   /* 625px */
-
   background: none transparent;
 }
 .sevensome .navigation li {
   float: left;
   padding: 0 .1666666666em;
   /* 2px/12 */
-
   position: relative;
   z-index: 101;
 }
@@ -655,15 +611,12 @@ ul.navigation {
   font-family: Helvetica, "Trebuchet MS", sans-serif;
   font-size: .75em;
   /*12px */
-
   line-height: 2.41667em;
   /* 29px/12 */
-
   font-weight: bold;
   color: #fff;
   padding: 0 .83333333333em;
   /* 10px/12 */
-
   white-space: nowrap;
 }
 .sevensome .navigation li a.current-item,
@@ -700,7 +653,6 @@ ul.navigation {
 }
 .sevensome .navigation li .drop-content a {
   /* overrides the mobile styling */
-
   margin-left: 0;
 }
 .sevensome .navigation li:hover .drop-holder,
@@ -716,23 +668,19 @@ ul.navigation {
   position: absolute;
   top: 1.75em;
   /* 28px */
-
   left: -6.25em;
   /* 100px */
-
   z-index: 100;
 }
 .sevensome .navigation .drop-content {
   height: 23.125em;
   /* 370px */
-
   width: 0;
   background: transparent none;
 }
 .sevensome .navigation .drop-content ul {
   margin: 0 0 0 6.5em;
   /* 104px */
-
   padding: 0;
   list-style: none;
   position: absolute;
@@ -742,7 +690,6 @@ ul.navigation {
   float: none;
   width: 13.125em;
   /* 210px */
-
   vertical-align: middle;
   background-color: #fff;
   padding: 0;
@@ -754,20 +701,16 @@ ul.navigation {
   font-size: .75em;
   height: 1.91667em;
   /* 23px/12 */
-
   line-height: 1.91667em;
   /* 23px/12 */
-
   padding: 0 0 0 .83333333em;
   /* 10px/12 */
-
   cursor: pointer;
   color: #000;
   position: relative;
   margin: 0;
   width: 16.66667em;
   /* 200px/12 */
-
   overflow: hidden;
 }
 .sevensome .navigation .drop-content ul li:hover a,
@@ -818,11 +761,9 @@ ul.navigation {
   color: #000;
   padding: 0 0 0 .83333333em;
   /* 10px/12 */
-
   margin: 0;
   width: 16.66667em;
   /* 200px/12 */
-
 }
 .sevensome .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
@@ -861,16 +802,13 @@ ul.navigation {
   /*
  * Header
  */
-
   /*
  * Main Navigation on Desktop with dropdown
  */
-
 }
 .lt-ie9 .heading-second {
   height: 1.6875em;
   /* 27px */
-
   background: #57b105;
   border-top: 1px solid #4EA600;
 }
@@ -889,14 +827,12 @@ ul.navigation {
   float: left;
   max-width: 42.5em;
   /* 625px */
-
   background: none transparent;
 }
 .lt-ie9 .navigation li {
   float: left;
   padding: 0 .1666666666em;
   /* 2px/12 */
-
   position: relative;
   z-index: 101;
 }
@@ -912,15 +848,12 @@ ul.navigation {
   font-family: Helvetica, "Trebuchet MS", sans-serif;
   font-size: .75em;
   /*12px */
-
   line-height: 2.41667em;
   /* 29px/12 */
-
   font-weight: bold;
   color: #fff;
   padding: 0 .83333333333em;
   /* 10px/12 */
-
   white-space: nowrap;
 }
 .lt-ie9 .navigation li a.current-item,
@@ -957,7 +890,6 @@ ul.navigation {
 }
 .lt-ie9 .navigation li .drop-content a {
   /* overrides the mobile styling */
-
   margin-left: 0;
 }
 .lt-ie9 .navigation li:hover .drop-holder,
@@ -973,23 +905,19 @@ ul.navigation {
   position: absolute;
   top: 1.75em;
   /* 28px */
-
   left: -6.25em;
   /* 100px */
-
   z-index: 100;
 }
 .lt-ie9 .navigation .drop-content {
   height: 23.125em;
   /* 370px */
-
   width: 0;
   background: transparent none;
 }
 .lt-ie9 .navigation .drop-content ul {
   margin: 0 0 0 6.5em;
   /* 104px */
-
   padding: 0;
   list-style: none;
   position: absolute;
@@ -999,7 +927,6 @@ ul.navigation {
   float: none;
   width: 13.125em;
   /* 210px */
-
   vertical-align: middle;
   background-color: #fff;
   padding: 0;
@@ -1011,20 +938,16 @@ ul.navigation {
   font-size: .75em;
   height: 1.91667em;
   /* 23px/12 */
-
   line-height: 1.91667em;
   /* 23px/12 */
-
   padding: 0 0 0 .83333333em;
   /* 10px/12 */
-
   cursor: pointer;
   color: #000;
   position: relative;
   margin: 0;
   width: 16.66667em;
   /* 200px/12 */
-
   overflow: hidden;
 }
 .lt-ie9 .navigation .drop-content ul li:hover a,
@@ -1075,11 +998,9 @@ ul.navigation {
   color: #000;
   padding: 0 0 0 .83333333em;
   /* 10px/12 */
-
   margin: 0;
   width: 16.66667em;
   /* 200px/12 */
-
 }
 .lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a,

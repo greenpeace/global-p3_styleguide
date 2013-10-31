@@ -5,7 +5,7 @@
 	width:16px;
 	height:11px;
 	display:inline-block;
-	background:url("../../img/v03/flags.png")
+	background:url("../img/flags.png")
 	no-repeat 0 11px;
 }
 .flag.ad{background-position:0 0;}

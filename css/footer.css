@@ -7,14 +7,11 @@
   color: #FFF;
   font-size: 0.875em;
   /* 14px */
-
   /*  height:4.7857142857em; /* 67px */
-
 }
 .footer-small .copy-box {
   padding: 2.1428571429em 0 0;
   /* 30px */
-
 }
 .footer-small .copy-box a {
   color: white;
@@ -28,7 +25,7 @@
   float: left;
 }
 .footer-small .logo-box .logo {
-  background: url(../../img/v03/image-map.png) 0 -25px no-repeat;
+  background: url(../img/image-map.png) 0 -25px no-repeat;
   width: 89px;
   height: 15px;
   margin: -2px 0.5em 0 0.2857142857em;
@@ -138,7 +135,8 @@
   height: 71px;
   float: left;
 }
-.footer-highlight li a:focus span, .footer-highlight li a:hover span {
+.footer-highlight li a:focus span,
+.footer-highlight li a:hover span {
   text-decoration: underline;
 }
 /* sitemap */
@@ -161,7 +159,7 @@
   padding-top: 20px;
   min-height: 350px;
   padding-bottom: 44px;
-  background: transparent url(../../img/v03/bg-footer-img.jpg) 110px 0 no-repeat;
+  background: transparent url(../img/bg-footer-img.jpg) 110px 0 no-repeat;
 }
 .footer-sitemap .links li ul {
   float: left;
@@ -174,11 +172,12 @@
 .footer-sitemap .links li ul li a {
   color: #DDD;
 }
-.footer-sitemap .links li ul li a:hover, .footer-sitemap .links li ul li a:focus {
+.footer-sitemap .links li ul li a:hover,
+.footer-sitemap .links li ul li a:focus {
   color: #FFF;
 }
 .footer-sitemap .links a.map {
-  background: transparent url(../../img/v03/image-map.png) -60px -41px no-repeat;
+  background: transparent url(../img/image-map.png) -60px -41px no-repeat;
   padding-top: 77px;
   display: block;
 }
@@ -198,7 +197,7 @@
 }
 .footer-sitemap li.ship:before {
   content: " ";
-  background: transparent url(../../img/v03/image-map.png) 0 -83px no-repeat;
+  background: transparent url(../img/image-map.png) 0 -83px no-repeat;
   width: 21px;
   height: 15px;
   display: block;

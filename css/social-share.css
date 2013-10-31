@@ -43,19 +43,19 @@
 	display:none;
 }
 .social-share .facebook a {
-	background:transparent url(../../img/v03/social-map.png) 0 -90px no-repeat;
+	background:transparent url(../img/social-map.png) 0 -90px no-repeat;
 }
 .social-share .google a {
-	background:transparent url(../../img/v03/social-map.png) 0 -45px no-repeat;
+	background:transparent url(../img/social-map.png) 0 -45px no-repeat;
 }
 .social-share .twitter a {
-	background:transparent url(../../img/v03/social-map.png) 0 0 no-repeat;
+	background:transparent url(../img/social-map.png) 0 0 no-repeat;
 }
 .social-share .pinterest a {
-	background:transparent url(../../img/v03/social-map.png) 0 -175px no-repeat;
+	background:transparent url(../img/social-map.png) 0 -175px no-repeat;
 }
 .social-share .linkedin a {
-	background:transparent url(../../img/v03/social-map.png) 0 -135px no-repeat;
+	background:transparent url(../img/social-map.png) 0 -135px no-repeat;
 }
 /* some fake bubble tip shenanigans */
 .social-share .counter {

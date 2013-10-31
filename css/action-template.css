@@ -7,7 +7,7 @@
 }
 /* change some default behaviors */
 .action-template #main-container {
-  background: transparent url(img/v03/background.jpg) center 0 no-repeat;
+  background: transparent url(../img/background.jpg) center 0 no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -18,7 +18,7 @@
   padding-bottom: 3em;
 }
 .action-template #main-container {
-  background: transparent url(../../img/v03/background.jpg) center 0 no-repeat;
+  background: transparent url(../img/background.jpg) center 0 no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -50,7 +50,6 @@
   display: inline;
   font-size: 0.875em;
   /* 14px */
-
   line-height: 1.4em;
 }
 #action-smallprints .remember {
@@ -111,10 +110,8 @@
 #main-section .social-login a {
   height: 22px;
   /* 22px */
-
   width: 60px;
   /* 60px */
-
   display: inline-block;
   line-height: 1em;
   border: 1px solid #CCC;
@@ -123,10 +120,10 @@
   border-radius: 2px;
 }
 #main-section .social-login a.facebook {
-  background: #fffdff url(../../img/v03/sociallogin.png) center 0 no-repeat;
+  background: #fffdff url(../img/sociallogin.png) center 0 no-repeat;
 }
 #main-section .social-login a.google {
-  background: #fffdff url(../../img/v03/sociallogin.png) center -22px no-repeat;
+  background: #fffdff url(../img/sociallogin.png) center -22px no-repeat;
 }
 /*
 	Recent Signers
@@ -189,17 +186,11 @@
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   html {
     /* page section = 700 + 15 + 15px */
-  
     /* east side */
-  
     /* west side */
-  
     /* background box shenanigans */
-  
     /* counter */
-  
     /* input length to fit the screen */
-  
   }
   html #action-h1 {
     float: left;
@@ -257,17 +248,11 @@
 }
 .sevensome {
   /* page section = 700 + 15 + 15px */
-
   /* east side */
-
   /* west side */
-
   /* background box shenanigans */
-
   /* counter */
-
   /* input length to fit the screen */
-
 }
 .sevensome #action-h1 {
   float: left;
@@ -326,15 +311,10 @@
 @media only screen and (min-width: 1024px) {
   html {
     /* page section = 940 + 20 + 20px */
-  
     /* east side */
-  
     /* background box shenanigans */
-  
     /* west side */
-  
     /* input length to fit the sidebar */
-  
   }
   html #action-h1 {
     float: left;
@@ -372,7 +352,6 @@
     clear: left;
     width: 520px;
     /* + 40px margin */
-  
   }
   html #action-counter-graphical {
     display: block;
@@ -400,15 +379,10 @@
 }
 .desktop {
   /* page section = 940 + 20 + 20px */
-
   /* east side */
-
   /* background box shenanigans */
-
   /* west side */
-
   /* input length to fit the sidebar */
-
 }
 .desktop #action-h1 {
   float: left;
@@ -446,7 +420,6 @@
   clear: left;
   width: 520px;
   /* + 40px margin */
-
 }
 .desktop #action-counter-graphical {
   display: block;
