@@ -21,7 +21,7 @@ function checkNarrow(){
         large: 1600
     };
     jQuery.each(size, function(cls, size) {
-        if (jQuery(window).innerWidth(true) >= size) {
+        if (jQuery(window).width() >= size) {
             jQuery('body').addClass(cls);
         } else {
             jQuery('body').removeClass(cls);
