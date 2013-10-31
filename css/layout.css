@@ -1,11 +1,11 @@
 /* ==========================================================================
-	 Layout
-	 ========================================================================== */
+     Layout
+   ========================================================================== */
 /* 
-	layout organization is as follow
-		--container : 100% width can be used for background
-			--section : self-centered major area
-				--block : major component of an area
+    layout organization is as follow
+        --container : 100% width can be used for background
+            --section : self-centered major area
+                --block : major component of an area
 */
 body {
   position: relative;
@@ -17,7 +17,6 @@ body {
 #main-section {
   margin-top: 60px;
   /* 87px - 27px of bottom-menu */
-
   padding-top: .5em;
 }
 .page-section {
@@ -26,7 +25,8 @@ body {
   padding: 0 5%;
 }
 /* clearfix */
-.page-section:before, .page-section:after {
+.page-section:before,
+.page-section:after {
   content: " ";
   display: table;
 }
@@ -42,28 +42,18 @@ body {
 .footer-small .bottom-menu {
   display: none;
 }
-/* images scaling with size */
-#action-multimedia-teaser img {
-  width: 100%;
-  height: auto;
-  max-width: 570px;
-  /* image is 540px wide */
-
-}
 /* Smartphones (portrait and landscape) ----------- */
 /* mobile first: up to 320px */
 .page-section {
   width: 90%;
   font-size: 0.8125em;
   /* 13px */
-
 }
 @media only screen and (min-width: 320px) {
   .page-section {
     width: 90%;
     font-size: 0.875em;
     /* 14px */
-  
     max-width: 320px;
   }
 }
@@ -71,7 +61,6 @@ body {
   width: 90%;
   font-size: 0.875em;
   /* 14px */
-
   max-width: 320px;
 }
 @media only screen and (min-width: 480px) {
@@ -79,14 +68,12 @@ body {
     max-width: 460px;
     font-size: 0.9375em;
     /* 15px */
-  
   }
 }
 .tablet .page-section {
   max-width: 460px;
   font-size: 0.9375em;
   /* 15px */
-
 }
 /* everything that is not big hide menu */
 /* iPads (portrait and landscape) ----------- 
@@ -105,22 +92,17 @@ and (max-device-width : 1024px)
   #main-section {
     margin-top: 87px;
     /* 60px - 27px of bottom-menu */
-  
   }
   .page-section {
     padding: 0 3%;
     width: 90%;
-    max-width: 700px;
-    /* width:700px; */
-  
+    max-width: 690px;
     font-size: 0.9375em;
     /* 15px */
-  
   }
 }
 .sevensome {
   /* hide menu */
-
 }
 .sevensome .heading-second,
 .sevensome .tools,
@@ -131,17 +113,13 @@ and (max-device-width : 1024px)
 .sevensome #main-section {
   margin-top: 87px;
   /* 60px - 27px of bottom-menu */
-
 }
 .sevensome .page-section {
   padding: 0 3%;
   width: 90%;
-  max-width: 700px;
-  /* width:700px; */
-
+  max-width: 690px;
   font-size: 0.9375em;
   /* 15px */
-
 }
 /* Desktops and laptops ----------- */
 @media only screen and (min-width: 1024px) {
@@ -149,10 +127,11 @@ and (max-device-width : 1024px)
     width: 920px;
     font-size: 1em;
     /* 16px */
-  
     max-width: none;
   }
-  .footer-sitemap, .footer-highlight, .footer-small .bottom-menu {
+  .footer-sitemap,
+  .footer-highlight,
+  .footer-small .bottom-menu {
     display: block;
   }
 }
@@ -160,10 +139,11 @@ and (max-device-width : 1024px)
   width: 920px;
   font-size: 1em;
   /* 16px */
-
   max-width: none;
 }
-.desktop .footer-sitemap, .desktop .footer-highlight, .desktop .footer-small .bottom-menu {
+.desktop .footer-sitemap,
+.desktop .footer-highlight,
+.desktop .footer-small .bottom-menu {
   display: block;
 }
 /* Large screens ----------- */
@@ -171,17 +151,13 @@ and (max-device-width : 1024px)
   .page-section {
     font-size: 1em;
     /* 16px */
-  
     width: 920px;
     /* 960 = 940 +20+20 margin */
-  
   }
 }
 .large .page-section {
   font-size: 1em;
   /* 16px */
-
   width: 920px;
   /* 960 = 940 +20+20 margin */
-
 }

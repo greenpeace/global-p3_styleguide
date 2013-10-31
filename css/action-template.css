@@ -1,11 +1,20 @@
 /* ==========================================================================
-	 ACtion Template or Action Related Widgets
-	 ========================================================================== */
+     ACtion Template or Action Related Widgets
+   ========================================================================== */
+html {
+  overflow: hidden;
+}
 /* page level configuration shortcuts */
 .no-quick-login first-time-login {
   display: none;
 }
-/* change some default behaviors */
+/* images scaling with size */
+#action-multimedia-teaser img {
+  width: 100%;
+  height: auto;
+  max-width: 570px;
+  /* image is 540px wide */
+}
 .action-template #main-section {
   background: #FFF;
   padding-bottom: 3em;
@@ -19,11 +28,11 @@
   margin-top: .225em;
 }
 /*
-	Small Prints
+    Small Prints
 
-	Description	: checkbox is hidden
-	Compatible	 : ?
-	Since				: ?
+    Description    : checkbox is hidden
+    Compatible     : ?
+    Since                : ?
 */
 #action-smallprints {
   margin: .25em 0;
@@ -46,11 +55,11 @@
   width: auto;
 }
 /*
-	Action Counter
+    Action Counter
 
-	Description	: counter with both graphical and text only
-	Compatible	 : ?
-	Since				: ?
+    Description    : counter with both graphical and text only
+    Compatible     : ?
+    Since                : ?
 */
 #action-counter {
   margin: 0.4em 0;
@@ -81,14 +90,14 @@
   font-size: 0.688em;
 }
 /*
-	Social Login
+    Social Login
 
-	Description	: social login buttons
-	Compatible	 : ?
-	Since				: ?
+    Description    : social login buttons
+    Compatible     : ?
+    Since                : ?
 
-	.facebook		facebook icon
-	.google			google icon
+    .facebook        facebook icon
+    .google            google icon
 */
 #main-section .social-login span {
   display: none;
@@ -112,11 +121,11 @@
   background: #fffdff url(../img/sociallogin.png) center -22px no-repeat;
 }
 /*
-	Recent Signers
+    Recent Signers
 
-	Description	: recent signers widget
-	Compatible	 : ?
-	Since				: ?
+    Description    : recent signers widget
+    Compatible     : ?
+    Since                : ?
 */
 #action-recent-signers ul {
   padding: 0;
@@ -142,8 +151,8 @@
   margin-right: .25em;
 }
 /* ==========================================================================
-	 ACtion Template Media Queries
-	 ========================================================================== */
+     ACtion Template Media Queries
+     ========================================================================== */
 /* See breakpoint from layout.css */
 /* mobile first, up to 768 px */
 #action-form-authentication .submit {
@@ -178,13 +187,6 @@
     /* counter */
     /* input length to fit the screen */
   }
-  html .action-template #main-container {
-    background: transparent url(../img/background.jpg) center 0 no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
   html #action-h1 {
     float: left;
     clear: both;
@@ -198,7 +200,7 @@
   html #action-form,
   html #action-recent-signers {
     float: right;
-    width: 260px;
+    width: 250px;
     padding: 0 20px;
     margin: 0;
   }
@@ -247,13 +249,6 @@
   /* counter */
   /* input length to fit the screen */
 }
-.sevensome .action-template #main-container {
-  background: transparent url(../img/background.jpg) center 0 no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 .sevensome #action-h1 {
   float: left;
   clear: both;
@@ -267,7 +262,7 @@
 .sevensome #action-form,
 .sevensome #action-recent-signers {
   float: right;
-  width: 260px;
+  width: 250px;
   padding: 0 20px;
   margin: 0;
 }
@@ -310,6 +305,7 @@
 /* Desktops and laptops ----------- */
 @media only screen and (min-width: 1024px) {
   html {
+    /* show background image */
     /* page section = 940 + 20 + 20px */
     /* east side */
     /* background box shenanigans */
@@ -385,6 +381,7 @@
   }
 }
 .desktop {
+  /* show background image */
   /* page section = 940 + 20 + 20px */
   /* east side */
   /* background box shenanigans */
@@ -461,15 +458,15 @@
 /* Large screens -----------
 @media only screen 
 and (min-width : 1600px) {
-	#action-form {
-		float:right;
-	}
-	#action-details,
-	#action-multimedia-teaser {
-		width:570px;
-		float:left;
-		clear:both;
-	}
+    #action-form {
+        float:right;
+    }
+    #action-details,
+    #action-multimedia-teaser {
+        width:570px;
+        float:left;
+        clear:both;
+    }
 } */
 /* Browser specific hacks --------- */
 .lt-ie7 .sevensome #action-form textarea,

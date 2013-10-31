@@ -1,11 +1,11 @@
 /* ==========================================================================
-	 Layout
-	 ========================================================================== */
+     Layout
+   ========================================================================== */
 /* 
-	layout organization is as follow
-		--container : 100% width can be used for background
-			--section : self-centered major area
-				--block : major component of an area
+    layout organization is as follow
+        --container : 100% width can be used for background
+            --section : self-centered major area
+                --block : major component of an area
 */
 
 body {
@@ -14,24 +14,24 @@ body {
 }
 
 #root-container {
-	overflow-x:hidden;
+    overflow-x:hidden;
 }
 #main-section {
-	margin-top:60px; /* 87px - 27px of bottom-menu */
-	padding-top:.5em;
+    margin-top:60px; /* 87px - 27px of bottom-menu */
+    padding-top:.5em;
 }
 .page-section {
-	margin-left:auto;
-	margin-right: auto;
-	padding:0 5%;
+    margin-left:auto;
+    margin-right: auto;
+    padding:0 5%;
 }/* clearfix */
 .page-section:before, 
 .page-section:after {
-	content: " ";
-	display: table;
+    content: " ";
+    display: table;
 }
 .page-section:after {
-	clear: both;
+    clear: both;
 }
 
 /* mobile first no show */
@@ -41,31 +41,22 @@ body {
 .footer-sitemap,
 .footer-highlight,
 .footer-small .bottom-menu {
-	display:none;
-}
-
-/* images scaling with size */
-
-
-#action-multimedia-teaser img {
-	width: 100%;
-	height: auto;
-	max-width: 570px; /* image is 540px wide */
+    display:none;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
 /* mobile first: up to 320px */
 .page-section {
-	width:90%;
-	font-size:0.8125em; /* 13px */
+    width:90%;
+    font-size:0.8125em; /* 13px */
 }
 
 .layout_phablet() {
-	.page-section {
-		width:90%;
-		font-size:0.875em; /* 14px */
-		max-width: 320px;
-	}
+    .page-section {
+        width:90%;
+        font-size:0.875em; /* 14px */
+        max-width: 320px;
+    }
 }
 @media only screen 
 and (min-width : 320px) {
@@ -76,10 +67,10 @@ and (min-width : 320px) {
 }
 
 .layout_tablet() {
-	.page-section {
-		max-width:460px;
-		font-size:0.9375em; /* 15px */
-	}
+    .page-section {
+        max-width:460px;
+        font-size:0.9375em; /* 15px */
+    }
 }
 @media only screen 
 and (min-width : 480px) {
@@ -91,23 +82,22 @@ and (min-width : 480px) {
 
 /* everything that is not big hide menu */
 .layout_tablet_big() {
-	/* hide menu */
-	.heading-second,
-	.tools,
-	#breadcrumbs,
-	.country-selector {
-		display:block;
-	}
-	#main-section {
-		margin-top:87px; /* 60px - 27px of bottom-menu */
-	}
-	.page-section {
-		padding: 0 3%;
-		width: 90%;
-		max-width: 700px;
-		/* width:700px; */
-		font-size:0.9375em; /* 15px */
-	}
+    /* hide menu */
+    .heading-second,
+    .tools,
+    #breadcrumbs,
+    .country-selector {
+        display:block;
+    }
+    #main-section {
+        margin-top:87px; /* 60px - 27px of bottom-menu */
+    }
+    .page-section {
+        padding: 0 3%;
+        width: 90%;
+        max-width: 690px;
+        font-size:0.9375em; /* 15px */
+    }
 }
 /* iPads (portrait and landscape) ----------- 
 @media only screen 
@@ -125,16 +115,16 @@ and (min-width : 768px) {
 
 /* Desktops and laptops ----------- */
 .layout_desktop() {
-	.page-section {
-		width:920px;
-		font-size:1em; /* 16px */
-		max-width: none;
-	}
-	.footer-sitemap,
-	.footer-highlight,
-	.footer-small .bottom-menu {
-		display:block;
-	}
+    .page-section {
+        width:920px;
+        font-size:1em; /* 16px */
+        max-width: none;
+    }
+    .footer-sitemap,
+    .footer-highlight,
+    .footer-small .bottom-menu {
+        display:block;
+    }
 }
 @media only screen 
 and (min-width : 1024px) {
@@ -146,10 +136,10 @@ and (min-width : 1024px) {
 
 /* Large screens ----------- */
 .layout_large() {
-	.page-section {
-		font-size:1em; /* 16px */
-		width:920px; /* 960 = 940 +20+20 margin */
-	}
+    .page-section {
+        font-size:1em; /* 16px */
+        width:920px; /* 960 = 940 +20+20 margin */
+    }
 }
 @media only screen 
 and (min-width : 1600px) {

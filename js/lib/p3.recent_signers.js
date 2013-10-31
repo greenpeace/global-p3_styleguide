@@ -206,7 +206,7 @@
         M.load({
             test: window.JSON,
             nope: [
-                'js/v03/lib/json.min.js'
+                'js/vendor/json.min.js'
             ],
             complete: function() {
                 if (config.eventDriven) {

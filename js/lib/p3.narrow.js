@@ -31,3 +31,4 @@ function checkNarrow(){
 
 jQuery(window).resize(checkNarrow);
 jQuery(window).ready(checkNarrow);
+
