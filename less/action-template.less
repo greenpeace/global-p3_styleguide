@@ -8,34 +8,17 @@
 }
 
 /* change some default behaviors */
-
-.action-template #main-container {
-	background:transparent url(../img/background.jpg) center 0 no-repeat;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
-
 .action-template #main-section {
 	background:#FFF;
 	padding-bottom:3em;
 }
 
-.action-template #main-container {
-	background:transparent url(../img/background.jpg) center 0 no-repeat;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
-		
 .action-template h1 {
 	margin-bottom:.5em;
 }
 
 #action-form-message label {
-  display:block;
+    display:block;
 	font-size:.9em;
 	margin-top:.225em;
 }
@@ -76,7 +59,7 @@
 	margin:0.4em 0;
 }
 #action-counter-graphical {
-        transition:all 100ms ease-out;
+    transition:all 100ms ease-out;
 	display:none;
 	background:#e9ecf3;
 }
@@ -85,11 +68,11 @@
 	display:block;
 	text-align:right;
 	color:#FFF;
-        text-shadow:1px 1px 0 #4f4f4f;
+    text-shadow:1px 1px 0 #4f4f4f;
 	font-weight:bold;
 	font-size:1.125em;
 	padding:.311em 0;
-        text-indent:0.2em;        
+    text-indent:0.2em;    
 }
 #action-counter-graphical .objectives {
 	display:none;
@@ -169,8 +152,8 @@
 /* See breakpoint from layout.css */
 /* mobile first, up to 768 px */
 	#action-form-authentication .submit {
-		position:relative;
-		float:none;
+	position:relative;
+	float:none;
 	margin-left:0;
 	margin-top:.4em;
 }
@@ -196,6 +179,14 @@
 
 /* Tablets ----------- */
 .action_template_tablet() {
+    .action-template #main-container {
+	    background:transparent url(../img/background.jpg) center 0 no-repeat;
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+	    background-size: cover;
+    }
+
 	/* page section = 700 + 15 + 15px */
 	#action-h1 {
 		float:left;
@@ -267,6 +258,13 @@
 
 /* Desktops and laptops ----------- */
 .action_template_desktop() {
+    .action-template #main-container {
+	    background:transparent url(../img/background.jpg) center 0 no-repeat;
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+	    background-size: cover;
+    }
 	/* page section = 940 + 20 + 20px */
 	#action-h1 {
 		float:left;

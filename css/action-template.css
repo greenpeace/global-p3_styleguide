@@ -6,23 +6,9 @@
   display: none;
 }
 /* change some default behaviors */
-.action-template #main-container {
-  background: transparent url(../img/background.jpg) center 0 no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 .action-template #main-section {
   background: #FFF;
   padding-bottom: 3em;
-}
-.action-template #main-container {
-  background: transparent url(../img/background.jpg) center 0 no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
 .action-template h1 {
   margin-bottom: .5em;
@@ -192,6 +178,13 @@
     /* counter */
     /* input length to fit the screen */
   }
+  html .action-template #main-container {
+    background: transparent url(../img/background.jpg) center 0 no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
   html #action-h1 {
     float: left;
     clear: both;
@@ -254,6 +247,13 @@
   /* counter */
   /* input length to fit the screen */
 }
+.sevensome .action-template #main-container {
+  background: transparent url(../img/background.jpg) center 0 no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .sevensome #action-h1 {
   float: left;
   clear: both;
@@ -315,6 +315,13 @@
     /* background box shenanigans */
     /* west side */
     /* input length to fit the sidebar */
+  }
+  html .action-template #main-container {
+    background: transparent url(../img/background.jpg) center 0 no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
   html #action-h1 {
     float: left;
@@ -383,6 +390,13 @@
   /* background box shenanigans */
   /* west side */
   /* input length to fit the sidebar */
+}
+.desktop .action-template #main-container {
+  background: transparent url(../img/background.jpg) center 0 no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .desktop #action-h1 {
   float: left;
