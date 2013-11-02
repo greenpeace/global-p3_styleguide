@@ -4,7 +4,7 @@
  *
  * This file can be overriden by any derivates (starterkits).
  */
-function checkNarrow(){
+(function($, w) {
     var size = {
         threetwo: 320,
         four: 400,
@@ -19,16 +19,27 @@ function checkNarrow(){
         desktop: 1024,
         wide: 1350,
         large: 1600
-    };
-    jQuery.each(size, function(cls, size) {
-        if (jQuery(window).width() >= size) {
-            jQuery('body').addClass(cls);
-        } else {
-            jQuery('body').removeClass(cls);
-        }
-    });
-}
+    },
+    $window = $(w),
+    $body = $('body');
 
-jQuery(window).resize(checkNarrow);
-jQuery(window).ready(checkNarrow);
+    function checkNarrow() {
+        var classString = '',
+        width = $window.width();
+
+        $.each(size, function(cls, size) {
+            if (width >= size) {
+                classString = classString + ' ' + cls;
+            } else {
+                $body.removeClass(cls);
+            }
+        });
+
+        $body.addClass(classString);
+    }
+
+    $window.resize(checkNarrow);
+    $window.ready(checkNarrow);
+}(jQuery, this));
+
 
