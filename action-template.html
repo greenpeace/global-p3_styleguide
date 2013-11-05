@@ -85,27 +85,45 @@
                 <div class="first-time first-time-login login">
                     <p>First time here? Please fill out the form below.</p>
                 </div>
-                <div class="input text required firstname">
+                <div class="firstname">
                     <label for="UserFirstname">Firstname</label>
-                    <input name="firstname" class="required alphaPlus" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
+                    <input name="firstname" class="alphaPlus" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
                 </div>
-                <div class="input text required lastname">
+                <div class="lastname">
                     <label for="UserLastname">Lastname</label>
-                    <input name="lastname" class="required alpha" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
+                    <input name="lastname" class="alpha" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
                 </div>
-                <div class="input text required phone error">
+                <div class="phone">
                     <label for="UserPhone">Mobile Phone</label>
-                    <input name="phone" class="required numeric" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
+                    <input name="phone" class="numeric" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
                     <div class="tooltip info"><span>We need your phone number to send you update about the campaign.</span></div>
                 </div>
-                <div class="input text required website error">
+                <div class="website">
                     <label for="UserWebsite">Website</label>
                     <input name="website" class="required" required maxlength="64" type="text" id="UserWebsite" placeholder="Website*"/>
                 </div>
-                <div class="input text required postcode error">
+                <div class="postcode">
+                    <label for="UserPostcode">Postcode</label>
+                    <input name="postcode" class="alphanumeric" required maxlength="64" type="text" id="UserPostcode" placeholder="Postcode*"/>
+                </div>
+                <div class="gender">
+                    <fieldset class="radio">
+                        <legend>Gender</legend>
+                        <label for="UserGenderMale"><input type="radio" name="gender" id="UserGenderMale" value="male">Male</label>                        
+                        <label for="UserGenderFemale"><input type="radio" name="gender" id="UserGenderFemale" value="female">Female</label>                        
+                    </fieldset>
+                </div>
+                <div class="newsletters">
+                    <fieldset class="checkbox">
+                        <legend>Sign up for these newsletters</legend>
+                        <label for="UserNewsletterGeneral"><input type="checkbox" name="newsletters" id="UserNewsletterGeneral" value="general">General</label>                        
+                        <label for="UserNewsletterArctic"><input type="checkbox" name="newsletters" id="UserNewsletterArctic" value="arctic">Arctic</label>                        
+                    </fieldset>
+                </div>
+<!--                <div class="input text required postcode error">
                     <label for="UserPostcode">Postcode</label>
                     <input name="postcode" class="required alphanumeric" required maxlength="64" type="text" id="UserPostcode" placeholder="Postcode*"/>
-                </div>
+                </div>-->
                 <div class="select required country">
                     <label for="UserCountry">Country</label>
                     <div class="select-styling">
@@ -143,7 +161,7 @@ Please don't let this happen. Thank you.
                     </div>
                     <div class="input checkbox remember">
                         <label for="RememberMe" class="shortlabel">Remember me</label>
-                        <input type="checkbox" name="data[user][remember_me]" id="RememberMe" checked="" />
+                        <input type="checkbox" name="remember" id="RememberMe" checked="" />
                         <label for="RememberMe" class="longlabel">Remember my email address</label>
                     </div>
                 </div>
@@ -158,10 +176,10 @@ Please don't let this happen. Thank you.
     <!-- Action counter -->
     <div id="action-counter" class="counter block">
         <div id="action-counter-graphical">
-            <span class="objectives">4000</span>
-            <span style="width:50%;" class="completed">2000</span>
+            <span class="objectives"></span>
+            <span style="width:0%" class="completed">&nbsp;</span>
         </div>
-        <div id="action-counter-textual">2000 have joined so far. The target is 4000.</div>
+        <div id="action-counter-textual">&nbsp;</div>
     </div>
 
     <!-- Action details block -->
@@ -786,6 +804,7 @@ Please don't let this happen. Thank you.
     </script>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="js/lib/p3.console.min.js"></script>
     <script src="js/lib/p3.form_tracking.js"></script>
     <script src="js/lib/p3.narrow.js"></script>
     <!--script src="js/lib/p3.mobilemenu.js"></script-->

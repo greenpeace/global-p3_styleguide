@@ -206,8 +206,10 @@
                         // Enable field
                         $input.removeProp('disabled');
 
-                        // Add error class to parent field and display the field
+                        // Display the field
                         $field.show(config.animationDuration);
+                    } else {
+                        console.warn('$.p3.pledge_with_email_only :: ' + label + ' not found');
                     }
                 }
 
@@ -262,8 +264,6 @@
                     // Skip the theatrics if there's no email address
                     $form.submit();
                 }
-
-
 
             });
 

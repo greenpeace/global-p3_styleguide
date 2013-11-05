@@ -17,9 +17,11 @@
         "initials": true,
         "firstname": true,
         "lastname": false,
-        "country": true,
+        "country": false,
         "phone": false,
-        "postcode": false
+        "postcode": false,
+        "gender": false,
+        "newsletters":false
     },
     "page": {
         "uuid": "550e8401-e29b-41d4-a716-446678440294",

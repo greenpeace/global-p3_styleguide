@@ -230,6 +230,10 @@
   html .action-template input {
     width: 90%;
   }
+  html .action-template .checkbox input,
+  html .action-template .radio input {
+    width: auto;
+  }
   html .action-template select {
     width: 94%;
   }
@@ -291,6 +295,10 @@
 .sevensome .action-template textarea,
 .sevensome .action-template input {
   width: 90%;
+}
+.sevensome .action-template .checkbox input,
+.sevensome .action-template .radio input {
+  width: auto;
 }
 .sevensome .action-template select {
   width: 94%;

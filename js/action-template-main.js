@@ -15,7 +15,7 @@
         page: 269648,                               // ID of the current page
         key:  '78d245e17c455859b4863ad34674f2b8'    // API access key - tied to the referring domain
     },
-    // API URL Demonstration showing parameters passed in the URL (including spurious parameter)
+    // API URL Demonstration showing parameters passed in the URL
     pledgeURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/?fish=salmon&page=12345',
     pledgeTesting = 'json/pledges.json?fish=salmon',
     // API URL to test if user can submit form using only email
@@ -79,7 +79,7 @@
         // Includes form validation via $.p3.validation
         $.p3.pledge_with_email_only('#action-form', {
             signerCheckURL:     signerCheckTesting,
-            validationRulesURL: validationURL,
+            validationRulesURL: validationTesting,
             params:             parameters
         });
 
@@ -103,12 +103,5 @@
         });
 
     });
-
-    function getBaseURL () {
-//        var path = w.location.pathname.split( '/' );
-//        console.log(path);
-
-       return w.location.protocol + "//" + w.location.hostname + (w.location.port && ":" + w.location.port) + "/" + w.location.pathname;
-    }
 
 }(jQuery, Modernizr, this));

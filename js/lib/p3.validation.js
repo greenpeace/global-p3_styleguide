@@ -7,7 +7,7 @@
  *                  Validates form data against XRegExp rules, optionally
  *                  obtained via remote API
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.2.4
+ * @version         0.2.6
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
@@ -25,7 +25,17 @@
     var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
     defaults = {
         loadGetParams: true,
+        /* the API endpoint to obtain configuration and rules from
+         * set to false to disable remote API call and only use initialisation
+         * parameters
+         */
         jsonURL: 'https://www.greenpeace.org/api/p3/pledges',
+        /* Add default validation rules here */
+        rules: {},
+        /* Add custom regular expressions to use in rules here
+         * see also: http://xregexp.com/
+         * and: http://xregexp.com/plugins/#unicode
+         */
         tests: {
             // Matches all unicode alphanumeric characters, including accents
             // plus . , - ' /
@@ -36,10 +46,12 @@
             numeric: "^\\p{N}+$",
             alpha: "^\\p{L}+$"
         },
+        onkeyup: false,
         // Not implemented
         /* @todo Enable optional error summary area */
         showSummary: false,
-        // Forbid form submission if there's an error receiving JSON or in parsing
+        // Forbid form submission if there's an error receiving JSON or
+        // when in parsing
         disableOnError: false,
         // Error element to use instead of jquery.validate default <label>
         errorElement: 'span',
@@ -47,7 +59,7 @@
         errorPlacement: function(error, element) {
             var $el = $(element),
             name = $el.prop('name');
-            console.log(error);
+            console.log('Error validating: ' + name);
             $el.parents('.' + name).first().find('div.message').html(error);
         },
         // Query string parameters to include in validation request
@@ -55,6 +67,12 @@
         // Message container appended to each form field container
         messageElement: '<div class="message"></div>'
     };
+
+    // Adds validation rule where field value must not equal parameter, eg
+    // rules: { fish: { valueNotEquals: 'salmon' } }
+    $.validator.addMethod("valueNotEquals", function(value, element, arg) {
+        return arg !== value;
+    }, "Value must not equal arg.");
 
     _p3.validation = function(el, options) {
 
@@ -68,11 +86,38 @@
         $el = $(el),
         $form = $el.is('form') ? $el : $('form', el),
         messageDiv = config.messageElement,
-        /* the main action function */
+        enableForm = function () {
+            $('submit, :input', $form).removeProp('disabled').removeClass('disabled');
+        },
+        disableForm = function () {
+            $('submit, :input', $form).prop('disabled', 'disabled').addClass('disabled');
+        },
+        /* the main action function, called after the getJSON completes */
         validate = function () {
+            if (config.disableOnError) {
+                disableForm();
+            }
+
+//            if (config.showSummary) {
+//                // Add the summary element
+//                config.summaryElement = $('.errorSummary', el).length ? $('.errorSummary', el) : $(el).prepend('<div class="errorSummary"></div>');
+//            }
+
+            if (config.loadGetParams) {
+                // Obtain GET variables from the URL
+                var getVars = $.p3.request(window.location.href).parameters;
+
+                // Populate form fields from GET variables
+                $.each(getVars, function(field, value) {
+                    $(':radio[name=' + field + ']', $form).filter('[value=' + value +']').prop('checked','checked');
+                    $(':input[name=' + field + ']', $form).val(value);
+                    $(':input[value=' + field + ']', $form).val(value);
+                });
+            }
+
             // Add any custom tests
             $.each(config.tests, function(name, regexp) {
-                // Don't trust the user entered data
+                // Don't trust the user entered config
                 try {
                     // Create a new validator method
                     $.validator.addMethod(name, function(value, element) {
@@ -84,7 +129,6 @@
                 }
             });
 
-
             // Add message div to required fields
             // if it doesn't already exist in template
             $(':input', $form).each(function() {
@@ -92,13 +136,15 @@
                 name = $this.prop('name'),
                 $parent = (name) ? $this.parents('.' + name).first() : false;
                 if (name && $parent) {
-                  if (!$parent.find('div.message').length) {
-                      $parent.append(messageDiv);
-                  }
+                    if (!$parent.find('div.message').length) {
+                        $parent.append(messageDiv);
+                    }
                 } else {
                     console.warn('$.p3.pledge_with_email_only :: "' + name + '" field parent not found');
                 }
             });
+
+            enableForm();
 
             // Initialise the jQuery.validate plugin
             $form.validate(config);
@@ -111,21 +157,7 @@
             }
         };
 
-        // Add the summary
-        if (config.showSummary) {
-            config.summaryElement = $('.errorSummary', el).length ? $('.errorSummary', el) : $(el).prepend('<div class="errorSummary"></div>');
-        }
 
-        if (config.loadGetParams) {
-            // Obtain GET variables from the URL
-            var getVars = $.p3.request(window.location.href).parameters;
-
-            // Populate form fields from GET variables
-            $.each(getVars, function(field, value) {
-                $(':input[name=' + field + ']', $form).val(value);
-                $(':input[value=' + field + ']', $form).val(value);
-            });
-        }
 
         if (query.url) {
             // Only check for JSON browser object if we intend to use the
@@ -136,26 +168,26 @@
                     'js/v03/lib/json.min.js'
                 ],
                 complete: function() {
-                    // Fetch rules from remote service and extend configuration
+                    // Fetch rules from remote service
                     $.getJSON(query.url, query.parameters, function(data) {
-                        config = $.extend(true, config, data || {});
+                        // Success, extend configuration with remote data
+                        config = $.extend(true, config, data);
                     }).fail(function() {
                         // Failed to obtain JSON
                         console.warn('$.p3.validation :: WARNING :: JSON failed to load from: ' + config.jsonURL);
 
                         if (config.disableOnError) {
                             // Disable validation plugin if can't load JSON
-                            $('submit', $form).prop('disabled', 'disabled').addClass('disabled');
+                            disableForm();
                             throw new Error('$.p3.validation :: Form input disabled');
-//                            return false;
                         } else {
+                            // Else try to continue with existing rules...
                             console.warn('$.p3.validation :: Attempting to continuing regardless...');
                         }
-                        // Else try to continue with existing rules...
+                    }).complete( function () {
+                        // Perform validation
+                        validate();
                     });
-
-                    // Perform validation
-                    validate();
                 }
             });
         } else {

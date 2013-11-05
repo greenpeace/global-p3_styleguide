@@ -30,6 +30,8 @@ input[type=password],
 input[type=email],
 input[type=search],
 input[type=tel],
+fieldset.radio,
+fieldset.checkbox,
 textarea {
   font-family: 'Lato', Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333;
@@ -37,12 +39,10 @@ textarea {
   border: 1px solid #CCC;
   width: 19em;
   /* 20 char (default input length) x .7em (average char length) */
-
   padding: .4em .5em .3em .5em;
   display: inline-block;
   zoom: 1;
   /* zoom and *display = ie7 hack for display:inline-block */
-
   *display: inline;
   margin: .2em 0 .5em 0;
   -webkit-appearance: none;
@@ -172,7 +172,6 @@ form .tooltip,
 form .message {
   font-size: .813em;
   /* 13px */
-
   padding: 0;
   background-color: transparent;
   border: 0;
@@ -217,24 +216,27 @@ form .info span {
   margin: -1.25em 1.5em 0 1.5em;
   border-radius: 2px;
 }
-form input.error {
+form input.error,
+form select.error {
   border: 1px solid #D40000;
+  -webkit-box-shadow: 0 0 10px #D40000;
+  box-shadow: 0 0 10px #D40000;
 }
 /* if large screen display info as tooltips */
 @media only screen and (min-width: 1024px) {
-  html .input .tooltip {
+  html form .tooltip {
     display: block;
     width: 10px;
     float: right;
   }
-  html .input .tooltip:before {
+  html form .tooltip:before {
     display: block;
     margin-top: .75em;
   }
-  html .input .tooltip:hover:before {
+  html form .tooltip:hover:before {
     background: #b1c3d0;
   }
-  html .input .tooltip span {
+  html form .tooltip span {
     visibility: hidden;
     display: block;
     position: absolute;
@@ -249,23 +251,23 @@ form input.error {
     right: -86px;
     width: 130px;
   }
-  html .input .tooltip:hover span {
+  html form .tooltip:hover span {
     visibility: visible;
   }
 }
-.desktop .input .tooltip {
+.desktop form .tooltip {
   display: block;
   width: 10px;
   float: right;
 }
-.desktop .input .tooltip:before {
+.desktop form .tooltip:before {
   display: block;
   margin-top: .75em;
 }
-.desktop .input .tooltip:hover:before {
+.desktop form .tooltip:hover:before {
   background: #b1c3d0;
 }
-.desktop .input .tooltip span {
+.desktop form .tooltip span {
   visibility: hidden;
   display: block;
   position: absolute;
@@ -280,17 +282,17 @@ form input.error {
   right: -86px;
   width: 130px;
 }
-.desktop .input .tooltip:hover span {
+.desktop form .tooltip:hover span {
   visibility: visible;
 }
 @media only screen and (min-width: 1350px) {
-  html .input .tooltip span {
+  html form .tooltip span {
     min-width: 200px;
     bottom: auto;
     right: auto;
   }
 }
-.wide .input .tooltip span {
+.wide form .tooltip span {
   min-width: 200px;
   bottom: auto;
   right: auto;
@@ -308,15 +310,37 @@ form input.error {
 	Compatible	: ?
 	Since				: version 3.0
 */
+fieldset.checkbox,
+fieldset.radio {
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: .2em 0 .5em 0;
+}
+fieldset.checkbox legend,
+fieldset.radio legend {
+  padding: 0 0.5em;
+}
+.checkbox label,
 .checkboxlist label,
-.radiolist label {
-  font-size: 1.25em;
+.radiolist label,
+.radio label {
+  text-indent: 0.2em;
+  font-size: 0.9em;
 }
 .checkboxlist .input.checkbox label,
-.radiolist .input.radio label {
+.radiolist .input.radio label,
+.radio label,
+.radio label input,
+.checkbox label,
+.checkbox label input {
+  font-weight: 400;
   display: inline;
+  width: auto;
 }
+input[type=radio],
 input[type=checkbox] {
+  margin-right: 0.2em;
+  vertical-align: middle;
   display: inline;
 }
 input[type=checkbox] + label {
@@ -339,7 +363,6 @@ select:hover {
   /*background:#FFF;
 	border-radius:3px;
 	border:1px solid #BBB;*/
-
 }
 /* system fields */
 .system.fields {

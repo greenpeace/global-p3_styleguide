@@ -27,7 +27,14 @@
         "postcode": {
             "required": true,
             "alphanumeric": true
-        }
+        },
+        "country": {
+            "required": true
+        },
+        "gender": {
+            "required": true
+        },
+        "newsletters": "required"
     },
     "messages": {
         "firstname": "Enter your first name",
@@ -45,7 +52,9 @@
         "website": {
             "required": "Please enter your website address",
             "website": "Please enter a valid website address"
-        }
+        },
+        "gender": "Please select your gender",
+        "newsletters": "Please select a newsletter"
     },
     "tests": {
         "alphanumeric": "^[\\p{L}\\p{N}]+$",
