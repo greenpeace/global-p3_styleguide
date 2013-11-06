@@ -5,7 +5,7 @@
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.0
+ * @version         0.3.1
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -31,6 +31,8 @@
         exceptionFields:        '#action-form-message, #action-smallprints',
         /* Endpoint URL to check if the user can sign using only email address */
         signerCheckURL:         'https://www.greenpeace.org/api/public/pledges/signercheck.json',
+        /* Use p3.validation plugin to validate the form */
+        validateForm:           true,
         /* Endpoint for form validation rules, passed to $.p3.validation */
         validationRulesURL:     'https://www.greenpeace.org/api/p3/pledge/config.json',
         /* Duration to animate the display of hidden missing fields
@@ -139,17 +141,18 @@
                         case 3:
                         case 4:
                         case 5:
-                            // Invalid page
+                            // Errors 1 through 5 indicate an invalid page
                             throw new Error('$.p3.pledge_with_email_only :: Invalid page: '+ query.parameters.page);
                             break;
+                            // Errors 6 through 12 are not relevant to this operation
                         case 13:
-                            console.log('$.p3.pledge_with_email_only :: User has already signed this pledge');
                             // This user has already signed this pledge
-                            var $emailContainer = $emailField.parents('.input.email:first'),
+                            console.log('$.p3.pledge_with_email_only :: User has already signed this pledge');
+                            var $emailContainer = $emailField.parents('.email:first'),
                             $message = $('.message', $emailContainer);
 
                             if (!$message.length) {
-                                // Add the message container
+                                // Message container doesn't exist, so add it
                                 $emailContainer.append(config.messageElement);
                                 $message = $('.message', $emailContainer);
                             }
@@ -157,14 +160,13 @@
                             $emailField.addClass('error');
                             break;
                         case 15:
-                            console.log('$.p3.pledge_with_email_only :: New user, show all fields');
                             // User does not exist
+                            console.log('$.p3.pledge_with_email_only :: New user, show all fields');
                             showAllFormFields();
                             break;
                         case 16:
-                            console.warn('$.p3.pledge_with_email_only :: USER EXISTS WITH MISSING FIELDS IS NOT CURRENTLY IMPLEMENTED');
-//                            console.log('User exists, show missing fields');
-                            // User exists, but missing fields
+                            // User exists, but is missing required fields
+                            console.warn('$.p3.pledge_with_email_only :: User exists, but is missing fields');
                             showMissingFields(response.user);
                             break;
                         default:
@@ -184,13 +186,11 @@
             });
         },
         submitForm = function (hash) {
-            console.log('Submitting form with hash ' + hash);
+//            console.log('Submitting form with hash ' + hash);
             $(window).trigger('submit_' + hash);
         },
         /**
-         * @todo    TEST THIS WHEN THE API IS STABLE
-         * @param   {type} response
-         * @returns {undefined}
+         * @param   {obj} JSON response.user property
          */
         showMissingFields = function(fields) {
             console.log('$.p3.pledge_with_email_only :: showMissingFields');
@@ -200,9 +200,6 @@
                     $input = $(':input', $field);
 
                     if ($input) {
-                        // Fields may not match
-                        console.log('Field "' + label + '" is required');
-
                         // Enable field
                         $input.removeProp('disabled');
 
@@ -214,12 +211,6 @@
                 }
 
             });
-
-            setTimeout(function () {
-                $(config.registrationFields + ':visible:input', $form).first().focus();
-//                $('.error:visible :input', $form).first().focus();
-            }, config.animationDuration);
-
         },
         hideFormFields = function () {
             $(config.registrationFields + ' > :not(' + config.exceptionFields + ', #action-submit-full)').hide().find(':input').prop('disabled', 'disabled');
@@ -234,20 +225,29 @@
             setPageIdentifier();
             setExpiryDate();
 
+            // Intercept form submission by the enter key
+            $(':input', $form).keypress(function (e) {
+                if (e.which === 13) {
+                    e.preventDefault();
+                    $(this).blur();
+                    $submit.focus().click();
+                    return false;
+                }
+            });
+
             $submit.click( function (e) {
                 // Initialise user parameter with email form field
                 setUserIdentifier();
 
                 if (query.parameters.user) {
-                    // Unique email identifier
+                    // Generate a unique email identifier
                     var hash = SHA1(query.parameters.user);
 
                     if (checkedUserEmails[hash] && checkedUserEmails[hash].checked) {
-                        console.log('Already tested this email');
-//                        hideFormFields();
+//                        console.log('Already tested this email');
                         $(window).trigger('submit_' + hash);
                     } else {
-                        console.log('Haven\'t tested this email yet...');
+//                        console.log('Haven\'t tested this email yet...');
                         // Haven't checked this email, so prevent form submission
                         e.preventDefault();
 
@@ -267,30 +267,31 @@
 
             });
 
-            // Initialise validation plugin
-            $.p3.validation($form, {
-                jsonURL: config.validationRulesURL,
-                params: query.parameters,
-                debug:true,
-                disableOnError: config.disableOnError,
-                submitHandler: function (f) {
-//                    $form.validate();
-                    if ($form.valid()) {
-                        f.submit();
-                        return true;
+            if (config.validateForm) {
+                // Initialise validation plugin
+                $.p3.validation($form, {
+                    jsonURL: config.validationRulesURL,
+                    params: query.parameters,
+                    debug:true,
+                    disableOnError: config.disableOnError,
+                    submitHandler: function (f) {
+                        if ($form.valid()) {
+                            f.submit();
+                            return true;
+                        }
                     }
-                }
-            });
+                });
+            }
+
         };
+
 
         M.load({
             test: window.JSON,
             nope: [
                 'js/v03/lib/json.min.js'
             ],
-            complete: function() {
-                init();
-            }
+            complete: init
         });
 
         $.p3 = _p3;

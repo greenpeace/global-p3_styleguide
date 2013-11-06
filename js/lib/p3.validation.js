@@ -147,7 +147,14 @@
 
             // Submit the form if auto_sign is true
             if (config.autoSign || getVars.auto_sign == true) { // Yes i do mean == instead of === (allows either auto_sign=1 or auto_sign=true)
-                $form.submit();
+
+                if ($.p3.pledge_with_email_only) {
+                    // trigger a submit click, instead of form submission event
+                    // because there may be other events intercepting form submission
+                    $('input[type=submit]', $form).click();
+                } else {
+                    $form.submit();
+                }
             }
         };
 
