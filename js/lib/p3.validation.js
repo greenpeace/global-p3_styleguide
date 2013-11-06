@@ -19,12 +19,11 @@
  *
  */
 /* global jQuery, Modernizr, XRegExp */
-(function($, M) {
+(function($, M, w) {
     'use strict';
 
     var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
     defaults = {
-        loadGetParams: true,
         /* the API endpoint to obtain configuration and rules from
          * set to false to disable remote API call and only use initialisation
          * parameters
@@ -44,8 +43,16 @@
             // http://stackoverflow.com/questions/16572123/javascript-regex-invalid-range-in-character-class
             alphaPlus: "^[\\p{L}\\p{N}\\.\\-\\'\\,\\/]+$",
             numeric: "^\\p{N}+$",
-            alpha: "^\\p{L}+$"
+            alpha: "^\\p{L}+$",
+            // Match a url with or without www.
+            // http://blog.mattheworiordan.com/post/13174566389/url-regular-expression-for-links-with-or-without-the
+            url: "^((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\\+\\$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-\\+=&;%@.\\w_]*)#?(?:[\\w]*))?)$"
         },
+        /* attempt to submit the form automatically */
+        autoSign: false,
+        /* validate the form each time a field loses focus */
+        onfocusout: false,
+        /* validate the form each time keyup is received when a field has focus */
         onkeyup: false,
         // Not implemented
         /* @todo Enable optional error summary area */
@@ -59,7 +66,6 @@
         errorPlacement: function(error, element) {
             var $el = $(element),
             name = $el.prop('name');
-            console.log('Error validating: ' + name);
             $el.parents('.' + name).first().find('div.message').html(error);
         },
         // Query string parameters to include in validation request
@@ -83,14 +89,15 @@
             url: request.url,
             parameters: $.extend(true, request.parameters, config.params)
         },
+        getVars = $.p3.request(w.location.href).parameters,
         $el = $(el),
         $form = $el.is('form') ? $el : $('form', el),
         messageDiv = config.messageElement,
         enableForm = function () {
-            $('submit, :input', $form).removeProp('disabled').removeClass('disabled');
+            $(':input', $form).removeProp('disabled').removeClass('disabled');
         },
         disableForm = function () {
-            $('submit, :input', $form).prop('disabled', 'disabled').addClass('disabled');
+            $(':input', $form).prop('disabled', 'disabled').addClass('disabled');
         },
         /* the main action function, called after the getJSON completes */
         validate = function () {
@@ -98,21 +105,10 @@
                 disableForm();
             }
 
-//            if (config.showSummary) {
-//                // Add the summary element
+            if (config.showSummary) {
+                console.warn('$.p3.validation.js :: showSummary not yet implemented');
+                // Add the summary element
 //                config.summaryElement = $('.errorSummary', el).length ? $('.errorSummary', el) : $(el).prepend('<div class="errorSummary"></div>');
-//            }
-
-            if (config.loadGetParams) {
-                // Obtain GET variables from the URL
-                var getVars = $.p3.request(window.location.href).parameters;
-
-                // Populate form fields from GET variables
-                $.each(getVars, function(field, value) {
-                    $(':radio[name=' + field + ']', $form).filter('[value=' + value +']').prop('checked','checked');
-                    $(':input[name=' + field + ']', $form).val(value);
-                    $(':input[value=' + field + ']', $form).val(value);
-                });
             }
 
             // Add any custom tests
@@ -134,8 +130,8 @@
             $(':input', $form).each(function() {
                 var $this = $(this),
                 name = $this.prop('name'),
-                $parent = (name) ? $this.parents('.' + name).first() : false;
-                if (name && $parent) {
+                $parent = name ? $this.parents('.' + name).first() : false;
+                if ($parent) {
                     if (!$parent.find('div.message').length) {
                         $parent.append(messageDiv);
                     }
@@ -150,10 +146,8 @@
             $form.validate(config);
 
             // Submit the form if auto_sign is true
-            if (config.loadGetParams) {
-                if (getVars.auto_sign == true) { // Yes i do mean == instead of === (allows either auto_sign=1 or auto_sign=true)
-                    $form.submit();
-                }
+            if (config.autoSign || getVars.auto_sign == true) { // Yes i do mean == instead of === (allows either auto_sign=1 or auto_sign=true)
+                $form.submit();
             }
         };
 
@@ -163,7 +157,7 @@
             // Only check for JSON browser object if we intend to use the
             // JSON endpoint, and if it appears to be a valid URL
             M.load({
-                test: window.JSON,
+                test: w.JSON,
                 nope: [
                     'js/v03/lib/json.min.js'
                 ],
@@ -199,4 +193,4 @@
     // Overwrite previous namespaced object
     $.p3 = _p3;
 
-}(jQuery, Modernizr));
+}(jQuery, Modernizr, this));
