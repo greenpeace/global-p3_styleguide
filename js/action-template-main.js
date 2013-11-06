@@ -4,6 +4,7 @@
  *
  * @param {object} $ jQuery
  * @param {object} M Modernizr
+ * @param {object} w window
  * @returns {undefined}
  */
 /* globals jQuery, Modernizr */
@@ -66,6 +67,8 @@
         // Focus the email field for easier form entry
         $('input[name=email]').focus();
 
+        $.p3.autofill('#action-form');
+
         // Fill email field if cookie is set
         $.p3.remember_me_cookie('#action-form');
 
@@ -76,23 +79,30 @@
         });
 
         // Check if we can sign this pledge using email field only
-        // Includes form validation via $.p3.validation
+        // Includes form validation via $.p3.validation by default
         $.p3.pledge_with_email_only('#action-form', {
-            signerCheckURL:     signerCheckTesting,
+            signerCheckURL:     signerCheckURL,
             validationRulesURL: validationTesting,
             params:             parameters
         });
+
+        // Only call validation plugin if you aren't using pledge_with_email,
+        // or you've set pledge_with_email to not use validation
+//        $.p3.validation('#action-form', {
+//            jsonURL: validationTesting,
+//            params: parameters
+//        });
 
         // Update social share counts
         $.p3.social_sharing('#action-social-share', {
             jsonURL: 'json/social_simple.json',
             networks: {
                 twitter: {
-                    title: w.document.title
+                    title:          w.document.title
                 },
                 pinterest: {
-                    image: 'http://www.greenpeace.org/international/Global/international/artwork/other/2010/openspace/bigspace-photo.jpg',
-                    description: w.document.title
+                    image:          'http://www.greenpeace.org/international/Global/international/artwork/other/2010/openspace/bigspace-photo.jpg',
+                    description:    w.document.title
                 }
             }
         });

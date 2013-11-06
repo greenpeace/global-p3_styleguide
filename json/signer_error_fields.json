@@ -21,6 +21,7 @@
         "phone": false,
         "postcode": false,
         "gender": false,
+        "website": false,
         "newsletters":false
     },
     "page": {

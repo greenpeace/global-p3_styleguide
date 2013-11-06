@@ -22,7 +22,7 @@
         },
         "website": {
             "required": true,
-            "website": true
+            "url": true
         },
         "postcode": {
             "required": true,
@@ -51,13 +51,12 @@
         },
         "website": {
             "required": "Please enter your website address",
-            "website": "Please enter a valid website address"
+            "url": "Please enter a valid website address"
         },
         "gender": "Please select your gender",
         "newsletters": "Please select a newsletter"
     },
     "tests": {
-        "alphanumeric": "^[\\p{L}\\p{N}]+$",
-        "website": "(http(s)?://)?([\\w-]+\\.)+[\\w-]+[.com]+(/[/?%&=]*)?"
+        "alphanumeric": "^[\\p{L}\\p{N}]+$"
     }
 }
