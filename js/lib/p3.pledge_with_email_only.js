@@ -86,7 +86,6 @@
             switch (config.identifyUserBy) {
                 case 'email':
                     query.parameters.user = $emailField.val();
-                    query.parameters.email = $emailField.val();
                     break;
                 case 'uuid':
                     throw new Error('uuid not implemented');
@@ -98,7 +97,7 @@
          * Shows a console warning if the expiry parameter is not set
          */
         setExpiryDate = function() {
-            if (query.parameters.expiry === undef) {
+            if (query.parameters.expire === undef) {
                 console.warn('$.p3.pledge_with_email_only :: No expiry date set');
             }
         },

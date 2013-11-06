@@ -136,7 +136,9 @@
                         $parent.append(messageDiv);
                     }
                 } else {
-                    console.warn('$.p3.pledge_with_email_only :: "' + name + '" field parent not found');
+                    if (!$this.is('[type=submit')) {
+                        console.warn('$.p3.pledge_with_email_only :: "' + name + '" field parent not found');
+                    }
                 }
             });
 

@@ -13,11 +13,12 @@
 
     // GET parameters to send with each request
     var parameters = {
-        page: 269648,                               // ID of the current page
-        key:  '78d245e17c455859b4863ad34674f2b8'    // API access key - tied to the referring domain
+        page:   300507,                                   // ID of the current page
+        key:    '78d245e17c455859b4863ad34674f2b8',       // API access key - tied to the referring domain
+        expire: '2013-11-02'
     },
     // API URL Demonstration showing parameters passed in the URL
-    pledgeURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/?fish=salmon&page=12345',
+    pledgeURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/',
     pledgeTesting = 'json/pledges.json?fish=salmon',
     // API URL to test if user can submit form using only email
     signerCheckURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/signercheck/',
@@ -26,7 +27,7 @@
     validationURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/validation/',
     validationTesting = 'json/rules_revised.json';
 
-//    $.ajaxSetup({cache: 1});
+    $.ajaxSetup({cache: false});
 
     // Load narrow.js if media queries are not supported
     M.load({
@@ -67,10 +68,16 @@
         // Focus the email field for easier form entry
         $('input[name=email]').focus();
 
-        $.p3.autofill('#action-form');
+        // Note the order of the next two plugins:
+        // Both plugins may potentially fill the email field automatically,
+        // and one may overwrite the other.
+        // Adjust the order according to preference
 
         // Fill email field if cookie is set
         $.p3.remember_me_cookie('#action-form');
+
+        // Fill input fields from GET parameters
+        $.p3.autofill('#action-form');
 
         // Animate pledge counter
         $.p3.pledge_counter('#action-counter', {
@@ -82,7 +89,7 @@
         // Includes form validation via $.p3.validation by default
         $.p3.pledge_with_email_only('#action-form', {
             signerCheckURL:     signerCheckURL,
-            validationRulesURL: validationTesting,
+            validationRulesURL: validationURL,
             params:             parameters
         });
 
