@@ -185,7 +185,7 @@ form .info {
   position: relative;
   color: #4d535f;
 }
-form .error:before,
+form .message .error:before,
 form .info:before {
   display: inline-block;
   text-align: center;
@@ -221,6 +221,9 @@ form select.error {
   border: 1px solid #D40000;
   -webkit-box-shadow: 0 0 10px #D40000;
   box-shadow: 0 0 10px #D40000;
+}
+form .error:focus {
+  border: 1px solid #D40000;
 }
 /* if large screen display info as tooltips */
 @media only screen and (min-width: 1024px) {
