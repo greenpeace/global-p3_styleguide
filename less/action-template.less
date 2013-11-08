@@ -181,6 +181,8 @@
 
 
 /* Tablets ----------- */
+// creating a mixin for everything that belongs in the tablet media query,
+// so it can be used for the media query fallback as well
 .action_template_tablet() {
     /* page section = 700 + 15 + 15px */
     #action-h1 {
@@ -251,11 +253,14 @@
     .action_template_tablet;
   }
 }
+/* fallback for browsers where media queries won't work */
 .sevensome {
   .action_template_tablet;
 }
 
 /* Desktops and laptops ----------- */
+// creating a mixin for everything that belongs in the desktop media query,
+// so it can be used for the media query fallback as well
 .action_template_desktop() {
     /* show background image */
     .action-template #main-container {
@@ -338,22 +343,10 @@
     .action_template_desktop;
   }
 }
+/* fallback for browsers where media queries won't work */
 .desktop {
   .action_template_desktop;
 }
-/* Large screens -----------
-@media only screen 
-and (min-width : 1600px) {
-    #action-form {
-        float:right;
-    }
-    #action-details,
-    #action-multimedia-teaser {
-        width:570px;
-        float:left;
-        clear:both;
-    }
-} */
 
 /* Browser specific hacks --------- */
 .lt-ie7 {

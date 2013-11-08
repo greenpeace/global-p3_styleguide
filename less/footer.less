@@ -54,6 +54,8 @@
   padding: 1em 2%;
 }
 
+// creating a mixin for everything that belongs in the media query,
+// so it can be used for the media query fallback as well
 .footer_tablet() {
   .footer-small .legal-menu {
     float: left;
@@ -92,6 +94,7 @@
     .footer_tablet;
   }
 }
+/* fallback for browsers where media queries won't work */
 .tablet {
   .footer_tablet;
 }
@@ -217,6 +220,7 @@
   float:right;
 }
 
+/* browser specific */
 .lt-ie8 {
   .footer {
     zoom:1;

@@ -47,7 +47,6 @@
  * Country selector
  */
 .country-selector {
-	//width: 15.625em; /* 250px */
 	left: 11.25em; /* 180px */
 	top: 1.125em; /* 18px */
 	position: absolute;
@@ -61,7 +60,6 @@
 	display: block;
 	padding: 1px 0 3px 2px;
 	height: .875em; /* 14px */
-	//width: 15em; /* 248px */
 	color: #FFF;
 	text-decoration: none;
 	border: 2px solid #66CC00;
@@ -93,7 +91,6 @@
 	width: 100%; 
 	}
 .country-selector .dropdown .dropdown-list {
-	//width: 18.2143em; /* 255px */
 	margin-top: 0.1429em; /* 2px */
 	font-size:0.875em; /* 14px */
 }
@@ -327,6 +324,8 @@ ul.navigation {
   transform: rotate(90deg);
 }
 
+// creating a mixin for everything that belongs in the media query,
+// so it can be used for the media query fallback as well
 .sevensome_macro(){
 /*
  * Header
@@ -540,18 +539,23 @@ ul.navigation {
   }
 }
 
-@media only screen 
-and (min-width : 768px) {
+/*
+ * media queries
+ */
+@media only screen and (min-width : 768px) {
   html {
     .sevensome_macro;
   }
 }
 
+/* fallback for browsers where media queries won't work */
 .sevensome {
   .sevensome_macro;
 }
 
-/* browser specific */
+/*
+ * browser specific
+ */
 .lt-ie9 {
   .sevensome_macro;
 }

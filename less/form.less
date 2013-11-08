@@ -77,12 +77,6 @@ label {
 .no-placeholder .search-form label {
 	display: none;
 }
-//.no-placeholder .mobilemenu-open .search-form label {
-//	display: none;
-//}
-//.no-placeholder .search #SearchText {
-//	width: 100%;
-//}
 .lt-ie7 {
 	#search {
 		margin-top: -2px;
@@ -240,6 +234,8 @@ form select.error {
 form .error:focus {
     border:1px solid #D40000;
 }
+// mixins to put everthing that belongs in a media query
+// in the media query fallback as well
 .form_desktop() {
 	form .tooltip {
 		display:block;
@@ -286,6 +282,7 @@ form .error:focus {
     .form_desktop;
   }
 }
+/* fallback for browsers where media queries won't work */
 .desktop {
   .form_desktop;
 }
@@ -294,6 +291,7 @@ form .error:focus {
     .form_desktop_wide;
   }
 }
+/* fallback for browsers where media queries won't work */
 .wide {
   .form_desktop_wide;
 }
