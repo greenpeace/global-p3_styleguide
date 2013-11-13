@@ -37,9 +37,9 @@ fieldset.radio,
 fieldset.checkbox,
 textarea {
 	font-family:'Lato',Verdana, Geneva, Arial, Helvetica, sans-serif;
-	color:#333;
-	background:#FFF;
-	border:1px solid #CCC;
+	color:@grays-1;
+	background:@white;
+	border:1px solid @grays-4;
 	width:19em; /* 20 char (default input length) x .7em (average char length) */
 	padding:.4em .5em .3em .5em;
 	display:inline-block;
@@ -97,7 +97,7 @@ input[type=search],
 input[type=email],
 input[type=text],
 input[type=tel] {
-	border-top:1px solid #ccc;
+	border-top:1px solid @grays-4;
 }
 textarea,
 input[type=password]:hover,
@@ -116,14 +116,14 @@ input[type=tel]:focus {
 	-webkit-box-shadow: inset 1px 1px 2px rgba(255,255,255,.2);
 	-moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
 	box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
-	border:1px solid #66CC00;
+	border:1px solid @greens-6;
 }
 
 textarea:disabled,
 input:disabled,
 input:disabled:hover,
 textarea:disabled:hover {
-	border:1px solid #CCC;
+	border:1px solid @grays-4;
 	.boxshadow(0; 0; 0; 0);
 	cursor:normal;
 	background:#F3F3F3;
@@ -140,7 +140,7 @@ textarea:disabled:hover {
 */
 .required label:after {
 	content:" *";
-	color:#D40000;
+	color:@red-1;
 	font-weight:bold;
 }
 
@@ -158,7 +158,7 @@ textarea {
 	height:8em;
 	width:17.5em;
 	font-size:0.813em;
-	border:1px solid #CCC;
+	border:1px solid @grays-4;
 }
 .textarea.large textarea {
 	width:30em;
@@ -186,11 +186,11 @@ form .message {
 form .message .error {
         display:block;
         padding: 0 0.5em 1em;
-        color: #D40000;
+        color: @red-1;
 }
 form .info {
         position:relative;
-        color: #4d535f;
+        color: @steels-3;
 }
 form .message .error:before,
 form .info:before {
@@ -203,18 +203,18 @@ form .info:before {
 	.rounded_all(2px);
 	font-weight:bold;
 	font-family:serif;
-	color:#fff;
+	color:@white;
 	line-height:100%;
 }
 form .info:before {
 	content:"i";
-	background:#baccd9;
-	color:#fff;
+	background: @blues-2;
+	color:@white;
 }
 form .message .error:before {
 	content:"!";
-	background:#D40000;
-	color:#fff;
+	background:@red-1;
+	color:@white;
         margin-right:0.5em;
 }
 form .message .error span,
@@ -226,11 +226,11 @@ form .info span {
 
 form input.error,
 form select.error {
-    border:1px solid #D40000;
-    .boxshadow(0; 0; 10px; #D40000);
+    border:1px solid @red-1;
+    .boxshadow(0; 0; 10px; @red-1);
 }
 form .error:focus {
-    border:1px solid #D40000;
+    border:1px solid @red-1;
 }
 // mixins to put everthing that belongs in a media query
 // in the media query fallback as well
@@ -252,7 +252,7 @@ form .error:focus {
 		display:block;
 		position:absolute;
 		max-width:200px;
-		background:#FFF;		
+		background:@white;		
 		float:left;
 		padding:.5em;
     .boxshadow(0px; 0px; 8px; #111);
@@ -308,8 +308,8 @@ form .error:focus {
 */
 fieldset.checkbox,
 fieldset.radio {
-    border: 1px solid #ccc;
-    background: #fff;
+    border: 1px solid @grays-4;
+    background: @white;
     margin: .2em 0 .5em 0;
 }
 fieldset.checkbox legend,
@@ -357,7 +357,7 @@ select:hover {
 	width:15em;
 	margin-bottom:10px;
 	padding:.25em .5em .15em .2em;
-	/*background:#FFF;
+	/*background:@white;
 	.rounded_all(3px);
 	border:1px solid #BBB;*/
 }

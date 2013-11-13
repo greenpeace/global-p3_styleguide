@@ -18,7 +18,7 @@
 	margin-right:.25em;
 }
 .social-share .counter span {
-	border:1px solid #CCC;
+	border:1px solid @grays-4;
 	display:block;
 	text-align:center;
 	width:48px;
@@ -60,7 +60,7 @@
 }
 /* some fake bubble tip shenanigans */
 .social-share .counter {
-	background:#FFF;
+	background:@white;
 }
 .social-share .tip:before{
 	width:1px; height:1px;
@@ -68,7 +68,7 @@
 	margin-left:17px;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
-	border-top: 7px solid #CCC;
+	border-top: 7px solid @grays-4;
 	border-top-color: rgba(0, 0, 0, 0.2);
 	display: inline-block;
 	content:" ";
@@ -79,7 +79,7 @@
 	margin-left:17px;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
-	border-top: 7px solid #CCC;
+	border-top: 7px solid @grays-4;
 	border-top-color: rgba(255, 255, 255, 1);
 	display: inline-block;
 	content:" ";
@@ -126,7 +126,7 @@
     }
         
     .modal-content {
-        background: #fff;
+        background: @white;
         min-height:400px;
         
         -webkit-transform: scale(0.7);
@@ -154,7 +154,7 @@
             white-space:nowrap;
             border:none;
             // close
-            background: #66CC00 url(../img/message_x.png) center center no-repeat;
+            background: @greens-6 url(../img/message_x.png) center center no-repeat;
             
             &:hover {
                 -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
@@ -186,7 +186,7 @@
 }
 
 .no-rgba #social-overlay {    
-    background: #66CC00;
+    background: @greens-6;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     filter: alpha(opacity=80);
     opacity: 0.8;

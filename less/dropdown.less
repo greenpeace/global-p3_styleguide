@@ -10,7 +10,7 @@
 .dropdown .dropdown-list,
 .dropdown .dropdown-panel {
 	list-style: none;
-	background: #FFF;
+	background: @white;
 	.boxshadow(0; 5px; 10px; rgba(0, 0, 0, .2));
 	overflow: visible;
 	padding: 4px 0;
@@ -31,7 +31,7 @@
 	content: '';
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
-	border-bottom: 7px solid #CCC;
+	border-bottom: 7px solid @grays-4;
 	border-bottom-color: rgba(0, 0, 0, 0.2);
 	display: inline-block;
 }
@@ -46,7 +46,7 @@
 	content: '';
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
-	border-bottom: 6px solid #FFF;
+	border-bottom: 6px solid @white;
 	display: inline-block;
 }
 .dropdown.dropdown-tip.dropdown-anchor-right:after {
@@ -87,8 +87,8 @@
 .dropdown .dropdown-list span:hover,
 .dropdown .dropdown-list li a:focus,
 .dropdown .dropdown-list span:focus {
-	background-color: #4d535f;
-	color: #FFF;
+	background-color: @steels-3;
+	color: @white;
 	cursor: pointer;
 }
 .dropdown .dropdown-list .dropdown-divider {

@@ -14,7 +14,7 @@
     max-width: 570px; /* image is 540px wide */
 }
 .action-template #main-section {
-    background:#FFF;
+    background:@white;
     padding-bottom:3em;
 }
 .action-template h1 {
@@ -68,10 +68,10 @@
     background:#e9ecf3;
 }
 #action-counter-graphical .completed {
-    background:#66cc00;
+    background: @greens-6;
     display:block;
     text-align:right;
-    color:#FFF;
+    color: @white;
     text-shadow:1px 1px 0 #4f4f4f;
     font-weight:bold;
     font-size:1.125em;
@@ -83,7 +83,7 @@
 }
 #action-counter-textual {
     margin:.25em 0;
-    color:#666;
+    color:@grays-2;
     font-style:italic;
     font-size:0.688em;
 }
@@ -106,16 +106,16 @@
     width:60px; /* 60px */
     display:inline-block;
     line-height:1em;
-    border:1px solid #CCC;
+    border:1px solid @grays-4;
     margin-bottom:-.5em;
     padding:0 6px;
     .rounded_all(2px);
 }
 #main-section .social-login a.facebook {
-    background:#fffdff url(../img/sociallogin.png) center 0 no-repeat;
+    background: #fffdff url(../img/sociallogin.png) center 0 no-repeat;
 }
 #main-section .social-login a.google {
-    background:#fffdff url(../img/sociallogin.png) center -22px no-repeat;
+    background: #fffdff url(../img/sociallogin.png) center -22px no-repeat;
 }
 
 /*
@@ -137,7 +137,7 @@
     width:8em;
     display:inline-block;
     font-size:0.813em;
-    color:#666;
+    color:@grays-2;
 }
 #action-recent-signers .name:after {
     content:",";
