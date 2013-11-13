@@ -1,6 +1,7 @@
 /* ==========================================================================
      ACtion Template or Action Related Widgets
    ========================================================================== */
+@import "less-mixins.less";
 /* page level configuration shortcuts */
 .no-quick-login first-time-login {
     display:none
@@ -108,7 +109,7 @@
     border:1px solid #CCC;
     margin-bottom:-.5em;
     padding:0 6px;
-    border-radius:2px;
+    .rounded_all(2px);
 }
 #main-section .social-login a.facebook {
     background:#fffdff url(../img/sociallogin.png) center 0 no-repeat;

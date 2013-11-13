@@ -1,6 +1,7 @@
 /* ==========================================================================
 	 Form
 	 ========================================================================== */
+@import "less-mixins.less";
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate.
@@ -46,8 +47,8 @@ textarea {
 	*display: inline;
 	margin:.2em 0 .5em 0;
 	-webkit-appearance:none;
-	border-radius:3px;
-	box-shadow: inset 0 2px 3px rgba(0,0,0,0.1);
+	.rounded_all(3px);
+	.boxshadow(inset; 0; 2px; 3px; rgba(0,0,0,0.1));
 }
 
 /*
@@ -123,9 +124,7 @@ input:disabled,
 input:disabled:hover,
 textarea:disabled:hover {
 	border:1px solid #CCC;
-	-webkit-box-shadow: 0 0 0 0;
-	-moz-box-shadow: 0 0 0 0;
-	box-shadow: 0 0 0 0;
+	.boxshadow(0; 0; 0; 0);
 	cursor:normal;
 	background:#F3F3F3;
 }
@@ -201,7 +200,7 @@ form .info:before {
 	width:.75em;
 	height:.75em;
 	padding:0 .125em .25em .125em;
-	border-radius:2px;
+	.rounded_all(2px);
 	font-weight:bold;
 	font-family:serif;
 	color:#fff;
@@ -222,14 +221,13 @@ form .message .error span,
 form .info span {
 	display:block;
 	margin:-1.25em 1.5em 0 1.5em;
-	border-radius:2px;
+	.rounded_all(2px);
 }
 
 form input.error,
 form select.error {
     border:1px solid #D40000;
-    -webkit-box-shadow: 0 0 10px #D40000;
-    box-shadow: 0 0 10px #D40000;
+    .boxshadow(0; 0; 10px; #D40000);
 }
 form .error:focus {
     border:1px solid #D40000;
@@ -257,9 +255,7 @@ form .error:focus {
 		background:#FFF;		
 		float:left;
 		padding:.5em;
-    -moz-box-shadow: 0px 0px 8px #111;
-    -webkit-box-shadow: 0px 0px 8px #111;
-    box-shadow: 0px 0px 8px #111;
+    .boxshadow(0px; 0px; 8px; #111);
     bottom: 1.5em;
     right: -86px;
 		width: 130px;
@@ -362,7 +358,7 @@ select:hover {
 	margin-bottom:10px;
 	padding:.25em .5em .15em .2em;
 	/*background:#FFF;
-	border-radius:3px;
+	.rounded_all(3px);
 	border:1px solid #BBB;*/
 }
 

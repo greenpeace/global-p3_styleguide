@@ -1,6 +1,7 @@
 /* ==========================================================================
 	 Header
 	 ========================================================================== */
+@import "less-mixins.less";
 .header {
 	position:absolute;
 	top:0;
@@ -144,9 +145,7 @@
 	height: 21px;
 	overflow: hidden;
 	margin:0;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+	.rounded_all(3px);
 }
 .search-form label {
 	display:none;
@@ -181,7 +180,7 @@
 	width:15px;
 	height:15px;
 	display:block;
-	border-radius:3px;
+	.rounded_all(3px);
 	margin:2px;
 	border:1px solid #66CC00;
 	cursor: pointer;
@@ -289,7 +288,7 @@ ul.navigation {
 #mobilemenu-icon {
   background: url("../img/menu_icon.png") no-repeat scroll center center #A1CC76;
     border: 1px solid #5BB700;
-    border-radius: 5px 5px 5px 5px;
+    .rounded_all(5px);
     color: #565456;
     display: block;
     font-style: normal;
@@ -382,15 +381,8 @@ ul.navigation {
   .navigation li a.current-item, .navigation li a.active-item, .navigation li a:hover, .navigation li a:focus {
           text-decoration: none;
           background: #6c0;
-          -webkit-border-bottom-right-radius: 4px;
-          -webkit-border-bottom-left-radius: 4px;
-          -moz-border-radius-bottomright: 4px;
-          -moz-border-radius-bottomleft: 4px;
-          border-bottom-right-radius: 4px;
-          border-bottom-left-radius: 4px;
-          -webkit-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
-          -moz-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
-          box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+          .rounded_some(0; 0; 4px; 4px);
+          .boxshadow(2px; 0px; 0px; rgba(50, 50, 50, 0.25));
           margin-right: 4px;
           color: #055905;
   }
@@ -460,12 +452,8 @@ ul.navigation {
   .navigation .drop-content ul li a:focus {
           background: #57b105;
           color: #fff;
-          -webkit-border-radius: 0;
-          -moz-border-radius: 0;
-          border-radius: 0;
-          -webkit-box-shadow: none;
-          -moz-box-shadow: none;
-          box-shadow: none;
+          .rounded_all(0);
+          .boxshadow(none);
   }
   .navigation .drop-content ul li:hover ul,
 	.navigation .drop-content ul li:focus ul{

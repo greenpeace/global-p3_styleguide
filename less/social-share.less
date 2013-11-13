@@ -1,3 +1,4 @@
+@import "less-mixins.less";
 /*
 	Social Button
 
@@ -23,7 +24,7 @@
 	width:48px;
 	padding:.5em 0;
 	font-size:.875em;
-	border-radius:2px;
+	.rounded_all(2px);
 }
 .social-share .action a {
 	display:block;
@@ -33,7 +34,7 @@
 	padding:.5em;
 	padding:0;
 	margin-top:10px;
-	border-radius:2px;
+	.rounded_all(2px);
 }
 /* 
 	flat style icons 
@@ -148,7 +149,7 @@
             display:block;
             width: 25px;
             height:35px;
-            border-radius:0;
+            .rounded_all(0);
             text-indent:200%;
             white-space:nowrap;
             border:none;
