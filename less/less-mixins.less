@@ -68,3 +68,26 @@
     -moz-box-shadow: @arguments;
     box-shadow: @arguments;
 }
+
+// Cross browser transitions
+.transition(@properties) { 
+    -webkit-transition: @properties;
+    -moz-transition: @properties;
+    transition: @properties;
+}
+
+// Cross browser transforms
+.transform(@properties) {
+    -webkit-transform: @properties;
+    -moz-transform: @properties;
+    -ms-transform: @properties;
+    transform: @properties;
+}
+// Cross browser opacity
+.opacity (@opacity) {
+    @opacityPercentage: @opacity * 100;
+    opacity: @opacity;
+    -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=(@{opacityPercentage}))"; 
+    filter: ~"alpha(opacity = (@{opacityPercentage}))";
+}
+

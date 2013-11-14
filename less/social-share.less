@@ -103,25 +103,16 @@
     z-index: 2000;
     visibility: hidden;
     backface-visibility: hidden;
-    
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -o-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-
-
+    background:transparent;
+    .transform(translateX(-50%) translateY(-50%));
     
     &.modal-show {
         // class added on click
         visibility: visible; 
         
         .modal-content {
-            -webkit-transform: scale(1);
-            -moz-transform: scale(1);
-            -ms-transform: scale(1);
-            transform: scale(1);
-            opacity: 1;
+            .transform(scale(1));
+            .opacity(1); 
         }
     }
         
@@ -129,14 +120,10 @@
         background: @white;
         min-height:400px;
         
-        -webkit-transform: scale(0.7);
-	-moz-transform: scale(0.7);
-	-ms-transform: scale(0.7);
-	transform: scale(0.7);
-	opacity: 0;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
+        .boxshadow(10px 10px 45px rgba(0,0,0,0.7));
+	.transform(scale(0.7));
+        .opacity(0);       
+        .transition(all 0.3s);
     }
     
     h3 {
@@ -157,9 +144,7 @@
             background: @greens-6 url(../img/message_x.png) center center no-repeat;
             
             &:hover {
-                -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
-                filter: alpha(opacity=70);
-                opacity:0.7;
+                .opacity(0.7);
             }
         }
     }
@@ -180,22 +165,17 @@
     top: 0;
     left: 0;
     z-index: 1000;
-    opacity: 0;
+    .opacity(0);
     background: rgba(102,204,0,0.8);
-    transition: all 0.3s;
+    .transition(all 0.3s);
 }
 
 .no-rgba #social-overlay {    
     background: @greens-6;
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-    filter: alpha(opacity=80);
-    opacity: 0.8;
+    .opacity(0.8);
 }
 
 .modal-show ~ #social-overlay {
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    filter: alpha(opacity=100);
-    opacity: 1;
-
+    .opacity(1);
     visibility: visible;
 }
