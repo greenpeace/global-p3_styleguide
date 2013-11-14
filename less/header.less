@@ -1,6 +1,7 @@
 /* ==========================================================================
 	 Header
 	 ========================================================================== */
+@import "less-mixins.less";
 .header {
 	position:absolute;
 	top:0;
@@ -11,7 +12,7 @@
 	width: 100%;
 }
 .heading-first {
-	background: #66CC00;
+	background: @greens-6;
 	height: 3.75em; /* 60px */
 }
 .heading .heading-holder {
@@ -31,7 +32,7 @@
  * links and logo
  */
 .header a {
-	color: #fff;
+	color: @white;
 }
 .header .logo {
 	display: block;
@@ -47,7 +48,6 @@
  * Country selector
  */
 .country-selector {
-	//width: 15.625em; /* 250px */
 	left: 11.25em; /* 180px */
 	top: 1.125em; /* 18px */
 	position: absolute;
@@ -61,15 +61,14 @@
 	display: block;
 	padding: 1px 0 3px 2px;
 	height: .875em; /* 14px */
-	//width: 15em; /* 248px */
-	color: #FFF;
+	color: @white;
 	text-decoration: none;
-	border: 2px solid #66CC00;
+	border: 2px solid @greens-6;
 	padding-right: 60px;
 }
 .country-selector .dropdown-controller a .country-img,
 .country-selector .dropdown-controller a:hover .country-img {
-	background: #66CC00 url(../img/image-map.png) left -42px no-repeat;
+	background: @greens-6 url(../img/image-map.png) left -42px no-repeat;
 	position: absolute;
 	right: 0;
 	width: 51px;
@@ -81,19 +80,18 @@
 }
 .country-selector .dropdown-controller a.dropdown-open,
 .country-selector .dropdown-controller a.dropdown-open:hover {
-	background-color: #FFF;
-	color: #66CC00;
-	border: 2px solid #FFF;
+	background-color: @white;
+	color: @greens-6;
+	border: 2px solid @white;
 }
 .country-selector .dropdown-controller a.dropdown-open .country-img,
 .country-selector .dropdown-controller a.dropdown-open:hover .country-img {
-	background: #FFF url(../img/image-map.png) 0 -64px no-repeat;
+	background: @white url(../img/image-map.png) 0 -64px no-repeat;
 }
 .country-selector .dropdown {
 	width: 100%; 
 	}
 .country-selector .dropdown .dropdown-list {
-	//width: 18.2143em; /* 255px */
 	margin-top: 0.1429em; /* 2px */
 	font-size:0.875em; /* 14px */
 }
@@ -118,7 +116,7 @@
 }
 
 .language-selector .dropdown-label {
-	color:#FFF;
+	color: @white;
 	font-weight:bold;
 }
 .language-selector .dropdown {
@@ -141,15 +139,13 @@
 .search-form {
 	clear: both;
 	float: right;
-	background: white;
+	background: @white;
 	border: 1px solid #61B905;
 	width: 17em;
 	height: 21px;
 	overflow: hidden;
 	margin:0;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+	.rounded_all(3px);
 }
 .search-form label {
 	display:none;
@@ -184,9 +180,9 @@
 	width:15px;
 	height:15px;
 	display:block;
-	border-radius:3px;
+	.rounded_all(3px);
 	margin:2px;
-	border:1px solid #66CC00;
+	border:1px solid @greens-6;
 	cursor: pointer;
 }
 .search-form .submit span:active {
@@ -292,7 +288,7 @@ ul.navigation {
 #mobilemenu-icon {
   background: url("../img/menu_icon.png") no-repeat scroll center center #A1CC76;
     border: 1px solid #5BB700;
-    border-radius: 5px 5px 5px 5px;
+    .rounded_all(5px);
     color: #565456;
     display: block;
     font-style: normal;
@@ -327,13 +323,15 @@ ul.navigation {
   transform: rotate(90deg);
 }
 
+// creating a mixin for everything that belongs in the media query,
+// so it can be used for the media query fallback as well
 .sevensome_macro(){
 /*
  * Header
  */
   .heading-second {
           height: 1.6875em; /* 27px */
-          background: #57b105;   
+          background: @greens-5;   
           border-top: 1px solid #4EA600;
   }
   
@@ -376,34 +374,27 @@ ul.navigation {
           font-size:.75em; /*12px */
           line-height:2.41667em; /* 29px/12 */
           font-weight:bold;
-          color: #fff;
+          color: @white;
           padding: 0 .83333333333em; /* 10px/12 */
           white-space: nowrap;
   }
   .navigation li a.current-item, .navigation li a.active-item, .navigation li a:hover, .navigation li a:focus {
           text-decoration: none;
-          background: #6c0;
-          -webkit-border-bottom-right-radius: 4px;
-          -webkit-border-bottom-left-radius: 4px;
-          -moz-border-radius-bottomright: 4px;
-          -moz-border-radius-bottomleft: 4px;
-          border-bottom-right-radius: 4px;
-          border-bottom-left-radius: 4px;
-          -webkit-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
-          -moz-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
-          box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+          background: @greens-6;
+          .rounded_some(0; 0; 4px; 4px);
+          .boxshadow(2px; 0px; 0px; rgba(50, 50, 50, 0.25));
           margin-right: 4px;
-          color: #055905;
+          color: @greens-2;
   }
   .navigation li a.current-item span, .navigation li a.active-item span, .navigation li a.hover span,
 	.navigation li a:hover span, .navigation li a:focus span {
           overflow: hidden;
           position: relative;
-          color: #055905;
+          color: @greens-2;
   }
   .navigation li a:hover span, .navigation li a:focus span {
           position: relative;
-          color: #055905;
+          color: @greens-2;
   }
   .navigation li .drop-content a { /* overrides the mobile styling */
     margin-left: 0;
@@ -431,13 +422,13 @@ ul.navigation {
           padding: 0;
           list-style: none;
           position: absolute;
-          border: solid 1px #57b105;
+          border: solid 1px @greens-5;
   }
   .navigation .drop-content ul li {
           float: none;
           width: 13.125em; /* 210px */
           vertical-align: middle;
-          background-color: #fff;
+          background-color: @white;
           padding: 0;
   }
   .navigation .drop-content ul li a {
@@ -449,7 +440,7 @@ ul.navigation {
           line-height: 1.91667em; /* 23px/12 */
           padding: 0 0 0 .83333333em; /* 10px/12 */
           cursor: pointer;
-          color: #000;
+          color: @black;
           position: relative;
           margin: 0;
           width: 16.66667em; /* 200px/12 */
@@ -459,14 +450,10 @@ ul.navigation {
   .navigation .drop-content ul li a:hover,
 	.navigation .drop-content ul li:focus a,
   .navigation .drop-content ul li a:focus {
-          background: #57b105;
-          color: #fff;
-          -webkit-border-radius: 0;
-          -moz-border-radius: 0;
-          border-radius: 0;
-          -webkit-box-shadow: none;
-          -moz-box-shadow: none;
-          box-shadow: none;
+          background: @greens-5;
+          color: @white;
+          .rounded_all(0);
+          .boxshadow(none);
   }
   .navigation .drop-content ul li:hover ul,
 	.navigation .drop-content ul li:focus ul{
@@ -487,8 +474,8 @@ ul.navigation {
   .navigation .drop-content ul ul li a:hover,
 	.navigation .drop-content ul li:focus ul li:focus a,
   .navigation .drop-content ul ul li a:focus{
-          background: #57b105;
-          color: #fff;
+          background: @greens-5;
+          color: @white;
   }
   .navigation .drop-content ul ul li:hover ul,
 	.navigation .drop-content ul ul li:focus ul{
@@ -500,7 +487,7 @@ ul.navigation {
 	.navigation .drop-content ul li:focus ul li:focus ul li a,
   .navigation .drop-content ul ul ul li a {
           background: none;
-          color: #000;
+          color: @black;
           padding: 0 0 0 .83333333em; /* 10px/12 */
           margin: 0;
           width: 16.66667em; /* 200px/12 */
@@ -509,8 +496,8 @@ ul.navigation {
 	.navigation .drop-content ul li:focus ul li:focus ul li:focus a,
   .navigation .drop-content ul ul ul li a:hover
   .navigation .drop-content ul ul ul li a:focus {
-          background: #57b105;
-          color: #fff;
+          background: @greens-5;
+          color: @white;
   }
   .navigation li a.active span,
   .navigation li a:hover span,
@@ -536,22 +523,27 @@ ul.navigation {
 	.navigation .drop-content ul ul li a.drop:focus,
   .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
   .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2	{
-          background: #57b105 url(../../img/v02/nav-arrow.png) no-repeat 95% -25px;
+          background: @greens-5 url(../../img/v02/nav-arrow.png) no-repeat 95% -25px;
   }
 }
 
-@media only screen 
-and (min-width : 768px) {
+/*
+ * media queries
+ */
+@media only screen and (min-width : 768px) {
   html {
     .sevensome_macro;
   }
 }
 
+/* fallback for browsers where media queries won't work */
 .sevensome {
   .sevensome_macro;
 }
 
-/* browser specific */
+/*
+ * browser specific
+ */
 .lt-ie9 {
   .sevensome_macro;
 }
