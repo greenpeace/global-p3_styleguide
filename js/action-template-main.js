@@ -8,7 +8,7 @@
  * @returns {undefined}
  */
 /* globals jQuery, Modernizr */
-(function($, M, w) {
+(function($, M, w, undef) {
     'use strict';
 
     // GET parameters to send with each request
@@ -42,6 +42,11 @@
 
         // Add classes to html
         $.p3.narrow();
+
+        if (typeof _gaq !== 'undefined') {
+            // Track form abandonment
+            $.p3.form_tracking('.js-track-abandonment');
+        }
 
         // Display pseudo-placeholder in search form
         // using default/placeholder.js
