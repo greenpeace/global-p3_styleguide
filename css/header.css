@@ -12,7 +12,7 @@
   width: 100%;
 }
 .heading-first {
-  background: #66CC00;
+  background: #66cc00;
   height: 3.75em;
   /* 60px */
 }
@@ -31,7 +31,7 @@
  * links and logo
  */
 .header a {
-  color: #fff;
+  color: #ffffff;
 }
 .header .logo {
   display: block;
@@ -62,9 +62,9 @@
   padding: 1px 0 3px 2px;
   height: .875em;
   /* 14px */
-  color: #FFF;
+  color: #ffffff;
   text-decoration: none;
-  border: 2px solid #66CC00;
+  border: 2px solid #66cc00;
   padding-right: 60px;
 }
 .country-selector .dropdown-controller a .country-img,
@@ -81,9 +81,9 @@
 }
 .country-selector .dropdown-controller a.dropdown-open,
 .country-selector .dropdown-controller a.dropdown-open:hover {
-  background-color: #FFF;
-  color: #66CC00;
-  border: 2px solid #FFF;
+  background-color: #ffffff;
+  color: #66cc00;
+  border: 2px solid #ffffff;
 }
 .country-selector .dropdown-controller a.dropdown-open .country-img,
 .country-selector .dropdown-controller a.dropdown-open:hover .country-img {
@@ -116,7 +116,7 @@
   padding-right: 1em;
 }
 .language-selector .dropdown-label {
-  color: #FFF;
+  color: #ffffff;
   font-weight: bold;
 }
 .language-selector .dropdown {
@@ -138,7 +138,7 @@
 .search-form {
   clear: both;
   float: right;
-  background: white;
+  background: #ffffff;
   border: 1px solid #61B905;
   width: 17em;
   height: 21px;
@@ -184,9 +184,11 @@
   width: 15px;
   height: 15px;
   display: block;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
   margin: 2px;
-  border: 1px solid #66CC00;
+  border: 1px solid #66cc00;
   cursor: pointer;
 }
 .search-form .submit span:active {
@@ -289,7 +291,9 @@ ul.navigation {
 #mobilemenu-icon {
   background: url("../img/menu_icon.png") no-repeat scroll center center #a1cc76;
   border: 1px solid #5BB700;
-  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   color: #565456;
   display: block;
   font-style: normal;
@@ -323,6 +327,9 @@ ul.navigation {
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+/*
+ * media queries
+ */
 @media only screen and (min-width: 768px) {
   html {
     /*
@@ -377,7 +384,7 @@ ul.navigation {
     line-height: 2.41667em;
     /* 29px/12 */
     font-weight: bold;
-    color: #fff;
+    color: #ffffff;
     padding: 0 .83333333333em;
     /* 10px/12 */
     white-space: nowrap;
@@ -387,13 +394,10 @@ ul.navigation {
   html .navigation li a:hover,
   html .navigation li a:focus {
     text-decoration: none;
-    background: #6c0;
-    -webkit-border-bottom-right-radius: 4px;
-    -webkit-border-bottom-left-radius: 4px;
-    -moz-border-radius-bottomright: 4px;
-    -moz-border-radius-bottomleft: 4px;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
+    background: #66cc00;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
     -webkit-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
     -moz-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
     box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
@@ -454,7 +458,7 @@ ul.navigation {
     width: 13.125em;
     /* 210px */
     vertical-align: middle;
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 0;
   }
   html .navigation .drop-content ul li a {
@@ -469,7 +473,7 @@ ul.navigation {
     padding: 0 0 0 .83333333em;
     /* 10px/12 */
     cursor: pointer;
-    color: #000;
+    color: #000000;
     position: relative;
     margin: 0;
     width: 16.66667em;
@@ -481,7 +485,7 @@ ul.navigation {
   html .navigation .drop-content ul li:focus a,
   html .navigation .drop-content ul li a:focus {
     background: #57b105;
-    color: #fff;
+    color: #ffffff;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
@@ -509,7 +513,7 @@ ul.navigation {
   html .navigation .drop-content ul li:focus ul li:focus a,
   html .navigation .drop-content ul ul li a:focus {
     background: #57b105;
-    color: #fff;
+    color: #ffffff;
   }
   html .navigation .drop-content ul ul li:hover ul,
   html .navigation .drop-content ul ul li:focus ul {
@@ -521,7 +525,7 @@ ul.navigation {
   html .navigation .drop-content ul li:focus ul li:focus ul li a,
   html .navigation .drop-content ul ul ul li a {
     background: none;
-    color: #000;
+    color: #000000;
     padding: 0 0 0 .83333333em;
     /* 10px/12 */
     margin: 0;
@@ -532,7 +536,7 @@ ul.navigation {
   html .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
   html .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
     background: #57b105;
-    color: #fff;
+    color: #ffffff;
   }
   html .navigation li a.active span,
   html .navigation li a:hover span,
@@ -561,6 +565,7 @@ ul.navigation {
     background: #57b105 url(../../img/v02/nav-arrow.png) no-repeat 95% -25px;
   }
 }
+/* fallback for browsers where media queries won't work */
 .sevensome {
   /*
  * Header
@@ -614,7 +619,7 @@ ul.navigation {
   line-height: 2.41667em;
   /* 29px/12 */
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
   padding: 0 .83333333333em;
   /* 10px/12 */
   white-space: nowrap;
@@ -624,13 +629,10 @@ ul.navigation {
 .sevensome .navigation li a:hover,
 .sevensome .navigation li a:focus {
   text-decoration: none;
-  background: #6c0;
-  -webkit-border-bottom-right-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
+  background: #66cc00;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
   -webkit-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
   -moz-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
   box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
@@ -691,7 +693,7 @@ ul.navigation {
   width: 13.125em;
   /* 210px */
   vertical-align: middle;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 0;
 }
 .sevensome .navigation .drop-content ul li a {
@@ -706,7 +708,7 @@ ul.navigation {
   padding: 0 0 0 .83333333em;
   /* 10px/12 */
   cursor: pointer;
-  color: #000;
+  color: #000000;
   position: relative;
   margin: 0;
   width: 16.66667em;
@@ -718,7 +720,7 @@ ul.navigation {
 .sevensome .navigation .drop-content ul li:focus a,
 .sevensome .navigation .drop-content ul li a:focus {
   background: #57b105;
-  color: #fff;
+  color: #ffffff;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -746,7 +748,7 @@ ul.navigation {
 .sevensome .navigation .drop-content ul li:focus ul li:focus a,
 .sevensome .navigation .drop-content ul ul li a:focus {
   background: #57b105;
-  color: #fff;
+  color: #ffffff;
 }
 .sevensome .navigation .drop-content ul ul li:hover ul,
 .sevensome .navigation .drop-content ul ul li:focus ul {
@@ -758,7 +760,7 @@ ul.navigation {
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li a,
 .sevensome .navigation .drop-content ul ul ul li a {
   background: none;
-  color: #000;
+  color: #000000;
   padding: 0 0 0 .83333333em;
   /* 10px/12 */
   margin: 0;
@@ -769,7 +771,7 @@ ul.navigation {
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
 .sevensome .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
   background: #57b105;
-  color: #fff;
+  color: #ffffff;
 }
 .sevensome .navigation li a.active span,
 .sevensome .navigation li a:hover span,
@@ -797,7 +799,9 @@ ul.navigation {
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
   background: #57b105 url(../../img/v02/nav-arrow.png) no-repeat 95% -25px;
 }
-/* browser specific */
+/*
+ * browser specific
+ */
 .lt-ie9 {
   /*
  * Header
@@ -851,7 +855,7 @@ ul.navigation {
   line-height: 2.41667em;
   /* 29px/12 */
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
   padding: 0 .83333333333em;
   /* 10px/12 */
   white-space: nowrap;
@@ -861,13 +865,10 @@ ul.navigation {
 .lt-ie9 .navigation li a:hover,
 .lt-ie9 .navigation li a:focus {
   text-decoration: none;
-  background: #6c0;
-  -webkit-border-bottom-right-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
+  background: #66cc00;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
   -webkit-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
   -moz-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
   box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
@@ -928,7 +929,7 @@ ul.navigation {
   width: 13.125em;
   /* 210px */
   vertical-align: middle;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 0;
 }
 .lt-ie9 .navigation .drop-content ul li a {
@@ -943,7 +944,7 @@ ul.navigation {
   padding: 0 0 0 .83333333em;
   /* 10px/12 */
   cursor: pointer;
-  color: #000;
+  color: #000000;
   position: relative;
   margin: 0;
   width: 16.66667em;
@@ -955,7 +956,7 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul li:focus a,
 .lt-ie9 .navigation .drop-content ul li a:focus {
   background: #57b105;
-  color: #fff;
+  color: #ffffff;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -983,7 +984,7 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus a,
 .lt-ie9 .navigation .drop-content ul ul li a:focus {
   background: #57b105;
-  color: #fff;
+  color: #ffffff;
 }
 .lt-ie9 .navigation .drop-content ul ul li:hover ul,
 .lt-ie9 .navigation .drop-content ul ul li:focus ul {
@@ -995,7 +996,7 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li a,
 .lt-ie9 .navigation .drop-content ul ul ul li a {
   background: none;
-  color: #000;
+  color: #000000;
   padding: 0 0 0 .83333333em;
   /* 10px/12 */
   margin: 0;
@@ -1006,7 +1007,7 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
 .lt-ie9 .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
   background: #57b105;
-  color: #fff;
+  color: #ffffff;
 }
 .lt-ie9 .navigation li a.active span,
 .lt-ie9 .navigation li a:hover span,

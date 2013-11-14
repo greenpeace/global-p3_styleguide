@@ -1,21 +1,20 @@
 /* breadcrumbs */
 #breadcrumbs ul {
-	padding:0;
-	margin-bottom:0;
-	font-size:.875em;
+  padding: 0;
+  margin-bottom: 0;
+  font-size: .875em;
 }
 #breadcrumbs li {
-	display:inline;
-	margin: 0;
-	padding:0;
-	list-style: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 #breadcrumbs li:before {
-	content:"›";
-	padding-right:.25em;
+  content: "›";
+  padding-right: .25em;
 }
 #breadcrumbs li:first-child:before {
-	content:"";
-	padding-right:0;
+  content: "";
+  padding-right: 0;
 }
-

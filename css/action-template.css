@@ -13,7 +13,7 @@
   /* image is 540px wide */
 }
 .action-template #main-section {
-  background: #FFF;
+  background: #ffffff;
   padding-bottom: 3em;
 }
 .action-template h1 {
@@ -70,7 +70,7 @@
   background: #66cc00;
   display: block;
   text-align: right;
-  color: #FFF;
+  color: #ffffff;
   text-shadow: 1px 1px 0 #4f4f4f;
   font-weight: bold;
   font-size: 1.125em;
@@ -82,7 +82,7 @@
 }
 #action-counter-textual {
   margin: .25em 0;
-  color: #666;
+  color: #666666;
   font-style: italic;
   font-size: 0.688em;
 }
@@ -106,9 +106,11 @@
   /* 60px */
   display: inline-block;
   line-height: 1em;
-  border: 1px solid #CCC;
+  border: 1px solid #cccccc;
   margin-bottom: -0.5em;
   padding: 0 6px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
   border-radius: 2px;
 }
 #main-section .social-login a.facebook {
@@ -136,7 +138,7 @@
   width: 8em;
   display: inline-block;
   font-size: 0.813em;
-  color: #666;
+  color: #666666;
 }
 #action-recent-signers .name:after {
   content: ",";
@@ -242,6 +244,7 @@
     font-size: 1.25em;
   }
 }
+/* fallback for browsers where media queries won't work */
 .sevensome {
   /* page section = 700 + 15 + 15px */
   /* east side */
@@ -385,6 +388,7 @@
     font-size: 1.25em;
   }
 }
+/* fallback for browsers where media queries won't work */
 .desktop {
   /* show background image */
   /* page section = 940 + 20 + 20px */
@@ -460,19 +464,6 @@
   margin-top: .5em;
   font-size: 1.25em;
 }
-/* Large screens -----------
-@media only screen 
-and (min-width : 1600px) {
-    #action-form {
-        float:right;
-    }
-    #action-details,
-    #action-multimedia-teaser {
-        width:570px;
-        float:left;
-        clear:both;
-    }
-} */
 /* Browser specific hacks --------- */
 .lt-ie7 .sevensome #action-form textarea,
 .lt-ie7 .sevensome #action-form input {
