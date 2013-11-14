@@ -68,10 +68,10 @@
         // Focus the email field for easier form entry
         $('input[name=email]').focus();
 
-        // Note the order of the next two plugins:
-        // Both plugins may potentially fill the email field automatically,
-        // and one may overwrite the other.
-        // Adjust the order according to preference
+        /** Note the order of the next two plugins
+            Both p3.remember_me_cookie() and p3.autofill() plugins may
+            potentially fill the email field automatically, overwriting contents
+            Adjust the load order as required */
 
         // Fill email field if cookie is set
         $.p3.remember_me_cookie('#action-form');
@@ -88,8 +88,8 @@
         // Check if we can sign this pledge using email field only
         // Includes form validation via $.p3.validation by default
         $.p3.pledge_with_email_only('#action-form', {
-            signerCheckURL:     signerCheckURL,
-            validationRulesURL: validationURL,
+            signerCheckURL:     signerCheckTesting,
+            validationRulesURL: validationTesting,
             params:             parameters
         });
 
