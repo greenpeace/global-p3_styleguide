@@ -40,6 +40,9 @@
         // Detect placeholder functionality
         $('html').addClass( (M.input.placeholder ? '' : 'no-') + 'placeholder');
 
+        // Add classes to html
+        $.p3.narrow();
+
         // Display pseudo-placeholder in search form
         // using default/placeholder.js
         if (!M.input.placeholder) {
