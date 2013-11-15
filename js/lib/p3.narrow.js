@@ -3,7 +3,7 @@
  *
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.0.1
+ * @version         0.0.2
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>,
  *                  based on original work by
  *                  <a href="http://www.more-onion.com/">More Onion</a>
@@ -16,41 +16,41 @@
     'use strict';
 
     var _p3 = $.p3 || {},
-    defaults = {
-        /* Selector or object to which the classes are added */
-        el: 'body',
-        /* Class names and their breakpoints */
-        sizes: {
-            threetwo:   320,
-            four:       400,
-            five:       500,
-            six:        600,
-            sixfive:    650,
-            seven:      700,
-            sevensome:  768,
-            eightfive:  850,
-            nine:       900,
-            tablet:     480,
-            desktop:    1024,
-            wide:       1350,
-            large:      1600
-        },
-        // Apply changes on resize
-        onResize:   true,
-        // Apply changes on initialisation
-        onLoad:     true,
-        // debounce resize event timer (milliseconds)
-        delay:      100
-    };
+        defaults = {
+            /* Selector or object to which the classes are added */
+            el: 'body',
+            /* Class names and their breakpoints */
+            sizes: {
+                threetwo:   320,
+                four:       400,
+                five:       500,
+                six:        600,
+                sixfive:    650,
+                seven:      700,
+                sevensome:  768,
+                eightfive:  850,
+                nine:       900,
+                tablet:     480,
+                desktop:    1024,
+                wide:       1350,
+                large:      1600
+            },
+            // Apply changes on resize
+            onResize: true,
+            // Apply changes on initialisation
+            onLoad: true,
+            // Throttle resize event timer in milliseconds
+            delay: 100
+        };
 
     _p3.narrow = function(options) {
         var config = $.extend(true, defaults, options || {}),
             $window = $(w),
             $el = $(config.el),
-            timer = false;
+            wait = false;
 
         /**
-         * Returns the size of the document minus scrollbars
+         * Returns the size of the document plus scrollbars
          * @returns {int}
          */
         function getWidth() {
@@ -68,7 +68,7 @@
          */
         function checkNarrow() {
             var classString = '',
-            width = getWidth();
+                width = getWidth();
 
             // For each configured breakpoint
             $.each(config.sizes, function(cls, size) {
@@ -86,13 +86,30 @@
             $el.addClass(classString);
         }
 
+        /**
+         * Executes callback no more than once per interval
+         *
+         * @param {function}    callback
+         * @param {int}         interval
+         * @returns {undefined}
+         */
+        function throttle(callback, interval) {
+            if (wait) {
+                return;
+            }
+
+            wait = true;
+
+            setTimeout(function() {
+                wait = false;
+            }, interval);
+
+            callback();
+        }
+
         if (config.onResize) {
-            $window.resize(function () {
-                // Debounce resize event
-                clearTimeout(timer);
-                timer = setTimeout(function () {
-                    checkNarrow();
-                }, config.delay);
+            $window.resize(function() {
+                throttle(checkNarrow, config.delay);
             });
         }
 
