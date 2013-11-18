@@ -5,7 +5,7 @@
  *                  Obtains share counts from JSON endpoint
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.1.2
+ * @version         0.1.3
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -18,6 +18,9 @@
     'use strict';
 
     var _p3 = $.p3 || {},
+        prefix = function () {
+            return new Date().getTime() + ' :: $.p3.social_sharing :: ';
+        }(),
         defaults = {
             pageURL: false,
             popup: {
@@ -63,8 +66,8 @@
 
     _p3.social_sharing = function(el, options) {
 
-        var config = $.extend(true, defaults, options || {}),
-            $el = $(el),
+        var config  = $.extend(true, defaults, options || {}),
+            $el     = $(el),
             support = M.csstransitions;
 
         function addCommas(int) {
@@ -101,7 +104,7 @@
         }
 
         function init() {
-            
+
             if (support) {
                 var $modal = $('<div id="social-modal"><div class="modal-content"><h3>Share this page<button class="close">Close</button></h3><iframe></iframe></div></div>'),
                     $overlay = $('<div id="social-overlay"></div>');
@@ -112,8 +115,8 @@
             }
 
             if (config.pageURL === false) {
-                console.warn('WARNING: $.p3.social_sharing :: page referrer URL is not set, using "' + window.location.href + '"');
-                config.pageURL = window.location.href;
+                console.warn(prefix + 'page referrer URL is not set, using "' + w.location.href + '"');
+                config.pageURL = w.location.href;
             }
 
             $.each(config.networks, function(network, data) {
@@ -127,12 +130,12 @@
                         case 'pinterest':
                             if (data.image === false) {
 //                            throw new Error('Pinterest sharing requires an image');
-                                console.warn('WARNING: $.p3.social_sharing :: Pinterest sharing requires an image.');
+                                console.warn(prefix + '$.p3.social_sharing :: Pinterest sharing requires an image.');
                                 data.image = '';
                             }
                             if (data.description === false) {
 //                                throw new Error('Pinterest sharing requires a description');
-                                console.warn('WARNING: $.p3.social_sharing :: Pinterest sharing requires a description.');
+                                console.warn(prefix + '$.p3.social_sharing :: Pinterest sharing requires a description.');
                                 data.description = '';
                             }
                             url = url.replace('__IMAGE__', encodeURIComponent(data.image));
@@ -141,7 +144,7 @@
                         case 'twitter':
                             if (data.title === false) {
 //                                throw new Error('Twitter sharing requires a title');
-                                console.warn('WARNING: $.p3.social_sharing :: Twitter sharing requires a title.');
+                                console.warn(prefix + '$.p3.social_sharing :: Twitter sharing requires a title.');
                                 data.title = '';
                             }
                             url = url.replace('__TITLE__', encodeURIComponent(data.title));
@@ -199,11 +202,11 @@
                         init();
                     } else {
                         console.warn(json);
-                        throw new Error('Status: ' + json.status + ': server reported a problem');
+                        throw new Error(prefix + 'Status: ' + json.status + ': server reported a problem');
                     }
 
                 }).fail(function() {
-                    throw new Error('$.p3.social_sharing :: Failed to load JSON: "' + config.jsonURL + '"');
+                    throw new Error(prefix + 'Failed to load JSON: "' + config.jsonURL + '"');
                 });
 
             }
