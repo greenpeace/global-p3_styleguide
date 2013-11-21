@@ -30,10 +30,10 @@
     $.ajaxSetup({cache: false});
 
     // Load narrow.js if media queries are not supported
-    M.load({
-        test: M.mq('only all'),
-        nope: 'js/lib/p3.narrow.js'
-    });
+//    M.load({
+//        test: M.mq('only all'),
+//        nope: 'dist/js/compat/p3.narrow.js'
+//    });
 
     $(document).ready(function() {
 

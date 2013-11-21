@@ -45,7 +45,7 @@ var _p3 = $.p3 || {},
 
     $.p3 = _p3;
 
-}(jQuery, this));;// Source: src/js/lib/p3.console.min.js
+}(jQuery, this));;// Source: src/js/lib/p3.console.js
 /**
  * Protect window.console method calls, e.g. console is not defined on IE
  * unless dev tools are open, and IE doesn't define console.debug
@@ -60,11 +60,13 @@ var _p3 = $.p3 || {},
         "groupCollapsed", "groupEnd", "time", "timeEnd", "profile", "profileEnd",
         "dirxml", "assert", "count", "markTimeline", "timeStamp", "clear"
     ];
+
+    function noop() {}
+
     // define undefined methods as noops to prevent errors
     for (var i = 0; i < m.length; i++) {
         if (!window.console[m[i]]) {
-                window.console[m[i]] = function() {
-            };
+                window.console[m[i]] = noop;
         }
     }
 })();;// Source: src/js/lib/p3.form_tracking.js
@@ -123,151 +125,275 @@ var _p3 = $.p3 || ($.p3 = {}),
 
 }(jQuery, this));
 ;// Source: src/js/lib/p3.mobilemenu.js
-
-(function($) {
-    $(window).load(function() {
-        if ($('html').hasClass('lt-ie9')) {
-            return;
-        }
-
-        // generate buttons hidden
-        $('.heading-first .logo').parent().append('<a href="#" id="mobilemenu-icon">Menu</a>');
-        $('#main-nav').prepend('<a href="#" id="mobilemenu-close">close</a>');
-        $('#mobilemenu-icon').hide();
-        $('#mobilemenu-close').hide();
-
-        if (!$('body').hasClass('sevensome')) {
-            $('#mobilemenu-icon').show();
-            $('#mobilemenu-close').show();
-        }
-
-        $('#mobilemenu-icon,    #mobilemenu-close').click(function(e) {
-            var mainMenu = $('#main-nav');
-            var mainMenuWidth = mainMenu.innerWidth();
-            // move search form into mobile menu
-            var searchForm =    $('.tools .search-form').detach();
-            $('#nav', mainMenu).before(searchForm);
-
-            $('ul ul', mainMenu).hide();
-
-            // add class has-submenu on li
-            $('li ul', mainMenu).closest('li').addClass('has-submenu');
-            $('li.has-submenu > a', mainMenu).append('<span class="submenu-icon">v</span>');
-
-            if (mainMenu.is(':visible')) {
-                $('body').animate({right: '0px'}, 300, function() {
-                    mainMenu.hide();
-                    $('body').removeClass('mobilemenu-open');
-                });
-            } else {
-                setMainMenuMinHeight($('body').innerHeight());
-                mainMenu.css({right: '-' + mainMenuWidth + 'px'}).show();
-                $('body').addClass('mobilemenu-open').animate({right: mainMenuWidth + 'px'}, 300, function() {
-                    // none
-                });
+// disabled, for now
+if (false) {
+    (function($) {
+        $(window).load(function() {
+            if ($('html').hasClass('lt-ie9')) {
+                return;
             }
-            $(this).blur();
-            e.preventDefault();
-            return false;
-        });
 
-        // if the link clicked has a ul.menu sibling (i.e. a submenu)
-        // we want to show the submenu
-        $('html').on('click', '.mobilemenu-open #main-nav li a .submenu-icon', function(e) {
-            var a = $(this).parent();
-            var li = a.closest('li.has-submenu');
-            var ul = a.siblings('ul');
-            var holder = a.siblings('.drop-holder');
-            if (holder.length > 0) {
-                ul = $('.drop-content > ul', holder);
+            // generate buttons hidden
+            $('.heading-first .logo').parent().append('<a href="#" id="mobilemenu-icon">Menu</a>');
+            $('#main-nav').prepend('<a href="#" id="mobilemenu-close">close</a>');
+            $('#mobilemenu-icon').hide();
+            $('#mobilemenu-close').hide();
+
+            if (!$('body').hasClass('sevensome')) {
+                $('#mobilemenu-icon').show();
+                $('#mobilemenu-close').show();
             }
-            if (ul.length > 0) {
-                if (ul.is(':visible')) {
-                    ul.hide();
-                    $(this).removeClass('submenu-open');
-                } else {
-                    ul.show();
-                    $(this).addClass('submenu-open');
-                }
-                // lose focus
-                a.blur();
-                // stop propagation - we do not want to follow link when click on submenu-icon
-                e.stopPropagation();
-                return false;
-            }
-        });
 
-        // reset the visibility when we hit the breakpoint 'desktop'
-        $(window).resize(function() {
-            var _mobilemenu = $.mobilemenu || {};
-
-            var mainMenu = $('#main-nav');
-            var mobileMenuClose = $('#mobilemenu-close');
-            var mobileMenuIcon = $('#mobilemenu-icon');
-            var searchForm;
-
-            // % on padding will change the main-nav size --> recalc
-            if($('body').hasClass('mobilemenu-open')) {
+            $('#mobilemenu-icon,    #mobilemenu-close').click(function(e) {
+                var mainMenu = $('#main-nav');
                 var mainMenuWidth = mainMenu.innerWidth();
-                $('body').css({right: mainMenuWidth + 'px'});
-                mainMenu.css({right: '-' + mainMenuWidth + 'px'});
-                setMainMenuMinHeight($('body').innerHeight());
-            }
-
-            // make sure icon and close button are visible when on mobile
-            if (!_mobilemenu.breakpoint_passed && !$('body').hasClass('sevensome')) {
-                mobileMenuIcon.show();
-                mobileMenuClose.show();
-            }
-            // we switch from mobile/tablet to desktop
-            if (!_mobilemenu.breakpoint_passed && $('body').hasClass('sevensome')) {
-                $('body').css({right: '0px'});
-                mainMenu.show();
-                mobileMenuClose.hide();
-                mobileMenuIcon.hide();
-
-                // move search form back into tools menu
-                searchForm =    $('.search-form', mainMenu).detach();
-                $('.heading-first .tools').append(searchForm);
-
-                mainMenu.css({minHeight: '0px'});
-                $('body').removeClass('mobilemenu-open');
-                // reset the display, i.e. remove the element style
-                // otherwise the dropdown css in header.css will not work properly
-                // after the mobilemenu was used
-                $('ul ul', mainMenu).css('display', '');
-                $('.drop-holder', mainMenu).css('display', '');
-                mainMenu.css('overflow', '');
-
-                _mobilemenu.breakpoint_passed = true;
-            }
-            // we switch from desktop to tablet/mobile
-            if (_mobilemenu.breakpoint_passed && !$('body').hasClass('sevensome')) {
-                mainMenu.hide();
-                mobileMenuClose.show();
-                mobileMenuIcon.show();
-
                 // move search form into mobile menu
-                searchForm =    $('.tools .search-form').detach();
+                var searchForm = $('.tools .search-form').detach();
                 $('#nav', mainMenu).before(searchForm);
 
-                $('body').css({right: '0px'});
-                $('body').removeClass('mobilemenu-open');
-                $('ul ul', mainMenu).show();
-                _mobilemenu.breakpoint_passed = false;
+                $('ul ul', mainMenu).hide();
+
+                // add class has-submenu on li
+                $('li ul', mainMenu).closest('li').addClass('has-submenu');
+                $('li.has-submenu > a', mainMenu).append('<span class="submenu-icon">v</span>');
+
+                if (mainMenu.is(':visible')) {
+                    $('body').animate({right: '0px'}, 300, function() {
+                        mainMenu.hide();
+                        $('body').removeClass('mobilemenu-open');
+                    });
+                } else {
+                    setMainMenuMinHeight($('body').innerHeight());
+                    mainMenu.css({right: '-' + mainMenuWidth + 'px'}).show();
+                    $('body').addClass('mobilemenu-open').animate({right: mainMenuWidth + 'px'}, 300, function() {
+                        // none
+                    });
+                }
+                $(this).blur();
+                e.preventDefault();
+                return false;
+            });
+
+            // if the link clicked has a ul.menu sibling (i.e. a submenu)
+            // we want to show the submenu
+            $('html').on('click', '.mobilemenu-open #main-nav li a .submenu-icon', function(e) {
+                var a = $(this).parent();
+                var li = a.closest('li.has-submenu');
+                var ul = a.siblings('ul');
+                var holder = a.siblings('.drop-holder');
+                if (holder.length > 0) {
+                    ul = $('.drop-content > ul', holder);
+                }
+                if (ul.length > 0) {
+                    if (ul.is(':visible')) {
+                        ul.hide();
+                        $(this).removeClass('submenu-open');
+                    } else {
+                        ul.show();
+                        $(this).addClass('submenu-open');
+                    }
+                    // lose focus
+                    a.blur();
+                    // stop propagation - we do not want to follow link when click on submenu-icon
+                    e.stopPropagation();
+                    return false;
+                }
+            });
+
+            // reset the visibility when we hit the breakpoint 'desktop'
+            $(window).resize(function() {
+                var _mobilemenu = $.mobilemenu || {};
+
+                var mainMenu = $('#main-nav');
+                var mobileMenuClose = $('#mobilemenu-close');
+                var mobileMenuIcon = $('#mobilemenu-icon');
+                var searchForm;
+
+                // % on padding will change the main-nav size --> recalc
+                if ($('body').hasClass('mobilemenu-open')) {
+                    var mainMenuWidth = mainMenu.innerWidth();
+                    $('body').css({right: mainMenuWidth + 'px'});
+                    mainMenu.css({right: '-' + mainMenuWidth + 'px'});
+                    setMainMenuMinHeight($('body').innerHeight());
+                }
+
+                // make sure icon and close button are visible when on mobile
+                if (!_mobilemenu.breakpoint_passed && !$('body').hasClass('sevensome')) {
+                    mobileMenuIcon.show();
+                    mobileMenuClose.show();
+                }
+                // we switch from mobile/tablet to desktop
+                if (!_mobilemenu.breakpoint_passed && $('body').hasClass('sevensome')) {
+                    $('body').css({right: '0px'});
+                    mainMenu.show();
+                    mobileMenuClose.hide();
+                    mobileMenuIcon.hide();
+
+                    // move search form back into tools menu
+                    searchForm = $('.search-form', mainMenu).detach();
+                    $('.heading-first .tools').append(searchForm);
+
+                    mainMenu.css({minHeight: '0px'});
+                    $('body').removeClass('mobilemenu-open');
+                    // reset the display, i.e. remove the element style
+                    // otherwise the dropdown css in header.css will not work properly
+                    // after the mobilemenu was used
+                    $('ul ul', mainMenu).css('display', '');
+                    $('.drop-holder', mainMenu).css('display', '');
+                    mainMenu.css('overflow', '');
+
+                    _mobilemenu.breakpoint_passed = true;
+                }
+                // we switch from desktop to tablet/mobile
+                if (_mobilemenu.breakpoint_passed && !$('body').hasClass('sevensome')) {
+                    mainMenu.hide();
+                    mobileMenuClose.show();
+                    mobileMenuIcon.show();
+
+                    // move search form into mobile menu
+                    searchForm = $('.tools .search-form').detach();
+                    $('#nav', mainMenu).before(searchForm);
+
+                    $('body').css({right: '0px'});
+                    $('body').removeClass('mobilemenu-open');
+                    $('ul ul', mainMenu).show();
+                    _mobilemenu.breakpoint_passed = false;
+                }
+
+                $.mobilemenu = _mobilemenu;
+            });
+
+            function setMainMenuMinHeight(pixel) {
+                var mainMenu = $('#main-nav');
+                var paddingTop = parseInt(mainMenu.css('padding-top'), 10);
+                var paddingBottom = parseInt(mainMenu.css('padding-bottom'), 10);
+                mainMenu.css({minHeight: (pixel - paddingTop - paddingBottom) + 'px', maxHeight: (pixel - paddingTop - paddingBottom) + 'px', overflow: 'auto'});
+            }
+        });
+    })(jQuery);
+
+};// Source: src/js/lib/p3.narrow.js
+/**!
+ * Adds classes to an element (body by default) based on document width
+ *
+ * @copyright       Copyright 2013, Greenpeace International
+ * @license         MIT License (opensource.org/licenses/MIT)
+ * @version         0.0.2
+ * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>,
+ *                  based on original work by
+ *                  <a href="http://www.more-onion.com/">More Onion</a>
+ * @requires        <a href="http://jquery.com/">jQuery 1.1.4+</a>
+ * @example         $.p3.narrow([options]);
+ */
+/* global jQuery */
+
+(function($, w, d) {
+var _p3 = $.p3 || {},
+        defaults = {
+            /* Selector or object to which the classes are added */
+            el: 'body',
+            /* Class names and their breakpoints */
+            sizes: {
+                threetwo:   320,
+                four:       400,
+                five:       500,
+                six:        600,
+                sixfive:    650,
+                seven:      700,
+                sevensome:  768,
+                eightfive:  850,
+                nine:       900,
+                tablet:     480,
+                desktop:    1024,
+                wide:       1350,
+                large:      1600
+            },
+            // Apply changes on resize
+            onResize: true,
+            // Apply changes on initialisation
+            onLoad: true,
+            // Throttle resize event timer in milliseconds
+            delay: 100
+        };
+
+    _p3.narrow = function(options) {
+        var config = $.extend(true, defaults, options || {}),
+            $window = $(w),
+            $el = $(config.el),
+            wait = false;
+
+        /**
+         * Returns the size of the document plus scrollbars
+         * @returns {int}
+         */
+        function getWidth() {
+            if (typeof w.innerWidth === 'number') {
+                // Non-IE
+                return w.innerWidth;
+            } else if (d.documentElement && d.documentElement.clientWidth) {
+                // IE 6+ in 'standards compliant mode'
+                return d.documentElement.clientWidth;
+            }
+        }
+
+        /**
+         * Assigns classes to the target element
+         */
+        function checkNarrow() {
+            var classString = '',
+                width = getWidth();
+
+            // For each configured breakpoint
+            $.each(config.sizes, function(cls, size) {
+                // If the document is larger or equal to this size
+                if (width >= size) {
+                    // Add this classname to the element
+                    classString += ' ' + cls;
+                } else {
+                    // Remove this class
+                    $el.removeClass(cls);
+                }
+            });
+
+            // Apply new classes
+            $el.addClass(classString);
+        }
+
+        /**
+         * Executes callback no more than once per interval
+         *
+         * @param {function}    callback
+         * @param {int}         interval
+         * @returns {undefined}
+         */
+        function throttle(callback, interval) {
+            if (wait) {
+                return;
             }
 
-            $.mobilemenu = _mobilemenu;
-        });
+            wait = true;
 
-        function setMainMenuMinHeight(pixel) {
-            var mainMenu = $('#main-nav');
-            var paddingTop = parseInt(mainMenu.css('padding-top'), 10);
-            var paddingBottom = parseInt(mainMenu.css('padding-bottom'), 10);
-            mainMenu.css({minHeight: (pixel - paddingTop - paddingBottom) + 'px', maxHeight: (pixel - paddingTop - paddingBottom) + 'px', overflow: 'auto'});
+            setTimeout(function() {
+                wait = false;
+            }, interval);
+
+            callback();
         }
-    });
-})(jQuery);
+
+        if (config.onResize) {
+            $window.resize(function() {
+                throttle(checkNarrow, config.delay);
+            });
+        }
+
+        if (config.onLoad) {
+            $window.ready(checkNarrow);
+        }
+    };
+
+    $.p3 = _p3;
+
+}(jQuery, this, document));
 ;// Source: src/js/lib/p3.pledge_counter.js
 /**!
  *
@@ -403,7 +529,7 @@ var _p3 = $.p3 || {},
             if (!jsonData || json.status === 'error' || !jsonData.pledges[0].action) {
                 console.log('ERROR');
                 $.each(json.errors, function (key, value) {
-                   console.log(key + ' => ' + value);
+                    console.log(key + ' => ' + value);
                 });
                 throw new Error('Errors in pledge data.');
             }
@@ -433,7 +559,7 @@ var _p3 = $.p3 || {},
         M.load({
             test: window.JSON,
             nope: [
-                'js/v03/lib/json.min.js'
+                'dist/js/compat/json.min.js'
             ],
             complete: function() {
                 if (M.csstransforms) {
@@ -472,12 +598,12 @@ var _p3 = $.p3 || {},
 }(jQuery, Modernizr, this));;// Source: src/js/lib/p3.pledge_with_email_only.js
 /**!
  * Greenpeace Email-only Pledge Signing for Action Template v0.3
- *
+ * @name            p3.pledge_with_email_only.js
  * @fileOverview    Checks if visitor can sign in using only an email address
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.1
+ * @version         0.3.2
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -608,7 +734,6 @@ var _p3 = $.p3 || {},
                         case 5:
                             // Errors 1 through 5 indicate an invalid page
                             throw new Error('$.p3.pledge_with_email_only :: Invalid page: '+ query.parameters.page);
-                            break;
                             // Errors 6 through 12 are not relevant to this operation
                         case 13:
                             // This user has already signed this pledge
@@ -705,14 +830,12 @@ var _p3 = $.p3 || {},
                 setUserIdentifier();
 
                 if (query.parameters.user) {
-                    // Generate a unique email identifier
-//                    var hash = SHA1(query.parameters.user);
 
                     if (checkedUserEmails[query.parameters.user] && checkedUserEmails[query.parameters.user].checked) {
-                        console.log('Already tested this email');
+//                        console.log('Already tested this email');
                         $(window).trigger('submit_' + query.parameters.user);
                     } else {
-                        console.log('Haven\'t tested this email yet...');
+//                        console.log('Haven\'t tested this email yet...');
                         // Haven't checked this email, so prevent form submission
                         e.preventDefault();
 
@@ -754,7 +877,7 @@ var _p3 = $.p3 || {},
         M.load({
             test: window.JSON,
             nope: [
-                'js/v03/lib/json.min.js'
+                'dist/js/compat/json.min.js'
             ],
             complete: init
         });
@@ -1135,11 +1258,12 @@ var _p3 = $.p3 || {};
 /**!
  * Social Private Sharing for Greenpeace Action Template v0.3
  *
+ * @name            p3.social_sharing.js
  * @fileOverview    Enables social sharing without compromising privacy,
  *                  Obtains share counts from JSON endpoint
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.1.3
+ * @version         0.1.4
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -1199,8 +1323,7 @@ var _p3 = $.p3 || {},
     _p3.social_sharing = function(el, options) {
 
         var config  = $.extend(true, defaults, options || {}),
-            $el     = $(el),
-            support = M.csstransitions;
+            $el     = $(el);
 
         function addCommas(int) {
             var nStr = int + '',
@@ -1236,15 +1359,6 @@ var _p3 = $.p3 || {},
         }
 
         function init() {
-
-            if (support) {
-                var $modal = $('<div id="social-modal"><div class="modal-content"><h3>Share this page<button class="close">Close</button></h3><iframe></iframe></div></div>'),
-                    $overlay = $('<div id="social-overlay"></div>');
-                $('body').append($modal).append($overlay);
-                $overlay.add('#social-modal button').click(function() {
-                    $modal.removeClass('modal-show');
-                });
-            }
 
             if (config.pageURL === false) {
                 console.warn(prefix + 'page referrer URL is not set, using "' + w.location.href + '"');
@@ -1295,21 +1409,8 @@ var _p3 = $.p3 || {},
 
                         e.preventDefault();
 
-                        if (support && network === 'facebook') {
-                            // only facebook currently permits sharing in an
-                            // iframe due to cross domain policies
-                            var $iframe = $('iframe', $modal);
+                        w.open(url, 'Share this page', 'left=' + config.popup.left + ',top=' + config.popup.top + ',width=' + config.popup.width + ',height=' + config.popup.height + ',toolbar=0,resizable=1');
 
-                            if ($iframe.attr('src') !== url) {
-                                $iframe.attr('src', url);
-                            }
-
-                            $modal.addClass('modal-show');
-
-                        } else {
-                            // sigh
-                            w.open(url, 'Share this page', 'left=' + config.popup.left + ',top=' + config.popup.top + ',width=' + config.popup.width + ',height=' + config.popup.height + ',toolbar=0,resizable=1');
-                        }
                     });
 
                     // Set counter to humanised number
@@ -1320,9 +1421,9 @@ var _p3 = $.p3 || {},
         }
 
         M.load({
-            test: window.JSON,
+            test: w.JSON,
             nope: [
-                'js/v03/lib/json.min.js'
+                'dist/js/compat/json.min.js'
             ],
             complete: function() {
                 $.getJSON(config.jsonURL, function(json) {
@@ -1516,7 +1617,7 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
             M.load({
                 test: w.JSON,
                 nope: [
-                    'js/v03/lib/json.min.js'
+                    'dist/js/compat/json.min.js'
                 ],
                 complete: function() {
                     // Fetch rules from remote service

@@ -168,7 +168,7 @@
             M.load({
                 test: w.JSON,
                 nope: [
-                    'js/v03/lib/json.min.js'
+                    'dist/js/compat/json.min.js'
                 ],
                 complete: function() {
                     // Fetch rules from remote service

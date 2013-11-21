@@ -9,9 +9,14 @@ module.exports = function(grunt) {
             css: 'dist/css',
             js: 'dist/js'
         },
+        lesslint: {
+            src: ['src/less/*.less']
+        },
         cssmin: {
             options: {
-                report: 'gzip'
+//                report: 'gzip',
+                banner: '/**!\n * @name <%= pkg.name %>\n * @version v<%= pkg.version %>\n * ' +
+                    '@date <%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright <%= pkg.copyright %>\n * @license <%= pkg.license %>\n */\n',
             },
             combine: {
                 files: {
@@ -56,8 +61,8 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 banner: '/**!\n * @name <%= pkg.name %>\n * @version v<%= pkg.version %>\n * ' +
-                    '@date <%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright 2013 Greenpeace International\n * @license MIT License\n */\n',
-                report: 'gzip',
+                    '@date <%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright <%= pkg.copyright %>\n * @license <%= pkg.license %>\n */\n',
+//                report: 'gzip',
                 mangle: {
                     except: ['jQuery', 'Modernizr']
                 }
@@ -71,6 +76,14 @@ module.exports = function(grunt) {
                 files: {
                     'dist/js/vendor.min.js': 'dist/js/vendor.js'
                 }
+            },
+            compat: {
+                files: [{
+                        expand: true,
+                        cwd: 'src/js/compat',
+                        src: '*.js',
+                        dest: 'dist/js/compat'
+                    }]
             },
             lib: {
                 files: {
@@ -93,15 +106,17 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
 
+    grunt.loadNpmTasks('grunt-lesslint');
+
     // ========================================================================
     // Register
 
-    grunt.registerTask('test', ['jshint']);
+    grunt.registerTask('test', ['jshint', 'lesslint']);
 
-    grunt.registerTask('css', ['clean:css', 'cssmin']);
+    grunt.registerTask('css', ['lesslint', 'clean:css', 'cssmin']);
 
-    grunt.registerTask('js', ['clean:js', 'jshint', 'concat', 'uglify']);
+    grunt.registerTask('js', ['jshint', 'clean:js', 'concat', 'uglify']);
 
-    grunt.registerTask('default', ['clean', 'cssmin', 'concat', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'clean', 'cssmin', 'concat', 'uglify']);
 
 };

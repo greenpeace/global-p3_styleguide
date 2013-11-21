@@ -138,7 +138,6 @@
                         case 5:
                             // Errors 1 through 5 indicate an invalid page
                             throw new Error('$.p3.pledge_with_email_only :: Invalid page: '+ query.parameters.page);
-                            break;
                             // Errors 6 through 12 are not relevant to this operation
                         case 13:
                             // This user has already signed this pledge
@@ -282,7 +281,7 @@
         M.load({
             test: window.JSON,
             nope: [
-                'js/v03/lib/json.min.js'
+                'dist/js/compat/json.min.js'
             ],
             complete: init
         });

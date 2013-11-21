@@ -12,11 +12,13 @@
         "groupCollapsed", "groupEnd", "time", "timeEnd", "profile", "profileEnd",
         "dirxml", "assert", "count", "markTimeline", "timeStamp", "clear"
     ];
+
+    function noop() {}
+
     // define undefined methods as noops to prevent errors
     for (var i = 0; i < m.length; i++) {
         if (!window.console[m[i]]) {
-                window.console[m[i]] = function() {
-            };
+                window.console[m[i]] = noop;
         }
     }
 })();

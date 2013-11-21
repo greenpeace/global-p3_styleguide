@@ -134,7 +134,7 @@
             if (!jsonData || json.status === 'error' || !jsonData.pledges[0].action) {
                 console.log('ERROR');
                 $.each(json.errors, function (key, value) {
-                   console.log(key + ' => ' + value);
+                    console.log(key + ' => ' + value);
                 });
                 throw new Error('Errors in pledge data.');
             }
@@ -164,7 +164,7 @@
         M.load({
             test: window.JSON,
             nope: [
-                'js/v03/lib/json.min.js'
+                'dist/js/compat/json.min.js'
             ],
             complete: function() {
                 if (M.csstransforms) {
