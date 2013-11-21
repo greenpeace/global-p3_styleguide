@@ -1,11 +1,12 @@
 /**!
  * Social Private Sharing for Greenpeace Action Template v0.3
  *
+ * @name            p3.social_sharing.js
  * @fileOverview    Enables social sharing without compromising privacy,
  *                  Obtains share counts from JSON endpoint
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.1.3
+ * @version         0.1.4
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -67,8 +68,7 @@
     _p3.social_sharing = function(el, options) {
 
         var config  = $.extend(true, defaults, options || {}),
-            $el     = $(el),
-            support = M.csstransitions;
+            $el     = $(el);
 
         function addCommas(int) {
             var nStr = int + '',
@@ -104,15 +104,6 @@
         }
 
         function init() {
-
-            if (support) {
-                var $modal = $('<div id="social-modal"><div class="modal-content"><h3>Share this page<button class="close">Close</button></h3><iframe></iframe></div></div>'),
-                    $overlay = $('<div id="social-overlay"></div>');
-                $('body').append($modal).append($overlay);
-                $overlay.add('#social-modal button').click(function() {
-                    $modal.removeClass('modal-show');
-                });
-            }
 
             if (config.pageURL === false) {
                 console.warn(prefix + 'page referrer URL is not set, using "' + w.location.href + '"');
@@ -163,21 +154,8 @@
 
                         e.preventDefault();
 
-                        if (support && network === 'facebook') {
-                            // only facebook currently permits sharing in an
-                            // iframe due to cross domain policies
-                            var $iframe = $('iframe', $modal);
+                        w.open(url, 'Share this page', 'left=' + config.popup.left + ',top=' + config.popup.top + ',width=' + config.popup.width + ',height=' + config.popup.height + ',toolbar=0,resizable=1');
 
-                            if ($iframe.attr('src') !== url) {
-                                $iframe.attr('src', url);
-                            }
-
-                            $modal.addClass('modal-show');
-
-                        } else {
-                            // sigh
-                            w.open(url, 'Share this page', 'left=' + config.popup.left + ',top=' + config.popup.top + ',width=' + config.popup.width + ',height=' + config.popup.height + ',toolbar=0,resizable=1');
-                        }
                     });
 
                     // Set counter to humanised number
@@ -188,9 +166,9 @@
         }
 
         M.load({
-            test: window.JSON,
+            test: w.JSON,
             nope: [
-                'js/v03/lib/json.min.js'
+                'dist/js/compat/json.min.js'
             ],
             complete: function() {
                 $.getJSON(config.jsonURL, function(json) {
