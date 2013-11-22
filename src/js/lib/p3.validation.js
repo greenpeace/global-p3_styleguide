@@ -136,7 +136,7 @@
                         $parent.append(messageDiv);
                     }
                 } else {
-                    if (!$this.is('[type=submit')) {
+                    if (!$this.is('[type=submit]')) {
                         console.warn('$.p3.pledge_with_email_only :: "' + name + '" field parent not found');
                     }
                 }
