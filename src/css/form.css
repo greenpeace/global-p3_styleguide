@@ -1,6 +1,6 @@
 /* ==========================================================================
-	 Form
-	 ========================================================================== */
+     Form
+     ========================================================================== */
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate.
@@ -15,15 +15,15 @@
   text-shadow: none;
 }
 /*
-	Generic Form Item
+    Generic Form Item
 
-	Description	: labels and input are wrapped in a <div.text>
-	Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-	Since				: version 3.0
+    Description	: labels and input are wrapped in a <div.text>
+    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
+    Since				: version 3.0
 
-	:hover			 - subtle hover highlight
-	:active			- inset box shadow
-	.disabled		- grey out to indicate it cannot be used
+    :hover			 - subtle hover highlight
+    :active			- inset box shadow
+    .disabled		- grey out to indicate it cannot be used
 */
 input[type=text],
 input[type=password],
@@ -54,15 +54,15 @@ textarea {
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 /*
-	TextField
+    TextField
 
-	Description	: labels and input are wrapped in a div with the type of the class
-	Compatible	: FF2+, Chrome1+,
-	Since				: version 3.0
+    Description	: labels and input are wrapped in a div with the type of the class
+    Compatible	: FF2+, Chrome1+,
+    Since				: version 3.0
 
-	:hover			 - subtle hover highlight
-	:active			- inset box shadow
-	.disabled		- grey out to indicate it cannot be used
+    :hover			 - subtle hover highlight
+    :active			- inset box shadow
+    .disabled		- grey out to indicate it cannot be used
 */
 label {
   font-weight: bold;
@@ -128,13 +128,13 @@ textarea:disabled:hover {
   background: #F3F3F3;
 }
 /*
-	Required Textfield
+    Required Textfield
 
-	Description	: Label and input are wrapped in <div.text.required>. Additional <span> with a star is included. Input also get the required class.
-	Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-	Since				: version 3.0
+    Description	: Label and input are wrapped in <div.text.required>. Additional <span> with a star is included. Input also get the required class.
+    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
+    Since				: version 3.0
 
-	.required		- additional red star
+    .required		- additional red star
 */
 .required label:after {
   content: " *";
@@ -142,14 +142,14 @@ textarea:disabled:hover {
   font-weight: bold;
 }
 /*
-	Large textarea Textfield
+    Large textarea Textfield
 
-	Description	: textarea.textarea is pretty much the same than div.input.text.
-	Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-	Since				: version 3.0
+    Description	: textarea.textarea is pretty much the same than div.input.text.
+    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
+    Since				: version 3.0
 
-	.required		- additional red star
-	.lager			 - make the box bigger
+    .required		- additional red star
+    .lager			 - make the box bigger
 */
 textarea {
   height: 8em;
@@ -162,15 +162,15 @@ textarea {
   height: 7em;
 }
 /*
-	Messages for validation error and example
+    Messages for validation error and example
 
-	Description	: <div.text.error>, <div.text.success>, can be used to add status messages or example. 
-								 Additional messages are wrapped in <.error-message>, <.success-messages>
-	Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-	Since				: version 3.0
+    Description	: <div.text.error>, <div.text.success>, can be used to add status messages or example. 
+                                 Additional messages are wrapped in <.error-message>, <.success-messages>
+    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
+    Since				: version 3.0
 
-	.info				- can be used for example messages prior validation
-	.error			 - error messages used for validation issues
+    .info				- can be used for example messages prior validation
+    .error			 - error messages used for validation issues
 */
 form .tooltip,
 form .message {
@@ -312,23 +312,25 @@ form .error:focus {
   right: auto;
 }
 /* do not show javascript needed warning if js is enabled 
-	 this needs modernizr to work
+     this needs modernizr to work
 */
 .js .message.nojs {
   display: none;
 }
 /*
-	Radio
+    Radio
 
-	Description	: ?
-	Compatible	: ?
-	Since				: version 3.0
+    Description	: ?
+    Compatible	: ?
+    Since				: version 3.0
 */
 fieldset.checkbox,
 fieldset.radio {
   border: 1px solid #cccccc;
   background: #ffffff;
   margin: .2em 0 .5em 0;
+  padding: 0.3em 0.4em;
+  width: 90%;
 }
 fieldset.checkbox legend,
 fieldset.radio legend {
@@ -339,7 +341,7 @@ fieldset.radio legend {
 .radiolist label,
 .radio label {
   text-indent: 0.2em;
-  font-size: 0.9em;
+  /*font-size:0.9em;*/
 }
 .checkboxlist .input.checkbox label,
 .radiolist .input.radio label,
@@ -362,11 +364,11 @@ input[type=checkbox] + label {
   display: inline;
 }
 /*
-	Select
+    Select
 
-	Description	: ?
-	Compatible	: ?
-	Since				: version 3.0
+    Description	: ?
+    Compatible	: ?
+    Since				: version 3.0
 */
 select,
 select:hover {
@@ -375,8 +377,8 @@ select:hover {
   margin-bottom: 10px;
   padding: .25em .5em .15em .2em;
   /*background:@white;
-	.rounded_all(3px);
-	border:1px solid #BBB;*/
+    .rounded_all(3px);
+    border:1px solid #BBB;*/
 }
 /* system fields */
 .system.fields {

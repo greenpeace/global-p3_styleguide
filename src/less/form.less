@@ -1,6 +1,6 @@
 /* ==========================================================================
-	 Form
-	 ========================================================================== */
+     Form
+     ========================================================================== */
 @import "less-mixins.less";
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -8,25 +8,25 @@
  * Customize the background color to match your design.
  */
 ::-moz-selection {
-	background: #b3d4fc;
-	text-shadow: none;
+    background: #b3d4fc;
+    text-shadow: none;
 }
 
 ::selection {
-	background: #b3d4fc;
-	text-shadow: none;
+    background: #b3d4fc;
+    text-shadow: none;
 }
 
 /*
-	Generic Form Item
+    Generic Form Item
 
-	Description	: labels and input are wrapped in a <div.text>
-	Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-	Since				: version 3.0
+    Description	: labels and input are wrapped in a <div.text>
+    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
+    Since				: version 3.0
 
-	:hover			 - subtle hover highlight
-	:active			- inset box shadow
-	.disabled		- grey out to indicate it cannot be used
+    :hover			 - subtle hover highlight
+    :active			- inset box shadow
+    .disabled		- grey out to indicate it cannot be used
 */
 input[type=text],
 input[type=password],
@@ -36,59 +36,59 @@ input[type=tel],
 fieldset.radio,
 fieldset.checkbox,
 textarea {
-	font-family:'Lato',Verdana, Geneva, Arial, Helvetica, sans-serif;
-	color:@grays-1;
-	background:@white;
-	border:1px solid @grays-4;
+    font-family:'Lato',Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color:@grays-1;
+    background:@white;
+    border:1px solid @grays-4;
 	width:19em; /* 20 char (default input length) x .7em (average char length) */
-	padding:.4em .5em .3em .5em;
-	display:inline-block;
-	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
-	*display: inline;
-	margin:.2em 0 .5em 0;
-	-webkit-appearance:none;
-	.rounded_all(3px);
-	.boxshadow(inset; 0; 2px; 3px; rgba(0,0,0,0.1));
+    padding:.4em .5em .3em .5em;
+    display:inline-block;
+    zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+    *display: inline;
+    margin:.2em 0 .5em 0;
+    -webkit-appearance:none;
+    .rounded_all(3px);
+    .boxshadow(inset; 0; 2px; 3px; rgba(0,0,0,0.1));
 }
 
 /*
-	TextField
+    TextField
 
-	Description	: labels and input are wrapped in a div with the type of the class
-	Compatible	: FF2+, Chrome1+,
-	Since				: version 3.0
+    Description	: labels and input are wrapped in a div with the type of the class
+    Compatible	: FF2+, Chrome1+,
+    Since				: version 3.0
 
-	:hover			 - subtle hover highlight
-	:active			- inset box shadow
-	.disabled		- grey out to indicate it cannot be used
+    :hover			 - subtle hover highlight
+    :active			- inset box shadow
+    .disabled		- grey out to indicate it cannot be used
 */
 label {
-	font-weight:bold;
-	padding:.2em;
-	display:none;
+    font-weight:bold;
+    padding:.2em;
+    display:none;
 }
 .no-placeholder label {
-	display:block;
-	font-size: .9em;
-	margin-top: .225em;
+    display:block;
+    font-size: .9em;
+    margin-top: .225em;
 }
 .search-form label { 
-	font-weight: normal;
+    font-weight: normal;
 }
 .no-placeholder .search-form label {
-	display: none;
+    display: none;
 }
 .lt-ie7 {
-	#search {
-		margin-top: -2px;
-		
-		#search-submit {
-			display: block;
-			width: 20px;
-			height: 20px;
-			margin-top: -24px;
-		}
-	}
+    #search {
+        margin-top: -2px;
+
+        #search-submit {
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin-top: -24px;
+        }
+    }
 }
 
 textarea,
@@ -97,7 +97,7 @@ input[type=search],
 input[type=email],
 input[type=text],
 input[type=tel] {
-	border-top:1px solid @grays-4;
+    border-top:1px solid @grays-4;
 }
 textarea,
 input[type=password]:hover,
@@ -105,7 +105,7 @@ input[type=search]:hover,
 input[type=email]:hover,
 input[type=text]:hover,
 input[type=tel]:hover {
-	border:1px solid #999;
+    border:1px solid #999;
 }
 textarea:focus,
 input[type=password]:focus,
@@ -113,115 +113,115 @@ input[type=search]:focus,
 input[type=email]:focus,
 input[type=text]:focus,
 input[type=tel]:focus {
-	-webkit-box-shadow: inset 1px 1px 2px rgba(255,255,255,.2);
-	-moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
-	box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
-	border:1px solid @greens-6;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(255,255,255,.2);
+    -moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
+    border:1px solid @greens-6;
 }
 
 textarea:disabled,
 input:disabled,
 input:disabled:hover,
 textarea:disabled:hover {
-	border:1px solid @grays-4;
-	.boxshadow(0; 0; 0; 0);
-	cursor:normal;
-	background:#F3F3F3;
+    border:1px solid @grays-4;
+    .boxshadow(0; 0; 0; 0);
+    cursor:normal;
+    background:#F3F3F3;
 }
 
 /*
-	Required Textfield
+    Required Textfield
 
-	Description	: Label and input are wrapped in <div.text.required>. Additional <span> with a star is included. Input also get the required class.
-	Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-	Since				: version 3.0
+    Description	: Label and input are wrapped in <div.text.required>. Additional <span> with a star is included. Input also get the required class.
+    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
+    Since				: version 3.0
 
-	.required		- additional red star
+    .required		- additional red star
 */
 .required label:after {
-	content:" *";
-	color:@red-1;
-	font-weight:bold;
+    content:" *";
+    color:@red-1;
+    font-weight:bold;
 }
 
 /*
-	Large textarea Textfield
+    Large textarea Textfield
 
-	Description	: textarea.textarea is pretty much the same than div.input.text.
-	Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-	Since				: version 3.0
+    Description	: textarea.textarea is pretty much the same than div.input.text.
+    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
+    Since				: version 3.0
 
-	.required		- additional red star
-	.lager			 - make the box bigger
+    .required		- additional red star
+    .lager			 - make the box bigger
 */
 textarea {
-	height:8em;
-	width:17.5em;
-	font-size:0.813em;
-	border:1px solid @grays-4;
+    height:8em;
+    width:17.5em;
+    font-size:0.813em;
+    border:1px solid @grays-4;
 }
 .textarea.large textarea {
-	width:30em;
-	height:7em;
+    width:30em;
+    height:7em;
 }
 
 /*
-	Messages for validation error and example
+    Messages for validation error and example
 
-	Description	: <div.text.error>, <div.text.success>, can be used to add status messages or example. 
-								 Additional messages are wrapped in <.error-message>, <.success-messages>
-	Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-	Since				: version 3.0
+    Description	: <div.text.error>, <div.text.success>, can be used to add status messages or example. 
+                                 Additional messages are wrapped in <.error-message>, <.success-messages>
+    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
+    Since				: version 3.0
 
-	.info				- can be used for example messages prior validation
-	.error			 - error messages used for validation issues
+    .info				- can be used for example messages prior validation
+    .error			 - error messages used for validation issues
 */
 form .tooltip,
 form .message {
-	font-size: .813em; /* 13px */
-	padding:0;
-	background-color:transparent;
-	border:0;
+    font-size: .813em; /* 13px */
+    padding:0;
+    background-color:transparent;
+    border:0;
 }
 form .message .error {
-        display:block;
-        padding: 0 0.5em 1em;
-        color: @red-1;
+    display:block;
+    padding: 0 0.5em 1em;
+    color: @red-1;
 }
 form .info {
-        position:relative;
-        color: @steels-3;
+    position:relative;
+    color: @steels-3;
 }
 form .message .error:before,
 form .info:before {
-	display:inline-block;
-	text-align:center;
-	vertical-align:middle;
-	width:.75em;
-	height:.75em;
-	padding:0 .125em .25em .125em;
-	.rounded_all(2px);
-	font-weight:bold;
-	font-family:serif;
-	color:@white;
-	line-height:100%;
+    display:inline-block;
+    text-align:center;
+    vertical-align:middle;
+    width:.75em;
+    height:.75em;
+    padding:0 .125em .25em .125em;
+    .rounded_all(2px);
+    font-weight:bold;
+    font-family:serif;
+    color:@white;
+    line-height:100%;
 }
 form .info:before {
-	content:"i";
-	background: @blues-2;
-	color:@white;
+    content:"i";
+    background: @blues-2;
+    color:@white;
 }
 form .message .error:before {
-	content:"!";
-	background:@red-1;
-	color:@white;
-        margin-right:0.5em;
+    content:"!";
+    background:@red-1;
+    color:@white;
+    margin-right:0.5em;
 }
 form .message .error span,
 form .info span {
-	display:block;
-	margin:-1.25em 1.5em 0 1.5em;
-	.rounded_all(2px);
+    display:block;
+    margin:-1.25em 1.5em 0 1.5em;
+    .rounded_all(2px);
 }
 
 form input.error,
@@ -235,82 +235,84 @@ form .error:focus {
 // mixins to put everthing that belongs in a media query
 // in the media query fallback as well
 .form_desktop() {
-	form .tooltip {
-		display:block;
-		width:10px;
-		float:right;
-	}
-	form .tooltip:before {
-		display:block;
-		margin-top:.75em;
-	}
-	form .tooltip:hover:before {
-		background:#b1c3d0;
-	}
-	form .tooltip span {
-		visibility:hidden;
-		display:block;
-		position:absolute;
-		max-width:200px;
-		background:@white;		
-		float:left;
-		padding:.5em;
-    .boxshadow(0px; 0px; 8px; #111);
-    bottom: 1.5em;
-    right: -86px;
-		width: 130px;
-	}
-	form .tooltip:hover span {
-		visibility:visible;
-	}
+    form .tooltip {
+        display:block;
+        width:10px;
+        float:right;
+    }
+    form .tooltip:before {
+        display:block;
+        margin-top:.75em;
+    }
+    form .tooltip:hover:before {
+        background:#b1c3d0;
+    }
+    form .tooltip span {
+        visibility:hidden;
+        display:block;
+        position:absolute;
+        max-width:200px;
+        background:@white;		
+        float:left;
+        padding:.5em;
+        .boxshadow(0px; 0px; 8px; #111);
+        bottom: 1.5em;
+        right: -86px;
+        width: 130px;
+    }
+    form .tooltip:hover span {
+        visibility:visible;
+    }
 
 }
 .form_desktop_wide() {
-	form .tooltip span {
-		min-width: 200px;
-    bottom: auto;
-    right: auto;
-	}
+    form .tooltip span {
+        min-width: 200px;
+        bottom: auto;
+        right: auto;
+    }
 }
 /* if large screen display info as tooltips */
 @media only screen and (min-width : 1024px) {
-  html {
-    .form_desktop;
-  }
+    html {
+        .form_desktop;
+    }
 }
 /* fallback for browsers where media queries won't work */
 .desktop {
-  .form_desktop;
+    .form_desktop;
 }
 @media only screen and (min-width : 1350px) {
-  html {
-    .form_desktop_wide;
-  }
+    html {
+        .form_desktop_wide;
+    }
 }
 /* fallback for browsers where media queries won't work */
 .wide {
-  .form_desktop_wide;
+    .form_desktop_wide;
 }
 
 /* do not show javascript needed warning if js is enabled 
-	 this needs modernizr to work
+     this needs modernizr to work
 */
 .js .message.nojs {
-	display:none;
+    display:none;
 }
 
 /*
-	Radio
+    Radio
 
-	Description	: ?
-	Compatible	: ?
-	Since				: version 3.0
+    Description	: ?
+    Compatible	: ?
+    Since				: version 3.0
 */
 fieldset.checkbox,
 fieldset.radio {
     border: 1px solid @grays-4;
     background: @white;
     margin: .2em 0 .5em 0;
+    padding:0.3em 0.4em;
+    width:90%;
 }
 fieldset.checkbox legend,
 fieldset.radio legend {
@@ -321,7 +323,7 @@ fieldset.radio legend {
 .radiolist label,
 .radio label {
     text-indent: 0.2em;
-	font-size:0.9em;
+    /*font-size:0.9em;*/
 }
 .checkboxlist .input.checkbox label,
 .radiolist .input.radio label,
@@ -340,44 +342,44 @@ input[type=checkbox] {
     display:inline;
 }
 input[type=checkbox] + label {
-	font-weight:normal;
-	display:inline;
+    font-weight:normal;
+    display:inline;
 }
 
 /*
-	Select
+    Select
 
-	Description	: ?
-	Compatible	: ?
-	Since				: version 3.0
+    Description	: ?
+    Compatible	: ?
+    Since				: version 3.0
 */
 select,
 select:hover {
-	padding-left:.2em;
-	width:15em;
-	margin-bottom:10px;
-	padding:.25em .5em .15em .2em;
-	/*background:@white;
-	.rounded_all(3px);
-	border:1px solid #BBB;*/
+    padding-left:.2em;
+    width:15em;
+    margin-bottom:10px;
+    padding:.25em .5em .15em .2em;
+    /*background:@white;
+    .rounded_all(3px);
+    border:1px solid #BBB;*/
 }
 
 
 /* system fields */
 .system.fields {
-	display:none;
+    display:none;
 }
 
 /* placeholders */
 ::-webkit-input-placeholder {
-	color:#555;
+    color:#555;
 }
 :-moz-placeholder {
-	color:#555;
+    color:#555;
 }
 ::-moz-placeholder {
-	color:#555;
+    color:#555;
 }
 :-ms-input-placeholder {
-	color:#555;
+    color:#555;
 }
