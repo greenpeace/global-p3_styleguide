@@ -1,19 +1,15 @@
-/*
- * TODOs
- * - customizable brakPointTestClass
- * - dim background (overlayed body grayed out)
- * - adapt css to structure/classes
- * - use more classes in corresponding css for fullheight, shift,
- */
 (function ( $ ) {
   $.fn.mobilemenu = function( options ) {
     var breakPointPassed;
 
-    // This is the easiest way to have default options.
+    // merge options and defaults to settings
     var settings = $.extend({}, $.fn.mobilemenu.defaults, options );
 
     // save myself
     $.fn.mobilemenu.$menu = this;
+    // variable usable in custom callbacks
+    $.fn.mobilemenu.breakPointClass = settings.breakPointClass;
+    $.fn.mobilemenu.breakPointWidth = settings.breakPointWidth;
 
     // generate buttons hidden
     if (settings.createIcon) {
@@ -21,16 +17,10 @@
       $(settings.iconContainer).append($.fn.mobilemenu.$icon);
       $.fn.mobilemenu.$icon.hide();
     }
-    else {
-      // TODO
-    }
     if (settings.createIcon) {
       $.fn.mobilemenu.$close = $('<a href="#">' + settings.closeText + '</a>').attr(settings.closeAttributes);
       this.prepend($.fn.mobilemenu.$close);
       $.fn.mobilemenu.$close.hide();
-    }
-    else {
-      // TODO
     }
 
     // collapse submenus
@@ -39,17 +29,16 @@
     }
 
     // init callback
-    settings.init.call();
+    settings.init.call(this);
 
+    // initialize the mobilemenu
     $(window).load(function() {
       // show icons on mobile version
       if (!settings.breakPointTest()) {
         $.fn.mobilemenu.$icon.show();
         $.fn.mobilemenu.$close.show();
       }
-
     });
-
 
     // reset the visibility when we hit the breakpoint 'desktop'
     $(window).resize(function() {
@@ -180,7 +169,7 @@
       $(this).blur();
       e.preventDefault();
       return false;
-    }
+    };
 
     // bind click handler 
     $.fn.mobilemenu.$icon.on('click', {self: this, settings: settings}, clickHandler);
@@ -190,34 +179,31 @@
     // if the link clicked has a ul.menu sibling (i.e. a submenu)
     // we want to show the submenu
     if (settings.collapsibleSubMenus) {
-      $('li a', this).click(function(e) {
-        var $a = $(this);
+      $('html').on('click', '.mobilemenu-open #main-nav li a .submenu-icon', function(e) {
+        var $a = $(this).parent();
         var $li = $a.closest('li');
-        if (!settings.breakPointTest()) {
-        console.log('click');
-          var $ul = $a.siblings('ul');
-          if ($ul.length < 1) {
-            $ul = $li.find('ul').first();
-          }
-          if ($ul.length > 0) {
-            if ($ul.is(':visible')) {
-              $ul.hide();
-              $li.removeClass('submenu-open');
-            } else {
-              $ul.show();
-              $li.addClass('submenu-open');
-            }
+        var $ul;
 
-            // lose focus
-            $a.blur();
-            // stop propagation - we do not want to follow link when click on submenu-icon
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-          }
+        if ($ul.length < 1) {
+          $ul = $li.find('ul').first();
+        } else {
+          $ul = $a.siblings('ul');
         }
-            e.preventDefault();
-            e.stopPropagation();
+
+        if ($ul.is(':visible')) {
+          $ul.hide();
+          $li.removeClass('submenu-open');
+        } else {
+          $ul.show();
+          $li.addClass('submenu-open');
+        }
+
+        // lose focus
+        $a.blur();
+        // stop propagation - we do not want to follow link when click on submenu-icon
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
       });
     }
 
@@ -233,34 +219,50 @@
     return this;
   };
 
-  $.fn.mobilemenu.breakPointPassedTestByClass = function (argument) {
-    // TODO: let defaults be overridden
-    classToTestFor = argument || $.fn.mobilemenu.defaults.breakPointClass;
+  // returns true when on desktop, i.e. breakpoint was passed
+  $.fn.mobilemenu.breakPointPassedTestByClass = function () {
+    var classToTestFor = $.fn.mobilemenu.breakPointClass;
     return $('body').hasClass(classToTestFor);
-  }
+  };
+
+  // returns true when on desktop, i.e. breakpoint was passed
+  $.fn.mobilemenu.breakPointPassedTestByWidth = function () {
+    var width;
+    var breakpointToTest = parseInt($.fn.mobilemenu.breakPointWidth, 10);
+
+    // TODO integrate with p3.narrow.js
+    // (the code below is copied from p3.narrow.js)
+    if (typeof window.innerWidth === 'number') {
+      // Non-IE
+      width = window.innerWidth;
+    } else if (document.documentElement && document.documentElement.clientWidth) {
+      // IE 6+ in 'standards compliant mode'
+      width = document.documentElement.clientWidth;
+    }
+
+    return (width >= breakpointToTest) ? true : false;
+  };
 
   $.fn.mobilemenu.defaults = {
     // These are the defaults.
     createIcon: true,
     iconText: 'Menu',
     iconContainer: '',
-    iconElement: '', // TODO
     iconAttributes: { id: 'mobilemenu-icon' },
     createClose: true,
     closeText: 'close',
     closeContainer: '',
-    closeElement: '', // TODO
     closeAttributes: { id: 'mobilemenu-close' },
     mobileMenuOpenClass: 'mobilemenu-open',
-    breakPointClass: 'sevensome', // TODO
+    breakPointClass: 'sevensome',
     adaptFullHeightOnResize: true,
     animationDuration: 300,
     animationFromDirection: 'right',
     shiftBodyAside: true,
-    dimBackground: false, // TODO
     collapseSubMenus: true,
-    collapsibleSubMenus: true, // TODO
-    breakPointTest: $.fn.mobilemenu.breakPointPassedTestByClass,
+    collapsibleSubMenus: true,
+    breakPointWidth: 768,
+    breakPointTest: $.fn.mobilemenu.breakPointPassedTestByWidth,
     init: function() {},
     beforeOpen: function() {},
     beforeClose: function() {},
@@ -268,15 +270,19 @@
     afterClose: function() {},
     onSwitchToMobile: function() {},
     onSwitchToDesktop: function() {}
-  }
+  };
 }( jQuery ));
 
+// integration
 (function($) {
+
+  $.fn.mobilemenu.defaults.onSwitchToMobile = function () {
+  };
   $.fn.mobilemenu.defaults.onSwitchToDesktop = function () {
     var mobileMenu = $.fn.mobilemenu.$menu;
 
     // move search form back into tools menu
-    searchForm =  $('.search-form', mobileMenu).detach();
+    var searchForm =  $('.search-form', mobileMenu).detach();
     $('.heading-first .tools').append(searchForm);
 
     mobileMenu.css({minHeight: '0px'});
@@ -285,54 +291,27 @@
     // after the mobilemenu was used
     $('.drop-holder', mobileMenu).css('display', '');
     mobileMenu.css('overflow', '');
-  }
+  };
 
   $.fn.mobilemenu.defaults.beforeOpen = function (menu) {
     // move search form into mobile menu
     var searchForm =  $('.tools .search-form').detach();
     $('#nav', menu).before(searchForm);
-  }
+  };
 
   $.fn.mobilemenu.defaults.init = function () {
     var mobileMenu = $.fn.mobilemenu.$menu;
     // add class has-submenu on li
     $('li ul', mobileMenu).closest('li').addClass('has-submenu');
     $('li.has-submenu > a', mobileMenu).append('<span class="submenu-icon">v</span>');
-  }
-
-  // // custom collapsible
-  // // if the link clicked has a ul.menu sibling (i.e. a submenu)
-  // // we want to show the submenu
-  // $('html').on('click', '.mobilemenu-open #main-nav li a .submenu-icon', function(e) {
-  //   var a = $(this).parent();
-  //   var li = a.closest('li.has-submenu');
-  //   var ul = a.siblings('ul');
-  //   var holder = a.siblings('.drop-holder');
-  //   if (holder.length > 0) {
-  //     ul = $('.drop-content > ul', holder);
-  //   }
-  //   if (ul.length > 0) {
-  //     if (ul.is(':visible')) {
-  //       ul.hide();
-  //       $(this).removeClass('submenu-open');
-  //     } else {
-  //       ul.show();
-  //       $(this).addClass('submenu-open');
-  //     }
-  //     // lose focus
-  //     a.blur();
-  //     // stop propagation - we do not want to follow link when click on submenu-icon
-  //     e.stopPropagation();
-  //     return false;
-  //   }
-  // });
+  };
 
 
   if ($('html').hasClass('lt-ie9')) {
     return;
   } else {
     $('#main-nav').mobilemenu({
-      breakPointClass: 'sevensome',
+      breakPointWidth: 768,
       iconContainer: '.heading-first .page-section',
       closeContainer: '#main-nav'
     });
