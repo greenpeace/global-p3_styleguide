@@ -1,49 +1,63 @@
+/**!
+ * Adds classes to an element (body by default) based on document width
+ *
+ * @copyright       Copyright 2013
+ * @license         MIT License (opensource.org/licenses/MIT)
+ * @version         0.1.0
+ * @author          <a href="http://www.more-onion.com/">More Onion</a>
+ * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>
+ * @example         $.p3.mobilemenu('#main-nav', [options]);
+ */
+/* global jQuery */
+
 (function ( $ ) {
-  $.fn.mobilemenu = function( options ) {
+  var _p3 = $.p3 || {};
+
+  _p3.mobilemenu = function( element, options ) {
     var breakPointPassed;
 
     // merge options and defaults to settings
-    var settings = $.extend({}, $.fn.mobilemenu.defaults, options );
+    var settings = $.extend({}, $.p3.mobilemenu.defaults, options );
 
     // save myself
-    $.fn.mobilemenu.$menu = this;
+    _p3.mobilemenu.$menu = $(element);
     // variable usable in custom callbacks
-    $.fn.mobilemenu.breakPointClass = settings.breakPointClass;
-    $.fn.mobilemenu.breakPointWidth = settings.breakPointWidth;
+    _p3.mobilemenu.breakPointClass = settings.breakPointClass;
+    _p3.mobilemenu.breakPointWidth = settings.breakPointWidth;
 
     // generate buttons hidden
     if (settings.createIcon) {
-      $.fn.mobilemenu.$icon = $('<a href="#">' + settings.iconText + '</a>').attr(settings.iconAttributes);
-      $(settings.iconContainer).append($.fn.mobilemenu.$icon);
-      $.fn.mobilemenu.$icon.hide();
+      _p3.mobilemenu.$icon = $('<a href="#">' + settings.iconText + '</a>').attr(settings.iconAttributes);
+      $(settings.iconContainer).append(_p3.mobilemenu.$icon);
+      _p3.mobilemenu.$icon.hide();
     }
     if (settings.createIcon) {
-      $.fn.mobilemenu.$close = $('<a href="#">' + settings.closeText + '</a>').attr(settings.closeAttributes);
-      this.prepend($.fn.mobilemenu.$close);
-      $.fn.mobilemenu.$close.hide();
+      _p3.mobilemenu.$close = $('<a href="#">' + settings.closeText + '</a>').attr(settings.closeAttributes);
+      _p3.mobilemenu.$menu.prepend(_p3.mobilemenu.$close);
+      _p3.mobilemenu.$close.hide();
     }
 
     // collapse submenus
     if (settings.collapseSubMenus) {
-      $('ul ul', this).hide();
+      $('ul ul', _p3.mobilemenu.$menu).hide();
     }
 
     // init callback
-    settings.init.call(this);
+    settings.init.call();
 
     // initialize the mobilemenu
     $(window).load(function() {
       // show icons on mobile version
       if (!settings.breakPointTest()) {
-        $.fn.mobilemenu.$icon.show();
-        $.fn.mobilemenu.$close.show();
+        _p3.mobilemenu.$icon.show();
+        _p3.mobilemenu.$close.show();
       }
     });
 
     // reset the visibility when we hit the breakpoint 'desktop'
     $(window).resize(function() {
 
-      var mobileMenu = $.fn.mobilemenu.$menu;
+      var mobileMenu = _p3.mobilemenu.$menu;
       var $body = $('body');
       var position = {};
 
@@ -64,13 +78,13 @@
 
       // make sure icon and close button are visible when on mobile
       if (!breakPointPassed && !settings.breakPointTest()) {
-        $.fn.mobilemenu.$icon.show();
-        $.fn.mobilemenu.$close.show();
+        _p3.mobilemenu.$icon.show();
+        _p3.mobilemenu.$close.show();
       }
       // we switch from mobile/tablet to desktop
       if (!breakPointPassed && settings.breakPointTest()) {
-        $.fn.mobilemenu.$icon.hide();
-        $.fn.mobilemenu.$close.hide();
+        _p3.mobilemenu.$icon.hide();
+        _p3.mobilemenu.$close.hide();
         mobileMenu.show();
 
         $body.removeClass(settings.mobileMenuOpenClass);
@@ -91,8 +105,8 @@
       }
       // we switch from desktop to tablet/mobile
       if (breakPointPassed && !settings.breakPointTest()) {
-        $.fn.mobilemenu.$icon.show();
-        $.fn.mobilemenu.$close.show();
+        _p3.mobilemenu.$icon.show();
+        _p3.mobilemenu.$close.show();
         mobileMenu.hide();
 
         // reset element style on mobilemenu caused from mobilemenu init
@@ -172,22 +186,20 @@
     };
 
     // bind click handler 
-    $.fn.mobilemenu.$icon.on('click', {self: this, settings: settings}, clickHandler);
-    $.fn.mobilemenu.$close.on('click', {self: this, settings: settings}, clickHandler);
+    _p3.mobilemenu.$icon.on('click', {self: _p3.mobilemenu.$menu, settings: settings}, clickHandler);
+    _p3.mobilemenu.$close.on('click', {self: _p3.mobilemenu.$menu, settings: settings}, clickHandler);
 
     // collapsible links/submenus in mobilemenu
     // if the link clicked has a ul.menu sibling (i.e. a submenu)
     // we want to show the submenu
     if (settings.collapsibleSubMenus) {
       $('html').on('click', '.mobilemenu-open #main-nav li a .submenu-icon', function(e) {
-        var $a = $(this).parent();
+        var $a =$(this).parent();
         var $li = $a.closest('li');
-        var $ul;
 
+        var $ul = $a.siblings('ul');
         if ($ul.length < 1) {
           $ul = $li.find('ul').first();
-        } else {
-          $ul = $a.siblings('ul');
         }
 
         if ($ul.is(':visible')) {
@@ -209,26 +221,23 @@
 
     // private utility function
     function setMainMenuMinHeight(pixel) {
-      var mobileMenu = $.fn.mobilemenu.$menu;
+      var mobileMenu = _p3.mobilemenu.$menu;
       var paddingTop = parseInt(mobileMenu.css('padding-top'), 10);
       var paddingBottom = parseInt(mobileMenu.css('padding-bottom'), 10);
       mobileMenu.css({minHeight: (pixel - paddingTop - paddingBottom) + 'px', maxHeight: (pixel - paddingTop - paddingBottom) + 'px', overflow: 'auto'});
     }
-
-    // return myself to be chainable
-    return this;
   };
 
   // returns true when on desktop, i.e. breakpoint was passed
-  $.fn.mobilemenu.breakPointPassedTestByClass = function () {
-    var classToTestFor = $.fn.mobilemenu.breakPointClass;
+  _p3.mobilemenu.breakPointPassedTestByClass = function () {
+    var classToTestFor = _p3.mobilemenu.breakPointClass;
     return $('body').hasClass(classToTestFor);
   };
 
   // returns true when on desktop, i.e. breakpoint was passed
-  $.fn.mobilemenu.breakPointPassedTestByWidth = function () {
+  _p3.mobilemenu.breakPointPassedTestByWidth = function () {
     var width;
-    var breakpointToTest = parseInt($.fn.mobilemenu.breakPointWidth, 10);
+    var breakpointToTest = parseInt(_p3.mobilemenu.breakPointWidth, 10);
 
     // TODO integrate with p3.narrow.js
     // (the code below is copied from p3.narrow.js)
@@ -243,7 +252,7 @@
     return (width >= breakpointToTest) ? true : false;
   };
 
-  $.fn.mobilemenu.defaults = {
+  _p3.mobilemenu.defaults = {
     // These are the defaults.
     createIcon: true,
     iconText: 'Menu',
@@ -262,7 +271,7 @@
     collapseSubMenus: true,
     collapsibleSubMenus: true,
     breakPointWidth: 768,
-    breakPointTest: $.fn.mobilemenu.breakPointPassedTestByWidth,
+    breakPointTest: _p3.mobilemenu.breakPointPassedTestByWidth,
     init: function() {},
     beforeOpen: function() {},
     beforeClose: function() {},
@@ -271,51 +280,7 @@
     onSwitchToMobile: function() {},
     onSwitchToDesktop: function() {}
   };
+
+  $.p3 = _p3;
 }( jQuery ));
-
-// integration
-(function($) {
-
-  $.fn.mobilemenu.defaults.onSwitchToMobile = function () {
-  };
-  $.fn.mobilemenu.defaults.onSwitchToDesktop = function () {
-    var mobileMenu = $.fn.mobilemenu.$menu;
-
-    // move search form back into tools menu
-    var searchForm =  $('.search-form', mobileMenu).detach();
-    $('.heading-first .tools').append(searchForm);
-
-    mobileMenu.css({minHeight: '0px'});
-    // reset the display, i.e. remove the element style
-    // otherwise the dropdown css in header.css will not work properly
-    // after the mobilemenu was used
-    $('.drop-holder', mobileMenu).css('display', '');
-    mobileMenu.css('overflow', '');
-  };
-
-  $.fn.mobilemenu.defaults.beforeOpen = function (menu) {
-    // move search form into mobile menu
-    var searchForm =  $('.tools .search-form').detach();
-    $('#nav', menu).before(searchForm);
-  };
-
-  $.fn.mobilemenu.defaults.init = function () {
-    var mobileMenu = $.fn.mobilemenu.$menu;
-    // add class has-submenu on li
-    $('li ul', mobileMenu).closest('li').addClass('has-submenu');
-    $('li.has-submenu > a', mobileMenu).append('<span class="submenu-icon">v</span>');
-  };
-
-
-  if ($('html').hasClass('lt-ie9')) {
-    return;
-  } else {
-    $('#main-nav').mobilemenu({
-      breakPointWidth: 768,
-      iconContainer: '.heading-first .page-section',
-      closeContainer: '#main-nav'
-    });
-  }
-
-})(jQuery);
 
