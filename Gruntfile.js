@@ -12,11 +12,25 @@ module.exports = function(grunt) {
         lesslint: {
             src: ['src/less/*.less']
         },
+        less: {
+            options: {
+//                strictUnits: true
+            },
+            src: {
+                // no need for files, the config below should work
+                expand: true,
+                flatten: true,
+                cwd: "src",
+                src: "**/*.less",
+                dest: "src/css",
+                ext: ".css"
+            }
+        },
         cssmin: {
             options: {
 //                report: 'gzip',
                 banner: '/**!\n * @name <%= pkg.name %>\n * @version v<%= pkg.version %>\n * ' +
-                    '@date <%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright <%= pkg.copyright %>\n * @license <%= pkg.license %>\n */\n',
+                    '@date <%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright <%= pkg.copyright %>\n * @license <%= pkg.license %>\n */\n'
             },
             combine: {
                 files: {
@@ -40,7 +54,8 @@ module.exports = function(grunt) {
         },
         concat: {
             options: {
-                separator: ';',
+                separator: '\n',
+                // Remove duplicate 'use strict' declarations
                 banner: "'use strict';\n",
                 process: function(src, filepath) {
                     return '// Source: ' + filepath + '\n' +
@@ -90,8 +105,29 @@ module.exports = function(grunt) {
                     'dist/js/p3.min.js': ['dist/js/p3.lib.js', 'src/js/action-template-main.js']
                 }
             }
+        },
+        watch: {
+            js: {
+                files: ['src/**/*.js'],
+                tasks: ['js'],
+                options: {
+                        spawn: false
+                }
+            },
+            less: {
+                files: ['src/**/*.less'],
+                tasks: ['css'],
+                options: {
+                        spawn: false
+                }
+            }
         }
     });
+
+    // on watch events configure jshint:all to only run on changed file
+//    grunt.event.on('watch', function(action, filepath) {
+//        grunt.config(['jshint', 'all'], filepath);
+//    });
 
     // ========================================================================
     // Initialise
@@ -108,15 +144,29 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-lesslint');
 
-    // ========================================================================
-    // Register
+    grunt.loadNpmTasks('grunt-contrib-less');
 
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
+    // ========================================================================
+    // Register Tasks
+
+    // Run 'grunt test' to view jshint and lesslint recommendations
     grunt.registerTask('test', ['jshint', 'lesslint']);
 
-    grunt.registerTask('css', ['lesslint', 'clean:css', 'cssmin']);
+    // Run 'grunt csslint' to check LESS quality, and if no errors then
+    // compile LESS into CSS, combine and minify
+    grunt.registerTask('csslint', ['lesslint', 'less', 'clean:css', 'cssmin']);
 
+    // Run 'grunt css' to compile LESS into CSS, combine and minify
+    grunt.registerTask('css', ['less', 'clean:css', 'cssmin']);
+
+    // Run 'grunt js' to check JS code quality, and if no errors
+    // concatonate and minify
     grunt.registerTask('js', ['jshint', 'clean:js', 'concat', 'uglify']);
 
-    grunt.registerTask('default', ['jshint', 'clean', 'cssmin', 'concat', 'uglify']);
+    // 'grunt' will check code quality, and if no errors,
+    // compile LESS to CSS, and minify and concatonate all JS and CSS
+    grunt.registerTask('default', ['jshint', 'clean', 'less', 'cssmin', 'concat', 'uglify']);
 
 };
