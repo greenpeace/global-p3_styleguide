@@ -127,6 +127,50 @@
             params: parameters
         });
 
+
+        // set up and load mobilemenu
+        var onSwitchToDesktopMobileMenu = function () {
+            var mobileMenu = $.p3.mobilemenu.$menu;
+
+            // move search form back into tools menu
+            var searchForm =  $('.search-form', mobileMenu).detach();
+            $('.heading-first .tools').append(searchForm);
+
+            mobileMenu.css({minHeight: '0px'});
+            // reset the display, i.e. remove the element style
+            // otherwise the dropdown css in header.css will not work properly
+            // after the mobilemenu was used
+            $('.drop-holder', mobileMenu).css('display', '');
+            mobileMenu.css('overflow', '');
+        };
+
+        var beforeOpenMobileMenu = function (menu) {
+            // move search form into mobile menu
+            var searchForm =  $('.tools .search-form').detach();
+            $('#nav', menu).before(searchForm);
+        };
+
+        var initMobileMenu = function () {
+            var mobileMenu = $.p3.mobilemenu.$menu;
+            // add class has-submenu on li
+            $('li ul', mobileMenu).closest('li').addClass('has-submenu');
+            $('li.has-submenu > a', mobileMenu).append('<span class="submenu-icon">v</span>');
+        };
+
+
+        if ($('html').hasClass('lt-ie9')) {
+            return;
+        } else {
+            $.p3.mobilemenu('#main-nav', {
+                onSwitchToDesktop: onSwitchToDesktopMobileMenu,
+                beforeOpen: beforeOpenMobileMenu,
+                init: initMobileMenu,
+                breakPointWidth: 768,
+                iconContainer: '.heading-first .page-section',
+                closeContainer: '#main-nav'
+            });
+        }
+
     });
 
 }(jQuery, Modernizr, this));
