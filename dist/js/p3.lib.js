@@ -4,11 +4,12 @@
  * @name            p3.autofill.js
  * @fileOverview    Automatically fill form fields from GET parameters
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.0.5
+ * @version         0.0.6
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
- *                  $.p3.request
+ *                  $.p3.request,
+ *                  $.p3.selectors
  * @example         $.p3.autofill('#action-form');
  *
  */
@@ -20,34 +21,6 @@ var _p3 = $.p3 || ($.p3 = {}),
             delimiter: '|'
         };
 
-
-    $.expr[':'].nameNoCase = function(a, i, m) {
-        var name = $(a).attr('name'),
-            search = m[3];
-        if (!search || !name) {
-            return false;
-        }
-        return name.toUpperCase().indexOf(search.toUpperCase()) >= 0;
-    };
-
-    $.expr[':'].selectNoCase = function(a, i, m) {
-        var v = $('option', a).val() || '',
-            search = m[3];
-        if (!search || !v.length) {
-            return false;
-        }
-        return v.toUpperCase().indexOf(search.toUpperCase()) >= 0;
-    };
-
-    $.expr[':'].valueNoCase = function(a, i, m) {
-        var v = $(a).val() || '',
-            search = m[3];
-        if (!search || !v.length) {
-            return false;
-        }
-        return v.toUpperCase().indexOf(search.toUpperCase()) >= 0;
-    };
-
     _p3.autofill = function(el, options) {
 
         var $el = $(el),
@@ -57,9 +30,9 @@ var _p3 = $.p3 || ($.p3 = {}),
         // Populate form fields from GET variables
         $.each($.p3.request(url).parameters, function(field, value) {
             if (value.indexOf(config.delimiter) > 0) {
-                var $checkboxes = $(':checkbox[name="' + field + '"]', $el);
+                var $checkboxes = $(':checkbox:nameNoCase("' + field + '")', $el);
                 $.each(value.split(config.delimiter), function(i, val) {
-                    $checkboxes.filter('[value="' + val + '"]').prop('checked', true);
+                    $checkboxes.filter(':valueNoCase("' + val + '")').prop('checked', true);
                 });
             } else {
                 //
@@ -1430,6 +1403,55 @@ var _p3 = $.p3 || {};
 }(jQuery));
 
 
+;// Source: src/js/lib/p3.selectors.js
+/**!
+ * @name            p3.selectors.js
+ * @fileOverview    Selection of utility selectors for use in p3 plugins
+ * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
+ * @version         0.0.1
+ * @copyright       Copyright 2013, Greenpeace International
+ * @license         MIT License (opensource.org/licenses/MIT)
+ * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>
+ */
+/* global jQuery */
+
+(function ($) {
+    $.expr[':'].classNoCase = function(a, i, m) {
+        var cls = $(a).attr('class'),
+            search = m[3];
+        if (!search || !cls) {
+            return false;
+        }
+        return cls.toUpperCase().indexOf(search.toUpperCase()) >= 0;
+    };
+
+    $.expr[':'].nameNoCase = function(a, i, m) {
+        var name = $(a).attr('name'),
+            search = m[3];
+        if (!search || !name) {
+            return false;
+        }
+        return name.toUpperCase().indexOf(search.toUpperCase()) >= 0;
+    };
+
+    $.expr[':'].selectNoCase = function(a, i, m) {
+        var v = $('option', a).val() || '',
+            search = m[3];
+        if (!search || !v.length) {
+            return false;
+        }
+        return v.toUpperCase().indexOf(search.toUpperCase()) >= 0;
+    };
+
+    $.expr[':'].valueNoCase = function(a, i, m) {
+        var v = $(a).val() || '',
+            search = m[3];
+        if (!search || !v.length) {
+            return false;
+        }
+        return v.toUpperCase().indexOf(search.toUpperCase()) >= 0;
+    };
+}(jQuery));
 ;// Source: src/js/lib/p3.social_sharing.js
 /**!
  * Social Private Sharing for Greenpeace Action Template v0.3
@@ -1635,14 +1657,15 @@ var _p3 = $.p3 || {},
  *                  Validates form data against XRegExp rules, optionally
  *                  obtained via remote API
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.2.6
+ * @version         0.2.7
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
- *                  <a href="http://xregexp.com/">XRegExp</a>
- *                  <a href="http://jqueryvalidation.org/">jQuery Validate</a>
- *                  $.p3.request
+ *                  <a href="http://xregexp.com/">XRegExp</a>,
+ *                  <a href="http://jqueryvalidation.org/">jQuery Validate</a>,
+ *                  $.p3.request,
+ *                  $.p3.selectors
  * @example         $.p3.validation('#action-form'[, options]);
  *
  */
@@ -1691,8 +1714,9 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
         // Overrides jquery.validate default positioning
         errorPlacement: function(error, element) {
             var $el = $(element),
-            name = $el.prop('name');
-            $el.parents('.' + name).first().find('div.message').html(error);
+            name = $el.prop('name').toUpperCase();
+        console.log($el.parents(':classNoCase(' + name + ')').attr('class'));
+            $el.parents(':classNoCase(' + name + ')').first().find('div.message').html(error);
         },
         // Query string parameters to include in validation request
         params: {},
@@ -1743,7 +1767,7 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
                 try {
                     // Create a new validator method
                     $.validator.addMethod(name, function(value, element) {
-                        var reg = new XRegExp(regexp);
+                        var reg = new XRegExp(regexp, 'i');
                         return this.optional(element) || reg.test(value);
                     });
                 } catch (err) {
@@ -1756,7 +1780,7 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
             $(':input', $form).each(function() {
                 var $this = $(this),
                 name = $this.prop('name'),
-                $parent = name ? $this.parents('.' + name).first() : false;
+                $parent = name ? $this.parents(':classNoCase(' + name + ')').first() : false;
                 if ($parent) {
                     if (!$parent.find('div.message').length) {
                         $parent.append(messageDiv);
