@@ -7,14 +7,15 @@
  *                  Validates form data against XRegExp rules, optionally
  *                  obtained via remote API
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.2.6
+ * @version         0.2.7
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
- *                  <a href="http://xregexp.com/">XRegExp</a>
- *                  <a href="http://jqueryvalidation.org/">jQuery Validate</a>
- *                  $.p3.request
+ *                  <a href="http://xregexp.com/">XRegExp</a>,
+ *                  <a href="http://jqueryvalidation.org/">jQuery Validate</a>,
+ *                  $.p3.request,
+ *                  $.p3.selectors
  * @example         $.p3.validation('#action-form'[, options]);
  *
  */
@@ -65,8 +66,9 @@
         // Overrides jquery.validate default positioning
         errorPlacement: function(error, element) {
             var $el = $(element),
-            name = $el.prop('name');
-            $el.parents('.' + name).first().find('div.message').html(error);
+            name = $el.prop('name').toUpperCase();
+        console.log($el.parents(':classNoCase(' + name + ')').attr('class'));
+            $el.parents(':classNoCase(' + name + ')').first().find('div.message').html(error);
         },
         // Query string parameters to include in validation request
         params: {},
@@ -117,7 +119,7 @@
                 try {
                     // Create a new validator method
                     $.validator.addMethod(name, function(value, element) {
-                        var reg = new XRegExp(regexp);
+                        var reg = new XRegExp(regexp, 'i');
                         return this.optional(element) || reg.test(value);
                     });
                 } catch (err) {
@@ -130,7 +132,7 @@
             $(':input', $form).each(function() {
                 var $this = $(this),
                 name = $this.prop('name'),
-                $parent = name ? $this.parents('.' + name).first() : false;
+                $parent = name ? $this.parents(':classNoCase(' + name + ')').first() : false;
                 if ($parent) {
                     if (!$parent.find('div.message').length) {
                         $parent.append(messageDiv);
