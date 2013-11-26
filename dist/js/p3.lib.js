@@ -753,7 +753,8 @@ var _p3 = $.p3 || {},
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
  *                  <a href="https://github.com/greenpeace/client-code-styleguide/blob/master/js/v03/p3.validation.js">p3.validation.js</a>
- *                  p3.request.js
+ *                  p3.request.js,
+ *                  p3.selectors.js
  * @example         $.p3.pledge_with_email_only('#action-form' [, options]);
  *
  */
