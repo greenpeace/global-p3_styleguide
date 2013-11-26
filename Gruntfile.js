@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            css: 'dist/css',
+            css: ['src/css/*.css', 'dist/css'],
             js: 'dist/js'
         },
         lesslint: {
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                 expand: true,
                 flatten: true,
                 cwd: "src",
-                src: "**/*.less",
+                src: "less/style.less",
                 dest: "src/css",
                 ext: ".css"
             }
@@ -156,10 +156,10 @@ module.exports = function(grunt) {
 
     // Run 'grunt csslint' to check LESS quality, and if no errors then
     // compile LESS into CSS, combine and minify
-    grunt.registerTask('csslint', ['lesslint', 'less', 'clean:css', 'cssmin']);
+    grunt.registerTask('csslint', ['lesslint', 'clean:css', 'less', 'cssmin']);
 
     // Run 'grunt css' to compile LESS into CSS, combine and minify
-    grunt.registerTask('css', ['less', 'clean:css', 'cssmin']);
+    grunt.registerTask('css', ['clean:css', 'less', 'cssmin']);
 
     // Run 'grunt js' to check JS code quality, and if no errors
     // concatonate and minify
