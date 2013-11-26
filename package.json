@@ -5,7 +5,7 @@
   "copyright": "Copyright 2013, Greenpeace International",
   "repository": "https://github.com/greenpeace/p3_styleguide",
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "~0.4.2",
     "grunt-contrib-uglify": "~0.2.7",
     "grunt-contrib-jshint": "~0.7.2",
     "grunt-contrib-concat": "~0.3.0",
