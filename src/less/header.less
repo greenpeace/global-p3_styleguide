@@ -303,7 +303,7 @@ ul.navigation {
 #main-nav li.has-submenu .submenu-icon {
   display: none;
 }
-.mobilemenu-open #main-nav li.has-submenu .submenu-icon {
+.mobilemenu-open #main-nav .has-submenu .submenu-icon {
   display: block;
   position: absolute;
   padding: 0.8em;
@@ -314,8 +314,12 @@ ul.navigation {
   height: 20px;
   text-indent: -50000px;
   background: url(../../img/arrow.png) no-repeat center center transparent;
+  -moz-transition: -moz-transform 0.2s;
+  -webkit-transition: -webkit-transform 0.2s;
+  -o-transition: -o-transform 0.2s;
+  transition: transform 0.2s;
 }
-.mobilemenu-open #main-nav li.has-submenu .submenu-open {
+.mobilemenu-open #main-nav .submenu-open > a > .submenu-icon {
   -moz-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   -o-transform: rotate(90deg);
