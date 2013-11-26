@@ -5,7 +5,7 @@
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.2
+ * @version         0.3.3
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -190,7 +190,7 @@
             console.log('$.p3.pledge_with_email_only :: showMissingFields');
             $.each(fields, function(label) {
                 if (fields[label] === false) {
-                    var $field = $('div.'+label, $form),
+                    var $field = $('div:classNoCase("' + label + '")', $form),
                     $input = $(':input', $field);
 
                     if ($input) {
