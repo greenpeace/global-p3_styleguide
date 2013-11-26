@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         },
         concat: {
             options: {
-                separator: '\n',
+                separator: '\n;',
                 // Remove duplicate 'use strict' declarations
                 banner: "'use strict';\n",
                 process: function(src, filepath) {
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
             },
             vendor: {
                 files: {
-                    'dist/js/vendor.js': ['src/js/vendor/jquery.*.js', 'src/js/vendor/xregexp*.js']
+                    'dist/js/vendor.js': ['src/js/vendor/jquery.*.js', 'src/js/vendor/xregexp.js', 'src/js/vendor/xregexp-unicode.min']
                 }
             },
             lib: {
@@ -108,14 +108,14 @@ module.exports = function(grunt) {
         },
         watch: {
             js: {
-                files: ['src/**/*.js'],
+                files: ['Gruntfile.js', 'src/**/*.js'],
                 tasks: ['js'],
                 options: {
                         spawn: false
                 }
             },
             less: {
-                files: ['src/**/*.less'],
+                files: ['Gruntfile.js', 'src/**/*.less'],
                 tasks: ['css'],
                 options: {
                         spawn: false

@@ -73,7 +73,7 @@ var _p3 = $.p3 || ($.p3 = {}),
     };
 
 }(jQuery, this));
-// Source: src/js/lib/p3.console.js
+;// Source: src/js/lib/p3.console.js
 /**
  * Protect window.console method calls, e.g. console is not defined on IE
  * unless dev tools are open, and IE doesn't define console.debug
@@ -98,7 +98,7 @@ var _p3 = $.p3 || ($.p3 = {}),
         }
     }
 })();
-// Source: src/js/lib/p3.form_tracking.js
+;// Source: src/js/lib/p3.form_tracking.js
 /**!
  * Track Form Abandonment through Google Analytics
  *
@@ -154,7 +154,7 @@ var _p3 = $.p3 || ($.p3 = {}),
 
 }(jQuery, this));
 
-// Source: src/js/lib/p3.mobilemenu.js
+;// Source: src/js/lib/p3.mobilemenu.js
 /**!
  * Adds classes to an element (body by default) based on document width
  *
@@ -441,8 +441,8 @@ var _p3 = $.p3 || ($.p3 = {}),
     $.p3 = _p3;
 }( jQuery ));
 
-}
-// Source: src/js/lib/p3.narrow.js
+
+;// Source: src/js/lib/p3.narrow.js
 /**!
  * Adds classes to an element (body by default) based on document width
  *
@@ -565,7 +565,7 @@ var _p3 = $.p3 || {},
 
 }(jQuery, this, document));
 
-// Source: src/js/lib/p3.pledge_counter.js
+;// Source: src/js/lib/p3.pledge_counter.js
 /**!
  *
  *
@@ -767,7 +767,7 @@ var _p3 = $.p3 || {},
     $.p3 = _p3;
 
 }(jQuery, Modernizr, this));
-// Source: src/js/lib/p3.pledge_with_email_only.js
+;// Source: src/js/lib/p3.pledge_with_email_only.js
 /**!
  * Greenpeace Email-only Pledge Signing for Action Template v0.3
  * @name            p3.pledge_with_email_only.js
@@ -1058,7 +1058,7 @@ var _p3 = $.p3 || {},
     };
 
 }(jQuery, Modernizr));
-// Source: src/js/lib/p3.recent_signers.js
+;// Source: src/js/lib/p3.recent_signers.js
 /**!
  * Animated Recent Signers for Greenpeace Action Template v0.3
  * INCOMPLETE
@@ -1296,7 +1296,7 @@ var _p3 = $.p3 || {},
 
 }(jQuery, Modernizr, this));
 
-// Source: src/js/lib/p3.remember_me_cookie.js
+;// Source: src/js/lib/p3.remember_me_cookie.js
 /**!
  * p3.remember_me_cookie
  *
@@ -1371,7 +1371,7 @@ var _p3 = $.p3 || {},
 
 }(jQuery, Modernizr));
 
-// Source: src/js/lib/p3.request.js
+;// Source: src/js/lib/p3.request.js
 /**!
  * $.p3.request
  *
@@ -1430,7 +1430,7 @@ var _p3 = $.p3 || {};
 }(jQuery));
 
 
-// Source: src/js/lib/p3.social_sharing.js
+;// Source: src/js/lib/p3.social_sharing.js
 /**!
  * Social Private Sharing for Greenpeace Action Template v0.3
  *
@@ -1625,7 +1625,7 @@ var _p3 = $.p3 || {},
 
 }(jQuery, Modernizr, this));
 
-// Source: src/js/lib/p3.validation.js
+;// Source: src/js/lib/p3.validation.js
 
 /**!
  * @name            p3.validation.js
