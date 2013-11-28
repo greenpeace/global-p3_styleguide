@@ -127,6 +127,9 @@
             params: parameters
         });
 
+        $.p3.mobilesearchform("768");
+
     });
+
 
 }(jQuery, Modernizr, this));
