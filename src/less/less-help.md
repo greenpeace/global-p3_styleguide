@@ -20,7 +20,7 @@ Mixins allow you to embed all the properties of a class into another class by si
 
 The Setup Here
 =========================================
-Variables and mixins are defined in the file less-mixins.less. To use them in other LESS files, less-mixins.less has to be imported into the file first. Since it consists of LESS specific stuff only, importing does not generate any extra CSS.
+Variables and pure mixins (that take arguments) are added to the helpers.less file. The helper classes in this file may be used as mixins too. To make the variables and mixins available to other LESS files, helpers.less has to be included in style.less first.
 
 Mixins used for media queries are defined right before the media query itself. We call them macros and use them to make sure the styles in the media query and the media query fallback stay exactly the same.
 
