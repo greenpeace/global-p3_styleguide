@@ -5,7 +5,7 @@
 
 /* small bottom footer */
 .footer-small {
-  background:@greens-6;
+  background:@steels-1;
   color:@white;
   font-size:0.875em;     /* 14px */
 /*  height:4.7857142857em; /* 67px */
@@ -20,19 +20,14 @@
   float: left;
   margin: 1px 0.5em 2em 0;
 }
-.footer-small .logo-box span {
+.footer-small .logo-box span { 
   line-height: 1em;
   float: left;
 }
 .footer-small .logo-box .logo {
-  background: url(../../img/image-map.png) 0 -25px no-repeat;
-  width: 89px;
-  height: 15px;
-  margin: -2px .5em 0 .2857142857em;
-  text-indent: -999px;
-  display:inline-block;
+  line-height: 1em;
   float: left;
-  overflow: hidden;
+  margin: 0 .5em;
 }
 .footer-small .copy-box ul {
   margin: 0;
@@ -46,7 +41,7 @@
 
 .footer-small .legal-menu li a {
   text-align: center;
-  border-top: 1px solid #ECF4DC;
+  border-top: 1px dotted #5F6169;
 }
 
 .footer-small .legal-menu li a,
@@ -58,6 +53,23 @@
 // creating a mixin for everything that belongs in the media query,
 // so it can be used for the media query fallback as well
 .footer_tablet() {
+  .footer-small {
+  background:@greens-6;
+  color:@white;
+  font-size:0.875em;     /* 14px */
+/*  height:4.7857142857em; /* 67px */
+}
+
+.footer-small .logo-box .logo {
+  background: url(../../img/image-map.png) 0 -25px no-repeat;
+  width: 89px;
+  height: 15px;
+  margin: -2px .5em 0 .2857142857em;
+  text-indent: -999px;
+  display:inline-block;
+  float: left;
+  overflow: hidden;
+}
   .footer-small .legal-menu {
     float: left;
   }

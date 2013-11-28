@@ -1977,7 +1977,7 @@ a.button.disabled:active {
    ========================================================================== */
 /* small bottom footer */
 .footer-small {
-  background: #66cc00;
+  background: #282d38;
   color: #ffffff;
   font-size: 0.875em;
   /* 14px */
@@ -1999,14 +1999,9 @@ a.button.disabled:active {
   float: left;
 }
 .footer-small .logo-box .logo {
-  background: url(../../img/image-map.png) 0 -25px no-repeat;
-  width: 89px;
-  height: 15px;
-  margin: -2px 0.5em 0 0.2857142857em;
-  text-indent: -999px;
-  display: inline-block;
+  line-height: 1em;
   float: left;
-  overflow: hidden;
+  margin: 0 .5em;
 }
 .footer-small .copy-box ul {
   margin: 0;
@@ -2018,7 +2013,7 @@ a.button.disabled:active {
 }
 .footer-small .legal-menu li a {
   text-align: center;
-  border-top: 1px solid #ECF4DC;
+  border-top: 1px dotted #5F6169;
 }
 .footer-small .legal-menu li a,
 .footer-small .bottom-menu li a {
@@ -2026,6 +2021,23 @@ a.button.disabled:active {
   padding: 1em 2%;
 }
 @media only screen and (min-width: 480px) {
+  html .footer-small {
+    background: #66cc00;
+    color: #ffffff;
+    font-size: 0.875em;
+    /* 14px */
+    /*  height:4.7857142857em; /* 67px */
+  }
+  html .footer-small .logo-box .logo {
+    background: url(../../img/image-map.png) 0 -25px no-repeat;
+    width: 89px;
+    height: 15px;
+    margin: -2px 0.5em 0 0.2857142857em;
+    text-indent: -999px;
+    display: inline-block;
+    float: left;
+    overflow: hidden;
+  }
   html .footer-small .legal-menu {
     float: left;
   }
@@ -2054,6 +2066,23 @@ a.button.disabled:active {
   }
 }
 /* fallback for browsers where media queries won't work */
+.tablet .footer-small {
+  background: #66cc00;
+  color: #ffffff;
+  font-size: 0.875em;
+  /* 14px */
+  /*  height:4.7857142857em; /* 67px */
+}
+.tablet .footer-small .logo-box .logo {
+  background: url(../../img/image-map.png) 0 -25px no-repeat;
+  width: 89px;
+  height: 15px;
+  margin: -2px 0.5em 0 0.2857142857em;
+  text-indent: -999px;
+  display: inline-block;
+  float: left;
+  overflow: hidden;
+}
 .tablet .footer-small .legal-menu {
   float: left;
 }
