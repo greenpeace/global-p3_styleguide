@@ -32,6 +32,7 @@
 <body itemscope itemtype="https://schema.org/WebPage">
 
 <!--div id="root-container" class="action-template petition no-social-share no-email-login no-breadcrumbs no-navigation" -->
+<input type="checkbox" id="mobilemenu-toggle" class="visuallyhidden">
 <div id="root-container" class="action-template petition no-quick-login">
 
 <!-- Main content -->
@@ -300,6 +301,9 @@ Please don't let this happen. Thank you.
                     <span class="visuallyhidden">Greenpeace</span>
                 </a>
 
+                <!-- mobile menu icon -->
+                <label class="mobilemenu-label" for="mobilemenu-toggle">Menu</label>
+
                 <div class="country-selector">
                     <div class="dropdown-controller">
                         <a href="#" data-dropdown="#dropdown-content-country">Greenpeace International<span class="country-img">.</span></a>
@@ -416,6 +420,10 @@ Please don't let this happen. Thank you.
             <div class="heading-holder page-section">
                 <nav>
                     <div id="main-nav">
+
+                        <!-- mobile menu close -->
+                        <label class="mobilemenu-label" for="mobilemenu-toggle">close</label>
+
                         <ul class="navigation" id="nav">
                             <li><a href="/international/en/" title="Home"><span>Home</span></a></li>
                             <li>

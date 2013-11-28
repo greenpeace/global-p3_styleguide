@@ -1,0 +1,100 @@
+html {
+  background-color: #1D1D1D;
+}
+.mobilemenu-icon,
+header label.mobilemenu-label {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  line-height: 40px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 20px;
+  right: 0.5em;
+  top: 10px;
+  position: absolute;
+  text-indent: -9999px;
+  cursor: pointer;
+  background: url("../../img/menu_icon.png") no-repeat scroll center center #A1CC76;
+  border: 1px solid #5BB700;
+  .rounded_all(5px);
+  color: #565456;
+}
+
+#mobilemenu-toggle {
+  // .visuallyhidden
+}
+
+#main-nav {
+  display: block;
+  right: -350px;
+  position: absolute;
+  -webkit-transition: -webkit-transform 0.2s linear;
+  transition: transform 0.2s linear;
+  padding: 0;
+  width: 100%;
+  max-width: 350px;
+  #nav {
+    padding: 10px 3%;
+  }
+
+  .mobilemenu-close,
+  label.mobilemenu-label {
+    position: relative;
+    left: 3%;
+    top: 10px;
+    right: 0;
+    margin-bottom: 0.4em; //same as a in mobile menu
+    background: url("../../img/message_x.png") no-repeat scroll center center #1d1d1d;
+    color: rgba(0, 0, 0, 0);
+    border: none;
+  }
+}
+
+#root-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  -webkit-transition: -webkit-transform 0.2s linear;
+  transition: transform 0.2s linear;
+  background-color: #fff;
+}
+#mobilemenu-toggle ~ #root-container {
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  overflow-x: visible;
+}
+#mobilemenu-toggle:checked ~ #root-container {
+  -webkit-transform: translate3d(-350px,0,0);
+  transform: translate3d(-350px,0,0);
+  overflow-x: visible;
+  #main-nav {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+}
+
+ul.navigation .drop-holder {
+  display: none;
+}
+
+@media only screen and (min-width : 768px) {
+  header label.mobilemenu-label,
+  #mobilemenu-toggle {
+    display: none;
+  }
+  #main-nav {
+    #nav {
+      padding: 0;
+    }
+  }
+  #mobilemenu-toggle:checked ~ #root-container {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    overflow-x: hidden;
+  }
+}
+
