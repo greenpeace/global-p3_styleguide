@@ -3233,60 +3233,6 @@ ul.navigation {
   background-color: transparent;
   margin-left: 6%;
 }
-#mobilemenu-close {
-  background: url("../../img/message_x.png") no-repeat scroll center center #1d1d1d;
-  color: rgba(0, 0, 0, 0);
-  display: block;
-  height: 40px;
-  position: absolute;
-  left: 0px;
-  text-indent: -100000px;
-  top: 0;
-  width: 40px;
-}
-#mobilemenu-icon {
-  background: url("../../img/menu_icon.png") no-repeat scroll center center #a1cc76;
-  border: 1px solid #5BB700;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  color: #565456;
-  display: block;
-  font-style: normal;
-  font-weight: normal;
-  text-indent: -100000px;
-  height: 40px;
-  width: 40px;
-  position: absolute;
-  top: 10px;
-  right: 0.5em;
-}
-#main-nav li.has-submenu .submenu-icon {
-  display: none;
-}
-.mobilemenu-open #main-nav .has-submenu .submenu-icon {
-  display: block;
-  position: absolute;
-  padding: 0.8em;
-  right: 0;
-  top: 0;
-  text-align: center;
-  width: 20px;
-  height: 20px;
-  text-indent: -50000px;
-  background: url(../../img/arrow.png) no-repeat center center transparent;
-  -moz-transition: -moz-transform 0.2s;
-  -webkit-transition: -webkit-transform 0.2s;
-  -o-transition: -o-transform 0.2s;
-  transition: transform 0.2s;
-}
-.mobilemenu-open #main-nav .submenu-open > a > .submenu-icon {
-  -moz-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
 /*
  * media queries
  */
