@@ -767,19 +767,26 @@ table {
   visibility: hidden;
 }
 /* ==========================================================================
-     ACtion Template or Action Related Widgets
+     Action Template or Action Related Widgets
    ========================================================================== */
-/* page level configuration shortcuts */
+/*
+Page level configuration shortcuts.
+*/
 .no-quick-login first-time-login {
   display: none;
 }
-/* images scaling with size */
+/*
+Images scaling with size.
+*/
 #action-multimedia-teaser img {
   width: 100%;
   height: auto;
   max-width: 570px;
   /* image is 540px wide */
 }
+/*
+Action template
+*/
 .action-template #main-section {
   background: #ffffff;
   padding-bottom: 3em;
@@ -787,17 +794,18 @@ table {
 .action-template h1 {
   margin-bottom: .5em;
 }
+/*
+Action form
+*/
 #action-form-message label {
   display: block;
   font-size: .9em;
   margin-top: .225em;
 }
 /*
-    Small Prints
+Small Prints in the form, checkbox is hidden.
 
-    Description    : checkbox is hidden
-    Compatible     : ?
-    Since                : ?
+.remember - checkbox is shown
 */
 #action-smallprints {
   margin: .25em 0;
@@ -820,21 +828,21 @@ table {
   width: auto;
 }
 /*
-    Action Counter
+Action Counter,
+shows the number of signers both graphical and text only
 
-    Description    : counter with both graphical and text only
-    Compatible     : ?
-    Since                : ?
+#action-counter-graphical - graphical display as progres bar
+#action-counter-textual   - textual display
 */
 #action-counter {
   margin: 0.4em 0;
 }
-#action-counter-graphical {
+#action-counter #action-counter-graphical {
   transition: all 100ms ease-out;
   display: none;
   background: #e9ecf3;
 }
-#action-counter-graphical .completed {
+#action-counter #action-counter-graphical .completed {
   background: #66cc00;
   display: block;
   text-align: right;
@@ -845,24 +853,20 @@ table {
   padding: .311em 0;
   text-indent: 0.2em;
 }
-#action-counter-graphical .objectives {
+#action-counter #action-counter-graphical .objectives {
   display: none;
 }
-#action-counter-textual {
+#action-counter #action-counter-textual {
   margin: .25em 0;
   color: #666666;
   font-style: italic;
   font-size: 0.688em;
 }
 /*
-    Social Login
+Social Login buttons
 
-    Description    : social login buttons
-    Compatible     : ?
-    Since                : ?
-
-    .facebook        facebook icon
-    .google            google icon
+.facebook - facebook icon
+.google   - google icon
 */
 #main-section .social-login span {
   display: none;
@@ -888,11 +892,12 @@ table {
   background: #fffdff url(../../img/sociallogin.png) center -22px no-repeat;
 }
 /*
-    Recent Signers
+Recent Signers widget
 
-    Description    : recent signers widget
-    Compatible     : ?
-    Since                : ?
+.since         - Timestamp in gray text
+.name:after    - Add comma after the name
+.country       - Country name in gray text
+.flag          - Flag icon margin
 */
 #action-recent-signers ul {
   padding: 0;
@@ -918,17 +923,21 @@ table {
   margin-right: .25em;
 }
 /* ==========================================================================
-     ACtion Template Media Queries
-     ========================================================================== */
-/* See breakpoint from layout.css */
-/* mobile first, up to 768 px */
+   Action Template Media Queries
+   ==========================================================================
+   
+See breakpoint from layout.css
+mobile first, up to 768 px 
+*/
 #action-form-authentication .submit {
   position: relative;
   float: none;
   margin-left: 0;
   margin-top: .4em;
 }
-/* input length to fit the screen */
+/*
+input length to fit the screen
+*/
 .action-template textarea,
 .action-template input {
   width: 90%;
@@ -940,20 +949,14 @@ table {
   width: 105%;
   font-size: 1.25em;
 }
-/* hide stuffs on mobile */
+/*
+hide stuffs on mobile
+*/
 #action-recent-signers {
   display: none;
 }
-/* Tablets ----------- */
+/* Tablets */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  html {
-    /* page section = 700 + 15 + 15px */
-    /* east side */
-    /* west side */
-    /* background box shenanigans */
-    /* counter */
-    /* input length to fit the screen */
-  }
   html #action-h1 {
     float: left;
     clear: both;
@@ -1000,7 +1003,7 @@ table {
   html .action-template input {
     width: 90%;
   }
-  html .action-template .checkbox input,
+  html .action-template checkbox input,
   html .action-template .radio input {
     width: auto;
   }
@@ -1013,14 +1016,6 @@ table {
   }
 }
 /* fallback for browsers where media queries won't work */
-.sevensome {
-  /* page section = 700 + 15 + 15px */
-  /* east side */
-  /* west side */
-  /* background box shenanigans */
-  /* counter */
-  /* input length to fit the screen */
-}
 .sevensome #action-h1 {
   float: left;
   clear: both;
@@ -1067,7 +1062,7 @@ table {
 .sevensome .action-template input {
   width: 90%;
 }
-.sevensome .action-template .checkbox input,
+.sevensome .action-template checkbox input,
 .sevensome .action-template .radio input {
   width: auto;
 }
@@ -1078,16 +1073,8 @@ table {
   width: 110%;
   font-size: 1.25em;
 }
-/* Desktops and laptops ----------- */
+/* Desktops and laptops */
 @media only screen and (min-width: 1024px) {
-  html {
-    /* show background image */
-    /* page section = 940 + 20 + 20px */
-    /* east side */
-    /* background box shenanigans */
-    /* west side */
-    /* input length to fit the sidebar */
-  }
   html .action-template #main-container {
     background: transparent url(../../img/background.jpg) center 0 no-repeat;
     -webkit-background-size: cover;
@@ -1130,7 +1117,6 @@ table {
     float: left;
     clear: left;
     width: 520px;
-    /* + 40px margin */
   }
   html #action-counter-graphical {
     display: block;
@@ -1157,14 +1143,6 @@ table {
   }
 }
 /* fallback for browsers where media queries won't work */
-.desktop {
-  /* show background image */
-  /* page section = 940 + 20 + 20px */
-  /* east side */
-  /* background box shenanigans */
-  /* west side */
-  /* input length to fit the sidebar */
-}
 .desktop .action-template #main-container {
   background: transparent url(../../img/background.jpg) center 0 no-repeat;
   -webkit-background-size: cover;
@@ -1207,7 +1185,6 @@ table {
   float: left;
   clear: left;
   width: 520px;
-  /* + 40px margin */
 }
 .desktop #action-counter-graphical {
   display: block;
@@ -1232,7 +1209,11 @@ table {
   margin-top: .5em;
   font-size: 1.25em;
 }
-/* Browser specific hacks --------- */
+/*
+Browser specific hacks
+
+.lt-ie7 -  fixes IE6 incompatibilities
+*/
 .lt-ie7 .sevensome #action-form textarea,
 .lt-ie7 .sevensome #action-form input {
   width: 98%;
@@ -2988,6 +2969,10 @@ select:hover {
  * links and logo
  */
 .header a {
+  color: #8e8e8e;
+}
+.header a:focus,
+.header a:active {
   color: #ffffff;
 }
 .header .logo {
@@ -3095,22 +3080,43 @@ select:hover {
 .search-form {
   clear: both;
   float: right;
-  background: #ffffff;
-  border: 1px solid #61B905;
-  width: 17em;
+  background: #666666;
+  border: 1px solid #000000;
+  width: 100%;
   height: 21px;
   overflow: hidden;
   margin: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #8e8e8e;
+}
+.search-form ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #dddddd;
+}
+.search-form :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #dddddd;
+}
+.search-form ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #dddddd;
+}
+.search-form :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #dddddd;
 }
 .search-form label {
   display: none;
 }
+.search-form .text {
+  padding-right: 48px;
+}
 .search-form .text input[type=text],
 .search-form .text input[type=text]:hover,
 .search-form .text input[type=text]:focus {
+  color: #111111;
   border: 0;
   background: none;
   float: left;
@@ -3133,25 +3139,22 @@ select:hover {
   float: right;
   background: none;
   visibility: hidden;
-  width: 15px;
-  height: 15px;
+  width: 32px;
+  height: 32px;
 }
 .search-form .submit span {
-  background: transparent url(../../img/image-map.png) -136px -24px no-repeat;
-  width: 15px;
-  height: 15px;
+  background: transparent url(../../img/search-icon.png) 0px 0px no-repeat;
+  width: 32px;
+  height: 32px;
   display: block;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  margin: 2px;
-  border: 1px solid #66cc00;
+  margin: 0;
+  border: none;
   cursor: pointer;
+  margin-right: 5px;
 }
 .search-form .submit span:active {
-  background: transparent url(../../img/image-map.png) -151px -9px no-repeat;
+  background: transparent url(../../img/search-icon-active.png) 0px 0px no-repeat;
 }
-/* search form in the mobile menu */
 #main-nav .search-form {
   float: none;
   width: auto;
@@ -3164,13 +3167,10 @@ select:hover {
 #main-nav .search-form .text input[type=text],
 #main-nav .search-form .text input[type=text]:hover,
 #main-nav .search-form .text input[type=text]:focus {
-  width: 90%;
+  width: 95%;
+  padding-left: 3%;
   font-size: 1em;
   /* 14px */
-  padding-top: 0.4em;
-  padding-bottom: 0.4em;
-}
-#main-nav .search-form #search-submit {
   padding-top: 0.4em;
   padding-bottom: 0.4em;
 }
@@ -3196,22 +3196,36 @@ ul.navigation {
 #main-nav {
   /* mobile menu when not visible */
   right: -50000px;
-  /* JS will change this value 0 */
   display: none;
-  /* JS will change this value to block*/
 }
 /* no mobile menu on IE < 9 */
 .lt-ie9 #main-nav {
   right: 0px;
   display: block;
 }
+.navigation li {
+  border-bottom: 1px solid #000000;
+  border-top: 1px solid #555555;
+}
+.navigation li:first-of-type {
+  border-top: none;
+}
+.navigation li:last-of-type {
+  border-bottom: none;
+}
 .navigation li a {
   display: block;
   padding: .8em 1em;
-  background: none #101010;
   font-weight: bold;
-  margin-bottom: .4em;
+  margin-bottom: 0;
   position: relative;
+  background: transparent url(../../img/nav-arrow.png) 97% center no-repeat;
+}
+.navigation li a:focus,
+.navigation li a:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background: transparent url(../../img/nav-arrow-hover.png) 98% center no-repeat;
 }
 .navigation li .drop-content a {
   font-weight: normal;
@@ -3234,17 +3248,107 @@ ul.navigation {
   background-color: transparent;
   margin-left: 6%;
 }
+.navigation .button.primary {
+  text-align: left;
+  color: #e56b2b;
+  text-shadow: none;
+  background: transparent;
+  border: none;
+}
+.navigation .button.primary:active,
+.navigation .button.primary:hover {
+  color: #f99713;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
 /*
  * media queries
  */
 @media only screen and (min-width: 768px) {
   html {
     /*
+   * Menu Links
+   */
+    /*
+   * search form on desktop
+   */
+    /*
  * Header
  */
     /*
  * Main Navigation on Desktop with dropdown
  */
+  }
+  html .header a {
+    color: #ffffff;
+  }
+  html .header a:focus,
+  html .header a:hover {
+    color: #ffffff;
+  }
+  html .search-form {
+    clear: both;
+    float: right;
+    background: #ffffff;
+    border: 1px solid #61B905;
+    width: 17em;
+    height: 21px;
+    overflow: hidden;
+    margin: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+  html .search-form ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #555555;
+  }
+  html .search-form :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #555555;
+  }
+  html .search-form ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #555555;
+  }
+  html .search-form :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #555555;
+  }
+  html .search-form .text {
+    padding-right: 0;
+  }
+  html .search-form .submit {
+    float: right;
+  }
+  html .search-form .submit input {
+    float: right;
+    width: 15px;
+    height: 15px;
+  }
+  html .search-form .submit span {
+    background: transparent url(../../img/image-map.png) -136px -24px no-repeat;
+    width: 15px;
+    height: 15px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 2px;
+    border: 1px solid #66cc00;
+  }
+  html .search-form .submit span:active {
+    background: transparent url(../../img/image-map.png) -151px -9px no-repeat;
+  }
+  html #main-nav .search-form #search-submit {
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+  }
+  html #main-nav .search-form .text input[type=text],
+  html #main-nav .search-form .text input[type=text]:hover,
+  html #main-nav .search-form .text input[type=text]:focus {
+    width: 90%;
+    padding-left: .571em;
   }
   html .heading-second {
     height: 1.6875em;
@@ -3275,6 +3379,7 @@ ul.navigation {
     /* 2px/12 */
     position: relative;
     z-index: 101;
+    border: none;
   }
   html .navigation li a {
     float: left;
@@ -3471,15 +3576,121 @@ ul.navigation {
   html .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
     background: #57b105 url(../../../img/v02/nav-arrow.png) no-repeat 95% -25px;
   }
+  html .navigation .button.primary {
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 0 2px #9a9a9a;
+    background: #f99713;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f99713), color-stop(57%, #e56b2b), color-stop(100%, #e56b2b));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f99713', endColorstr='#e56b2b', GradientType=0);
+    /* IE6-9 */
+    border: 1px solid #f06818;
+  }
+  html .navigation .button.primary:active,
+  html .navigation .button.primary:hover {
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
 }
 /* fallback for browsers where media queries won't work */
 .sevensome {
+  /*
+   * Menu Links
+   */
+  /*
+   * search form on desktop
+   */
   /*
  * Header
  */
   /*
  * Main Navigation on Desktop with dropdown
  */
+}
+.sevensome .header a {
+  color: #ffffff;
+}
+.sevensome .header a:focus,
+.sevensome .header a:hover {
+  color: #ffffff;
+}
+.sevensome .search-form {
+  clear: both;
+  float: right;
+  background: #ffffff;
+  border: 1px solid #61B905;
+  width: 17em;
+  height: 21px;
+  overflow: hidden;
+  margin: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.sevensome .search-form ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #555555;
+}
+.sevensome .search-form :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #555555;
+}
+.sevensome .search-form ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #555555;
+}
+.sevensome .search-form :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #555555;
+}
+.sevensome .search-form .text {
+  padding-right: 0;
+}
+.sevensome .search-form .submit {
+  float: right;
+}
+.sevensome .search-form .submit input {
+  float: right;
+  width: 15px;
+  height: 15px;
+}
+.sevensome .search-form .submit span {
+  background: transparent url(../../img/image-map.png) -136px -24px no-repeat;
+  width: 15px;
+  height: 15px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 2px;
+  border: 1px solid #66cc00;
+}
+.sevensome .search-form .submit span:active {
+  background: transparent url(../../img/image-map.png) -151px -9px no-repeat;
+}
+.sevensome #main-nav .search-form #search-submit {
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+}
+.sevensome #main-nav .search-form .text input[type=text],
+.sevensome #main-nav .search-form .text input[type=text]:hover,
+.sevensome #main-nav .search-form .text input[type=text]:focus {
+  width: 90%;
+  padding-left: .571em;
 }
 .sevensome .heading-second {
   height: 1.6875em;
@@ -3510,6 +3721,7 @@ ul.navigation {
   /* 2px/12 */
   position: relative;
   z-index: 101;
+  border: none;
 }
 .sevensome .navigation li a {
   float: left;
@@ -3706,16 +3918,122 @@ ul.navigation {
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
   background: #57b105 url(../../../img/v02/nav-arrow.png) no-repeat 95% -25px;
 }
+.sevensome .navigation .button.primary {
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 0 2px #9a9a9a;
+  background: #f99713;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f99713), color-stop(57%, #e56b2b), color-stop(100%, #e56b2b));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f99713', endColorstr='#e56b2b', GradientType=0);
+  /* IE6-9 */
+  border: 1px solid #f06818;
+}
+.sevensome .navigation .button.primary:active,
+.sevensome .navigation .button.primary:hover {
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
 /*
  * browser specific
  */
 .lt-ie9 {
+  /*
+   * Menu Links
+   */
+  /*
+   * search form on desktop
+   */
   /*
  * Header
  */
   /*
  * Main Navigation on Desktop with dropdown
  */
+}
+.lt-ie9 .header a {
+  color: #ffffff;
+}
+.lt-ie9 .header a:focus,
+.lt-ie9 .header a:hover {
+  color: #ffffff;
+}
+.lt-ie9 .search-form {
+  clear: both;
+  float: right;
+  background: #ffffff;
+  border: 1px solid #61B905;
+  width: 17em;
+  height: 21px;
+  overflow: hidden;
+  margin: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.lt-ie9 .search-form ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #555555;
+}
+.lt-ie9 .search-form :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #555555;
+}
+.lt-ie9 .search-form ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #555555;
+}
+.lt-ie9 .search-form :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #555555;
+}
+.lt-ie9 .search-form .text {
+  padding-right: 0;
+}
+.lt-ie9 .search-form .submit {
+  float: right;
+}
+.lt-ie9 .search-form .submit input {
+  float: right;
+  width: 15px;
+  height: 15px;
+}
+.lt-ie9 .search-form .submit span {
+  background: transparent url(../../img/image-map.png) -136px -24px no-repeat;
+  width: 15px;
+  height: 15px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 2px;
+  border: 1px solid #66cc00;
+}
+.lt-ie9 .search-form .submit span:active {
+  background: transparent url(../../img/image-map.png) -151px -9px no-repeat;
+}
+.lt-ie9 #main-nav .search-form #search-submit {
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+}
+.lt-ie9 #main-nav .search-form .text input[type=text],
+.lt-ie9 #main-nav .search-form .text input[type=text]:hover,
+.lt-ie9 #main-nav .search-form .text input[type=text]:focus {
+  width: 90%;
+  padding-left: .571em;
 }
 .lt-ie9 .heading-second {
   height: 1.6875em;
@@ -3746,6 +4064,7 @@ ul.navigation {
   /* 2px/12 */
   position: relative;
   z-index: 101;
+  border: none;
 }
 .lt-ie9 .navigation li a {
   float: left;
@@ -3941,6 +4260,36 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
   background: #57b105 url(../../../img/v02/nav-arrow.png) no-repeat 95% -25px;
+}
+.lt-ie9 .navigation .button.primary {
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 0 2px #9a9a9a;
+  background: #f99713;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f99713), color-stop(57%, #e56b2b), color-stop(100%, #e56b2b));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f99713', endColorstr='#e56b2b', GradientType=0);
+  /* IE6-9 */
+  border: 1px solid #f06818;
+}
+.lt-ie9 .navigation .button.primary:active,
+.lt-ie9 .navigation .button.primary:hover {
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .lt-ie9 #main-section {
   margin-top: 89px;
