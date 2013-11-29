@@ -47,43 +47,82 @@
 //      Pure mixins
 // ==========================================================================
 
-// Border Radius
-// Use as .rounded_all(3px); or .rounded_some(5%; 0; 5%; 0);
+// Cross browser border radius on all for corners of an element
+// Use as .rounded_all(3px);
+//
+// @radius - the border radius
+//
+// Compatible with IE 9+, Firefox 2.0+, Chrome 4.0+, Safari 3.1+, Opera 10.5+
 .rounded_all (@radius) {
   -webkit-border-radius: @radius;
   -moz-border-radius: @radius;
   border-radius: @radius;
 }
+// Cross browser border radius that can be different for each corner of an element
+// Use as .rounded_some(5%; 0; 5%; 0);
+//
+// @topleft     - the top left border radius
+// @topright    - the top right border radius
+// @bottomright - the bottom right border radius
+// @bottomleft  - the bottom left border radius
+//
+// Compatible with IE 9+, Firefox 2.0+, Chrome 4.0+, Safari 3.1+, Opera 10.5+
 .rounded_some (@top1eft; @topright; @bottomright; @bottomleft) {
   -webkit-border-radius: @arguments;
   -moz-border-radius: @arguments;
   border-radius: @arguments;
 }
 
-// Box Shadow
+// Cross browser box shadow
 // Use with just one argument, e.g. .boxshadow(none);
 // or any number of valid arguments like inset, offset, blur, color...
-.boxshadow (@none; ...) {
+//
+// @arg1   - to ensure there is at least 1 argument
+// ...     - list of optional arguments
+//
+// Compatible with IE 9+, Firefox 3.5+, Chrome 3.0+, Safari 3.2+, Opera 10.6+
+.boxshadow (@arg1; ...) {
   -webkit-box-shadow: @arguments;
   -moz-box-shadow: @arguments;
   box-shadow: @arguments;
 }
 
 // Cross browser transitions
-.transition(@properties) { 
-  -webkit-transition: @properties;
-  -moz-transition: @properties;
-  transition: @properties;
+// Use with just one argument, e.g. .transition(none);
+// or any number of valid arguments like time
+//
+// @arg1   - to ensure there is at least 1 argument
+// ...     - list of optional arguments
+//
+// Compatible with IE 10+, Firefox 4.0+, Chrome 1.0+, Safari 3.0+, Opera 12.1+
+.transition (@arg1; ...) { 
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  transition: @arguments;
 }
 
 // Cross browser transforms
-.transform(@properties) {
-  -webkit-transform: @properties;
-  -moz-transform: @properties;
-  -ms-transform: @properties;
-  transform: @properties;
+// Use with just one argument, e.g. .transform(none);
+// or any number of valid arguments like time
+//
+// @arg1   - to ensure there is at least 1 argument
+// ...     - list of optional arguments
+//
+// Compatible with IE 9+, Firefox 3.5+, Chrome 1.0+, Safari 3.1+, Opera 12.1+
+.transform (@arg1; ...) {
+  -webkit-transform: @arguments;
+  -moz-transform: @arguments;
+  -ms-transform: @arguments;
+  transform: @arguments;
 }
+
 // Cross browser opacity
+// Use with just one argument, e.g. .opacity(none);
+// or any number of valid arguments like time
+//
+// @opacity  - opacity value; a number in the range 0.0 to 1.0 representing the alpha channel
+//
+// Compatible with IE 4+, Firefox 1.0+, Chrome 1.0+, Safari 1.2+, Opera 9.0+
 .opacity (@opacity) {
   @opacityPercentage: @opacity * 100;
   opacity: @opacity;
@@ -91,6 +130,10 @@
   filter: ~"alpha(opacity = (@{opacityPercentage}))";
 }
 // Cross browser placeholder text color
+//
+// @color - the color to use for placeholder text
+//
+// Compatible with IE10+, Firefox 4.0+, Chrome 4.0+, Safari 5.0+, Opera 11.6+
 .placeholder_color (@color) {
   ::-webkit-input-placeholder { /* WebKit browsers */
     color: @color;
@@ -108,44 +151,44 @@
 
 /* ==========================================================================
 	 Helper classes / mixins
-	 ========================================================================== */
+   ========================================================================== */
 /*
  * Image replacement
  */
 .ir {
-	background-color: transparent;
-	border: 0;
-	overflow: hidden;
-	/* IE 6/7 fallback */
-	*text-indent: -9999px;
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback */
+  *text-indent: -9999px;
 }
 .ir:before {
-	content: "";
-	display: block;
-	width: 0;
-	height: 150%;
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
 }
 
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
 .hidden {
-	display: none !important;
-	visibility: hidden;
+  display: none !important;
+  visibility: hidden;
 }
 
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
 .visuallyhidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 /*
@@ -154,19 +197,19 @@
  */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-	clip: auto;
-	height: auto;
-	margin: 0;
-	overflow: visible;
-	position: static;
-	width: auto;
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
 }
 
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
 .invisible {
-	visibility: hidden;
+  visibility: hidden;
 }
 
 /*
@@ -174,21 +217,21 @@
  *
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
- *	`contenteditable` attribute is included anywhere else in the document.
- *	Otherwise it causes space to appear at the top and bottom of elements
- *	that receive the `clearfix` class.
+ *  `contenteditable` attribute is included anywhere else in the document.
+ *  Otherwise it causes space to appear at the top and bottom of elements
+ *  that receive the `clearfix` class.
  * 2. The use of `table` rather than `block` is only necessary if using
- *	`:before` to contain the top-margins of child elements.
+ *  `:before` to contain the top-margins of child elements.
  */
 
 .clearfix:before,
 .clearfix:after {
-	content: " "; /* 1 */
-	display: table; /* 2 */
+  content: " "; /* 1 */
+  display: table; /* 2 */
 }
 
 .clearfix:after {
-	clear: both;
+  clear: both;
 }
 
 /*
@@ -196,132 +239,133 @@
  * Include this rule to trigger hasLayout and contain floats.
  */
 .clearfix {
-	*zoom: 1;
+  *zoom: 1;
 }
 
 /*
- * Border radius
+ * Border radius of 3px
  */
 .rounded {
-	.rounded_all(3px);
+  .rounded_all(3px);
 }
 
 /*
  * Color palette from the styleguide + design color set
+ * for use as background or text color
  * By order of luminance
  */
 /* Greens */
 .greens-txt-1, 
 .greens-sec-txt { color: @greens-1; }
-.greens-txt-2	 { color: @greens-2; }
-.greens-txt-3	 { color: @greens-3; }
-.greens-txt-4	 { color: @greens-4; }
-.greens-txt-5	 { color: @greens-5; } 
+.greens-txt-2   { color: @greens-2; }
+.greens-txt-3   { color: @greens-3; }
+.greens-txt-4   { color: @greens-4; }
+.greens-txt-5   { color: @greens-5; } 
 .greens-txt-6,
 .greens-txt-pri { color: @greens-6; }
 .greens-bg-1, 
-.greens-sec-bg	{ background-color: @greens-1; }
-.greens-bg-2	{ background-color: @greens-2; }
-.greens-bg-3	{ background-color: @greens-3; }
-.greens-bg-4	{ background-color: @greens-4; } 
-.greens-bg-5	{ background-color: @greens-5; } 
+.greens-sec-bg  { background-color: @greens-1; }
+.greens-bg-2  { background-color: @greens-2; }
+.greens-bg-3  { background-color: @greens-3; }
+.greens-bg-4  { background-color: @greens-4; } 
+.greens-bg-5  { background-color: @greens-5; } 
 .greens-bg-6, 
-.greens-bg-pri	{ background-color: @greens-6; }
+.greens-bg-pri  { background-color: @greens-6; }
 /* Oranges */
 .oranges-txt-1, 
 .oranges-txt-pri{ color: @oranges-1; }
 .oranges-bg-1, 
 .oranges-bg-pri { background-color: @oranges-1; }
 /* Steel gray-blue hues */
-.steels-txt-1	 { color:	@steels-1; }
-.steels-txt-2	 { color:	@steels-2; }
-.steels-txt-3	 { color:	@steels-3; }
-.steels-txt-4	 { color:	@steels-4; }
-.steels-txt-5	 { color:	@steels-5; }
-.steels-txt-6	 { color:	@steels-6; }
-.steels-txt-7	 { color:	@steels-7; }
-.steels-txt-8	 { color:	@steels-8; }
-.steels-txt-9	 { color:	@steels-9; }
-.steels-bg-1	{ background-color:	@steels-1; }
-.steels-bg-2	{ background-color:	@steels-2; }
-.steels-bg-3	{ background-color:	@steels-3; }
-.steels-bg-4	{ background-color:	@steels-4; }
-.steels-bg-5	{ background-color:	@steels-5; }
-.steels-bg-6	{ background-color:	@steels-6; }
-.steels-bg-7	{ background-color:	@steels-7; }
-.steels-bg-8	{ background-color:	@steels-8; }
-.steels-bg-9	{ background-color:	@steels-9; }
+.steels-txt-1   { color:  @steels-1; }
+.steels-txt-2   { color:  @steels-2; }
+.steels-txt-3   { color:  @steels-3; }
+.steels-txt-4   { color:  @steels-4; }
+.steels-txt-5   { color:  @steels-5; }
+.steels-txt-6   { color:  @steels-6; }
+.steels-txt-7   { color:  @steels-7; }
+.steels-txt-8   { color:  @steels-8; }
+.steels-txt-9   { color:  @steels-9; }
+.steels-bg-1  { background-color:  @steels-1; }
+.steels-bg-2  { background-color:  @steels-2; }
+.steels-bg-3  { background-color:  @steels-3; }
+.steels-bg-4  { background-color:  @steels-4; }
+.steels-bg-5  { background-color:  @steels-5; }
+.steels-bg-6  { background-color:  @steels-6; }
+.steels-bg-7  { background-color:  @steels-7; }
+.steels-bg-8  { background-color:  @steels-8; }
+.steels-bg-9  { background-color:  @steels-9; }
 /* Blues-gray predominatly blue */
-.blues-txt-1	{ color: @blues-1; }
-.blues-txt-2	{ color: @blues-2; }
-.blues-bg-1	 { background-color: @blues-1; }
-.blues-bg-2	 { background-color: @blues-2; }
+.blues-txt-1  { color: @blues-1; }
+.blues-txt-2  { color: @blues-2; }
+.blues-bg-1   { background-color: @blues-1; }
+.blues-bg-2   { background-color: @blues-2; }
 /* Grays */
-.grays-txt-1	{ color: @grays-1 }
-.grays-txt-2	{ color: @grays-2 }
-.grays-txt-3	{ color: @grays-3 }
-.grays-txt-4	{ color: @grays-4 }
-.grays-bg-1	 { background-color: @grays-1 }
-.grays-bg-2	 { background-color: @grays-2 }
-.grays-bg-3	 { background-color: @grays-3 }
-.grays-bg-4	 { background-color: @grays-4 }
+.grays-txt-1  { color: @grays-1; }
+.grays-txt-2  { color: @grays-2; }
+.grays-txt-3  { color: @grays-3; }
+.grays-txt-4  { color: @grays-4; }
+.grays-bg-1   { background-color: @grays-1; }
+.grays-bg-2   { background-color: @grays-2; }
+.grays-bg-3   { background-color: @grays-3; }
+.grays-bg-4   { background-color: @grays-4; }
 
 /*
  * Paper Box
  */
 .paper {
-	position:relative;
-	margin:0 0 5px 2px;
-	z-index:0;
-	border:1px solid #eaeaea;
-	.boxshadow(0px; 3px; 6px; 0px; rgba(0, 0, 0, 0.3));
+  position:relative;
+  margin:0 0 5px 2px;
+  z-index:0;
+  border:1px solid #eaeaea;
+  .boxshadow(0px; 3px; 6px; 0px; rgba(0, 0, 0, 0.3));
 }
 .paper-content {
-	background-color:#fbfbfb;
-	padding:10px;
-	min-height:25px;
+  background-color:#fbfbfb;
+  padding:10px;
+  min-height:25px;
 }
 .paper:before,
 .paper:after,
 .paper-content:before,
 .paper-content:after {
-	content:"";
-	position:absolute;
-	width:12px;
-	height:12px;
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
 }
 .paper:before {
-	top:-2px;
-	left:-2px;
-	background:transparent url(../../../img/v02/paper-corners.png) no-repeat left top;
+  top:-2px;
+  left:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat left top;
 }
 .paper-content:before {
-	top:-2px;
-	right:-2px;
-	background:transparent url(../../../img/v02/paper-corners.png) no-repeat right top;
+  top:-2px;
+  right:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat right top;
 }
 .paper:after {
-	bottom:-2px;
-	left:-2px;
-	background:transparent url(../../../img/v02/paper-corners.png) no-repeat left bottom;
+  bottom:-2px;
+  left:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat left bottom;
 }
 .paper-content:after {
-	bottom:-2px;
-	right:-2px;
-	background:transparent url(../../../img/v02/paper-corners.png) no-repeat right bottom;
+  bottom:-2px;
+  right:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat right bottom;
 }
 
 /* page level configuration shortcuts */
 .no-background {
-	background:none;
+  background:none;
 }
 .no-social-share .social-share,
 .no-breadcrumbs #breadcrumbs {
-	display:none;
+  display:none;
 }
 .no-navigation .header #nav,
 .no-navigation .header .promoted-links,
 .no-navigation .header .search-form,
 .no-navigation .header .language-selector {
-	visibility:hidden;
+  visibility:hidden;
 }
