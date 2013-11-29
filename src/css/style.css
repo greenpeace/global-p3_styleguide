@@ -956,7 +956,7 @@ hide stuffs on mobile
   display: none;
 }
 /* Tablets */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 768px) {
   html #action-h1 {
     float: left;
     clear: both;
