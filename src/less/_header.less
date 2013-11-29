@@ -31,7 +31,10 @@
  * links and logo
  */
 .header a {
-	color: @white;
+  color: @grays-3;
+  &:focus, &:active {
+    color: @white;
+  }
 }
 .header .logo {
 	display: block;
@@ -138,20 +141,26 @@
 .search-form {
 	clear: both;
 	float: right;
-	background: @white;
-	border: 1px solid #61B905;
-	width: 17em;
+	background: @grays-2;
+	border: 1px solid @black;
+	width: 100%;
 	height: 21px;
 	overflow: hidden;
 	margin:0;
-	.rounded_all(3px);
+	.rounded_all(5px);
+  color: @grays-3;
+  .placeholder_color(#dddddd);
 }
 .search-form label {
 	display:none;
 }
+.search-form .text {
+  padding-right: 48px;
+}
 .search-form .text input[type=text],
 .search-form .text input[type=text]:hover,
 .search-form .text input[type=text]:focus {
+  color: #111111;
 	border: 0;
 	background: none;
 	float:left;
@@ -171,24 +180,23 @@
 	float:right;
 	background:none;
 	visibility:hidden;
-	width:15px;
-	height:15px;
+	width:32px;
+	height:32px;
 }
 .search-form .submit span {
-	background:transparent url(../../img/image-map.png) -136px -24px no-repeat;
-	width:15px;
-	height:15px;
+	background:transparent url(../../img/search-icon.png) 0px 0px no-repeat;
+	width:32px;
+	height:32px;
 	display:block;
-	.rounded_all(3px);
-	margin:2px;
-	border:1px solid @greens-6;
+	margin:0;
+	border: none;
 	cursor: pointer;
+  margin-right: 5px;
 }
 .search-form .submit span:active {
-	background:transparent url(../../img/image-map.png) -151px -9px no-repeat;
+	background:transparent url(../../img/search-icon-active.png) 0px 0px no-repeat;
 }
 
-/* search form in the mobile menu */
 #main-nav .search-form {
   float: none;
   width: auto;
@@ -201,12 +209,9 @@
 #main-nav .search-form .text input[type=text],
 #main-nav .search-form .text input[type=text]:hover,
 #main-nav .search-form .text input[type=text]:focus {
-	width: 90%;
+	width: 95%;
+  padding-left: 3%;
 	font-size: 1em;/* 14px */
-  padding-top: 0.4em;
-  padding-bottom: 0.4em;
-}
-#main-nav .search-form #search-submit {
   padding-top: 0.4em;
   padding-bottom: 0.4em;
 }
@@ -231,8 +236,8 @@ ul.navigation {
 }
 
 #main-nav { /* mobile menu when not visible */
-	right: -50000px; /* JS will change this value 0 */
-	display: none; /* JS will change this value to block*/
+	right: -50000px;
+	display: none;
 }
 /* no mobile menu on IE < 9 */
 .lt-ie9 #main-nav {
@@ -240,13 +245,29 @@ ul.navigation {
 	display: block;
 }
 
+.navigation li {
+  border-bottom: 1px solid @black;
+  border-top: 1px solid #555555;
+  &:first-of-type {
+    border-top: none;
+  }
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
 .navigation li a {
 	display: block;
 	padding: .8em 1em;
-	background: none #101010;
 	font-weight: bold;
-	margin-bottom: .4em;
+	margin-bottom: 0;
   position: relative;
+  background: transparent url(../../img/nav-arrow.png) 97% center no-repeat;
+  &:focus,
+  &:hover {
+    color: @white;
+    text-decoration: none;
+    background: transparent url(../../img/nav-arrow-hover.png) 98% center no-repeat;
+  }
 }
 
 .navigation li .drop-content a {
@@ -273,9 +294,85 @@ ul.navigation {
   background-color: transparent;
   margin-left: 6%;
 }
+
+// donate button mobile
+.navigation .button.primary {
+  text-align: left;
+	color: #e56b2b;
+	text-shadow: none;
+	background: transparent;
+	border: none;
+    &:active,
+    &:hover {
+      color: #f99713;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
+}
+
 // creating a mixin for everything that belongs in the media query,
 // so it can be used for the media query fallback as well
 .sevensome_macro(){
+  /*
+   * Menu Links
+   */
+  .header a {
+    color: @white;
+    &:focus, &:hover {
+      color: @white;
+    }
+  }
+
+  /*
+   * search form on desktop
+   */
+  .search-form {
+    clear: both;
+    float: right;
+    background: @white;
+    border: 1px solid #61B905;
+    width: 17em;
+    height: 21px;
+    overflow: hidden;
+    margin:0;
+    .rounded_all(3px);
+    .placeholder_color(#555555);
+  }
+  .search-form .text {
+    padding-right: 0;
+  }
+  .search-form .submit {
+    float:right;
+  }
+  .search-form .submit input {
+    float:right;
+    width:15px;
+    height:15px;
+  }
+  .search-form .submit span {
+    background:transparent url(../../img/image-map.png) -136px -24px no-repeat;
+    width:15px;
+    height:15px;
+    .rounded_all(3px);
+    margin:2px;
+    border:1px solid @greens-6;
+  }
+  .search-form .submit span:active {
+    background:transparent url(../../img/image-map.png) -151px -9px no-repeat;
+  }
+  #main-nav .search-form #search-submit {
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+  }
+  #main-nav .search-form .text input[type=text],
+  #main-nav .search-form .text input[type=text]:hover,
+  #main-nav .search-form .text input[type=text]:focus {
+    width: 90%;
+    padding-left: .571em;
+  }
+
+
 /*
  * Header
  */
@@ -310,6 +407,7 @@ ul.navigation {
           padding:0 .1666666666em; /* 2px/12 */
           position: relative;
           z-index: 101;
+          border: none;
   }
   .navigation li a {
           float: left;
@@ -474,6 +572,30 @@ ul.navigation {
   .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
   .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2	{
           background: @greens-5 url(../../../img/v02/nav-arrow.png) no-repeat 95% -25px;
+  }
+
+  // reset donate button from mobile menu
+  .navigation .button.primary {
+    text-align: center;
+    color: @white;
+    text-shadow: 0 0 2px #9a9a9a;
+    background: #f99713; /* Old browsers */
+    background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f99713), color-stop(57%,#e56b2b), color-stop(100%,#e56b2b)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99713', endColorstr='#e56b2b',GradientType=0 ); /* IE6-9 */
+    border:1px solid #f06818;
+    &:active,
+    &:hover {
+      color: @white;
+      text-decoration: none;
+      -webkit-box-shadow: 0 1px 2px rgba(255,255,255,.2);
+      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+      box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    }
   }
 }
 
