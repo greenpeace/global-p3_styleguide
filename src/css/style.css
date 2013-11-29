@@ -3203,6 +3203,13 @@ ul.navigation {
   right: 0px;
   display: block;
 }
+.mobilemenu-back,
+.mobilemenu-clone {
+  display: none;
+}
+#nav {
+  width: 94%;
+}
 .navigation li {
   border-bottom: 1px solid #000000;
   border-top: 1px solid #555555;
@@ -3213,40 +3220,78 @@ ul.navigation {
 .navigation li:last-of-type {
   border-bottom: none;
 }
+.mobilemenu .mobilemenu-back,
+.mobilemenu .mobilemenu-clone {
+  display: block;
+}
+.mobilemenu .navigation li.has-submenu {
+  background: transparent url(../../img/nav-arrow.png) 97% no-repeat;
+}
+.mobilemenu .navigation li.has-submenu:focus,
+.mobilemenu .navigation li.has-submenu:hover {
+  background: transparent url(../../img/nav-arrow-hover.png) 98% 0.8em no-repeat;
+}
+.mobilemenu .navigation li.has-submenu .drop-holder {
+  display: block;
+}
+.mobilemenu .navigation li.has-submenu ul {
+  position: absolute;
+  display: none;
+  top: 0;
+  width: 100%;
+}
+.mobilemenu .navigation li.has-submenu .mobilemenu-back {
+  background: transparent url(../../img/nav-back-arrow.png) 3% 0.8em no-repeat;
+}
+.mobilemenu .navigation li.has-submenu .mobilemenu-back:focus,
+.mobilemenu .navigation li.has-submenu .mobilemenu-back:hover {
+  background: transparent url(../../img/nav-back-arrow-hover.png) 3% 0.8em no-repeat;
+}
+.mobilemenu .navigation li.has-submenu .mobilemenu-back a {
+  padding-left: 40px;
+}
+.mobilemenu#main-nav #nav {
+  position: absolute;
+  width: 94%;
+  margin-top: 0;
+  padding-top: 0;
+}
+.mobilemenu ul#nav.out-left {
+  left: -9999px;
+}
+.mobilemenu .navigation li.has-submenu ul.out-left {
+  position: absolute;
+  display: block;
+  left: 0px;
+}
+.mobilemenu .navigation li.has-submenu ul.in-left {
+  position: absolute;
+  width: 94%;
+  padding: 0 3%;
+  margin: 0;
+  display: block;
+  left: 9999px;
+}
+.mobilemenu .navigation li.has-submenu ul.in-left ul {
+  display: none;
+}
 .navigation li a {
   display: block;
   padding: .8em 1em;
   font-weight: bold;
   margin-bottom: 0;
   position: relative;
-  background: transparent url(../../img/nav-arrow.png) 97% center no-repeat;
 }
 .navigation li a:focus,
 .navigation li a:hover {
   color: #ffffff;
   text-decoration: none;
-  background: transparent url(../../img/nav-arrow-hover.png) 98% center no-repeat;
 }
 .navigation li .drop-content a {
-  font-weight: normal;
-  background: none transparent;
-  margin-left: 3%;
+  font-weight: bold;
 }
 .navigation li ul {
   padding-left: 0px;
-}
-/* 2nd level background */
-.navigation li a.drop {
-  background-color: #161616;
-}
-/* 3rd level background */
-.navigation li .drop-content ul a {
-  background-color: #161616;
-}
-/* 3rd level intentation */
-.navigation li .drop-content ul ul a {
-  background-color: transparent;
-  margin-left: 6%;
 }
 .navigation .button.primary {
   text-align: left;
@@ -3433,6 +3478,7 @@ ul.navigation {
   html .navigation li .drop-content a {
     /* overrides the mobile styling */
     margin-left: 0;
+    font-weight: normal;
   }
   html .navigation li:hover .drop-holder,
   html .navigation li.hover .drop-holder {
@@ -3470,6 +3516,7 @@ ul.navigation {
     width: 13.125em;
     /* 210px */
     vertical-align: middle;
+    background: none;
     background-color: #ffffff;
     padding: 0;
   }
@@ -3775,6 +3822,7 @@ ul.navigation {
 .sevensome .navigation li .drop-content a {
   /* overrides the mobile styling */
   margin-left: 0;
+  font-weight: normal;
 }
 .sevensome .navigation li:hover .drop-holder,
 .sevensome .navigation li.hover .drop-holder {
@@ -3812,6 +3860,7 @@ ul.navigation {
   width: 13.125em;
   /* 210px */
   vertical-align: middle;
+  background: none;
   background-color: #ffffff;
   padding: 0;
 }
@@ -4118,6 +4167,7 @@ ul.navigation {
 .lt-ie9 .navigation li .drop-content a {
   /* overrides the mobile styling */
   margin-left: 0;
+  font-weight: normal;
 }
 .lt-ie9 .navigation li:hover .drop-holder,
 .lt-ie9 .navigation li.hover .drop-holder {
@@ -4155,6 +4205,7 @@ ul.navigation {
   width: 13.125em;
   /* 210px */
   vertical-align: middle;
+  background: none;
   background-color: #ffffff;
   padding: 0;
 }

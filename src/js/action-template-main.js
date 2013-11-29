@@ -127,7 +127,11 @@
             params: parameters
         });
 
+        // move search form into mobile menu and back
         $.p3.mobilesearchform("768");
+
+        // provides submenu navigation for mobile menu
+        $.p3.mobilemenu("#main-nav");
 
     });
 

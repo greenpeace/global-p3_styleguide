@@ -245,6 +245,14 @@ ul.navigation {
 	display: block;
 }
 
+// styles for mobilemenu (generic i.e. also when js disabled)
+.mobilemenu-back,
+.mobilemenu-clone {
+  display: none;
+}
+#nav {
+  width: 94%;
+}
 .navigation li {
   border-bottom: 1px solid @black;
   border-top: 1px solid #555555;
@@ -255,45 +263,89 @@ ul.navigation {
     border-bottom: none;
   }
 }
+// style with active and js-processed mobilemenu
+.mobilemenu {
+  .mobilemenu-back,
+  .mobilemenu-clone {
+    display: block;
+  }
+  .navigation li.has-submenu {
+    background: transparent url(../../img/nav-arrow.png) 97%  no-repeat;
+    &:focus,
+    &:hover {
+      background: transparent url(../../img/nav-arrow-hover.png) 98% 0.8em no-repeat;
+    }
+    .drop-holder {
+      display: block;
+    }
+    ul {
+      position: absolute;
+      display: none;
+      top: 0;
+      width: 100%;
+    }
+    .mobilemenu-back {
+      background: transparent url(../../img/nav-back-arrow.png) 3% 0.8em no-repeat;
+      &:focus,
+      &:hover {
+        background: transparent url(../../img/nav-back-arrow-hover.png) 3% 0.8em no-repeat;
+      }
+      a {
+        padding-left: 40px;
+      }
+    }
+  }
+
+  &#main-nav #nav {
+    position: absolute;
+    width: 94%;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  ul#nav.out-left {
+    left: -9999px;
+  }
+  .navigation li.has-submenu {
+    ul.out-left {
+      position: absolute;
+      display: block;
+      left: 0px;
+    }
+    ul.in-left {
+      position: absolute;
+      width: 94%;
+      padding: 0 3%;
+      margin: 0;
+      display: block;
+      left: 9999px;
+      ul {
+        display: none;
+      }
+    }
+  }
+}
+
 .navigation li a {
 	display: block;
 	padding: .8em 1em;
 	font-weight: bold;
 	margin-bottom: 0;
   position: relative;
-  background: transparent url(../../img/nav-arrow.png) 97% center no-repeat;
   &:focus,
   &:hover {
     color: @white;
     text-decoration: none;
-    background: transparent url(../../img/nav-arrow-hover.png) 98% center no-repeat;
   }
 }
 
 .navigation li .drop-content a {
-	font-weight: normal;
-	background: none transparent;
-	margin-left: 3%;
+	font-weight: bold;
 }
 
 .navigation li ul {
 	padding-left: 0px;
 }
 
-
-/* 2nd level background */
-.navigation li a.drop {
-  background-color: #161616;
-}
-/* 3rd level background */
-.navigation li .drop-content ul a {
-  background-color: #161616;
-}
-/* 3rd level intentation */
-.navigation li .drop-content ul ul a {
-  background-color: transparent;
-  margin-left: 6%;
-}
 
 // donate button mobile
 .navigation .button.primary {
@@ -446,6 +498,7 @@ ul.navigation {
   }
   .navigation li .drop-content a { /* overrides the mobile styling */
     margin-left: 0;
+    font-weight: normal;
   }
   .navigation li:hover .drop-holder, .navigation li.hover .drop-holder {
           display: block;
@@ -476,6 +529,7 @@ ul.navigation {
           float: none;
           width: 13.125em; /* 210px */
           vertical-align: middle;
+          background: none;
           background-color: @white;
           padding: 0;
   }
