@@ -90,6 +90,21 @@
   -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=(@{opacityPercentage}))"; 
   filter: ~"alpha(opacity = (@{opacityPercentage}))";
 }
+// Cross browser placeholder text color
+.placeholder_color (@color) {
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    color: @color;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: @color;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: @color;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: @color;
+  }
+}
 
 /* ==========================================================================
 	 Helper classes / mixins
