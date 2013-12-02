@@ -264,7 +264,14 @@ ul.navigation {
   }
 }
 // style with active and js-processed mobilemenu
-.mobilemenu {
+.mobilemenu #main-container {
+  z-index: 1;
+  background-color: @white;
+}
+.mobilemenu #main-nav {
+
+  z-index: -1;
+
   .mobilemenu-back,
   .mobilemenu-clone {
     display: block;
@@ -283,6 +290,7 @@ ul.navigation {
       display: none;
       top: 0;
       width: 100%;
+      transition: left 0.5s linear;
     }
     .mobilemenu-back {
       background: transparent url(../../img/nav-back-arrow.png) 3% 0.8em no-repeat;
@@ -296,31 +304,45 @@ ul.navigation {
     }
   }
 
-  &#main-nav #nav {
+
+  #nav {
     position: absolute;
     width: 94%;
     margin-top: 0;
     padding-top: 0;
+    transition: left 0.5s linear;
+    left: 0;
   }
-  ul#nav.out-left {
-    left: -9999px;
+
+  #nav.out-left {
+    left: -999px;
   }
   .navigation li.has-submenu {
+    ul.in-right,
+    ul.in-left,
+    ul.out-right,
     ul.out-left {
       position: absolute;
       display: block;
-      left: 0px;
     }
+    ul.out-left {
+      left: 0;
+    }
+    ul.out-right {
+      left: 2000px;
+    }
+    ul.in-right,
     ul.in-left {
-      position: absolute;
       width: 94%;
       padding: 0 3%;
       margin: 0;
-      display: block;
-      left: 9999px;
-      ul {
-        display: none;
-      }
+      // ul {
+      //   display: none;
+      // }
+    }
+    ul.in-right,
+    ul.in-left {
+      left: 999px;
     }
   }
 }
