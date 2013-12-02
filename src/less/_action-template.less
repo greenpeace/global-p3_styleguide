@@ -128,12 +128,12 @@ Social Login buttons
 }
 
 /*
-Recent Signers widget
+Recent Signers widget, hidden on mobile
 
-.since         - Timestamp in gray text
-.name:after    - Add comma after the name
-.country       - Country name in gray text
-.flag          - Flag icon margin
+li       - One line, ellipsis if content doesn't fit
+.since   - Timestamp in gray text
+.country - Country name in grayutext
+.flag    - Flag icon margin
 */
 #action-recent-signers {
   ul {
@@ -143,6 +143,10 @@ Recent Signers widget
     list-style-type: none;
     font-size: 0.813em;
     margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
   }
   .since {
     width: 8em;
@@ -150,11 +154,9 @@ Recent Signers widget
     font-size: 0.813em;
     color: @grays-2;
   }
-  .name:after {
-    content: ",";
-  }
   .country {
     color: #777;
+    display: none;
   }
   .flag {
     margin-right: .25em;
@@ -301,6 +303,15 @@ hide stuffs on mobile
     float:left;
     clear:both;
     width:100%;
+  }
+  // show recent signers country name
+  #action-recent-signers {
+    .country {
+      display: inline;
+    }
+    .name:after {
+      content: ",";
+    }
   }
   // east side
   #action-h2,

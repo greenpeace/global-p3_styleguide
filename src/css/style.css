@@ -892,12 +892,12 @@ Social Login buttons
   background: #fffdff url(../../img/sociallogin.png) center -22px no-repeat;
 }
 /*
-Recent Signers widget
+Recent Signers widget, hidden on mobile
 
-.since         - Timestamp in gray text
-.name:after    - Add comma after the name
-.country       - Country name in gray text
-.flag          - Flag icon margin
+li       - One line, ellipsis if content doesn't fit
+.since   - Timestamp in gray text
+.country - Country name in grayutext
+.flag    - Flag icon margin
 */
 #action-recent-signers ul {
   padding: 0;
@@ -906,6 +906,10 @@ Recent Signers widget
   list-style-type: none;
   font-size: 0.813em;
   margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
 }
 #action-recent-signers .since {
   width: 8em;
@@ -913,11 +917,9 @@ Recent Signers widget
   font-size: 0.813em;
   color: #666666;
 }
-#action-recent-signers .name:after {
-  content: ",";
-}
 #action-recent-signers .country {
   color: #777;
+  display: none;
 }
 #action-recent-signers .flag {
   margin-right: .25em;
@@ -1087,6 +1089,12 @@ hide stuffs on mobile
     clear: both;
     width: 100%;
   }
+  html #action-recent-signers .country {
+    display: inline;
+  }
+  html #action-recent-signers .name:after {
+    content: ",";
+  }
   html #action-h2,
   html #action-ask,
   html #action-form,
@@ -1154,6 +1162,12 @@ hide stuffs on mobile
   float: left;
   clear: both;
   width: 100%;
+}
+.desktop #action-recent-signers .country {
+  display: inline;
+}
+.desktop #action-recent-signers .name:after {
+  content: ",";
 }
 .desktop #action-h2,
 .desktop #action-ask,
