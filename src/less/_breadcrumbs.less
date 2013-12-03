@@ -1,21 +1,24 @@
-/* breadcrumbs */
-#breadcrumbs ul {
-	padding:0;
-	margin-bottom:0;
-	font-size:.875em;
+// Breadcrumb navigation
+//
+// li - all items are displayed inline and separated by ">"
+#breadcrumbs {
+    ul {
+        padding: 0;
+        margin-bottom: 0;
+        font-size: .875em;
+    }
+    li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    li:before {
+        content: "›";
+        padding-right: .25em;
+    }
+    li:first-child:before {
+        content: "";
+        padding-right: 0;
+    }
 }
-#breadcrumbs li {
-	display:inline;
-	margin: 0;
-	padding:0;
-	list-style: none;
-}
-#breadcrumbs li:before {
-	content:"›";
-	padding-right:.25em;
-}
-#breadcrumbs li:first-child:before {
-	content:"";
-	padding-right:0;
-}
-

@@ -24,6 +24,8 @@ Variables and pure mixins (that take arguments) are added to the helpers.less fi
 
 Mixins used for media queries are defined right before the media query itself. We call them macros and use them to make sure the styles in the media query and the media query fallback stay exactly the same.
 
+The & combinator is used when you want a nested selector to be concatenated to its parent selector, instead of acting as a descendant. This is especially important for pseudo-classes like :hover and :focus.
+
 A Note About Comments
 -----------------------------------------
-CSS-style comments between /* */ are preserved when compiling a LESS file to CSS. Single-line comments starting with // are also valid in LESS, but they are ‘silent’, they don’t show up in the compiled CSS output. So they are perfect for us to use for LESS-specific documenting.
+CSS-style comments between /* */ are preserved when compiling a LESS file to CSS. Single-line comments starting with // are also valid in LESS, but they are ‘silent’, they don’t show up in the compiled CSS output. 
