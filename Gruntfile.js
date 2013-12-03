@@ -64,7 +64,7 @@ module.exports = function(grunt) {
             },
             vendor: {
                 files: {
-                    'dist/js/vendor.js': ['src/js/vendor/jquery.*.js', 'src/js/vendor/xregexp.js', 'src/js/vendor/xregexp-unicode.min.js']
+                    'dist/js/vendor.js': ['src/js/vendor/jquery.*.js', 'src/js/vendor/xregexp.js', 'src/js/vendor/xregexp-unicode.min.js', 'src/js/vendor/jquery.fs.picker.js']
                 }
             },
             lib: {

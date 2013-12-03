@@ -46,10 +46,11 @@ Small Prints in the form, checkbox is hidden.
 #action-smallprints {
   margin: .25em 0;
   label,
-  input[type=checkbox] {
+  input[type=checkbox],
+  .picker-handle {
     display: none;
   }
-  input + label {
+  .longlabel {
     display: inline;
     font-size: 0.875em; /* 14px */
     line-height: 1.4em;
@@ -59,6 +60,9 @@ Small Prints in the form, checkbox is hidden.
     input[type=checkbox] {
       display: inline;
       width: auto;
+    }
+    input + .picker .picker-handle {
+      display: inline;
     }
   }
 }

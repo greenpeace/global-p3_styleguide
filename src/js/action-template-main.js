@@ -132,8 +132,10 @@
 
         // provides submenu navigation for mobile menu
         $.p3.mobilemenu("#main-nav");
+        
+        // pretty checkboxes and radios via Formstone picker
+        $('form input[type=radio], form input[type=checkbox]:not(.mobilemenu-label)').picker();
 
     });
-
 
 }(jQuery, Modernizr, this));
