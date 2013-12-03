@@ -190,11 +190,13 @@ var _p3 = $.p3 || ($.p3 = {}),
             if (mq.matches) {
                 _p3.mobilemenu.mobile = false;
                 _p3.mobilemenu.$menu.removeClass('mobilemenu');
+                $('html').removeClass('mobilemenu');
                 settings.onSwitchToDesktop.call(_p3.mobilemenu.$menu, settings);
             }
             else {
                 _p3.mobilemenu.mobile = true;
                 _p3.mobilemenu.$menu.addClass('mobilemenu');
+                $('html').addClass('mobilemenu');
                 settings.onSwitchToMobile.call(_p3.mobilemenu.$menu, settings);
             }
         }
@@ -206,7 +208,7 @@ var _p3 = $.p3 || ($.p3 = {}),
         function initializeSubmenus() {
           var $submenus = $('ul ul', _p3.mobilemenu.$menu);
           var $menuItems = $('li:not(.nav-back, .mobilemenu-linkclone)', _p3.mobilemenu.$menu);
-          _p3.mobilemenu.$menu.addClass('mobilemenu-js');
+          $('html').addClass('mobilemenu-js');
 
           $menuItems.each(function() {
               var $item = $(this);
@@ -229,20 +231,27 @@ var _p3 = $.p3 || ($.p3 = {}),
             e.preventDefault();
             e.stopPropagation();
 
-            $(e.currentTarget).blur();
+            var $me = $(e.currentTarget);
+            $me.blur();
 
-            $(e.currentTarget).closest('ul').addClass('out-left').removeClass('in-left');
-            $(e.currentTarget).parent().find('ul').first().addClass('in-left');
+            // slide out to left
+            $me.closest('ul').addClass('out-left').removeClass('in-left in-right out-right');
+            // slide in from right
+            $me.parent().find('ul').first().addClass('in-right').removeClass('in-left out-right out-left');
         }
         function backHandler(e) {
             e.preventDefault();
             e.stopPropagation();
 
-            $(e.currentTarget).blur();
+            var $me = $(e.currentTarget);
+            var $ul = $me.closest('ul');
 
-            var $self = $(e.currentTarget).closest('ul');
-            $self.addClass('out-left').removeClass('in-left out-left');
-            $self.parent().closest('ul').addClass('in-left').removeClass('out-left');
+            $me.blur();
+
+            // slide out to right
+            $ul.addClass('out-left').addClass('out-right').removeClass('in-left in-right out-left');
+            // slide in from left
+            $ul.parent().closest('ul').addClass('in-left').removeClass('in-right out-left out-right');
         }
 
         _p3.mobilemenu.$menu.on('click', '.mobilemenu-back', backHandler);

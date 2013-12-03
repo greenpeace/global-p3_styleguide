@@ -811,10 +811,11 @@ Small Prints in the form, checkbox is hidden.
   margin: .25em 0;
 }
 #action-smallprints label,
-#action-smallprints input[type=checkbox] {
+#action-smallprints input[type=checkbox],
+#action-smallprints .picker-handle {
   display: none;
 }
-#action-smallprints input + label {
+#action-smallprints .longlabel {
   display: inline;
   font-size: 0.875em;
   /* 14px */
@@ -826,6 +827,9 @@ Small Prints in the form, checkbox is hidden.
 #action-smallprints .remember input[type=checkbox] {
   display: inline;
   width: auto;
+}
+#action-smallprints .remember input + .picker .picker-handle {
+  display: inline;
 }
 /*
 Action Counter,
@@ -3234,60 +3238,77 @@ ul.navigation {
 .navigation li:last-of-type {
   border-bottom: none;
 }
-.mobilemenu .mobilemenu-back,
-.mobilemenu .mobilemenu-clone {
+.mobilemenu #main-container {
+  z-index: 1;
+  background-color: #ffffff;
+}
+.mobilemenu #main-nav {
+  z-index: -1;
+}
+.mobilemenu #main-nav .mobilemenu-back,
+.mobilemenu #main-nav .mobilemenu-clone {
   display: block;
 }
-.mobilemenu .navigation li.has-submenu {
+.mobilemenu #main-nav .navigation li.has-submenu {
   background: transparent url(../../img/nav-arrow.png) 97% no-repeat;
 }
-.mobilemenu .navigation li.has-submenu:focus,
-.mobilemenu .navigation li.has-submenu:hover {
+.mobilemenu #main-nav .navigation li.has-submenu:focus,
+.mobilemenu #main-nav .navigation li.has-submenu:hover {
   background: transparent url(../../img/nav-arrow-hover.png) 98% 0.8em no-repeat;
 }
-.mobilemenu .navigation li.has-submenu .drop-holder {
+.mobilemenu #main-nav .navigation li.has-submenu .drop-holder {
   display: block;
 }
-.mobilemenu .navigation li.has-submenu ul {
+.mobilemenu #main-nav .navigation li.has-submenu ul {
   position: absolute;
   display: none;
   top: 0;
   width: 100%;
+  transition: left 0.5s linear;
 }
-.mobilemenu .navigation li.has-submenu .mobilemenu-back {
+.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back {
   background: transparent url(../../img/nav-back-arrow.png) 3% 0.8em no-repeat;
 }
-.mobilemenu .navigation li.has-submenu .mobilemenu-back:focus,
-.mobilemenu .navigation li.has-submenu .mobilemenu-back:hover {
+.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back:focus,
+.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back:hover {
   background: transparent url(../../img/nav-back-arrow-hover.png) 3% 0.8em no-repeat;
 }
-.mobilemenu .navigation li.has-submenu .mobilemenu-back a {
+.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back a {
   padding-left: 40px;
 }
-.mobilemenu#main-nav #nav {
+.mobilemenu #main-nav #nav {
   position: absolute;
   width: 94%;
   margin-top: 0;
   padding-top: 0;
+  transition: left 0.5s linear;
+  left: 0;
 }
-.mobilemenu ul#nav.out-left {
-  left: -9999px;
+.mobilemenu #main-nav #nav.out-left {
+  left: -999px;
 }
-.mobilemenu .navigation li.has-submenu ul.out-left {
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-left,
+.mobilemenu #main-nav .navigation li.has-submenu ul.out-right,
+.mobilemenu #main-nav .navigation li.has-submenu ul.out-left {
   position: absolute;
   display: block;
-  left: 0px;
 }
-.mobilemenu .navigation li.has-submenu ul.in-left {
-  position: absolute;
+.mobilemenu #main-nav .navigation li.has-submenu ul.out-left {
+  left: 0;
+}
+.mobilemenu #main-nav .navigation li.has-submenu ul.out-right {
+  left: 2000px;
+}
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-left {
   width: 94%;
   padding: 0 3%;
   margin: 0;
-  display: block;
-  left: 9999px;
 }
-.mobilemenu .navigation li.has-submenu ul.in-left ul {
-  display: none;
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-left {
+  left: 999px;
 }
 .navigation li a {
   display: block;
@@ -4754,4 +4775,168 @@ ul.navigation .drop-holder {
     transform: translate3d(0, 0, 0);
     overflow-x: hidden;
   }
+}
+/*
+ * Picker Plugin [Formstone Library]
+ * @author Ben Plum
+ * @version 0.4.0
+ *
+ * Copyright © 2013 Ben Plum <mr@benplum.com>
+ * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
+ */
+.picker-element {
+  left: -999999px;
+  position: absolute;
+}
+.picker {
+  cursor: pointer;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+}
+.picker .picker-label {
+  color: #888;
+  display: block;
+  font-size: 14px;
+  float: left;
+  line-height: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.picker .picker-handle {
+  border: 1px solid #ccc;
+  display: block;
+  float: left;
+  height: 16px;
+  margin: 0 5px 0 0;
+  width: 16px;
+}
+@media screen and (min-width: 740px) {
+  .picker:hover .picker-label {
+    color: #555;
+  }
+  .picker:hover .picker-handle {
+    border-color: #aaa;
+  }
+  .picker.picker-radio:hover .picker-flag {
+    background: #ddd;
+  }
+}
+.picker.focus .picker-label {
+  color: #555;
+}
+.picker.focus .picker-handle {
+  border-color: #aaa;
+}
+/* Radio Input */
+.picker.picker-radio .picker-handle {
+  border-radius: 8px;
+}
+.picker.picker-radio .picker-flag {
+  background: #fff;
+  display: block;
+  border-radius: 4px;
+  height: 8px;
+  margin: 3px;
+  width: 8px;
+}
+.picker.picker-radio.focus .picker-flag {
+  background: #ddd;
+}
+.picker.picker-radio.checked .picker-flag {
+  background: #999;
+}
+/* Checkbox Input */
+.picker.picker-checkbox .picker-handle {
+  border-radius: 3px;
+}
+.picker.picker-checkbox .picker-flag {
+  background: #fff;
+  border-radius: 2px;
+  display: block;
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+/* 'Checked' */
+.picker.picker-checkbox.checked .picker-flag {
+  background: #ffffff url(../../img/fs-picker-icon.png) no-repeat center;
+}
+/* Toggle Input */
+.picker.picker-toggle {
+  padding: 20px 0 0;
+  position: relative;
+}
+.picker.picker-toggle .picker-toggle-label {
+  color: #999;
+  font-size: 12px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0;
+}
+.picker.picker-toggle .picker-toggle-label.on {
+  left: 0;
+}
+.picker.picker-toggle .picker-toggle-label.off {
+  color: #333;
+  right: 0;
+}
+.picker.picker-toggle .picker-label {
+  display: none;
+}
+.picker.picker-toggle .picker-handle {
+  border-radius: 3px;
+  position: relative;
+  width: 100%;
+}
+.picker.picker-toggle .picker-flag {
+  background: #666;
+  border-radius: 2px;
+  display: block;
+  height: 100%;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 50%;
+  -webkit-transition: left 0.1s linear;
+  -moz-transition: left 0.1s linear;
+  -ms-transition: left 0.1s linear;
+  -o-transition: left 0.1s linear;
+  transition: left 0.1s linear;
+}
+.picker.picker-toggle.checked .picker-toggle-label.on {
+  color: #333;
+}
+.picker.picker-toggle.checked .picker-toggle-label.off {
+  color: #999;
+}
+.picker.picker-toggle.checked .picker-flag {
+  background: #666;
+  left: 0;
+}
+/* 'Disabled' State */
+.picker.disabled .picker-label {
+  color: #ccc;
+  cursor: default;
+}
+.picker.disabled .picker-handle {
+  border-color: #eee;
+  cursor: default;
+}
+.picker.picker-radio.disabled .picker-flag {
+  background: #fff;
+}
+.picker.picker-radio.disabled.checked .picker-flag {
+  background: #eee;
+}
+.picker.picker-checkbox.disabled .picker-flag::after {
+  color: #eee;
+  content: '';
+}
+.picker.picker-checkbox.disabled.checked .picker-flag::after {
+  color: #eee;
+  content: '\2714';
 }
