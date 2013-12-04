@@ -1252,7 +1252,6 @@ Browser specific hacks
   line-height: 1.4em;
   font-weight: normal;
 }
-/* breadcrumbs */
 #breadcrumbs ul {
   padding: 0;
   margin-bottom: 0;
@@ -1272,20 +1271,6 @@ Browser specific hacks
   content: "";
   padding-right: 0;
 }
-/* ==========================================================================
-	 Buttons
-	 ========================================================================== */
-/*
-	Generic button
-
-	Description	: We support <input[submit]>, <input.button>, <button> and <a.button>
-	Compatible	: IE6+, Firefox 2+, Safari 4+, Chrome 1+, Opera 11+
-	Since				: version 3.0
-
-	:hover			- Subtle hover highlight and box shadow
-	:active			- Inset box shadow and 1px offset
-	.disabled		- Dims the button to indicate it cannot be used
-*/
 .button,
 input[type=submit],
 input.button,
@@ -1322,12 +1307,10 @@ a.button {
   background-image: -o-linear-gradient(top, #fafafa, #ededed);
   background-image: linear-gradient(top, #fafafa, #ededed);
 }
-/* primary buttons are orange */
-.sevensome .header .button.donate,
 .button.primary,
 input[type=submit].primary,
 input.button.primary,
-button.pimary,
+button.primary,
 a.button.primary {
   color: #ffffff;
   text-shadow: 0 0 2px #9a9a9a;
@@ -1349,12 +1332,6 @@ a.button.primary {
   /* IE6-9 */
   border: 1px solid #f06818;
 }
-/* size and position adjustments */
-.submit {
-  display: inline-block;
-  /* in case there is a div wrapper */
-}
-/* hover */
 .button:hover,
 input[type=submit]:hover,
 input.button:hover,
@@ -1370,7 +1347,6 @@ a.button:focus {
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
-/* active */
 .button:active,
 input[type=submit]:active,
 input.button:active,
@@ -1391,13 +1367,12 @@ a.button.disabled {
   color: #888;
   background: #ffffff;
 }
-/* inactive */
 .button.disabled:hover,
-.button.disabled:active,
 input[type=submit].disabled:hover,
 input.button.disabled:hover,
 button.disabled:hover,
 a.button.disabled:hover,
+.button.disabled:active,
 input[type=submit].disabled:active,
 input.button.disabled:active,
 button.disabled:active,
@@ -1408,7 +1383,10 @@ a.button.disabled:active {
   top: 0;
   border: 1px solid #cccccc;
 }
-/* header button */
+.submit {
+  display: inline-block;
+  /* in case there is a div wrapper */
+}
 .sevensome .header .button {
   font-size: 12px;
   padding: 3px 1px;
@@ -1425,9 +1403,6 @@ a.button.disabled:active {
   width: 6em;
   text-align: center;
 }
-/* ==========================================================================
-	 Dropdown list used for language and country selector
-	 ========================================================================== */
 .dropdown {
   position: absolute;
   z-index: 999;
@@ -1447,7 +1422,6 @@ a.button.disabled:active {
 .dropdown .dropdown-panel {
   padding: 10px;
 }
-/* tooltip triangle trick */
 .dropdown.dropdown-tip {
   margin-top: 8px;
 }
@@ -1485,20 +1459,10 @@ a.button.disabled:active {
   max-height: 350px;
   overflow: auto;
 }
-.lt-ie7 .dropdown-scroll .dropdown-list,
-.lt-ie7 .dropdown-scroll .dropdown-panel {
-  height: expression( this.scrollHeight > 349 ? "350px" : "auto" );
-  zoom: 1;
-  overflow: auto;
-}
-/* list items and dividers */
 .dropdown .dropdown-list li {
   list-style: none;
   padding: 0 0;
   margin: 0;
-}
-.lt-ie7 .dropdown .dropdown-list li {
-  line-height: 0;
 }
 .dropdown .dropdown-list li a,
 .dropdown .dropdown-list span {
@@ -1523,9 +1487,15 @@ a.button.disabled:active {
   padding: 0;
   margin: 5px 0;
 }
-/* ==========================================================================
-	 Flags
-	 ========================================================================== */
+.lt-ie7 .dropdown-scroll .dropdown-list,
+.lt-ie7 .dropdown-scroll .dropdown-panel {
+  height: expression( this.scrollHeight > 349 ? "350px" : "auto" );
+  zoom: 1;
+  overflow: auto;
+}
+.lt-ie7 .dropdown .dropdown-list li {
+  line-height: 0;
+}
 .flag.icon {
   width: 16px;
   height: 11px;
@@ -2955,8 +2925,8 @@ select:hover {
   color: #555;
 }
 /* ==========================================================================
-	 Header
-	 ========================================================================== */
+Header
+========================================================================== */
 .header {
   position: absolute;
   top: 0;
@@ -3208,7 +3178,6 @@ ul.navigation {
   top: 0px;
   right: 0px;
   width: 94%;
-  max-width: 350px;
   padding: 40px 3% 1em 3%;
 }
 #main-nav {
@@ -3220,10 +3189,6 @@ ul.navigation {
 .lt-ie9 #main-nav {
   right: 0px;
   display: block;
-}
-.mobilemenu-back,
-.mobilemenu-clone {
-  display: none;
 }
 #nav {
   width: 94%;
@@ -3237,78 +3202,6 @@ ul.navigation {
 }
 .navigation li:last-of-type {
   border-bottom: none;
-}
-.mobilemenu #main-container {
-  z-index: 1;
-  background-color: #ffffff;
-}
-.mobilemenu #main-nav {
-  z-index: -1;
-}
-.mobilemenu #main-nav .mobilemenu-back,
-.mobilemenu #main-nav .mobilemenu-clone {
-  display: block;
-}
-.mobilemenu #main-nav .navigation li.has-submenu {
-  background: transparent url(../../img/nav-arrow.png) 97% no-repeat;
-}
-.mobilemenu #main-nav .navigation li.has-submenu:focus,
-.mobilemenu #main-nav .navigation li.has-submenu:hover {
-  background: transparent url(../../img/nav-arrow-hover.png) 98% 0.8em no-repeat;
-}
-.mobilemenu #main-nav .navigation li.has-submenu .drop-holder {
-  display: block;
-}
-.mobilemenu #main-nav .navigation li.has-submenu ul {
-  position: absolute;
-  display: none;
-  top: 0;
-  width: 100%;
-  transition: left 0.5s linear;
-}
-.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back {
-  background: transparent url(../../img/nav-back-arrow.png) 3% 0.8em no-repeat;
-}
-.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back:focus,
-.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back:hover {
-  background: transparent url(../../img/nav-back-arrow-hover.png) 3% 0.8em no-repeat;
-}
-.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back a {
-  padding-left: 40px;
-}
-.mobilemenu #main-nav #nav {
-  position: absolute;
-  width: 94%;
-  margin-top: 0;
-  padding-top: 0;
-  transition: left 0.5s linear;
-  left: 0;
-}
-.mobilemenu #main-nav #nav.out-left {
-  left: -999px;
-}
-.mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
-.mobilemenu #main-nav .navigation li.has-submenu ul.in-left,
-.mobilemenu #main-nav .navigation li.has-submenu ul.out-right,
-.mobilemenu #main-nav .navigation li.has-submenu ul.out-left {
-  position: absolute;
-  display: block;
-}
-.mobilemenu #main-nav .navigation li.has-submenu ul.out-left {
-  left: 0;
-}
-.mobilemenu #main-nav .navigation li.has-submenu ul.out-right {
-  left: 2000px;
-}
-.mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
-.mobilemenu #main-nav .navigation li.has-submenu ul.in-left {
-  width: 94%;
-  padding: 0 3%;
-  margin: 0;
-}
-.mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
-.mobilemenu #main-nav .navigation li.has-submenu ul.in-left {
-  left: 999px;
 }
 .navigation li a {
   display: block;
@@ -3348,11 +3241,11 @@ ul.navigation {
 @media only screen and (min-width: 768px) {
   html {
     /*
-   * Menu Links
-   */
+     * Menu Links
+     */
     /*
-   * search form on desktop
-   */
+ * search form on desktop
+ */
     /*
  * Header
  */
@@ -3692,11 +3585,11 @@ ul.navigation {
 /* fallback for browsers where media queries won't work */
 .sevensome {
   /*
-   * Menu Links
-   */
+     * Menu Links
+     */
   /*
-   * search form on desktop
-   */
+ * search form on desktop
+ */
   /*
  * Header
  */
@@ -4037,11 +3930,11 @@ ul.navigation {
  */
 .lt-ie9 {
   /*
-   * Menu Links
-   */
+     * Menu Links
+     */
   /*
-   * search form on desktop
-   */
+ * search form on desktop
+ */
   /*
  * Header
  */
@@ -4709,15 +4602,45 @@ header label.mobilemenu-label {
   border-radius: 5px;
   color: #565456;
 }
+.mobilemenu #main-nav .mobilemenu-close {
+  display: block;
+}
+#root-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  -webkit-transition: -webkit-transform 0.2s linear;
+  transition: transform 0.2s linear;
+  background-color: #fff;
+}
+#mobilemenu-toggle ~ #root-container {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  overflow-x: visible;
+}
+#mobilemenu-toggle:checked ~ #root-container {
+  -webkit-transform: translate3d(-320px, 0, 0);
+  transform: translate3d(-320px, 0, 0);
+  overflow-x: visible;
+}
+#mobilemenu-toggle:checked ~ #root-container #main-nav {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.mobilemenu-back,
+.mobilemenu-clone {
+  display: none;
+}
 #main-nav {
   display: block;
-  right: -350px;
+  right: -320px;
   position: absolute;
   -webkit-transition: -webkit-transform 0.2s linear;
   transition: transform 0.2s linear;
   padding: 0;
   width: 100%;
-  max-width: 350px;
+  max-width: 320px;
 }
 #main-nav .search-form {
   margin: 0.8em 3% 0.4em;
@@ -4736,31 +4659,103 @@ header label.mobilemenu-label {
   color: rgba(0, 0, 0, 0);
   border: none;
 }
-#root-container {
+.mobilemenu #main-container {
+  z-index: 1;
+  background-color: #ffffff;
+}
+.mobilemenu #main-nav {
+  z-index: -1;
+}
+.mobilemenu #main-nav .mobilemenu-back,
+.mobilemenu #main-nav .mobilemenu-clone {
+  display: block;
+}
+.mobilemenu #main-nav .navigation li.has-submenu {
+  background: transparent url(../../img/nav-arrow.png) 97% no-repeat;
+}
+.mobilemenu #main-nav .navigation li.has-submenu:focus,
+.mobilemenu #main-nav .navigation li.has-submenu:hover {
+  background: transparent url(../../img/nav-arrow-hover.png) 98% 0.8em no-repeat;
+}
+.mobilemenu #main-nav .navigation li.has-submenu .drop-holder {
+  display: block;
+}
+.mobilemenu #main-nav .navigation li.has-submenu ul {
   position: absolute;
-  left: 0;
+  display: none;
   top: 0;
   width: 100%;
-  -webkit-transition: -webkit-transform 0.2s linear;
-  transition: transform 0.2s linear;
-  background-color: #fff;
+  transition: left 0.5s linear;
 }
-#mobilemenu-toggle ~ #root-container {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  overflow-x: visible;
+.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back {
+  background: transparent url(../../img/nav-back-arrow.png) 3% 0.8em no-repeat;
 }
-#mobilemenu-toggle:checked ~ #root-container {
-  -webkit-transform: translate3d(-350px, 0, 0);
-  transform: translate3d(-350px, 0, 0);
-  overflow-x: visible;
+.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back:focus,
+.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back:hover {
+  background: transparent url(../../img/nav-back-arrow-hover.png) 3% 0.8em no-repeat;
 }
-#mobilemenu-toggle:checked ~ #root-container #main-nav {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+.mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back a {
+  padding-left: 40px;
 }
-ul.navigation .drop-holder {
-  display: none;
+.mobilemenu #main-nav #nav {
+  position: absolute;
+  width: 94%;
+  margin-top: 0;
+  padding-top: 0;
+  transition: left 0.5s linear;
+  left: 0;
+}
+.mobilemenu #main-nav #nav.out-left {
+  left: -999px;
+}
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-left,
+.mobilemenu #main-nav .navigation li.has-submenu ul.out-right,
+.mobilemenu #main-nav .navigation li.has-submenu ul.out-left {
+  position: absolute;
+  display: block;
+}
+.mobilemenu #main-nav .navigation li.has-submenu ul.out-left {
+  left: 0;
+}
+.mobilemenu #main-nav .navigation li.has-submenu ul.out-right {
+  left: 2000px;
+}
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-left {
+  width: 94%;
+  padding: 0 3%;
+  margin: 0;
+}
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
+.mobilemenu #main-nav .navigation li.has-submenu ul.in-left {
+  left: 999px;
+}
+/*
+ * media queries
+ */
+@media only screen and (min-width: 320px) {
+  .mobilemenu #main-nav .mobilemenu-close {
+    display: none;
+  }
+  .mobilemenu #main-nav {
+    max-width: 250px;
+    right: -250px;
+  }
+  #mobilemenu-toggle:checked ~ #root-container {
+    -webkit-transform: translate3d(-250px, 0, 0);
+    transform: translate3d(-250px, 0, 0);
+  }
+}
+@media only screen and (min-width: 410px) {
+  .mobilemenu #main-nav {
+    max-width: 350px;
+    right: -350px;
+  }
+  #mobilemenu-toggle:checked ~ #root-container {
+    -webkit-transform: translate3d(-350px, 0, 0);
+    transform: translate3d(-350px, 0, 0);
+  }
 }
 @media only screen and (min-width: 768px) {
   header label.mobilemenu-label,
