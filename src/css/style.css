@@ -4684,6 +4684,7 @@ header label.mobilemenu-label {
   position: absolute;
   display: none;
   top: 0;
+  margin: 0;
   width: 100%;
   transition: left 0.5s linear;
 }
@@ -4719,7 +4720,6 @@ header label.mobilemenu-label {
   left: 0;
 }
 .mobilemenu #main-nav .navigation li.has-submenu ul.out-right {
-  left: 2000px;
   left: 1000px;
 }
 .mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
