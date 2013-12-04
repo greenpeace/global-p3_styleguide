@@ -4671,11 +4671,11 @@ header label.mobilemenu-label {
   display: block;
 }
 .mobilemenu #main-nav .navigation li.has-submenu {
-  background: transparent url(../../img/nav-arrow.png) 97% no-repeat;
+  background: transparent url(../../img/mobile-navarrow.png) 97% no-repeat;
 }
 .mobilemenu #main-nav .navigation li.has-submenu:focus,
 .mobilemenu #main-nav .navigation li.has-submenu:hover {
-  background: transparent url(../../img/nav-arrow-hover.png) 98% 0.8em no-repeat;
+  background: transparent url(../../img/mobile-navarrow-hover.png) 98% 0.8em no-repeat;
 }
 .mobilemenu #main-nav .navigation li.has-submenu .drop-holder {
   display: block;
@@ -4689,11 +4689,11 @@ header label.mobilemenu-label {
   transition: left 0.5s linear;
 }
 .mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back {
-  background: transparent url(../../img/nav-back-arrow.png) 3% 0.8em no-repeat;
+  background: transparent url(../../img/mobile-navback-arrow.png) 3% 0.8em no-repeat;
 }
 .mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back:focus,
 .mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back:hover {
-  background: transparent url(../../img/nav-back-arrow-hover.png) 3% 0.8em no-repeat;
+  background: transparent url(../../img/mobile-navback-arrow-hover.png) 3% 0.8em no-repeat;
 }
 .mobilemenu #main-nav .navigation li.has-submenu .mobilemenu-back a {
   padding-left: 40px;
