@@ -3538,7 +3538,7 @@ ul.navigation {
   html .navigation .drop-content ul ul li a.drop,
   html .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
   html .navigation .drop-content ul li:focus ul li:focus ul li a.drop2 {
-    background: url(../../../img/v02/nav-arrow.png) no-repeat 95% 0;
+    background: url(../../img/nav-arrow.png) no-repeat 95% 0;
   }
   html .navigation .drop-content ul li:hover a.drop,
   html .navigation .drop-content ul li:focus a.drop,
@@ -3549,7 +3549,7 @@ ul.navigation {
   html .navigation .drop-content ul ul li a.drop:focus,
   html .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
   html .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
-    background: #57b105 url(../../../img/v02/nav-arrow.png) no-repeat 95% -25px;
+    background: #57b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
   }
   html .navigation .button.primary {
     text-align: center;
@@ -3882,7 +3882,7 @@ ul.navigation {
 .sevensome .navigation .drop-content ul ul li a.drop,
 .sevensome .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li a.drop2 {
-  background: url(../../../img/v02/nav-arrow.png) no-repeat 95% 0;
+  background: url(../../img/nav-arrow.png) no-repeat 95% 0;
 }
 .sevensome .navigation .drop-content ul li:hover a.drop,
 .sevensome .navigation .drop-content ul li:focus a.drop,
@@ -3893,7 +3893,7 @@ ul.navigation {
 .sevensome .navigation .drop-content ul ul li a.drop:focus,
 .sevensome .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
-  background: #57b105 url(../../../img/v02/nav-arrow.png) no-repeat 95% -25px;
+  background: #57b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
 }
 .sevensome .navigation .button.primary {
   text-align: center;
@@ -4227,7 +4227,7 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul ul li a.drop,
 .lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li a.drop2 {
-  background: url(../../../img/v02/nav-arrow.png) no-repeat 95% 0;
+  background: url(../../img/nav-arrow.png) no-repeat 95% 0;
 }
 .lt-ie9 .navigation .drop-content ul li:hover a.drop,
 .lt-ie9 .navigation .drop-content ul li:focus a.drop,
@@ -4238,7 +4238,7 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul ul li a.drop:focus,
 .lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
-  background: #57b105 url(../../../img/v02/nav-arrow.png) no-repeat 95% -25px;
+  background: #57b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
 }
 .lt-ie9 .navigation .button.primary {
   text-align: center;
