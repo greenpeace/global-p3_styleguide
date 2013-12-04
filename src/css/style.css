@@ -4706,7 +4706,7 @@ header label.mobilemenu-label {
   left: 0;
 }
 .mobilemenu #main-nav #nav.out-left {
-  left: -999px;
+  left: -500px;
 }
 .mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
 .mobilemenu #main-nav .navigation li.has-submenu ul.in-left,
@@ -4720,6 +4720,7 @@ header label.mobilemenu-label {
 }
 .mobilemenu #main-nav .navigation li.has-submenu ul.out-right {
   left: 2000px;
+  left: 1000px;
 }
 .mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
 .mobilemenu #main-nav .navigation li.has-submenu ul.in-left {
@@ -4729,7 +4730,7 @@ header label.mobilemenu-label {
 }
 .mobilemenu #main-nav .navigation li.has-submenu ul.in-right,
 .mobilemenu #main-nav .navigation li.has-submenu ul.in-left {
-  left: 999px;
+  left: 500px;
 }
 /*
  * media queries
