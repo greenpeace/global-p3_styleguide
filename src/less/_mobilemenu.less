@@ -45,15 +45,14 @@ header label.mobilemenu-label {
 #mobilemenu-toggle ~ #root-container {
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
-    overflow-x: visible;
 }
 #mobilemenu-toggle:checked ~ #root-container {
     -webkit-transform: translate3d(-320px,0,0);
     transform: translate3d(-320px,0,0);
     overflow-x: visible;
     #main-nav {
-        -webkit-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(320px,0,0);
+        transform: translate3d(320px,0,0);
     }
 }
 
@@ -65,7 +64,7 @@ header label.mobilemenu-label {
 }
 #main-nav {
     display: block;
-    right: -320px;
+    right: 0;
     position: absolute;
     -webkit-transition: -webkit-transform 0.2s linear;
     transition: transform 0.2s linear;
@@ -123,7 +122,8 @@ header label.mobilemenu-label {
                 top: 0;
                 margin: 0;
                 width: 100%;
-                transition: left 0.5s linear;
+                -webkit-transition: -webkit-transform 0.2s linear;
+                transition: transform 0.2s linear;
             }
             .mobilemenu-back {
                 background: transparent url(../../img/mobile-nav-back-arrow.png) 3% 0.8em no-repeat;
@@ -143,12 +143,19 @@ header label.mobilemenu-label {
             width: 94%;
             margin-top: 0;
             padding-top: 0;
-            transition: left 0.5s linear;
-            left: 0;
+            -webkit-transition: -webkit-transform 0.2s linear;
+            transition: transform 0.2s linear;
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
         }
 
         #nav.out-left {
-            left: -500px;
+            // left: -500px;
+            -webkit-transform: translate3d(-350px,0,0);
+            transform: translate3d(-350px,0,0);
+            // to set translate3d anchor without padding
+            padding: 0;
+            width: 100%;
         }
         .navigation li.has-submenu {
             ul.in-right,
@@ -156,26 +163,34 @@ header label.mobilemenu-label {
             ul.out-right,
             ul.out-left {
                 position: absolute;
-                display: block;
             }
             ul.out-left {
-                left: 0;
+                display: block;
+                -webkit-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+                // to set translate3d anchor without padding
+                padding: 0;
+                width: 100%;
             }
             ul.out-right {
-                left: 1000px;
+                -webkit-transform: translate3d(350px,0,0);
+                transform: translate3d(350px,0,0);
+            }
+            ul.out-right {
+                display: none;
             }
             ul.in-right,
             ul.in-left {
+                display: block;
                 width: 94%;
                 padding: 0 3%;
                 margin: 0;
-                // ul {
-                    //   display: none;
-                // }
+                -webkit-transform: translate3d(350px,0,0);
+                transform: translate3d(350px,0,0);
             }
-            ul.in-right,
-            ul.in-left {
-                left: 500px;
+            ul.in-right {
+                -webkit-transform: translate3d(350px,0,0);
+                transform: translate3d(350px,0,0);
             }
         }
     }
@@ -188,24 +203,26 @@ header label.mobilemenu-label {
             display: none;
         }
     }
-    .mobilemenu #main-nav {
-        max-width: 250px;
-        right: -250px;
-    }
     #mobilemenu-toggle:checked ~ #root-container {
         -webkit-transform: translate3d(-250px,0,0);
         transform: translate3d(-250px,0,0);
+        #main-nav {
+          max-width: 250px;
+          -webkit-transform: translate3d(250px,0,0);
+          transform: translate3d(250px,0,0);
+        }
     }
 }
 // wider mobile menu with sidebar
 .mobilemenu_with_stripe_2_macro() {
-    .mobilemenu #main-nav {
-        max-width: 350px;
-        right: -350px;
-    }
     #mobilemenu-toggle:checked ~ #root-container {
         -webkit-transform: translate3d(-350px,0,0);
         transform: translate3d(-350px,0,0);
+        #main-nav {
+          max-width: 350px;
+          -webkit-transform: translate3d(350px,0,0);
+          transform: translate3d(350px,0,0);
+        }
     }
 }
 .mobilemenu_sevensome_macro() {
