@@ -207,9 +207,9 @@ header label.mobilemenu-label {
         -webkit-transform: translate3d(-250px,0,0);
         transform: translate3d(-250px,0,0);
         #main-nav {
-          max-width: 250px;
-          -webkit-transform: translate3d(250px,0,0);
-          transform: translate3d(250px,0,0);
+            max-width: 250px;
+            -webkit-transform: translate3d(250px,0,0);
+            transform: translate3d(250px,0,0);
         }
     }
 }
@@ -219,9 +219,9 @@ header label.mobilemenu-label {
         -webkit-transform: translate3d(-350px,0,0);
         transform: translate3d(-350px,0,0);
         #main-nav {
-          max-width: 350px;
-          -webkit-transform: translate3d(350px,0,0);
-          transform: translate3d(350px,0,0);
+            max-width: 350px;
+            -webkit-transform: translate3d(350px,0,0);
+            transform: translate3d(350px,0,0);
         }
     }
 }
@@ -230,15 +230,18 @@ header label.mobilemenu-label {
     #mobilemenu-toggle {
         display: none;
     }
-    #main-nav {
-        #nav {
-            padding: 0;
-        }
-    }
     #mobilemenu-toggle:checked ~ #root-container {
         -webkit-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0);
         overflow-x: hidden;
+        #main-nav {
+            max-width: 100%;
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            #nav {
+                padding: 0;
+            }
+        }
     }
 }
 
