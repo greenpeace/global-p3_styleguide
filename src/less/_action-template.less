@@ -132,7 +132,7 @@ Social Login buttons
 }
 
 /*
-Recent Signers widget, hidden on mobile
+Recent Signers widget
 
 li       - One line, ellipsis if content doesn't fit
 .since   - Timestamp in gray text
@@ -140,6 +140,8 @@ li       - One line, ellipsis if content doesn't fit
 .flag    - Flag icon margin
 */
 #action-recent-signers {
+  clear: right;
+
   ul {
     padding: 0;
   }
@@ -200,14 +202,6 @@ input length to fit the screen
   }
 }
 
-/*
-hide stuffs on mobile
-*/
-#action-recent-signers {
-  display:none;
-}
-
-
 /* Tablets */
 
 // Mixin for everything that belongs in the tablet media query,
@@ -218,9 +212,6 @@ hide stuffs on mobile
     float:left;
     clear:both;
     width:100%;
-  }
-  #action-recent-signers {
-    display:block;
   }
   // east side
   #action-h2,

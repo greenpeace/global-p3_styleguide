@@ -896,13 +896,16 @@ Social Login buttons
   background: #fffdff url(../../img/sociallogin.png) center -22px no-repeat;
 }
 /*
-Recent Signers widget, hidden on mobile
+Recent Signers widget
 
 li       - One line, ellipsis if content doesn't fit
 .since   - Timestamp in gray text
 .country - Country name in grayutext
 .flag    - Flag icon margin
 */
+#action-recent-signers {
+  clear: right;
+}
 #action-recent-signers ul {
   padding: 0;
 }
@@ -955,21 +958,12 @@ input length to fit the screen
   width: 105%;
   font-size: 1.25em;
 }
-/*
-hide stuffs on mobile
-*/
-#action-recent-signers {
-  display: none;
-}
 /* Tablets */
 @media only screen and (min-width: 768px) {
   html #action-h1 {
     float: left;
     clear: both;
     width: 100%;
-  }
-  html #action-recent-signers {
-    display: block;
   }
   html #action-h2,
   html #action-ask,
@@ -1026,9 +1020,6 @@ hide stuffs on mobile
   float: left;
   clear: both;
   width: 100%;
-}
-.sevensome #action-recent-signers {
-  display: block;
 }
 .sevensome #action-h2,
 .sevensome #action-ask,
@@ -3552,6 +3543,7 @@ ul.navigation {
     background: #57b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
   }
   html .navigation .button.primary {
+    margin: .2em 0 0;
     text-align: center;
     color: #ffffff;
     text-shadow: 0 0 2px #9a9a9a;
@@ -3896,6 +3888,7 @@ ul.navigation {
   background: #57b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
 }
 .sevensome .navigation .button.primary {
+  margin: .2em 0 0;
   text-align: center;
   color: #ffffff;
   text-shadow: 0 0 2px #9a9a9a;
@@ -4241,6 +4234,7 @@ ul.navigation {
   background: #57b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
 }
 .lt-ie9 .navigation .button.primary {
+  margin: .2em 0 0;
   text-align: center;
   color: #ffffff;
   text-shadow: 0 0 2px #9a9a9a;
