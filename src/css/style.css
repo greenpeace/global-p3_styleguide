@@ -1378,11 +1378,6 @@ a.button.disabled:active {
   display: inline-block;
   /* in case there is a div wrapper */
 }
-.sevensome .header .button {
-  font-size: 12px;
-  padding: 3px 1px;
-  margin-top: 3px;
-}
 .lt-ie7 .sevensome a.donate {
   color: #ffffff;
   text-shadow: 0 0 2px #9a9a9a;
@@ -1393,6 +1388,18 @@ a.button.disabled:active {
   border: 1px solid #f06818;
   width: 6em;
   text-align: center;
+}
+.sevensome .header .button {
+  font-size: 12px;
+  padding: 3px 1px;
+  margin-top: 3px;
+}
+@media only screen and (min-width: 768px) {
+  .header .button {
+    font-size: 12px;
+    padding: 3px 1px;
+    margin-top: 3px;
+  }
 }
 .dropdown {
   position: absolute;
@@ -3221,6 +3228,9 @@ ul.navigation {
 }
 .navigation .button.primary:active,
 .navigation .button.primary:hover {
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  border-radius: 0.25em;
   color: #f99713;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -4773,6 +4783,9 @@ header label.mobilemenu-label {
   header label.mobilemenu-label,
   #mobilemenu-toggle {
     display: none;
+  }
+  #main-nav #nav {
+    padding: 0;
   }
   #mobilemenu-toggle:checked ~ #root-container {
     -webkit-transform: translate3d(0, 0, 0);

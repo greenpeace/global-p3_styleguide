@@ -91,11 +91,15 @@ a.button {
     display: inline-block; /* in case there is a div wrapper */
 }
 
-.sevensome .header .button {
-    font-size:12px;
-    padding:3px 1px;
-    margin-top:3px;
+// Size and position adjustments for button in the main--nav on desktop
+.button_sevensome_macro() {
+    .header .button {
+        font-size:12px;
+        padding:3px 1px;
+        margin-top:3px;
+    }
 }
+
 .lt-ie7 .sevensome a.donate {
     color:@white;
     text-shadow: 0 0 2px #9a9a9a;
@@ -104,4 +108,12 @@ a.button {
     border:1px solid #f06818;
     width: 6em;
     text-align: center;
+} 
+
+.sevensome {
+    .button_sevensome_macro;
+}
+
+@media only screen and (min-width : 768px) {
+    .button_sevensome_macro;
 }
