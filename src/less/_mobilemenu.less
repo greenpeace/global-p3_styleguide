@@ -43,17 +43,17 @@ header label.mobilemenu-label {
     background-color: #fff;
 }
 #mobilemenu-toggle ~ #root-container {
-    -webkit-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
 }
 #mobilemenu-toggle:checked ~ #root-container {
-    -webkit-transform: translate3d(-320px,0,0);
-    transform: translate3d(-320px,0,0);
+    -webkit-transform: translate(-320px,0);
+    transform: translate(-320px,0);
     overflow-x: visible;
     #main-nav {
         display: block;
-        -webkit-transform: translate3d(320px,0,0);
-        transform: translate3d(320px,0,0);
+        -webkit-transform: translate(320px,0);
+        transform: translate(320px,0);
     }
 }
 
@@ -153,15 +153,15 @@ header label.mobilemenu-label {
             padding-top: 0;
             -webkit-transition: -webkit-transform 0.2s linear;
             transition: transform 0.2s linear;
-            -webkit-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
+            -webkit-transform: translate(0,0);
+            transform: translate(0,0);
         }
 
         #nav.out-left {
             // left: -500px;
-            -webkit-transform: translate3d(-350px,0,0);
-            transform: translate3d(-350px,0,0);
-            // to set translate3d anchor without padding
+            -webkit-transform: translate(-350px,0);
+            transform: translate(-350px,0);
+            // to set translate anchor without padding
             padding: 0;
             width: 100%;
         }
@@ -174,15 +174,15 @@ header label.mobilemenu-label {
             }
             ul.out-left {
                 display: block;
-                -webkit-transform: translate3d(0,0,0);
-                transform: translate3d(0,0,0);
-                // to set translate3d anchor without padding
+                -webkit-transform: translate(0,0);
+                transform: translate(0,0);
+                // to set translate anchor without padding
                 padding: 0;
                 width: 100%;
             }
             ul.out-right {
-                -webkit-transform: translate3d(350px,0,0);
-                transform: translate3d(350px,0,0);
+                -webkit-transform: translate(350px,0);
+                transform: translate(350px,0);
             }
             ul.out-right {
                 display: none;
@@ -193,12 +193,12 @@ header label.mobilemenu-label {
                 width: 94%;
                 padding: 0 3%;
                 margin: 0;
-                -webkit-transform: translate3d(350px,0,0);
-                transform: translate3d(350px,0,0);
+                -webkit-transform: translate(350px,0);
+                transform: translate(350px,0);
             }
             ul.in-right {
-                -webkit-transform: translate3d(350px,0,0);
-                transform: translate3d(350px,0,0);
+                -webkit-transform: translate(350px,0);
+                transform: translate(350px,0);
             }
         }
     }
@@ -212,24 +212,24 @@ header label.mobilemenu-label {
         }
     }
     #mobilemenu-toggle:checked ~ #root-container {
-        -webkit-transform: translate3d(-250px,0,0);
-        transform: translate3d(-250px,0,0);
+        -webkit-transform: translate(-250px,0);
+        transform: translate(-250px,0);
         #main-nav {
             width: 250px;
-            -webkit-transform: translate3d(250px,0,0);
-            transform: translate3d(250px,0,0);
+            -webkit-transform: translate(250px,0);
+            transform: translate(250px,0);
         }
     }
 }
 // wider mobile menu with sidebar
 .mobilemenu_with_stripe_2_macro() {
     #mobilemenu-toggle:checked ~ #root-container {
-        -webkit-transform: translate3d(-350px,0,0);
-        transform: translate3d(-350px,0,0);
+        -webkit-transform: translate(-350px,0);
+        transform: translate(-350px,0);
         #main-nav {
             width: 350px;
-            -webkit-transform: translate3d(350px,0,0);
-            transform: translate3d(350px,0,0);
+            -webkit-transform: translate(350px,0);
+            transform: translate(350px,0);
         }
     }
 }
@@ -250,14 +250,14 @@ header label.mobilemenu-label {
     }
 
     #mobilemenu-toggle:checked ~ #root-container {
-        -webkit-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);
+        -webkit-transform: translate(0,0);
+        transform: translate(0,0);
         overflow-x: hidden;
         #main-nav {
             width: 100%;
             max-width: 100%;
-            -webkit-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
+            -webkit-transform: translate(0,0);
+            transform: translate(0,0);
             #nav {
                 padding: 0;
             }
