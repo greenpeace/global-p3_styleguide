@@ -27,7 +27,7 @@ header label.mobilemenu-label {
     // .visuallyhidden
 }
 
-.mobilemenu #main-nav {
+#main-nav {
     .mobilemenu-close {
         display: block;
     }
@@ -51,6 +51,7 @@ header label.mobilemenu-label {
     transform: translate3d(-320px,0,0);
     overflow-x: visible;
     #main-nav {
+        display: block;
         -webkit-transform: translate3d(320px,0,0);
         transform: translate3d(320px,0,0);
     }
@@ -62,15 +63,22 @@ header label.mobilemenu-label {
 .mobilemenu-clone {
     display: none;
 }
+
+.navigation {
+  ul {
+    display: none;
+  }
+}
+
 #main-nav {
-    display: block;
+    display: none;
     right: 0;
     position: absolute;
     -webkit-transition: -webkit-transform 0.2s linear;
     transition: transform 0.2s linear;
     padding: 0;
     width: 100%;
-    max-width: 320px;
+    // max-width: 320px;
 
     .search-form {
         margin: 0.8em 3% 0.4em;
@@ -198,7 +206,7 @@ header label.mobilemenu-label {
 
 // with a sidebar on the left
 .mobilemenu_with_stripe_macro() {
-    .mobilemenu #main-nav {
+    #main-nav {
         .mobilemenu-close {
             display: none;
         }
@@ -207,7 +215,7 @@ header label.mobilemenu-label {
         -webkit-transform: translate3d(-250px,0,0);
         transform: translate3d(-250px,0,0);
         #main-nav {
-            max-width: 250px;
+            width: 250px;
             -webkit-transform: translate3d(250px,0,0);
             transform: translate3d(250px,0,0);
         }
@@ -219,7 +227,7 @@ header label.mobilemenu-label {
         -webkit-transform: translate3d(-350px,0,0);
         transform: translate3d(-350px,0,0);
         #main-nav {
-            max-width: 350px;
+            width: 350px;
             -webkit-transform: translate3d(350px,0,0);
             transform: translate3d(350px,0,0);
         }
@@ -235,11 +243,18 @@ header label.mobilemenu-label {
         padding: 0;
       }
     }
+    .navigation {
+      ul {
+        display: block;
+      }
+    }
+
     #mobilemenu-toggle:checked ~ #root-container {
         -webkit-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0);
         overflow-x: hidden;
         #main-nav {
+            width: 100%;
             max-width: 100%;
             -webkit-transform: translate3d(0,0,0);
             transform: translate3d(0,0,0);
