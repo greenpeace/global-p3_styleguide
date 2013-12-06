@@ -7,17 +7,21 @@
   background:@steels-1;
   color:@white;
   font-size:0.875em;     /* 14px */
+  margin-bottom: 50px;
 /*  height:4.7857142857em; /* 67px */
 }
 .footer-small .copy-box {
-  padding: 2.1428571429em 0 0; /* 30px */
+  padding: 2.1428571429em 0; /* 30px */
 }
 .footer-small .copy-box a {
   color: @white;
 }
 .footer-small .logo-box {
-  float: left;
-  margin: 1px 0.5em 2em 0;
+  position: absolute;
+  float: none;
+  margin: 0 auto;
+  bottom: 15px;
+  color: @steels-1;
 }
 .footer-small .logo-box span { 
   line-height: 1em;
@@ -43,6 +47,10 @@
   border-top: 1px dotted #5F6169;
 }
 
+.footer-small .legal-menu li:first-child a {
+  border-top: none;
+}
+
 .footer-small .legal-menu li a,
 .footer-small .bottom-menu li a {
   display: block;
@@ -52,53 +60,68 @@
 // creating a mixin for everything that belongs in the media query,
 // so it can be used for the media query fallback as well
 .footer_tablet() {
-  .footer-small {
-  background:@greens-6;
-  color:@white;
-  font-size:0.875em;     /* 14px */
-/*  height:4.7857142857em; /* 67px */
-}
+    .footer-small {
+        background:@greens-6;
+        color:@white;
+        font-size:0.875em;     /* 14px */
+        /*  height:4.7857142857em; /* 67px */
+        margin-bottom: 0;
 
-.footer-small .logo-box .logo {
-  background: url(../../img/image-map.png) 0 -25px no-repeat;
-  width: 89px;
-  height: 15px;
-  margin: -2px .5em 0 .2857142857em;
-  text-indent: -999px;
-  display:inline-block;
-  float: left;
-  overflow: hidden;
-}
-  .footer-small .legal-menu {
-    float: left;
-  }
-  
-  .footer-small .bottom-menu {
-    float: right;
-  }
-  
-  .footer-small ul.legal-menu, .footer-small ul.bottom-menu {
-    margin-top: -1em;
-    clear: none;
-  }
-   
-  .footer-small .legal-menu li,
-  .footer-small .bottom-menu li {
-    float: left;
-    padding: 0 0 0 0.1428571429em;
-  } 
-  
-  .footer-small .legal-menu li a,
-  .footer-small .bottom-menu li a {
-    padding: 1em 0.5em;
-    border: 0px solid transparent;
-    text-align: left;
-  }   
+        .copy-box {
+            padding: 2.1428571429em 0 0; /* 30px */
+        }
 
-  .footer .footer-holder {
-    width:960px;
-    font-size:12px;
-  }
+        .logo-box {
+
+            float: left;
+            margin: 1px 0.5em 2em 0;
+            position: static;
+            bottom: auto;
+            color: @white;
+
+            .logo {
+                background: url(../../img/image-map.png) 0 -25px no-repeat;
+                width: 89px;
+                height: 15px;
+                margin: -2px .5em 0 .2857142857em;
+                text-indent: -999px;
+                display:inline-block;
+                float: left;
+                overflow: hidden;
+            }
+        }
+        .legal-menu {
+            float: left;
+        }
+  
+        .bottom-menu {
+            float: right;
+        }
+        
+        ul.legal-menu,
+        ul.bottom-menu {
+            margin-top: -1em;
+            clear: none;
+        }
+        
+        .legal-menu li,
+        .bottom-menu li {
+            float: left;
+            padding: 0 0 0 0.1428571429em;
+        } 
+        
+        .legal-menu li a,
+        .bottom-menu li a {
+            padding: 1em 0.5em;
+            border: 0px solid transparent;
+            text-align: left;
+        }
+    }   
+
+   .footer .footer-holder {
+       width:960px;
+       font-size:12px;
+   }
 }
 
 @media only screen and (min-width : 480px) {
