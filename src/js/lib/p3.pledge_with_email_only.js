@@ -5,7 +5,7 @@
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.3
+ * @version         0.3.4
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -244,14 +244,16 @@
                         // Haven't checked this email, so prevent form submission
                         e.preventDefault();
 
-                        // listen for successful API check
-                        $(window).on('submit_' + query.parameters.user, function () {
-                            // submit the form
-                            $form.submit();
-                        });
+                        if ($emailField.valid()) {
+                            // listen for successful API check
+                            $(window).on('submit_' + query.parameters.user, function () {
+                                // submit the form
+                                $form.submit();
+                            });
 
-                        // test the API for this email
-                        checkEmail(query.parameters.user);
+                            // test the API for this email
+                            checkEmail(query.parameters.user);
+                        }
                     }
                 } else {
                     // Skip the theatrics if there's no email address
