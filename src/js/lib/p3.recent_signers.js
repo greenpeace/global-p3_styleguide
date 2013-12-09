@@ -1,11 +1,12 @@
 /**!
  * Animated Recent Signers for Greenpeace Action Template v0.3
  * INCOMPLETE
+ * @name            p3.recent_signers.js
  * @fileOverview    Displays the most recent pledge signers, queued and
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.0.2
+ * @version         0.1.0
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -43,7 +44,9 @@
              * set to 0 to disable updates */
             maxRefreshes: 30,
             /* selector for the country dropdown to map country codes to names */
-            countrySelector: '#UserCountry'
+            countrySelector: '#UserCountry',
+            /* stop processing if there is an error communicating with the server */
+            abortOnError: false
         };
 
     // Custom selector to match country codes to country names
@@ -64,6 +67,7 @@
             users = [],
             timer = false,
             refreshNum = 0,
+            prefix = '$.p3.recent_signers :: ',
             pledgeQueue = {
                 running: false,
                 delay: config.userQueueInterval,
@@ -103,16 +107,37 @@
                     return false;
                 }
 
-                var params = $.extend(true, request.parameters, config.params);
+                var params = $.extend(true, request.parameters, config.params),
+                    response;
 
                 $.getJSON(request.url, params, function(json) {
-                    parsePledgeData(json);
+                    response = json;
                 }).fail(function() {
-                    throw new Error('$.p3.recent_signers :: Failed to load JSON from "' + request.url + '"');
+                    var message = prefix + 'Failed to load JSON from "' + request.url + '"';
+
+                    if (config.abortOnError) {
+                        throw new Error(message);
+                    } else {
+                        console.warn(message);
+                    }
+                }).complete(function () {
+                    parsePledgeData(response);
                 });
+
             },
             parsePledgeData = function(json) {
+                // Load from the parameter if set,
+                // else load from the data stored in an element if eventDriven
                 var jsonData = (undef === json) ? $(config.dataElement).data(config.dataNamespace) : json;
+
+                if (!jsonData) {
+                    if (config.abortOnError) {
+                        throw new Error(prefix + 'JSON data invalid');
+                    } else {
+                        return;
+                    }
+                }
+
 
                 // Add fetch first, since array is popped not shifted
                 if (refreshNum++ < config.maxRefreshes) {
@@ -212,6 +237,9 @@
                 'js/vendor/json.min.js'
             ],
             complete: function() {
+                // Apply human readable string to existing timestamps
+                updateTimeStamps();
+
                 if (config.eventDriven) {
                     // Event driven fetch and processing means we can decouple data
                     // from this plugin, allowing us to reuse the data without
