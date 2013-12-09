@@ -147,7 +147,6 @@
 
                 // Hide the summary element when the form is validated again
                 $(':input[type=submit]',$form).on('click', function () {
-                    console.log('yep');
                     $summaryElement.hide().html('');
                 });
 
