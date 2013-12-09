@@ -5,7 +5,7 @@
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.4
+ * @version         0.3.5
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -43,6 +43,7 @@
         disableOnError:         false,
         /* GET variables to be added to both the signer check and form validation requests */
         params:                 {},
+        showSummary:            true,
         messageElement:         '<div class="message"></div>'
     };
 
@@ -64,6 +65,7 @@
         // Keep track of emails we've tested against the signer check endpoint
         checkedUserEmails = [],
         request = $.p3.request(config.signerCheckURL),
+        prefix = '$.p3.pledge_with_email_only :: ',
         query = {
             url: request.url,
             parameters: $.extend(true, request.parameters, config.params)
@@ -95,7 +97,7 @@
          */
         setExpiryDate = function() {
             if (query.parameters.expire === undef) {
-                console.warn('$.p3.pledge_with_email_only :: No expiry date set');
+                console.warn(prefix + 'No expiry date set');
             }
         },
         /**
@@ -120,7 +122,7 @@
 
                 if (response.status === 'success') {
                     // User can sign using email only
-                    console.log('$.p3.pledge_with_email_only :: signercheck API response success');
+                    console.log(prefix + 'signercheck API response success');
 
                     // Hide and disable unnecessary fields, in case they were
                     // previously displayed for a different email
@@ -130,6 +132,7 @@
                     submitForm(hash);
                 } else {
                     // This user cannot sign with email only
+
                     // Error handling
                     $.each(response.errors, function (i, error) {
                         switch (error.code) {
@@ -138,11 +141,11 @@
                         case 4:
                         case 5:
                             // Errors 1 through 5 indicate an invalid page
-                            throw new Error('$.p3.pledge_with_email_only :: Invalid page: '+ query.parameters.page);
+                            throw new Error(prefix + 'Invalid page: '+ query.parameters.page);
                             // Errors 6 through 12 are not relevant to this operation
                         case 13:
                             // This user has already signed this pledge
-                            console.log('$.p3.pledge_with_email_only :: User has already signed this pledge');
+                            console.log(prefix + 'User has already signed this pledge');
                             var $emailContainer = $emailField.parents('.email:first'),
                             $message = $('.message', $emailContainer);
 
@@ -156,12 +159,12 @@
                             break;
                         case 15:
                             // User does not exist
-                            console.log('$.p3.pledge_with_email_only :: New user, show all fields');
+                            console.log(prefix + 'New user, show all fields');
                             showAllFormFields();
                             break;
                         case 16:
                             // User exists, but is missing required fields
-                            console.warn('$.p3.pledge_with_email_only :: User exists, but is missing fields');
+                            console.warn(prefix + 'User exists, but is missing fields');
                             showMissingFields(response.user);
                             break;
                         default:
@@ -172,7 +175,7 @@
 
             }).fail(function() {
                 if (!config.disableOnError) {
-                    console.warn('$.p3.pledge_with_email_only :: Failed to load JSON, all form inputs re-enabled');
+                    console.warn(prefix + 'Failed to load JSON, all form inputs re-enabled');
                     showAllFormFields();
                     $submit.removeProp('disabled').removeClass('disabled');
                 } else {
@@ -180,6 +183,7 @@
                 }
             });
         },
+        /* Executes the email-specific form submission event */
         submitForm = function (hash) {
 //            console.log('Submitting form with hash ' + hash);
             $(window).trigger('submit_' + hash);
@@ -188,7 +192,7 @@
          * @param   {obj} JSON response.user property
          */
         showMissingFields = function(fields) {
-            console.log('$.p3.pledge_with_email_only :: showMissingFields');
+            console.log(prefix + 'showMissingFields');
             $.each(fields, function(label) {
                 if (fields[label] === false) {
                     var $field = $('div:classNoCase("' + label + '")', $form),
@@ -201,18 +205,22 @@
                         // Display the field
                         $field.show(config.animationDuration);
                     } else {
-                        console.warn('$.p3.pledge_with_email_only :: ' + label + ' not found');
+                        console.warn(prefix + '' + label + ' not found');
                     }
                 }
 
             });
         },
+        /* Hides all form fields except email,
+         * also resets invalid state */
         hideFormFields = function () {
-            $(config.registrationFields + ' > :not(' + config.exceptionFields + ', #action-submit-full)').hide().find(':input').prop('disabled', 'disabled');
+            $(config.registrationFields + ' > :not(' + config.exceptionFields + ', #action-submit-full)').hide().find(':input').removeClass('error').prop('disabled', 'disabled');
         },
+        /* Shows all form fields */
         showAllFormFields = function () {
             $(config.registrationFields + ' > :not(' + config.exceptionFields + ', #action-submit-full)').show(config.animationDuration).find(':input').removeProp('disabled');
         },
+        /* Main application chunk, executed once Modernizr is satisfied */
         init = function() {
             // Hide unwanted form elements
             hideFormFields();
@@ -220,13 +228,20 @@
             setPageIdentifier();
             setExpiryDate();
 
-            // Intercept form submission by the enter key
-            $(':input', $form).keypress(function (e) {
+            // Intercept form submission on regular fields by the enter key
+            $(':input[type!=submit]', $form).keypress(function (e) {
                 if (e.which === 13) {
-                    e.preventDefault();
-                    $(this).blur();
-                    $submit.focus().click();
-                    return false;
+                    var $this = $(this);
+
+                    if ($this.is('textarea')) {
+                        return true;
+                    } else  {
+                        e.preventDefault();
+                        $(this).blur();
+                        $submit.focus().click();
+                        return false;
+                    }
+
                 }
             });
 
@@ -243,6 +258,8 @@
 //                        console.log('Haven\'t tested this email yet...');
                         // Haven't checked this email, so prevent form submission
                         e.preventDefault();
+
+                        hideFormFields();
 
                         if ($emailField.valid()) {
                             // listen for successful API check
@@ -268,13 +285,8 @@
                     jsonURL: config.validationRulesURL,
                     params: query.parameters,
                     debug:true,
-                    disableOnError: config.disableOnError,
-                    submitHandler: function (f) {
-                        if ($form.valid()) {
-                            f.submit();
-                            return true;
-                        }
-                    }
+                    showSummary: config.showSummary,
+                    disableOnError: config.disableOnError
                 });
             }
 
