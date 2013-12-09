@@ -447,12 +447,12 @@ var _p3 = $.p3 || {},
 ;// Source: src/js/lib/p3.pledge_counter.js
 /**!
  *
- *
+ * @name            p3.pledge_counter.js
  * @fileOverview    Greenpeace Pledge Signing Counter for Action Template v0.3
  *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, enabling the JSON
  *                  data to be reused with another plugin (eg Recent Signers)
- * @version         0.2
+ * @version         0.2.1
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -468,6 +468,7 @@ var _p3 = $.p3 || {},
 var _p3 = $.p3 || {},
     defaults = {
         meterElement:       '.completed',               /* Selector for the bar to animated */
+        meterWrapper:       '#action-counter-graphical',/* Selector for the bar wrap element */
         textElement:        '#action-counter-textual',  /* Selector for the text to update, eg 100 have joined so far. The target is 200 */
         fetchFrequency:     30000,                      /* time to wait to fetch next value from server (in milliseconds) */
         updateSpeed:        25,                         /* this is the value update speed (in milliseconds). Change this value to make animation faster or slower */
@@ -495,6 +496,7 @@ var _p3 = $.p3 || {},
             target: 0
         },
         request = $.p3.request(config.jsonURL),
+        prefix = '$.p3.pledge_counter :: ',
         updateProgress = function () {
             if (paused) {
                 // We're already updating, come back later
@@ -577,11 +579,10 @@ var _p3 = $.p3 || {},
             var jsonData = (undefined === json) ? $(config.dataElement).data(config.dataNamespace) : json;
 
             if (!jsonData || json.status === 'error' || !jsonData.pledges[0].action) {
-                console.log('ERROR');
                 $.each(json.errors, function (key, value) {
-                    console.log(key + ' => ' + value);
+                    console.log(prefix + key + ' => ' + value);
                 });
-                throw new Error('Errors in pledge data.');
+                throw new Error(prefix + 'Errors in pledge data.');
             }
 
             progress.count = jsonData.pledges[0].action.count;
@@ -589,9 +590,11 @@ var _p3 = $.p3 || {},
 
             if (isNaN(progress.count) || isNaN(progress.target)) {
                 // doesn't exist, or wrong format
-                console.log('ERROR: progress data not found, aborting.');
+                console.warn(prefix + 'Progress data not found or not valid, attempting to continue');
                 return false;
             }
+
+            $(config.meterWrapper).show();
 
             // Display results
             updateProgress();
@@ -601,7 +604,7 @@ var _p3 = $.p3 || {},
             $.getJSON(request.url, params, function(json) {
                 parsePledgeData(json);
             }).error( function () {
-                throw new Error('$.p3.pledge_counter :: Failed to load JSON from "' + request.url + '"');
+                throw new Error(prefix + 'Failed to load JSON from "' + request.url + '"');
             });
         };
 
@@ -654,7 +657,7 @@ var _p3 = $.p3 || {},
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.3
+ * @version         0.3.6
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -690,6 +693,7 @@ var _p3 = $.p3 || {},
         disableOnError:         false,
         /* GET variables to be added to both the signer check and form validation requests */
         params:                 {},
+        showSummary:            true,
         messageElement:         '<div class="message"></div>'
     };
 
@@ -711,6 +715,7 @@ var _p3 = $.p3 || {},
         // Keep track of emails we've tested against the signer check endpoint
         checkedUserEmails = [],
         request = $.p3.request(config.signerCheckURL),
+        prefix = '$.p3.pledge_with_email_only :: ',
         query = {
             url: request.url,
             parameters: $.extend(true, request.parameters, config.params)
@@ -742,7 +747,7 @@ var _p3 = $.p3 || {},
          */
         setExpiryDate = function() {
             if (query.parameters.expire === undef) {
-                console.warn('$.p3.pledge_with_email_only :: No expiry date set');
+                console.warn(prefix + 'No expiry date set');
             }
         },
         /**
@@ -767,7 +772,7 @@ var _p3 = $.p3 || {},
 
                 if (response.status === 'success') {
                     // User can sign using email only
-                    console.log('$.p3.pledge_with_email_only :: signercheck API response success');
+                    console.log(prefix + 'signercheck API response success');
 
                     // Hide and disable unnecessary fields, in case they were
                     // previously displayed for a different email
@@ -777,6 +782,7 @@ var _p3 = $.p3 || {},
                     submitForm(hash);
                 } else {
                     // This user cannot sign with email only
+
                     // Error handling
                     $.each(response.errors, function (i, error) {
                         switch (error.code) {
@@ -785,11 +791,11 @@ var _p3 = $.p3 || {},
                         case 4:
                         case 5:
                             // Errors 1 through 5 indicate an invalid page
-                            throw new Error('$.p3.pledge_with_email_only :: Invalid page: '+ query.parameters.page);
+                            throw new Error(prefix + 'Invalid page: '+ query.parameters.page);
                             // Errors 6 through 12 are not relevant to this operation
                         case 13:
                             // This user has already signed this pledge
-                            console.log('$.p3.pledge_with_email_only :: User has already signed this pledge');
+                            console.log(prefix + 'User has already signed this pledge');
                             var $emailContainer = $emailField.parents('.email:first'),
                             $message = $('.message', $emailContainer);
 
@@ -803,12 +809,14 @@ var _p3 = $.p3 || {},
                             break;
                         case 15:
                             // User does not exist
-                            console.log('$.p3.pledge_with_email_only :: New user, show all fields');
+                            console.log(prefix + 'New user, show all fields');
+                            $('.first-time', $form).show(config.animationDuration);
                             showAllFormFields();
                             break;
                         case 16:
                             // User exists, but is missing required fields
-                            console.warn('$.p3.pledge_with_email_only :: User exists, but is missing fields');
+                            console.warn(prefix + 'User exists, but is missing fields');
+                            $('.first-time', $form).html('<p>Welcome back!<br/>We just need a little more information for this pledge</p>').show(config.animationDuration);
                             showMissingFields(response.user);
                             break;
                         default:
@@ -819,7 +827,7 @@ var _p3 = $.p3 || {},
 
             }).fail(function() {
                 if (!config.disableOnError) {
-                    console.warn('$.p3.pledge_with_email_only :: Failed to load JSON, all form inputs re-enabled');
+                    console.warn(prefix + 'Failed to load JSON, all form inputs re-enabled');
                     showAllFormFields();
                     $submit.removeProp('disabled').removeClass('disabled');
                 } else {
@@ -827,6 +835,7 @@ var _p3 = $.p3 || {},
                 }
             });
         },
+        /* Executes the email-specific form submission event */
         submitForm = function (hash) {
 //            console.log('Submitting form with hash ' + hash);
             $(window).trigger('submit_' + hash);
@@ -835,7 +844,7 @@ var _p3 = $.p3 || {},
          * @param   {obj} JSON response.user property
          */
         showMissingFields = function(fields) {
-            console.log('$.p3.pledge_with_email_only :: showMissingFields');
+            console.log(prefix + 'showMissingFields');
             $.each(fields, function(label) {
                 if (fields[label] === false) {
                     var $field = $('div:classNoCase("' + label + '")', $form),
@@ -848,18 +857,22 @@ var _p3 = $.p3 || {},
                         // Display the field
                         $field.show(config.animationDuration);
                     } else {
-                        console.warn('$.p3.pledge_with_email_only :: ' + label + ' not found');
+                        console.warn(prefix + '' + label + ' not found');
                     }
                 }
 
             });
         },
+        /* Hides all form fields except email,
+         * also resets invalid state */
         hideFormFields = function () {
-            $(config.registrationFields + ' > :not(' + config.exceptionFields + ', #action-submit-full)').hide().find(':input').prop('disabled', 'disabled');
+            $(config.registrationFields + ' > :not(' + config.exceptionFields + ', #action-submit-full)').hide().find(':input').removeClass('error').prop('disabled', 'disabled');
         },
+        /* Shows all form fields */
         showAllFormFields = function () {
             $(config.registrationFields + ' > :not(' + config.exceptionFields + ', #action-submit-full)').show(config.animationDuration).find(':input').removeProp('disabled');
         },
+        /* Main application chunk, executed once Modernizr is satisfied */
         init = function() {
             // Hide unwanted form elements
             hideFormFields();
@@ -867,13 +880,20 @@ var _p3 = $.p3 || {},
             setPageIdentifier();
             setExpiryDate();
 
-            // Intercept form submission by the enter key
-            $(':input', $form).keypress(function (e) {
+            // Intercept form submission on regular fields by the enter key
+            $(':input[type!=submit]', $form).keypress(function (e) {
                 if (e.which === 13) {
-                    e.preventDefault();
-                    $(this).blur();
-                    $submit.focus().click();
-                    return false;
+                    var $this = $(this);
+
+                    if ($this.is('textarea')) {
+                        return true;
+                    } else  {
+                        e.preventDefault();
+                        $(this).blur();
+                        $submit.focus().click();
+                        return false;
+                    }
+
                 }
             });
 
@@ -891,14 +911,20 @@ var _p3 = $.p3 || {},
                         // Haven't checked this email, so prevent form submission
                         e.preventDefault();
 
-                        // listen for successful API check
-                        $(window).on('submit_' + query.parameters.user, function () {
-                            // submit the form
-                            $form.submit();
-                        });
+                        hideFormFields();
 
-                        // test the API for this email
-                        checkEmail(query.parameters.user);
+                        if ($emailField.valid()) {
+                            // listen for successful API check
+                            $(window).on('submit_' + query.parameters.user, function () {
+                                // submit the form
+                                $form.submit();
+                            });
+
+                            // test the API for this email
+                            checkEmail(query.parameters.user);
+                        } else {
+                            $form.submit();
+                        }
                     }
                 } else {
                     // Skip the theatrics if there's no email address
@@ -913,13 +939,8 @@ var _p3 = $.p3 || {},
                     jsonURL: config.validationRulesURL,
                     params: query.parameters,
                     debug:true,
-                    disableOnError: config.disableOnError,
-                    submitHandler: function (f) {
-                        if ($form.valid()) {
-                            f.submit();
-                            return true;
-                        }
-                    }
+                    showSummary: config.showSummary,
+                    disableOnError: config.disableOnError
                 });
             }
 
@@ -941,17 +962,19 @@ var _p3 = $.p3 || {},
 ;// Source: src/js/lib/p3.recent_signers.js
 /**!
  * Animated Recent Signers for Greenpeace Action Template v0.3
- * INCOMPLETE
+ * @name            p3.recent_signers.js
  * @fileOverview    Displays the most recent pledge signers, queued and
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.0.2
+ * @version         0.1.1
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
  * @example         $.p3.recent_signers('#action-recent-signers'[, options]);
- * @todo            EVENT DRIVEN DATA UPDATES:  trigger fetches & parsing externally
+ * @todo            EVENT DRIVEN DATA UPDATES:
+ *                      trigger fetches & parsing externally
+ *                      to reuse data and minimise API requests per page
  *
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
@@ -963,6 +986,12 @@ var _p3 = $.p3 || {},
             jsonURL: 'https://www.greenpeace.org/api/p3/pledge/pledges.json',
             /* parameters to be added to the request url */
             params: {},
+            /* selects which element holds the time data attribute */
+            timeSelector: '.since',
+            /* selects which attribute contains timestamps */
+            timeDataAttr: 'data-since',
+            /* selector for the country dropdown to map country codes to names */
+            countrySelector: '#UserCountry',
             /* set to true to delay execution until externally triggered by event */
             eventDriven: false,
             /* trigger this event to fetch JSON data from the endpoint */
@@ -981,19 +1010,9 @@ var _p3 = $.p3 || {},
             /* number of times to check the server for new signers after the first
              * set to 0 to disable updates */
             maxRefreshes: 30,
-            /* selector for the country dropdown to map country codes to names */
-            countrySelector: '#UserCountry'
+            /* stop processing if there is an error */
+            abortOnError: false
         };
-
-    // Custom selector to match country codes to country names
-    $.expr[":"].valueNoCase = function(el, i, m) {
-        var search = m[3];
-        if (!search) {
-            return false;
-        }
-
-        return $(el).prop('value').toLowerCase() === search.toLowerCase();
-    };
 
     _p3.recent_signers = function(el, options) {
         var config = $.extend(true, defaults, options),
@@ -1003,6 +1022,7 @@ var _p3 = $.p3 || {},
             users = [],
             timer = false,
             refreshNum = 0,
+            prefix = '$.p3.recent_signers :: ',
             pledgeQueue = {
                 running: false,
                 delay: config.userQueueInterval,
@@ -1042,16 +1062,37 @@ var _p3 = $.p3 || {},
                     return false;
                 }
 
-                var params = $.extend(true, request.parameters, config.params);
+                var params = $.extend(true, request.parameters, config.params),
+                    response;
 
                 $.getJSON(request.url, params, function(json) {
-                    parsePledgeData(json);
+                    response = json;
                 }).fail(function() {
-                    throw new Error('$.p3.recent_signers :: Failed to load JSON from "' + request.url + '"');
+                    var message = prefix + 'Failed to load JSON from "' + request.url + '"';
+
+                    if (config.abortOnError) {
+                        throw new Error(message);
+                    } else {
+                        console.warn(message);
+                    }
+                }).complete(function () {
+                    parsePledgeData(response);
                 });
+
             },
             parsePledgeData = function(json) {
+                // Load from the parameter if set,
+                // else load from the data stored in an element if eventDriven
                 var jsonData = (undef === json) ? $(config.dataElement).data(config.dataNamespace) : json;
+
+                if (!jsonData) {
+                    if (config.abortOnError) {
+                        throw new Error(prefix + 'JSON data invalid');
+                    } else {
+                        return;
+                    }
+                }
+
 
                 // Add fetch first, since array is popped not shifted
                 if (refreshNum++ < config.maxRefreshes) {
@@ -1126,9 +1167,9 @@ var _p3 = $.p3 || {},
                 }
             },
             updateTimeStamps = function() {
-                $('.since', $ul).each(function() {
+                $(config.timeSelector, $ul).each(function() {
                     var $this = $(this);
-                    $this.text(getTimeString($this.attr('data-since')));
+                    $this.text(getTimeString($this.attr(config.timeDataAttr)));
                 });
             };
 
@@ -1151,6 +1192,9 @@ var _p3 = $.p3 || {},
                 'js/vendor/json.min.js'
             ],
             complete: function() {
+                // Apply human readable string to existing timestamps
+                updateTimeStamps();
+
                 if (config.eventDriven) {
                     // Event driven fetch and processing means we can decouple data
                     // from this plugin, allowing us to reuse the data without
@@ -1564,7 +1608,7 @@ var _p3 = $.p3 || {},
  *                  Validates form data against XRegExp rules, optionally
  *                  obtained via remote API
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.2.7
+ * @version         0.3.1
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
@@ -1610,24 +1654,28 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
         onfocusout: false,
         /* validate the form each time keyup is received when a field has focus */
         onkeyup: false,
-        // Not implemented
-        /* @todo Enable optional error summary area */
-        showSummary: false,
-        // Forbid form submission if there's an error receiving JSON or
-        // when in parsing
+        /* Show errors in a catch-all container instead of per-field */
+        showSummary: true,
+        /* Selector for the summary field */
+        summarySelector: '.errorSummary',
+        /* Error summary container */
+        summaryElement: '<div class="errorSummary message"></div>',
+        /* Forbid form submission if there's an error receiving JSON or
+         * when in parsing */
         disableOnError: false,
-        // Error element to use instead of jquery.validate default <label>
+        /* Error element to use instead of jquery.validate default <label> */
         errorElement: 'span',
-        // Overrides jquery.validate default positioning
+        /* Overrides jquery.validate default positioning */
         errorPlacement: function(error, element) {
             var $el = $(element),
             name = $el.prop('name').toUpperCase();
-        console.log($el.parents(':classNoCase(' + name + ')').attr('class'));
-            $el.parents(':classNoCase(' + name + ')').first().find('div.message').html(error);
+            $el.parents(':classNoCase(' + name + ')').find('div.message').html(error);
         },
-        // Query string parameters to include in validation request
+        /* Query string parameters to include in validation request */
         params: {},
-        // Message container appended to each form field container
+        /* Duration of animation effects, set to 0 to disable */
+        animationDuration: 250,
+        /* Message container appended to each form field container */
         messageElement: '<div class="message"></div>'
     };
 
@@ -1641,31 +1689,66 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
 
         var config = $.extend(true, defaults, options || {}),
         request = $.p3.request(config.jsonURL),
-        // Merge request GET variables from all configuration sources: json > parameters > defaults
         query = {
             url: request.url,
+            // Merge request GET variables from all configuration sources: json > parameters > defaults
             parameters: $.extend(true, request.parameters, config.params)
         },
         getVars = $.p3.request(w.location.href).parameters,
         $el = $(el),
         $form = $el.is('form') ? $el : $('form', el),
         messageDiv = config.messageElement,
+        prefix = '$.p3.validation.js :: ',
         enableForm = function () {
             $(':input', $form).removeProp('disabled').removeClass('disabled');
         },
         disableForm = function () {
             $(':input', $form).prop('disabled', 'disabled').addClass('disabled');
         },
-        /* the main action function, called after the getJSON completes */
+        /* the main action function, called after the API request completes */
         validate = function () {
+            // Store configuration for reference by validation plugin handlers
+//            $form.data('config',config);
+
             if (config.disableOnError) {
                 disableForm();
             }
 
             if (config.showSummary) {
-                console.warn('$.p3.validation.js :: showSummary not yet implemented');
-                // Add the summary element
-//                config.summaryElement = $('.errorSummary', el).length ? $('.errorSummary', el) : $(el).prepend('<div class="errorSummary"></div>');
+                // Add the summary element if it doesn't already exist
+                if (!$(config.summarySelector, $el).length) {
+                    $el.prepend(config.summaryElement);
+                }
+
+                var $summaryElement = $(config.summarySelector).first();
+
+                // Disable errorPlacement handler
+                config.errorPlacement = function () {};
+
+                // Configure validation error handler to display one message only
+                config.invalidHandler = function(e, validator) {
+                    var errors = validator.numberOfInvalids(),
+                        message;
+
+                        if (errors === 1) {
+                            message = 'Oops, there was a problem on 1 field.<br/>It has been highlighted below';
+                        } else {
+                            message = 'Oops, there was a problem on ' + errors + ' fields.<br/>They have been highlighted below';
+                        }
+
+                        setTimeout(function () {
+                            $summaryElement.html('<span class="error">' + message + '</span>');
+                            $summaryElement.show(config.animationDuration);
+                        },100);
+
+//                        $('body').animate({'scrollTop': $form.offset().offsetTop + 500 }, config.animationDuration);
+                };
+
+                // Hide the summary element when the form is validated again
+                $(':input[type=submit]',$form).on('click', function () {
+                    $summaryElement.hide().html('');
+                });
+
             }
 
             // Add any custom tests
@@ -1677,8 +1760,9 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
                         var reg = new XRegExp(regexp, 'i');
                         return this.optional(element) || reg.test(value);
                     });
-                } catch (err) {
-//                            console.log("Failed to add test '" + name + "' with regex '" + regexp + "'");
+                } catch (e) {
+                    console.warn(prefix + "Failed to add test '" + name + "' with regex '" + regexp + "'");
+                    console.warn(e);
                 }
             });
 
@@ -1694,7 +1778,7 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
                     }
                 } else {
                     if (!$this.is('[type=submit]')) {
-                        console.warn('$.p3.pledge_with_email_only :: "' + name + '" field parent not found');
+                        console.warn(prefix + '"' + name + '" field parent not found');
                     }
                 }
             });
@@ -1734,15 +1818,15 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
                         config = $.extend(true, config, data);
                     }).fail(function() {
                         // Failed to obtain JSON
-                        console.warn('$.p3.validation :: WARNING :: JSON failed to load from: ' + config.jsonURL);
+                        console.warn(prefix + 'JSON failed to load from: ' + config.jsonURL);
 
                         if (config.disableOnError) {
                             // Disable validation plugin if can't load JSON
                             disableForm();
-                            throw new Error('$.p3.validation :: Form input disabled');
+                            throw new Error(prefix + 'Form input disabled');
                         } else {
                             // Else try to continue with existing rules...
-                            console.warn('$.p3.validation :: Attempting to continuing regardless...');
+                            console.warn(prefix + 'Attempting to continuing regardless...');
                         }
                     }).complete( function () {
                         // Perform validation

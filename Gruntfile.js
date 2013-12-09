@@ -102,7 +102,8 @@ module.exports = function(grunt) {
             },
             lib: {
                 files: {
-                    'dist/js/p3.min.js': ['dist/js/p3.lib.js', 'src/js/action-template-main.js']
+                    'dist/js/p3.min.js': ['dist/js/p3.lib.js'],
+                    'dist/js/app.js': ['src/js/action-template-main.js']
                 }
             }
         },
