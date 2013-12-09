@@ -7,7 +7,7 @@
  *                  Validates form data against XRegExp rules, optionally
  *                  obtained via remote API
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.3.0
+ * @version         0.3.1
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
@@ -136,15 +136,19 @@
                         } else {
                             message = 'Oops, there was a problem on ' + errors + ' fields.<br/>They have been highlighted below';
                         }
-                        $summaryElement.html('<span class="error">' + message + '</span>');
-                        $summaryElement.show(config.animationDuration);
+
+                        setTimeout(function () {
+                            $summaryElement.html('<span class="error">' + message + '</span>');
+                            $summaryElement.show(config.animationDuration);
+                        },100);
 
 //                        $('body').animate({'scrollTop': $form.offset().offsetTop + 500 }, config.animationDuration);
                 };
 
                 // Hide the summary element when the form is validated again
                 $(':input[type=submit]',$form).on('click', function () {
-                    $summaryElement.hide();
+                    console.log('yep');
+                    $summaryElement.hide().html('');
                 });
 
             }
