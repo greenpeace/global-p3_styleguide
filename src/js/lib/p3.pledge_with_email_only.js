@@ -5,7 +5,7 @@
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.5
+ * @version         0.3.6
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -160,11 +160,13 @@
                         case 15:
                             // User does not exist
                             console.log(prefix + 'New user, show all fields');
+                            $('.first-time', $form).show(config.animationDuration);
                             showAllFormFields();
                             break;
                         case 16:
                             // User exists, but is missing required fields
                             console.warn(prefix + 'User exists, but is missing fields');
+                            $('.first-time', $form).html('<p>Welcome back!<br/>We just need a little more information for this pledge</p>').show(config.animationDuration);
                             showMissingFields(response.user);
                             break;
                         default:
@@ -270,6 +272,8 @@
 
                             // test the API for this email
                             checkEmail(query.parameters.user);
+                        } else {
+                            $form.submit();
                         }
                     }
                 } else {
