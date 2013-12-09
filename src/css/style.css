@@ -2697,11 +2697,17 @@ textarea {
     .info				- can be used for example messages prior validation
     .error			 - error messages used for validation issues
 */
+form .message {
+  position: relative;
+  padding: 0 0 0 0.8em;
+}
+form .tooltip {
+  padding: 0;
+}
 form .tooltip,
 form .message {
   font-size: .813em;
   /* 13px */
-  padding: 0;
   background-color: transparent;
   border: 0;
 }
@@ -2736,10 +2742,12 @@ form .info:before {
   color: #ffffff;
 }
 form .message .error:before {
+  position: absolute;
+  left: 0;
+  top: 0.1em;
   content: "!";
   background: #d40000;
   color: #ffffff;
-  margin-right: 0.5em;
 }
 form .message .error span,
 form .info span {
@@ -2758,6 +2766,9 @@ form select.error {
 }
 form .error:focus {
   border: 1px solid #d40000;
+}
+form .errorSummary {
+  margin-top: 1em;
 }
 /* if large screen display info as tooltips */
 @media only screen and (min-width: 1024px) {

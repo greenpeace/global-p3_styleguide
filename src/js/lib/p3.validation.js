@@ -7,7 +7,7 @@
  *                  Validates form data against XRegExp rules, optionally
  *                  obtained via remote API
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.2.7
+ * @version         0.3.1
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
@@ -55,24 +55,28 @@
         onfocusout: false,
         /* validate the form each time keyup is received when a field has focus */
         onkeyup: false,
-        // Not implemented
-        /* @todo Enable optional error summary area */
-        showSummary: false,
-        // Forbid form submission if there's an error receiving JSON or
-        // when in parsing
+        /* Show errors in a catch-all container instead of per-field */
+        showSummary: true,
+        /* Selector for the summary field */
+        summarySelector: '.errorSummary',
+        /* Error summary container */
+        summaryElement: '<div class="errorSummary message"></div>',
+        /* Forbid form submission if there's an error receiving JSON or
+         * when in parsing */
         disableOnError: false,
-        // Error element to use instead of jquery.validate default <label>
+        /* Error element to use instead of jquery.validate default <label> */
         errorElement: 'span',
-        // Overrides jquery.validate default positioning
+        /* Overrides jquery.validate default positioning */
         errorPlacement: function(error, element) {
             var $el = $(element),
             name = $el.prop('name').toUpperCase();
-        console.log($el.parents(':classNoCase(' + name + ')').attr('class'));
-            $el.parents(':classNoCase(' + name + ')').first().find('div.message').html(error);
+            $el.parents(':classNoCase(' + name + ')').find('div.message').html(error);
         },
-        // Query string parameters to include in validation request
+        /* Query string parameters to include in validation request */
         params: {},
-        // Message container appended to each form field container
+        /* Duration of animation effects, set to 0 to disable */
+        animationDuration: 250,
+        /* Message container appended to each form field container */
         messageElement: '<div class="message"></div>'
     };
 
@@ -86,31 +90,66 @@
 
         var config = $.extend(true, defaults, options || {}),
         request = $.p3.request(config.jsonURL),
-        // Merge request GET variables from all configuration sources: json > parameters > defaults
         query = {
             url: request.url,
+            // Merge request GET variables from all configuration sources: json > parameters > defaults
             parameters: $.extend(true, request.parameters, config.params)
         },
         getVars = $.p3.request(w.location.href).parameters,
         $el = $(el),
         $form = $el.is('form') ? $el : $('form', el),
         messageDiv = config.messageElement,
+        prefix = '$.p3.validation.js :: ',
         enableForm = function () {
             $(':input', $form).removeProp('disabled').removeClass('disabled');
         },
         disableForm = function () {
             $(':input', $form).prop('disabled', 'disabled').addClass('disabled');
         },
-        /* the main action function, called after the getJSON completes */
+        /* the main action function, called after the API request completes */
         validate = function () {
+            // Store configuration for reference by validation plugin handlers
+//            $form.data('config',config);
+
             if (config.disableOnError) {
                 disableForm();
             }
 
             if (config.showSummary) {
-                console.warn('$.p3.validation.js :: showSummary not yet implemented');
-                // Add the summary element
-//                config.summaryElement = $('.errorSummary', el).length ? $('.errorSummary', el) : $(el).prepend('<div class="errorSummary"></div>');
+                // Add the summary element if it doesn't already exist
+                if (!$(config.summarySelector, $el).length) {
+                    $el.prepend(config.summaryElement);
+                }
+
+                var $summaryElement = $(config.summarySelector).first();
+
+                // Disable errorPlacement handler
+                config.errorPlacement = function () {};
+
+                // Configure validation error handler to display one message only
+                config.invalidHandler = function(e, validator) {
+                    var errors = validator.numberOfInvalids(),
+                        message;
+
+                        if (errors === 1) {
+                            message = 'Oops, there was a problem on 1 field.<br/>It has been highlighted below';
+                        } else {
+                            message = 'Oops, there was a problem on ' + errors + ' fields.<br/>They have been highlighted below';
+                        }
+
+                        setTimeout(function () {
+                            $summaryElement.html('<span class="error">' + message + '</span>');
+                            $summaryElement.show(config.animationDuration);
+                        },100);
+
+//                        $('body').animate({'scrollTop': $form.offset().offsetTop + 500 }, config.animationDuration);
+                };
+
+                // Hide the summary element when the form is validated again
+                $(':input[type=submit]',$form).on('click', function () {
+                    $summaryElement.hide().html('');
+                });
+
             }
 
             // Add any custom tests
@@ -122,8 +161,9 @@
                         var reg = new XRegExp(regexp, 'i');
                         return this.optional(element) || reg.test(value);
                     });
-                } catch (err) {
-//                            console.log("Failed to add test '" + name + "' with regex '" + regexp + "'");
+                } catch (e) {
+                    console.warn(prefix + "Failed to add test '" + name + "' with regex '" + regexp + "'");
+                    console.warn(e);
                 }
             });
 
@@ -139,7 +179,7 @@
                     }
                 } else {
                     if (!$this.is('[type=submit]')) {
-                        console.warn('$.p3.pledge_with_email_only :: "' + name + '" field parent not found');
+                        console.warn(prefix + '"' + name + '" field parent not found');
                     }
                 }
             });
@@ -179,15 +219,15 @@
                         config = $.extend(true, config, data);
                     }).fail(function() {
                         // Failed to obtain JSON
-                        console.warn('$.p3.validation :: WARNING :: JSON failed to load from: ' + config.jsonURL);
+                        console.warn(prefix + 'JSON failed to load from: ' + config.jsonURL);
 
                         if (config.disableOnError) {
                             // Disable validation plugin if can't load JSON
                             disableForm();
-                            throw new Error('$.p3.validation :: Form input disabled');
+                            throw new Error(prefix + 'Form input disabled');
                         } else {
                             // Else try to continue with existing rules...
-                            console.warn('$.p3.validation :: Attempting to continuing regardless...');
+                            console.warn(prefix + 'Attempting to continuing regardless...');
                         }
                     }).complete( function () {
                         // Perform validation

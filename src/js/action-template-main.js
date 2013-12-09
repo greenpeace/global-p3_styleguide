@@ -89,7 +89,7 @@
 
         // Animate pledge counter
         $.p3.pledge_counter('#action-counter', {
-            jsonURL: pledgeURL,
+            jsonURL: pledgeTesting,
             params: parameters
         });
 
@@ -123,7 +123,7 @@
         });
 
         $.p3.recent_signers('#action-recent-signers', {
-            jsonURL: pledgeURL,
+            jsonURL: pledgeTesting,
             params: parameters
         });
 
@@ -132,7 +132,7 @@
 
         // provides submenu navigation for mobile menu
         $.p3.mobilemenu("#main-nav");
-        
+
         // pretty checkboxes and radios via Formstone picker
         $('form input[type=radio], form input[type=checkbox]:not(.mobilemenu-label)').picker();
 
