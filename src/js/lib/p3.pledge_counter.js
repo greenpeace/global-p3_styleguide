@@ -1,11 +1,11 @@
 /**!
  *
- *
+ * @name            p3.pledge_counter.js
  * @fileOverview    Greenpeace Pledge Signing Counter for Action Template v0.3
  *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, enabling the JSON
  *                  data to be reused with another plugin (eg Recent Signers)
- * @version         0.2
+ * @version         0.2.1
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
