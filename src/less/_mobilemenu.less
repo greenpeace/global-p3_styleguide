@@ -42,11 +42,11 @@ header label.mobilemenu-label {
     transition: transform 0.2s linear;
     background-color: #fff;
 }
-#mobilemenu-toggle ~ #root-container {
+#mobilemenu-toggle + #root-container {
     -webkit-transform: translate(0,0);
     transform: translate(0,0);
 }
-#mobilemenu-toggle:checked ~ #root-container {
+#mobilemenu-toggle:checked + #root-container {
     -webkit-transform: translate(-320px,0);
     transform: translate(-320px,0);
     overflow-x: visible;
@@ -211,7 +211,7 @@ header label.mobilemenu-label {
             display: none;
         }
     }
-    #mobilemenu-toggle:checked ~ #root-container {
+    #mobilemenu-toggle:checked + #root-container {
         -webkit-transform: translate(-250px,0);
         transform: translate(-250px,0);
         #main-nav {
@@ -223,7 +223,7 @@ header label.mobilemenu-label {
 }
 // wider mobile menu with sidebar
 .mobilemenu_with_stripe_2_macro() {
-    #mobilemenu-toggle:checked ~ #root-container {
+    #mobilemenu-toggle:checked + #root-container {
         -webkit-transform: translate(-350px,0);
         transform: translate(-350px,0);
         #main-nav {
@@ -249,7 +249,7 @@ header label.mobilemenu-label {
       }
     }
 
-    #mobilemenu-toggle:checked ~ #root-container {
+    #mobilemenu-toggle:checked + #root-container {
         -webkit-transform: translate(0,0);
         transform: translate(0,0);
         overflow-x: hidden;

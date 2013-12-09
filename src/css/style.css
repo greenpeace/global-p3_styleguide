@@ -2250,18 +2250,22 @@ a.button.disabled:active {
   color: #ffffff;
   font-size: 0.875em;
   /* 14px */
+  margin-bottom: 50px;
   /*  height:4.7857142857em; /* 67px */
 }
 .footer-small .copy-box {
-  padding: 2.1428571429em 0 0;
+  padding: 2.1428571429em 0;
   /* 30px */
 }
 .footer-small .copy-box a {
   color: #ffffff;
 }
 .footer-small .logo-box {
-  float: left;
-  margin: 1px 0.5em 2em 0;
+  position: absolute;
+  float: none;
+  margin: 0 auto;
+  bottom: 15px;
+  color: #282d38;
 }
 .footer-small .logo-box span {
   line-height: 1em;
@@ -2284,6 +2288,9 @@ a.button.disabled:active {
   text-align: center;
   border-top: 1px dotted #5F6169;
 }
+.footer-small .legal-menu li:first-child a {
+  border-top: none;
+}
 .footer-small .legal-menu li a,
 .footer-small .bottom-menu li a {
   display: block;
@@ -2296,6 +2303,18 @@ a.button.disabled:active {
     font-size: 0.875em;
     /* 14px */
     /*  height:4.7857142857em; /* 67px */
+    margin-bottom: 0;
+  }
+  html .footer-small .copy-box {
+    padding: 2.1428571429em 0 0;
+    /* 30px */
+  }
+  html .footer-small .logo-box {
+    float: left;
+    margin: 1px 0.5em 2em 0;
+    position: static;
+    bottom: auto;
+    color: #ffffff;
   }
   html .footer-small .logo-box .logo {
     background: url(../../img/image-map.png) 0 -25px no-repeat;
@@ -2341,6 +2360,18 @@ a.button.disabled:active {
   font-size: 0.875em;
   /* 14px */
   /*  height:4.7857142857em; /* 67px */
+  margin-bottom: 0;
+}
+.tablet .footer-small .copy-box {
+  padding: 2.1428571429em 0 0;
+  /* 30px */
+}
+.tablet .footer-small .logo-box {
+  float: left;
+  margin: 1px 0.5em 2em 0;
+  position: static;
+  bottom: auto;
+  color: #ffffff;
 }
 .tablet .footer-small .logo-box .logo {
   background: url(../../img/image-map.png) 0 -25px no-repeat;
@@ -4629,16 +4660,16 @@ header label.mobilemenu-label {
   transition: transform 0.2s linear;
   background-color: #fff;
 }
-#mobilemenu-toggle ~ #root-container {
+#mobilemenu-toggle + #root-container {
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
 }
-#mobilemenu-toggle:checked ~ #root-container {
+#mobilemenu-toggle:checked + #root-container {
   -webkit-transform: translate(-320px, 0);
   transform: translate(-320px, 0);
   overflow-x: visible;
 }
-#mobilemenu-toggle:checked ~ #root-container #main-nav {
+#mobilemenu-toggle:checked + #root-container #main-nav {
   display: block;
   -webkit-transform: translate(320px, 0);
   transform: translate(320px, 0);
@@ -4772,22 +4803,22 @@ header label.mobilemenu-label {
   #main-nav .mobilemenu-close {
     display: none;
   }
-  #mobilemenu-toggle:checked ~ #root-container {
+  #mobilemenu-toggle:checked + #root-container {
     -webkit-transform: translate(-250px, 0);
     transform: translate(-250px, 0);
   }
-  #mobilemenu-toggle:checked ~ #root-container #main-nav {
+  #mobilemenu-toggle:checked + #root-container #main-nav {
     width: 250px;
     -webkit-transform: translate(250px, 0);
     transform: translate(250px, 0);
   }
 }
 @media only screen and (min-width: 410px) {
-  #mobilemenu-toggle:checked ~ #root-container {
+  #mobilemenu-toggle:checked + #root-container {
     -webkit-transform: translate(-350px, 0);
     transform: translate(-350px, 0);
   }
-  #mobilemenu-toggle:checked ~ #root-container #main-nav {
+  #mobilemenu-toggle:checked + #root-container #main-nav {
     width: 350px;
     -webkit-transform: translate(350px, 0);
     transform: translate(350px, 0);
@@ -4804,18 +4835,18 @@ header label.mobilemenu-label {
   .navigation ul {
     display: block;
   }
-  #mobilemenu-toggle:checked ~ #root-container {
+  #mobilemenu-toggle:checked + #root-container {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
     overflow-x: hidden;
   }
-  #mobilemenu-toggle:checked ~ #root-container #main-nav {
+  #mobilemenu-toggle:checked + #root-container #main-nav {
     width: 100%;
     max-width: 100%;
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
   }
-  #mobilemenu-toggle:checked ~ #root-container #main-nav #nav {
+  #mobilemenu-toggle:checked + #root-container #main-nav #nav {
     padding: 0;
   }
 }
