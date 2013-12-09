@@ -1,17 +1,18 @@
 /**!
  * Animated Recent Signers for Greenpeace Action Template v0.3
- * INCOMPLETE
  * @name            p3.recent_signers.js
  * @fileOverview    Displays the most recent pledge signers, queued and
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.1.0
+ * @version         0.1.1
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
  * @example         $.p3.recent_signers('#action-recent-signers'[, options]);
- * @todo            EVENT DRIVEN DATA UPDATES:  trigger fetches & parsing externally
+ * @todo            EVENT DRIVEN DATA UPDATES:
+ *                      trigger fetches & parsing externally
+ *                      to reuse data and minimise API requests per page
  *
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
@@ -25,6 +26,12 @@
             jsonURL: 'https://www.greenpeace.org/api/p3/pledge/pledges.json',
             /* parameters to be added to the request url */
             params: {},
+            /* selects which element holds the time data attribute */
+            timeSelector: '.since',
+            /* selects which attribute contains timestamps */
+            timeDataAttr: 'data-since',
+            /* selector for the country dropdown to map country codes to names */
+            countrySelector: '#UserCountry',
             /* set to true to delay execution until externally triggered by event */
             eventDriven: false,
             /* trigger this event to fetch JSON data from the endpoint */
@@ -43,21 +50,9 @@
             /* number of times to check the server for new signers after the first
              * set to 0 to disable updates */
             maxRefreshes: 30,
-            /* selector for the country dropdown to map country codes to names */
-            countrySelector: '#UserCountry',
-            /* stop processing if there is an error communicating with the server */
+            /* stop processing if there is an error */
             abortOnError: false
         };
-
-    // Custom selector to match country codes to country names
-    $.expr[":"].valueNoCase = function(el, i, m) {
-        var search = m[3];
-        if (!search) {
-            return false;
-        }
-
-        return $(el).prop('value').toLowerCase() === search.toLowerCase();
-    };
 
     _p3.recent_signers = function(el, options) {
         var config = $.extend(true, defaults, options),
@@ -212,9 +207,9 @@
                 }
             },
             updateTimeStamps = function() {
-                $('.since', $ul).each(function() {
+                $(config.timeSelector, $ul).each(function() {
                     var $this = $(this);
-                    $this.text(getTimeString($this.attr('data-since')));
+                    $this.text(getTimeString($this.attr(config.timeDataAttr)));
                 });
             };
 
