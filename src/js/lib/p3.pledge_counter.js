@@ -23,6 +23,7 @@
     var _p3 = $.p3 || {},
     defaults = {
         meterElement:       '.completed',               /* Selector for the bar to animated */
+        meterWrapper:       '#action-counter-graphical',/* Selector for the bar wrap element */
         textElement:        '#action-counter-textual',  /* Selector for the text to update, eg 100 have joined so far. The target is 200 */
         fetchFrequency:     30000,                      /* time to wait to fetch next value from server (in milliseconds) */
         updateSpeed:        25,                         /* this is the value update speed (in milliseconds). Change this value to make animation faster or slower */
@@ -50,6 +51,7 @@
             target: 0
         },
         request = $.p3.request(config.jsonURL),
+        prefix = '$.p3.pledge_counter :: ',
         updateProgress = function () {
             if (paused) {
                 // We're already updating, come back later
@@ -132,11 +134,10 @@
             var jsonData = (undefined === json) ? $(config.dataElement).data(config.dataNamespace) : json;
 
             if (!jsonData || json.status === 'error' || !jsonData.pledges[0].action) {
-                console.log('ERROR');
                 $.each(json.errors, function (key, value) {
-                    console.log(key + ' => ' + value);
+                    console.log(prefix + key + ' => ' + value);
                 });
-                throw new Error('Errors in pledge data.');
+                throw new Error(prefix + 'Errors in pledge data.');
             }
 
             progress.count = jsonData.pledges[0].action.count;
@@ -144,9 +145,11 @@
 
             if (isNaN(progress.count) || isNaN(progress.target)) {
                 // doesn't exist, or wrong format
-                console.log('ERROR: progress data not found, aborting.');
+                console.warn(prefix + 'Progress data not found or not valid, attempting to continue');
                 return false;
             }
+
+            $(config.meterWrapper).show();
 
             // Display results
             updateProgress();
@@ -156,7 +159,7 @@
             $.getJSON(request.url, params, function(json) {
                 parsePledgeData(json);
             }).error( function () {
-                throw new Error('$.p3.pledge_counter :: Failed to load JSON from "' + request.url + '"');
+                throw new Error(prefix + 'Failed to load JSON from "' + request.url + '"');
             });
         };
 
