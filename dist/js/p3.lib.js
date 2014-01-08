@@ -900,7 +900,7 @@ var _p3 = $.p3 || {},
             userQueueInterval: 750,
             /* maximum number of users to display at once, excess users are hidden
              * and then removed from the DOM */
-            maxUsers: 8,
+            maxUsers: 5,
             /* number of times to check the server for new signers after the first
              * set to 0 to disable updates */
             maxRefreshes: 30,
@@ -1046,7 +1046,7 @@ var _p3 = $.p3 || {},
                 var $li = $('<li style="display:none"><span class="since" data-since="' +
                     user.created + '">' + getTimeString(user.created) + '</span><span class="icon flag ' + user.country +
                     '"></span><span class="name">' + user.firstname +
-                    ' ' + user.lastname + '</span><span class="country">' +
+                    ' ' + user.lastname + '</span> <span class="country">' +
                     getCountryString(user.country) + '</span></li>');
 
                 // Add to DOM

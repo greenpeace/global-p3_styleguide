@@ -1,6 +1,6 @@
 /* ==========================================================================
      Form
-     ========================================================================== */
+   ========================================================================== */
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate.
@@ -32,13 +32,12 @@ input[type=password],
 input[type=email],
 input[type=search],
 input[type=tel],
-fieldset.radio,
-fieldset.checkbox,
 textarea {
     background:@white;
     border:1px solid @grays-4;
     padding:.4em .5em .3em .5em;
     display:inline-block;
+
     zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
     *display: inline;
     margin:.2em 0 .5em 0;
@@ -54,10 +53,11 @@ textarea {
   input[type=email],
   input[type=search],
   input[type=tel],
-  fieldset.radio,
-  fieldset.checkbox,
   textarea {
-      width:19em; /* 20 char (default input length) x .7em (average char length) */
+    min-width:17.5em;
+  }
+  select {
+    min-width:16.25em;
   }
 }
 
@@ -73,9 +73,8 @@ textarea {
     .disabled		- grey out to indicate it cannot be used
 */
 label {
-    font-weight:bold;
-    padding:.2em;
     display:none;
+    padding:.5em 0;
 }
 .no-placeholder label {
     display:block;
@@ -329,21 +328,18 @@ form .errorSummary {
 */
 fieldset.checkbox,
 fieldset.radio {
-    border: 1px solid @grays-4;
-    background: @white;
-    margin: .2em 0 .5em 0;
-    padding:0.3em 0.4em;
-    width:90%;
+    padding: .5em 0 1em 0;
 }
 fieldset.checkbox legend,
 fieldset.radio legend {
-    padding: 0 0.5em;
+    padding: .25em 0 0 0;
 }
 .checkbox label,
 .checkboxlist label,
 .radiolist label,
 .radio label {
     text-indent: 0.2em;
+    margin-right:1em;
 }
 .checkboxlist .input.checkbox label,
 .radiolist .input.radio label,
@@ -351,7 +347,7 @@ fieldset.radio legend {
 .radio label input,
 .checkbox label,
 .checkbox label input {
-    font-weight:bold;
+    font-weight:normal;
     display:inline;
     width:auto;
 }
@@ -383,7 +379,6 @@ select:hover {
     .rounded_all(3px);
     border:1px solid #BBB;*/
 }
-
 
 /* system fields */
 .system.fields {

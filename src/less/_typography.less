@@ -1,3 +1,6 @@
+/* ==========================================================================
+     Typography rules
+   ========================================================================== */
 body {
 	font-size: 16px; /* 1em = 16px */
 	line-height: normal;
@@ -5,10 +8,13 @@ body {
 	color: @grays-1;
 }
 
-/* paragraphs */
+/* paragraphs and lists */
 p {
 	font-size:.875em;	/* 14px/16 */
 	line-height:1.4em;
+}
+#main-section li {
+	font-size:.875em;	/* 14px/16 */
 }
 
 /* links */
@@ -23,17 +29,20 @@ a:hover, a:focus {
 /* titles */
 h1 {
 	font-size: 1.75em; /* 28px/16 */
+	font-family:Helvetica,Arial,sans-serif;
 	margin-top:.625em; 
 	color: @greens-6;
 	font-weight:bold;
 }
 h2 {
 	font-size: 1.375em; /* 22px/16 */
+	font-family:Helvetica,Arial,sans-serif;
 	color: @greens-1;
 	font-weight:bold;
 }
 h3 {
 	color: @greens-1;
+	font-family:Helvetica,Arial,sans-serif;
 	font-weight:bold;
 }
 h4 {
@@ -49,19 +58,17 @@ form input[type=password],
 form input[type=email],
 form input[type=search],
 form input[type=tel],
-form fieldset.radio,
-form fieldset.checkbox,
-form textarea {
+form textarea,
+form label,
+form legend {
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color:@grays-1;
-}
-form textarea {
 	font-size:.875em;	/* 14px/16 */
+  font-weight:normal;
 }
-form label {
-    font-size: .9em;
-}
+
 form .tooltip,
 form .message {
 	font-size:.875em;	/* 14px/16 */
 }
+

@@ -578,7 +578,7 @@ table {
   color: #559f0c;
 }
 .greens-txt-5 {
-  color: #57b105;
+  color: #56b105;
 }
 .greens-txt-6,
 .greens-txt-pri {
@@ -598,7 +598,7 @@ table {
   background-color: #559f0c;
 }
 .greens-bg-5 {
-  background-color: #57b105;
+  background-color: #56b105;
 }
 .greens-bg-6,
 .greens-bg-pri {
@@ -766,6 +766,9 @@ table {
 .no-navigation .header .language-selector {
   visibility: hidden;
 }
+/* ==========================================================================
+     Typography rules
+   ========================================================================== */
 body {
   font-size: 16px;
   /* 1em = 16px */
@@ -773,11 +776,15 @@ body {
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333333;
 }
-/* paragraphs */
+/* paragraphs and lists */
 p {
   font-size: .875em;
   /* 14px/16 */
   line-height: 1.4em;
+}
+#main-section li {
+  font-size: .875em;
+  /* 14px/16 */
 }
 /* links */
 a,
@@ -793,6 +800,7 @@ a:focus {
 h1 {
   font-size: 1.75em;
   /* 28px/16 */
+  font-family: Helvetica, Arial, sans-serif;
   margin-top: .625em;
   color: #66cc00;
   font-weight: bold;
@@ -800,11 +808,13 @@ h1 {
 h2 {
   font-size: 1.375em;
   /* 22px/16 */
+  font-family: Helvetica, Arial, sans-serif;
   color: #003300;
   font-weight: bold;
 }
 h3 {
   color: #003300;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
 }
 /* form inputs */
@@ -813,18 +823,14 @@ form input[type=password],
 form input[type=email],
 form input[type=search],
 form input[type=tel],
-form fieldset.radio,
-form fieldset.checkbox,
-form textarea {
+form textarea,
+form label,
+form legend {
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333333;
-}
-form textarea {
   font-size: .875em;
   /* 14px/16 */
-}
-form label {
-  font-size: .9em;
+  font-weight: normal;
 }
 form .tooltip,
 form .message {
@@ -993,11 +999,11 @@ and (max-device-width : 1024px)
   input[type=email],
   input[type=search],
   input[type=tel],
-  fieldset.radio,
-  fieldset.checkbox,
   textarea {
-    width: 19em;
-    /* 20 char (default input length) x .7em (average char length) */
+    min-width: 17.5em;
+  }
+  select {
+    min-width: 16.25em;
   }
 }
 .large .page-section {
@@ -1012,15 +1018,15 @@ and (max-device-width : 1024px)
 .large input[type=email],
 .large input[type=search],
 .large input[type=tel],
-.large fieldset.radio,
-.large fieldset.checkbox,
 .large textarea {
-  width: 19em;
-  /* 20 char (default input length) x .7em (average char length) */
+  min-width: 17.5em;
+}
+.large select {
+  min-width: 16.25em;
 }
 /* ==========================================================================
      Form
-     ========================================================================== */
+   ========================================================================== */
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate.
@@ -1050,8 +1056,6 @@ input[type=password],
 input[type=email],
 input[type=search],
 input[type=tel],
-fieldset.radio,
-fieldset.checkbox,
 textarea {
   background: #ffffff;
   border: 1px solid #cccccc;
@@ -1082,9 +1086,8 @@ textarea {
     .disabled		- grey out to indicate it cannot be used
 */
 label {
-  font-weight: bold;
-  padding: .2em;
   display: none;
+  padding: .5em 0;
 }
 .no-placeholder label {
   display: block;
@@ -1349,21 +1352,18 @@ form .errorSummary {
 */
 fieldset.checkbox,
 fieldset.radio {
-  border: 1px solid #cccccc;
-  background: #ffffff;
-  margin: .2em 0 .5em 0;
-  padding: 0.3em 0.4em;
-  width: 90%;
+  padding: .5em 0 1em 0;
 }
 fieldset.checkbox legend,
 fieldset.radio legend {
-  padding: 0 0.5em;
+  padding: .25em 0 0 0;
 }
 .checkbox label,
 .checkboxlist label,
 .radiolist label,
 .radio label {
   text-indent: 0.2em;
+  margin-right: 1em;
 }
 .checkboxlist .input.checkbox label,
 .radiolist .input.radio label,
@@ -1371,7 +1371,7 @@ fieldset.radio legend {
 .radio label input,
 .checkbox label,
 .checkbox label input {
-  font-weight: bold;
+  font-weight: normal;
   display: inline;
   width: auto;
 }
@@ -1813,7 +1813,7 @@ ul.navigation {
   top: 0px;
   right: 0px;
   width: 94%;
-  padding: 40px 3% 1em 3%;
+  padding: 40px 1% 1em 1%;
 }
 #main-nav {
   /* mobile menu when not visible */
@@ -1964,7 +1964,7 @@ ul.navigation {
   html .heading-second {
     height: 1.6875em;
     /* 27px */
-    background: #57b105;
+    background: #56b105;
     border-top: 1px solid #4EA600;
   }
   html #main-nav {
@@ -1977,7 +1977,7 @@ ul.navigation {
   }
   html ul.navigation {
     margin: -1px 0 0 0;
-    padding: 0 0 0 10px;
+    padding: 0;
     list-style: none;
     float: left;
     max-width: 42.5em;
@@ -2075,7 +2075,7 @@ ul.navigation {
     padding: 0;
     list-style: none;
     position: absolute;
-    border: solid 1px #57b105;
+    border: solid 1px #56b105;
   }
   html .navigation .drop-content ul li {
     float: none;
@@ -2109,7 +2109,7 @@ ul.navigation {
   html .navigation .drop-content ul li a:hover,
   html .navigation .drop-content ul li:focus a,
   html .navigation .drop-content ul li a:focus {
-    background: #57b105;
+    background: #56b105;
     color: #ffffff;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -2137,7 +2137,7 @@ ul.navigation {
   html .navigation .drop-content ul ul li a:hover,
   html .navigation .drop-content ul li:focus ul li:focus a,
   html .navigation .drop-content ul ul li a:focus {
-    background: #57b105;
+    background: #56b105;
     color: #ffffff;
   }
   html .navigation .drop-content ul ul li:hover ul,
@@ -2160,7 +2160,7 @@ ul.navigation {
   html .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
   html .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
   html .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
-    background: #57b105;
+    background: #56b105;
     color: #ffffff;
   }
   html .navigation li a.active span,
@@ -2187,7 +2187,7 @@ ul.navigation {
   html .navigation .drop-content ul ul li a.drop:focus,
   html .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
   html .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
-    background: #57b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
+    background: #56b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
   }
   html .navigation .button.primary {
     margin: .2em 0 0;
@@ -2309,7 +2309,7 @@ ul.navigation {
 .sevensome .heading-second {
   height: 1.6875em;
   /* 27px */
-  background: #57b105;
+  background: #56b105;
   border-top: 1px solid #4EA600;
 }
 .sevensome #main-nav {
@@ -2322,7 +2322,7 @@ ul.navigation {
 }
 .sevensome ul.navigation {
   margin: -1px 0 0 0;
-  padding: 0 0 0 10px;
+  padding: 0;
   list-style: none;
   float: left;
   max-width: 42.5em;
@@ -2420,7 +2420,7 @@ ul.navigation {
   padding: 0;
   list-style: none;
   position: absolute;
-  border: solid 1px #57b105;
+  border: solid 1px #56b105;
 }
 .sevensome .navigation .drop-content ul li {
   float: none;
@@ -2454,7 +2454,7 @@ ul.navigation {
 .sevensome .navigation .drop-content ul li a:hover,
 .sevensome .navigation .drop-content ul li:focus a,
 .sevensome .navigation .drop-content ul li a:focus {
-  background: #57b105;
+  background: #56b105;
   color: #ffffff;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -2482,7 +2482,7 @@ ul.navigation {
 .sevensome .navigation .drop-content ul ul li a:hover,
 .sevensome .navigation .drop-content ul li:focus ul li:focus a,
 .sevensome .navigation .drop-content ul ul li a:focus {
-  background: #57b105;
+  background: #56b105;
   color: #ffffff;
 }
 .sevensome .navigation .drop-content ul ul li:hover ul,
@@ -2505,7 +2505,7 @@ ul.navigation {
 .sevensome .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
 .sevensome .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
-  background: #57b105;
+  background: #56b105;
   color: #ffffff;
 }
 .sevensome .navigation li a.active span,
@@ -2532,7 +2532,7 @@ ul.navigation {
 .sevensome .navigation .drop-content ul ul li a.drop:focus,
 .sevensome .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
-  background: #57b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
+  background: #56b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
 }
 .sevensome .navigation .button.primary {
   margin: .2em 0 0;
@@ -2655,7 +2655,7 @@ ul.navigation {
 .lt-ie9 .heading-second {
   height: 1.6875em;
   /* 27px */
-  background: #57b105;
+  background: #56b105;
   border-top: 1px solid #4EA600;
 }
 .lt-ie9 #main-nav {
@@ -2668,7 +2668,7 @@ ul.navigation {
 }
 .lt-ie9 ul.navigation {
   margin: -1px 0 0 0;
-  padding: 0 0 0 10px;
+  padding: 0;
   list-style: none;
   float: left;
   max-width: 42.5em;
@@ -2766,7 +2766,7 @@ ul.navigation {
   padding: 0;
   list-style: none;
   position: absolute;
-  border: solid 1px #57b105;
+  border: solid 1px #56b105;
 }
 .lt-ie9 .navigation .drop-content ul li {
   float: none;
@@ -2800,7 +2800,7 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul li a:hover,
 .lt-ie9 .navigation .drop-content ul li:focus a,
 .lt-ie9 .navigation .drop-content ul li a:focus {
-  background: #57b105;
+  background: #56b105;
   color: #ffffff;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -2828,7 +2828,7 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul ul li a:hover,
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus a,
 .lt-ie9 .navigation .drop-content ul ul li a:focus {
-  background: #57b105;
+  background: #56b105;
   color: #ffffff;
 }
 .lt-ie9 .navigation .drop-content ul ul li:hover ul,
@@ -2851,7 +2851,7 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
 .lt-ie9 .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
-  background: #57b105;
+  background: #56b105;
   color: #ffffff;
 }
 .lt-ie9 .navigation li a.active span,
@@ -2878,7 +2878,7 @@ ul.navigation {
 .lt-ie9 .navigation .drop-content ul ul li a.drop:focus,
 .lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
-  background: #57b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
+  background: #56b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
 }
 .lt-ie9 .navigation .button.primary {
   margin: .2em 0 0;
@@ -4182,13 +4182,13 @@ ul.navigation {
      Action Template or Action Related Widgets
    ========================================================================== */
 /*
-Page level configuration shortcuts.
+    Page level configuration shortcuts.
 */
 .no-quick-login first-time-login {
   display: none;
 }
 /*
-Images scaling with size.
+    Images scaling with size.
 */
 #action-multimedia-teaser img {
   width: 100%;
@@ -4197,7 +4197,7 @@ Images scaling with size.
   /* image is 540px wide */
 }
 /*
-Action template
+    Action template
 */
 .action-template #main-section {
   background: #ffffff;
@@ -4215,12 +4215,16 @@ Action form
   margin-top: .225em;
 }
 /*
-Small Prints in the form, checkbox is hidden.
+    Small Prints in the form, checkbox is hidden.
 
-.remember - checkbox is shown
+    .remember - checkbox is shown
 */
 #action-smallprints {
   margin: .25em 0;
+}
+#action-smallprints .smallprint {
+  font-size: 0.875em;
+  /* 14px */
 }
 #action-smallprints label,
 #action-smallprints input[type=checkbox],
@@ -4229,8 +4233,6 @@ Small Prints in the form, checkbox is hidden.
 }
 #action-smallprints .longlabel {
   display: inline;
-  font-size: 0.875em;
-  /* 14px */
   line-height: 1.4em;
 }
 #action-smallprints .remember {
@@ -4245,14 +4247,14 @@ Small Prints in the form, checkbox is hidden.
   margin-top: 0.2em;
 }
 /*
-Action Counter,
-shows the number of signers both graphical and text only
+    Action Counter,
+    shows the number of signers both graphical and text only
 
-#action-counter-graphical - graphical display as progres bar
-#action-counter-textual   - textual display
+    #action-counter-graphical - graphical display as progres bar
+    #action-counter-textual   - textual display
 */
 #action-counter {
-  margin: 0.4em 0;
+  margin: 1em 0;
 }
 #action-counter #action-counter-graphical {
   transition: all 100ms ease-out;
@@ -4260,11 +4262,10 @@ shows the number of signers both graphical and text only
   background: #e9ecf3;
 }
 #action-counter #action-counter-graphical .completed {
-  background: #66cc00;
+  background: #f99713;
   display: block;
   text-align: right;
   color: #ffffff;
-  text-shadow: 1px 1px 0 #4f4f4f;
   font-weight: bold;
   font-size: 1.125em;
   padding: .311em 0;
@@ -4274,16 +4275,15 @@ shows the number of signers both graphical and text only
   display: none;
 }
 #action-counter #action-counter-textual {
-  margin: .25em 0;
+  margin: .25em 0 0 0;
   color: #666666;
-  font-style: italic;
-  font-size: 0.688em;
+  font-size: .875em;
 }
 /*
-Social Login buttons
+    Social Login buttons
 
-.facebook - facebook icon
-.google   - google icon
+    .facebook - facebook icon
+    .google   - google icon
 */
 #main-section .social-login span {
   display: none;
@@ -4309,15 +4309,16 @@ Social Login buttons
   background: #fffdff url(../../img/sociallogin.png) center -22px no-repeat;
 }
 /*
-Recent Signers widget
+    Recent Signers widget
 
-li       - One line, ellipsis if content doesn't fit
-.since   - Timestamp in gray text
-.country - Country name in grayutext
-.flag    - Flag icon margin
+    li       - One line, ellipsis if content doesn't fit
+    .since   - Timestamp in gray text
+    .country - Country name in grayutext
+    .flag    - Flag icon margin
 */
 #action-recent-signers {
   clear: right;
+  min-height: 14em;
 }
 #action-recent-signers ul {
   padding: 0;
@@ -4332,7 +4333,7 @@ li       - One line, ellipsis if content doesn't fit
   -ms-text-overflow: ellipsis;
 }
 #action-recent-signers .since {
-  width: 8em;
+  width: 9em;
   display: inline-block;
   font-size: 0.813em;
   color: #666666;
@@ -4347,9 +4348,9 @@ li       - One line, ellipsis if content doesn't fit
 /* ==========================================================================
    Action Template Media Queries
    ==========================================================================
-   
-See breakpoint from layout.css
-mobile first, up to 768 px 
+/*  
+    See breakpoint from layout.css
+    mobile first, up to 768 px 
 */
 #action-form-authentication .submit {
   position: relative;
@@ -4358,7 +4359,7 @@ mobile first, up to 768 px
   margin-top: .4em;
 }
 /*
-input length to fit the screen
+    input length to fit the screen
 */
 .action-template textarea,
 .action-template input {
@@ -4371,7 +4372,15 @@ input length to fit the screen
   width: 105%;
   font-size: 1.25em;
 }
-/* Tablets */
+.action-template #action-submit-full {
+  padding: 1em 0;
+}
+/*
+    Tablets
+
+    Mixin for everything that belongs in the tablet media query,
+    so it can be used for the media query fallback as well.
+ */
 @media only screen and (min-width: 768px) {
   html #action-h1 {
     float: left;
@@ -4411,21 +4420,6 @@ input length to fit the screen
   }
   html #action-counter-graphical {
     display: block;
-  }
-  html .action-template textarea,
-  html .action-template input {
-    width: 90%;
-  }
-  html .action-template checkbox input,
-  html .action-template .radio input {
-    width: auto;
-  }
-  html .action-template select {
-    width: 94%;
-  }
-  html .action-template .submit.full {
-    width: 110%;
-    font-size: 1.25em;
   }
 }
 /* fallback for browsers where media queries won't work */
@@ -4467,21 +4461,6 @@ input length to fit the screen
 }
 .sevensome #action-counter-graphical {
   display: block;
-}
-.sevensome .action-template textarea,
-.sevensome .action-template input {
-  width: 90%;
-}
-.sevensome .action-template checkbox input,
-.sevensome .action-template .radio input {
-  width: auto;
-}
-.sevensome .action-template select {
-  width: 94%;
-}
-.sevensome .action-template .submit.full {
-  width: 110%;
-  font-size: 1.25em;
 }
 /* Desktops and laptops */
 @media only screen and (min-width: 1024px) {
@@ -4556,10 +4535,6 @@ input length to fit the screen
   html #action-form .action-template #action-submit-quick.submit {
     margin-right: 0;
   }
-  html #action-form .action-template #action-submit-full.submit {
-    margin-top: .5em;
-    font-size: 1.25em;
-  }
 }
 /* fallback for browsers where media queries won't work */
 .desktop .action-template #main-container {
@@ -4632,10 +4607,6 @@ input length to fit the screen
 }
 .desktop #action-form .action-template #action-submit-quick.submit {
   margin-right: 0;
-}
-.desktop #action-form .action-template #action-submit-full.submit {
-  margin-top: .5em;
-  font-size: 1.25em;
 }
 /*
 Browser specific hacks
