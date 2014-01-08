@@ -4,10 +4,14 @@ body {
 	font-family:Verdana,Geneva,Arial,Helvetica,sans-serif;
 	color: @grays-1;
 }
+
+/* paragraphs */
 p {
 	font-size:.875em;	/* 14px/16 */
 	line-height:1.4em;
 }
+
+/* links */
 a, a:visited {
 	text-decoration: none;
 	color: @greens-3;
@@ -16,22 +20,48 @@ a:hover, a:focus {
 	text-decoration: underline;
 }
 
+/* titles */
 h1 {
 	font-size: 1.75em; /* 28px/16 */
-	font-family: Arial,Helvetica,sans-serif; 
-	margin-top:.625em; /* 10px/16 */
+	margin-top:.625em; 
 	color: @greens-6;
 	font-weight:bold;
 }
 h2 {
 	font-size: 1.375em; /* 22px/16 */
-	font-family: Arial,Helvetica,sans-serif; 
 	color: @greens-1;
 	font-weight:bold;
 }
 h3 {
-	font: 1em Arial,Helvetica,sans-serif; /* 14px */
 	color: @greens-1;
 	font-weight:bold;
 }
+h4 {
+}
+h5 {
+}
+h6 {
+}
 
+/* form inputs */
+form input[type=text],
+form input[type=password],
+form input[type=email],
+form input[type=search],
+form input[type=tel],
+form fieldset.radio,
+form fieldset.checkbox,
+form textarea {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  color:@grays-1;
+}
+form textarea {
+	font-size:.875em;	/* 14px/16 */
+}
+form label {
+    font-size: .9em;
+}
+form .tooltip,
+form .message {
+	font-size:.875em;	/* 14px/16 */
+}

@@ -1,6 +1,6 @@
 /* ==========================================================================
-Header
-========================================================================== */
+   Header
+   ========================================================================== */
 .header {
     position:absolute;
     top:0;
@@ -303,289 +303,289 @@ ul.navigation {
     /*
      * Menu Links
      */
-.header a {
-    color: @white;
-    &:focus, &:hover {
+    .header a {
         color: @white;
+        &:focus, &:hover {
+            color: @white;
+        }
     }
-}
 
-/*
- * search form on desktop
- */
-.search-form {
-    clear: both;
-    float: right;
-    background: @white;
-    border: 1px solid #61B905;
-    width: 17em;
-    height: 21px;
-    overflow: hidden;
-    margin:0;
-    .rounded_all(3px);
-    .placeholder_color(#555555);
-}
-.search-form .text {
-    padding-right: 0;
-}
-.search-form .submit {
-    float:right;
-}
-.search-form .submit input {
-    float:right;
-    width:15px;
-    height:15px;
-}
-.search-form .submit span {
-    background:transparent url(../../img/image-map.png) -136px -24px no-repeat;
-    width:15px;
-    height:15px;
-    .rounded_all(3px);
-    margin:2px;
-    border:1px solid @greens-6;
-}
-.search-form .submit span:active {
-    background:transparent url(../../img/image-map.png) -151px -9px no-repeat;
-}
-#main-nav .search-form #search-submit {
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-}
-#main-nav .search-form .text input[type=text],
-#main-nav .search-form .text input[type=text]:hover,
-#main-nav .search-form .text input[type=text]:focus {
-    width: 90%;
-    padding-left: .571em;
-}
+    /*
+     * search form on desktop
+     */
+    .search-form {
+        clear: both;
+        float: right;
+        background: @white;
+        border: 1px solid #61B905;
+        width: 17em;
+        height: 21px;
+        overflow: hidden;
+        margin:0;
+        .rounded_all(3px);
+        .placeholder_color(#555555);
+    }
+    .search-form .text {
+        padding-right: 0;
+    }
+    .search-form .submit {
+        float:right;
+    }
+    .search-form .submit input {
+        float:right;
+        width:15px;
+        height:15px;
+    }
+    .search-form .submit span {
+        background:transparent url(../../img/image-map.png) -136px -24px no-repeat;
+        width:15px;
+        height:15px;
+        .rounded_all(3px);
+        margin:2px;
+        border:1px solid @greens-6;
+    }
+    .search-form .submit span:active {
+        background:transparent url(../../img/image-map.png) -151px -9px no-repeat;
+    }
+    #main-nav .search-form #search-submit {
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+    }
+    #main-nav .search-form .text input[type=text],
+    #main-nav .search-form .text input[type=text]:hover,
+    #main-nav .search-form .text input[type=text]:focus {
+        width: 90%;
+        padding-left: .571em;
+    }
 
 
-/*
- * Header
- */
-.heading-second {
-    height: 1.6875em; /* 27px */
-    background: @greens-5;   
-    border-top: 1px solid #4EA600;
-}
+    /*
+     * Header
+     */
+    .heading-second {
+        height: 1.6875em; /* 27px */
+        background: @greens-5;   
+        border-top: 1px solid #4EA600;
+    }
 
-/*
- * Main Navigation on Desktop with dropdown
- */
-#main-nav {
-    position: static;
-    width: auto;
-    max-width: none;
-    background: none transparent;
-    padding: 0;
-    display: block;
-}
+    /*
+     * Main Navigation on Desktop with dropdown
+     */
+    #main-nav {
+        position: static;
+        width: auto;
+        max-width: none;
+        background: none transparent;
+        padding: 0;
+        display: block;
+    }
 
-ul.navigation {
-    margin: -1px 0 0 0;
-    padding: 0 0 0 10px;
-    list-style: none;
-    float: left;
-    max-width: 42.5em; /* 625px */
-    background: none transparent;
-}
-.navigation li {
-    float: left;
-    padding:0 .1666666666em; /* 2px/12 */
-    position: relative;
-    z-index: 101;
-    border: none;
-}
-.navigation li a {
-    float: left;
-    cursor: pointer;
-    display: inline;
-    padding: 0;
-    background: none transparent;
-}
-.navigation li a span {
-    float: left;
-    font-family: Helvetica, "Trebuchet MS", sans-serif;
-    font-size:.75em; /*12px */
-    line-height:2.41667em; /* 29px/12 */
-    font-weight:bold;
-    color: @white;
-    padding: 0 .83333333333em; /* 10px/12 */
-    white-space: nowrap;
-}
-.navigation li a.current-item, .navigation li a.active-item, .navigation li a:hover, .navigation li a:focus {
-    text-decoration: none;
-    background: @greens-6;
-    .rounded_some(0; 0; 4px; 4px);
-    .boxshadow(2px; 0px; 0px; rgba(50, 50, 50, 0.25));
-    margin-right: 4px;
-    color: @greens-2;
-}
-.navigation li a.current-item span, .navigation li a.active-item span, .navigation li a.hover span,
-.navigation li a:hover span, .navigation li a:focus span {
-    overflow: hidden;
-    position: relative;
-    color: @greens-2;
-}
-.navigation li a:hover span, .navigation li a:focus span {
-    position: relative;
-    color: @greens-2;
-}
-.navigation li .drop-content a { /* overrides the mobile styling */
-    margin-left: 0;
-    font-weight: normal;
-}
-.navigation li:hover .drop-holder, .navigation li.hover .drop-holder {
-    display: block;
-}
-.navigation li:hover .drop-content ul ul ul, .navigation li.hover .drop-content ul ul ul {
-    display: none;
-}
-.navigation .drop-holder {
-    display: none;
-    position: absolute;
-    top: 1.75em; /* 28px */
-    left: -6.25em; /* 100px */
-    z-index: 100;
-}
-.navigation .drop-content {
-    height: 23.125em; /* 370px */
-    width: 0;
-    background: transparent none;
-}
-.navigation .drop-content ul {
-    margin: 0 0 0 6.5em; /* 104px */
-    padding: 0;
-    list-style: none;
-    position: absolute;
-    border: solid 1px @greens-5;
-}
-.navigation .drop-content ul li {
-    float: none;
-    width: 13.125em; /* 210px */
-    vertical-align: middle;
-    background: none;
-    background-color: @white;
-    padding: 0;
-}
-.navigation .drop-content ul li a {
-    float: none;
-    display: block;
-    background: none;
-    font-size: .75em;
-    height: 1.91667em; /* 23px/12 */
-    line-height: 1.91667em; /* 23px/12 */
-    padding: 0 0 0 .83333333em; /* 10px/12 */
-    cursor: pointer;
-    color: @black;
-    position: relative;
-    margin: 0;
-    width: 16.66667em; /* 200px/12 */
-    overflow: hidden;
-}
-.navigation .drop-content ul li:hover a,
-.navigation .drop-content ul li a:hover,
-.navigation .drop-content ul li:focus a,
-.navigation .drop-content ul li a:focus {
-    background: @greens-5;
-    color: @white;
-    .rounded_all(0);
-    .boxshadow(none);
-}
-.navigation .drop-content ul li:hover ul,
-.navigation .drop-content ul li:focus ul{
-    display: block;
-}
-.navigation .drop-content ul ul {
-    margin: 0;
-    background-position: 0 100%;
-    display: none;
-    position: absolute;
-    left: 100%;
-    top: -1px;
-}
-.navigation .drop-content ul ul li {
-    padding: 0;
-}
-.navigation .drop-content ul li:hover ul li:hover a,
-.navigation .drop-content ul ul li a:hover,
-.navigation .drop-content ul li:focus ul li:focus a,
-.navigation .drop-content ul ul li a:focus{
-    background: @greens-5;
-    color: @white;
-}
-.navigation .drop-content ul ul li:hover ul,
-.navigation .drop-content ul ul li:focus ul{
-    display: block;
-}
-.navigation .drop-content ul li:hover ul li a,
-.navigation .drop-content ul li:focus ul li a,
-.navigation .drop-content ul li:hover ul li:hover ul li a,
-.navigation .drop-content ul li:focus ul li:focus ul li a,
-.navigation .drop-content ul ul ul li a {
-    background: none;
-    color: @black;
-    padding: 0 0 0 .83333333em; /* 10px/12 */
-    margin: 0;
-    width: 16.66667em; /* 200px/12 */
-}
-.navigation .drop-content ul li:hover ul li:hover ul li:hover a,
-.navigation .drop-content ul li:focus ul li:focus ul li:focus a,
-.navigation .drop-content ul ul ul li a:hover
-.navigation .drop-content ul ul ul li a:focus {
-    background: @greens-5;
-    color: @white;
-}
-.navigation li a.active span,
-.navigation li a:hover span,
-.navigation li a:focus span,
-.navigation li a.current-item span,
-.navigation li a.active-item span {
-    margin-right: -4px;
-}
-.navigation .drop-content ul li a.drop,
-.navigation .drop-content ul li:hover ul li a.drop,
-.navigation .drop-content ul li:focus ul li a.drop,
-.navigation .drop-content ul ul li a.drop,
-.navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
-.navigation .drop-content ul li:focus ul li:focus ul li a.drop2{
-    background: url(../../img/nav-arrow.png) no-repeat 95% 0;
-}
-.navigation .drop-content ul li:hover a.drop,
-.navigation .drop-content ul li:focus a.drop,
-.navigation .drop-content ul li a.drop:hover,
-.navigation .drop-content ul li:hover li:hover a.drop,
-.navigation .drop-content ul li:focus li:focus a.drop,
-.navigation .drop-content ul ul li a.drop:hover,
-.navigation .drop-content ul ul li a.drop:focus,
-.navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
-.navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2	{
-    background: @greens-5 url(../../img/nav-arrow.png) no-repeat 95% -25px;
-}
-
-// reset donate button from mobile menu
-.navigation .button.primary {
-    margin: .2em 0 0;
-    text-align: center;
-    color: @white;
-    text-shadow: 0 0 2px #9a9a9a;
-    background: #f99713; /* Old browsers */
-    background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f99713), color-stop(57%,#e56b2b), color-stop(100%,#e56b2b)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99713', endColorstr='#e56b2b',GradientType=0 ); /* IE6-9 */
-    border:1px solid #f06818;
-    &:active,
-    &:hover {
+    ul.navigation {
+        margin: -1px 0 0 0;
+        padding: 0 0 0 10px;
+        list-style: none;
+        float: left;
+        max-width: 42.5em; /* 625px */
+        background: none transparent;
+    }
+    .navigation li {
+        float: left;
+        padding:0 .1666666666em; /* 2px/12 */
+        position: relative;
+        z-index: 101;
+        border: none;
+    }
+    .navigation li a {
+        float: left;
+        cursor: pointer;
+        display: inline;
+        padding: 0;
+        background: none transparent;
+    }
+    .navigation li a span {
+        float: left;
+        font-family: Helvetica, "Trebuchet MS", sans-serif;
+        font-size:.75em; /*12px */
+        line-height:2.41667em; /* 29px/12 */
+        font-weight:bold;
         color: @white;
+        padding: 0 .83333333333em; /* 10px/12 */
+        white-space: nowrap;
+    }
+    .navigation li a.current-item, .navigation li a.active-item, .navigation li a:hover, .navigation li a:focus {
         text-decoration: none;
-        -webkit-box-shadow: 0 1px 2px rgba(255,255,255,.2);
-        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-        box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        background: @greens-6;
+        .rounded_some(0; 0; 4px; 4px);
+        .boxshadow(2px; 0px; 0px; rgba(50, 50, 50, 0.25));
+        margin-right: 4px;
+        color: @greens-2;
     }
-}
+    .navigation li a.current-item span, .navigation li a.active-item span, .navigation li a.hover span,
+    .navigation li a:hover span, .navigation li a:focus span {
+        overflow: hidden;
+        position: relative;
+        color: @greens-2;
+    }
+    .navigation li a:hover span, .navigation li a:focus span {
+        position: relative;
+        color: @greens-2;
+    }
+    .navigation li .drop-content a { /* overrides the mobile styling */
+        margin-left: 0;
+        font-weight: normal;
+    }
+    .navigation li:hover .drop-holder, .navigation li.hover .drop-holder {
+        display: block;
+    }
+    .navigation li:hover .drop-content ul ul ul, .navigation li.hover .drop-content ul ul ul {
+        display: none;
+    }
+    .navigation .drop-holder {
+        display: none;
+        position: absolute;
+        top: 1.75em; /* 28px */
+        left: -6.25em; /* 100px */
+        z-index: 100;
+    }
+    .navigation .drop-content {
+        height: 23.125em; /* 370px */
+        width: 0;
+        background: transparent none;
+    }
+    .navigation .drop-content ul {
+        margin: 0 0 0 6.5em; /* 104px */
+        padding: 0;
+        list-style: none;
+        position: absolute;
+        border: solid 1px @greens-5;
+    }
+    .navigation .drop-content ul li {
+        float: none;
+        width: 13.125em; /* 210px */
+        vertical-align: middle;
+        background: none;
+        background-color: @white;
+        padding: 0;
+    }
+    .navigation .drop-content ul li a {
+        float: none;
+        display: block;
+        background: none;
+        font-size: .75em;
+        height: 1.91667em; /* 23px/12 */
+        line-height: 1.91667em; /* 23px/12 */
+        padding: 0 0 0 .83333333em; /* 10px/12 */
+        cursor: pointer;
+        color: @black;
+        position: relative;
+        margin: 0;
+        width: 16.66667em; /* 200px/12 */
+        overflow: hidden;
+    }
+    .navigation .drop-content ul li:hover a,
+    .navigation .drop-content ul li a:hover,
+    .navigation .drop-content ul li:focus a,
+    .navigation .drop-content ul li a:focus {
+        background: @greens-5;
+        color: @white;
+        .rounded_all(0);
+        .boxshadow(none);
+    }
+    .navigation .drop-content ul li:hover ul,
+    .navigation .drop-content ul li:focus ul{
+        display: block;
+    }
+    .navigation .drop-content ul ul {
+        margin: 0;
+        background-position: 0 100%;
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: -1px;
+    }
+    .navigation .drop-content ul ul li {
+        padding: 0;
+    }
+    .navigation .drop-content ul li:hover ul li:hover a,
+    .navigation .drop-content ul ul li a:hover,
+    .navigation .drop-content ul li:focus ul li:focus a,
+    .navigation .drop-content ul ul li a:focus{
+        background: @greens-5;
+        color: @white;
+    }
+    .navigation .drop-content ul ul li:hover ul,
+    .navigation .drop-content ul ul li:focus ul{
+        display: block;
+    }
+    .navigation .drop-content ul li:hover ul li a,
+    .navigation .drop-content ul li:focus ul li a,
+    .navigation .drop-content ul li:hover ul li:hover ul li a,
+    .navigation .drop-content ul li:focus ul li:focus ul li a,
+    .navigation .drop-content ul ul ul li a {
+        background: none;
+        color: @black;
+        padding: 0 0 0 .83333333em; /* 10px/12 */
+        margin: 0;
+        width: 16.66667em; /* 200px/12 */
+    }
+    .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
+    .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
+    .navigation .drop-content ul ul ul li a:hover
+    .navigation .drop-content ul ul ul li a:focus {
+        background: @greens-5;
+        color: @white;
+    }
+    .navigation li a.active span,
+    .navigation li a:hover span,
+    .navigation li a:focus span,
+    .navigation li a.current-item span,
+    .navigation li a.active-item span {
+        margin-right: -4px;
+    }
+    .navigation .drop-content ul li a.drop,
+    .navigation .drop-content ul li:hover ul li a.drop,
+    .navigation .drop-content ul li:focus ul li a.drop,
+    .navigation .drop-content ul ul li a.drop,
+    .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
+    .navigation .drop-content ul li:focus ul li:focus ul li a.drop2{
+        background: url(../../img/nav-arrow.png) no-repeat 95% 0;
+    }
+    .navigation .drop-content ul li:hover a.drop,
+    .navigation .drop-content ul li:focus a.drop,
+    .navigation .drop-content ul li a.drop:hover,
+    .navigation .drop-content ul li:hover li:hover a.drop,
+    .navigation .drop-content ul li:focus li:focus a.drop,
+    .navigation .drop-content ul ul li a.drop:hover,
+    .navigation .drop-content ul ul li a.drop:focus,
+    .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
+    .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2	{
+        background: @greens-5 url(../../img/nav-arrow.png) no-repeat 95% -25px;
+    }
+
+    // reset donate button from mobile menu
+    .navigation .button.primary {
+        margin: .2em 0 0;
+        text-align: center;
+        color: @white;
+        text-shadow: 0 0 2px #9a9a9a;
+        background: #f99713; /* Old browsers */
+        background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f99713), color-stop(57%,#e56b2b), color-stop(100%,#e56b2b)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* IE10+ */
+        background: linear-gradient(to bottom, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99713', endColorstr='#e56b2b',GradientType=0 ); /* IE6-9 */
+        border:1px solid #f06818;
+        &:active,
+        &:hover {
+            color: @white;
+            text-decoration: none;
+            -webkit-box-shadow: 0 1px 2px rgba(255,255,255,.2);
+            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+            box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        }
+    }
 }
 
 /*

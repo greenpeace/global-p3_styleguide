@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            css: ['src/css/*.css', 'dist/css'],
+            css: ['src/css/*.css', 'dist/css', "!dist/css/normalize.css"],
             js: 'dist/js'
         },
         lesslint: {
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                     console: true
                 }
             },
-            files: ['src/js/lib/*.js', 'src/js/action-template-main.js']
+            files: ['src/js/lib/*.js', 'src/js/*.js']
         },
         concat: {
             options: {
@@ -103,7 +103,8 @@ module.exports = function(grunt) {
             lib: {
                 files: {
                     'dist/js/p3.min.js': ['dist/js/p3.lib.js'],
-                    'dist/js/app.js': ['src/js/action-template-main.js']
+                    'dist/js/site.js' : ['src/js/site-main.js'],
+                    'dist/js/page.js': ['src/js/action-template-main.js']
                 }
             }
         },
