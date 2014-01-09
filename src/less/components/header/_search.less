@@ -1,0 +1,49 @@
+/* 
+    desktop and tablets
+*/
+.sevensome_macro(){
+    .header .search-form {
+        width:250px;
+        float:right;
+        border:1px solid @greens-5;
+        clear:both;
+        .rounded_all(3px);
+        background:#FFF;
+        padding:1px 0 1px 1px;
+        height:1.1em;
+    }
+    .header .search-form .input {
+        width:232px;
+        background:#FFF;
+        float:left;
+        padding:0;
+        margin:0;
+    }
+    .header .search-form .input input[type=text] {
+        min-width:225px;
+        width:225px;
+        border:0;
+        padding:0 0 0 3px;
+        display: inline-block;
+        zoom: 1;
+        margin:0;
+        -webkit-appearance: none;
+        .rounded_all(0);
+        .boxshadow(none);
+        float:left;
+    }
+    .header .search-form input[type=submit] {
+        display:none;
+        float:left;
+    }
+    .header .search-form span {
+        border:0;
+        float:right;
+        width:1em;
+        height:1em;
+        margin:1px 0 0 0;
+        cursor: pointer;
+        background:transparent url(../../img/image-map.png) -136px -24px no-repeat;
+        .rounded_all(3px);
+    }
+}
