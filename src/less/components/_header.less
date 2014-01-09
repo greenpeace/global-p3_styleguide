@@ -22,9 +22,10 @@
     z-index: 999;
 }
 
-.heading-second .heading-holder  { /* allows mobile menu to absolute it's way to the top */
+/*
+.heading-second .heading-holder  { /* allows mobile menu to absolute it's way to the top * /
     position: static;
-}
+}*/
 
 
 /*
@@ -101,7 +102,6 @@
 /*
  * Language Selector and Additional Nav
  */
-
 .promoted-links ul,
 .language-selector {
     float: right;
@@ -136,86 +136,6 @@
     padding-left:5px;
 }
 
-/*
- * Search
- */
-.search-form {
-    clear: both;
-    float: right;
-    background: @grays-2;
-    border: 1px solid @black;
-    width: 100%;
-    height: 21px;
-    overflow: hidden;
-    margin:0;
-    .rounded_all(5px);
-    color: @grays-3;
-    .placeholder_color(#dddddd);
-}
-.search-form label {
-    display:none;
-}
-.search-form .text {
-    padding-right: 48px;
-}
-.search-form .text input[type=text],
-.search-form .text input[type=text]:hover,
-.search-form .text input[type=text]:focus {
-    color: #111111;
-    border: 0;
-    background: none;
-    float:left;
-    width:17.143em;/* 240px */
-    margin:0;
-    padding:0 0 0 .571em; /* 8px */
-    -webkit-box-shadow: inset 0px 0px 0px rgba(255,255,255,0);
-    -moz-box-shadow: inset 0px 0px 0px rgba(0,0,0,0);
-    box-shadow: inset 0px 0px 0px rgba(0,0,0,0);
-    margin-top:2px;
-    font-size:.875em;/* 14px */
-}
-.search-form .submit {
-    float:right;
-}
-.search-form .submit input {
-    float:right;
-    background:none;
-    visibility:hidden;
-    width:32px;
-    height:32px;
-}
-.search-form .submit span {
-    background:transparent url(../../img/search-icon.png) 0px 0px no-repeat;
-    width:32px;
-    height:32px;
-    display:block;
-    margin:0;
-    border: none;
-    cursor: pointer;
-    margin-right: 5px;
-}
-.search-form .submit span:active {
-    background:transparent url(../../img/search-icon-active.png) 0px 0px no-repeat;
-}
-
-#main-nav .search-form {
-    float: none;
-    width: auto;
-    height: auto;
-    margin-bottom: 0.4em;
-}
-#main-nav .search-form form {
-    width: 100%;
-}
-#main-nav .search-form .text input[type=text],
-#main-nav .search-form .text input[type=text]:hover,
-#main-nav .search-form .text input[type=text]:focus {
-    width: 95%;
-    padding-left: 3%;
-    font-size: 1em;/* 14px */
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-}
 
 /*
  * Main Navigation
@@ -311,53 +231,52 @@ ul.navigation {
     }
 
     /*
-     * search form on desktop
+     * Search
      */
-    .search-form {
-        clear: both;
-        float: right;
-        background: @white;
-        border: 1px solid #61B905;
-        width: 17em;
-        height: 21px;
-        overflow: hidden;
+    .header .search-form {
+        width:250px;
+        float:right;
+        border:1px solid @greens-5;
+        clear:both;
+        .rounded_all(3px);
+        background:#FFF;
+        padding:1px 0 1px 1px;
+        height:1.1em;
+    }
+    .header .search-form .input {
+        width:232px;
+        background:#FFF;
+        float:left;
+        padding:0;
         margin:0;
-        .rounded_all(3px);
-        .placeholder_color(#555555);
     }
-    .search-form .text {
-        padding-right: 0;
+    .header .search-form .input input[type=text] {
+        min-width:225px;
+        width:225px;
+        border:0;
+        padding:0 0 0 3px;
+        display: inline-block;
+        zoom: 1;
+        margin:0;
+        -webkit-appearance: none;
+        .rounded_all(0);
+        .boxshadow(none);
+        float:left;
     }
-    .search-form .submit {
+    .header .search-form input[type=submit] {
+        display:none;
+        float:left;
+    }
+    .header .search-form span {
+        border:0;
         float:right;
-    }
-    .search-form .submit input {
-        float:right;
-        width:15px;
-        height:15px;
-    }
-    .search-form .submit span {
+        width:1em;
+        height:1em;
+        margin:1px 0 0 0;
+        cursor: pointer;
         background:transparent url(../../img/image-map.png) -136px -24px no-repeat;
-        width:15px;
-        height:15px;
         .rounded_all(3px);
-        margin:2px;
-        border:1px solid @greens-6;
     }
-    .search-form .submit span:active {
-        background:transparent url(../../img/image-map.png) -151px -9px no-repeat;
-    }
-    #main-nav .search-form #search-submit {
-        padding-top: 0.4em;
-        padding-bottom: 0.4em;
-    }
-    #main-nav .search-form .text input[type=text],
-    #main-nav .search-form .text input[type=text]:hover,
-    #main-nav .search-form .text input[type=text]:focus {
-        width: 90%;
-        padding-left: .571em;
-    }
-
 
     /*
      * Header
