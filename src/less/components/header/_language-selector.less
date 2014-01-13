@@ -1,0 +1,37 @@
+/*
+ * Language Selector and Additional Nav
+ */
+.promoted-links ul,
+.language-selector {
+    float: right;
+    margin:.5em 0;
+    font-size:.8125em; /* 13px */
+    position: relative;
+}
+
+.promoted-links ul {
+    list-style-type: none;
+}
+.promoted-links ul li {
+    display: inline;
+    padding-right:1em;
+}
+
+.language-selector .dropdown-label {
+    color: @white;
+    font-weight:bold;
+}
+.language-selector .dropdown {
+    right:0;
+    top:1.6em;
+}
+.language-selector .dropdown-controller a:after {
+    content:"";
+    width:12px;
+    height:10px;
+    display:inline-block;
+    background:transparent url(../../img/image-map.png) -30px -45px no-repeat;
+    margin-left:3px;
+    padding-left:5px;
+}
+

@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            css: ['src/css/*.css', 'dist/css'],
+            css: ['src/css/*.css', 'dist/css/*.css'],
             js: 'dist/js'
         },
         lesslint: {
@@ -16,14 +16,13 @@ module.exports = function(grunt) {
             options: {
 //                strictUnits: true
             },
-            src: {
-                // no need for files, the config below should work
+            files: {
                 expand: true,
                 flatten: true,
                 cwd: "src",
-                src: "less/style.less",
+                src: "less/*.less",
                 dest: "src/css",
-                ext: ".css"
+                ext: ".css" 
             }
         },
         cssmin: {
@@ -32,10 +31,17 @@ module.exports = function(grunt) {
                 banner: '/**!\n * @name <%= pkg.name %>\n * @version v<%= pkg.version %>\n * ' +
                     '@date <%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright <%= pkg.copyright %>\n * @license <%= pkg.license %>\n */\n'
             },
-            combine: {
+            /*combine: {
                 files: {
                     'dist/css/style.css': 'src/css/*.css'
                 }
+            }*/
+            minify: {
+              expand: true,
+              cwd: 'src/css/',
+              src: ['*.css', '!*.min.css'],
+              dest: 'dist/css/',
+              ext: '.min.css'
             }
         },
         jshint: {
@@ -50,7 +56,7 @@ module.exports = function(grunt) {
                     console: true
                 }
             },
-            files: ['src/js/lib/*.js', 'src/js/action-template-main.js']
+            files: ['src/js/lib/*.js', 'src/js/*.js']
         },
         concat: {
             options: {
@@ -103,7 +109,8 @@ module.exports = function(grunt) {
             lib: {
                 files: {
                     'dist/js/p3.min.js': ['dist/js/p3.lib.js'],
-                    'dist/js/app.js': ['src/js/action-template-main.js']
+                    'dist/js/site.js' : ['src/js/site-main.js'],
+                    'dist/js/page.js': ['src/js/action-template-main.js']
                 }
             }
         },

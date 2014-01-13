@@ -29,11 +29,6 @@
 
     $.ajaxSetup({cache: false});
 
-    // Load narrow.js if media queries are not supported
-//    M.load({
-//        test: M.mq('only all'),
-//        nope: 'dist/js/compat/p3.narrow.js'
-//    });
 
     $(document).ready(function() {
 
@@ -47,31 +42,6 @@
 
         // Track form abandonment
         $.p3.form_tracking('.js-track-abandonment');
-
-        // Display pseudo-placeholder in search form
-        // using default/placeholder.js
-        if (!M.input.placeholder) {
-            $('#SearchText').focus(function() {
-                var input = $(this);
-                if (input.val() === input.attr('placeholder')) {
-                    input.val('');
-                    input.removeClass('placeholder');
-                }
-            }).blur(function() {
-                var input = $(this);
-                if (input.val() === '' || input.val() === input.attr('placeholder')) {
-                    input.addClass('placeholder');
-                    input.val(input.attr('placeholder'));
-                }
-            }).blur().parents('form').submit(function() {
-                $(this).find('[placeholder]').each(function() {
-                    var input = $(this);
-                    if (input.val() === input.attr('placeholder')) {
-                        input.val('');
-                    }
-                });
-            });
-        }
 
         // Focus the email field for easier form entry
         $('input[name=email]').focus();
@@ -122,19 +92,11 @@
             }
         });
 
+        // Recent signers widget
         $.p3.recent_signers('#action-recent-signers', {
             jsonURL: pledgeTesting,
             params: parameters
         });
-
-        // move search form into mobile menu and back
-        $.p3.mobilesearchform("768");
-
-        // provides submenu navigation for mobile menu
-        $.p3.mobilemenu("#main-nav");
-
-        // pretty checkboxes and radios via Formstone picker
-        $('form input[type=radio], form input[type=checkbox]:not(.mobilemenu-label)').picker();
 
     });
 

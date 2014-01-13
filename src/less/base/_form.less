@@ -1,6 +1,6 @@
 /* ==========================================================================
      Form
-     ========================================================================== */
+   ========================================================================== */
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate.
@@ -32,22 +32,33 @@ input[type=password],
 input[type=email],
 input[type=search],
 input[type=tel],
-fieldset.radio,
-fieldset.checkbox,
 textarea {
-    font-family:'Lato',Verdana, Geneva, Arial, Helvetica, sans-serif;
-    color:@grays-1;
     background:@white;
     border:1px solid @grays-4;
-	width:19em; /* 20 char (default input length) x .7em (average char length) */
     padding:.4em .5em .3em .5em;
     display:inline-block;
+
     zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
     *display: inline;
     margin:.2em 0 .5em 0;
     -webkit-appearance:none;
     .rounded_all(3px);
     .boxshadow(inset; 0; 2px; 3px; rgba(0,0,0,0.1));
+}
+
+/* Large screens ----------- */
+.layout_large() {
+  input[type=text],
+  input[type=password],
+  input[type=email],
+  input[type=search],
+  input[type=tel],
+  textarea {
+    min-width:17.5em;
+  }
+  select {
+    min-width:16.25em;
+  }
 }
 
 /*
@@ -62,13 +73,11 @@ textarea {
     .disabled		- grey out to indicate it cannot be used
 */
 label {
-    font-weight:bold;
-    padding:.2em;
     display:none;
+    padding:.5em 0;
 }
 .no-placeholder label {
     display:block;
-    font-size: .9em;
     margin-top: .225em;
 }
 .search-form label { 
@@ -156,7 +165,6 @@ textarea:disabled:hover {
 textarea {
     height:8em;
     width:17.5em;
-    font-size:0.813em;
     border:1px solid @grays-4;
 }
 .textarea.large textarea {
@@ -186,7 +194,6 @@ form .tooltip {
 
 form .tooltip,
 form .message {
-    font-size: .813em; /* 13px */
     background-color:transparent;
     border:0;
 }
@@ -209,7 +216,6 @@ form .info:before {
     padding:0 .125em .25em .125em;
     .rounded_all(2px);
     font-weight:bold;
-    font-family:serif;
     color:@white;
     line-height:100%;
 }
@@ -322,22 +328,18 @@ form .errorSummary {
 */
 fieldset.checkbox,
 fieldset.radio {
-    border: 1px solid @grays-4;
-    background: @white;
-    margin: .2em 0 .5em 0;
-    padding:0.3em 0.4em;
-    width:90%;
+    padding: .5em 0 1em 0;
 }
 fieldset.checkbox legend,
 fieldset.radio legend {
-    padding: 0 0.5em;
+    padding: .25em 0 0 0;
 }
 .checkbox label,
 .checkboxlist label,
 .radiolist label,
 .radio label {
     text-indent: 0.2em;
-    /*font-size:0.9em;*/
+    margin-right:1em;
 }
 .checkboxlist .input.checkbox label,
 .radiolist .input.radio label,
@@ -345,7 +347,7 @@ fieldset.radio legend {
 .radio label input,
 .checkbox label,
 .checkbox label input {
-    font-weight:400;
+    font-weight:normal;
     display:inline;
     width:auto;
 }
@@ -377,7 +379,6 @@ select:hover {
     .rounded_all(3px);
     border:1px solid #BBB;*/
 }
-
 
 /* system fields */
 .system.fields {
