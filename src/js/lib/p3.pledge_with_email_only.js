@@ -295,7 +295,6 @@
             }
 
         };
-        console.log(typeof M);
 
         M.load({
             test: window.JSON,

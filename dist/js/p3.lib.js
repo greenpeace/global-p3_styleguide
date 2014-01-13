@@ -853,6 +853,7 @@ var _p3 = $.p3 || {},
     };
 
 }(jQuery, Modernizr));
+
 ;// Source: src/js/lib/p3.recent_signers.js
 /**!
  * Animated Recent Signers for Greenpeace Action Template v0.3
