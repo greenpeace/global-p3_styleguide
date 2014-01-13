@@ -43,7 +43,7 @@
         disableOnError:         false,
         /* GET variables to be added to both the signer check and form validation requests */
         params:                 {},
-        showSummary:            true,
+        showSummary:            false,
         messageElement:         '<div class="message"></div>'
     };
 
@@ -295,7 +295,7 @@
             }
 
         };
-
+        console.log(typeof M);
 
         M.load({
             test: window.JSON,

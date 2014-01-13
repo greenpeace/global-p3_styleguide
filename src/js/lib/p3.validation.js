@@ -56,7 +56,7 @@
         /* validate the form each time keyup is received when a field has focus */
         onkeyup: false,
         /* Show errors in a catch-all container instead of per-field */
-        showSummary: true,
+        showSummary: false,
         /* Selector for the summary field */
         summarySelector: '.errorSummary',
         /* Error summary container */

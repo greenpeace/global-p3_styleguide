@@ -693,7 +693,7 @@ var _p3 = $.p3 || {},
         disableOnError:         false,
         /* GET variables to be added to both the signer check and form validation requests */
         params:                 {},
-        showSummary:            true,
+        showSummary:            false,
         messageElement:         '<div class="message"></div>'
     };
 
@@ -945,7 +945,7 @@ var _p3 = $.p3 || {},
             }
 
         };
-
+        console.log(typeof M);
 
         M.load({
             test: window.JSON,
@@ -1655,7 +1655,7 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
         /* validate the form each time keyup is received when a field has focus */
         onkeyup: false,
         /* Show errors in a catch-all container instead of per-field */
-        showSummary: true,
+        showSummary: false,
         /* Selector for the summary field */
         summarySelector: '.errorSummary',
         /* Error summary container */
