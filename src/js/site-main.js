@@ -24,4 +24,8 @@
         test: M.mq('only all'),
         nope: 'dist/js/compat/p3.narrow.js'
     });
+
+    // Detect placeholder functionality
+    $('html').addClass((M.input.placeholder ? '' : 'no-') + 'placeholder');
+
 }(jQuery, Modernizr, this));

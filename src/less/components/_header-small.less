@@ -61,7 +61,7 @@
 
     .heading-second {
         height: 1.6875em; /* 27px */
-        background: @greens-5;
+        background: @greens-5;   
         border-top: 1px solid #4EA600;
     }
 
@@ -70,8 +70,14 @@
 @import 'header/_dropdown.less';
 @import 'header/_country-selector.less';
 @import 'header/_language-selector.less';
-@import 'header/_top-navigation.less';
-@import 'header/_search.less';
+//@import 'header/_top-navigation.less';
+//@import 'header/_search.less';
+
+#main-nav,
+.promoted-links,
+.search-form {
+    display:none;
+}
 
 /*
  * media queries
