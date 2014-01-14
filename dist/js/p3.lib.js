@@ -839,7 +839,6 @@ var _p3 = $.p3 || {},
             }
 
         };
-        console.log(typeof M);
 
         M.load({
             test: window.JSON,

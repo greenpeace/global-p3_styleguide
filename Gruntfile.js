@@ -22,26 +22,27 @@ module.exports = function(grunt) {
                 cwd: "src",
                 src: "less/*.less",
                 dest: "src/css",
-                ext: ".css" 
+                ext: ".css"
             }
         },
         cssmin: {
             options: {
 //                report: 'gzip',
-                banner: '/**!\n * @name <%= pkg.name %>\n * @version v<%= pkg.version %>\n * ' +
-                    '@date <%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright <%= pkg.copyright %>\n * @license <%= pkg.license %>\n */\n'
+                banner: '/**!\n * @name\t\t<%= pkg.name %>\n * @version\t\tv<%= pkg.version %>\n * ' +
+                    '@date\t\t<%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright\t<%= pkg.copyright %>\n * @source\t\t<%= pkg.repository %>\n * @license\t\t<%= pkg.license %>\n */\n',
+                footer: '/* @license-end */'
             },
             /*combine: {
-                files: {
-                    'dist/css/style.css': 'src/css/*.css'
-                }
-            }*/
+             files: {
+             'dist/css/style.css': 'src/css/*.css'
+             }
+             }*/
             minify: {
-              expand: true,
-              cwd: 'src/css/',
-              src: ['*.css', '!*.min.css'],
-              dest: 'dist/css/',
-              ext: '.min.css'
+                expand: true,
+                cwd: 'src/css/',
+                src: ['*.css', '!*.min.css'],
+                dest: 'dist/css/',
+                ext: '.min.css'
             }
         },
         jshint: {
@@ -81,14 +82,28 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-                banner: '/**!\n * @name <%= pkg.name %>\n * @version v<%= pkg.version %>\n * ' +
-                    '@date <%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright <%= pkg.copyright %>\n * @license <%= pkg.license %>\n */\n',
+                banner: '/**\n * @name\t\t<%= pkg.name %>\n * @version\t\tv<%= pkg.version %>\n * ' +
+                    '@date\t\t<%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright\t<%= pkg.copyright %>\n * @source\t\t<%= pkg.repository %>\n * @license <%= pkg.license %> */\n',
 //                report: 'gzip',
+                footer: '\n// @license-end',
+
                 mangle: {
                     except: ['jQuery', 'Modernizr']
                 }
             },
+            jquery: {
+                compress: false,
+                options: {
+                    banner: '/**\n * @source: http://code.jquery.com/jquery-1.10.2.min.js\n * @license <%= pkg.license %>\n * @note License is a rough approximation to suit EFF standards, see http://jquery.com/license for actual licensing information */\n'
+                },
+                files: {
+                    'dist/js/jquery.min.js': 'src/js/vendor/jquery-1.10.2.min.js'
+                }
+            },
             modernizr: {
+                options: {
+                    banner: '/**\n * @source: http://modernizr.com/download/\n * @license magnet:?xt=urn:btih:5305d91886084f776adcf57509a648432709a7c7&dn=x11.txt X11 %>\n * @note    License is a rough approximation to suit EFF standards, see http://jquery.com/license for actual licensing information */\n'
+                },
                 files: {
                     'dist/js/modernizr.min.js': 'src/js/vendor/modernizr*.js'
                 }
@@ -109,24 +124,24 @@ module.exports = function(grunt) {
             lib: {
                 files: {
                     'dist/js/p3.min.js': ['dist/js/p3.lib.js'],
-                    'dist/js/site.js' : ['src/js/site-main.js'],
+                    'dist/js/site.js': ['src/js/site-main.js'],
                     'dist/js/page.js': ['src/js/action-template-main.js']
                 }
             }
         },
         watch: {
             js: {
-                files: ['Gruntfile.js', 'src/**/*.js'],
+                files: ['Gruntfile.js', 'package.json', 'src/**/*.js'],
                 tasks: ['js'],
                 options: {
-                        spawn: false
+                    spawn: false
                 }
             },
             less: {
-                files: ['Gruntfile.js', 'src/**/*.less'],
+                files: ['Gruntfile.js', 'package.json', 'src/**/*.less'],
                 tasks: ['css'],
                 options: {
-                        spawn: false
+                    spawn: false
                 }
             }
         }
