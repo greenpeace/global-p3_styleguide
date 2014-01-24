@@ -1268,19 +1268,19 @@ form .errorSummary {
 }
 /* if large screen display info as tooltips */
 @media only screen and (min-width: 1024px) {
-  html form .tooltip {
+  form .tooltip {
     display: block;
     width: 10px;
     float: right;
   }
-  html form .tooltip:before {
+  form .tooltip:before {
     display: block;
     margin-top: .75em;
   }
-  html form .tooltip:hover:before {
+  form .tooltip:hover:before {
     background: #b1c3d0;
   }
-  html form .tooltip span {
+  form .tooltip span {
     visibility: hidden;
     display: block;
     position: absolute;
@@ -1295,7 +1295,7 @@ form .errorSummary {
     right: -86px;
     width: 130px;
   }
-  html form .tooltip:hover span {
+  form .tooltip:hover span {
     visibility: visible;
   }
 }
@@ -1331,7 +1331,7 @@ form .errorSummary {
   visibility: visible;
 }
 @media only screen and (min-width: 1350px) {
-  html form .tooltip span {
+  form .tooltip span {
     min-width: 200px;
     bottom: auto;
     right: auto;
@@ -1400,10 +1400,10 @@ input[type=checkbox] + label {
 */
 select,
 select:hover {
-  padding-left: .2em;
-  width: 15em;
+  width: 15.25em;
   margin-bottom: 10px;
   padding: .25em .5em .15em .2em;
+  margin: .2em 0 .5em 0;
   /*background:@white;
     .rounded_all(3px);
     border:1px solid #BBB;*/
@@ -1882,20 +1882,20 @@ ul.navigation {
  * media queries
  */
 @media only screen and (min-width: 768px) {
-  html .header a {
+  .header a {
     color: #ffffff;
   }
-  html .header a:focus,
-  html .header a:hover {
+  .header a:focus,
+  .header a:hover {
     color: #ffffff;
   }
-  html .heading-second {
+  .heading-second {
     height: 1.6875em;
     /* 27px */
     background: #56b105;
     border-top: 1px solid #4EA600;
   }
-  html #main-nav {
+  #main-nav {
     position: static;
     width: auto;
     max-width: none;
@@ -1903,7 +1903,7 @@ ul.navigation {
     padding: 0;
     display: block;
   }
-  html ul.navigation {
+  ul.navigation {
     margin: -1px 0 0 0;
     padding: 0;
     list-style: none;
@@ -1912,7 +1912,7 @@ ul.navigation {
     /* 625px */
     background: none transparent;
   }
-  html .navigation li {
+  .navigation li {
     float: left;
     padding: 0 .1666666666em;
     /* 2px/12 */
@@ -1920,14 +1920,14 @@ ul.navigation {
     z-index: 101;
     border: none;
   }
-  html .navigation li a {
+  .navigation li a {
     float: left;
     cursor: pointer;
     display: inline;
     padding: 0;
     background: none transparent;
   }
-  html .navigation li a span {
+  .navigation li a span {
     float: left;
     font-family: Helvetica, "Trebuchet MS", sans-serif;
     font-size: .75em;
@@ -1940,10 +1940,10 @@ ul.navigation {
     /* 10px/12 */
     white-space: nowrap;
   }
-  html .navigation li a.current-item,
-  html .navigation li a.active-item,
-  html .navigation li a:hover,
-  html .navigation li a:focus {
+  .navigation li a.current-item,
+  .navigation li a.active-item,
+  .navigation li a:hover,
+  .navigation li a:focus {
     text-decoration: none;
     background: #66cc00;
     -webkit-border-radius: 0 0 4px 4px;
@@ -1955,34 +1955,34 @@ ul.navigation {
     margin-right: 4px;
     color: #055905;
   }
-  html .navigation li a.current-item span,
-  html .navigation li a.active-item span,
-  html .navigation li a.hover span,
-  html .navigation li a:hover span,
-  html .navigation li a:focus span {
+  .navigation li a.current-item span,
+  .navigation li a.active-item span,
+  .navigation li a.hover span,
+  .navigation li a:hover span,
+  .navigation li a:focus span {
     overflow: hidden;
     position: relative;
     color: #055905;
   }
-  html .navigation li a:hover span,
-  html .navigation li a:focus span {
+  .navigation li a:hover span,
+  .navigation li a:focus span {
     position: relative;
     color: #055905;
   }
-  html .navigation li .drop-content a {
+  .navigation li .drop-content a {
     /* overrides the mobile styling */
     margin-left: 0;
     font-weight: normal;
   }
-  html .navigation li:hover .drop-holder,
-  html .navigation li.hover .drop-holder {
+  .navigation li:hover .drop-holder,
+  .navigation li.hover .drop-holder {
     display: block;
   }
-  html .navigation li:hover .drop-content ul ul ul,
-  html .navigation li.hover .drop-content ul ul ul {
+  .navigation li:hover .drop-content ul ul ul,
+  .navigation li.hover .drop-content ul ul ul {
     display: none;
   }
-  html .navigation .drop-holder {
+  .navigation .drop-holder {
     display: none;
     position: absolute;
     top: 1.75em;
@@ -1991,13 +1991,13 @@ ul.navigation {
     /* 100px */
     z-index: 100;
   }
-  html .navigation .drop-content {
+  .navigation .drop-content {
     height: 23.125em;
     /* 370px */
     width: 0;
     background: transparent none;
   }
-  html .navigation .drop-content ul {
+  .navigation .drop-content ul {
     margin: 0 0 0 6.5em;
     /* 104px */
     padding: 0;
@@ -2005,7 +2005,7 @@ ul.navigation {
     position: absolute;
     border: solid 1px #56b105;
   }
-  html .navigation .drop-content ul li {
+  .navigation .drop-content ul li {
     float: none;
     width: 13.125em;
     /* 210px */
@@ -2014,7 +2014,7 @@ ul.navigation {
     background-color: #ffffff;
     padding: 0;
   }
-  html .navigation .drop-content ul li a {
+  .navigation .drop-content ul li a {
     float: none;
     display: block;
     background: none;
@@ -2033,10 +2033,10 @@ ul.navigation {
     /* 200px/12 */
     overflow: hidden;
   }
-  html .navigation .drop-content ul li:hover a,
-  html .navigation .drop-content ul li a:hover,
-  html .navigation .drop-content ul li:focus a,
-  html .navigation .drop-content ul li a:focus {
+  .navigation .drop-content ul li:hover a,
+  .navigation .drop-content ul li a:hover,
+  .navigation .drop-content ul li:focus a,
+  .navigation .drop-content ul li a:focus {
     background: #56b105;
     color: #ffffff;
     -webkit-border-radius: 0;
@@ -2046,11 +2046,11 @@ ul.navigation {
     -moz-box-shadow: none;
     box-shadow: none;
   }
-  html .navigation .drop-content ul li:hover ul,
-  html .navigation .drop-content ul li:focus ul {
+  .navigation .drop-content ul li:hover ul,
+  .navigation .drop-content ul li:focus ul {
     display: block;
   }
-  html .navigation .drop-content ul ul {
+  .navigation .drop-content ul ul {
     margin: 0;
     background-position: 0 100%;
     display: none;
@@ -2058,25 +2058,25 @@ ul.navigation {
     left: 100%;
     top: -1px;
   }
-  html .navigation .drop-content ul ul li {
+  .navigation .drop-content ul ul li {
     padding: 0;
   }
-  html .navigation .drop-content ul li:hover ul li:hover a,
-  html .navigation .drop-content ul ul li a:hover,
-  html .navigation .drop-content ul li:focus ul li:focus a,
-  html .navigation .drop-content ul ul li a:focus {
+  .navigation .drop-content ul li:hover ul li:hover a,
+  .navigation .drop-content ul ul li a:hover,
+  .navigation .drop-content ul li:focus ul li:focus a,
+  .navigation .drop-content ul ul li a:focus {
     background: #56b105;
     color: #ffffff;
   }
-  html .navigation .drop-content ul ul li:hover ul,
-  html .navigation .drop-content ul ul li:focus ul {
+  .navigation .drop-content ul ul li:hover ul,
+  .navigation .drop-content ul ul li:focus ul {
     display: block;
   }
-  html .navigation .drop-content ul li:hover ul li a,
-  html .navigation .drop-content ul li:focus ul li a,
-  html .navigation .drop-content ul li:hover ul li:hover ul li a,
-  html .navigation .drop-content ul li:focus ul li:focus ul li a,
-  html .navigation .drop-content ul ul ul li a {
+  .navigation .drop-content ul li:hover ul li a,
+  .navigation .drop-content ul li:focus ul li a,
+  .navigation .drop-content ul li:hover ul li:hover ul li a,
+  .navigation .drop-content ul li:focus ul li:focus ul li a,
+  .navigation .drop-content ul ul ul li a {
     background: none;
     color: #000000;
     padding: 0 0 0 .83333333em;
@@ -2085,39 +2085,39 @@ ul.navigation {
     width: 16.66667em;
     /* 200px/12 */
   }
-  html .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
-  html .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
-  html .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
+  .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
+  .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
+  .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
     background: #56b105;
     color: #ffffff;
   }
-  html .navigation li a.active span,
-  html .navigation li a:hover span,
-  html .navigation li a:focus span,
-  html .navigation li a.current-item span,
-  html .navigation li a.active-item span {
+  .navigation li a.active span,
+  .navigation li a:hover span,
+  .navigation li a:focus span,
+  .navigation li a.current-item span,
+  .navigation li a.active-item span {
     margin-right: -4px;
   }
-  html .navigation .drop-content ul li a.drop,
-  html .navigation .drop-content ul li:hover ul li a.drop,
-  html .navigation .drop-content ul li:focus ul li a.drop,
-  html .navigation .drop-content ul ul li a.drop,
-  html .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
-  html .navigation .drop-content ul li:focus ul li:focus ul li a.drop2 {
+  .navigation .drop-content ul li a.drop,
+  .navigation .drop-content ul li:hover ul li a.drop,
+  .navigation .drop-content ul li:focus ul li a.drop,
+  .navigation .drop-content ul ul li a.drop,
+  .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
+  .navigation .drop-content ul li:focus ul li:focus ul li a.drop2 {
     background: url(../../img/nav-arrow.png) no-repeat 95% 0;
   }
-  html .navigation .drop-content ul li:hover a.drop,
-  html .navigation .drop-content ul li:focus a.drop,
-  html .navigation .drop-content ul li a.drop:hover,
-  html .navigation .drop-content ul li:hover li:hover a.drop,
-  html .navigation .drop-content ul li:focus li:focus a.drop,
-  html .navigation .drop-content ul ul li a.drop:hover,
-  html .navigation .drop-content ul ul li a.drop:focus,
-  html .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
-  html .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
+  .navigation .drop-content ul li:hover a.drop,
+  .navigation .drop-content ul li:focus a.drop,
+  .navigation .drop-content ul li a.drop:hover,
+  .navigation .drop-content ul li:hover li:hover a.drop,
+  .navigation .drop-content ul li:focus li:focus a.drop,
+  .navigation .drop-content ul ul li a.drop:hover,
+  .navigation .drop-content ul ul li a.drop:focus,
+  .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
+  .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
     background: #56b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
   }
-  html .navigation .button.primary {
+  .navigation .button.primary {
     margin: .2em 0 0;
     text-align: center;
     color: #ffffff;
@@ -2140,15 +2140,15 @@ ul.navigation {
     /* IE6-9 */
     border: 1px solid #f06818;
   }
-  html .navigation .button.primary:active,
-  html .navigation .button.primary:hover {
+  .navigation .button.primary:active,
+  .navigation .button.primary:hover {
     color: #ffffff;
     text-decoration: none;
     -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
-  html .header .search-form {
+  .header .search-form {
     width: 250px;
     float: right;
     border: 1px solid #56b105;
@@ -2160,14 +2160,14 @@ ul.navigation {
     padding: 1px 0 1px 1px;
     height: 1.1em;
   }
-  html .header .search-form .input {
+  .header .search-form .input {
     width: 232px;
     background: #FFF;
     float: left;
     padding: 0;
     margin: 0;
   }
-  html .header .search-form .input input[type=text] {
+  .header .search-form .input input[type=text] {
     min-width: 225px;
     width: 225px;
     border: 0;
@@ -2184,11 +2184,11 @@ ul.navigation {
     box-shadow: none;
     float: left;
   }
-  html .header .search-form input[type=submit] {
+  .header .search-form input[type=submit] {
     display: none;
     float: left;
   }
-  html .header .search-form span {
+  .header .search-form span {
     border: 0;
     float: right;
     width: 1em;
@@ -3758,7 +3758,7 @@ ul.navigation {
   padding: 1em 0%;
 }
 @media only screen and (min-width: 480px) {
-  html .footer-small {
+  .footer-small {
     background: #66cc00;
     color: #ffffff;
     font-size: 0.875em;
@@ -3766,18 +3766,18 @@ ul.navigation {
     /*  height:4.7857142857em; /* 67px */
     margin-bottom: 0;
   }
-  html .footer-small .copy-box {
+  .footer-small .copy-box {
     padding: 2.1428571429em 0 0;
     /* 30px */
   }
-  html .footer-small .logo-box {
+  .footer-small .logo-box {
     float: left;
     margin: 1px 0.5em 2em 0;
     position: static;
     bottom: auto;
     color: #ffffff;
   }
-  html .footer-small .logo-box .logo {
+  .footer-small .logo-box .logo {
     background: url(../../img/image-map.png) 0 -25px no-repeat;
     width: 89px;
     height: 15px;
@@ -3787,29 +3787,29 @@ ul.navigation {
     float: left;
     overflow: hidden;
   }
-  html .footer-small .legal-menu {
+  .footer-small .legal-menu {
     float: left;
   }
-  html .footer-small .bottom-menu {
+  .footer-small .bottom-menu {
     float: right;
   }
-  html .footer-small ul.legal-menu,
-  html .footer-small ul.bottom-menu {
+  .footer-small ul.legal-menu,
+  .footer-small ul.bottom-menu {
     margin-top: -1em;
     clear: none;
   }
-  html .footer-small .legal-menu li,
-  html .footer-small .bottom-menu li {
+  .footer-small .legal-menu li,
+  .footer-small .bottom-menu li {
     float: left;
     padding: 0 0 0 0.1428571429em;
   }
-  html .footer-small .legal-menu li a,
-  html .footer-small .bottom-menu li a {
+  .footer-small .legal-menu li a,
+  .footer-small .bottom-menu li a {
     padding: 1em 0.5em;
     border: 0px solid transparent;
     text-align: left;
   }
-  html .footer .footer-holder {
+  .footer .footer-holder {
     width: 960px;
     font-size: 12px;
   }
@@ -4083,105 +4083,6 @@ Action form
   display: inline;
   margin-top: 0.2em;
 }
-/*
-    Action Counter,
-    shows the number of signers both graphical and text only
-
-    #action-counter-graphical - graphical display as progres bar
-    #action-counter-textual   - textual display
-*/
-#action-counter {
-  margin: 1em 0;
-}
-#action-counter #action-counter-graphical {
-  transition: all 100ms ease-out;
-  display: none;
-  background: #e9ecf3;
-}
-#action-counter #action-counter-graphical .completed {
-  background: #f99713;
-  display: block;
-  text-align: right;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 1.125em;
-  padding: .311em 0;
-  text-indent: 0.2em;
-}
-#action-counter #action-counter-graphical .objectives {
-  display: none;
-}
-#action-counter #action-counter-textual {
-  margin: .25em 0 0 0;
-  color: #666666;
-  font-size: .875em;
-}
-/*
-    Social Login buttons
-
-    .facebook - facebook icon
-    .google   - google icon
-*/
-#main-section .social-login span {
-  display: none;
-}
-#main-section .social-login a {
-  height: 22px;
-  /* 22px */
-  width: 60px;
-  /* 60px */
-  display: inline-block;
-  line-height: 1em;
-  border: 1px solid #cccccc;
-  margin-bottom: -0.5em;
-  padding: 0 6px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-#main-section .social-login a.facebook {
-  background: #fffdff url(../../img/sociallogin.png) center 0 no-repeat;
-}
-#main-section .social-login a.google {
-  background: #fffdff url(../../img/sociallogin.png) center -22px no-repeat;
-}
-/*
-    Recent Signers widget
-
-    li       - One line, ellipsis if content doesn't fit
-    .since   - Timestamp in gray text
-    .country - Country name in grayutext
-    .flag    - Flag icon margin
-*/
-#action-recent-signers {
-  clear: right;
-  min-height: 14em;
-}
-#action-recent-signers ul {
-  padding: 0;
-}
-#action-recent-signers li {
-  list-style-type: none;
-  font-size: 0.813em;
-  margin-bottom: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -ms-text-overflow: ellipsis;
-}
-#action-recent-signers .since {
-  width: 9em;
-  display: inline-block;
-  font-size: 0.813em;
-  color: #666666;
-}
-#action-recent-signers .country {
-  color: #777;
-  display: none;
-}
-#action-recent-signers .flag {
-  margin-right: .25em;
-}
 /* ==========================================================================
    Action Template Media Queries
    ==========================================================================
@@ -4219,43 +4120,43 @@ Action form
     so it can be used for the media query fallback as well.
  */
 @media only screen and (min-width: 768px) {
-  html .action-template h1 {
+  .action-template h1 {
     float: left;
     clear: both;
     width: 100%;
   }
-  html .action-template h2,
-  html #action-ask,
-  html #action-form,
-  html #action-recent-signers {
+  .action-template h2,
+  #action-ask,
+  #action-form,
+  #action-recent-signers {
     float: right;
     width: 250px;
     padding: 0 20px;
     margin: 0;
   }
-  html #action-counter,
-  html #action-details,
-  html #action-social-share,
-  html #action-multimedia-teaser {
+  #action-counter,
+  #action-details,
+  #action-social-share,
+  #action-multimedia-teaser {
     float: left;
     clear: left;
     width: 380px;
   }
-  html .action-template h2,
-  html #action-ask,
-  html #action-form {
+  .action-template h2,
+  #action-ask,
+  #action-form {
     background: #e9ecf3;
   }
-  html #action-ask p {
+  #action-ask p {
     margin-bottom: 0;
   }
-  html .action-template h2 {
+  .action-template h2 {
     padding-top: 20px;
   }
-  html #action-form {
+  #action-form {
     padding-bottom: 20px;
   }
-  html #action-counter-graphical {
+  #action-counter-graphical {
     display: block;
   }
 }
@@ -4301,75 +4202,75 @@ Action form
 }
 /* Desktops and laptops */
 @media only screen and (min-width: 1024px) {
-  html .action-template #main-container {
+  .action-template #main-container {
     background: transparent url(../../img/background.jpg) center 0 no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
   }
-  html .action-template #main-container-holder {
+  .action-template #main-container-holder {
     background: transparent url(../../img/raster.png) 0 0 repeat;
   }
-  html .action-template h1 {
+  .action-template h1 {
     float: left;
     clear: both;
     width: 100%;
   }
-  html #action-recent-signers .country {
+  #action-recent-signers .country {
     display: inline;
   }
-  html #action-recent-signers .name:after {
+  #action-recent-signers .name:after {
     content: ",";
   }
-  html .action-template h2,
-  html #action-ask,
-  html #action-form,
-  html #action-recent-signers {
+  .action-template h2,
+  #action-ask,
+  #action-form,
+  #action-recent-signers {
     float: right;
     width: 340px;
     padding: 0 20px;
     margin: 0;
   }
-  html .action-template h2,
-  html #action-ask,
-  html #action-form {
+  .action-template h2,
+  #action-ask,
+  #action-form {
     background: #e9ecf3;
   }
-  html #action-ask p {
+  #action-ask p {
     margin-bottom: 0;
   }
-  html .action-template h2 {
+  .action-template h2 {
     padding-top: 20px;
   }
-  html #action-form {
+  #action-form {
     padding-bottom: 20px;
   }
-  html #action-counter,
-  html #action-details,
-  html #action-social-share,
-  html #action-multimedia-teaser {
+  #action-counter,
+  #action-details,
+  #action-social-share,
+  #action-multimedia-teaser {
     float: left;
     clear: left;
     width: 520px;
   }
-  html #action-counter-graphical {
+  #action-counter-graphical {
     display: block;
   }
-  html #action-form .action-template textarea,
-  html #action-form .action-template input[type=text] {
+  #action-form .action-template textarea,
+  #action-form .action-template input[type=text] {
     width: 19em;
   }
-  html #action-form .action-template select {
+  #action-form .action-template select {
     width: 20em;
   }
-  html #action-form .action-template textarea {
+  #action-form .action-template textarea {
     width: 23.5em;
   }
-  html #action-form .action-template .submit.full input {
+  #action-form .action-template .submit.full input {
     width: 16.75em;
   }
-  html #action-form .action-template #action-submit-quick.submit {
+  #action-form .action-template #action-submit-quick.submit {
     margin-right: 0;
   }
 }

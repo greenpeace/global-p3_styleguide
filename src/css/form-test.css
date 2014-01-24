@@ -1081,19 +1081,19 @@ form .errorSummary {
 }
 /* if large screen display info as tooltips */
 @media only screen and (min-width: 1024px) {
-  html form .tooltip {
+  form .tooltip {
     display: block;
     width: 10px;
     float: right;
   }
-  html form .tooltip:before {
+  form .tooltip:before {
     display: block;
     margin-top: .75em;
   }
-  html form .tooltip:hover:before {
+  form .tooltip:hover:before {
     background: #b1c3d0;
   }
-  html form .tooltip span {
+  form .tooltip span {
     visibility: hidden;
     display: block;
     position: absolute;
@@ -1108,7 +1108,7 @@ form .errorSummary {
     right: -86px;
     width: 130px;
   }
-  html form .tooltip:hover span {
+  form .tooltip:hover span {
     visibility: visible;
   }
 }
@@ -1144,7 +1144,7 @@ form .errorSummary {
   visibility: visible;
 }
 @media only screen and (min-width: 1350px) {
-  html form .tooltip span {
+  form .tooltip span {
     min-width: 200px;
     bottom: auto;
     right: auto;
@@ -1213,10 +1213,10 @@ input[type=checkbox] + label {
 */
 select,
 select:hover {
-  padding-left: .2em;
-  width: 15em;
+  width: 15.25em;
   margin-bottom: 10px;
   padding: .25em .5em .15em .2em;
+  margin: .2em 0 .5em 0;
   /*background:@white;
     .rounded_all(3px);
     border:1px solid #BBB;*/

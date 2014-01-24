@@ -1268,19 +1268,19 @@ form .errorSummary {
 }
 /* if large screen display info as tooltips */
 @media only screen and (min-width: 1024px) {
-  html form .tooltip {
+  form .tooltip {
     display: block;
     width: 10px;
     float: right;
   }
-  html form .tooltip:before {
+  form .tooltip:before {
     display: block;
     margin-top: .75em;
   }
-  html form .tooltip:hover:before {
+  form .tooltip:hover:before {
     background: #b1c3d0;
   }
-  html form .tooltip span {
+  form .tooltip span {
     visibility: hidden;
     display: block;
     position: absolute;
@@ -1295,7 +1295,7 @@ form .errorSummary {
     right: -86px;
     width: 130px;
   }
-  html form .tooltip:hover span {
+  form .tooltip:hover span {
     visibility: visible;
   }
 }
@@ -1331,7 +1331,7 @@ form .errorSummary {
   visibility: visible;
 }
 @media only screen and (min-width: 1350px) {
-  html form .tooltip span {
+  form .tooltip span {
     min-width: 200px;
     bottom: auto;
     right: auto;
@@ -1400,10 +1400,10 @@ input[type=checkbox] + label {
 */
 select,
 select:hover {
-  padding-left: .2em;
-  width: 15em;
+  width: 15.25em;
   margin-bottom: 10px;
   padding: .25em .5em .15em .2em;
+  margin: .2em 0 .5em 0;
   /*background:@white;
     .rounded_all(3px);
     border:1px solid #BBB;*/
@@ -2653,7 +2653,7 @@ a.button.disabled:active {
   padding: 1em 0%;
 }
 @media only screen and (min-width: 480px) {
-  html .footer-small {
+  .footer-small {
     background: #66cc00;
     color: #ffffff;
     font-size: 0.875em;
@@ -2661,18 +2661,18 @@ a.button.disabled:active {
     /*  height:4.7857142857em; /* 67px */
     margin-bottom: 0;
   }
-  html .footer-small .copy-box {
+  .footer-small .copy-box {
     padding: 2.1428571429em 0 0;
     /* 30px */
   }
-  html .footer-small .logo-box {
+  .footer-small .logo-box {
     float: left;
     margin: 1px 0.5em 2em 0;
     position: static;
     bottom: auto;
     color: #ffffff;
   }
-  html .footer-small .logo-box .logo {
+  .footer-small .logo-box .logo {
     background: url(../../img/image-map.png) 0 -25px no-repeat;
     width: 89px;
     height: 15px;
@@ -2682,29 +2682,29 @@ a.button.disabled:active {
     float: left;
     overflow: hidden;
   }
-  html .footer-small .legal-menu {
+  .footer-small .legal-menu {
     float: left;
   }
-  html .footer-small .bottom-menu {
+  .footer-small .bottom-menu {
     float: right;
   }
-  html .footer-small ul.legal-menu,
-  html .footer-small ul.bottom-menu {
+  .footer-small ul.legal-menu,
+  .footer-small ul.bottom-menu {
     margin-top: -1em;
     clear: none;
   }
-  html .footer-small .legal-menu li,
-  html .footer-small .bottom-menu li {
+  .footer-small .legal-menu li,
+  .footer-small .bottom-menu li {
     float: left;
     padding: 0 0 0 0.1428571429em;
   }
-  html .footer-small .legal-menu li a,
-  html .footer-small .bottom-menu li a {
+  .footer-small .legal-menu li a,
+  .footer-small .bottom-menu li a {
     padding: 1em 0.5em;
     border: 0px solid transparent;
     text-align: left;
   }
-  html .footer .footer-holder {
+  .footer .footer-holder {
     width: 960px;
     font-size: 12px;
   }
@@ -2910,6 +2910,76 @@ a.button.disabled:active {
 .lt-ie9 .desktop .footer-sitemap .facts .ship {
   padding-left: 0;
 }
+/*
+    Action Counter,
+    shows the number of signers both graphical and text only
+
+    #action-counter-graphical - graphical display as progres bar
+    #action-counter-textual   - textual display
+*/
+#action-counter {
+  margin: 1em 0;
+}
+#action-counter #action-counter-graphical {
+  transition: all 100ms ease-out;
+  display: none;
+  background: #e9ecf3;
+}
+#action-counter #action-counter-graphical .completed {
+  background: #f99713;
+  display: block;
+  text-align: right;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.125em;
+  padding: .311em 0;
+  text-indent: 0.2em;
+}
+#action-counter #action-counter-graphical .objectives {
+  display: none;
+}
+#action-counter #action-counter-textual {
+  margin: .25em 0 0 0;
+  color: #666666;
+  font-size: .875em;
+}
+/*
+    Recent Signers widget
+
+    li       - One line, ellipsis if content doesn't fit
+    .since   - Timestamp in gray text
+    .country - Country name in grayutext
+    .flag    - Flag icon margin
+*/
+#action-recent-signers {
+  clear: right;
+  min-height: 14em;
+}
+#action-recent-signers ul {
+  padding: 0;
+}
+#action-recent-signers li {
+  list-style-type: none;
+  font-size: 0.813em;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+}
+#action-recent-signers .since {
+  width: 9em;
+  display: inline-block;
+  font-size: 0.813em;
+  color: #666666;
+}
+#action-recent-signers .country {
+  color: #777;
+  display: none;
+}
+#action-recent-signers .flag {
+  margin-right: .25em;
+}
 /* ==========================================================================
      Action Template or Action Related Widgets
    ========================================================================== */
@@ -2978,105 +3048,6 @@ Action form
   display: inline;
   margin-top: 0.2em;
 }
-/*
-    Action Counter,
-    shows the number of signers both graphical and text only
-
-    #action-counter-graphical - graphical display as progres bar
-    #action-counter-textual   - textual display
-*/
-#action-counter {
-  margin: 1em 0;
-}
-#action-counter #action-counter-graphical {
-  transition: all 100ms ease-out;
-  display: none;
-  background: #e9ecf3;
-}
-#action-counter #action-counter-graphical .completed {
-  background: #f99713;
-  display: block;
-  text-align: right;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 1.125em;
-  padding: .311em 0;
-  text-indent: 0.2em;
-}
-#action-counter #action-counter-graphical .objectives {
-  display: none;
-}
-#action-counter #action-counter-textual {
-  margin: .25em 0 0 0;
-  color: #666666;
-  font-size: .875em;
-}
-/*
-    Social Login buttons
-
-    .facebook - facebook icon
-    .google   - google icon
-*/
-#main-section .social-login span {
-  display: none;
-}
-#main-section .social-login a {
-  height: 22px;
-  /* 22px */
-  width: 60px;
-  /* 60px */
-  display: inline-block;
-  line-height: 1em;
-  border: 1px solid #cccccc;
-  margin-bottom: -0.5em;
-  padding: 0 6px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-#main-section .social-login a.facebook {
-  background: #fffdff url(../../img/sociallogin.png) center 0 no-repeat;
-}
-#main-section .social-login a.google {
-  background: #fffdff url(../../img/sociallogin.png) center -22px no-repeat;
-}
-/*
-    Recent Signers widget
-
-    li       - One line, ellipsis if content doesn't fit
-    .since   - Timestamp in gray text
-    .country - Country name in grayutext
-    .flag    - Flag icon margin
-*/
-#action-recent-signers {
-  clear: right;
-  min-height: 14em;
-}
-#action-recent-signers ul {
-  padding: 0;
-}
-#action-recent-signers li {
-  list-style-type: none;
-  font-size: 0.813em;
-  margin-bottom: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -ms-text-overflow: ellipsis;
-}
-#action-recent-signers .since {
-  width: 9em;
-  display: inline-block;
-  font-size: 0.813em;
-  color: #666666;
-}
-#action-recent-signers .country {
-  color: #777;
-  display: none;
-}
-#action-recent-signers .flag {
-  margin-right: .25em;
-}
 /* ==========================================================================
    Action Template Media Queries
    ==========================================================================
@@ -3114,43 +3085,43 @@ Action form
     so it can be used for the media query fallback as well.
  */
 @media only screen and (min-width: 768px) {
-  html .action-template h1 {
+  .action-template h1 {
     float: left;
     clear: both;
     width: 100%;
   }
-  html .action-template h2,
-  html #action-ask,
-  html #action-form,
-  html #action-recent-signers {
+  .action-template h2,
+  #action-ask,
+  #action-form,
+  #action-recent-signers {
     float: right;
     width: 250px;
     padding: 0 20px;
     margin: 0;
   }
-  html #action-counter,
-  html #action-details,
-  html #action-social-share,
-  html #action-multimedia-teaser {
+  #action-counter,
+  #action-details,
+  #action-social-share,
+  #action-multimedia-teaser {
     float: left;
     clear: left;
     width: 380px;
   }
-  html .action-template h2,
-  html #action-ask,
-  html #action-form {
+  .action-template h2,
+  #action-ask,
+  #action-form {
     background: #e9ecf3;
   }
-  html #action-ask p {
+  #action-ask p {
     margin-bottom: 0;
   }
-  html .action-template h2 {
+  .action-template h2 {
     padding-top: 20px;
   }
-  html #action-form {
+  #action-form {
     padding-bottom: 20px;
   }
-  html #action-counter-graphical {
+  #action-counter-graphical {
     display: block;
   }
 }
@@ -3196,75 +3167,75 @@ Action form
 }
 /* Desktops and laptops */
 @media only screen and (min-width: 1024px) {
-  html .action-template #main-container {
+  .action-template #main-container {
     background: transparent url(../../img/background.jpg) center 0 no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
   }
-  html .action-template #main-container-holder {
+  .action-template #main-container-holder {
     background: transparent url(../../img/raster.png) 0 0 repeat;
   }
-  html .action-template h1 {
+  .action-template h1 {
     float: left;
     clear: both;
     width: 100%;
   }
-  html #action-recent-signers .country {
+  #action-recent-signers .country {
     display: inline;
   }
-  html #action-recent-signers .name:after {
+  #action-recent-signers .name:after {
     content: ",";
   }
-  html .action-template h2,
-  html #action-ask,
-  html #action-form,
-  html #action-recent-signers {
+  .action-template h2,
+  #action-ask,
+  #action-form,
+  #action-recent-signers {
     float: right;
     width: 340px;
     padding: 0 20px;
     margin: 0;
   }
-  html .action-template h2,
-  html #action-ask,
-  html #action-form {
+  .action-template h2,
+  #action-ask,
+  #action-form {
     background: #e9ecf3;
   }
-  html #action-ask p {
+  #action-ask p {
     margin-bottom: 0;
   }
-  html .action-template h2 {
+  .action-template h2 {
     padding-top: 20px;
   }
-  html #action-form {
+  #action-form {
     padding-bottom: 20px;
   }
-  html #action-counter,
-  html #action-details,
-  html #action-social-share,
-  html #action-multimedia-teaser {
+  #action-counter,
+  #action-details,
+  #action-social-share,
+  #action-multimedia-teaser {
     float: left;
     clear: left;
     width: 520px;
   }
-  html #action-counter-graphical {
+  #action-counter-graphical {
     display: block;
   }
-  html #action-form .action-template textarea,
-  html #action-form .action-template input[type=text] {
+  #action-form .action-template textarea,
+  #action-form .action-template input[type=text] {
     width: 19em;
   }
-  html #action-form .action-template select {
+  #action-form .action-template select {
     width: 20em;
   }
-  html #action-form .action-template textarea {
+  #action-form .action-template textarea {
     width: 23.5em;
   }
-  html #action-form .action-template .submit.full input {
+  #action-form .action-template .submit.full input {
     width: 16.75em;
   }
-  html #action-form .action-template #action-submit-quick.submit {
+  #action-form .action-template #action-submit-quick.submit {
     margin-right: 0;
   }
 }

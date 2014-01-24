@@ -1,0 +1,35 @@
+/*
+    Action Counter,
+    shows the number of signers both graphical and text only
+
+    #action-counter-graphical - graphical display as progres bar
+    #action-counter-textual   - textual display
+*/
+#action-counter {
+    margin: 1em 0;
+
+    #action-counter-graphical {
+        transition: all 100ms ease-out;
+        display: none;
+        background: #e9ecf3;
+        .completed {
+            background: @oranges-2;
+            display: block;
+            text-align: right;
+            color: @white;
+            font-weight: bold;
+            font-size: 1.125em;
+            padding: .311em 0;
+            text-indent: 0.2em;    
+        }
+        .objectives {
+            display: none;
+        }
+    }
+    #action-counter-textual {
+        margin: .25em 0 0 0;
+        color: @grays-2;
+        font-size:.875em;
+    }
+}
+
