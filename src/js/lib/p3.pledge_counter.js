@@ -3,9 +3,9 @@
  * @name            p3.pledge_counter.js
  * @fileOverview    Greenpeace Pledge Signing Counter for Action Template v0.3
  *                  Animated pledge percentage bar & text,
- *                  Can be event driven or directly invoked, enabling the JSON
- *                  data to be reused with another plugin (eg Recent Signers)
- * @version         0.2.1
+ *                  Can be event driven or directly invoked, which
+ *                  enables reusing the JSON with another plugin (eg Recent Signers)
+ * @version         0.3.0
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -17,7 +17,7 @@
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
-(function($, M, window, undefined) {
+(function($, M, window) {
     'use strict';
 
     var _p3 = $.p3 || {},
@@ -30,12 +30,13 @@
         initialAnimationTotalDuration: 2500,            /* change this value to set the total duration of the first fetch animation (how many milliseconds takes
                                                            the progress bar from 0 to the current value */
         dataElement:        'body',                     /* Element where the pledge JSON is stored */
-        dataNamespace:      'pledgeCounter',            /* Namespace to use for stored JSON - change this if using multiple counters per page */
-        eventDriven:        false,                      /* set to true to trigger update externally */
-        fetchDataEvent:     'fetchPledgeData',          /* trigger this event to fetch JSON data from the endpoint */
+        dataNamespace:      'pledgeData',               /* Namespace to use for stored JSON - change this if using multiple counters per page */
+        externalTrigger:    true,                       /* set to true to delay execution until externally triggered by event */
+        fetchDataEvent:     'pledgeCounterFetch',       /* trigger this event to fetch JSON data from the endpoint */
         fetchCompleteEvent: 'fetchPledgeDataComplete',  /* trigger this event if you have fetched data externally and just want to parse and update display */
-        jsonURL:            'https://www.greenpeace.org/api/p3/pledge/config.json',
-        params:             {}
+        jsonURL:            'https://secured.greenpeace.org/international/en/api/v2/pledges/',
+        params:             {},                         /* object containing GET parameters to pass to p3.request */
+        abortOnError:       false                       /* stop processing if there is an error */
     };
 
     _p3.pledge_counter = function(el, options) {
@@ -81,13 +82,9 @@
             if (currentValue >= progress.count * 1.0) {
                 paused = false;
                 // Restart the process to check for live changes
-//                if (config.eventDriven) {
-//                    setTimeout( function () {
-//                        $(window).trigger(config.fetchDataEvent);
-//                    }, config.fetchFrequency);
-//                } else {
-//                    setTimeout(fetchJSON, config.fetchFrequency);
-//                }
+                if (!config.externalTrigger) {
+                    setTimeout(fetchJSON, config.fetchFrequency);
+                }
                 return;
             }
 
@@ -129,19 +126,21 @@
             }
             return x1 + x2;
         },
-        parsePledgeData = function (json) {
+        parsePledgeData = function () {
             // read data from parameter or element
-            var jsonData = (undefined === json) ? $(config.dataElement).data(config.dataNamespace) : json;
+            var data = $(config.dataElement).data(config.dataNamespace);
 
-            if (!jsonData || json.status === 'error' || !jsonData.pledges[0].action) {
-                $.each(json.errors, function (key, value) {
-                    console.log(prefix + key + ' => ' + value);
-                });
+            if (!data || data.status === 'error' || !data.pledges[0].action) {
+                if (data.errors) {
+                    $.each(data.errors, function (key, value) {
+                        console.warn(prefix + key + ' => ' + value);
+                    });
+                }
                 throw new Error(prefix + 'Errors in pledge data.');
             }
 
-            progress.count = jsonData.pledges[0].action.count;
-            progress.target = jsonData.pledges[0].action.target;
+            progress.count = data.pledges[0].action.count;
+            progress.target = data.pledges[0].action.target;
 
             if (isNaN(progress.count) || isNaN(progress.target)) {
                 // doesn't exist, or wrong format
@@ -157,9 +156,11 @@
         fetchJSON = function () {
             var params = $.extend(true, request.parameters, config.params);
             $.getJSON(request.url, params, function(json) {
-                parsePledgeData(json);
+                $(config.dataElement).data(config.dataNamespace, json);
             }).error( function () {
                 throw new Error(prefix + 'Failed to load JSON from "' + request.url + '"');
+            }).complete(function () {
+                $(window).trigger(config.fetchCompleteEvent);
             });
         };
 
@@ -173,30 +174,25 @@
                 if (M.csstransforms) {
                     $meter.css({"transition-duration": config.updateSpeed + "ms"});
                 }
-                if (config.eventDriven) {
-                    // Event driven fetch and processing means we can decouple data
-                    // from this plugin, allowing us to reuse the data without
-                    // performing multiple requests
-                    $(window).on(config.fetchDataEvent, function() {
-                        // trigger this event to initiate a fetch
-                        fetchJSON();
-                    });
 
-                    $(window).on(config.fetchCompleteEvent, function() {
-                        // trigger this event if the JSON has already been fetched and is ready to parse
-                        parsePledgeData();
-                    });
-                } else {
+                // Event driven fetch and processing means we can decouple data
+                // from this plugin, allowing us to reuse the data without
+                // performing multiple requests
+                $(window).on(config.fetchDataEvent, function() {
                     fetchJSON();
+                });
+
+                $(window).on(config.fetchCompleteEvent, function() {
+                    parsePledgeData();
+                });
+
+                // Trigger listen event unless configured to listen externally
+                if (!config.externalTrigger) {
+                    $(window).trigger(config.fetchDataEvent);
                 }
+
             }
         });
-
-        return {
-            config: config,
-            parseJSON: parsePledgeData,
-            fetchJSON: fetchJSON
-        };
 
     };
 
