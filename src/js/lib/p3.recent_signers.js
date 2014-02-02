@@ -5,25 +5,22 @@
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.1.1
+ * @version         0.2.0
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
  * @example         $.p3.recent_signers('#action-recent-signers'[, options]);
- * @todo            EVENT DRIVEN DATA UPDATES:
- *                      trigger fetches & parsing externally
- *                      to reuse data and minimise API requests per page
  *
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
 
-(function($, M, window, undef) {
+(function($, M, window) {
     'use strict';
 
     var _p3 = $.p3 || {},
         defaults = {
-            jsonURL: 'https://www.greenpeace.org/api/p3/pledge/pledges.json',
+            jsonURL: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
             /* parameters to be added to the request url */
             params: {},
             /* selects which element holds the time data attribute */
@@ -33,9 +30,13 @@
             /* selector for the country dropdown to map country codes to names */
             countrySelector: '#UserCountry',
             /* set to true to delay execution until externally triggered by event */
-            eventDriven: false,
+            externalTrigger: false,
+            /* element to store returned pledge data */
+            dataElement: 'body',
+            /* name of data object to store pledge data */
+            dataNamespace: 'pledgeData',
             /* trigger this event to fetch JSON data from the endpoint */
-            fetchDataEvent: 'fetchPledgeData',
+            fetchDataEvent: 'recentSignersFetch',
             /* trigger this event if you have fetched data externally and just
              * want to parse and update display */
             fetchCompleteEvent: 'fetchPledgeDataComplete',
@@ -102,11 +103,10 @@
                     return false;
                 }
 
-                var params = $.extend(true, request.parameters, config.params),
-                    response;
+                var params = $.extend(true, request.parameters, config.params);
 
                 $.getJSON(request.url, params, function(json) {
-                    response = json;
+                    $(config.dataElement).data(config.dataNamespace, json);
                 }).fail(function() {
                     var message = prefix + 'Failed to load JSON from "' + request.url + '"';
 
@@ -115,15 +115,15 @@
                     } else {
                         console.warn(message);
                     }
-                }).complete(function () {
-                    parsePledgeData(response);
+                }).complete(function() {
+                    $(window).trigger(config.fetchCompleteEvent);
                 });
 
             },
-            parsePledgeData = function(json) {
+            parsePledgeData = function() {
                 // Load from the parameter if set,
                 // else load from the data stored in an element if eventDriven
-                var jsonData = (undef === json) ? $(config.dataElement).data(config.dataNamespace) : json;
+                var jsonData = $(config.dataElement).data(config.dataNamespace);
 
                 if (!jsonData) {
                     if (config.abortOnError) {
@@ -133,13 +133,12 @@
                     }
                 }
 
-
                 // Add fetch first, since array is popped not shifted
-                if (refreshNum++ < config.maxRefreshes) {
+                if (refreshNum++ < config.maxRefreshes && !config.externalTrigger) {
                     pledgeQueue.actions.push(function() {
                         clearTimeout(timer);
                         timer = setTimeout(function() {
-                            fetchJSON();
+                            $(window).trigger(config.fetchDataEvent);
                         }, config.updateInterval);
                     });
                 }
@@ -156,6 +155,7 @@
 
                     if (pledge.user.dont_display_name === true) {
                         // Skip to next pledge ...
+                        console.warn(prefix + 'pledge.user.dont_display_name is true');
                         return true;
                     }
 
@@ -178,7 +178,7 @@
             /**
              * Retrieves human readable time string from timestamp
              * @param {string} timestamp
-             * @returns {unresolved}
+             * @returns {string}
              */
             getTimeString = function(time) {
                 if (time) {
@@ -186,7 +186,8 @@
                 }
             },
             getCountryString = function(country) {
-                return $(config.countrySelector + ' option:valueNoCase(' + country + ')').text();
+                var string = $(config.countrySelector + ' option:valueNoCase(' + country + ')').text();
+                return string ? string : config.abortOnError ? '' : country;
             },
             showUser = function(user) {
                 var $li = $('<li style="display:none"><span class="since" data-since="' +
@@ -235,21 +236,21 @@
                 // Apply human readable string to existing timestamps
                 updateTimeStamps();
 
-                if (config.eventDriven) {
-                    // Event driven fetch and processing means we can decouple data
-                    // from this plugin, allowing us to reuse the data without
-                    // performing multiple requests
-                    $(window).on(config.fetchDataEvent, function() {
-                        // trigger this event to initiate a fetch
-                        fetchJSON();
-                    });
+                // Event driven fetch and processing means we can decouple data
+                // from this plugin, allowing us to reuse the data without
+                // performing multiple requests
 
-                    $(window).on(config.fetchCompleteEvent, function() {
-                        // trigger this event if the JSON has already been fetched and is ready to parse
-                        parsePledgeData();
-                    });
-                } else {
+                $(window).on(config.fetchDataEvent, function() {
                     fetchJSON();
+                });
+
+                $(window).on(config.fetchCompleteEvent, function() {
+                    parsePledgeData();
+                });
+
+                // Trigger listen event unless configured to listen externally
+                if (!config.externalTrigger) {
+                    $(window).trigger(config.fetchDataEvent);
                 }
             }
         });
