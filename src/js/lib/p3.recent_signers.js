@@ -40,7 +40,7 @@
              * want to parse and update display */
             fetchCompleteEvent: 'fetchPledgeDataComplete',
             /* delay in milliseconds between signer check updates */
-            updateInterval: 5000,
+            updateInterval: 30000,
             /* interval between users added to the recent signer list from last
              * update */
             userQueueInterval: 750,
