@@ -5,7 +5,7 @@
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.6
+ * @version         0.3.7
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -74,8 +74,8 @@
          * Ensures the page identifier is set, throws an error if not defined
          */
         setPageIdentifier = function() {
-            if (query.parameters.page === undef) {
-                throw new Error('Page identifier not found');
+            if (query.parameters.page === undef && query.parameters.action === undef) {
+                throw new Error(prefix + 'Page or Action identifier not found');
             }
         },
         /**
@@ -87,9 +87,9 @@
                     query.parameters.user = $emailField.val();
                     break;
                 case 'uuid':
-                    throw new Error('uuid not implemented');
+                    throw new Error(prefix + 'uuid not implemented');
                 default:
-                    throw new Error('config.identifyUserBy: ' + config.identifyUserBy + ' invalid');
+                    throw new Error(prefix + 'config.identifyUserBy: ' + config.identifyUserBy + ' invalid');
             }
         },
         /**
@@ -122,7 +122,6 @@
 
                 if (response.status === 'success') {
                     // User can sign using email only
-                    console.log(prefix + 'signercheck API response success');
 
                     // Hide and disable unnecessary fields, in case they were
                     // previously displayed for a different email
@@ -134,45 +133,46 @@
                     // This user cannot sign with email only
 
                     // Error handling
-                    $.each(response.errors, function (i, error) {
-                        switch (error.code) {
-                        case 2:
-                        case 3:
-                        case 4:
-                        case 5:
-                            // Errors 1 through 5 indicate an invalid page
-                            throw new Error(prefix + 'Invalid page: '+ query.parameters.page);
-                            // Errors 6 through 12 are not relevant to this operation
-                        case 13:
-                            // This user has already signed this pledge
-                            console.log(prefix + 'User has already signed this pledge');
-                            var $emailContainer = $emailField.parents('.email:first'),
-                            $message = $('.message', $emailContainer);
+                    switch (response.error.code) {
+                    case 1:
+                        throw new Error(prefix + 'Invalid Key');
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                        // Errors 1 through 5 indicate an invalid page
+                        console.error(response.error);
+                        throw new Error(prefix + 'Invalid parameters: ', query.parameters);
+                        // Errors 6 through 12 are not relevant to this operation
+                    case 13:
+                        // This user has already signed this pledge
+//                        console.log(prefix + 'User has already signed this pledge');
+                        var $emailContainer = $emailField.parents('.email:first'),
+                        $message = $('.message', $emailContainer);
 
-                            if (!$message.length) {
-                                // Message container doesn't exist, so add it
-                                $emailContainer.append(config.messageElement);
-                                $message = $('.message', $emailContainer);
-                            }
-                            $message.append('<span class="error" for="' + $emailField.attr('id') + '">' + error.pledge.unique + '</span>');
-                            $emailField.addClass('error');
-                            break;
-                        case 15:
-                            // User does not exist
-                            console.log(prefix + 'New user, show all fields');
-                            $('.first-time', $form).show(config.animationDuration);
-                            showAllFormFields();
-                            break;
-                        case 16:
-                            // User exists, but is missing required fields
-                            console.warn(prefix + 'User exists, but is missing fields');
-                            $('.first-time', $form).html('<p>Welcome back!<br/>We just need a little more information for this pledge</p>').show(config.animationDuration);
-                            showMissingFields(response.user);
-                            break;
-                        default:
-                            console.warn('Unhandled error code: ' + error.code);
+                        if (!$message.length) {
+                            // Message container doesn't exist, so add it
+                            $emailContainer.append(config.messageElement);
+                            $message = $('.message', $emailContainer);
                         }
-                    });
+                        $message.append('<span class="error" for="' + $emailField.attr('id') + '">' + response.error.pledge.unique + '</span>');
+                        $emailField.addClass('error');
+                        break;
+                    case 15:
+                        // User does not exist
+//                        console.log(prefix + 'New user, show all fields');
+                        $('.first-time', $form).show(config.animationDuration);
+                        showAllFormFields();
+                        break;
+                    case 16:
+                        // User exists, but is missing required fields
+//                        console.warn(prefix + 'User exists, but is missing fields');
+                        $('.first-time', $form).html('<p>Welcome back!<br/>We just need a little more information for this pledge</p>').show(config.animationDuration);
+                        showMissingFields(response.user);
+                        break;
+                    default:
+                        console.warn('Unhandled error code: ' + response.error.code, response.error);
+                    }
                 }
 
             }).fail(function() {
