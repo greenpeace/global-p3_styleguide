@@ -69,109 +69,6 @@ Action form
       }
     }
 }
-/*
-    Action Counter,
-    shows the number of signers both graphical and text only
-
-    #action-counter-graphical - graphical display as progres bar
-    #action-counter-textual   - textual display
-*/
-#action-counter {
-    margin: 1em 0;
-
-    #action-counter-graphical {
-        transition: all 100ms ease-out;
-        display: none;
-        background: #e9ecf3;
-        .completed {
-            background: @oranges-2;
-            display: block;
-            text-align: right;
-            color: @white;
-            font-weight: bold;
-            font-size: 1.125em;
-            padding: .311em 0;
-            text-indent: 0.2em;    
-        }
-        .objectives {
-            display: none;
-        }
-    }
-    #action-counter-textual {
-        margin: .25em 0 0 0;
-        color: @grays-2;
-        font-size:.875em;
-    }
-}
-
-/*
-    Social Login buttons
-
-    .facebook - facebook icon
-    .google   - google icon
-*/
-#main-section .social-login {
-    span {
-        display: none;
-    }
-    a {
-        height: 22px; /* 22px */
-        width: 60px; /* 60px */
-        display: inline-block;
-        line-height: 1em;
-        border: 1px solid @grays-4;
-        margin-bottom: -.5em;
-        padding: 0 6px;
-        .rounded_all(2px);
-    }
-    a.facebook {
-        background: #fffdff url(../../img/sociallogin.png) center 0 no-repeat;
-    }
-    a.google {
-        background: #fffdff url(../../img/sociallogin.png) center -22px no-repeat;
-    }
-}
-
-/*
-    Recent Signers widget
-
-    li       - One line, ellipsis if content doesn't fit
-    .since   - Timestamp in gray text
-    .country - Country name in grayutext
-    .flag    - Flag icon margin
-*/
-#action-recent-signers {
-    clear: right;
-    min-height:14em;
-    ul {
-        padding: 0;
-    }
-    li {
-        list-style-type: none;
-        font-size: 0.813em;
-        margin-bottom: 10px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -ms-text-overflow: ellipsis;
-    }
-    .since {
-        width: 9em;
-        display: inline-block;
-        font-size: 0.813em;
-        vertical-align:1px;
-        color: @grays-2;
-    }
-    .country {
-        color: #777;
-        display: none;
-    }
-    .flag {
-        margin-right: .35em;
-        vertical-align: -1px;
-        
-    }
-}
 
 
 /* ==========================================================================
@@ -263,9 +160,7 @@ Action form
 
 }
 @media only screen and (min-width : 768px) {
-    html {
-        .action_template_tablet;
-    }
+    .action_template_tablet;
 }
 /* fallback for browsers where media queries won't work */
 .sevensome {
@@ -364,9 +259,7 @@ Action form
     }
 }
 @media only screen and (min-width : 1024px) {
-    html {
-        .action_template_desktop;
-    }
+    .action_template_desktop;
 }
 /* fallback for browsers where media queries won't work */
 .desktop {

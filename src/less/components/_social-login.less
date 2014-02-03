@@ -1,0 +1,28 @@
+/*
+    Social Login buttons
+
+    .facebook - facebook icon
+    .google   - google icon
+*/
+#main-section .social-login {
+    span {
+        display: none;
+    }
+    a {
+        height: 22px; /* 22px */
+        width: 60px; /* 60px */
+        display: inline-block;
+        line-height: 1em;
+        border: 1px solid @grays-4;
+        margin-bottom: -.5em;
+        padding: 0 6px;
+        .rounded_all(2px);
+    }
+    a.facebook {
+        background: #fffdff url(../../img/sociallogin.png) center 0 no-repeat;
+    }
+    a.google {
+        background: #fffdff url(../../img/sociallogin.png) center -22px no-repeat;
+    }
+}
+
