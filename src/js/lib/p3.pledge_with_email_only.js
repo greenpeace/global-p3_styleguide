@@ -31,11 +31,11 @@
         /* Selector(s) for the fields we DO NOT want to hide */
         exceptionFields:        '#action-form-message, #action-smallprints',
         /* Endpoint URL to check if the user can sign using only email address */
-        signerCheckURL:         'https://www.greenpeace.org/api/public/pledges/signercheck.json',
+        signerCheckURL:         'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
         /* Use p3.validation plugin to validate the form */
         validateForm:           true,
         /* Endpoint for form validation rules, passed to $.p3.validation */
-        validationRulesURL:     'https://www.greenpeace.org/api/p3/pledge/config.json',
+        validationRulesURL:     'https://secured.greenpeace.org/international/en/api/v2/pledges/validation/',
         /* Duration to animate the display of hidden missing fields
          * Set to 0 to disable */
         animationDuration:      350,
@@ -191,14 +191,15 @@
             $(window).trigger('submit_' + hash);
         },
         /**
-         * @param   {obj} JSON response.user property
+         * @param   {obj} fields JSON response.user property
          */
         showMissingFields = function(fields) {
             console.log(prefix + 'showMissingFields');
             $.each(fields, function(label) {
+                // API returns { field: false } on missing fields
                 if (fields[label] === false) {
                     var $field = $('div:classNoCase("' + label + '")', $form),
-                    $input = $(':input', $field);
+                        $input = $(':input', $field);
 
                     if ($input) {
                         // Enable field
