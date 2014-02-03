@@ -20,12 +20,16 @@
         // API URL Demonstration showing parameters passed in the URL
         pledgeURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/',
         pledgeTesting = 'json/pledges.json?fish=salmon',
+        pledgeLive = 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
+        pledgeLiveLocal = 'json/pledges_live_685.json',
         // API URL to test if user can submit form using only email
         signerCheckURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/signercheck/',
         signerCheckTesting = 'json/signer_error_fields.json',
+        signerCheckLive = 'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
         // API URL for form validation rules
         validationURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/validation/',
-        validationTesting = 'json/rules_revised.json';
+        validationTesting = 'json/rules_revised.json',
+        validationLive = 'https://secured.greenpeace.org/international/en/api/v2/pledges/validation/';
 
     $.ajaxSetup({cache: false});
 
@@ -59,15 +63,15 @@
 
         // Animate pledge counter
         $.p3.pledge_counter('#action-counter', {
-            jsonURL: pledgeTesting,
+            jsonURL: pledgeLive,
             params: parameters
         });
 
         // Check if we can sign this pledge using email field only
         // Includes form validation via $.p3.validation by default
         $.p3.pledge_with_email_only('#action-form', {
-            signerCheckURL: signerCheckTesting,
-            validationRulesURL: validationTesting,
+            signerCheckURL: signerCheckLive,
+            validationRulesURL: validationLive,
             params: parameters
         });
 
@@ -94,7 +98,7 @@
 
         // Recent signers widget
         $.p3.recent_signers('#action-recent-signers', {
-            jsonURL: pledgeTesting,
+            jsonURL: pledgeLive,
             params: parameters
         });
 
