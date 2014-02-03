@@ -3200,7 +3200,8 @@ ul.navigation {
 .flag.ga {
   background-position: 0 -924px;
 }
-.flag.gb {
+.flag.gb,
+.flag.uk {
   background-position: 0 -936px;
 }
 .flag.gd {
@@ -4173,6 +4174,7 @@ Action form
   width: 9em;
   display: inline-block;
   font-size: 0.813em;
+  vertical-align: 1px;
   color: #666666;
 }
 #action-recent-signers .country {
@@ -4180,7 +4182,8 @@ Action form
   display: none;
 }
 #action-recent-signers .flag {
-  margin-right: .25em;
+  margin-right: .35em;
+  vertical-align: -1px;
 }
 /* ==========================================================================
    Action Template Media Queries

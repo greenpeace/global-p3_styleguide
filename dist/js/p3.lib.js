@@ -344,9 +344,9 @@ $(document).ready(function() {
  * @name            p3.pledge_counter.js
  * @fileOverview    Greenpeace Pledge Signing Counter for Action Template v0.3
  *                  Animated pledge percentage bar & text,
- *                  Can be event driven or directly invoked, enabling the JSON
- *                  data to be reused with another plugin (eg Recent Signers)
- * @version         0.2.1
+ *                  Can be event driven or directly invoked, which
+ *                  enables reusing the JSON with another plugin (eg Recent Signers)
+ * @version         0.3.0
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -358,7 +358,7 @@ $(document).ready(function() {
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
-(function($, M, window, undefined) {
+(function($, M, window) {
 var _p3 = $.p3 || {},
     defaults = {
         meterElement:       '.completed',               /* Selector for the bar to animated */
@@ -369,12 +369,13 @@ var _p3 = $.p3 || {},
         initialAnimationTotalDuration: 2500,            /* change this value to set the total duration of the first fetch animation (how many milliseconds takes
                                                            the progress bar from 0 to the current value */
         dataElement:        'body',                     /* Element where the pledge JSON is stored */
-        dataNamespace:      'pledgeCounter',            /* Namespace to use for stored JSON - change this if using multiple counters per page */
-        eventDriven:        false,                      /* set to true to trigger update externally */
-        fetchDataEvent:     'fetchPledgeData',          /* trigger this event to fetch JSON data from the endpoint */
+        dataNamespace:      'pledgeData',               /* Namespace to use for stored JSON - change this if using multiple counters per page */
+        externalTrigger:    true,                       /* set to true to delay execution until externally triggered by event */
+        fetchDataEvent:     'pledgeCounterFetch',       /* trigger this event to fetch JSON data from the endpoint */
         fetchCompleteEvent: 'fetchPledgeDataComplete',  /* trigger this event if you have fetched data externally and just want to parse and update display */
-        jsonURL:            'https://www.greenpeace.org/api/p3/pledge/config.json',
-        params:             {}
+        jsonURL:            'https://secured.greenpeace.org/international/en/api/v2/pledges/',
+        params:             {},                         /* object containing GET parameters to pass to p3.request */
+        abortOnError:       false                       /* stop processing if there is an error */
     };
 
     _p3.pledge_counter = function(el, options) {
@@ -420,13 +421,9 @@ var _p3 = $.p3 || {},
             if (currentValue >= progress.count * 1.0) {
                 paused = false;
                 // Restart the process to check for live changes
-//                if (config.eventDriven) {
-//                    setTimeout( function () {
-//                        $(window).trigger(config.fetchDataEvent);
-//                    }, config.fetchFrequency);
-//                } else {
-//                    setTimeout(fetchJSON, config.fetchFrequency);
-//                }
+                if (!config.externalTrigger) {
+                    setTimeout(fetchJSON, config.fetchFrequency);
+                }
                 return;
             }
 
@@ -468,19 +465,21 @@ var _p3 = $.p3 || {},
             }
             return x1 + x2;
         },
-        parsePledgeData = function (json) {
+        parsePledgeData = function () {
             // read data from parameter or element
-            var jsonData = (undefined === json) ? $(config.dataElement).data(config.dataNamespace) : json;
+            var data = $(config.dataElement).data(config.dataNamespace);
 
-            if (!jsonData || json.status === 'error' || !jsonData.pledges[0].action) {
-                $.each(json.errors, function (key, value) {
-                    console.log(prefix + key + ' => ' + value);
-                });
+            if (!data || data.status === 'error' || !data.pledges[0].action) {
+                if (data.errors) {
+                    $.each(data.errors, function (key, value) {
+                        console.warn(prefix + key + ' => ' + value);
+                    });
+                }
                 throw new Error(prefix + 'Errors in pledge data.');
             }
 
-            progress.count = jsonData.pledges[0].action.count;
-            progress.target = jsonData.pledges[0].action.target;
+            progress.count = data.pledges[0].action.count;
+            progress.target = data.pledges[0].action.target;
 
             if (isNaN(progress.count) || isNaN(progress.target)) {
                 // doesn't exist, or wrong format
@@ -496,9 +495,11 @@ var _p3 = $.p3 || {},
         fetchJSON = function () {
             var params = $.extend(true, request.parameters, config.params);
             $.getJSON(request.url, params, function(json) {
-                parsePledgeData(json);
+                $(config.dataElement).data(config.dataNamespace, json);
             }).error( function () {
                 throw new Error(prefix + 'Failed to load JSON from "' + request.url + '"');
+            }).complete(function () {
+                $(window).trigger(config.fetchCompleteEvent);
             });
         };
 
@@ -512,30 +513,25 @@ var _p3 = $.p3 || {},
                 if (M.csstransforms) {
                     $meter.css({"transition-duration": config.updateSpeed + "ms"});
                 }
-                if (config.eventDriven) {
-                    // Event driven fetch and processing means we can decouple data
-                    // from this plugin, allowing us to reuse the data without
-                    // performing multiple requests
-                    $(window).on(config.fetchDataEvent, function() {
-                        // trigger this event to initiate a fetch
-                        fetchJSON();
-                    });
 
-                    $(window).on(config.fetchCompleteEvent, function() {
-                        // trigger this event if the JSON has already been fetched and is ready to parse
-                        parsePledgeData();
-                    });
-                } else {
+                // Event driven fetch and processing means we can decouple data
+                // from this plugin, allowing us to reuse the data without
+                // performing multiple requests
+                $(window).on(config.fetchDataEvent, function() {
                     fetchJSON();
+                });
+
+                $(window).on(config.fetchCompleteEvent, function() {
+                    parsePledgeData();
+                });
+
+                // Trigger listen event unless configured to listen externally
+                if (!config.externalTrigger) {
+                    $(window).trigger(config.fetchDataEvent);
                 }
+
             }
         });
-
-        return {
-            config: config,
-            parseJSON: parsePledgeData,
-            fetchJSON: fetchJSON
-        };
 
     };
 
@@ -551,7 +547,7 @@ var _p3 = $.p3 || {},
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.6
+ * @version         0.3.7
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -575,11 +571,11 @@ var _p3 = $.p3 || {},
         /* Selector(s) for the fields we DO NOT want to hide */
         exceptionFields:        '#action-form-message, #action-smallprints',
         /* Endpoint URL to check if the user can sign using only email address */
-        signerCheckURL:         'https://www.greenpeace.org/api/public/pledges/signercheck.json',
+        signerCheckURL:         'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
         /* Use p3.validation plugin to validate the form */
         validateForm:           true,
         /* Endpoint for form validation rules, passed to $.p3.validation */
-        validationRulesURL:     'https://www.greenpeace.org/api/p3/pledge/config.json',
+        validationRulesURL:     'https://secured.greenpeace.org/international/en/api/v2/pledges/validation/',
         /* Duration to animate the display of hidden missing fields
          * Set to 0 to disable */
         animationDuration:      350,
@@ -618,8 +614,8 @@ var _p3 = $.p3 || {},
          * Ensures the page identifier is set, throws an error if not defined
          */
         setPageIdentifier = function() {
-            if (query.parameters.page === undef) {
-                throw new Error('Page identifier not found');
+            if (query.parameters.page === undef && query.parameters.action === undef) {
+                throw new Error(prefix + 'Page or Action identifier not found');
             }
         },
         /**
@@ -631,9 +627,9 @@ var _p3 = $.p3 || {},
                     query.parameters.user = $emailField.val();
                     break;
                 case 'uuid':
-                    throw new Error('uuid not implemented');
+                    throw new Error(prefix + 'uuid not implemented');
                 default:
-                    throw new Error('config.identifyUserBy: ' + config.identifyUserBy + ' invalid');
+                    throw new Error(prefix + 'config.identifyUserBy: ' + config.identifyUserBy + ' invalid');
             }
         },
         /**
@@ -666,7 +662,6 @@ var _p3 = $.p3 || {},
 
                 if (response.status === 'success') {
                     // User can sign using email only
-                    console.log(prefix + 'signercheck API response success');
 
                     // Hide and disable unnecessary fields, in case they were
                     // previously displayed for a different email
@@ -678,45 +673,46 @@ var _p3 = $.p3 || {},
                     // This user cannot sign with email only
 
                     // Error handling
-                    $.each(response.errors, function (i, error) {
-                        switch (error.code) {
-                        case 2:
-                        case 3:
-                        case 4:
-                        case 5:
-                            // Errors 1 through 5 indicate an invalid page
-                            throw new Error(prefix + 'Invalid page: '+ query.parameters.page);
-                            // Errors 6 through 12 are not relevant to this operation
-                        case 13:
-                            // This user has already signed this pledge
-                            console.log(prefix + 'User has already signed this pledge');
-                            var $emailContainer = $emailField.parents('.email:first'),
-                            $message = $('.message', $emailContainer);
+                    switch (response.error.code) {
+                    case 1:
+                        throw new Error(prefix + 'Invalid Key');
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                        // Errors 1 through 5 indicate an invalid page
+                        console.error(response.error);
+                        throw new Error(prefix + 'Invalid parameters: ', query.parameters);
+                        // Errors 6 through 12 are not relevant to this operation
+                    case 13:
+                        // This user has already signed this pledge
+//                        console.log(prefix + 'User has already signed this pledge');
+                        var $emailContainer = $emailField.parents('.email:first'),
+                        $message = $('.message', $emailContainer);
 
-                            if (!$message.length) {
-                                // Message container doesn't exist, so add it
-                                $emailContainer.append(config.messageElement);
-                                $message = $('.message', $emailContainer);
-                            }
-                            $message.append('<span class="error" for="' + $emailField.attr('id') + '">' + error.pledge.unique + '</span>');
-                            $emailField.addClass('error');
-                            break;
-                        case 15:
-                            // User does not exist
-                            console.log(prefix + 'New user, show all fields');
-                            $('.first-time', $form).show(config.animationDuration);
-                            showAllFormFields();
-                            break;
-                        case 16:
-                            // User exists, but is missing required fields
-                            console.warn(prefix + 'User exists, but is missing fields');
-                            $('.first-time', $form).html('<p>Welcome back!<br/>We just need a little more information for this pledge</p>').show(config.animationDuration);
-                            showMissingFields(response.user);
-                            break;
-                        default:
-                            console.warn('Unhandled error code: ' + error.code);
+                        if (!$message.length) {
+                            // Message container doesn't exist, so add it
+                            $emailContainer.append(config.messageElement);
+                            $message = $('.message', $emailContainer);
                         }
-                    });
+                        $message.append('<span class="error" for="' + $emailField.attr('id') + '">' + response.error.pledge.unique + '</span>');
+                        $emailField.addClass('error');
+                        break;
+                    case 15:
+                        // User does not exist
+//                        console.log(prefix + 'New user, show all fields');
+                        $('.first-time', $form).show(config.animationDuration);
+                        showAllFormFields();
+                        break;
+                    case 16:
+                        // User exists, but is missing required fields
+//                        console.warn(prefix + 'User exists, but is missing fields');
+                        $('.first-time', $form).html('<p>Welcome back!<br/>We just need a little more information for this pledge</p>').show(config.animationDuration);
+                        showMissingFields(response.user);
+                        break;
+                    default:
+                        console.warn('Unhandled error code: ' + response.error.code, response.error);
+                    }
                 }
 
             }).fail(function() {
@@ -735,14 +731,15 @@ var _p3 = $.p3 || {},
             $(window).trigger('submit_' + hash);
         },
         /**
-         * @param   {obj} JSON response.user property
+         * @param   {obj} fields JSON response.user property
          */
         showMissingFields = function(fields) {
             console.log(prefix + 'showMissingFields');
             $.each(fields, function(label) {
+                // API returns { field: false } on missing fields
                 if (fields[label] === false) {
                     var $field = $('div:classNoCase("' + label + '")', $form),
-                    $input = $(':input', $field);
+                        $input = $(':input', $field);
 
                     if ($input) {
                         // Enable field
@@ -861,23 +858,20 @@ var _p3 = $.p3 || {},
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.1.1
+ * @version         0.2.0
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
  * @example         $.p3.recent_signers('#action-recent-signers'[, options]);
- * @todo            EVENT DRIVEN DATA UPDATES:
- *                      trigger fetches & parsing externally
- *                      to reuse data and minimise API requests per page
  *
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
 
-(function($, M, window, undef) {
+(function($, M, window) {
 var _p3 = $.p3 || {},
         defaults = {
-            jsonURL: 'https://www.greenpeace.org/api/p3/pledge/pledges.json',
+            jsonURL: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
             /* parameters to be added to the request url */
             params: {},
             /* selects which element holds the time data attribute */
@@ -887,14 +881,18 @@ var _p3 = $.p3 || {},
             /* selector for the country dropdown to map country codes to names */
             countrySelector: '#UserCountry',
             /* set to true to delay execution until externally triggered by event */
-            eventDriven: false,
+            externalTrigger: false,
+            /* element to store returned pledge data */
+            dataElement: 'body',
+            /* name of data object to store pledge data */
+            dataNamespace: 'pledgeData',
             /* trigger this event to fetch JSON data from the endpoint */
-            fetchDataEvent: 'fetchPledgeData',
+            fetchDataEvent: 'recentSignersFetch',
             /* trigger this event if you have fetched data externally and just
              * want to parse and update display */
             fetchCompleteEvent: 'fetchPledgeDataComplete',
             /* delay in milliseconds between signer check updates */
-            updateInterval: 5000,
+            updateInterval: 30000,
             /* interval between users added to the recent signer list from last
              * update */
             userQueueInterval: 750,
@@ -956,11 +954,10 @@ var _p3 = $.p3 || {},
                     return false;
                 }
 
-                var params = $.extend(true, request.parameters, config.params),
-                    response;
+                var params = $.extend(true, request.parameters, config.params);
 
                 $.getJSON(request.url, params, function(json) {
-                    response = json;
+                    $(config.dataElement).data(config.dataNamespace, json);
                 }).fail(function() {
                     var message = prefix + 'Failed to load JSON from "' + request.url + '"';
 
@@ -969,15 +966,15 @@ var _p3 = $.p3 || {},
                     } else {
                         console.warn(message);
                     }
-                }).complete(function () {
-                    parsePledgeData(response);
+                }).complete(function() {
+                    $(window).trigger(config.fetchCompleteEvent);
                 });
 
             },
-            parsePledgeData = function(json) {
+            parsePledgeData = function() {
                 // Load from the parameter if set,
                 // else load from the data stored in an element if eventDriven
-                var jsonData = (undef === json) ? $(config.dataElement).data(config.dataNamespace) : json;
+                var jsonData = $(config.dataElement).data(config.dataNamespace);
 
                 if (!jsonData) {
                     if (config.abortOnError) {
@@ -987,13 +984,12 @@ var _p3 = $.p3 || {},
                     }
                 }
 
-
                 // Add fetch first, since array is popped not shifted
-                if (refreshNum++ < config.maxRefreshes) {
+                if (refreshNum++ < config.maxRefreshes && !config.externalTrigger) {
                     pledgeQueue.actions.push(function() {
                         clearTimeout(timer);
                         timer = setTimeout(function() {
-                            fetchJSON();
+                            $(window).trigger(config.fetchDataEvent);
                         }, config.updateInterval);
                     });
                 }
@@ -1010,6 +1006,7 @@ var _p3 = $.p3 || {},
 
                     if (pledge.user.dont_display_name === true) {
                         // Skip to next pledge ...
+                        console.warn(prefix + 'pledge.user.dont_display_name is true');
                         return true;
                     }
 
@@ -1032,7 +1029,7 @@ var _p3 = $.p3 || {},
             /**
              * Retrieves human readable time string from timestamp
              * @param {string} timestamp
-             * @returns {unresolved}
+             * @returns {string}
              */
             getTimeString = function(time) {
                 if (time) {
@@ -1040,7 +1037,8 @@ var _p3 = $.p3 || {},
                 }
             },
             getCountryString = function(country) {
-                return $(config.countrySelector + ' option:valueNoCase(' + country + ')').text();
+                var string = $(config.countrySelector + ' option:valueNoCase(' + country + ')').text();
+                return string ? string : config.abortOnError ? '' : country;
             },
             showUser = function(user) {
                 var $li = $('<li style="display:none"><span class="since" data-since="' +
@@ -1089,21 +1087,21 @@ var _p3 = $.p3 || {},
                 // Apply human readable string to existing timestamps
                 updateTimeStamps();
 
-                if (config.eventDriven) {
-                    // Event driven fetch and processing means we can decouple data
-                    // from this plugin, allowing us to reuse the data without
-                    // performing multiple requests
-                    $(window).on(config.fetchDataEvent, function() {
-                        // trigger this event to initiate a fetch
-                        fetchJSON();
-                    });
+                // Event driven fetch and processing means we can decouple data
+                // from this plugin, allowing us to reuse the data without
+                // performing multiple requests
 
-                    $(window).on(config.fetchCompleteEvent, function() {
-                        // trigger this event if the JSON has already been fetched and is ready to parse
-                        parsePledgeData();
-                    });
-                } else {
+                $(window).on(config.fetchDataEvent, function() {
                     fetchJSON();
+                });
+
+                $(window).on(config.fetchCompleteEvent, function() {
+                    parsePledgeData();
+                });
+
+                // Trigger listen event unless configured to listen externally
+                if (!config.externalTrigger) {
+                    $(window).trigger(config.fetchDataEvent);
                 }
             }
         });
