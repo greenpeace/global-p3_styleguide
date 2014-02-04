@@ -5,7 +5,7 @@
  *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, which
  *                  enables reusing the JSON with another plugin (eg Recent Signers)
- * @version         0.3.0
+ * @version         0.3.1
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -36,6 +36,7 @@
         fetchCompleteEvent: 'fetchPledgeDataComplete',  /* trigger this event if you have fetched data externally and just want to parse and update display */
         jsonURL:            'https://secured.greenpeace.org/international/en/api/v2/pledges/',
         params:             {},                         /* object containing GET parameters to pass to p3.request */
+        timeout:            30000,                       /* milliseconds to wait for API request */
         abortOnError:       false                       /* stop processing if there is an error */
     };
 
@@ -131,12 +132,11 @@
             var data = $(config.dataElement).data(config.dataNamespace);
 
             if (!data || data.status === 'error' || !data.pledges[0].action) {
-                if (data.errors) {
-                    $.each(data.errors, function (key, value) {
-                        console.warn(prefix + key + ' => ' + value);
-                    });
+                if (config.abortOnError) {
+                    throw new Error(prefix + 'Errors in pledge data:', data);
+                } else {
+                    return;
                 }
-                throw new Error(prefix + 'Errors in pledge data.');
             }
 
             progress.count = data.pledges[0].action.count;
@@ -155,11 +155,23 @@
         },
         fetchJSON = function () {
             var params = $.extend(true, request.parameters, config.params);
-            $.getJSON(request.url, params, function(json) {
+
+            $.ajax({
+                url: request.url,
+                timeout: config.timeout,
+                dataType: 'json',
+                data: params
+            }).success(function(json) {
                 $(config.dataElement).data(config.dataNamespace, json);
-            }).error( function () {
-                throw new Error(prefix + 'Failed to load JSON from "' + request.url + '"');
-            }).complete(function () {
+            }).fail(function() {
+                var message = prefix + 'Failed to load JSON from "' + request.url + '"';
+
+                if (config.abortOnError) {
+                    throw new Error(message);
+                } else {
+                    console.warn(message);
+                }
+            }).always(function() {
                 $(window).trigger(config.fetchCompleteEvent);
             });
         };
