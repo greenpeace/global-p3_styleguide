@@ -5,7 +5,7 @@
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.2.1
+ * @version         0.2.2
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -15,7 +15,7 @@
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
 
-(function($, M, window) {
+(function($, M, window, document) {
     'use strict';
 
     var _p3 = $.p3 || {},
@@ -107,6 +107,9 @@
 
                 var params = $.extend(true, request.parameters, config.params);
 
+                // http://stackoverflow.com/questions/20565330/ajax-call-for-json-fails-in-ie
+                $.support.cors = true;
+
                 $.ajax({
                     url: request.url,
                     timeout: config.timeout,
@@ -114,18 +117,20 @@
                     data: params
                 }).success(function(json) {
                     $(config.dataElement).data(config.dataNamespace, json);
-                }).fail(function() {
-                    var message = prefix + 'Failed to load JSON from "' + request.url + '"';
+                }).fail(function(e1, e2, e3) {
+                    var message = prefix + 'Failed to load "' + request.url + '"';
 
                     if (config.abortOnError) {
-                        throw new Error(message);
+                        throw new Error(message, e1);
                     } else {
-                        console.warn(message);
+                        console.error(message);
+                        console.error(e1);
+                        console.error(e2);
+                        console.error(e3);
                     }
                 }).always(function() {
-                    $(window).trigger(config.fetchCompleteEvent);
+                    $.event.trigger(config.fetchCompleteEvent);
                 });
-
             },
             parsePledgeData = function() {
                 // Load from the parameter if set,
@@ -137,7 +142,7 @@
                     pledgeQueue.actions.push(function() {
                         clearTimeout(timer);
                         timer = setTimeout(function() {
-                            $(window).trigger(config.fetchDataEvent);
+                            $.event.trigger(config.fetchDataEvent);
                         }, config.updateInterval);
                     });
                 }
@@ -248,17 +253,17 @@
                 // from this plugin, allowing us to reuse the data without
                 // performing multiple requests
 
-                $(window).on(config.fetchDataEvent, function() {
+                $(document).on(config.fetchDataEvent, function() {
                     fetchJSON();
                 });
 
-                $(window).on(config.fetchCompleteEvent, function() {
+                $(document).on(config.fetchCompleteEvent, function() {
                     parsePledgeData();
                 });
 
                 // Trigger listen event unless configured to listen externally
                 if (!config.externalTrigger) {
-                    $(window).trigger(config.fetchDataEvent);
+                    $.event.trigger(config.fetchDataEvent);
                 }
             }
         });
@@ -267,4 +272,4 @@
 
     $.p3 = _p3;
 
-}(jQuery, Modernizr, this));
+}(jQuery, Modernizr, this, document));
