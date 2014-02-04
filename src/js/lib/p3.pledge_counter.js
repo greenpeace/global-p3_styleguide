@@ -5,7 +5,7 @@
  *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, which
  *                  enables reusing the JSON with another plugin (eg Recent Signers)
- * @version         0.3.1
+ * @version         0.3.2
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -17,7 +17,7 @@
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
-(function($, M, window) {
+(function($, M, window, document) {
     'use strict';
 
     var _p3 = $.p3 || {},
@@ -156,6 +156,9 @@
         fetchJSON = function () {
             var params = $.extend(true, request.parameters, config.params);
 
+            // http://stackoverflow.com/questions/20565330/ajax-call-for-json-fails-in-ie
+            $.support.cors = true;
+
             $.ajax({
                 url: request.url,
                 timeout: config.timeout,
@@ -163,16 +166,16 @@
                 data: params
             }).success(function(json) {
                 $(config.dataElement).data(config.dataNamespace, json);
-            }).fail(function() {
-                var message = prefix + 'Failed to load JSON from "' + request.url + '"';
+            }).fail(function(e) {
+                var message = prefix + 'Failed to load "' + request.url + '"';
 
                 if (config.abortOnError) {
-                    throw new Error(message);
+                    throw new Error(message, e);
                 } else {
-                    console.warn(message);
+                    console.warn(message, e);
                 }
             }).always(function() {
-                $(window).trigger(config.fetchCompleteEvent);
+                $.event.trigger(config.fetchCompleteEvent);
             });
         };
 
@@ -190,17 +193,17 @@
                 // Event driven fetch and processing means we can decouple data
                 // from this plugin, allowing us to reuse the data without
                 // performing multiple requests
-                $(window).on(config.fetchDataEvent, function() {
+                $(document).on(config.fetchDataEvent, function() {
                     fetchJSON();
                 });
 
-                $(window).on(config.fetchCompleteEvent, function() {
+                $(document).on(config.fetchCompleteEvent, function() {
                     parsePledgeData();
                 });
 
                 // Trigger listen event unless configured to listen externally
-                if (!config.externalTrigger) {
-                    $(window).trigger(config.fetchDataEvent);
+                if (config.externalTrigger === false) {
+                    $.event.trigger(config.fetchDataEvent);
                 }
 
             }
@@ -211,4 +214,4 @@
     // Overwrite p3 namespace if no errors
     $.p3 = _p3;
 
-}(jQuery, Modernizr, this));
+}(jQuery, Modernizr, this, document));
