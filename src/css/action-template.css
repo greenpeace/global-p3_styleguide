@@ -2969,7 +2969,7 @@ a.button.disabled:active {
   -ms-text-overflow: ellipsis;
 }
 #action-recent-signers .since {
-  width: 9em;
+  min-width: 8em;
   display: inline-block;
   font-size: 0.813em;
   vertical-align: 1px;

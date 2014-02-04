@@ -346,7 +346,7 @@ $(document).ready(function() {
  *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, which
  *                  enables reusing the JSON with another plugin (eg Recent Signers)
- * @version         0.3.0
+ * @version         0.3.1
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -375,6 +375,7 @@ var _p3 = $.p3 || {},
         fetchCompleteEvent: 'fetchPledgeDataComplete',  /* trigger this event if you have fetched data externally and just want to parse and update display */
         jsonURL:            'https://secured.greenpeace.org/international/en/api/v2/pledges/',
         params:             {},                         /* object containing GET parameters to pass to p3.request */
+        timeout:            30000,                       /* milliseconds to wait for API request */
         abortOnError:       false                       /* stop processing if there is an error */
     };
 
@@ -470,12 +471,11 @@ var _p3 = $.p3 || {},
             var data = $(config.dataElement).data(config.dataNamespace);
 
             if (!data || data.status === 'error' || !data.pledges[0].action) {
-                if (data.errors) {
-                    $.each(data.errors, function (key, value) {
-                        console.warn(prefix + key + ' => ' + value);
-                    });
+                if (config.abortOnError) {
+                    throw new Error(prefix + 'Errors in pledge data:', data);
+                } else {
+                    return;
                 }
-                throw new Error(prefix + 'Errors in pledge data.');
             }
 
             progress.count = data.pledges[0].action.count;
@@ -494,11 +494,23 @@ var _p3 = $.p3 || {},
         },
         fetchJSON = function () {
             var params = $.extend(true, request.parameters, config.params);
-            $.getJSON(request.url, params, function(json) {
+
+            $.ajax({
+                url: request.url,
+                timeout: config.timeout,
+                dataType: 'json',
+                data: params
+            }).success(function(json) {
                 $(config.dataElement).data(config.dataNamespace, json);
-            }).error( function () {
-                throw new Error(prefix + 'Failed to load JSON from "' + request.url + '"');
-            }).complete(function () {
+            }).fail(function() {
+                var message = prefix + 'Failed to load JSON from "' + request.url + '"';
+
+                if (config.abortOnError) {
+                    throw new Error(message);
+                } else {
+                    console.warn(message);
+                }
+            }).always(function() {
                 $(window).trigger(config.fetchCompleteEvent);
             });
         };
@@ -858,7 +870,7 @@ var _p3 = $.p3 || {},
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.2.0
+ * @version         0.2.1
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -902,6 +914,8 @@ var _p3 = $.p3 || {},
             /* number of times to check the server for new signers after the first
              * set to 0 to disable updates */
             maxRefreshes: 30,
+            /* milliseconds to wait for the API request */
+            timeout: 30000,
             /* stop processing if there is an error */
             abortOnError: false
         };
@@ -956,7 +970,12 @@ var _p3 = $.p3 || {},
 
                 var params = $.extend(true, request.parameters, config.params);
 
-                $.getJSON(request.url, params, function(json) {
+                $.ajax({
+                    url: request.url,
+                    timeout: config.timeout,
+                    dataType: 'json',
+                    data: params
+                }).success(function(json) {
                     $(config.dataElement).data(config.dataNamespace, json);
                 }).fail(function() {
                     var message = prefix + 'Failed to load JSON from "' + request.url + '"';
@@ -966,7 +985,7 @@ var _p3 = $.p3 || {},
                     } else {
                         console.warn(message);
                     }
-                }).complete(function() {
+                }).always(function() {
                     $(window).trigger(config.fetchCompleteEvent);
                 });
 
@@ -976,14 +995,6 @@ var _p3 = $.p3 || {},
                 // else load from the data stored in an element if eventDriven
                 var jsonData = $(config.dataElement).data(config.dataNamespace);
 
-                if (!jsonData) {
-                    if (config.abortOnError) {
-                        throw new Error(prefix + 'JSON data invalid');
-                    } else {
-                        return;
-                    }
-                }
-
                 // Add fetch first, since array is popped not shifted
                 if (refreshNum++ < config.maxRefreshes && !config.externalTrigger) {
                     pledgeQueue.actions.push(function() {
@@ -992,6 +1003,15 @@ var _p3 = $.p3 || {},
                             $(window).trigger(config.fetchDataEvent);
                         }, config.updateInterval);
                     });
+                }
+
+                if (!jsonData || jsonData.status === 'error') {
+                    if (config.abortOnError) {
+                        throw new Error(prefix + 'JSON data invalid');
+                    } else {
+                        pledgeQueue.run();
+                        return;
+                    }
                 }
 
                 $.each(jsonData.pledges, function(i, pledge) {
