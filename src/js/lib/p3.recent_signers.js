@@ -5,7 +5,7 @@
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.2.0
+ * @version         0.2.1
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -51,6 +51,8 @@
             /* number of times to check the server for new signers after the first
              * set to 0 to disable updates */
             maxRefreshes: 30,
+            /* milliseconds to wait for the API request */
+            timeout: 30000,
             /* stop processing if there is an error */
             abortOnError: false
         };
@@ -105,7 +107,12 @@
 
                 var params = $.extend(true, request.parameters, config.params);
 
-                $.getJSON(request.url, params, function(json) {
+                $.ajax({
+                    url: request.url,
+                    timeout: config.timeout,
+                    dataType: 'json',
+                    data: params
+                }).success(function(json) {
                     $(config.dataElement).data(config.dataNamespace, json);
                 }).fail(function() {
                     var message = prefix + 'Failed to load JSON from "' + request.url + '"';
@@ -115,7 +122,7 @@
                     } else {
                         console.warn(message);
                     }
-                }).complete(function() {
+                }).always(function() {
                     $(window).trigger(config.fetchCompleteEvent);
                 });
 
@@ -125,14 +132,6 @@
                 // else load from the data stored in an element if eventDriven
                 var jsonData = $(config.dataElement).data(config.dataNamespace);
 
-                if (!jsonData) {
-                    if (config.abortOnError) {
-                        throw new Error(prefix + 'JSON data invalid');
-                    } else {
-                        return;
-                    }
-                }
-
                 // Add fetch first, since array is popped not shifted
                 if (refreshNum++ < config.maxRefreshes && !config.externalTrigger) {
                     pledgeQueue.actions.push(function() {
@@ -141,6 +140,15 @@
                             $(window).trigger(config.fetchDataEvent);
                         }, config.updateInterval);
                     });
+                }
+
+                if (!jsonData || jsonData.status === 'error') {
+                    if (config.abortOnError) {
+                        throw new Error(prefix + 'JSON data invalid');
+                    } else {
+                        pledgeQueue.run();
+                        return;
+                    }
                 }
 
                 $.each(jsonData.pledges, function(i, pledge) {
