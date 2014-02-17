@@ -7,7 +7,7 @@
  *                  Validates form data against XRegExp rules, optionally
  *                  obtained via remote API
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.3.1
+ * @version         0.3.2
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
@@ -213,6 +213,9 @@
                     'dist/js/compat/json.min.js'
                 ],
                 complete: function() {
+                    // http://stackoverflow.com/questions/20565330/ajax-call-for-json-fails-in-ie
+                    $.support.cors = true;
+
                     // Fetch rules from remote service
                     $.getJSON(query.url, query.parameters, function(data) {
                         // Success, extend configuration with remote data

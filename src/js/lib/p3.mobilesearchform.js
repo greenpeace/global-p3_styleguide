@@ -10,7 +10,7 @@
  */
 /* global jQuery */
 
-(function ( $ ) {
+(function ( $, w ) {
     var _p3 = $.p3 || {};
 
     _p3.mobilesearchform = function( pixel ) {
@@ -23,8 +23,8 @@
         var px = parseInt(pixel, 10);
 
         // if window.matchMedia support
-        if (px && matchMedia) {
-            var mq = window.matchMedia("(min-width: " + px + "px)");
+        if (typeof w.matchMedia !== 'undefined' && px) {
+            var mq = w.matchMedia("(min-width: " + px + "px)");
             mq.addListener(moveSearchForm);
             moveSearchForm(mq);
         }
@@ -52,5 +52,5 @@
 
     $.p3 = _p3;
 
-}( jQuery ));
+}( jQuery, this ));
 

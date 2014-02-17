@@ -140,7 +140,7 @@ var _p3 = $.p3 || ($.p3 = {}),
  */
 /* global jQuery */
 
-(function ( $ ) {
+(function ( $, w ) {
     var _p3 = $.p3 || {};
 
     _p3.mobilesearchform = function( pixel ) {
@@ -153,8 +153,8 @@ var _p3 = $.p3 || ($.p3 = {}),
         var px = parseInt(pixel, 10);
 
         // if window.matchMedia support
-        if (px && matchMedia) {
-            var mq = window.matchMedia("(min-width: " + px + "px)");
+        if (typeof w.matchMedia !== 'undefined' && px) {
+            var mq = w.matchMedia("(min-width: " + px + "px)");
             mq.addListener(moveSearchForm);
             moveSearchForm(mq);
         }
@@ -182,7 +182,7 @@ var _p3 = $.p3 || ($.p3 = {}),
 
     $.p3 = _p3;
 
-}( jQuery ));
+}( jQuery, this ));
 
 
 ;// Source: src/js/lib/p3.narrow.js
@@ -346,7 +346,7 @@ $(document).ready(function() {
  *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, which
  *                  enables reusing the JSON with another plugin (eg Recent Signers)
- * @version         0.3.0
+ * @version         0.3.2
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -358,7 +358,7 @@ $(document).ready(function() {
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
-(function($, M, window) {
+(function($, M, window, document) {
 var _p3 = $.p3 || {},
     defaults = {
         meterElement:       '.completed',               /* Selector for the bar to animated */
@@ -375,6 +375,7 @@ var _p3 = $.p3 || {},
         fetchCompleteEvent: 'fetchPledgeDataComplete',  /* trigger this event if you have fetched data externally and just want to parse and update display */
         jsonURL:            'https://secured.greenpeace.org/international/en/api/v2/pledges/',
         params:             {},                         /* object containing GET parameters to pass to p3.request */
+        timeout:            30000,                       /* milliseconds to wait for API request */
         abortOnError:       false                       /* stop processing if there is an error */
     };
 
@@ -470,12 +471,11 @@ var _p3 = $.p3 || {},
             var data = $(config.dataElement).data(config.dataNamespace);
 
             if (!data || data.status === 'error' || !data.pledges[0].action) {
-                if (data.errors) {
-                    $.each(data.errors, function (key, value) {
-                        console.warn(prefix + key + ' => ' + value);
-                    });
+                if (config.abortOnError) {
+                    throw new Error(prefix + 'Errors in pledge data:', data);
+                } else {
+                    return;
                 }
-                throw new Error(prefix + 'Errors in pledge data.');
             }
 
             progress.count = data.pledges[0].action.count;
@@ -494,12 +494,27 @@ var _p3 = $.p3 || {},
         },
         fetchJSON = function () {
             var params = $.extend(true, request.parameters, config.params);
-            $.getJSON(request.url, params, function(json) {
+
+            // http://stackoverflow.com/questions/20565330/ajax-call-for-json-fails-in-ie
+            $.support.cors = true;
+
+            $.ajax({
+                url: request.url,
+                timeout: config.timeout,
+                dataType: 'json',
+                data: params
+            }).success(function(json) {
                 $(config.dataElement).data(config.dataNamespace, json);
-            }).error( function () {
-                throw new Error(prefix + 'Failed to load JSON from "' + request.url + '"');
-            }).complete(function () {
-                $(window).trigger(config.fetchCompleteEvent);
+            }).fail(function(e) {
+                var message = prefix + 'Failed to load "' + request.url + '"';
+
+                if (config.abortOnError) {
+                    throw new Error(message, e);
+                } else {
+                    console.warn(message, e);
+                }
+            }).always(function() {
+                $.event.trigger(config.fetchCompleteEvent);
             });
         };
 
@@ -517,17 +532,17 @@ var _p3 = $.p3 || {},
                 // Event driven fetch and processing means we can decouple data
                 // from this plugin, allowing us to reuse the data without
                 // performing multiple requests
-                $(window).on(config.fetchDataEvent, function() {
+                $(document).on(config.fetchDataEvent, function() {
                     fetchJSON();
                 });
 
-                $(window).on(config.fetchCompleteEvent, function() {
+                $(document).on(config.fetchCompleteEvent, function() {
                     parsePledgeData();
                 });
 
                 // Trigger listen event unless configured to listen externally
-                if (!config.externalTrigger) {
-                    $(window).trigger(config.fetchDataEvent);
+                if (config.externalTrigger === false) {
+                    $.event.trigger(config.fetchDataEvent);
                 }
 
             }
@@ -538,7 +553,7 @@ var _p3 = $.p3 || {},
     // Overwrite p3 namespace if no errors
     $.p3 = _p3;
 
-}(jQuery, Modernizr, this));
+}(jQuery, Modernizr, this, document));
 ;// Source: src/js/lib/p3.pledge_with_email_only.js
 /**!
  * Greenpeace Email-only Pledge Signing for Action Template v0.3
@@ -858,7 +873,7 @@ var _p3 = $.p3 || {},
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.2.0
+ * @version         0.2.2
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -868,7 +883,7 @@ var _p3 = $.p3 || {},
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
 
-(function($, M, window) {
+(function($, M, window, document) {
 var _p3 = $.p3 || {},
         defaults = {
             jsonURL: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
@@ -902,6 +917,8 @@ var _p3 = $.p3 || {},
             /* number of times to check the server for new signers after the first
              * set to 0 to disable updates */
             maxRefreshes: 30,
+            /* milliseconds to wait for the API request */
+            timeout: 30000,
             /* stop processing if there is an error */
             abortOnError: false
         };
@@ -956,42 +973,53 @@ var _p3 = $.p3 || {},
 
                 var params = $.extend(true, request.parameters, config.params);
 
-                $.getJSON(request.url, params, function(json) {
+                // http://stackoverflow.com/questions/20565330/ajax-call-for-json-fails-in-ie
+                $.support.cors = true;
+
+                $.ajax({
+                    url: request.url,
+                    timeout: config.timeout,
+                    dataType: 'json',
+                    data: params
+                }).success(function(json) {
                     $(config.dataElement).data(config.dataNamespace, json);
-                }).fail(function() {
-                    var message = prefix + 'Failed to load JSON from "' + request.url + '"';
+                }).fail(function(e1, e2, e3) {
+                    var message = prefix + 'Failed to load "' + request.url + '"';
 
                     if (config.abortOnError) {
-                        throw new Error(message);
+                        throw new Error(message, e1);
                     } else {
-                        console.warn(message);
+                        console.error(message);
+                        console.error(e1);
+                        console.error(e2);
+                        console.error(e3);
                     }
-                }).complete(function() {
-                    $(window).trigger(config.fetchCompleteEvent);
+                }).always(function() {
+                    $.event.trigger(config.fetchCompleteEvent);
                 });
-
             },
             parsePledgeData = function() {
                 // Load from the parameter if set,
                 // else load from the data stored in an element if eventDriven
                 var jsonData = $(config.dataElement).data(config.dataNamespace);
 
-                if (!jsonData) {
-                    if (config.abortOnError) {
-                        throw new Error(prefix + 'JSON data invalid');
-                    } else {
-                        return;
-                    }
-                }
-
                 // Add fetch first, since array is popped not shifted
                 if (refreshNum++ < config.maxRefreshes && !config.externalTrigger) {
                     pledgeQueue.actions.push(function() {
                         clearTimeout(timer);
                         timer = setTimeout(function() {
-                            $(window).trigger(config.fetchDataEvent);
+                            $.event.trigger(config.fetchDataEvent);
                         }, config.updateInterval);
                     });
+                }
+
+                if (!jsonData || jsonData.status === 'error') {
+                    if (config.abortOnError) {
+                        throw new Error(prefix + 'JSON data invalid');
+                    } else {
+                        pledgeQueue.run();
+                        return;
+                    }
                 }
 
                 $.each(jsonData.pledges, function(i, pledge) {
@@ -1091,17 +1119,17 @@ var _p3 = $.p3 || {},
                 // from this plugin, allowing us to reuse the data without
                 // performing multiple requests
 
-                $(window).on(config.fetchDataEvent, function() {
+                $(document).on(config.fetchDataEvent, function() {
                     fetchJSON();
                 });
 
-                $(window).on(config.fetchCompleteEvent, function() {
+                $(document).on(config.fetchCompleteEvent, function() {
                     parsePledgeData();
                 });
 
                 // Trigger listen event unless configured to listen externally
                 if (!config.externalTrigger) {
-                    $(window).trigger(config.fetchDataEvent);
+                    $.event.trigger(config.fetchDataEvent);
                 }
             }
         });
@@ -1110,7 +1138,7 @@ var _p3 = $.p3 || {},
 
     $.p3 = _p3;
 
-}(jQuery, Modernizr, this));
+}(jQuery, Modernizr, this, document));
 
 ;// Source: src/js/lib/p3.remember_me_cookie.js
 /**!
@@ -1500,7 +1528,7 @@ var _p3 = $.p3 || {},
  *                  Validates form data against XRegExp rules, optionally
  *                  obtained via remote API
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.3.1
+ * @version         0.3.2
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
@@ -1704,6 +1732,9 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
                     'dist/js/compat/json.min.js'
                 ],
                 complete: function() {
+                    // http://stackoverflow.com/questions/20565330/ajax-call-for-json-fails-in-ie
+                    $.support.cors = true;
+
                     // Fetch rules from remote service
                     $.getJSON(query.url, query.parameters, function(data) {
                         // Success, extend configuration with remote data

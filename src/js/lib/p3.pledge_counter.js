@@ -5,7 +5,7 @@
  *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, which
  *                  enables reusing the JSON with another plugin (eg Recent Signers)
- * @version         0.3.0
+ * @version         0.3.2
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -17,7 +17,7 @@
  */
 /*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50 */
 /*global Modernizr */
-(function($, M, window) {
+(function($, M, window, document) {
     'use strict';
 
     var _p3 = $.p3 || {},
@@ -36,6 +36,7 @@
         fetchCompleteEvent: 'fetchPledgeDataComplete',  /* trigger this event if you have fetched data externally and just want to parse and update display */
         jsonURL:            'https://secured.greenpeace.org/international/en/api/v2/pledges/',
         params:             {},                         /* object containing GET parameters to pass to p3.request */
+        timeout:            30000,                       /* milliseconds to wait for API request */
         abortOnError:       false                       /* stop processing if there is an error */
     };
 
@@ -131,12 +132,11 @@
             var data = $(config.dataElement).data(config.dataNamespace);
 
             if (!data || data.status === 'error' || !data.pledges[0].action) {
-                if (data.errors) {
-                    $.each(data.errors, function (key, value) {
-                        console.warn(prefix + key + ' => ' + value);
-                    });
+                if (config.abortOnError) {
+                    throw new Error(prefix + 'Errors in pledge data:', data);
+                } else {
+                    return;
                 }
-                throw new Error(prefix + 'Errors in pledge data.');
             }
 
             progress.count = data.pledges[0].action.count;
@@ -155,12 +155,27 @@
         },
         fetchJSON = function () {
             var params = $.extend(true, request.parameters, config.params);
-            $.getJSON(request.url, params, function(json) {
+
+            // http://stackoverflow.com/questions/20565330/ajax-call-for-json-fails-in-ie
+            $.support.cors = true;
+
+            $.ajax({
+                url: request.url,
+                timeout: config.timeout,
+                dataType: 'json',
+                data: params
+            }).success(function(json) {
                 $(config.dataElement).data(config.dataNamespace, json);
-            }).error( function () {
-                throw new Error(prefix + 'Failed to load JSON from "' + request.url + '"');
-            }).complete(function () {
-                $(window).trigger(config.fetchCompleteEvent);
+            }).fail(function(e) {
+                var message = prefix + 'Failed to load "' + request.url + '"';
+
+                if (config.abortOnError) {
+                    throw new Error(message, e);
+                } else {
+                    console.warn(message, e);
+                }
+            }).always(function() {
+                $.event.trigger(config.fetchCompleteEvent);
             });
         };
 
@@ -178,17 +193,17 @@
                 // Event driven fetch and processing means we can decouple data
                 // from this plugin, allowing us to reuse the data without
                 // performing multiple requests
-                $(window).on(config.fetchDataEvent, function() {
+                $(document).on(config.fetchDataEvent, function() {
                     fetchJSON();
                 });
 
-                $(window).on(config.fetchCompleteEvent, function() {
+                $(document).on(config.fetchCompleteEvent, function() {
                     parsePledgeData();
                 });
 
                 // Trigger listen event unless configured to listen externally
-                if (!config.externalTrigger) {
-                    $(window).trigger(config.fetchDataEvent);
+                if (config.externalTrigger === false) {
+                    $.event.trigger(config.fetchDataEvent);
                 }
 
             }
@@ -199,4 +214,4 @@
     // Overwrite p3 namespace if no errors
     $.p3 = _p3;
 
-}(jQuery, Modernizr, this));
+}(jQuery, Modernizr, this, document));
