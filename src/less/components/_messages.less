@@ -1,0 +1,222 @@
+/*
+    Messages for validation error and example
+
+    Description	: <div.text.error>, <div.text.success>, can be used to add status messages or example. 
+                                 Additional messages are wrapped in <.error-message>, <.success-messages>
+    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
+    Since				: version 3.0
+
+    .info				- can be used for example messages prior validation
+    .error			 - error messages used for validation issues
+*/
+form .message {
+    position:relative;
+    padding: 0 0 0 0.8em;
+}
+
+form .tooltip {
+    padding:0;
+}
+
+form .tooltip,
+form .message {
+    background-color:transparent;
+    border:0;
+}
+form .message .error {
+    display:block;
+    padding: 0 0.5em 1em;
+    color: @red-1;
+}
+form .info {
+    position:relative;
+    color: @steels-3;
+}
+form .message .error:before,
+form .info:before {
+    display:inline-block;
+    text-align:center;
+    vertical-align:middle;
+    width:.75em;
+    height:.75em;
+    padding:0 .125em .25em .125em;
+    .rounded_all(2px);
+    font-weight:bold;
+    color:@white;
+    line-height:100%;
+}
+form .info:before {
+    content:"i";
+    background: @blues-2;
+    color:@white;
+}
+form .message .error:before {
+    position:absolute;
+    left:0;
+    top:0.1em;
+    content:"!";
+    background:@red-1;
+    color:@white;
+}
+form .message .error span,
+form .info span {
+    display:block;
+    margin:-1.25em 1.5em 0 1.5em;
+    .rounded_all(2px);
+}
+
+form input.error,
+form select.error {
+    border:1px solid @red-1;
+    .boxshadow(0; 0; 10px; @red-1);
+}
+form .error:focus {
+    border:1px solid @red-1;
+}
+
+form .errorSummary {
+    margin-top:1em;
+}
+
+// mixins to put everthing that belongs in a media query
+// in the media query fallback as well
+.form_desktop() {
+    form .tooltip {
+        display:block;
+        width:10px;
+        float:right;
+    }
+    form .tooltip:before {
+        display:block;
+        margin-top:.75em;
+    }
+    form .tooltip:hover:before {
+        background:#b1c3d0;
+    }
+    form .tooltip span {
+        visibility:hidden;
+        display:block;
+        position:absolute;
+        max-width:200px;
+        background:@white;		
+        float:left;
+        padding:.5em;
+        .boxshadow(0px; 0px; 8px; #111);
+        bottom: 1.5em;
+        right: -86px;
+        width: 130px;
+    }
+    form .tooltip:hover span {
+        visibility:visible;
+    }
+
+}
+.form_desktop_wide() {
+    form .tooltip span {
+        min-width: 200px;
+        bottom: auto;
+        right: auto;
+    }
+}
+/* if large screen display info as tooltips */
+@media only screen and (min-width : 1024px) {
+    .form_desktop;
+}
+/* fallback for browsers where media queries won't work */
+.desktop {
+    .form_desktop;
+}
+@media only screen and (min-width : 1350px) {
+    .form_desktop_wide;
+}
+/* fallback for browsers where media queries won't work */
+.wide {
+    .form_desktop_wide;
+}
+
+/* do not show javascript needed warning if js is enabled 
+     this needs modernizr to work
+*/
+.js .message.nojs {
+    display:none;
+}
+
+/*
+    Radio
+
+    Description	: ?
+    Compatible	: ?
+    Since				: version 3.0
+*/
+fieldset.checkbox,
+fieldset.radio {
+    padding: .5em 0 1em 0;
+}
+fieldset.checkbox legend,
+fieldset.radio legend {
+    padding: .25em 0 0 0;
+}
+.checkbox label,
+.checkboxlist label,
+.radiolist label,
+.radio label {
+    text-indent: 0.2em;
+    margin-right:1em;
+}
+.checkboxlist .input.checkbox label,
+.radiolist .input.radio label,
+.radio label,
+.radio label input,
+.checkbox label,
+.checkbox label input {
+    font-weight:normal;
+    display:inline;
+    width:auto;
+}
+input[type=radio],
+input[type=checkbox] {
+    margin-right:0.2em;
+    vertical-align:middle;
+    display:inline;
+}
+input[type=checkbox] + label {
+    font-weight:normal;
+    display:inline;
+}
+
+/*
+    Select
+
+    Description	: ?
+    Compatible	: ?
+    Since				: version 3.0
+*/
+select,
+select:hover {
+    width:15.25em;
+    margin-bottom:10px;
+    padding:.25em .5em .15em .2em;
+    margin:.2em 0 .5em 0;
+    /*background:@white;
+    .rounded_all(3px);
+    border:1px solid #BBB;*/
+}
+ 
+/* system fields */
+.system.fields {
+    display:none;
+}
+
+/* placeholders */
+::-webkit-input-placeholder {
+    color:#555;
+}
+:-moz-placeholder {
+    color:#555;
+}
+::-moz-placeholder {
+    color:#555;
+}
+:-ms-input-placeholder {
+    color:#555;
+}
