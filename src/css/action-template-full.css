@@ -2970,18 +2970,7 @@ ul.navigation {
 .social-share .counter {
   background: #ffffff;
 }
-.social-share .tip:before {
-  width: 1px;
-  height: 1px;
-  position: absolute;
-  margin-left: 17px;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #cccccc;
-  border-top-color: rgba(0, 0, 0, 0.2);
-  display: inline-block;
-  content: " ";
-}
+.social-share .tip:before,
 .social-share .tip:after {
   width: 1px;
   height: 1px;
@@ -2990,9 +2979,14 @@ ul.navigation {
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 7px solid #cccccc;
-  border-top-color: #ffffff;
   display: inline-block;
   content: " ";
+}
+.social-share .tip:before {
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tip:after {
+  border-top-color: #ffffff;
   margin-top: -2px;
 }
 /* IE specific */
