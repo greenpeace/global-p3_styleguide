@@ -1251,7 +1251,7 @@ a.button {
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;
   border-radius: 0.25em;
-  color: #333;
+  color: #333333;
   border: 1px solid #cccccc;
   background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top, #fafafa, #ededed);
@@ -1282,7 +1282,7 @@ a.button.primary {
   /* IE10+ */
   background: linear-gradient(to bottom, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f99713', endColorstr='#e56b2b', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
   /* IE6-9 */
   border: 1px solid #f06818;
 }
@@ -1346,7 +1346,7 @@ a.button.disabled:active {
   text-shadow: 0 0 2px #9a9a9a;
   background: #f99713;
   /* Old browsers */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f99713', endColorstr='#e56b2b', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
   /* IE6-9 */
   border: 1px solid #f06818;
   width: 6em;
