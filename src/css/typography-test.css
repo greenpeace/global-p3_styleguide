@@ -819,72 +819,68 @@ body {
   line-height: normal;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333333;
+  /* paragraphs and lists */
+  /* links */
+  /* titles */
+  /* form inputs text  */
 }
-/* paragraphs and lists */
-p {
+body p {
   font-size: .875em;
   /* 14px/16 */
   line-height: 1.4em;
 }
-#main-section li {
+body #main-section li {
   font-size: .875em;
   /* 14px/16 */
 }
-#main-section li li {
+body #main-section li li {
   font-size: 1em;
 }
-/* links */
-a,
-a:visited {
+body a,
+body a:visited {
   text-decoration: none;
   color: #467f0d;
 }
-a:hover,
-a:focus {
+body a:hover,
+body a:focus {
   text-decoration: underline;
 }
-/* titles */
-h1 {
+body h1,
+body h2,
+body h3 {
+  color: #003300;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+body h1 {
   font-size: 1.75em;
   /* 28px/16 */
-  font-family: Helvetica, Arial, sans-serif;
   margin-top: .625em;
-  color: #66cc00;
-  font-weight: bold;
 }
-h2 {
+body h2 {
   font-size: 1.375em;
   /* 22px/16 */
-  font-family: Helvetica, Arial, sans-serif;
-  color: #003300;
-  font-weight: bold;
 }
-h3 {
-  color: #003300;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-}
-/* form inputs text  */
-form input[type=text],
-form input[type=password],
-form input[type=email],
-form input[type=search],
-form input[type=tel],
-form textarea,
-form label,
-form legend {
+body form input[type=text],
+body form input[type=password],
+body form input[type=email],
+body form input[type=search],
+body form input[type=tel],
+body form textarea,
+body form label,
+body form legend {
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333333;
   font-size: .875em;
   /* 14px/16 */
   font-weight: normal;
 }
-form .tooltip,
-form .message {
+body form .tooltip,
+body form .message {
   font-size: .875em;
   /* 14px/16 */
 }
-.country-selector {
+body .country-selector {
   font-family: Arial, Helvetica, sans-serif;
 }
 #main-container {
