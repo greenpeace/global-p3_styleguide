@@ -11,7 +11,7 @@ https://github.com/styleguide/css
 
 In /p3-styleguide:
 
-kss-node styleguide styleguide --css /src/css/action-template.css --template styleguide/styleguide-template
+kss-node styleguide styleguide --css src/css/action-template.css --template styleguide/styleguide-template
 
 To modify the style in the styleguide html:
 
