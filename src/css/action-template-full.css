@@ -4072,6 +4072,78 @@ ul.navigation {
 .lt-ie9 .desktop .footer-sitemap .facts .ship {
   padding-left: 0;
 }
+/*
+    Action Counter,
+    shows the number of signers both graphical and text only
+
+    #action-counter-graphical - graphical display as progres bar
+    #action-counter-textual   - textual display
+*/
+#action-counter {
+  margin: 1em 0;
+}
+#action-counter #action-counter-graphical {
+  transition: all 100ms ease-out;
+  display: none;
+  background: #e9ecf3;
+}
+#action-counter #action-counter-graphical .completed {
+  background: #f99713;
+  display: block;
+  text-align: right;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.125em;
+  padding: .311em 0;
+  text-indent: 0.2em;
+}
+#action-counter #action-counter-graphical .objectives {
+  display: none;
+}
+#action-counter #action-counter-textual {
+  margin: .25em 0 0 0;
+  color: #666666;
+  font-size: .875em;
+}
+/*
+    Recent Signers widget
+
+    li       - One line, ellipsis if content doesn't fit
+    .since   - Timestamp in gray text
+    .country - Country name in grayutext
+    .flag    - Flag icon margin
+*/
+#action-recent-signers {
+  clear: right;
+  min-height: 14em;
+}
+#action-recent-signers ul {
+  padding: 0;
+}
+#action-recent-signers li {
+  list-style-type: none;
+  font-size: 0.813em;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+}
+#action-recent-signers .since {
+  min-width: 8em;
+  display: inline-block;
+  font-size: 0.813em;
+  vertical-align: 1px;
+  color: #666666;
+}
+#action-recent-signers .country {
+  color: #777;
+  display: none;
+}
+#action-recent-signers .flag {
+  margin-right: .35em;
+  vertical-align: -1px;
+}
 /* ==========================================================================
      Action Template or Action Related Widgets
    ========================================================================== */
@@ -4427,4 +4499,26 @@ Browser specific hacks
   font-size: 0.875em;
   line-height: 1.4em;
   font-weight: normal;
+}
+@media only screen and (min-width: 1024px) {
+  .action-template #main-container {
+    background: transparent url('//www.greenpeace.org/international/Global/international/artwork/climate/2013/Shell_hell_bg_2.jpg') center 0 no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  #main-section {
+    padding-top: 1.25em;
+  }
+  #action-smallprints {
+    font-size: .75em;
+  }
+}
+h1,
+#action-ask {
+  display: none;
+}
+#action-form {
+  padding-top: .5em;
 }
