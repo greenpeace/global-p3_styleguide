@@ -43,6 +43,35 @@
 @grays-3: #8e8e8e;
 @grays-4: #cccccc;
 
+// NEW VARIABLES TO CHECK WITHOUT MODIFICATION 
+
+@whites-x1: #f3f3f3;  /* _form.less (1)                                                   */
+@whites-x2: #f5f5f5;  /* _buttons.less (1)                                                */
+@whites-x3: #fafafa;  /* _buttons.less (6)                                                */
+@whites-x4: #fbfbfb;  /* _helpers.less (1)                                                */
+@whites-x5: #fffdff;  /* _social-login.less (2)                                           */
+
+@blues-x1: #b1c3d0;   /* _messages.less (1)                                               */
+@blues-x2: #b3d4fc;   /* _form.less (2)                                                   */
+
+@grays-x1: #555555;   /* _messages.less (4) _dropdown.less (1) _top-navigation.less (1)   */
+@grays-x2: #777777;   /* _recent-signers.less (1)                                         */
+@grays-x3: #888888;   /* _buttons.less (1)                                                */
+@grays-x4: #999999;   /* _form.less (1)                                                   */
+@grays-x5: #9a9a9a;   /* _buttons.less (2)                                                */
+@grays-x6: #bbbbbb;   /* _messages.less (1)                                               */
+@grays-x7: #e5e5e5;   /* _dropdown.less (1)                                               */
+@grays-x8: #eaeaea;   /* _helpers.less (1)                                                */
+@grays-x9: #ededed;   /* _buttons.less (7)                                                */
+@grays-x10: #e9ecf3;  /* _action.less (2) _action-counter.less (1)                        */
+
+@oranges-x1: #e56b2b; /* _buttons.less (13) _top-navigation.less (13)                     */
+@oranges-x2: #f06818; /* _buttons.less (1)                                                */
+
+@greens-x1: #4EA600;  /* _header.less (1) _header-small.less (1)                          */
+
+@blacks-x1: #111111;  /* _messages.less (1)                                               */
+@blacks-x2: #1d1d1d;  /* _top-navigation.less (1)                                         */
 
 // ==========================================================================
 //      Pure mixins
@@ -251,11 +280,41 @@
 }
 
 /*
- * Color palette from the styleguide + design color set
- * for use as background or text color
- * By order of luminance
- */
-/* Greens */
+Color palette
+
+Color palette from the styleguide and
+design color set for use as background or
+text color by order of luminance
+
+Styleguide 1.
+*/
+
+
+/*
+Greens
+
+Green text and backgrounds
+
+Styleguide 1.1
+*/
+
+/*
+Green text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.greens-txt-1                  - description
+.greens-sec-txt                - description
+.greens-txt-2                  - description
+.greens-txt-3                  - description
+.greens-txt-4                  - description
+.greens-txt-5                  - description
+.greens-txt-6                  - description
+.greens-txt-pri                - description
+
+Styleguide 1.1.1
+*/
 .greens-txt-1, 
 .greens-sec-txt { color: @greens-1; }
 .greens-txt-2   { color: @greens-2; }
@@ -264,6 +323,25 @@
 .greens-txt-5   { color: @greens-5; } 
 .greens-txt-6,
 .greens-txt-pri { color: @greens-6; }
+
+/*
+Green background
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.greens-bg-1                  - description
+.greens-sec-bg                - description
+.greens-bg-2                  - description
+.greens-bg-3                  - description
+.greens-bg-4                  - description
+.greens-bg-5                  - description
+.greens-bg-6                  - description
+.greens-bg-pri                - description
+
+Styleguide 1.1.2
+*/
+
 .greens-bg-1, 
 .greens-sec-bg  { background-color: @greens-1; }
 .greens-bg-2  { background-color: @greens-2; }
@@ -272,6 +350,7 @@
 .greens-bg-5  { background-color: @greens-5; } 
 .greens-bg-6, 
 .greens-bg-pri  { background-color: @greens-6; }
+
 /* Oranges */
 .oranges-txt-1, 
 .oranges-txt-pri{ color: @oranges-1; }

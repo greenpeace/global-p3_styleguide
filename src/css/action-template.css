@@ -464,6 +464,28 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+/* _form.less (1)                                                   */
+/* _buttons.less (1)                                                */
+/* _buttons.less (6)                                                */
+/* _helpers.less (1)                                                */
+/* _social-login.less (2)                                           */
+/* _messages.less (1)                                               */
+/* _form.less (2)                                                   */
+/* _messages.less (4) _dropdown.less (1) _top-navigation.less (1)   */
+/* _recent-signers.less (1)                                         */
+/* _buttons.less (1)                                                */
+/* _form.less (1)                                                   */
+/* _buttons.less (2)                                                */
+/* _messages.less (1)                                               */
+/* _dropdown.less (1)                                               */
+/* _helpers.less (1)                                                */
+/* _buttons.less (7)                                                */
+/* _action.less (2) _action-counter.less (1)                        */
+/* _buttons.less (13) _top-navigation.less (13)                     */
+/* _buttons.less (1)                                                */
+/* _header.less (1) _header-small.less (1)                          */
+/* _messages.less (1)                                               */
+/* _top-navigation.less (1)                                         */
 /* ==========================================================================
 	 Helper classes / mixins
    ========================================================================== */
@@ -559,11 +581,38 @@ table {
   border-radius: 3px;
 }
 /*
- * Color palette from the styleguide + design color set
- * for use as background or text color
- * By order of luminance
- */
-/* Greens */
+Color palette
+
+Color palette from the styleguide and
+design color set for use as background or
+text color by order of luminance
+
+Styleguide 1.
+*/
+/*
+Greens
+
+Green text and backgrounds
+
+Styleguide 1.1
+*/
+/*
+Green text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.greens-txt-1                  - description
+.greens-sec-txt                - description
+.greens-txt-2                  - description
+.greens-txt-3                  - description
+.greens-txt-4                  - description
+.greens-txt-5                  - description
+.greens-txt-6                  - description
+.greens-txt-pri                - description
+
+Styleguide 1.1.1
+*/
 .greens-txt-1,
 .greens-sec-txt {
   color: #003300;
@@ -584,6 +633,23 @@ table {
 .greens-txt-pri {
   color: #66cc00;
 }
+/*
+Green background
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.greens-bg-1                  - description
+.greens-sec-bg                - description
+.greens-bg-2                  - description
+.greens-bg-3                  - description
+.greens-bg-4                  - description
+.greens-bg-5                  - description
+.greens-bg-6                  - description
+.greens-bg-pri                - description
+
+Styleguide 1.1.2
+*/
 .greens-bg-1,
 .greens-sec-bg {
   background-color: #003300;
@@ -775,72 +841,68 @@ body {
   line-height: normal;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333333;
+  /* paragraphs and lists */
+  /* links */
+  /* titles */
+  /* form inputs text  */
 }
-/* paragraphs and lists */
-p {
+body p {
   font-size: .875em;
   /* 14px/16 */
   line-height: 1.4em;
 }
-#main-section li {
+body #main-section li {
   font-size: .875em;
   /* 14px/16 */
 }
-#main-section li li {
+body #main-section li li {
   font-size: 1em;
 }
-/* links */
-a,
-a:visited {
+body a,
+body a:visited {
   text-decoration: none;
   color: #467f0d;
 }
-a:hover,
-a:focus {
+body a:hover,
+body a:focus {
   text-decoration: underline;
 }
-/* titles */
-h1 {
+body h1,
+body h2,
+body h3 {
+  color: #003300;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+body h1 {
   font-size: 1.75em;
   /* 28px/16 */
-  font-family: Helvetica, Arial, sans-serif;
   margin-top: .625em;
-  color: #66cc00;
-  font-weight: bold;
 }
-h2 {
+body h2 {
   font-size: 1.375em;
   /* 22px/16 */
-  font-family: Helvetica, Arial, sans-serif;
-  color: #003300;
-  font-weight: bold;
 }
-h3 {
-  color: #003300;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-}
-/* form inputs text  */
-form input[type=text],
-form input[type=password],
-form input[type=email],
-form input[type=search],
-form input[type=tel],
-form textarea,
-form label,
-form legend {
+body form input[type=text],
+body form input[type=password],
+body form input[type=email],
+body form input[type=search],
+body form input[type=tel],
+body form textarea,
+body form label,
+body form legend {
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333333;
   font-size: .875em;
   /* 14px/16 */
   font-weight: normal;
 }
-form .tooltip,
-form .message {
+body form .tooltip,
+body form .message {
   font-size: .875em;
   /* 14px/16 */
 }
-.country-selector {
+body .country-selector {
   font-family: Arial, Helvetica, sans-serif;
 }
 /* ==========================================================================
@@ -1211,7 +1273,7 @@ a.button {
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;
   border-radius: 0.25em;
-  color: #333;
+  color: #333333;
   border: 1px solid #cccccc;
   background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top, #fafafa, #ededed);
@@ -1242,7 +1304,7 @@ a.button.primary {
   /* IE10+ */
   background: linear-gradient(to bottom, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f99713', endColorstr='#e56b2b', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
   /* IE6-9 */
   border: 1px solid #f06818;
 }
@@ -1306,7 +1368,7 @@ a.button.disabled:active {
   text-shadow: 0 0 2px #9a9a9a;
   background: #f99713;
   /* Old browsers */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f99713', endColorstr='#e56b2b', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
   /* IE6-9 */
   border: 1px solid #f06818;
   width: 6em;

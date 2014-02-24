@@ -6,7 +6,11 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            css: ['src/css/*.css', 'dist/css/*.css'],
+            css: [
+                'src/css/*.css',
+                'dist/css/*.css',
+                'styleguide/css/*.css'
+            ],
             js: 'dist/js'
         },
         lesslint: {
@@ -32,11 +36,6 @@ module.exports = function(grunt) {
                     '@date\t\t<%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright\t<%= pkg.copyright %>\n * @source\t\t<%= pkg.repository %>\n * @license\t\t<%= pkg.license %>\n */\n',
                 footer: '/* @license-end */'
             },
-            /*combine: {
-             files: {
-             'dist/css/style.css': 'src/css/*.css'
-             }
-             }*/
             minify: {
                 expand: true,
                 cwd: 'src/css/',
@@ -130,6 +129,13 @@ module.exports = function(grunt) {
                 }
             }
         },
+        copy: {
+            main: {
+                nonull: true,
+                src: 'src/css/styleguide.css',
+                dest: 'styleguide/css/styleguide.css',
+            },
+        },
         watch: {
             js: {
                 files: ['Gruntfile.js', 'package.json', 'src/**/*.js'],
@@ -172,6 +178,8 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
 
+    grunt.loadNpmTasks('grunt-contrib-copy');
+
     // ========================================================================
     // Register Tasks
 
@@ -183,7 +191,7 @@ module.exports = function(grunt) {
     grunt.registerTask('csslint', ['lesslint', 'clean:css', 'less', 'cssmin']);
 
     // Run 'grunt css' to compile LESS into CSS, combine and minify
-    grunt.registerTask('css', ['clean:css', 'less', 'cssmin']);
+    grunt.registerTask('css', ['clean:css', 'less', 'cssmin', 'copy']);
 
     // Run 'grunt js' to check JS code quality, and if no errors
     // concatonate and minify
@@ -191,6 +199,6 @@ module.exports = function(grunt) {
 
     // 'grunt' will check code quality, and if no errors,
     // compile LESS to CSS, and minify and concatonate all JS and CSS
-    grunt.registerTask('default', ['jshint', 'clean', 'less', 'cssmin', 'concat', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'clean', 'less', 'copy', 'cssmin', 'concat', 'uglify']);
 
 };

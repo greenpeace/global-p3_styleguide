@@ -61,27 +61,21 @@
 .social-share .counter {
 	background:@white;
 }
-.social-share .tip:before{
+.social-share .tip:before, .social-share .tip:after {
 	width:1px; height:1px;
 	position:absolute;
 	margin-left:17px;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
 	border-top: 7px solid @grays-4;
-	border-top-color: rgba(0, 0, 0, 0.2);
 	display: inline-block;
 	content:" ";
 }
+.social-share .tip:before{
+	border-top-color: rgba(0, 0, 0, 0.2);
+}
 .social-share .tip:after{
-	width:1px; height:1px;
-	position:absolute;
-	margin-left:17px;
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
-	border-top: 7px solid @grays-4;
 	border-top-color: rgba(255, 255, 255, 1);
-	display: inline-block;
-	content:" ";
 	margin-top:-2px;
 }
 

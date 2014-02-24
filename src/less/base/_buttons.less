@@ -36,7 +36,7 @@ a.button {
     font-weight: bold;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
     .rounded_all(.25em);
-    color: #333;
+    color: @grays-1;
     border: 1px solid @grays-4;
     background-color: #f5f5f5;
     background-image: -moz-linear-gradient(top, #fafafa, #ededed);
@@ -49,14 +49,14 @@ a.button {
     &.primary {
         color: @white;
         text-shadow: 0 0 2px #9a9a9a;
-        background: #f99713; /* Old browsers */
-        background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%); /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f99713), color-stop(57%,#e56b2b), color-stop(100%,#e56b2b)); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* Opera 11.10+ */
-        background: -ms-linear-gradient(top, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* IE10+ */
-        background: linear-gradient(to bottom, #f99713 0%,#e56b2b 57%,#e56b2b 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99713', endColorstr='#e56b2b',GradientType=0 ); /* IE6-9 */
+        background: @oranges-2; /* Old browsers */
+        background: -moz-linear-gradient(top, @oranges-2 0%, #e56b2b 57%, #ededed 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@oranges-2), color-stop(57%,#e56b2b), color-stop(100%,#e56b2b)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, @oranges-2 0%,#e56b2b 57%,#e56b2b 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, @oranges-2 0%,#e56b2b 57%,#e56b2b 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, @oranges-2 0%,#e56b2b 57%,#e56b2b 100%); /* IE10+ */
+        background: linear-gradient(to bottom, @oranges-2 0%,#e56b2b 57%,#e56b2b 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@oranges-2', endColorstr='#e56b2b',GradientType=0 ); /* IE6-9 */
         border:1px solid #f06818;
     }
     &:hover,
@@ -103,8 +103,8 @@ a.button {
 .lt-ie7 .sevensome a.donate {
     color:@white;
     text-shadow: 0 0 2px #9a9a9a;
-    background: #f99713; /* Old browsers */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99713', endColorstr='#e56b2b',GradientType=0 ); /* IE6-9 */
+    background: @oranges-2; /* Old browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@oranges-2', endColorstr='#e56b2b',GradientType=0 ); /* IE6-9 */
     border:1px solid #f06818;
     width: 6em;
     text-align: center;
