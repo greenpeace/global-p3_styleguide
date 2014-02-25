@@ -898,6 +898,7 @@ body form legend {
   font-size: .875em;
   /* 14px/16 */
   font-weight: normal;
+  line-height: 1.5em;
 }
 body form textarea {
   color: #666666;
