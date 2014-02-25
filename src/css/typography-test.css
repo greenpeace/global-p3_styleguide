@@ -904,7 +904,7 @@ body form textarea {
 }
 body form .tooltip,
 body form .message {
-  font-size: .875em;
+  font-size: .675em;
   /* 14px/16 */
 }
 body .country-selector {

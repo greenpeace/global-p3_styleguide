@@ -16,12 +16,14 @@ form .message {
 
 form .tooltip {
     padding:0;
+	
 }
 
 form .tooltip,
 form .message {
     background-color:transparent;
     border:0;
+	 
 }
 form .message .error {
     display:block;
@@ -89,9 +91,11 @@ form .errorSummary {
     form .tooltip:before {
         display:block;
         margin-top:.75em;
+		padding:.1em .3em .4em .3em;
     }
     form .tooltip:hover:before {
         background:#b1c3d0;
+		
     }
     form .tooltip span {
         visibility:hidden;
@@ -100,8 +104,8 @@ form .errorSummary {
         max-width:200px;
         background:@white;		
         float:left;
-        padding:.5em;
-        .boxshadow(0px; 0px; 8px; #111);
+        padding:.8em;
+        .boxshadow(0px; 0px; 4px; #baccd9);
         bottom: 1.5em;
         right: -86px;
         width: 130px;

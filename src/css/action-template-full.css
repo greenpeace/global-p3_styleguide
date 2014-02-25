@@ -904,7 +904,7 @@ body form textarea {
 }
 body form .tooltip,
 body form .message {
-  font-size: .875em;
+  font-size: .675em;
   /* 14px/16 */
 }
 body .country-selector {
@@ -1482,6 +1482,7 @@ form .errorSummary {
   form .tooltip:before {
     display: block;
     margin-top: .75em;
+    padding: .1em .3em .4em .3em;
   }
   form .tooltip:hover:before {
     background: #b1c3d0;
@@ -1493,10 +1494,10 @@ form .errorSummary {
     max-width: 200px;
     background: #ffffff;
     float: left;
-    padding: .5em;
-    -webkit-box-shadow: 0px 0px 8px #111111;
-    -moz-box-shadow: 0px 0px 8px #111111;
-    box-shadow: 0px 0px 8px #111111;
+    padding: .8em;
+    -webkit-box-shadow: 0px 0px 4px #baccd9;
+    -moz-box-shadow: 0px 0px 4px #baccd9;
+    box-shadow: 0px 0px 4px #baccd9;
     bottom: 1.5em;
     right: -86px;
     width: 130px;
@@ -1514,6 +1515,7 @@ form .errorSummary {
 .desktop form .tooltip:before {
   display: block;
   margin-top: .75em;
+  padding: .1em .3em .4em .3em;
 }
 .desktop form .tooltip:hover:before {
   background: #b1c3d0;
@@ -1525,10 +1527,10 @@ form .errorSummary {
   max-width: 200px;
   background: #ffffff;
   float: left;
-  padding: .5em;
-  -webkit-box-shadow: 0px 0px 8px #111111;
-  -moz-box-shadow: 0px 0px 8px #111111;
-  box-shadow: 0px 0px 8px #111111;
+  padding: .8em;
+  -webkit-box-shadow: 0px 0px 4px #baccd9;
+  -moz-box-shadow: 0px 0px 4px #baccd9;
+  box-shadow: 0px 0px 4px #baccd9;
   bottom: 1.5em;
   right: -86px;
   width: 130px;
