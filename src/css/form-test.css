@@ -832,6 +832,8 @@ Styleguide 1.1.2
 .no-navigation .header .language-selector {
   visibility: hidden;
 }
+/* test
+***********/
 /* ==========================================================================
      Typography rules
    ========================================================================== */
@@ -896,6 +898,9 @@ body form legend {
   font-size: .875em;
   /* 14px/16 */
   font-weight: normal;
+}
+body form textarea {
+  color: #666666;
 }
 body form .tooltip,
 body form .message {
