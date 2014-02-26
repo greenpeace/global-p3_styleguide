@@ -24,154 +24,154 @@
 // ------------------------------------------------------------------------------
 // These are totally optional of course
 html {
-	font-size: 100% !important;
-	-webkit-text-size-adjust: 100% !important;
-	-ms-text-size-adjust: 100% !important;
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
 }
 
 body {
-	color:@md-colors-foreground !important;
-	background:@md-colors-background !important;
+	color:@md-colors-foreground;
+	background:@md-colors-background;
 
-	font-family: @md-font-body !important;
-	font-size:12px !important;
+	font-family: @md-font-body;
+	font-size:12px;
 
-	line-height:1.5em !important;
-	padding:1em !important;
-	max-width:52em !important;
+	line-height:1.5em;
+	padding:1em;
+	max-width:52em;
 }
 
 // ------------------------------------------------------------------------------
 //   @group Hyperlinks
 // ------------------------------------------------------------------------------
 a {
-	color:@md-colors-link !important;
-	text-decoration:none !important;
+	color:@md-colors-link;
+	text-decoration:none;
 
-	&:visited { color: @md-colors-link-visited !important; }
-	&:hover   { color: @md-colors-link-hover !important;   }
-	&:active  { color: @md-colors-link-active !important;  }
-	&:focus   { outline: thin dotted !important; }
+	&:visited { color: @md-colors-link-visited; }
+	&:hover   { color: @md-colors-link-hover;   }
+	&:active  { color: @md-colors-link-active;  }
+	&:focus   { outline: thin dotted; }
 
 	&:hover, &:active {
-		outline: 0 !important;
+		outline: 0;
 	}
 
 	&::-moz-selection, &::selection {
-		background: @md-colors-selection !important;
-		color: @md-colors-link !important;
+		background: @md-colors-selection;
+		color: @md-colors-link;
 	}
 }
 
 ::-moz-selection, ::selection {
-	background: @md-colors-selection !important;
-	color: @md-colors-selection-text !important;
+	background: @md-colors-selection;
+	color: @md-colors-selection-text;
 }
 
 // ------------------------------------------------------------------------------
 //   @group Paragraphs and Headings
 // ------------------------------------------------------------------------------
 p {
-	margin:1em 0 !important;
+	margin:1em 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: @md-font-headers !important;
-	color: @md-colors-headers !important;
-	font-weight: normal !important;
-	line-height: 1em !important;
+	font-family: @md-font-headers;
+	color: @md-colors-headers;
+	font-weight: normal;
+	line-height: 1em;
 }
 
 h4, h5, h6 {
-	font-weight: bold !important;
+	font-weight: bold;
 }
 
-h1 { font-size: 2.5em !important; }
-h2 { font-size: 2em !important;   }
-h3 { font-size: 1.5em !important; }
-h4 { font-size: 1.2em !important; }
-h5 { font-size: 1em !important;   }
-h6 { font-size: 0.9em !important; }
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em;   }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1em;   }
+h6 { font-size: 0.9em; }
 
 // ------------------------------------------------------------------------------
 //   @group General Typography
 // ------------------------------------------------------------------------------
 blockquote {
-	color: @md-colors-quotes !important;
-	margin: 0 !important;
-	padding-left: 1.5em !important;
-	border-left: 0.5em mix(@md-colors-quotes, @md-colors-background, 25%) solid !important;
+	color: @md-colors-quotes;
+	margin: 0;
+	padding-left: 1.5em;
+	border-left: 0.5em mix(@md-colors-quotes, @md-colors-background, 25%) solid;
 }
 
 hr {
-	display: block !important;
-	height: 2px !important;
-	border: 0 !important;
-	border-top: 1px solid lighten(@md-colors-foreground, 60%) !important;
-	border-bottom: 1px solid darken(@md-colors-background, 10%) !important;
-	margin: 1em 0 !important;
-	padding: 0 !important;
+	display: block;
+	height: 2px;
+	border: 0;
+	border-top: 1px solid lighten(@md-colors-foreground, 60%);
+	border-bottom: 1px solid darken(@md-colors-background, 10%);
+	margin: 1em 0;
+	padding: 0;
 }
 
 pre, code, kbd, samp {
-	font-family: @md-font-monospace !important;
-	color: mix(@md-colors-foreground, @md-colors-headers, 50%) !important;
-	font-size: 0.98em !important;
+	font-family: @md-font-monospace;
+	color: mix(@md-colors-foreground, @md-colors-headers, 50%);
+	font-size: 0.98em;
 }
 
 pre {
-	white-space: pre !important;
-	white-space: pre-wrap !important;
-	word-wrap:   break-word !important;
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap:   break-word;
 }
 
-b, strong     { font-weight: bold !important; }
-dfn, mark, em { font-style: italic !important; }
+b, strong     { font-weight: bold; }
+dfn, mark, em { font-style: italic; }
 
 ins {
-	background: #ff9 !important; color: @md-colors-headers !important; text-decoration: none !important;
+	background: #ff9; color: @md-colors-headers; text-decoration: none;
 }
 
 mark {
-	background: #ff0 !important; color: @md-colors-headers !important; font-weight: bold !important;
+	background: #ff0; color: @md-colors-headers; font-weight: bold;
 }
 
 sub, sup {
-	font-size: 75% !important;
-	line-height: 0 !important;
-	position: relative !important;
-	vertical-align: baseline !important;
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
 }
-sup { top: -0.5em !important;     }
-sub { bottom: -0.25em !important; }
+sup { top: -0.5em;     }
+sub { bottom: -0.25em; }
 
 ul, ol {
-	margin: 1em 0 !important;
-	padding: 0 0 0 2em !important;
+	margin: 1em 0;
+	padding: 0 0 0 2em;
 }
 li p:last-child {
 	margin:0
 }
 dd {
-	margin: 0 0 0 2em !important;
+	margin: 0 0 0 2em;
 }
 
 // ------------------------------------------------------------------------------
 //   @group Non-Text Elements
 // ------------------------------------------------------------------------------
 img {
-	max-width:100% !important;
-	border: 0 !important;
-	-ms-interpolation-mode: bicubic !important;
-	vertical-align: middle !important;
+	max-width:100%;
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+	vertical-align: middle;
 }
 
 table {
-	border-collapse: collapse !important;
-	border-spacing: 0 !important;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 td {
-	vertical-align: top !important;
+	vertical-align: top;
 }
 
 // ------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ td {
 // ------------------------------------------------------------------------------
 @media only screen and (min-width: 480px) {
 	body {
-		font-size:14px !important;
+		font-size:14px;
 	}
 }
 
@@ -190,7 +190,7 @@ td {
 }
 
 @media print {
-	* { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+	* { background: transparent; color: black; filter:none; -ms-filter: none; }
 	body {font-size:12pt; max-width:100%;}
 	a, a:visited { text-decoration: underline; }
 	hr { height: 1px; border:0; border-bottom:1px solid black; }
@@ -199,7 +199,7 @@ td {
 	.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
 	pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
 	tr, img { page-break-inside: avoid; }
-	img { max-width: 100% !important; }
+	img { max-width: 100%; }
 	@page :left { margin: 15mm 20mm 15mm 10mm; }
 	@page :right { margin: 15mm 10mm 15mm 20mm; }
 	p, h2, h3 { orphans: 3; widows: 3; }
