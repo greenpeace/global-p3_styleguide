@@ -4199,7 +4199,7 @@ Action form
   margin: .25em 0;
 }
 #action-smallprints .smallprint {
-  font-size: 0.875em;
+  font-size: 1em;
   /* 14px */
 }
 #action-smallprints label,
@@ -4412,6 +4412,9 @@ Action form
   #action-form .action-template #action-submit-quick.submit {
     margin-right: 0;
   }
+  #action-form #action-smallprints {
+    width: 26em;
+  }
 }
 /* fallback for browsers where media queries won't work */
 .desktop .action-template #main-container {
@@ -4484,6 +4487,9 @@ Action form
 }
 .desktop #action-form .action-template #action-submit-quick.submit {
   margin-right: 0;
+}
+.desktop #action-form #action-smallprints {
+  width: 26em;
 }
 /*
 Browser specific hacks
