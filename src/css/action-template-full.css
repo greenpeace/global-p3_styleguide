@@ -4088,7 +4088,7 @@ ul.navigation {
     #action-counter-textual   - textual display
 */
 #action-counter {
-  margin: 1em 0;
+  margin: 0.5em 0;
 }
 #action-counter #action-counter-graphical {
   transition: all 100ms ease-out;
@@ -4096,7 +4096,7 @@ ul.navigation {
   background: #e9ecf3;
 }
 #action-counter #action-counter-graphical .completed {
-  background: #f99713;
+  background: #56b105;
   display: block;
   text-align: right;
   color: #ffffff;
@@ -4109,9 +4109,10 @@ ul.navigation {
   display: none;
 }
 #action-counter #action-counter-textual {
-  margin: .25em 0 0 0;
+  margin: .55em 0 0 0;
   color: #666666;
-  font-size: .875em;
+  font-size: .775em;
+  font-style: italic;
 }
 /*
     Recent Signers widget
