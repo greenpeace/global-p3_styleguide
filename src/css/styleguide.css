@@ -1161,7 +1161,7 @@ textarea {
 */
 label {
   display: none;
-  padding: .5em 0;
+  padding: .5em 0 7px 7px;
 }
 .no-placeholder label {
   display: block;
@@ -3029,6 +3029,7 @@ select:hover {
 }
 #action-recent-signers ul {
   padding: 0;
+  font-size: 0.913em;
 }
 #action-recent-signers li {
   list-style-type: none;
@@ -3051,6 +3052,6 @@ select:hover {
   display: none;
 }
 #action-recent-signers .flag {
-  margin-right: .35em;
+  margin-right: .75em;
   vertical-align: -1px;
 }

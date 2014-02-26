@@ -1161,7 +1161,7 @@ textarea {
 */
 label {
   display: none;
-  padding: .5em 0;
+  padding: .5em 0 7px 7px;
 }
 .no-placeholder label {
   display: block;
