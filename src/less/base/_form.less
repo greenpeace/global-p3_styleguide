@@ -25,7 +25,7 @@ Generic Form Item
 Labels and input are wrapped in a div with the type of the class. Since version 3.0. Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?
 
 Markup:
-<form action="#" method="post">
+<form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
   <div class="input required text email">
     <label for="UserEmail">Email</label>
     <input name="email" class="required email {$modifiers}" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
@@ -149,7 +149,17 @@ input[type=tel]:focus {
 }
 
 textarea:disabled,
+input[type=password]:disabled,
+input[type=search]:disabled,
+input[type=email]:disabled,
+input[type=text]:disabled,
+input[type=tel]:disabled,
 input:disabled,
+input[type=password]:disabled:hover,
+input[type=search]:disabled:hover,
+input[type=email]:disabled:hover,
+input[type=text]:disabled:hover,
+input[type=tel]:disabled:hover,
 input:disabled:hover,
 textarea:disabled:hover {
     border:1px solid @grays-4;
