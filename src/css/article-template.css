@@ -602,14 +602,14 @@ Green text
 Markup:
 <p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
 
-.greens-txt-1                  - description
-.greens-sec-txt                - description
-.greens-txt-2                  - description
-.greens-txt-3                  - description
-.greens-txt-4                  - description
-.greens-txt-5                  - description
-.greens-txt-6                  - description
-.greens-txt-pri                - description
+.greens-txt-1                  - @greens-1
+.greens-sec-txt                - @greens-1
+.greens-txt-2                  - @greens-2
+.greens-txt-3                  - @greens-3
+.greens-txt-4                  - @greens-4
+.greens-txt-5                  - @greens-5
+.greens-txt-6                  - @greens-6
+.greens-txt-pri                - @greens-6
 
 Styleguide 1.1.1
 */
@@ -637,16 +637,16 @@ Styleguide 1.1.1
 Green background
 
 Markup:
-<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+<p class="{$modifiers}" style="color:#ccc;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
 
-.greens-bg-1                  - description
-.greens-sec-bg                - description
-.greens-bg-2                  - description
-.greens-bg-3                  - description
-.greens-bg-4                  - description
-.greens-bg-5                  - description
-.greens-bg-6                  - description
-.greens-bg-pri                - description
+.greens-bg-1                  - @greens-1
+.greens-sec-bg                - @greens-1
+.greens-bg-2                  - @greens-2
+.greens-bg-3                  - @greens-3
+.greens-bg-4                  - @greens-4
+.greens-bg-5                  - @greens-5
+.greens-bg-6                  - @greens-6
+.greens-bg-pri                - @greens-6
 
 Styleguide 1.1.2
 */
@@ -834,18 +834,89 @@ Styleguide 1.1.2
 }
 /* test
 ***********/
-/* ==========================================================================
-     Typography rules
-   ========================================================================== */
+/*
+Typography rules
+
+Styleguide 2.
+*/
 body {
   font-size: 16px;
   /* 1em = 16px */
   line-height: normal;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333333;
-  /* paragraphs and lists */
-  /* links */
-  /* titles */
+  /*
+Paragraph
+
+Markup:
+<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+Styleguide 2.1
+*/
+  /*
+Listing
+
+Styleguide 2.2
+*/
+  /*
+Unordered List
+
+Markup:
+<div id="main-section">
+  <ul>
+    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+    <ul>
+      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+      <li>Aliquam tincidunt mauris eu risus.</li>
+      <li>Vestibulum auctor dapibus neque.</li>
+    </ul>
+    <li>Aliquam tincidunt mauris eu risus.</li>
+    <li>Vestibulum auctor dapibus neque.</li>
+  </ul>
+</div>
+
+Styleguide 2.2.1
+*/
+  /*
+Ordered List
+
+Markup:
+<div id="main-section">
+  <ol>
+    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+    <ol>
+      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+      <li>Aliquam tincidunt mauris eu risus.</li>
+      <li>Vestibulum auctor dapibus neque.</li>
+    </ol>
+    <li>Aliquam tincidunt mauris eu risus.</li>
+    <li>Vestibulum auctor dapibus neque.</li>
+  </ol>
+</div>
+
+Styleguide 2.2.2
+*/
+  /*
+Link
+
+Markup:
+<a>This is a link!</a>
+
+Styleguide 2.3
+*/
+  /*
+Titles
+
+Markup:
+<h1>This is a h1 title</h1>
+<h2>This is a h2 title</h2>
+<h3>This is a h3 title</h3>
+<h4>This is a h4 title</h4>
+<h5>This is a h5 title</h5>
+<h6>This is a h6 title</h6>
+
+Styleguide 2.4
+*/
   /* form inputs text  */
 }
 body p {
@@ -868,6 +939,7 @@ body a:visited {
 body a:hover,
 body a:focus {
   text-decoration: underline;
+  cursor: pointer;
 }
 body h1,
 body h2,
@@ -1161,7 +1233,7 @@ textarea {
 */
 label {
   display: none;
-  padding: .5em 0 7px 7px;
+  padding: .5em 0 .5em .5em;
 }
 .no-placeholder label {
   display: block;
@@ -2674,7 +2746,7 @@ ul.navigation {
 }
 #breadcrumbs ul {
   padding: 0;
-  margin-bottom: 0;
+  margin-bottom: 1.4em;
   font-size: .875em;
 }
 #breadcrumbs li {

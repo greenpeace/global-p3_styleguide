@@ -62,7 +62,7 @@ Action form
 		
     }
     .remember {
-      margin-top: 0.5em;
+      margin: 1.3em 0 0 .5em;
       input[type=checkbox] {
           display: inline;
           width: auto;
@@ -71,6 +71,9 @@ Action form
           display: inline;
           margin-top: 0.2em;
       }
+	  .longlabel {
+	  margin-left:-.8em;
+	  }
     }
 }
 
@@ -263,6 +266,10 @@ Action form
 		#action-smallprints {
 		width:26em;
 		}
+		#action-smallprints {
+		padding:.5em;
+		}
+		
 		
     }
 }
@@ -293,9 +300,7 @@ Browser specific hacks
       .smallprint input {
           display: none;
       }
-      .remember input {
-          width: auto;
-      }
+     
       .longlabel{
           display: inline;
           font-size: 0.875em;
