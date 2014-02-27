@@ -1283,7 +1283,7 @@ textarea {
 /* Large screens ----------- */
 label {
   display: none;
-  padding: .5em 0 7px 7px;
+  padding: .5em 0 .5em .5em;
 }
 .no-placeholder label {
   display: block;
@@ -2823,7 +2823,7 @@ ul.navigation {
 }
 #breadcrumbs ul {
   padding: 0;
-  margin-bottom: 0;
+  margin-bottom: 1.4em;
   font-size: .875em;
 }
 #breadcrumbs li {

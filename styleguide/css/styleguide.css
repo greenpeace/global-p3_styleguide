@@ -1283,7 +1283,7 @@ textarea {
 /* Large screens ----------- */
 label {
   display: none;
-  padding: .5em 0 7px 7px;
+  padding: .5em 0 .5em .5em;
 }
 .no-placeholder label {
   display: block;
@@ -1720,7 +1720,7 @@ fieldset.radio {
 }
 fieldset.checkbox legend,
 fieldset.radio legend {
-  padding: .25em 0 0 0;
+  padding: .25em 1em 0 .5em;
 }
 .checkbox label,
 .checkboxlist label,
@@ -1741,7 +1741,7 @@ fieldset.radio legend {
 }
 input[type=radio],
 input[type=checkbox] {
-  margin-right: 0.2em;
+  margin: 0.2em .5em 0.4em 0em;
   vertical-align: middle;
   display: inline;
 }

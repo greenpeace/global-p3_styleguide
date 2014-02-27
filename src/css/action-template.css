@@ -1283,7 +1283,7 @@ textarea {
 /* Large screens ----------- */
 label {
   display: none;
-  padding: .5em 0 7px 7px;
+  padding: .5em 0 .5em .5em;
 }
 .no-placeholder label {
   display: block;
@@ -1720,7 +1720,7 @@ fieldset.radio {
 }
 fieldset.checkbox legend,
 fieldset.radio legend {
-  padding: .25em 0 0 0;
+  padding: .25em 1em 0 .5em;
 }
 .checkbox label,
 .checkboxlist label,
@@ -1741,7 +1741,7 @@ fieldset.radio legend {
 }
 input[type=radio],
 input[type=checkbox] {
-  margin-right: 0.2em;
+  margin: 0.2em .5em 0.4em 0em;
   vertical-align: middle;
   display: inline;
 }
@@ -3249,7 +3249,7 @@ Action form
   margin: .25em 0;
 }
 #action-smallprints .smallprint {
-  font-size: 0.875em;
+  font-size: 1em;
   /* 14px */
 }
 #action-smallprints label,
@@ -3262,7 +3262,7 @@ Action form
   line-height: 1.4em;
 }
 #action-smallprints .remember {
-  margin-top: 0.5em;
+  margin: 1.3em 0 0 .5em;
 }
 #action-smallprints .remember input[type=checkbox] {
   display: inline;
@@ -3271,6 +3271,9 @@ Action form
 #action-smallprints .remember input + .picker .picker-handle {
   display: inline;
   margin-top: 0.2em;
+}
+#action-smallprints .remember .longlabel {
+  margin-left: -0.8em;
 }
 /* ==========================================================================
    Action Template Media Queries
@@ -3462,6 +3465,12 @@ Action form
   #action-form .action-template #action-submit-quick.submit {
     margin-right: 0;
   }
+  #action-form #action-smallprints {
+    width: 26em;
+  }
+  #action-form #action-smallprints {
+    padding: .5em;
+  }
 }
 /* fallback for browsers where media queries won't work */
 .desktop .action-template #main-container {
@@ -3535,6 +3544,12 @@ Action form
 .desktop #action-form .action-template #action-submit-quick.submit {
   margin-right: 0;
 }
+.desktop #action-form #action-smallprints {
+  width: 26em;
+}
+.desktop #action-form #action-smallprints {
+  padding: .5em;
+}
 /*
 Browser specific hacks
 
@@ -3550,9 +3565,6 @@ Browser specific hacks
 .lt-ie7 #action-smallprints .shortlabel,
 .lt-ie7 #action-smallprints .smallprint input {
   display: none;
-}
-.lt-ie7 #action-smallprints .remember input {
-  width: auto;
 }
 .lt-ie7 #action-smallprints .longlabel {
   display: inline;

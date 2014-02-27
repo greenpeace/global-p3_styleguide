@@ -45,8 +45,11 @@ Action form
 */
 #action-smallprints {
     margin: .25em 0;
+	
     .smallprint {
-        font-size: 0.875em; /* 14px */
+        font-size: 1em; /* 14px */
+		
+		
     }
     label,
     input[type=checkbox],
@@ -56,9 +59,10 @@ Action form
     .longlabel {
         display: inline;
         line-height: 1.4em;
+		
     }
     .remember {
-      margin-top: 0.5em;
+      margin: 1.3em 0 0 .5em;
       input[type=checkbox] {
           display: inline;
           width: auto;
@@ -67,6 +71,9 @@ Action form
           display: inline;
           margin-top: 0.2em;
       }
+	  .longlabel {
+	  margin-left:-.8em;
+	  }
     }
 }
 
@@ -256,6 +263,14 @@ Action form
         .action-template #action-submit-quick.submit {
             margin-right:0;
         }
+		#action-smallprints {
+		width:26em;
+		}
+		#action-smallprints {
+		padding:.5em;
+		}
+		
+		
     }
 }
 @media only screen and (min-width : 1024px) {
@@ -285,9 +300,7 @@ Browser specific hacks
       .smallprint input {
           display: none;
       }
-      .remember input {
-          width: auto;
-      }
+     
       .longlabel{
           display: inline;
           font-size: 0.875em;
