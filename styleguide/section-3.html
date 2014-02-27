@@ -40,6 +40,14 @@
               <li class="kss-menu-item"><a href="#section-3.1"><span class="kss-ref">3.1</span><span class="kss-name">Generic Form Item</span></a></li>
               
               
+              
+              <li class="kss-menu-item"><a href="#section-3.2"><span class="kss-ref">3.2</span><span class="kss-name">Textarea</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-3.3"><span class="kss-ref">3.3</span><span class="kss-name">Textarea required and larger</span></a></li>
+              
+              
             </ul>
             
           </nav>
@@ -61,7 +69,7 @@
             
             
             <div class="kss-description">
-              <p>Labels and input are wrapped in a div.text. Since version 3.0. Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?</p>
+              <p>Labels and input are wrapped in a div with the type of the class. Since version 3.0. Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?</p>
 
             </div>
             
@@ -238,6 +246,147 @@
     &lt;input name=&quot;password&quot; class=&quot;alphanumeric {$modifiers}&quot; required maxlength=&quot;64&quot; type=&quot;password&quot; id=&quot;password&quot; placeholder=&quot;Password*&quot;/&gt;
   &lt;/div&gt;
 &lt;/form&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-3.2" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">3.2</span> Textarea</h1>
+            
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="{$modifiers}" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:focus</div>
+                  <div class="kss-modifier-description">
+                    <p>green border</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="pseudo-class-focus" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:disabled</div>
+                  <div class="kss-modifier-description">
+                    <p>grey out to indicate it cannot be used</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="pseudo-class-disabled" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;textarea&quot;&gt;
+  &lt;label for=&quot;ActionMessage&quot;&gt;Your message&lt;/label&gt;
+  &lt;textarea class=&quot;{$modifiers}&quot; rows=&quot;5&quot; id=&quot;ActionMessage&quot; name=&quot;ActionMessage&quot;&gt;
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  &lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-3.3" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">3.3</span> Textarea required and larger</h1>
+            
+            
+            <div class="kss-description">
+              <p>Labels and input are wrapped in a div with the type of the class. Compatible in FF2+, Chrome1+.  Since version 3.0</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="textarea {$modifiers}">
+  <label for="ActionMessage">Your message</label>
+  <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.required</div>
+                  <div class="kss-modifier-description">
+                    <p>Label and input are wrapped in div.text.required. Additional span with a star is included. Input also get the required class.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="textarea required">
+  <label for="ActionMessage">Your message</label>
+  <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.large</div>
+                  <div class="kss-modifier-description">
+                    <p>Make the box bigger.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="textarea large">
+  <label for="ActionMessage">Your message</label>
+  <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;textarea {$modifiers}&quot;&gt;
+  &lt;label for=&quot;ActionMessage&quot;&gt;Your message&lt;/label&gt;
+  &lt;textarea rows=&quot;5&quot; id=&quot;ActionMessage&quot; name=&quot;ActionMessage&quot;&gt;
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  &lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
               </div>
             </div>
             

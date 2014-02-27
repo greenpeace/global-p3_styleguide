@@ -22,7 +22,7 @@ Styleguide 3.
 /*
 Generic Form Item
 
-Labels and input are wrapped in a div.text. Since version 3.0. Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?
+Labels and input are wrapped in a div with the type of the class. Since version 3.0. Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?
 
 Markup:
 <form action="#" method="post">
@@ -93,17 +93,6 @@ textarea {
   }
 }
 
-/*
-    TextField
-
-    Description	: labels and input are wrapped in a div with the type of the class
-    Compatible	: FF2+, Chrome1+,
-    Since		: version 3.0
-
-    :hover			- subtle hover highlight
-    :active			- inset box shadow
-    .disabled		- grey out to indicate it cannot be used
-*/
 label {
     display:none;
     padding:.5em 0;
@@ -170,30 +159,49 @@ textarea:disabled:hover {
 }
 
 /*
-    Required Textfield
+Textarea
 
-    Description	: Label and input are wrapped in <div.text.required>. Additional <span> with a star is included. Input also get the required class.
-    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-    Since		: version 3.0
+Markup:
+<div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="{$modifiers}" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
 
-    .required		- additional red star
+:focus		- green border
+:disabled	- grey out to indicate it cannot be used
+
+Styleguide 3.2
 */
+
+/*
+Textarea required and larger
+
+Labels and input are wrapped in a div with the type of the class. Compatible in FF2+, Chrome1+.  Since version 3.0
+
+Markup:
+<div class="textarea {$modifiers}">
+  <label for="ActionMessage">Your message</label>
+  <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+
+.required			- Label and input are wrapped in div.text.required. Additional span with a star is included. Input also get the required class.
+.large   	        - Make the box bigger.
+
+Styleguide 3.3
+*/
+
 .required label:after {
     content:" *";
     color:@red-1;
     font-weight:bold;
 }
 
-/*
-    Large textarea Textfield
-
-    Description	: textarea.textarea is pretty much the same than div.input.text.
-    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-    Since		: version 3.0
-
-    .required	- additional red star
-    .lager		- make the box bigger
-*/
 textarea {
     height:8em;
     width:17.5em;
