@@ -1,6 +1,9 @@
-/* ==========================================================================
-     Form
-   ========================================================================== */
+/*
+Forms
+
+Styleguide 3.
+*/
+
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate.
@@ -17,16 +20,45 @@
 }
 
 /*
-    Generic Form Item
+Generic Form Item
 
-    Description	: labels and input are wrapped in a <div.text>
-    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-    Since		: version 3.0
+Labels and input are wrapped in a div with the type of the class. Since version 3.0. Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?
 
-    :hover		- subtle hover highlight
-    :active		- inset box shadow
-    .disabled	- grey out to indicate it cannot be used
+Markup:
+<form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="input required text email">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="required email {$modifiers}" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+  </div>
+  <div class="firstname">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus {$modifiers}" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
+  </div>
+  <div class="lastname">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha {$modifiers}" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
+  </div>
+  <div class="phone">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric {$modifiers}" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
+  </div>
+  <div class="search">
+    <label for="search">Search</label>
+    <input name="search" class="{$modifiers}" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric {$modifiers}" required maxlength="64" type="password" id="password" placeholder="Password*"/>
+  </div>
+</form>
+
+:hover		- subtle hover highlight
+:focus		- green border
+:disabled	- grey out to indicate it cannot be used
+
+Styleguide 3.1
 */
+
 input[type=text],
 input[type=password],
 input[type=email],
@@ -61,17 +93,6 @@ textarea {
   }
 }
 
-/*
-    TextField
-
-    Description	: labels and input are wrapped in a div with the type of the class
-    Compatible	: FF2+, Chrome1+,
-    Since		: version 3.0
-
-    :hover			 - subtle hover highlight
-    :active			- inset box shadow
-    .disabled		- grey out to indicate it cannot be used
-*/
 label {
     display:none;
     padding:.5em 0 7px 7px;
@@ -128,40 +149,69 @@ input[type=tel]:focus {
 }
 
 textarea:disabled,
+input[type=password]:disabled,
+input[type=search]:disabled,
+input[type=email]:disabled,
+input[type=text]:disabled,
+input[type=tel]:disabled,
 input:disabled,
+input[type=password]:disabled:hover,
+input[type=search]:disabled:hover,
+input[type=email]:disabled:hover,
+input[type=text]:disabled:hover,
+input[type=tel]:disabled:hover,
 input:disabled:hover,
 textarea:disabled:hover {
     border:1px solid @grays-4;
     .boxshadow(0; 0; 0; 0);
-    cursor:normal;
-    background:#F3F3F3;
+    cursor: normal;
+    background: #F3F3F3;
 }
 
 /*
-    Required Textfield
+Textarea
 
-    Description	: Label and input are wrapped in <div.text.required>. Additional <span> with a star is included. Input also get the required class.
-    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-    Since		: version 3.0
+Markup:
+<div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="{$modifiers}" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
 
-    .required		- additional red star
+:focus		- green border
+:disabled	- grey out to indicate it cannot be used
+
+Styleguide 3.2
 */
+
+/*
+Textarea required and larger
+
+Labels and input are wrapped in a div with the type of the class. Compatible in FF2+, Chrome1+.  Since version 3.0
+
+Markup:
+<div class="textarea {$modifiers}">
+  <label for="ActionMessage">Your message</label>
+  <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+
+.required			- Label and input are wrapped in div.text.required. Additional span with a star is included. Input also get the required class.
+.large   	        - Make the box bigger.
+
+Styleguide 3.3
+*/
+
 .required label:after {
     content:" *";
     color:@red-1;
     font-weight:bold;
 }
 
-/*
-    Large textarea Textfield
-
-    Description	: textarea.textarea is pretty much the same than div.input.text.
-    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-    Since		: version 3.0
-
-    .required	- additional red star
-    .lager		- make the box bigger
-*/
 textarea {
     height:8em;
     width:17.5em;
