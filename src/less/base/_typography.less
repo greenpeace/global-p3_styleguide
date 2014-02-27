@@ -11,10 +11,12 @@ body {
   color: @grays-1;
 
 /*
-Paragraph
+Paragraphs
 
 Markup:
-<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+<p>Long paragraph: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor sub text ut labore et sup text magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Medium paragraph: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+<p>One sentece: Donec eu libero sit amet quam egestas semper, enean ultricies mi vitae est.</p>
 
 Styleguide 2.1
 */
@@ -36,7 +38,7 @@ Unordered List
 Markup:
 <div id="main-section">
   <ul>
-    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+    <li>Unordered list test:</li>
     <li><ul>
       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
       <li>Aliquam tincidunt mauris eu risus.</li>
@@ -56,7 +58,7 @@ Ordered List
 Markup:
 <div id="main-section">
   <ol>
-    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+    <li>Ordered list test:</li>
     <li><ol>
       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
       <li>Aliquam tincidunt mauris eu risus.</li>
@@ -83,7 +85,11 @@ Styleguide 2.2.2
 Link
 
 Markup:
-<a>This is a link!</a>
+<a class="{$modifiers}">This is a link!</a>
+
+:visited              - When the link is visited, it keeps the color and has no decoration.
+:hover                - When the link is hovered, the cursor became a pointer and the link is underlined.
+:focus                - When the link is focused, the link is underlined and with a thin dotted outline.
 
 Styleguide 2.3
 */
@@ -156,3 +162,29 @@ Styleguide 2.4
       font-family: Arial,Helvetica,sans-serif;
   }
 }
+
+/*
+Kitchen Sink
+
+Markup:
+<h1>Lorem ipsum dolor sit amet consectetuer adipiscing elit</h1>
+<h2>Aenean commodo ligula eget dolor aenean massa</h2>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa <strong>strong</strong>. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede <a class="external ext" href="#">link</a> mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+<h3>Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</h3>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<h4>Donec quam felis ultricies nec pellentesque eu pretium quis sem nlla consequat massa quis enim</h4>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
+ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<h5>Donec pede justo fringilla vel aliquet nec vulputate eget arcu</h5>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<h6>In enim justo rhoncus ut imperdiet a venenatis vitae justo</h6>
+<ul>
+  <li>Lorem ipsum dolor sit amet consectetuer.</li>
+  <li>Aenean commodo ligula eget dolor.</li>
+  <li>Aenean massa cum sociis natoque penatibus.</li>
+</ul>
+
+Styleguide 2.5
+*/ 
