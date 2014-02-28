@@ -894,7 +894,26 @@ Styleguide 1.5.2
 .blues-bg-2 {
   background-color: #baccd9;
 }
-/* Grays */
+/*
+Grays
+
+Gray text and backgrounds.
+
+Styleguide 1.6
+*/
+/*
+Gray text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.grays-txt-1                  - @grays-1
+.grays-txt-2                  - @grays-2
+.grays-txt-3                  - @grays-3
+.grays-txt-4                  - @grays-4
+
+Styleguide 1.6.1
+*/
 .grays-txt-1 {
   color: #333333;
 }
@@ -907,6 +926,19 @@ Styleguide 1.5.2
 .grays-txt-4 {
   color: #cccccc;
 }
+/*
+Gray background
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.grays-bg-1                  - @grays-1
+.grays-bg-2                  - @grays-2
+.grays-bg-3                  - @grays-3
+.grays-bg-4                  - @grays-4
+
+Styleguide 1.6.2
+*/
 .grays-bg-1 {
   background-color: #333333;
 }
