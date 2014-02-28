@@ -22,7 +22,11 @@ Styleguide 3.
 /*
 Generic Form Item
 
-Labels and input are wrapped in a div with the type of the class. Since version 3.0. Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?
+Labels and input are wrapped in a div with the type of the class.
+
+Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?
+
+Since version 3.0.
 
 Markup:
 <form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
@@ -57,6 +61,36 @@ Markup:
 :disabled	- grey out to indicate it cannot be used
 
 Styleguide 3.1
+*/
+
+/*
+Radio input.
+
+Markup:
+<div class="gender">
+  <fieldset class="radio">
+    <legend>Gender</legend>
+    <label for="UserGenderMale"><input type="radio" name="gender" id="UserGenderMale" value="male">Male</label>                        
+    <label for="UserGenderFemale"><input type="radio" name="gender" id="UserGenderFemale" value="female">Female</label>                        
+  </fieldset>
+</div>
+
+Styleguide 3.2
+*/
+
+/*
+Checkbox input.
+
+Markup:
+<div class="newsletters">
+  <fieldset class="checkbox">
+    <legend>Subscribe to our newsletters</legend>
+    <label for="UserNewsletterGeneral"><input type="checkbox" name="newsletters" id="UserNewsletterGeneral" value="general">General</label>                        
+    <label for="UserNewsletterArctic"><input type="checkbox" name="newsletters" id="UserNewsletterArctic" value="arctic">Arctic</label>                        
+  </fieldset>
+</div>
+
+Styleguide 3.3
 */
 
 input[type=text],
@@ -123,6 +157,24 @@ label {
     }
 }
 
+/*
+Textarea
+
+Markup:
+<div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="{$modifiers}" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+
+:focus		- green border
+:disabled	- grey out to indicate it cannot be used
+
+Styleguide 3.4
+*/
+
 textarea,
 input[type=password],
 input[type=search],
@@ -172,27 +224,13 @@ textarea:disabled:hover {
 }
 
 /*
-Textarea
-
-Markup:
-<div class="textarea">
-  <label for="ActionMessage">Your message</label>
-  <textarea class="{$modifiers}" rows="5" id="ActionMessage" name="ActionMessage">
-Dear Lorem,
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-  </textarea>
-</div>
-
-:focus		- green border
-:disabled	- grey out to indicate it cannot be used
-
-Styleguide 3.2
-*/
-
-/*
 Textarea required and larger
 
-Labels and input are wrapped in a div with the type of the class. Compatible in FF2+, Chrome1+.  Since version 3.0
+Labels and input are wrapped in a div with the type of the class.
+
+Compatible in FF2+, Chrome1+.
+
+Since version 3.0
 
 Markup:
 <div class="textarea {$modifiers}">
@@ -206,7 +244,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
 .required			- Label and input are wrapped in div.text.required. Additional span with a star is included. Input also get the required class.
 .large   	        - Make the box bigger.
 
-Styleguide 3.3
+Styleguide 3.5
 */
 
 .required label:after {
@@ -224,5 +262,8 @@ textarea {
     width:30em;
     height:7em;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> kss

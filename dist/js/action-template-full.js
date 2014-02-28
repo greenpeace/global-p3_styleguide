@@ -2,9 +2,13 @@
  * @name		p3-styleguide
  * @version		v0.3.0
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @date		2014-02-24
 =======
  * @date		2014-02-27
+>>>>>>> kss
+=======
+ * @date		2014-02-28
 >>>>>>> kss
  * @copyright	Copyright 2013, Greenpeace International
  * @source		https://github.com/greenpeace/p3_styleguide
