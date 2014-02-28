@@ -756,7 +756,31 @@ Styleguide 1.3.2
 .oranges-bg-pri {
   background-color: #ff6b08;
 }
-/* Steel gray-blue hues */
+/*
+Steels
+
+Steel text and backgrounds.
+
+Styleguide 1.4
+*/
+/*
+Steel text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.steels-txt-1                  - @steels-1
+.steels-txt-2                  - @steels-2
+.steels-txt-3                  - @steels-3
+.steels-txt-4                  - @steels-4
+.steels-txt-5                  - @steels-5
+.steels-txt-6                  - @steels-6
+.steels-txt-7                  - @steels-7
+.steels-txt-8                  - @steels-8
+.steels-txt-9                  - @steels-9
+
+Styleguide 1.4.1
+*/
 .steels-txt-1 {
   color: #282d38;
 }
@@ -784,6 +808,24 @@ Styleguide 1.3.2
 .steels-txt-9 {
   color: #edf3ff;
 }
+/*
+Steel background
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.steels-bg-1                  - @steels-1
+.steels-bg-2                  - @steels-2
+.steels-bg-3                  - @steels-3
+.steels-bg-4                  - @steels-4
+.steels-bg-5                  - @steels-5
+.steels-bg-6                  - @steels-6
+.steels-bg-7                  - @steels-7
+.steels-bg-8                  - @steels-8
+.steels-bg-9                  - @steels-9
+
+Styleguide 1.4.1
+*/
 .steels-bg-1 {
   background-color: #282d38;
 }
