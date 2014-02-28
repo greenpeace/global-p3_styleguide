@@ -592,7 +592,7 @@ Styleguide 1.
 /*
 Greens
 
-Green text and backgrounds
+Green text and backgrounds.
 
 Styleguide 1.1
 */
@@ -670,11 +670,39 @@ Styleguide 1.1.2
 .greens-bg-pri {
   background-color: #66cc00;
 }
-/* Oranges */
+/*
+Oranges
+
+Orange text and backgrounds.
+
+Styleguide 1.2
+*/
+/*
+Orange text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.oranges-txt-1                  - @oranges-1
+.oranges-txt-pri                - @oranges-1
+
+Styleguide 1.2.1
+*/
 .oranges-txt-1,
 .oranges-txt-pri {
   color: #ff6b08;
 }
+/*
+Orange background
+
+Markup:
+<p class="{$modifiers}" style="color:#ccc;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.oranges-bg-1                  - @oranges-1
+.oranges-bg-pri                - @oranges-1
+
+Styleguide 1.2.2
+*/
 .oranges-bg-1,
 .oranges-bg-pri {
   background-color: #ff6b08;
