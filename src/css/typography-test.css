@@ -853,13 +853,41 @@ Styleguide 1.4.1
 .steels-bg-9 {
   background-color: #edf3ff;
 }
-/* Blues-gray predominatly blue */
+/*
+Blues
+
+Blue text and backgrounds.
+
+Styleguide 1.5
+*/
+/*
+Blue text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.blues-txt-1                  - @blues-1
+.blues-txt-2                  - @blues-2
+
+Styleguide 1.5.1
+*/
 .blues-txt-1 {
   color: #6e7f8b;
 }
 .blues-txt-2 {
   color: #baccd9;
 }
+/*
+Blue background
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.blues-bg-1                  - @blues-1
+.blues-bg-2                  - @blues-2
+
+Styleguide 1.5.2
+*/
 .blues-bg-1 {
   background-color: #6e7f8b;
 }
