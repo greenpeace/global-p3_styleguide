@@ -2017,9 +2017,27 @@ select:hover {
 :-ms-input-placeholder {
   color: #555;
 }
-/* ==========================================================================
-   Header
-   ========================================================================== */
+/*
+Header
+
+The header is divided in two: "heading-first" and "heading-second"
+
+Styleguide 5.
+*/
+/*
+Heading First
+
+heading-first is composed of: Greenpeace Logotype, Country Selector, Language Selector, Promoted Links and Search Form.
+
+Styleguide 5.1
+*/
+/*
+Heading Second
+
+heading-second is composed of the navigation menu.
+
+Styleguide 5.2
+*/
 .header {
   position: absolute;
   top: 0;
@@ -2159,8 +2177,100 @@ select:hover {
   line-height: 0;
 }
 /*
- * Country selector
- */
+Country selector
+
+Markup:
+<div class="heading heading-first">
+  <div class="heading-holder page-section">
+    <div class="country-selector">
+      <div class="dropdown-controller">
+          <a class="{$modifiers}" href="#" data-dropdown="#dropdown-content-country">Greenpeace International<span class="country-img">.</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+.dropdown-open   - When the country selector is clicked, the selector inverts the font and background colors.
+
+Styleguide 5.1.1
+*/
+/*
+Country selector dropdown
+
+Markup:
+<div class="heading heading-first">
+  <div class="heading-holder page-section">
+    <div class="country-selector">
+        <div class="dropdown-controller">
+            <a class="dropdown-open" href="#" data-dropdown="#dropdown-content-country">Greenpeace International<span class="country-img">.</span></a>
+        </div>
+        <div id="dropdown-content-country" class="dropdown dropdown-scroll" style="display:block; ">
+            <ul class="dropdown-list">
+                <li><span>Select a country</span></li>
+                <li><a href="http://www.greenpeace.org/international">International (English)</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="http://www.greenpeace.org/afrique/">Africa - Congo (Français)</a></li>
+                <li><a href="http://www.greenpeace.org/afrique/">Africa - Senegal (Français)</a></li>
+                <li><a href="http://www.greenpeace.org/africa/">Africa - South Africa (English)</a></li>
+                <li><a href="http://www.greenpeace.org/argentina/">Argentina (Español)</a></li>
+                <li><a href="http://www.greenpeace.org/australia/">Australia (English)</a></li>
+                <li><a href="http://www.greenpeace.org/austria/">Austria (Deutsch)</a></li>
+                <li><a href="http://www.greenpeace.org/belgium/">Belgium (Nederlands/Français)</a></li>
+                <li><a href="http://www.greenpeace.org/brasil/">Brazil (Português)</a></li>
+                <li><a href="http://www.greenpeace.org/canada/">Canada (English/Français)</a></li>
+                <li><a href="http://www.greenpeace.org/chile/">Chile (Español)</a></li>
+                <li><a href="http://www.greenpeace.org/china/zh">China Mainland (简体中文)</a></li>
+                <li><a href="http://www.greenpeace.org/colombia/">Colombia (Español)</a></li>
+                <li><a href="http://www.greenpeace.cz/">Czech Republic (Česky)</a></li>
+                <li><a href="http://www.greenpeace.dk">Denmark (Dansk)</a></li>
+                <li><a href="http://www.greenpeace.org/eastasia/">East Asia (English)</a></li>
+                <li><a href="http://www.greenpeace.org/eu-unit">European Union (English)</a></li>
+                <li><a href="http://www.greenpeace.org/australia">Fiji (English)</a></li>
+                <li><a href="http://www.greenpeace.org/finland">Finland (Suomea)</a></li>
+                <li><a href="http://www.greenpeace.org/france">France (Français)</a></li>
+                <li><a href="http://www.greenpeace.de">Germany (Deutsch)</a></li>
+                <li><a href="http://www.greenpeace.gr/">Greece (Ελληνικά)</a></li>
+                <li><a href="http://www.greenpeace.org/hk/">Hong Kong (繁體中文)</a></li>
+                <li><a href="http://www.greenpeace.hu/">Hungary (Magyar)</a></li>
+                <li><a href="http://www.greenpeace.org/india/">India (English/Hindi)</a></li>
+                <li><a href="http://www.greenpeace.org/seasia/id/">Indonesia (Indonesia)</a></li>
+                <li><a href="http://www.greenpeace.org/israel/">Israel (עברית)</a></li>
+                <li><a href="http://www.greenpeace.org/italy/">Italy (Italiano)</a></li>
+                <li><a href="http://www.greenpeace.org/japan/">Japan (日本語)</a></li>
+                <li><a href="http://www.greenpeace.org/korea/">Korea (한국어)</a></li>
+                <li><a href="http://www.greenpeace.org/lebanon/ar">Lebanon (العربية)</a></li>
+                <li><a href="http://www.greenpeace.lu/">Luxembourg (Français)</a></li>
+                <li><a href="http://www.greenpeace.org/mediterranean/">Malta (English)</a></li>
+                <li><a href="http://www.greenpeace.org/mexico/">Mexico (Español)</a></li>
+                <li><a href="http://www.greenpeace.nl/">Netherlands (Nederlands)</a></li>
+                <li><a href="http://www.greenpeace.org.nz/">New Zealand (English)</a></li>
+                <li><a href="http://www.greenpeace.no">Norway (Norsk)</a></li>
+                <li><a href="http://www.greenpeace.org.au/">Papua New Guinea (English)</a></li>
+                <li><a href="http://www.greenpeace.org/seasia/en/ph/">Philippines (English)</a></li>
+                <li><a href="http://www.greenpeace.pl">Poland (Polska)</a></li>
+                <li><a href="http://www.greenpeace.org/portugal/">Portugal (Português)</a></li>
+                <li><a href="http://www.greenpeace.ro">Romania (Român)</a></li>
+                <li><a href="http://www.greenpeace.org/russia/ru">Russia (Русский)</a></li>
+                <li><a href="http://www.greenpeace.sk/">Slovakia (Slovenčina)</a></li>
+                <li><a href="http://www.greenpeace.org/slovenia/">Slovenia (Slovenjia)</a></li>
+                <li><a href="http://www.greenpeace.org/seasia/">Southeast Asia (English)</a></li>
+                <li><a href="http://www.greenpeace.org/espana/">Spain (Español)</a></li>
+                <li><a href="http://www.greenpeace.se/">Sweden (Svenska)</a></li>
+                <li><a href="http://www.greenpeace.org/switzerland/de/">Switzerland (Deutsch)</a></li>
+                <li><a href="http://www.greenpeace.org/switzerland/fr/">Switzerland (Français)</a></li>
+                <li><a href="http://www.greenpeace.org/taiwan/">Taiwan (正體中文)</a></li>
+                <li><a href="http://www.greenpeace.org/seasia/th/">Thailand (ไทย)</a></li>
+                <li><a href="http://www.greenpeace.org/turkey/">Turkey (Türk)</a></li>
+                <li><a href="http://www.greenpeace.org.uk/">United Kingdom (English)</a></li>
+                <li><a href="http://www.greenpeace.org/usa">USA (English)</a></li>
+            </ul>
+        </div>
+    </div>
+  </div>
+</div>
+
+Styleguide 5.1.1.1
+*/
 .country-selector {
   left: 11.25em;
   /* 180px */
@@ -2215,8 +2325,53 @@ select:hover {
   /* 14px */
 }
 /*
- * Language Selector and Additional Nav
- */
+Language Selector and Promoted Links
+
+Markup:
+    <div class="heading heading-first">
+            <div class="tools">
+                <div class="language-selector">
+                    <div class="dropdown-controller">
+                        <span class="dropdown-label">Language:</span>
+                        <a href="#" data-dropdown="#dropdown-content-language">English</a>
+                    </div>
+                </div>
+                <div class="promoted-links">
+                    <ul>
+                        <li><a style="color:white;" href="/international/en/press/">Press</a></li>
+                        <li><a style="color:white;" href="/international/en/publications/">Publications</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+Styleguide 5.1.2
+*/
+/*
+Language Selector opened
+
+The content of the Language Selector displays when clicked.
+
+Markup:
+    <div class="heading heading-first">
+      <div class="tools">
+         <div class="language-selector">
+            <div class="dropdown-controller">
+                        <span class="dropdown-label">Language:</span>
+                        <a class="dropdown-open;" href="#" data-dropdown="#dropdown-content-language">English</a>
+            </div>
+            <div style="display:block;" id="dropdown-content-language" class="dropdown dropdown-scroll">
+               <ul class="dropdown-list">
+                 <li><a href="http://www.greenpeace.org/en">English</a></li>
+                 <li><a href="http://www.greenpeace.nl">Nederlands</a></li>
+               </ul>
+            </div>
+         </div>
+       </div>
+     </div>
+
+Styleguide 5.1.2.1
+*/
 .promoted-links ul,
 .language-selector {
   float: right;
@@ -2249,27 +2404,409 @@ select:hover {
   margin-left: 3px;
   padding-left: 5px;
 }
-#main-nav,
-.promoted-links,
-.search-form {
+/*
+ * Main Navigation
+ */
+ul.navigation {
+  margin-top: 0px;
+  /* overrides ul default margin */
+  padding-left: 0px;
+}
+#main-nav {
+  /* container for mobile menu */
+  background: none #1D1D1D;
+  /* dark background color of the mobile menu */
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 94%;
+  padding: 40px 1% 1em 1%;
+}
+#main-nav {
+  /* mobile menu when not visible */
+  right: -50000px;
   display: none;
 }
+/* no mobile menu on IE < 9 */
+.lt-ie9 #main-nav {
+  right: 0px;
+  display: block;
+}
+#nav {
+  width: 94%;
+}
+.navigation li {
+  border-bottom: 1px solid #000000;
+  border-top: 1px solid #555555;
+}
+.navigation li:first-of-type {
+  border-top: none;
+}
+.navigation li:last-of-type {
+  border-bottom: none;
+}
+.navigation li a {
+  display: block;
+  padding: .8em 1em;
+  font-weight: bold;
+  margin-bottom: 0;
+  position: relative;
+}
+.navigation li a:focus,
+.navigation li a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+.navigation li .drop-content a {
+  font-weight: bold;
+}
+.navigation li ul {
+  padding-left: 0px;
+}
+.navigation .button.primary {
+  text-align: left;
+  color: #e56b2b;
+  text-shadow: none;
+  background: transparent;
+  border: none;
+}
+.navigation .button.primary:active,
+.navigation .button.primary:hover {
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  border-radius: 0.25em;
+  color: #f99713;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+/*
+ * Main Navigation on Desktop with dropdown
+ */
+/* 
+    desktop and tablets
+*/
 /*
  * media queries
  */
 @media only screen and (min-width: 768px) {
-  html .header a {
+  .header a {
     color: #ffffff;
   }
-  html .header a:focus,
-  html .header a:hover {
+  .header a:focus,
+  .header a:hover {
     color: #ffffff;
   }
-  html .heading-second {
+  .heading-second {
     height: 1.6875em;
     /* 27px */
     background: #56b105;
     border-top: 1px solid #4EA600;
+  }
+  #main-nav {
+    position: static;
+    width: auto;
+    max-width: none;
+    background: none transparent;
+    padding: 0;
+    display: block;
+  }
+  ul.navigation {
+    margin: -1px 0 0 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+    max-width: 42.5em;
+    /* 625px */
+    background: none transparent;
+  }
+  .navigation li {
+    float: left;
+    padding: 0 .1666666666em;
+    /* 2px/12 */
+    position: relative;
+    z-index: 101;
+    border: none;
+  }
+  .navigation li a {
+    float: left;
+    cursor: pointer;
+    display: inline;
+    padding: 0;
+    background: none transparent;
+  }
+  .navigation li a span {
+    float: left;
+    font-family: Helvetica, "Trebuchet MS", sans-serif;
+    font-size: .75em;
+    /*12px */
+    line-height: 2.41667em;
+    /* 29px/12 */
+    font-weight: bold;
+    color: #ffffff;
+    padding: 0 .83333333333em;
+    /* 10px/12 */
+    white-space: nowrap;
+  }
+  .navigation li a.current-item,
+  .navigation li a.active-item,
+  .navigation li a:hover,
+  .navigation li a:focus {
+    text-decoration: none;
+    background: #66cc00;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+    -webkit-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+    -moz-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+    box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+    margin-right: 4px;
+    color: #055905;
+  }
+  .navigation li a.current-item span,
+  .navigation li a.active-item span,
+  .navigation li a.hover span,
+  .navigation li a:hover span,
+  .navigation li a:focus span {
+    overflow: hidden;
+    position: relative;
+    color: #055905;
+  }
+  .navigation li a:hover span,
+  .navigation li a:focus span {
+    position: relative;
+    color: #055905;
+  }
+  .navigation li .drop-content a {
+    /* overrides the mobile styling */
+    margin-left: 0;
+    font-weight: normal;
+  }
+  .navigation li:hover .drop-holder,
+  .navigation li.hover .drop-holder {
+    display: block;
+  }
+  .navigation li:hover .drop-content ul ul ul,
+  .navigation li.hover .drop-content ul ul ul {
+    display: none;
+  }
+  .navigation .drop-holder {
+    display: none;
+    position: absolute;
+    top: 1.75em;
+    /* 28px */
+    left: -6.25em;
+    /* 100px */
+    z-index: 100;
+  }
+  .navigation .drop-content {
+    height: 23.125em;
+    /* 370px */
+    width: 0;
+    background: transparent none;
+  }
+  .navigation .drop-content ul {
+    margin: 0 0 0 6.5em;
+    /* 104px */
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    border: solid 1px #56b105;
+  }
+  .navigation .drop-content ul li {
+    float: none;
+    width: 13.125em;
+    /* 210px */
+    vertical-align: middle;
+    background: none;
+    background-color: #ffffff;
+    padding: 0;
+  }
+  .navigation .drop-content ul li a {
+    float: none;
+    display: block;
+    background: none;
+    font-size: .75em;
+    height: 1.91667em;
+    /* 23px/12 */
+    line-height: 1.91667em;
+    /* 23px/12 */
+    padding: 0 0 0 .83333333em;
+    /* 10px/12 */
+    cursor: pointer;
+    color: #000000;
+    position: relative;
+    margin: 0;
+    width: 16.66667em;
+    /* 200px/12 */
+    overflow: hidden;
+  }
+  .navigation .drop-content ul li:hover a,
+  .navigation .drop-content ul li a:hover,
+  .navigation .drop-content ul li:focus a,
+  .navigation .drop-content ul li a:focus {
+    background: #56b105;
+    color: #ffffff;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+  .navigation .drop-content ul li:hover ul,
+  .navigation .drop-content ul li:focus ul {
+    display: block;
+  }
+  .navigation .drop-content ul ul {
+    margin: 0;
+    background-position: 0 100%;
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -1px;
+  }
+  .navigation .drop-content ul ul li {
+    padding: 0;
+  }
+  .navigation .drop-content ul li:hover ul li:hover a,
+  .navigation .drop-content ul ul li a:hover,
+  .navigation .drop-content ul li:focus ul li:focus a,
+  .navigation .drop-content ul ul li a:focus {
+    background: #56b105;
+    color: #ffffff;
+  }
+  .navigation .drop-content ul ul li:hover ul,
+  .navigation .drop-content ul ul li:focus ul {
+    display: block;
+  }
+  .navigation .drop-content ul li:hover ul li a,
+  .navigation .drop-content ul li:focus ul li a,
+  .navigation .drop-content ul li:hover ul li:hover ul li a,
+  .navigation .drop-content ul li:focus ul li:focus ul li a,
+  .navigation .drop-content ul ul ul li a {
+    background: none;
+    color: #000000;
+    padding: 0 0 0 .83333333em;
+    /* 10px/12 */
+    margin: 0;
+    width: 16.66667em;
+    /* 200px/12 */
+  }
+  .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
+  .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
+  .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
+    background: #56b105;
+    color: #ffffff;
+  }
+  .navigation li a.active span,
+  .navigation li a:hover span,
+  .navigation li a:focus span,
+  .navigation li a.current-item span,
+  .navigation li a.active-item span {
+    margin-right: -4px;
+  }
+  .navigation .drop-content ul li a.drop,
+  .navigation .drop-content ul li:hover ul li a.drop,
+  .navigation .drop-content ul li:focus ul li a.drop,
+  .navigation .drop-content ul ul li a.drop,
+  .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
+  .navigation .drop-content ul li:focus ul li:focus ul li a.drop2 {
+    background: url(../../img/nav-arrow.png) no-repeat 95% 0;
+  }
+  .navigation .drop-content ul li:hover a.drop,
+  .navigation .drop-content ul li:focus a.drop,
+  .navigation .drop-content ul li a.drop:hover,
+  .navigation .drop-content ul li:hover li:hover a.drop,
+  .navigation .drop-content ul li:focus li:focus a.drop,
+  .navigation .drop-content ul ul li a.drop:hover,
+  .navigation .drop-content ul ul li a.drop:focus,
+  .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
+  .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
+    background: #56b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
+  }
+  .navigation .button.primary {
+    margin: .2em 0 0;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 0 2px #9a9a9a;
+    background: #f99713;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f99713), color-stop(57%, #e56b2b), color-stop(100%, #e56b2b));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
+    /* IE6-9 */
+    border: 1px solid #f06818;
+  }
+  .navigation .button.primary:active,
+  .navigation .button.primary:hover {
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  .header .search-form {
+    width: 250px;
+    float: right;
+    border: 1px solid #56b105;
+    clear: both;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #ffffff;
+    padding: 1px 0 1px 1px;
+    height: 1.1em;
+  }
+  .header .search-form .input {
+    width: 232px;
+    background: #ffffff;
+    float: left;
+    padding: 0;
+    margin: 0;
+  }
+  .header .search-form .input input[type=text] {
+    min-width: 225px;
+    width: 225px;
+    border: 0;
+    padding: 0 0 0 3px;
+    display: inline-block;
+    zoom: 1;
+    margin: 0;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    float: left;
+  }
+  .header .search-form input[type=submit] {
+    display: none;
+    float: left;
+  }
+  .header .search-form span {
+    border: 0;
+    float: right;
+    width: 1em;
+    height: 1em;
+    margin: 1px 0 0 0;
+    cursor: pointer;
+    background: transparent url(../../img/image-map.png) -136px -24px no-repeat;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
   }
 }
 /* fallback for browsers where media queries won't work */
@@ -2286,6 +2823,311 @@ select:hover {
   background: #56b105;
   border-top: 1px solid #4EA600;
 }
+.sevensome #main-nav {
+  position: static;
+  width: auto;
+  max-width: none;
+  background: none transparent;
+  padding: 0;
+  display: block;
+}
+.sevensome ul.navigation {
+  margin: -1px 0 0 0;
+  padding: 0;
+  list-style: none;
+  float: left;
+  max-width: 42.5em;
+  /* 625px */
+  background: none transparent;
+}
+.sevensome .navigation li {
+  float: left;
+  padding: 0 .1666666666em;
+  /* 2px/12 */
+  position: relative;
+  z-index: 101;
+  border: none;
+}
+.sevensome .navigation li a {
+  float: left;
+  cursor: pointer;
+  display: inline;
+  padding: 0;
+  background: none transparent;
+}
+.sevensome .navigation li a span {
+  float: left;
+  font-family: Helvetica, "Trebuchet MS", sans-serif;
+  font-size: .75em;
+  /*12px */
+  line-height: 2.41667em;
+  /* 29px/12 */
+  font-weight: bold;
+  color: #ffffff;
+  padding: 0 .83333333333em;
+  /* 10px/12 */
+  white-space: nowrap;
+}
+.sevensome .navigation li a.current-item,
+.sevensome .navigation li a.active-item,
+.sevensome .navigation li a:hover,
+.sevensome .navigation li a:focus {
+  text-decoration: none;
+  background: #66cc00;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+  box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+  margin-right: 4px;
+  color: #055905;
+}
+.sevensome .navigation li a.current-item span,
+.sevensome .navigation li a.active-item span,
+.sevensome .navigation li a.hover span,
+.sevensome .navigation li a:hover span,
+.sevensome .navigation li a:focus span {
+  overflow: hidden;
+  position: relative;
+  color: #055905;
+}
+.sevensome .navigation li a:hover span,
+.sevensome .navigation li a:focus span {
+  position: relative;
+  color: #055905;
+}
+.sevensome .navigation li .drop-content a {
+  /* overrides the mobile styling */
+  margin-left: 0;
+  font-weight: normal;
+}
+.sevensome .navigation li:hover .drop-holder,
+.sevensome .navigation li.hover .drop-holder {
+  display: block;
+}
+.sevensome .navigation li:hover .drop-content ul ul ul,
+.sevensome .navigation li.hover .drop-content ul ul ul {
+  display: none;
+}
+.sevensome .navigation .drop-holder {
+  display: none;
+  position: absolute;
+  top: 1.75em;
+  /* 28px */
+  left: -6.25em;
+  /* 100px */
+  z-index: 100;
+}
+.sevensome .navigation .drop-content {
+  height: 23.125em;
+  /* 370px */
+  width: 0;
+  background: transparent none;
+}
+.sevensome .navigation .drop-content ul {
+  margin: 0 0 0 6.5em;
+  /* 104px */
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  border: solid 1px #56b105;
+}
+.sevensome .navigation .drop-content ul li {
+  float: none;
+  width: 13.125em;
+  /* 210px */
+  vertical-align: middle;
+  background: none;
+  background-color: #ffffff;
+  padding: 0;
+}
+.sevensome .navigation .drop-content ul li a {
+  float: none;
+  display: block;
+  background: none;
+  font-size: .75em;
+  height: 1.91667em;
+  /* 23px/12 */
+  line-height: 1.91667em;
+  /* 23px/12 */
+  padding: 0 0 0 .83333333em;
+  /* 10px/12 */
+  cursor: pointer;
+  color: #000000;
+  position: relative;
+  margin: 0;
+  width: 16.66667em;
+  /* 200px/12 */
+  overflow: hidden;
+}
+.sevensome .navigation .drop-content ul li:hover a,
+.sevensome .navigation .drop-content ul li a:hover,
+.sevensome .navigation .drop-content ul li:focus a,
+.sevensome .navigation .drop-content ul li a:focus {
+  background: #56b105;
+  color: #ffffff;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.sevensome .navigation .drop-content ul li:hover ul,
+.sevensome .navigation .drop-content ul li:focus ul {
+  display: block;
+}
+.sevensome .navigation .drop-content ul ul {
+  margin: 0;
+  background-position: 0 100%;
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -1px;
+}
+.sevensome .navigation .drop-content ul ul li {
+  padding: 0;
+}
+.sevensome .navigation .drop-content ul li:hover ul li:hover a,
+.sevensome .navigation .drop-content ul ul li a:hover,
+.sevensome .navigation .drop-content ul li:focus ul li:focus a,
+.sevensome .navigation .drop-content ul ul li a:focus {
+  background: #56b105;
+  color: #ffffff;
+}
+.sevensome .navigation .drop-content ul ul li:hover ul,
+.sevensome .navigation .drop-content ul ul li:focus ul {
+  display: block;
+}
+.sevensome .navigation .drop-content ul li:hover ul li a,
+.sevensome .navigation .drop-content ul li:focus ul li a,
+.sevensome .navigation .drop-content ul li:hover ul li:hover ul li a,
+.sevensome .navigation .drop-content ul li:focus ul li:focus ul li a,
+.sevensome .navigation .drop-content ul ul ul li a {
+  background: none;
+  color: #000000;
+  padding: 0 0 0 .83333333em;
+  /* 10px/12 */
+  margin: 0;
+  width: 16.66667em;
+  /* 200px/12 */
+}
+.sevensome .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
+.sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
+.sevensome .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
+  background: #56b105;
+  color: #ffffff;
+}
+.sevensome .navigation li a.active span,
+.sevensome .navigation li a:hover span,
+.sevensome .navigation li a:focus span,
+.sevensome .navigation li a.current-item span,
+.sevensome .navigation li a.active-item span {
+  margin-right: -4px;
+}
+.sevensome .navigation .drop-content ul li a.drop,
+.sevensome .navigation .drop-content ul li:hover ul li a.drop,
+.sevensome .navigation .drop-content ul li:focus ul li a.drop,
+.sevensome .navigation .drop-content ul ul li a.drop,
+.sevensome .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
+.sevensome .navigation .drop-content ul li:focus ul li:focus ul li a.drop2 {
+  background: url(../../img/nav-arrow.png) no-repeat 95% 0;
+}
+.sevensome .navigation .drop-content ul li:hover a.drop,
+.sevensome .navigation .drop-content ul li:focus a.drop,
+.sevensome .navigation .drop-content ul li a.drop:hover,
+.sevensome .navigation .drop-content ul li:hover li:hover a.drop,
+.sevensome .navigation .drop-content ul li:focus li:focus a.drop,
+.sevensome .navigation .drop-content ul ul li a.drop:hover,
+.sevensome .navigation .drop-content ul ul li a.drop:focus,
+.sevensome .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
+.sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
+  background: #56b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
+}
+.sevensome .navigation .button.primary {
+  margin: .2em 0 0;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 0 2px #9a9a9a;
+  background: #f99713;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f99713), color-stop(57%, #e56b2b), color-stop(100%, #e56b2b));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
+  /* IE6-9 */
+  border: 1px solid #f06818;
+}
+.sevensome .navigation .button.primary:active,
+.sevensome .navigation .button.primary:hover {
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.sevensome .header .search-form {
+  width: 250px;
+  float: right;
+  border: 1px solid #56b105;
+  clear: both;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #ffffff;
+  padding: 1px 0 1px 1px;
+  height: 1.1em;
+}
+.sevensome .header .search-form .input {
+  width: 232px;
+  background: #ffffff;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+.sevensome .header .search-form .input input[type=text] {
+  min-width: 225px;
+  width: 225px;
+  border: 0;
+  padding: 0 0 0 3px;
+  display: inline-block;
+  zoom: 1;
+  margin: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  float: left;
+}
+.sevensome .header .search-form input[type=submit] {
+  display: none;
+  float: left;
+}
+.sevensome .header .search-form span {
+  border: 0;
+  float: right;
+  width: 1em;
+  height: 1em;
+  margin: 1px 0 0 0;
+  cursor: pointer;
+  background: transparent url(../../img/image-map.png) -136px -24px no-repeat;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
 /*
  * browser specific
  */
@@ -2301,6 +3143,311 @@ select:hover {
   /* 27px */
   background: #56b105;
   border-top: 1px solid #4EA600;
+}
+.lt-ie9 #main-nav {
+  position: static;
+  width: auto;
+  max-width: none;
+  background: none transparent;
+  padding: 0;
+  display: block;
+}
+.lt-ie9 ul.navigation {
+  margin: -1px 0 0 0;
+  padding: 0;
+  list-style: none;
+  float: left;
+  max-width: 42.5em;
+  /* 625px */
+  background: none transparent;
+}
+.lt-ie9 .navigation li {
+  float: left;
+  padding: 0 .1666666666em;
+  /* 2px/12 */
+  position: relative;
+  z-index: 101;
+  border: none;
+}
+.lt-ie9 .navigation li a {
+  float: left;
+  cursor: pointer;
+  display: inline;
+  padding: 0;
+  background: none transparent;
+}
+.lt-ie9 .navigation li a span {
+  float: left;
+  font-family: Helvetica, "Trebuchet MS", sans-serif;
+  font-size: .75em;
+  /*12px */
+  line-height: 2.41667em;
+  /* 29px/12 */
+  font-weight: bold;
+  color: #ffffff;
+  padding: 0 .83333333333em;
+  /* 10px/12 */
+  white-space: nowrap;
+}
+.lt-ie9 .navigation li a.current-item,
+.lt-ie9 .navigation li a.active-item,
+.lt-ie9 .navigation li a:hover,
+.lt-ie9 .navigation li a:focus {
+  text-decoration: none;
+  background: #66cc00;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+  box-shadow: 2px 0px 0px rgba(50, 50, 50, 0.25);
+  margin-right: 4px;
+  color: #055905;
+}
+.lt-ie9 .navigation li a.current-item span,
+.lt-ie9 .navigation li a.active-item span,
+.lt-ie9 .navigation li a.hover span,
+.lt-ie9 .navigation li a:hover span,
+.lt-ie9 .navigation li a:focus span {
+  overflow: hidden;
+  position: relative;
+  color: #055905;
+}
+.lt-ie9 .navigation li a:hover span,
+.lt-ie9 .navigation li a:focus span {
+  position: relative;
+  color: #055905;
+}
+.lt-ie9 .navigation li .drop-content a {
+  /* overrides the mobile styling */
+  margin-left: 0;
+  font-weight: normal;
+}
+.lt-ie9 .navigation li:hover .drop-holder,
+.lt-ie9 .navigation li.hover .drop-holder {
+  display: block;
+}
+.lt-ie9 .navigation li:hover .drop-content ul ul ul,
+.lt-ie9 .navigation li.hover .drop-content ul ul ul {
+  display: none;
+}
+.lt-ie9 .navigation .drop-holder {
+  display: none;
+  position: absolute;
+  top: 1.75em;
+  /* 28px */
+  left: -6.25em;
+  /* 100px */
+  z-index: 100;
+}
+.lt-ie9 .navigation .drop-content {
+  height: 23.125em;
+  /* 370px */
+  width: 0;
+  background: transparent none;
+}
+.lt-ie9 .navigation .drop-content ul {
+  margin: 0 0 0 6.5em;
+  /* 104px */
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  border: solid 1px #56b105;
+}
+.lt-ie9 .navigation .drop-content ul li {
+  float: none;
+  width: 13.125em;
+  /* 210px */
+  vertical-align: middle;
+  background: none;
+  background-color: #ffffff;
+  padding: 0;
+}
+.lt-ie9 .navigation .drop-content ul li a {
+  float: none;
+  display: block;
+  background: none;
+  font-size: .75em;
+  height: 1.91667em;
+  /* 23px/12 */
+  line-height: 1.91667em;
+  /* 23px/12 */
+  padding: 0 0 0 .83333333em;
+  /* 10px/12 */
+  cursor: pointer;
+  color: #000000;
+  position: relative;
+  margin: 0;
+  width: 16.66667em;
+  /* 200px/12 */
+  overflow: hidden;
+}
+.lt-ie9 .navigation .drop-content ul li:hover a,
+.lt-ie9 .navigation .drop-content ul li a:hover,
+.lt-ie9 .navigation .drop-content ul li:focus a,
+.lt-ie9 .navigation .drop-content ul li a:focus {
+  background: #56b105;
+  color: #ffffff;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.lt-ie9 .navigation .drop-content ul li:hover ul,
+.lt-ie9 .navigation .drop-content ul li:focus ul {
+  display: block;
+}
+.lt-ie9 .navigation .drop-content ul ul {
+  margin: 0;
+  background-position: 0 100%;
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -1px;
+}
+.lt-ie9 .navigation .drop-content ul ul li {
+  padding: 0;
+}
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover a,
+.lt-ie9 .navigation .drop-content ul ul li a:hover,
+.lt-ie9 .navigation .drop-content ul li:focus ul li:focus a,
+.lt-ie9 .navigation .drop-content ul ul li a:focus {
+  background: #56b105;
+  color: #ffffff;
+}
+.lt-ie9 .navigation .drop-content ul ul li:hover ul,
+.lt-ie9 .navigation .drop-content ul ul li:focus ul {
+  display: block;
+}
+.lt-ie9 .navigation .drop-content ul li:hover ul li a,
+.lt-ie9 .navigation .drop-content ul li:focus ul li a,
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li a,
+.lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li a,
+.lt-ie9 .navigation .drop-content ul ul ul li a {
+  background: none;
+  color: #000000;
+  padding: 0 0 0 .83333333em;
+  /* 10px/12 */
+  margin: 0;
+  width: 16.66667em;
+  /* 200px/12 */
+}
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a,
+.lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a,
+.lt-ie9 .navigation .drop-content ul ul ul li a:hover .navigation .drop-content ul ul ul li a:focus {
+  background: #56b105;
+  color: #ffffff;
+}
+.lt-ie9 .navigation li a.active span,
+.lt-ie9 .navigation li a:hover span,
+.lt-ie9 .navigation li a:focus span,
+.lt-ie9 .navigation li a.current-item span,
+.lt-ie9 .navigation li a.active-item span {
+  margin-right: -4px;
+}
+.lt-ie9 .navigation .drop-content ul li a.drop,
+.lt-ie9 .navigation .drop-content ul li:hover ul li a.drop,
+.lt-ie9 .navigation .drop-content ul li:focus ul li a.drop,
+.lt-ie9 .navigation .drop-content ul ul li a.drop,
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li a.drop2,
+.lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li a.drop2 {
+  background: url(../../img/nav-arrow.png) no-repeat 95% 0;
+}
+.lt-ie9 .navigation .drop-content ul li:hover a.drop,
+.lt-ie9 .navigation .drop-content ul li:focus a.drop,
+.lt-ie9 .navigation .drop-content ul li a.drop:hover,
+.lt-ie9 .navigation .drop-content ul li:hover li:hover a.drop,
+.lt-ie9 .navigation .drop-content ul li:focus li:focus a.drop,
+.lt-ie9 .navigation .drop-content ul ul li a.drop:hover,
+.lt-ie9 .navigation .drop-content ul ul li a.drop:focus,
+.lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
+.lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
+  background: #56b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
+}
+.lt-ie9 .navigation .button.primary {
+  margin: .2em 0 0;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 0 2px #9a9a9a;
+  background: #f99713;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f99713), color-stop(57%, #e56b2b), color-stop(100%, #e56b2b));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
+  /* IE6-9 */
+  border: 1px solid #f06818;
+}
+.lt-ie9 .navigation .button.primary:active,
+.lt-ie9 .navigation .button.primary:hover {
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.lt-ie9 .header .search-form {
+  width: 250px;
+  float: right;
+  border: 1px solid #56b105;
+  clear: both;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #ffffff;
+  padding: 1px 0 1px 1px;
+  height: 1.1em;
+}
+.lt-ie9 .header .search-form .input {
+  width: 232px;
+  background: #ffffff;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+.lt-ie9 .header .search-form .input input[type=text] {
+  min-width: 225px;
+  width: 225px;
+  border: 0;
+  padding: 0 0 0 3px;
+  display: inline-block;
+  zoom: 1;
+  margin: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  float: left;
+}
+.lt-ie9 .header .search-form input[type=submit] {
+  display: none;
+  float: left;
+}
+.lt-ie9 .header .search-form span {
+  border: 0;
+  float: right;
+  width: 1em;
+  height: 1em;
+  margin: 1px 0 0 0;
+  cursor: pointer;
+  background: transparent url(../../img/image-map.png) -136px -24px no-repeat;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 .lt-ie9 #main-section {
   margin-top: 89px;
