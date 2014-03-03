@@ -590,11 +590,60 @@ text color by order of luminance
 Styleguide 1.
 */
 /*
-Greens
+Basic colors
 
-Green text and backgrounds
+Planet 3 basic colors.
 
 Styleguide 1.1
+*/
+/*
+Basic colors text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.black-txt                  - @black
+.white-txt                  - @white
+.red-txt                    - @red-1
+
+Styleguide 1.1.1
+*/
+.black-txt {
+  color: #000000;
+}
+.white-txt {
+  color: #ffffff;
+}
+.red-txt {
+  color: #d40000;
+}
+/*
+Basic colors background
+
+Markup:
+<div class="{$modifiers}" style="border:solid 1px black; height:50px;"></div>
+
+.black-bg                  - @black
+.white-bg                  - @white
+.red-bg                    - @red-1
+
+Styleguide 1.1.2
+*/
+.black-bg {
+  background: #000000;
+}
+.white-bg {
+  background: #ffffff;
+}
+.red-bg {
+  background: #d40000;
+}
+/*
+Greens
+
+Green text and backgrounds.
+
+Styleguide 1.2
 */
 /*
 Green text
@@ -602,16 +651,16 @@ Green text
 Markup:
 <p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
 
-.greens-txt-1                  - description
-.greens-sec-txt                - description
-.greens-txt-2                  - description
-.greens-txt-3                  - description
-.greens-txt-4                  - description
-.greens-txt-5                  - description
-.greens-txt-6                  - description
-.greens-txt-pri                - description
+.greens-txt-1                  - @greens-1
+.greens-sec-txt                - @greens-1
+.greens-txt-2                  - @greens-2
+.greens-txt-3                  - @greens-3
+.greens-txt-4                  - @greens-4
+.greens-txt-5                  - @greens-5
+.greens-txt-6                  - @greens-6
+.greens-txt-pri                - @greens-6
 
-Styleguide 1.1.1
+Styleguide 1.2.1
 */
 .greens-txt-1,
 .greens-sec-txt {
@@ -637,18 +686,18 @@ Styleguide 1.1.1
 Green background
 
 Markup:
-<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+<div class="{$modifiers}" style="border:solid 1px black; height:50px;"></div>
 
-.greens-bg-1                  - description
-.greens-sec-bg                - description
-.greens-bg-2                  - description
-.greens-bg-3                  - description
-.greens-bg-4                  - description
-.greens-bg-5                  - description
-.greens-bg-6                  - description
-.greens-bg-pri                - description
+.greens-bg-1                  - @greens-1
+.greens-sec-bg                - @greens-1
+.greens-bg-2                  - @greens-2
+.greens-bg-3                  - @greens-3
+.greens-bg-4                  - @greens-4
+.greens-bg-5                  - @greens-5
+.greens-bg-6                  - @greens-6
+.greens-bg-pri                - @greens-6
 
-Styleguide 1.1.2
+Styleguide 1.2.2
 */
 .greens-bg-1,
 .greens-sec-bg {
@@ -670,16 +719,68 @@ Styleguide 1.1.2
 .greens-bg-pri {
   background-color: #66cc00;
 }
-/* Oranges */
+/*
+Oranges
+
+Orange text and backgrounds.
+
+Styleguide 1.3
+*/
+/*
+Orange text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.oranges-txt-1                  - @oranges-1
+.oranges-txt-pri                - @oranges-1
+
+Styleguide 1.3.1
+*/
 .oranges-txt-1,
 .oranges-txt-pri {
   color: #ff6b08;
 }
+/*
+Orange background
+
+Markup:
+<div class="{$modifiers}" style="border:solid 1px black; height:50px;"></div>
+
+.oranges-bg-1                  - @oranges-1
+.oranges-bg-pri                - @oranges-1
+
+Styleguide 1.3.2
+*/
 .oranges-bg-1,
 .oranges-bg-pri {
   background-color: #ff6b08;
 }
-/* Steel gray-blue hues */
+/*
+Steels
+
+Steel text and backgrounds.
+
+Styleguide 1.4
+*/
+/*
+Steel text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.steels-txt-1                  - @steels-1
+.steels-txt-2                  - @steels-2
+.steels-txt-3                  - @steels-3
+.steels-txt-4                  - @steels-4
+.steels-txt-5                  - @steels-5
+.steels-txt-6                  - @steels-6
+.steels-txt-7                  - @steels-7
+.steels-txt-8                  - @steels-8
+.steels-txt-9                  - @steels-9
+
+Styleguide 1.4.1
+*/
 .steels-txt-1 {
   color: #282d38;
 }
@@ -707,6 +808,24 @@ Styleguide 1.1.2
 .steels-txt-9 {
   color: #edf3ff;
 }
+/*
+Steel background
+
+Markup:
+<div class="{$modifiers}" style="border:solid 1px black; height:50px;"></div>
+
+.steels-bg-1                  - @steels-1
+.steels-bg-2                  - @steels-2
+.steels-bg-3                  - @steels-3
+.steels-bg-4                  - @steels-4
+.steels-bg-5                  - @steels-5
+.steels-bg-6                  - @steels-6
+.steels-bg-7                  - @steels-7
+.steels-bg-8                  - @steels-8
+.steels-bg-9                  - @steels-9
+
+Styleguide 1.4.1
+*/
 .steels-bg-1 {
   background-color: #282d38;
 }
@@ -734,20 +853,67 @@ Styleguide 1.1.2
 .steels-bg-9 {
   background-color: #edf3ff;
 }
-/* Blues-gray predominatly blue */
+/*
+Blues
+
+Blue text and backgrounds.
+
+Styleguide 1.5
+*/
+/*
+Blue text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.blues-txt-1                  - @blues-1
+.blues-txt-2                  - @blues-2
+
+Styleguide 1.5.1
+*/
 .blues-txt-1 {
   color: #6e7f8b;
 }
 .blues-txt-2 {
   color: #baccd9;
 }
+/*
+Blue background
+
+Markup:
+<div class="{$modifiers}" style="border:solid 1px black; height:50px;"></div>
+
+.blues-bg-1                  - @blues-1
+.blues-bg-2                  - @blues-2
+
+Styleguide 1.5.2
+*/
 .blues-bg-1 {
   background-color: #6e7f8b;
 }
 .blues-bg-2 {
   background-color: #baccd9;
 }
-/* Grays */
+/*
+Grays
+
+Gray text and backgrounds.
+
+Styleguide 1.6
+*/
+/*
+Gray text
+
+Markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, consectetur.</p>
+
+.grays-txt-1                  - @grays-1
+.grays-txt-2                  - @grays-2
+.grays-txt-3                  - @grays-3
+.grays-txt-4                  - @grays-4
+
+Styleguide 1.6.1
+*/
 .grays-txt-1 {
   color: #333333;
 }
@@ -760,6 +926,19 @@ Styleguide 1.1.2
 .grays-txt-4 {
   color: #cccccc;
 }
+/*
+Gray background
+
+Markup:
+<div class="{$modifiers}" style="border:solid 1px black; height:50px;"></div>
+
+.grays-bg-1                  - @grays-1
+.grays-bg-2                  - @grays-2
+.grays-bg-3                  - @grays-3
+.grays-bg-4                  - @grays-4
+
+Styleguide 1.6.2
+*/
 .grays-bg-1 {
   background-color: #333333;
 }
@@ -832,18 +1011,97 @@ Styleguide 1.1.2
 .no-navigation .header .language-selector {
   visibility: hidden;
 }
-/* ==========================================================================
-     Typography rules
-   ========================================================================== */
+/* test
+***********/
+/*
+Typography rules
+
+Styleguide 2.
+*/
 body {
   font-size: 16px;
   /* 1em = 16px */
   line-height: normal;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333333;
-  /* paragraphs and lists */
-  /* links */
-  /* titles */
+  /*
+Paragraphs
+
+Markup:
+<p>Long paragraph: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor sub text ut labore et sup text magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Medium paragraph: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+<p>One sentece: Donec eu libero sit amet quam egestas semper, enean ultricies mi vitae est.</p>
+
+Styleguide 2.1
+*/
+  /*
+Listing
+
+Styleguide 2.2
+*/
+  /*
+Unordered List
+
+Markup:
+<div id="main-section">
+  <ul>
+    <li>Unordered list test:</li>
+    <li><ul>
+      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+      <li>Aliquam tincidunt mauris eu risus.</li>
+      <li>Vestibulum auctor dapibus neque.</li>
+    </ul></li>
+    <li>Aliquam tincidunt mauris eu risus.</li>
+    <li>Vestibulum auctor dapibus neque.</li>
+  </ul>
+</div>
+
+Styleguide 2.2.1
+*/
+  /*
+Ordered List
+
+Markup:
+<div id="main-section">
+  <ol>
+    <li>Ordered list test:</li>
+    <li><ol>
+      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+      <li>Aliquam tincidunt mauris eu risus.</li>
+      <li>Vestibulum auctor dapibus neque.</li>
+    </ol></li>
+    <li>Aliquam tincidunt mauris eu risus.</li>
+    <li>Vestibulum auctor dapibus neque.</li>
+  </ol>
+</div>
+
+Styleguide 2.2.2
+*/
+  /*
+Link
+
+Markup:
+<a class="{$modifiers}">This is a link!</a>
+
+:visited              - When the link is visited, it keeps the color and has no decoration.
+:hover                - When the link is hovered, the cursor became a pointer and the link is underlined.
+:focus                - When the link is focused, the link is underlined and with a thin dotted outline.
+
+Styleguide 2.3
+*/
+  /*
+Titles
+
+Markup:
+<h1>This is a h1 title</h1>
+<h2>This is a h2 title</h2>
+<h3>This is a h3 title</h3>
+<h4>This is a h4 title</h4>
+<h5>This is a h5 title</h5>
+<h6>This is a h6 title</h6>
+
+Styleguide 2.4
+*/
   /* form inputs text  */
 }
 body p {
@@ -866,6 +1124,7 @@ body a:visited {
 body a:hover,
 body a:focus {
   text-decoration: underline;
+  cursor: pointer;
 }
 body h1,
 body h2,
@@ -896,18 +1155,49 @@ body form legend {
   font-size: .875em;
   /* 14px/16 */
   font-weight: normal;
+  line-height: 1.5em;
+}
+body form textarea {
+  color: #666666;
 }
 body form .tooltip,
 body form .message {
-  font-size: .875em;
+  font-size: .675em;
   /* 14px/16 */
 }
 body .country-selector {
   font-family: Arial, Helvetica, sans-serif;
 }
-/* ==========================================================================
-     Form
-   ========================================================================== */
+/*
+Kitchen Sink
+
+Markup:
+<h1>Lorem ipsum dolor sit amet consectetuer adipiscing elit</h1>
+<h2>Aenean commodo ligula eget dolor aenean massa</h2>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa <strong>strong</strong>. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede <a class="external ext" href="#">link</a> mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+<h3>Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</h3>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<h4>Donec quam felis ultricies nec pellentesque eu pretium quis sem nlla consequat massa quis enim</h4>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
+ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<h5>Donec pede justo fringilla vel aliquet nec vulputate eget arcu</h5>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<h6>In enim justo rhoncus ut imperdiet a venenatis vitae justo</h6>
+<ul>
+  <li>Lorem ipsum dolor sit amet consectetuer.</li>
+  <li>Aenean commodo ligula eget dolor.</li>
+  <li>Aenean massa cum sociis natoque penatibus.</li>
+</ul>
+
+Styleguide 2.5
+*/
+/*
+Forms
+
+Styleguide 3.
+*/
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate.
@@ -922,15 +1212,75 @@ body .country-selector {
   text-shadow: none;
 }
 /*
-    Generic Form Item
+Generic Form Item
 
-    Description	: labels and input are wrapped in a <div.text>
-    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-    Since		: version 3.0
+Labels and input are wrapped in a div with the type of the class.
 
-    :hover		- subtle hover highlight
-    :active		- inset box shadow
-    .disabled	- grey out to indicate it cannot be used
+Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?
+
+Since version 3.0.
+
+Markup:
+<form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="input required text email">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="required email {$modifiers}" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+  </div>
+  <div class="firstname">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus {$modifiers}" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
+  </div>
+  <div class="lastname">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha {$modifiers}" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
+  </div>
+  <div class="phone">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric {$modifiers}" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
+  </div>
+  <div class="search">
+    <label for="search">Search</label>
+    <input name="search" class="{$modifiers}" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric {$modifiers}" required maxlength="64" type="password" id="password" placeholder="Password*"/>
+  </div>
+</form>
+
+:hover		- subtle hover highlight
+:focus		- green border
+:disabled	- grey out to indicate it cannot be used
+
+Styleguide 3.1
+*/
+/*
+Radio input.
+
+Markup:
+<div class="gender">
+  <fieldset class="radio">
+    <legend>Gender</legend>
+    <label for="UserGenderMale"><input type="radio" name="gender" id="UserGenderMale" value="male">Male</label>                        
+    <label for="UserGenderFemale"><input type="radio" name="gender" id="UserGenderFemale" value="female">Female</label>                        
+  </fieldset>
+</div>
+
+Styleguide 3.2
+*/
+/*
+Checkbox input.
+
+Markup:
+<div class="newsletters">
+  <fieldset class="checkbox">
+    <legend>Subscribe to our newsletters</legend>
+    <label for="UserNewsletterGeneral"><input type="checkbox" name="newsletters" id="UserNewsletterGeneral" value="general">General</label>                        
+    <label for="UserNewsletterArctic"><input type="checkbox" name="newsletters" id="UserNewsletterArctic" value="arctic">Arctic</label>                        
+  </fieldset>
+</div>
+
+Styleguide 3.3
 */
 input[type=text],
 input[type=password],
@@ -955,20 +1305,9 @@ textarea {
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 /* Large screens ----------- */
-/*
-    TextField
-
-    Description	: labels and input are wrapped in a div with the type of the class
-    Compatible	: FF2+, Chrome1+,
-    Since		: version 3.0
-
-    :hover			 - subtle hover highlight
-    :active			- inset box shadow
-    .disabled		- grey out to indicate it cannot be used
-*/
 label {
   display: none;
-  padding: .5em 0;
+  padding: .5em 0 .5em .5em;
 }
 .no-placeholder label {
   display: block;
@@ -989,6 +1328,23 @@ label {
   height: 20px;
   margin-top: -24px;
 }
+/*
+Textarea
+
+Markup:
+<div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="{$modifiers}" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+
+:focus		- green border
+:disabled	- grey out to indicate it cannot be used
+
+Styleguide 3.4
+*/
 textarea,
 input[type=password],
 input[type=search],
@@ -1017,7 +1373,17 @@ input[type=tel]:focus {
   border: 1px solid #66cc00;
 }
 textarea:disabled,
+input[type=password]:disabled,
+input[type=search]:disabled,
+input[type=email]:disabled,
+input[type=text]:disabled,
+input[type=tel]:disabled,
 input:disabled,
+input[type=password]:disabled:hover,
+input[type=search]:disabled:hover,
+input[type=email]:disabled:hover,
+input[type=text]:disabled:hover,
+input[type=tel]:disabled:hover,
 input:disabled:hover,
 textarea:disabled:hover {
   border: 1px solid #cccccc;
@@ -1028,29 +1394,33 @@ textarea:disabled:hover {
   background: #F3F3F3;
 }
 /*
-    Required Textfield
+Textarea required and larger
 
-    Description	: Label and input are wrapped in <div.text.required>. Additional <span> with a star is included. Input also get the required class.
-    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-    Since		: version 3.0
+Labels and input are wrapped in a div with the type of the class.
 
-    .required		- additional red star
+Compatible in FF2+, Chrome1+.
+
+Since version 3.0
+
+Markup:
+<div class="textarea {$modifiers}">
+  <label for="ActionMessage">Your message</label>
+  <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+
+.required			- Label and input are wrapped in div.text.required. Additional span with a star is included. Input also get the required class.
+.large   	        - Make the box bigger.
+
+Styleguide 3.5
 */
 .required label:after {
   content: " *";
   color: #d40000;
   font-weight: bold;
 }
-/*
-    Large textarea Textfield
-
-    Description	: textarea.textarea is pretty much the same than div.input.text.
-    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-    Since		: version 3.0
-
-    .required	- additional red star
-    .lager		- make the box bigger
-*/
 textarea {
   height: 8em;
   width: 17.5em;
@@ -1060,6 +1430,33 @@ textarea {
   width: 30em;
   height: 7em;
 }
+/*
+Buttons
+
+Styleguide 4.
+*/
+/*
+Generic button. 
+
+We support `<input[submit]>`, `<input.button>`, `<button>` and `<a.button>`
+
+Compatible	in IE6+, Firefox 2+, Safari 4+, Chrome 1+, Opera 11+
+
+Markup:
+<input type="submit" class="{$modifiers}" value="input[submit]" />
+<input class="button {$modifiers}" value="input.button" />
+<button class="{$modifiers}">button</button>
+<a class="button {$modifiers}">a.button</a>
+
+:hover           - Subtle hover highlight and box shadow
+:active          - Inset box shadow and 1px offset
+.primary         - Primary buttons are orange
+.disabled        - Dims the button to indicate it cannot be used
+.disabled:hover  - Disabled buttons are inactive (no hover effect)
+.disabled:active - Disabled buttons inactive (no active state)
+
+Styleguide 4.1
+*/
 .button,
 input[type=submit],
 input.button,
@@ -1290,6 +1687,7 @@ form .errorSummary {
   form .tooltip:before {
     display: block;
     margin-top: .75em;
+    padding: .1em .3em .4em .3em;
   }
   form .tooltip:hover:before {
     background: #b1c3d0;
@@ -1301,10 +1699,10 @@ form .errorSummary {
     max-width: 200px;
     background: #ffffff;
     float: left;
-    padding: .5em;
-    -webkit-box-shadow: 0px 0px 8px #111111;
-    -moz-box-shadow: 0px 0px 8px #111111;
-    box-shadow: 0px 0px 8px #111111;
+    padding: .8em;
+    -webkit-box-shadow: 0px 0px 4px #baccd9;
+    -moz-box-shadow: 0px 0px 4px #baccd9;
+    box-shadow: 0px 0px 4px #baccd9;
     bottom: 1.5em;
     right: -86px;
     width: 130px;
@@ -1322,6 +1720,7 @@ form .errorSummary {
 .desktop form .tooltip:before {
   display: block;
   margin-top: .75em;
+  padding: .1em .3em .4em .3em;
 }
 .desktop form .tooltip:hover:before {
   background: #b1c3d0;
@@ -1333,10 +1732,10 @@ form .errorSummary {
   max-width: 200px;
   background: #ffffff;
   float: left;
-  padding: .5em;
-  -webkit-box-shadow: 0px 0px 8px #111111;
-  -moz-box-shadow: 0px 0px 8px #111111;
-  box-shadow: 0px 0px 8px #111111;
+  padding: .8em;
+  -webkit-box-shadow: 0px 0px 4px #baccd9;
+  -moz-box-shadow: 0px 0px 4px #baccd9;
+  box-shadow: 0px 0px 4px #baccd9;
   bottom: 1.5em;
   right: -86px;
   width: 130px;
@@ -1376,7 +1775,7 @@ fieldset.radio {
 }
 fieldset.checkbox legend,
 fieldset.radio legend {
-  padding: .25em 0 0 0;
+  padding: .25em 1em 0 .5em;
 }
 .checkbox label,
 .checkboxlist label,
@@ -1397,7 +1796,7 @@ fieldset.radio legend {
 }
 input[type=radio],
 input[type=checkbox] {
-  margin-right: 0.2em;
+  margin: 0.2em .5em 0.4em 0em;
   vertical-align: middle;
   display: inline;
 }

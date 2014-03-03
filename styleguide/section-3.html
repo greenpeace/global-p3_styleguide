@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Planet 3 Styleguide</title>
+    <meta name="description" content="" />
+    <meta name="generator" content="kss-node" />
+    <link rel="stylesheet" href="public/kss.css" />
+    <link rel="stylesheet" href="public/style.css" />
+    <!--[if lt IE 9]>
+    <script src="public/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body id="kss-node">
+    <div class="kss-wrapper">
+      <div class="kss-sidebar">
+        <div class="kss-sidebar-inner">
+          <header class="kss-header">
+            <h1 class="kss-doc-title"><a href="./">Planet 3 Styleguide</a></h1>
+          </header>
+          <nav class="kss-nav">
+            <ul class="kss-menu" data-kss-ref="3">
+              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Color palette</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-2.html"><span class="kss-ref">2</span><span class="kss-name">Typography rules</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-3.html"><span class="kss-ref">3</span><span class="kss-name">Forms</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-4.html"><span class="kss-ref">4</span><span class="kss-name">Buttons</span></a></li>
+              
+            </ul>
+            
+            <ul class="kss-menu-child">
+              
+              
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-3.1"><span class="kss-ref">3.1</span><span class="kss-name">Generic Form Item</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-3.2"><span class="kss-ref">3.2</span><span class="kss-name">Radio input.</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-3.3"><span class="kss-ref">3.3</span><span class="kss-name">Checkbox input.</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-3.4"><span class="kss-ref">3.4</span><span class="kss-name">Textarea</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-3.5"><span class="kss-ref">3.5</span><span class="kss-name">Textarea required and larger</span></a></li>
+              
+              
+            </ul>
+            
+          </nav>
+        </div>
+      </div>
+      <div class="kss-content">
+        <article class="kss-article">
+          
+          
+          <section id="section-3" class="kss-section kss-depth-1">
+            <h1 class="kss-title"><span class="kss-ref">3</span> Forms</h1>
+            
+            
+            
+          </section>
+          
+          <section id="section-3.1" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">3.1</span> Generic Form Item</h1>
+            
+            
+            <div class="kss-description">
+              <p>Labels and input are wrapped in a div with the type of the class.
+
+</p>
+<p>Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?
+
+</p>
+<p>Since version 3.0.</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="input required text email">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="required email {$modifiers}" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+  </div>
+  <div class="firstname">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus {$modifiers}" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
+  </div>
+  <div class="lastname">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha {$modifiers}" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
+  </div>
+  <div class="phone">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric {$modifiers}" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
+  </div>
+  <div class="search">
+    <label for="search">Search</label>
+    <input name="search" class="{$modifiers}" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric {$modifiers}" required maxlength="64" type="password" id="password" placeholder="Password*"/>
+  </div>
+</form>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:hover</div>
+                  <div class="kss-modifier-description">
+                    <p>subtle hover highlight</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="input required text email">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="required email pseudo-class-hover" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+  </div>
+  <div class="firstname">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus pseudo-class-hover" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
+  </div>
+  <div class="lastname">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha pseudo-class-hover" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
+  </div>
+  <div class="phone">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric pseudo-class-hover" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
+  </div>
+  <div class="search">
+    <label for="search">Search</label>
+    <input name="search" class="pseudo-class-hover" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric pseudo-class-hover" required maxlength="64" type="password" id="password" placeholder="Password*"/>
+  </div>
+</form>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:focus</div>
+                  <div class="kss-modifier-description">
+                    <p>green border</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="input required text email">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="required email pseudo-class-focus" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+  </div>
+  <div class="firstname">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus pseudo-class-focus" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
+  </div>
+  <div class="lastname">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha pseudo-class-focus" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
+  </div>
+  <div class="phone">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric pseudo-class-focus" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
+  </div>
+  <div class="search">
+    <label for="search">Search</label>
+    <input name="search" class="pseudo-class-focus" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric pseudo-class-focus" required maxlength="64" type="password" id="password" placeholder="Password*"/>
+  </div>
+</form>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:disabled</div>
+                  <div class="kss-modifier-description">
+                    <p>grey out to indicate it cannot be used</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="input required text email">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="required email pseudo-class-disabled" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+  </div>
+  <div class="firstname">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus pseudo-class-disabled" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
+  </div>
+  <div class="lastname">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha pseudo-class-disabled" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
+  </div>
+  <div class="phone">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric pseudo-class-disabled" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
+  </div>
+  <div class="search">
+    <label for="search">Search</label>
+    <input name="search" class="pseudo-class-disabled" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric pseudo-class-disabled" required maxlength="64" type="password" id="password" placeholder="Password*"/>
+  </div>
+</form>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;form action=&quot;#&quot; id=&quot;action-form-pledgeName&quot; method=&quot;post&quot; accept-charset=&quot;utf-8&quot; class=&quot;js-track-abandonment&quot;&gt;
+  &lt;div class=&quot;input required text email&quot;&gt;
+    &lt;label for=&quot;UserEmail&quot;&gt;Email&lt;/label&gt;
+    &lt;input name=&quot;email&quot; class=&quot;required email {$modifiers}&quot; required maxlength=&quot;64&quot; type=&quot;email&quot; pattern=&quot;[^ @]*@[^ @]*\.[^ @]*&quot; id=&quot;UserEmail&quot; placeholder=&quot;Email*&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;firstname&quot;&gt;
+    &lt;label for=&quot;UserFirstname&quot;&gt;Firstname&lt;/label&gt;
+    &lt;input name=&quot;FIrstname&quot; class=&quot;alphaPlus {$modifiers}&quot; required maxlength=&quot;64&quot; type=&quot;text&quot; id=&quot;UserFirstname&quot; placeholder=&quot;Firstname*&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;lastname&quot;&gt;
+    &lt;label for=&quot;UserLastname&quot;&gt;Lastname&lt;/label&gt;
+    &lt;input name=&quot;LAstname&quot; class=&quot;alpha {$modifiers}&quot; required maxlength=&quot;64&quot; type=&quot;text&quot; id=&quot;UserLastname&quot; placeholder=&quot;Lastname*&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;phone&quot;&gt;
+    &lt;label for=&quot;UserPhone&quot;&gt;Mobile Phone&lt;/label&gt;
+    &lt;input name=&quot;phone&quot; class=&quot;numeric {$modifiers}&quot; required maxlength=&quot;64&quot; type=&quot;tel&quot; id=&quot;UserPhone&quot; placeholder=&quot;Phone*&quot;/&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;search&quot;&gt;
+    &lt;label for=&quot;search&quot;&gt;Search&lt;/label&gt;
+    &lt;input name=&quot;search&quot; class=&quot;{$modifiers}&quot; required maxlength=&quot;64&quot; type=&quot;search&quot; id=&quot;search&quot; placeholder=&quot;Search&quot;/&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;postcode&quot;&gt;
+    &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+    &lt;input name=&quot;password&quot; class=&quot;alphanumeric {$modifiers}&quot; required maxlength=&quot;64&quot; type=&quot;password&quot; id=&quot;password&quot; placeholder=&quot;Password*&quot;/&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-3.2" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">3.2</span> Radio input.</h1>
+            
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="gender">
+  <fieldset class="radio">
+    <legend>Gender</legend>
+    <label for="UserGenderMale"><input type="radio" name="gender" id="UserGenderMale" value="male">Male</label>                        
+    <label for="UserGenderFemale"><input type="radio" name="gender" id="UserGenderFemale" value="female">Female</label>                        
+  </fieldset>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;gender&quot;&gt;
+  &lt;fieldset class=&quot;radio&quot;&gt;
+    &lt;legend&gt;Gender&lt;/legend&gt;
+    &lt;label for=&quot;UserGenderMale&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; id=&quot;UserGenderMale&quot; value=&quot;male&quot;&gt;Male&lt;/label&gt;                        
+    &lt;label for=&quot;UserGenderFemale&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; id=&quot;UserGenderFemale&quot; value=&quot;female&quot;&gt;Female&lt;/label&gt;                        
+  &lt;/fieldset&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-3.3" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">3.3</span> Checkbox input.</h1>
+            
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="newsletters">
+  <fieldset class="checkbox">
+    <legend>Subscribe to our newsletters</legend>
+    <label for="UserNewsletterGeneral"><input type="checkbox" name="newsletters" id="UserNewsletterGeneral" value="general">General</label>                        
+    <label for="UserNewsletterArctic"><input type="checkbox" name="newsletters" id="UserNewsletterArctic" value="arctic">Arctic</label>                        
+  </fieldset>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;newsletters&quot;&gt;
+  &lt;fieldset class=&quot;checkbox&quot;&gt;
+    &lt;legend&gt;Subscribe to our newsletters&lt;/legend&gt;
+    &lt;label for=&quot;UserNewsletterGeneral&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;newsletters&quot; id=&quot;UserNewsletterGeneral&quot; value=&quot;general&quot;&gt;General&lt;/label&gt;                        
+    &lt;label for=&quot;UserNewsletterArctic&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;newsletters&quot; id=&quot;UserNewsletterArctic&quot; value=&quot;arctic&quot;&gt;Arctic&lt;/label&gt;                        
+  &lt;/fieldset&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-3.4" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">3.4</span> Textarea</h1>
+            
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="{$modifiers}" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:focus</div>
+                  <div class="kss-modifier-description">
+                    <p>green border</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="pseudo-class-focus" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:disabled</div>
+                  <div class="kss-modifier-description">
+                    <p>grey out to indicate it cannot be used</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="pseudo-class-disabled" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;textarea&quot;&gt;
+  &lt;label for=&quot;ActionMessage&quot;&gt;Your message&lt;/label&gt;
+  &lt;textarea class=&quot;{$modifiers}&quot; rows=&quot;5&quot; id=&quot;ActionMessage&quot; name=&quot;ActionMessage&quot;&gt;
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  &lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-3.5" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">3.5</span> Textarea required and larger</h1>
+            
+            
+            <div class="kss-description">
+              <p>Labels and input are wrapped in a div with the type of the class.
+
+</p>
+<p>Compatible in FF2+, Chrome1+.
+
+</p>
+<p>Since version 3.0</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="textarea {$modifiers}">
+  <label for="ActionMessage">Your message</label>
+  <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.required</div>
+                  <div class="kss-modifier-description">
+                    <p>Label and input are wrapped in div.text.required. Additional span with a star is included. Input also get the required class.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="textarea required">
+  <label for="ActionMessage">Your message</label>
+  <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.large</div>
+                  <div class="kss-modifier-description">
+                    <p>Make the box bigger.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="textarea large">
+  <label for="ActionMessage">Your message</label>
+  <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;textarea {$modifiers}&quot;&gt;
+  &lt;label for=&quot;ActionMessage&quot;&gt;Your message&lt;/label&gt;
+  &lt;textarea rows=&quot;5&quot; id=&quot;ActionMessage&quot; name=&quot;ActionMessage&quot;&gt;
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  &lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          
+        </article>
+        <footer class="kss-footer">
+          <div>Created using <a href="https://github.com/hughsk/kss-node">kss-node</a> and <a href="https://github.com/htanjo/kss-node-template">kss-node-template</a>.</div>
+        </footer>
+      </div>
+    </div>
+    <script src="public/kss.js"></script>
+    <script src="public/jquery-1.9.1.min.js"></script>
+    <!--[if gt IE 8]><!-->
+    <script src="public/rainbow.min.js"></script>
+    <!--<![endif]-->
+    <script src="public/main.js"></script>
+  </body>
+</html>

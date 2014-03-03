@@ -4,13 +4,13 @@
 @md-colors-background     : #fefefe;
 
 @md-colors-foreground     : #444;
-@md-colors-headers        : #111;
+@md-colors-headers        : #055905;
 @md-colors-quotes         : #666;
 
-@md-colors-link           : #0645ad;
-@md-colors-link-visited   : red;
-@md-colors-link-hover     : #06e;
-@md-colors-link-active    : #faa700;
+@md-colors-link           : #56b105;
+@md-colors-link-visited   : #56b105;
+@md-colors-link-hover     : #6c0;
+@md-colors-link-active    : #6c0;
 
 @md-colors-selection      : rgba(255,255,0,0.3);
 @md-colors-selection-text : @md-colors-foreground;
@@ -190,7 +190,7 @@ td {
 }
 
 @media print {
-	* { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+	* { background: transparent; color: black; filter:none; -ms-filter: none; }
 	body {font-size:12pt; max-width:100%;}
 	a, a:visited { text-decoration: underline; }
 	hr { height: 1px; border:0; border-bottom:1px solid black; }
@@ -199,7 +199,7 @@ td {
 	.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
 	pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
 	tr, img { page-break-inside: avoid; }
-	img { max-width: 100% !important; }
+	img { max-width: 100%; }
 	@page :left { margin: 15mm 20mm 15mm 10mm; }
 	@page :right { margin: 15mm 10mm 15mm 20mm; }
 	p, h2, h3 { orphans: 3; widows: 3; }

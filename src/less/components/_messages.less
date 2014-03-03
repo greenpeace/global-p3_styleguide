@@ -12,16 +12,19 @@
 form .message {
     position:relative;
     padding: 0 0 0 0.8em;
+	
 }
 
 form .tooltip {
     padding:0;
+	
 }
 
 form .tooltip,
 form .message {
     background-color:transparent;
     border:0;
+	 
 }
 form .message .error {
     display:block;
@@ -31,6 +34,7 @@ form .message .error {
 form .info {
     position:relative;
     color: @steels-3;
+	
 }
 form .message .error:before,
 form .info:before {
@@ -89,9 +93,11 @@ form .errorSummary {
     form .tooltip:before {
         display:block;
         margin-top:.75em;
+		padding:.1em .3em .4em .3em;
     }
     form .tooltip:hover:before {
         background:#b1c3d0;
+		
     }
     form .tooltip span {
         visibility:hidden;
@@ -100,8 +106,8 @@ form .errorSummary {
         max-width:200px;
         background:@white;		
         float:left;
-        padding:.5em;
-        .boxshadow(0px; 0px; 8px; #111);
+        padding:.8em;
+        .boxshadow(0px; 0px; 4px; #baccd9);
         bottom: 1.5em;
         right: -86px;
         width: 130px;
@@ -154,8 +160,10 @@ fieldset.radio {
 }
 fieldset.checkbox legend,
 fieldset.radio legend {
-    padding: .25em 0 0 0;
+    padding: .25em 1em 0 .5em;
 }
+
+
 .checkbox label,
 .checkboxlist label,
 .radiolist label,
@@ -173,9 +181,11 @@ fieldset.radio legend {
     display:inline;
     width:auto;
 }
+
+
 input[type=radio],
 input[type=checkbox] {
-    margin-right:0.2em;
+    margin:0.2em .5em 0.4em 0em;
     vertical-align:middle;
     display:inline;
 }
