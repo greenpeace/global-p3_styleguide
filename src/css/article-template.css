@@ -2243,6 +2243,30 @@ ul.navigation {
 /*
  * Main Navigation on Desktop with dropdown
  */
+/*
+Search Form
+
+Markup:
+<div class="heading heading-first">
+    <div class="heading-holder page-section">
+        <div class="tools">
+            <div style="margin: 30px 100px 0 0;" class="search-form">
+                <form action="#" id="search" method="post" accept-charset="utf-8">
+                <div class="input text search">
+                    <label for="SearchText">Search</label>
+                    <input name="data[Search][text]" class="required" maxlength="64" type="text" id="SearchText" placeholder="search"/>
+                </div>
+                <div id="search-submit" class="submit">
+                    <span style="background:transparent url(../img/image-map.png) -136px -24px no-repeat;"><input type="submit" value="search"/></span>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+Styleguide 5.1.3
+*/
 /* 
     desktop and tablets
 */
@@ -2516,7 +2540,7 @@ ul.navigation {
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
-  .header .search-form {
+  .heading .search-form {
     width: 250px;
     float: right;
     border: 1px solid #56b105;
@@ -2528,14 +2552,14 @@ ul.navigation {
     padding: 1px 0 1px 1px;
     height: 1.1em;
   }
-  .header .search-form .input {
+  .heading .search-form .input {
     width: 232px;
     background: #ffffff;
     float: left;
     padding: 0;
     margin: 0;
   }
-  .header .search-form .input input[type=text] {
+  .heading .search-form .input input[type=text] {
     min-width: 225px;
     width: 225px;
     border: 0;
@@ -2552,11 +2576,11 @@ ul.navigation {
     box-shadow: none;
     float: left;
   }
-  .header .search-form input[type=submit] {
+  .heading .search-form input[type=submit] {
     display: none;
     float: left;
   }
-  .header .search-form span {
+  .heading .search-form span {
     border: 0;
     float: right;
     width: 1em;
@@ -2836,7 +2860,7 @@ ul.navigation {
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
-.sevensome .header .search-form {
+.sevensome .heading .search-form {
   width: 250px;
   float: right;
   border: 1px solid #56b105;
@@ -2848,14 +2872,14 @@ ul.navigation {
   padding: 1px 0 1px 1px;
   height: 1.1em;
 }
-.sevensome .header .search-form .input {
+.sevensome .heading .search-form .input {
   width: 232px;
   background: #ffffff;
   float: left;
   padding: 0;
   margin: 0;
 }
-.sevensome .header .search-form .input input[type=text] {
+.sevensome .heading .search-form .input input[type=text] {
   min-width: 225px;
   width: 225px;
   border: 0;
@@ -2872,11 +2896,11 @@ ul.navigation {
   box-shadow: none;
   float: left;
 }
-.sevensome .header .search-form input[type=submit] {
+.sevensome .heading .search-form input[type=submit] {
   display: none;
   float: left;
 }
-.sevensome .header .search-form span {
+.sevensome .heading .search-form span {
   border: 0;
   float: right;
   width: 1em;
@@ -3157,7 +3181,7 @@ ul.navigation {
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
-.lt-ie9 .header .search-form {
+.lt-ie9 .heading .search-form {
   width: 250px;
   float: right;
   border: 1px solid #56b105;
@@ -3169,14 +3193,14 @@ ul.navigation {
   padding: 1px 0 1px 1px;
   height: 1.1em;
 }
-.lt-ie9 .header .search-form .input {
+.lt-ie9 .heading .search-form .input {
   width: 232px;
   background: #ffffff;
   float: left;
   padding: 0;
   margin: 0;
 }
-.lt-ie9 .header .search-form .input input[type=text] {
+.lt-ie9 .heading .search-form .input input[type=text] {
   min-width: 225px;
   width: 225px;
   border: 0;
@@ -3193,11 +3217,11 @@ ul.navigation {
   box-shadow: none;
   float: left;
 }
-.lt-ie9 .header .search-form input[type=submit] {
+.lt-ie9 .heading .search-form input[type=submit] {
   display: none;
   float: left;
 }
-.lt-ie9 .header .search-form span {
+.lt-ie9 .heading .search-form span {
   border: 0;
   float: right;
   width: 1em;
