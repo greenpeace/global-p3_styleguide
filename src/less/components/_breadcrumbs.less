@@ -1,6 +1,24 @@
-// Breadcrumb navigation
-//
-// li - all items are displayed inline and separated by ">"
+/*
+Breadcrumb navigation
+
+All list items are displayed inline and separated by ">"
+
+Markup:
+<div id="breadcrumbs">
+    <ul class="breadcrumbs-holder" itemprop="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">
+        <li typeof="v:Breadcrumb"><a class="{$modifiers}" rel="v:url" property="v:title" href="#" title="Home">Home</a></li>
+        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="What we do">What we do</a></li>
+        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Nuclear">Nuclear</a></li>
+        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Stop radioactive investment!">Stop radioactive investment!</a></li>
+        <li>Help stop the next Fukushima disaster</li>
+    </ul>
+</div>
+
+:hover      - Standar link hover in "Home".
+
+Styleguide 6.
+*/
+
 #breadcrumbs {
     ul {
         padding: 0;
