@@ -1,5 +1,5 @@
 /*
-Main Navigation
+Main Navigation (full)
 
 Markup:
 <div class="heading heading-second">
@@ -60,7 +60,7 @@ Markup:
                                 </div>
                             </li>
                             <li>
-                                <a href="/international/en/campaigns/" title="What we do" class="current-item"><span>What we do</span></a>
+                                <a href="/international/en/campaigns/" title="What we do"><span>What we do</span></a>
                                 <div class="drop-holder">
                                     <div class="drop-content">
                                         <ul>
@@ -197,6 +197,138 @@ Markup:
         </div>
 
 Styleguide 5.2.1
+*/
+
+/*
+Main Navigation list element: hover and focus
+
+Markup:
+<div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a class="{$modifiers}" href="/international/en/" title="Home"><span>Home</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+.current-item.active-item:hover:focus         - Greens colors in font and backfround with a boxshadow.
+
+Styleguide 5.2.1.1
+*/
+
+/*
+Main Navigation first list element: dropdown content.
+
+Markup:
+<div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a href="/international/en/" title="Home"><span>Home</span></a></li>
+                    <li>
+                        <a class="current-item" href="/international/en/about/" title="About us"><span>About us</span></a>
+                        <div class="drop-holder" style="display:block;">
+                            <div class="drop-content">
+                                <ul>
+                                    <li><a href="/international/en/about/victories/" title="Greenpeace victories">Greenpeace victories</a></li>
+                                    <li>
+                                        <a href="/international/en/about/history/" class="drop" title="History and Successes">History and Successes</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/history/Victories-timeline/" title="Victories timeline">Victories timeline</a></li>
+                                            <li><a class="pseudo-class-hover" href="/international/en/about/history/founders/" title="The Founders">The Founders</a></li>
+                                            <li><a href="/international/en/about/history/amchitka-hunter/" title="The founding voyage">The founding voyage</a></li>
+                                            <li><a href="/international/en/about/history/the-bombing-of-the-rainbow-war/" title="The bombing of the Rainbow Warrior">The bombing of the Rai...</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/international/en/about/our-core-values/" class="drop" title="Core values">Core values</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/our-core-values/transparency-and-accountabilit/" title="Transparency and Accountability">Transparency and Accou...</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/international/en/about/Greenpeace-and-You/" title="Greenpeace and You">Greenpeace and You</a></li>
+                                    <li>
+                                        <a href="/international/en/about/ships/" class="drop" title="Our Ships">Our Ships</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/ships/the-rainbow-warrior/" title="The    Rainbow Warrior">The    Rainbow Warrior</a></li>
+                                            <li><a href="/international/en/about/ships/the-esperanza/" title="The    Esperanza">The    Esperanza</a></li>
+                                            <li><a href="/international/en/about/ships/the-arctic-sunrise/" title="The    Arctic Sunrise">The    Arctic Sunrise</a></li>
+                                            <li><a href="/international/en/about/ships/our-inflatables/" title="Our inflatables">Our inflatables</a></li>
+                                            <li><a href="/international/photosvideos/ship-webcams" title="Ship webcams">Ship webcams</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/international/en/about/how-is-greenpeace-structured/" class="drop" title="Organisation">Organisation</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/governance-structure/" title="Governance structure">Governance structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/management/" title="Management structure">Management structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/financial/" title="Financial structure">Financial structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/legal-structure/" title="Legal structure">Legal structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/reports/" title="Annual reports">Annual reports</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/international/en/about/worldwide/" title="Greenpeace worldwide">Greenpeace worldwide</a></li>
+                                    <li><a href="/international/en/about/faq/" title="FAQs">FAQs</a></li>
+                                    <li><a href="/international/en/about/jobs/" title="Work for Greenpeace">Work for Greenpeace</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+Styleguide 5.2.1.2
+*/
+
+/*
+Main Navigation list element: Donate button.
+
+Markup:
+<div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a href="/international/en/" title="Home"><span>Home</span></a></li>
+                    <li>
+                        <a href="/international/en/about/" title="About us"><span>About us</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/campaigns/" title="What we do"><span>What we do</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/news/" title="News"><span>News</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/multimedia/" title="Multimedia"><span>Multimedia</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/getinvolved/" title="Get involved"><span>Get involved</span></a>
+                    </li>
+                    <li class="{$modifiers}"><a href="/international/en/supportus/" class="donate primary button {$modifiers}" title="Donate" target="_blank">Donate</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+.current-item.active-item:hover:focus       - Soft boxshadow when hovered or actived.
+
+Styleguide 5.2.1.3
 */
 
 ul.navigation {

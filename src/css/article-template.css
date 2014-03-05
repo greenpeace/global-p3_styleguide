@@ -2185,7 +2185,7 @@ Styleguide 5.1.3.1
   padding-left: 5px;
 }
 /*
-Main Navigation
+Main Navigation (full)
 
 Markup:
 <div class="heading heading-second">
@@ -2246,7 +2246,7 @@ Markup:
                                 </div>
                             </li>
                             <li>
-                                <a href="/international/en/campaigns/" title="What we do" class="current-item"><span>What we do</span></a>
+                                <a href="/international/en/campaigns/" title="What we do"><span>What we do</span></a>
                                 <div class="drop-holder">
                                     <div class="drop-content">
                                         <ul>
@@ -2383,6 +2383,135 @@ Markup:
         </div>
 
 Styleguide 5.2.1
+*/
+/*
+Main Navigation list element: hover and focus
+
+Markup:
+<div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a class="{$modifiers}" href="/international/en/" title="Home"><span>Home</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+.current-item.active-item:hover:focus         - Greens colors in font and backfround with a boxshadow.
+
+Styleguide 5.2.1.1
+*/
+/*
+Main Navigation first list element: dropdown content.
+
+Markup:
+<div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a href="/international/en/" title="Home"><span>Home</span></a></li>
+                    <li>
+                        <a class="current-item" href="/international/en/about/" title="About us"><span>About us</span></a>
+                        <div class="drop-holder" style="display:block;">
+                            <div class="drop-content">
+                                <ul>
+                                    <li><a href="/international/en/about/victories/" title="Greenpeace victories">Greenpeace victories</a></li>
+                                    <li>
+                                        <a href="/international/en/about/history/" class="drop" title="History and Successes">History and Successes</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/history/Victories-timeline/" title="Victories timeline">Victories timeline</a></li>
+                                            <li><a class="pseudo-class-hover" href="/international/en/about/history/founders/" title="The Founders">The Founders</a></li>
+                                            <li><a href="/international/en/about/history/amchitka-hunter/" title="The founding voyage">The founding voyage</a></li>
+                                            <li><a href="/international/en/about/history/the-bombing-of-the-rainbow-war/" title="The bombing of the Rainbow Warrior">The bombing of the Rai...</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/international/en/about/our-core-values/" class="drop" title="Core values">Core values</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/our-core-values/transparency-and-accountabilit/" title="Transparency and Accountability">Transparency and Accou...</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/international/en/about/Greenpeace-and-You/" title="Greenpeace and You">Greenpeace and You</a></li>
+                                    <li>
+                                        <a href="/international/en/about/ships/" class="drop" title="Our Ships">Our Ships</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/ships/the-rainbow-warrior/" title="The    Rainbow Warrior">The    Rainbow Warrior</a></li>
+                                            <li><a href="/international/en/about/ships/the-esperanza/" title="The    Esperanza">The    Esperanza</a></li>
+                                            <li><a href="/international/en/about/ships/the-arctic-sunrise/" title="The    Arctic Sunrise">The    Arctic Sunrise</a></li>
+                                            <li><a href="/international/en/about/ships/our-inflatables/" title="Our inflatables">Our inflatables</a></li>
+                                            <li><a href="/international/photosvideos/ship-webcams" title="Ship webcams">Ship webcams</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/international/en/about/how-is-greenpeace-structured/" class="drop" title="Organisation">Organisation</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/governance-structure/" title="Governance structure">Governance structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/management/" title="Management structure">Management structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/financial/" title="Financial structure">Financial structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/legal-structure/" title="Legal structure">Legal structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/reports/" title="Annual reports">Annual reports</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/international/en/about/worldwide/" title="Greenpeace worldwide">Greenpeace worldwide</a></li>
+                                    <li><a href="/international/en/about/faq/" title="FAQs">FAQs</a></li>
+                                    <li><a href="/international/en/about/jobs/" title="Work for Greenpeace">Work for Greenpeace</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+Styleguide 5.2.1.2
+*/
+/*
+Main Navigation list element: Donate button.
+
+Markup:
+<div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a href="/international/en/" title="Home"><span>Home</span></a></li>
+                    <li>
+                        <a href="/international/en/about/" title="About us"><span>About us</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/campaigns/" title="What we do"><span>What we do</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/news/" title="News"><span>News</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/multimedia/" title="Multimedia"><span>Multimedia</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/getinvolved/" title="Get involved"><span>Get involved</span></a>
+                    </li>
+                    <li class="{$modifiers}"><a href="/international/en/supportus/" class="donate primary button {$modifiers}" title="Donate" target="_blank">Donate</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+.current-item.active-item:hover:focus       - Soft boxshadow when hovered or actived.
+
+Styleguide 5.2.1.3
 */
 ul.navigation {
   margin-top: 0px;
@@ -3453,6 +3582,26 @@ Styleguide 5.1.4
 .lt-ie9 #main-section {
   margin-top: 89px;
 }
+/*
+Breadcrumb navigation
+
+All list items are displayed inline and separated by ">"
+
+Markup:
+<div id="breadcrumbs">
+    <ul class="breadcrumbs-holder" itemprop="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">
+        <li typeof="v:Breadcrumb"><a class="{$modifiers}" rel="v:url" property="v:title" href="#" title="Home">Home</a></li>
+        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="What we do">What we do</a></li>
+        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Nuclear">Nuclear</a></li>
+        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Stop radioactive investment!">Stop radioactive investment!</a></li>
+        <li>Help stop the next Fukushima disaster</li>
+    </ul>
+</div>
+
+:hover      - Standar link hover in "Home".
+
+Styleguide 6.
+*/
 #breadcrumbs ul {
   padding: 0;
   margin-bottom: 1.4em;
@@ -3563,6 +3712,265 @@ Styleguide 5.1.4
   display: inline;
   margin-right: .5em;
 }
+/*
+Flag icons
+
+Classes are used to choose the right flag for each country.
+
+Markup:
+<span class="flag icon {$modifiers}"></span>
+
+.flag.ad              - flag
+.flag.ae              - flag
+.flag.af              - flag
+.flag.ag              - flag
+.flag.ai              - flag
+.flag.al              - flag
+.flag.am              - flag
+.flag.an              - flag
+.flag.ao              - flag
+.flag.ar              - flag
+.flag.as              - flag
+.flag.at              - flag
+.flag.au              - flag
+.flag.aw              - flag
+.flag.ax              - flag
+.flag.az              - flag
+.flag.ba              - flag
+.flag.bb              - flag
+.flag.bd              - flag
+.flag.be              - flag
+.flag.bf              - flag
+.flag.bg              - flag
+.flag.bh              - flag
+.flag.bi              - flag
+.flag.bj              - flag
+.flag.bm              - flag
+.flag.bn              - flag
+.flag.bo              - flag
+.flag.br              - flag
+.flag.bs              - flag
+.flag.bt              - flag
+.flag.bv              - flag
+.flag.bw              - flag
+.flag.by              - flag
+.flag.bz              - flag
+.flag.ca              - flag
+.flag.catalonia       - flag
+.flag.cc              - flag
+.flag.cd              - flag
+.flag.cf              - flag
+.flag.cg              - flag
+.flag.ch              - flag
+.flag.ci              - flag
+.flag.ck              - flag
+.flag.cl              - flag
+.flag.cm              - flag
+.flag.cn              - flag
+.flag.co              - flag
+.flag.cr              - flag
+.flag.cs              - flag
+.flag.cu              - flag
+.flag.cv              - flag
+.flag.cx              - flag
+.flag.cy              - flag
+.flag.cz              - flag
+.flag.de              - flag
+.flag.dj              - flag
+.flag.dk              - flag
+.flag.dm              - flag
+.flag.do              - flag
+.flag.dz              - flag
+.flag.ec              - flag
+.flag.ee              - flag
+.flag.eg              - flag
+.flag.eh              - flag
+.flag.england         - flag
+.flag.er              - flag
+.flag.es              - flag
+.flag.et              - flag
+.flag.europeanunion   - flag
+.flag.fam             - flag
+.flag.fi              - flag
+.flag.fj              - flag
+.flag.fk              - flag
+.flag.fm              - flag
+.flag.fo              - flag
+.flag.fr              - flag
+.flag.ga              - flag
+.flag.gb              - flag
+.flag.uk              - flag
+.flag.gd              - flag
+.flag.ge              - flag
+.flag.gf              - flag
+.flag.gh              - flag
+.flag.gi              - flag
+.flag.gl              - flag
+.flag.gm              - flag
+.flag.gn              - flag
+.flag.gp              - flag
+.flag.gq              - flag
+.flag.gr              - flag
+.flag.gs              - flag
+.flag.gt              - flag
+.flag.gu              - flag
+.flag.gw              - flag
+.flag.gy              - flag
+.flag.hk              - flag
+.flag.hm              - flag
+.flag.hn              - flag
+.flag.hr              - flag
+.flag.ht              - flag
+.flag.hu              - flag
+.flag.id              - flag
+.flag.ie              - flag
+.flag.il              - flag
+.flag.in              - flag
+.flag.io              - flag
+.flag.iq              - flag
+.flag.ir              - flag
+.flag.is              - flag
+.flag.it              - flag
+.flag.jm              - flag
+.flag.jo              - flag
+.flag.jp              - flag
+.flag.ke              - flag
+.flag.kg              - flag
+.flag.kh              - flag
+.flag.ki              - flag
+.flag.km              - flag
+.flag.kn              - flag
+.flag.kp              - flag
+.flag.kr              - flag
+.flag.kw              - flag
+.flag.ky              - flag
+.flag.kz              - flag
+.flag.la              - flag
+.flag.lb              - flag
+.flag.lc              - flag
+.flag.li              - flag
+.flag.lk              - flag
+.flag.lr              - flag
+.flag.ls              - flag
+.flag.lt              - flag
+.flag.lu              - flag
+.flag.lv              - flag
+.flag.ly              - flag
+.flag.ma              - flag
+.flag.mc              - flag
+.flag.md              - flag
+.flag.me              - flag
+.flag.mg              - flag
+.flag.mh              - flag
+.flag.mk              - flag
+.flag.ml              - flag
+.flag.mm              - flag
+.flag.mn              - flag
+.flag.mo              - flag
+.flag.mp              - flag
+.flag.mq              - flag
+.flag.mr              - flag
+.flag.ms              - flag
+.flag.mt              - flag
+.flag.mu              - flag
+.flag.mv              - flag
+.flag.mw              - flag
+.flag.mx              - flag
+.flag.my              - flag
+.flag.mz              - flag
+.flag.na              - flag
+.flag.nc              - flag
+.flag.ne              - flag
+.flag.nf              - flag
+.flag.ng              - flag
+.flag.ni              - flag
+.flag.nl              - flag
+.flag.no              - flag
+.flag.np              - flag
+.flag.nr              - flag
+.flag.nu              - flag
+.flag.nz              - flag
+.flag.om              - flag
+.flag.pa              - flag
+.flag.pe              - flag
+.flag.pf              - flag
+.flag.pg              - flag
+.flag.ph              - flag
+.flag.pk              - flag
+.flag.pl              - flag
+.flag.pm              - flag
+.flag.pn              - flag
+.flag.pr              - flag
+.flag.ps              - flag
+.flag.pt              - flag
+.flag.pw              - flag
+.flag.py              - flag
+.flag.qa              - flag
+.flag.re              - flag
+.flag.ro              - flag
+.flag.rs              - flag
+.flag.ru              - flag
+.flag.rw              - flag
+.flag.sa              - flag
+.flag.sb              - flag
+.flag.sc              - flag
+.flag.scotland        - flag
+.flag.sd              - flag
+.flag.se              - flag
+.flag.sg              - flag
+.flag.sh              - flag
+.flag.si              - flag
+.flag.sj              - flag
+.flag.sk              - flag
+.flag.sl              - flag
+.flag.sm              - flag
+.flag.sn              - flag
+.flag.so              - flag
+.flag.sr              - flag
+.flag.st              - flag
+.flag.sv              - flag
+.flag.sy              - flag
+.flag.sz              - flag
+.flag.tc              - flag
+.flag.td              - flag
+.flag.tf              - flag
+.flag.tg              - flag
+.flag.th              - flag
+.flag.tj              - flag
+.flag.tk              - flag
+.flag.tl              - flag
+.flag.tm              - flag
+.flag.tn              - flag
+.flag.to              - flag
+.flag.tr              - flag
+.flag.tt              - flag
+.flag.tv              - flag
+.flag.tw              - flag
+.flag.tz              - flag
+.flag.ua              - flag
+.flag.ug              - flag
+.flag.um              - flag
+.flag.us              - flag
+.flag.uy              - flag
+.flag.uz              - flag
+.flag.va              - flag
+.flag.vc              - flag
+.flag.ve              - flag
+.flag.vg              - flag
+.flag.vi              - flag
+.flag.vn              - flag
+.flag.vu              - flag
+.flag.wales           - flag
+.flag.wf              - flag
+.flag.ws              - flag
+.flag.ye              - flag
+.flag.yt              - flag
+.flag.za              - flag
+.flag.zm              - flag
+.flag.zw              - flag
+
+Styleguide 7.
+*/
 .flag.icon {
   width: 16px;
   height: 11px;

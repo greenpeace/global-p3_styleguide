@@ -33,6 +33,10 @@
               
               <li class="kss-menu-item"><a href="section-5.html"><span class="kss-ref">5</span><span class="kss-name">Header</span></a></li>
               
+              <li class="kss-menu-item"><a href="section-6.html"><span class="kss-ref">6</span><span class="kss-name">Breadcrumb navigation</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-7.html"><span class="kss-ref">7</span><span class="kss-name">Flag icons</span></a></li>
+              
             </ul>
             
             <ul class="kss-menu-child">
@@ -73,7 +77,19 @@
               
               
               
-              <li class="kss-menu-item"><a href="#section-5.2.1"><span class="kss-ref">5.2.1</span><span class="kss-name">Main Navigation</span></a></li>
+              <li class="kss-menu-item"><a href="#section-5.2.1"><span class="kss-ref">5.2.1</span><span class="kss-name">Main Navigation (full)</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-5.2.1.1"><span class="kss-ref">5.2.1.1</span><span class="kss-name">Main Navigation list element: hover and focus</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-5.2.1.2"><span class="kss-ref">5.2.1.2</span><span class="kss-name">Main Navigation first list element: dropdown content.</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-5.2.1.3"><span class="kss-ref">5.2.1.3</span><span class="kss-name">Main Navigation list element: Donate button.</span></a></li>
               
               
             </ul>
@@ -514,7 +530,7 @@
           </section>
           
           <section id="section-5.2.1" class="kss-section kss-depth-3">
-            <h1 class="kss-title"><span class="kss-ref">5.2.1</span> Main Navigation</h1>
+            <h1 class="kss-title"><span class="kss-ref">5.2.1</span> Main Navigation (full)</h1>
             
             
             <div class="kss-modifier-block">
@@ -578,7 +594,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="/international/en/campaigns/" title="What we do" class="current-item"><span>What we do</span></a>
+                                <a href="/international/en/campaigns/" title="What we do"><span>What we do</span></a>
                                 <div class="drop-holder">
                                     <div class="drop-content">
                                         <ul>
@@ -775,7 +791,7 @@
                                 &lt;/div&gt;
                             &lt;/li&gt;
                             &lt;li&gt;
-                                &lt;a href=&quot;/international/en/campaigns/&quot; title=&quot;What we do&quot; class=&quot;current-item&quot;&gt;&lt;span&gt;What we do&lt;/span&gt;&lt;/a&gt;
+                                &lt;a href=&quot;/international/en/campaigns/&quot; title=&quot;What we do&quot;&gt;&lt;span&gt;What we do&lt;/span&gt;&lt;/a&gt;
                                 &lt;div class=&quot;drop-holder&quot;&gt;
                                     &lt;div class=&quot;drop-content&quot;&gt;
                                         &lt;ul&gt;
@@ -910,6 +926,328 @@
                 &lt;/nav&gt;
             &lt;/div&gt;
         &lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-5.2.1.1" class="kss-section kss-depth-4">
+            <h1 class="kss-title"><span class="kss-ref">5.2.1.1</span> Main Navigation list element: hover and focus</h1>
+            
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a class="{$modifiers}" href="/international/en/" title="Home"><span>Home</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.current-item.active-item:hover:focus</div>
+                  <div class="kss-modifier-description">
+                    <p>Greens colors in font and backfround with a boxshadow.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a class="current-item active-item pseudo-class-hover:focus" href="/international/en/" title="Home"><span>Home</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;heading heading-second&quot;&gt;
+    &lt;div class=&quot;heading-holder page-section&quot;&gt;
+        &lt;nav&gt;
+            &lt;div id=&quot;main-nav&quot;&gt;
+                &lt;!-- mobile menu close --&gt;
+                &lt;label class=&quot;mobilemenu-label mobilemenu-close&quot; for=&quot;mobilemenu-toggle&quot;&gt;close&lt;/label&gt;
+                &lt;ul class=&quot;navigation&quot; id=&quot;nav&quot;&gt;
+                    &lt;li&gt;&lt;a class=&quot;{$modifiers}&quot; href=&quot;/international/en/&quot; title=&quot;Home&quot;&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-5.2.1.2" class="kss-section kss-depth-4">
+            <h1 class="kss-title"><span class="kss-ref">5.2.1.2</span> Main Navigation first list element: dropdown content.</h1>
+            
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a href="/international/en/" title="Home"><span>Home</span></a></li>
+                    <li>
+                        <a class="current-item" href="/international/en/about/" title="About us"><span>About us</span></a>
+                        <div class="drop-holder" style="display:block;">
+                            <div class="drop-content">
+                                <ul>
+                                    <li><a href="/international/en/about/victories/" title="Greenpeace victories">Greenpeace victories</a></li>
+                                    <li>
+                                        <a href="/international/en/about/history/" class="drop" title="History and Successes">History and Successes</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/history/Victories-timeline/" title="Victories timeline">Victories timeline</a></li>
+                                            <li><a class="pseudo-class-hover" href="/international/en/about/history/founders/" title="The Founders">The Founders</a></li>
+                                            <li><a href="/international/en/about/history/amchitka-hunter/" title="The founding voyage">The founding voyage</a></li>
+                                            <li><a href="/international/en/about/history/the-bombing-of-the-rainbow-war/" title="The bombing of the Rainbow Warrior">The bombing of the Rai...</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/international/en/about/our-core-values/" class="drop" title="Core values">Core values</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/our-core-values/transparency-and-accountabilit/" title="Transparency and Accountability">Transparency and Accou...</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/international/en/about/Greenpeace-and-You/" title="Greenpeace and You">Greenpeace and You</a></li>
+                                    <li>
+                                        <a href="/international/en/about/ships/" class="drop" title="Our Ships">Our Ships</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/ships/the-rainbow-warrior/" title="The    Rainbow Warrior">The    Rainbow Warrior</a></li>
+                                            <li><a href="/international/en/about/ships/the-esperanza/" title="The    Esperanza">The    Esperanza</a></li>
+                                            <li><a href="/international/en/about/ships/the-arctic-sunrise/" title="The    Arctic Sunrise">The    Arctic Sunrise</a></li>
+                                            <li><a href="/international/en/about/ships/our-inflatables/" title="Our inflatables">Our inflatables</a></li>
+                                            <li><a href="/international/photosvideos/ship-webcams" title="Ship webcams">Ship webcams</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/international/en/about/how-is-greenpeace-structured/" class="drop" title="Organisation">Organisation</a>
+                                        <ul>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/governance-structure/" title="Governance structure">Governance structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/management/" title="Management structure">Management structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/financial/" title="Financial structure">Financial structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/legal-structure/" title="Legal structure">Legal structure</a></li>
+                                            <li><a href="/international/en/about/how-is-greenpeace-structured/reports/" title="Annual reports">Annual reports</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/international/en/about/worldwide/" title="Greenpeace worldwide">Greenpeace worldwide</a></li>
+                                    <li><a href="/international/en/about/faq/" title="FAQs">FAQs</a></li>
+                                    <li><a href="/international/en/about/jobs/" title="Work for Greenpeace">Work for Greenpeace</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;heading heading-second&quot;&gt;
+    &lt;div class=&quot;heading-holder page-section&quot;&gt;
+        &lt;nav&gt;
+            &lt;div id=&quot;main-nav&quot;&gt;
+                &lt;!-- mobile menu close --&gt;
+                &lt;label class=&quot;mobilemenu-label mobilemenu-close&quot; for=&quot;mobilemenu-toggle&quot;&gt;close&lt;/label&gt;
+                &lt;ul class=&quot;navigation&quot; id=&quot;nav&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;/international/en/&quot; title=&quot;Home&quot;&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a class=&quot;current-item&quot; href=&quot;/international/en/about/&quot; title=&quot;About us&quot;&gt;&lt;span&gt;About us&lt;/span&gt;&lt;/a&gt;
+                        &lt;div class=&quot;drop-holder&quot; style=&quot;display:block;&quot;&gt;
+                            &lt;div class=&quot;drop-content&quot;&gt;
+                                &lt;ul&gt;
+                                    &lt;li&gt;&lt;a href=&quot;/international/en/about/victories/&quot; title=&quot;Greenpeace victories&quot;&gt;Greenpeace victories&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;
+                                        &lt;a href=&quot;/international/en/about/history/&quot; class=&quot;drop&quot; title=&quot;History and Successes&quot;&gt;History and Successes&lt;/a&gt;
+                                        &lt;ul&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/history/Victories-timeline/&quot; title=&quot;Victories timeline&quot;&gt;Victories timeline&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a class=&quot;pseudo-class-hover&quot; href=&quot;/international/en/about/history/founders/&quot; title=&quot;The Founders&quot;&gt;The Founders&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/history/amchitka-hunter/&quot; title=&quot;The founding voyage&quot;&gt;The founding voyage&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/history/the-bombing-of-the-rainbow-war/&quot; title=&quot;The bombing of the Rainbow Warrior&quot;&gt;The bombing of the Rai...&lt;/a&gt;&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/li&gt;
+                                    &lt;li&gt;
+                                        &lt;a href=&quot;/international/en/about/our-core-values/&quot; class=&quot;drop&quot; title=&quot;Core values&quot;&gt;Core values&lt;/a&gt;
+                                        &lt;ul&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/our-core-values/transparency-and-accountabilit/&quot; title=&quot;Transparency and Accountability&quot;&gt;Transparency and Accou...&lt;/a&gt;&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;/international/en/about/Greenpeace-and-You/&quot; title=&quot;Greenpeace and You&quot;&gt;Greenpeace and You&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;
+                                        &lt;a href=&quot;/international/en/about/ships/&quot; class=&quot;drop&quot; title=&quot;Our Ships&quot;&gt;Our Ships&lt;/a&gt;
+                                        &lt;ul&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/ships/the-rainbow-warrior/&quot; title=&quot;The    Rainbow Warrior&quot;&gt;The    Rainbow Warrior&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/ships/the-esperanza/&quot; title=&quot;The    Esperanza&quot;&gt;The    Esperanza&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/ships/the-arctic-sunrise/&quot; title=&quot;The    Arctic Sunrise&quot;&gt;The    Arctic Sunrise&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/ships/our-inflatables/&quot; title=&quot;Our inflatables&quot;&gt;Our inflatables&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/photosvideos/ship-webcams&quot; title=&quot;Ship webcams&quot;&gt;Ship webcams&lt;/a&gt;&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/li&gt;
+                                    &lt;li&gt;
+                                        &lt;a href=&quot;/international/en/about/how-is-greenpeace-structured/&quot; class=&quot;drop&quot; title=&quot;Organisation&quot;&gt;Organisation&lt;/a&gt;
+                                        &lt;ul&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/how-is-greenpeace-structured/governance-structure/&quot; title=&quot;Governance structure&quot;&gt;Governance structure&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/how-is-greenpeace-structured/management/&quot; title=&quot;Management structure&quot;&gt;Management structure&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/how-is-greenpeace-structured/financial/&quot; title=&quot;Financial structure&quot;&gt;Financial structure&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/how-is-greenpeace-structured/legal-structure/&quot; title=&quot;Legal structure&quot;&gt;Legal structure&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;/international/en/about/how-is-greenpeace-structured/reports/&quot; title=&quot;Annual reports&quot;&gt;Annual reports&lt;/a&gt;&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;/international/en/about/worldwide/&quot; title=&quot;Greenpeace worldwide&quot;&gt;Greenpeace worldwide&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;/international/en/about/faq/&quot; title=&quot;FAQs&quot;&gt;FAQs&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;/international/en/about/jobs/&quot; title=&quot;Work for Greenpeace&quot;&gt;Work for Greenpeace&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-5.2.1.3" class="kss-section kss-depth-4">
+            <h1 class="kss-title"><span class="kss-ref">5.2.1.3</span> Main Navigation list element: Donate button.</h1>
+            
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a href="/international/en/" title="Home"><span>Home</span></a></li>
+                    <li>
+                        <a href="/international/en/about/" title="About us"><span>About us</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/campaigns/" title="What we do"><span>What we do</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/news/" title="News"><span>News</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/multimedia/" title="Multimedia"><span>Multimedia</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/getinvolved/" title="Get involved"><span>Get involved</span></a>
+                    </li>
+                    <li class="{$modifiers}"><a href="/international/en/supportus/" class="donate primary button {$modifiers}" title="Donate" target="_blank">Donate</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.current-item.active-item:hover:focus</div>
+                  <div class="kss-modifier-description">
+                    <p>Soft boxshadow when hovered or actived.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <!-- mobile menu close -->
+                <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                <ul class="navigation" id="nav">
+                    <li><a href="/international/en/" title="Home"><span>Home</span></a></li>
+                    <li>
+                        <a href="/international/en/about/" title="About us"><span>About us</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/campaigns/" title="What we do"><span>What we do</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/news/" title="News"><span>News</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/multimedia/" title="Multimedia"><span>Multimedia</span></a>
+                    </li>
+                    <li>
+                        <a href="/international/en/getinvolved/" title="Get involved"><span>Get involved</span></a>
+                    </li>
+                    <li class="current-item active-item pseudo-class-hover:focus"><a href="/international/en/supportus/" class="donate primary button current-item active-item pseudo-class-hover:focus" title="Donate" target="_blank">Donate</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;heading heading-second&quot;&gt;
+    &lt;div class=&quot;heading-holder page-section&quot;&gt;
+        &lt;nav&gt;
+            &lt;div id=&quot;main-nav&quot;&gt;
+                &lt;!-- mobile menu close --&gt;
+                &lt;label class=&quot;mobilemenu-label mobilemenu-close&quot; for=&quot;mobilemenu-toggle&quot;&gt;close&lt;/label&gt;
+                &lt;ul class=&quot;navigation&quot; id=&quot;nav&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;/international/en/&quot; title=&quot;Home&quot;&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/international/en/about/&quot; title=&quot;About us&quot;&gt;&lt;span&gt;About us&lt;/span&gt;&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/international/en/campaigns/&quot; title=&quot;What we do&quot;&gt;&lt;span&gt;What we do&lt;/span&gt;&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/international/en/news/&quot; title=&quot;News&quot;&gt;&lt;span&gt;News&lt;/span&gt;&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/international/en/multimedia/&quot; title=&quot;Multimedia&quot;&gt;&lt;span&gt;Multimedia&lt;/span&gt;&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/international/en/getinvolved/&quot; title=&quot;Get involved&quot;&gt;&lt;span&gt;Get involved&lt;/span&gt;&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;{$modifiers}&quot;&gt;&lt;a href=&quot;/international/en/supportus/&quot; class=&quot;donate primary button {$modifiers}&quot; title=&quot;Donate&quot; target=&quot;_blank&quot;&gt;Donate&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
               </div>
             </div>
             
