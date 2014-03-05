@@ -10,12 +10,20 @@
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
  * @date		2014-02-24
 =======
  * @date		2014-02-27
 >>>>>>> kss
 =======
  * @date		2014-02-28
+>>>>>>> kss
+=======
+ * @date		2014-03-03
+>>>>>>> kss
+=======
+ * @date		2014-03-04
 >>>>>>> kss
  * @copyright	Copyright 2013, Greenpeace International
  * @source		https://github.com/greenpeace/p3_styleguide

@@ -1,6 +1,42 @@
-/* ==========================================================================
-   Header
-   ========================================================================== */
+/*
+Header
+
+The header is divided in two: "heading-first" and "heading-second"
+
+Styleguide 5.
+*/
+
+/*
+Heading First
+
+heading-first is composed of: Greenpeace Logotype, Country Selector, Language Selector, Promoted Links and Search Form.
+
+Styleguide 5.1
+*/
+
+/*
+Greenpeace Logo
+
+Markup:
+<div class="heading heading-first">
+  <div class="heading-holder page-section">
+    <a href="/international/en/" title="Greenpeace" class="logo">
+      <span style="background: url(../img/image-map.png) 0 0 no-repeat;" class="visuallyhidden">Greenpeace</span>
+    </a>
+  </div>
+</div>
+
+Styleguide 5.1.1
+*/
+
+/*
+Heading Second
+
+heading-second is composed of the navigation menu.
+
+Styleguide 5.2
+*/
+
 .header {
     position:absolute;
     top:0;
@@ -37,7 +73,7 @@
         color: @white;
     }
 }
-.header .logo {
+.heading .logo {
     display: block;
     background: url(../../img/image-map.png) 0 0 no-repeat;
     width: 153px;

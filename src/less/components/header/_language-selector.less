@@ -1,6 +1,53 @@
 /*
- * Language Selector and Additional Nav
- */
+Language Selector and Promoted Links
+
+Markup:
+    <div class="heading heading-first">
+            <div class="tools">
+                <div class="language-selector">
+                    <div class="dropdown-controller">
+                        <span class="dropdown-label">Language:</span>
+                        <a href="#" data-dropdown="#dropdown-content-language">English</a>
+                    </div>
+                </div>
+                <div class="promoted-links">
+                    <ul>
+                        <li><a style="color:white;" href="/international/en/press/">Press</a></li>
+                        <li><a style="color:white;" href="/international/en/publications/">Publications</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+Styleguide 5.1.3
+*/
+
+/*
+Language Selector opened
+
+The content of the Language Selector displays when clicked.
+
+Markup:
+    <div class="heading heading-first">
+      <div class="tools">
+         <div class="language-selector">
+            <div class="dropdown-controller">
+                        <span class="dropdown-label">Language:</span>
+                        <a class="dropdown-open;" href="#" data-dropdown="#dropdown-content-language">English</a>
+            </div>
+            <div style="display:block;" id="dropdown-content-language" class="dropdown dropdown-scroll">
+               <ul class="dropdown-list">
+                 <li><a href="http://www.greenpeace.org/en">English</a></li>
+                 <li><a href="http://www.greenpeace.nl">Nederlands</a></li>
+               </ul>
+            </div>
+         </div>
+       </div>
+     </div>
+
+Styleguide 5.1.3.1
+*/
+
 .promoted-links ul,
 .language-selector {
     float: right;
