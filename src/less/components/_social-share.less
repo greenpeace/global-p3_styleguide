@@ -5,16 +5,9 @@
 	Compatible	: ?
 	Since       : ?
 */
-.social-share {
-	clear:both;
-}
-.social-share ul {
-	list-style-type:none;
-	padding:0;
-}
-.social-share li {
-	display:inline-block;
-	margin-right:.25em;
+.social-share .socialBtn-float {
+float:left;
+padding:.3em .3em 0 0;
 }
 .social-share .counter span {
 	border:1px solid @grays-4;
@@ -24,39 +17,10 @@
 	padding:.5em 0;
 	font-size:.875em;
 	.rounded_all(2px);
+	
 }
-.social-share .action a {
-	display:block;
-	text-align:center;
-	width:50px;
-	height:25px;
-	padding:.5em;
-	padding:0;
-	margin-top:10px;
-	.rounded_all(2px);
-}
-/* 
-	flat style icons 
-	Credit: David Bushell http://dbushell.com @dbushell
-*/
-.social-share .action a span {
-	display:none;
-}
-.social-share .facebook a {
-	background:transparent url(../../img/social-map.png) 0 -90px no-repeat;
-}
-.social-share .google a {
-	background:transparent url(../../img/social-map.png) 0 -45px no-repeat;
-}
-.social-share .twitter a {
-	background:transparent url(../../img/social-map.png) 0 0 no-repeat;
-}
-.social-share .pinterest a {
-	background:transparent url(../../img/social-map.png) 0 -175px no-repeat;
-}
-.social-share .linkedin a {
-	background:transparent url(../../img/social-map.png) 0 -135px no-repeat;
-}
+
+
 /* some fake bubble tip shenanigans */
 .social-share .counter {
 	background:@white;
@@ -79,8 +43,4 @@
 	margin-top:-2px;
 }
 
-/* IE specific */
-.lt-ie8 .social-share li {
-	display:inline;
-	margin-right:.5em;   
-}
+
