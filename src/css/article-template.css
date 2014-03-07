@@ -2785,6 +2785,17 @@ ul.navigation {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
+.social-share .counterBig span {
+  border: 1px solid #cccccc;
+  display: block;
+  text-align: center;
+  width: 94px;
+  padding: .5em .8em;
+  font-size: 1.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
 /* some fake bubble tip shenanigans */
 .social-share .counter {
   background: #ffffff;
@@ -2805,6 +2816,25 @@ ul.navigation {
   border-top-color: rgba(0, 0, 0, 0.2);
 }
 .social-share .tip:after {
+  border-top-color: #ffffff;
+  margin-top: -2px;
+}
+.social-share .tipBig:before,
+.social-share .tipBig:after {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  margin-left: 60px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  display: inline-block;
+  content: " ";
+}
+.social-share .tipBig:before {
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tipBig:after {
   border-top-color: #ffffff;
   margin-top: -2px;
 }

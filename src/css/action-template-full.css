@@ -3027,6 +3027,17 @@ ul.navigation {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
+.social-share .counterBig span {
+  border: 1px solid #cccccc;
+  display: block;
+  text-align: center;
+  width: 94px;
+  padding: .5em .8em;
+  font-size: 1.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
 /* some fake bubble tip shenanigans */
 .social-share .counter {
   background: #ffffff;
@@ -3047,6 +3058,25 @@ ul.navigation {
   border-top-color: rgba(0, 0, 0, 0.2);
 }
 .social-share .tip:after {
+  border-top-color: #ffffff;
+  margin-top: -2px;
+}
+.social-share .tipBig:before,
+.social-share .tipBig:after {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  margin-left: 60px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  display: inline-block;
+  content: " ";
+}
+.social-share .tipBig:before {
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tipBig:after {
   border-top-color: #ffffff;
   margin-top: -2px;
 }
@@ -3094,7 +3124,7 @@ ul.navigation {
   cursor: pointer;
   display: inline-block;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1) !important;
-  width: 5em;
+  width: 4.8em;
   padding: 13px 11px 18px 16px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   text-align: center;
@@ -3102,7 +3132,7 @@ ul.navigation {
   font-weight: 300;
   vertical-align: middle;
   text-transform: uppercase;
-  text-decoration: none;
+  text-decoration: none !important;
   line-height: .8em;
   color: #fff;
   margin-top: .3em;
@@ -3118,7 +3148,7 @@ ul.navigation {
   font-size: 20px;
   font-weight: normal !important;
   line-height: 0;
-  margin: 8px 50px 0;
+  margin: 8px 47px 0;
   position: relative;
   width: 40px;
   top: 2px;
@@ -3133,7 +3163,7 @@ ul.navigation {
   background: #4060A5;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .facebook:hover {
   background: #5172b8;
@@ -3154,7 +3184,7 @@ ul.navigation {
   background: #00abf0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .twitter:hover {
   background: #0fb6fa;
@@ -3175,7 +3205,7 @@ ul.navigation {
   background: #d34836;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .google:hover {
   background: #ed523e;
@@ -3196,7 +3226,7 @@ ul.navigation {
   background: #efe4e4;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .pinterest:hover {
   background: #faf0f0;
@@ -3217,7 +3247,7 @@ ul.navigation {
   background: #d52b2a;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .weibo:hover {
   background: #dd2d2c;
@@ -3238,7 +3268,7 @@ ul.navigation {
   background: #45668e;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .vk:hover {
   background: #4b6f9a;
@@ -3259,7 +3289,7 @@ ul.navigation {
   background: #0183bd;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .linkedin:hover {
   background: #028fcd;
@@ -3281,7 +3311,7 @@ ul.navigation {
   background: #f59942;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .rss:hover {
   background: #f5a355;

@@ -19,6 +19,16 @@ padding:.3em .3em 0 0;
 	.rounded_all(2px);
 	
 }
+.social-share .counterBig span {
+	border:1px solid @grays-4;
+	display:block;
+	text-align:center;
+	width:94px;
+	padding:.5em .8em;
+	font-size:1.2em;
+	.rounded_all(2px);
+	
+}
 
 
 /* some fake bubble tip shenanigans */
@@ -35,12 +45,33 @@ padding:.3em .3em 0 0;
 	display: inline-block;
 	content:" ";
 }
+
+
 .social-share .tip:before{
 	border-top-color: rgba(0, 0, 0, 0.2);
 }
 .social-share .tip:after{
 	border-top-color: rgba(255, 255, 255, 1);
 	margin-top:-2px;
+	
+}
+.social-share .tipBig:before, .social-share .tipBig:after {
+	width:1px; height:1px;
+	position:absolute;
+	margin-left:60px;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid @grays-4;
+	display: inline-block;
+	content:" ";
+}
+.social-share .tipBig:before{
+	border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tipBig:after{
+	border-top-color: rgba(255, 255, 255, 1);
+	margin-top:-2px;
+	
 }
 
 
