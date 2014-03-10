@@ -3884,6 +3884,7 @@ Styleguide 6.
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  background: #fff;
 }
 .social-share .counterBig span {
   border: 1px solid #cccccc;
@@ -3895,6 +3896,7 @@ Styleguide 6.
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  background: #fff;
 }
 /* some fake bubble tip shenanigans */
 .social-share .counter {
@@ -3983,7 +3985,7 @@ Styleguide 6.
   display: inline-block;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1) !important;
   width: 4.6em;
-  padding: 13px 11px 18px 16px;
+  padding: .7em 0.7em 1em 0.6em;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   text-align: center;
   font-size: 1.3em;
@@ -7280,6 +7282,11 @@ Browser specific hacks
   font-size: 0.875em;
   line-height: 1.4em;
   font-weight: normal;
+}
+#action-social-share-thankyou {
+  float: left;
+  clear: left;
+  width: 360px;
 }
 @media only screen and (min-width: 1024px) {
   #main-section {

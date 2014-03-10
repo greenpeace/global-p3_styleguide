@@ -3884,6 +3884,7 @@ Styleguide 6.
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  background: #fff;
 }
 .social-share .counterBig span {
   border: 1px solid #cccccc;
@@ -3895,6 +3896,7 @@ Styleguide 6.
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  background: #fff;
 }
 /* some fake bubble tip shenanigans */
 .social-share .counter {
