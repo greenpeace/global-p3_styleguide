@@ -3031,7 +3031,7 @@ ul.navigation {
   border: 1px solid #cccccc;
   display: block;
   text-align: center;
-  width: 94px;
+  width: 90px;
   padding: .5em .8em;
   font-size: 1.2em;
   -webkit-border-radius: 2px;
@@ -3066,7 +3066,7 @@ ul.navigation {
   width: 1px;
   height: 1px;
   position: absolute;
-  margin-left: 60px;
+  margin-left: 56px;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 7px solid #cccccc;
@@ -3124,7 +3124,7 @@ ul.navigation {
   cursor: pointer;
   display: inline-block;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1) !important;
-  width: 4.8em;
+  width: 4.6em;
   padding: 13px 11px 18px 16px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   text-align: center;

@@ -2789,7 +2789,7 @@ ul.navigation {
   border: 1px solid #cccccc;
   display: block;
   text-align: center;
-  width: 94px;
+  width: 90px;
   padding: .5em .8em;
   font-size: 1.2em;
   -webkit-border-radius: 2px;
@@ -2824,7 +2824,7 @@ ul.navigation {
   width: 1px;
   height: 1px;
   position: absolute;
-  margin-left: 60px;
+  margin-left: 56px;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 7px solid #cccccc;
