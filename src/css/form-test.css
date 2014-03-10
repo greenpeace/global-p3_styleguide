@@ -1310,6 +1310,10 @@ label {
   display: none;
   padding: .5em 0 .5em .5em;
 }
+form .required label {
+  display: inline;
+  color: #d40000;
+}
 .no-placeholder label {
   display: block;
   margin-top: .225em;
