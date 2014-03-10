@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Planet 3 Styleguide</title>
+    <meta name="description" content="" />
+    <meta name="generator" content="kss-node" />
+    <link rel="stylesheet" href="public/kss.css" />
+    <link rel="stylesheet" href="public/style.css" />
+    <!--[if lt IE 9]>
+    <script src="public/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body id="kss-node">
+    <div class="kss-wrapper">
+      <div class="kss-sidebar">
+        <div class="kss-sidebar-inner">
+          <header class="kss-header">
+            <h1 class="kss-doc-title"><a href="./">Planet 3 Styleguide</a></h1>
+          </header>
+          <nav class="kss-nav">
+            <ul class="kss-menu" data-kss-ref="8">
+              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Color palette</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-2.html"><span class="kss-ref">2</span><span class="kss-name">Typography rules</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-3.html"><span class="kss-ref">3</span><span class="kss-name">Forms</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-4.html"><span class="kss-ref">4</span><span class="kss-name">Buttons</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-5.html"><span class="kss-ref">5</span><span class="kss-name">Header</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-6.html"><span class="kss-ref">6</span><span class="kss-name">Breadcrumb navigation</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-7.html"><span class="kss-ref">7</span><span class="kss-name">Flag icons</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-8.html"><span class="kss-ref">8</span><span class="kss-name">Action counter</span></a></li>
+              
+            </ul>
+            
+            <ul class="kss-menu-child">
+              
+              
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-8.1"><span class="kss-ref">8.1</span><span class="kss-name">Action Counter (graphic bar)</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-8.2"><span class="kss-ref">8.2</span><span class="kss-name">Action Counter (text)</span></a></li>
+              
+              
+            </ul>
+            
+          </nav>
+        </div>
+      </div>
+      <div class="kss-content">
+        <article class="kss-article">
+          
+          
+          <section id="section-8" class="kss-section kss-depth-1">
+            <h1 class="kss-title"><span class="kss-ref">8</span> Action counter</h1>
+            
+            
+            <div class="kss-description">
+              <p>Shows the number of signers both graphical and text only</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-graphical" style="display: block;">
+        <span class="objectives"></span>
+        <span style="width:86.2%%; transition: 25ms; -webkit- transition: 25ms;" class="completed">17,239,173&nbsp;</span>
+    </div>
+    <div id="action-counter-textual">
+        <span class="count">17,240</span> have joined so far. The target is <span class="total">20,000</span>.
+    </div>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div id=&quot;action-counter&quot; class=&quot;counter block&quot; style=&quot;width: 520px;&quot;&gt;
+    &lt;div id=&quot;action-counter-graphical&quot; style=&quot;display: block;&quot;&gt;
+        &lt;span class=&quot;objectives&quot;&gt;&lt;/span&gt;
+        &lt;span style=&quot;width:86.2%%; transition: 25ms; -webkit- transition: 25ms;&quot; class=&quot;completed&quot;&gt;17,239,173&nbsp;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;action-counter-textual&quot;&gt;
+        &lt;span class=&quot;count&quot;&gt;17,240&lt;/span&gt; have joined so far. The target is &lt;span class=&quot;total&quot;&gt;20,000&lt;/span&gt;.
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-8.1" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">8.1</span> Action Counter (graphic bar)</h1>
+            
+            
+            <div class="kss-description">
+              <p>Graphical display as progres bar.</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-graphical" style="display: block;">
+        <span class="objectives"></span>
+        <span style="width:86.2%%; transition: 25ms; -webkit- transition: 25ms;" class="completed">17,239,173&nbsp;</span>
+    </div>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div id=&quot;action-counter&quot; class=&quot;counter block&quot; style=&quot;width: 520px;&quot;&gt;
+    &lt;div id=&quot;action-counter-graphical&quot; style=&quot;display: block;&quot;&gt;
+        &lt;span class=&quot;objectives&quot;&gt;&lt;/span&gt;
+        &lt;span style=&quot;width:86.2%%; transition: 25ms; -webkit- transition: 25ms;&quot; class=&quot;completed&quot;&gt;17,239,173&nbsp;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-8.2" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">8.2</span> Action Counter (text)</h1>
+            
+            
+            <div class="kss-description">
+              <p>Textual display.</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-textual">
+        <span class="count">17,240</span> have joined so far. The target is <span class="total">20,000</span>.
+    </div>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div id=&quot;action-counter&quot; class=&quot;counter block&quot; style=&quot;width: 520px;&quot;&gt;
+    &lt;div id=&quot;action-counter-textual&quot;&gt;
+        &lt;span class=&quot;count&quot;&gt;17,240&lt;/span&gt; have joined so far. The target is &lt;span class=&quot;total&quot;&gt;20,000&lt;/span&gt;.
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          
+        </article>
+        <footer class="kss-footer">
+          <div>Created using <a href="https://github.com/hughsk/kss-node">kss-node</a> and <a href="https://github.com/htanjo/kss-node-template">kss-node-template</a>.</div>
+        </footer>
+      </div>
+    </div>
+    <script src="public/kss.js"></script>
+    <script src="public/jquery-1.9.1.min.js"></script>
+    <!--[if gt IE 8]><!-->
+    <script src="public/rainbow.min.js"></script>
+    <!--<![endif]-->
+    <script src="public/main.js"></script>
+  </body>
+</html>
