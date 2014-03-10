@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Planet 3 Styleguide</title>
+    <meta name="description" content="" />
+    <meta name="generator" content="kss-node" />
+    <link rel="stylesheet" href="public/kss.css" />
+    <link rel="stylesheet" href="public/style.css" />
+    <!--[if lt IE 9]>
+    <script src="public/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body id="kss-node">
+    <div class="kss-wrapper">
+      <div class="kss-sidebar">
+        <div class="kss-sidebar-inner">
+          <header class="kss-header">
+            <h1 class="kss-doc-title"><a href="./">Planet 3 Styleguide</a></h1>
+          </header>
+          <nav class="kss-nav">
+            <ul class="kss-menu" data-kss-ref="4">
+              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Color palette</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-2.html"><span class="kss-ref">2</span><span class="kss-name">Typography rules</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-3.html"><span class="kss-ref">3</span><span class="kss-name">Forms</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-4.html"><span class="kss-ref">4</span><span class="kss-name">Buttons</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-5.html"><span class="kss-ref">5</span><span class="kss-name">Header</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-6.html"><span class="kss-ref">6</span><span class="kss-name">Breadcrumb navigation</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-7.html"><span class="kss-ref">7</span><span class="kss-name">Flag icons</span></a></li>
+              
+            </ul>
+            
+            <ul class="kss-menu-child">
+              
+              
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-4.1"><span class="kss-ref">4.1</span><span class="kss-name">Generic button. </span></a></li>
+              
+              
+            </ul>
+            
+          </nav>
+        </div>
+      </div>
+      <div class="kss-content">
+        <article class="kss-article">
+          
+          
+          <section id="section-4" class="kss-section kss-depth-1">
+            <h1 class="kss-title"><span class="kss-ref">4</span> Buttons</h1>
+            
+            
+            
+          </section>
+          
+          <section id="section-4.1" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">4.1</span> Generic button. </h1>
+            
+            
+            <div class="kss-description">
+              <p>We support <code>&lt;input[submit]&gt;</code>, <code>&lt;input.button&gt;</code>, <code>&lt;button&gt;</code> and <code>&lt;a.button&gt;</code>
+
+</p>
+<p>Compatible    in IE6+, Firefox 2+, Safari 4+, Chrome 1+, Opera 11+</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <input type="submit" class="{$modifiers}" value="input[submit]" />
+<input class="button {$modifiers}" value="input.button" />
+<button class="{$modifiers}">button</button>
+<a class="button {$modifiers}">a.button</a>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:hover</div>
+                  <div class="kss-modifier-description">
+                    <p>Subtle hover highlight and box shadow</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <input type="submit" class="pseudo-class-hover" value="input[submit]" />
+<input class="button pseudo-class-hover" value="input.button" />
+<button class="pseudo-class-hover">button</button>
+<a class="button pseudo-class-hover">a.button</a>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:active</div>
+                  <div class="kss-modifier-description">
+                    <p>Inset box shadow and 1px offset</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <input type="submit" class="pseudo-class-active" value="input[submit]" />
+<input class="button pseudo-class-active" value="input.button" />
+<button class="pseudo-class-active">button</button>
+<a class="button pseudo-class-active">a.button</a>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.primary</div>
+                  <div class="kss-modifier-description">
+                    <p>Primary buttons are orange</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <input type="submit" class="primary" value="input[submit]" />
+<input class="button primary" value="input.button" />
+<button class="primary">button</button>
+<a class="button primary">a.button</a>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.disabled</div>
+                  <div class="kss-modifier-description">
+                    <p>Dims the button to indicate it cannot be used</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <input type="submit" class="disabled" value="input[submit]" />
+<input class="button disabled" value="input.button" />
+<button class="disabled">button</button>
+<a class="button disabled">a.button</a>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.disabled:hover</div>
+                  <div class="kss-modifier-description">
+                    <p>Disabled buttons are inactive (no hover effect)</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <input type="submit" class="disabled pseudo-class-hover" value="input[submit]" />
+<input class="button disabled pseudo-class-hover" value="input.button" />
+<button class="disabled pseudo-class-hover">button</button>
+<a class="button disabled pseudo-class-hover">a.button</a>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.disabled:active</div>
+                  <div class="kss-modifier-description">
+                    <p>Disabled buttons inactive (no active state)</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <input type="submit" class="disabled pseudo-class-active" value="input[submit]" />
+<input class="button disabled pseudo-class-active" value="input.button" />
+<button class="disabled pseudo-class-active">button</button>
+<a class="button disabled pseudo-class-active">a.button</a>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;input type=&quot;submit&quot; class=&quot;{$modifiers}&quot; value=&quot;input[submit]&quot; /&gt;
+&lt;input class=&quot;button {$modifiers}&quot; value=&quot;input.button&quot; /&gt;
+&lt;button class=&quot;{$modifiers}&quot;&gt;button&lt;/button&gt;
+&lt;a class=&quot;button {$modifiers}&quot;&gt;a.button&lt;/a&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          
+        </article>
+        <footer class="kss-footer">
+          <div>Created using <a href="https://github.com/hughsk/kss-node">kss-node</a> and <a href="https://github.com/htanjo/kss-node-template">kss-node-template</a>.</div>
+        </footer>
+      </div>
+    </div>
+    <script src="public/kss.js"></script>
+    <script src="public/jquery-1.9.1.min.js"></script>
+    <!--[if gt IE 8]><!-->
+    <script src="public/rainbow.min.js"></script>
+    <!--<![endif]-->
+    <script src="public/main.js"></script>
+  </body>
+</html>

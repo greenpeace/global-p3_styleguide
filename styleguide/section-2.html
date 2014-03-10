@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>kss-node Styleguide</title>
+    <title>Planet 3 Styleguide</title>
     <meta name="description" content="" />
     <meta name="generator" content="kss-node" />
     <link rel="stylesheet" href="public/kss.css" />
@@ -27,6 +27,16 @@
               
               <li class="kss-menu-item"><a href="section-2.html"><span class="kss-ref">2</span><span class="kss-name">Typography rules</span></a></li>
               
+              <li class="kss-menu-item"><a href="section-3.html"><span class="kss-ref">3</span><span class="kss-name">Forms</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-4.html"><span class="kss-ref">4</span><span class="kss-name">Buttons</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-5.html"><span class="kss-ref">5</span><span class="kss-name">Header</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-6.html"><span class="kss-ref">6</span><span class="kss-name">Breadcrumb navigation</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-7.html"><span class="kss-ref">7</span><span class="kss-name">Flag icons</span></a></li>
+              
             </ul>
             
             <ul class="kss-menu-child">
@@ -35,7 +45,7 @@
               
               
               
-              <li class="kss-menu-item"><a href="#section-2.1"><span class="kss-ref">2.1</span><span class="kss-name">Paragraph</span></a></li>
+              <li class="kss-menu-item"><a href="#section-2.1"><span class="kss-ref">2.1</span><span class="kss-name">Paragraphs</span></a></li>
               
               
               
@@ -58,6 +68,10 @@
               <li class="kss-menu-item"><a href="#section-2.4"><span class="kss-ref">2.4</span><span class="kss-name">Titles</span></a></li>
               
               
+              
+              <li class="kss-menu-item"><a href="#section-2.5"><span class="kss-ref">2.5</span><span class="kss-name">Kitchen Sink</span></a></li>
+              
+              
             </ul>
             
           </nav>
@@ -75,18 +89,22 @@
           </section>
           
           <section id="section-2.1" class="kss-section kss-depth-2">
-            <h1 class="kss-title"><span class="kss-ref">2.1</span> Paragraph</h1>
+            <h1 class="kss-title"><span class="kss-ref">2.1</span> Paragraphs</h1>
             
             
             <div class="kss-modifier-block">
               <div class="kss-modifier kss-modifier-original">
                 <div class="kss-modifier-example">
-                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                  <p>Long paragraph: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor sub text ut labore et sup text magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Medium paragraph: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+<p>One sentece: Donec eu libero sit amet quam egestas semper, enean ultricies mi vitae est.</p>
                 </div>
               </div>
               
               <div class="kss-markup">
-                <pre><code data-language="html">&lt;p&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.&lt;/p&gt;</code></pre>
+                <pre><code data-language="html">&lt;p&gt;Long paragraph: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor sub text ut labore et sup text magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+&lt;p&gt;Medium paragraph: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.&lt;/p&gt;
+&lt;p&gt;One sentece: Donec eu libero sit amet quam egestas semper, enean ultricies mi vitae est.&lt;/p&gt;</code></pre>
               </div>
             </div>
             
@@ -108,12 +126,12 @@
                 <div class="kss-modifier-example">
                   <div id="main-section">
   <ul>
-    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-    <ul>
+    <li>Unordered list test:</li>
+    <li><ul>
       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
       <li>Aliquam tincidunt mauris eu risus.</li>
       <li>Vestibulum auctor dapibus neque.</li>
-    </ul>
+    </ul></li>
     <li>Aliquam tincidunt mauris eu risus.</li>
     <li>Vestibulum auctor dapibus neque.</li>
   </ul>
@@ -124,12 +142,12 @@
               <div class="kss-markup">
                 <pre><code data-language="html">&lt;div id=&quot;main-section&quot;&gt;
   &lt;ul&gt;
-    &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/li&gt;
-    &lt;ul&gt;
+    &lt;li&gt;Unordered list test:&lt;/li&gt;
+    &lt;li&gt;&lt;ul&gt;
       &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/li&gt;
       &lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;/li&gt;
       &lt;li&gt;Vestibulum auctor dapibus neque.&lt;/li&gt;
-    &lt;/ul&gt;
+    &lt;/ul&gt;&lt;/li&gt;
     &lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;/li&gt;
     &lt;li&gt;Vestibulum auctor dapibus neque.&lt;/li&gt;
   &lt;/ul&gt;
@@ -148,12 +166,12 @@
                 <div class="kss-modifier-example">
                   <div id="main-section">
   <ol>
-    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-    <ol>
+    <li>Ordered list test:</li>
+    <li><ol>
       <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
       <li>Aliquam tincidunt mauris eu risus.</li>
       <li>Vestibulum auctor dapibus neque.</li>
-    </ol>
+    </ol></li>
     <li>Aliquam tincidunt mauris eu risus.</li>
     <li>Vestibulum auctor dapibus neque.</li>
   </ol>
@@ -164,12 +182,12 @@
               <div class="kss-markup">
                 <pre><code data-language="html">&lt;div id=&quot;main-section&quot;&gt;
   &lt;ol&gt;
-    &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/li&gt;
-    &lt;ol&gt;
+    &lt;li&gt;Ordered list test:&lt;/li&gt;
+    &lt;li&gt;&lt;ol&gt;
       &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/li&gt;
       &lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;/li&gt;
       &lt;li&gt;Vestibulum auctor dapibus neque.&lt;/li&gt;
-    &lt;/ol&gt;
+    &lt;/ol&gt;&lt;/li&gt;
     &lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;/li&gt;
     &lt;li&gt;Vestibulum auctor dapibus neque.&lt;/li&gt;
   &lt;/ol&gt;
@@ -186,12 +204,51 @@
             <div class="kss-modifier-block">
               <div class="kss-modifier kss-modifier-original">
                 <div class="kss-modifier-example">
-                  <a>This is a link!</a>
+                  <a class="{$modifiers}">This is a link!</a>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:visited</div>
+                  <div class="kss-modifier-description">
+                    <p>When the link is visited, it keeps the color and has no decoration.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <a class="pseudo-class-visited">This is a link!</a>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:hover</div>
+                  <div class="kss-modifier-description">
+                    <p>When the link is hovered, the cursor became a pointer and the link is underlined.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <a class="pseudo-class-hover">This is a link!</a>
+                </div>
+              </div>
+              
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">:focus</div>
+                  <div class="kss-modifier-description">
+                    <p>When the link is focused, the link is underlined and with a thin dotted outline.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <a class="pseudo-class-focus">This is a link!</a>
                 </div>
               </div>
               
               <div class="kss-markup">
-                <pre><code data-language="html">&lt;a&gt;This is a link!&lt;/a&gt;</code></pre>
+                <pre><code data-language="html">&lt;a class=&quot;{$modifiers}&quot;&gt;This is a link!&lt;/a&gt;</code></pre>
               </div>
             </div>
             
@@ -220,6 +277,58 @@
 &lt;h4&gt;This is a h4 title&lt;/h4&gt;
 &lt;h5&gt;This is a h5 title&lt;/h5&gt;
 &lt;h6&gt;This is a h6 title&lt;/h6&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-2.5" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">2.5</span> Kitchen Sink</h1>
+            
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <h1>Lorem ipsum dolor sit amet consectetuer adipiscing elit</h1>
+<h2>Aenean commodo ligula eget dolor aenean massa</h2>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa <strong>strong</strong>. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede <a class="external ext" href="#">link</a> mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+<h3>Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</h3>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<h4>Donec quam felis ultricies nec pellentesque eu pretium quis sem nlla consequat massa quis enim</h4>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
+ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<h5>Donec pede justo fringilla vel aliquet nec vulputate eget arcu</h5>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+<h6>In enim justo rhoncus ut imperdiet a venenatis vitae justo</h6>
+<ul>
+  <li>Lorem ipsum dolor sit amet consectetuer.</li>
+  <li>Aenean commodo ligula eget dolor.</li>
+  <li>Aenean massa cum sociis natoque penatibus.</li>
+</ul>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;h1&gt;Lorem ipsum dolor sit amet consectetuer adipiscing elit&lt;/h1&gt;
+&lt;h2&gt;Aenean commodo ligula eget dolor aenean massa&lt;/h2&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa &lt;strong&gt;strong&lt;/strong&gt;. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede &lt;a class=&quot;external ext&quot; href=&quot;#&quot;&gt;link&lt;/a&gt; mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.&lt;/p&gt;
+&lt;h3&gt;Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus&lt;/h3&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.&lt;/p&gt;
+&lt;h4&gt;Donec quam felis ultricies nec pellentesque eu pretium quis sem nlla consequat massa quis enim&lt;/h4&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
+ultricies nec, pellentesque eu, pretium quis, sem.&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.&lt;/p&gt;
+&lt;h5&gt;Donec pede justo fringilla vel aliquet nec vulputate eget arcu&lt;/h5&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.&lt;/p&gt;
+&lt;h6&gt;In enim justo rhoncus ut imperdiet a venenatis vitae justo&lt;/h6&gt;
+&lt;ul&gt;
+  &lt;li&gt;Lorem ipsum dolor sit amet consectetuer.&lt;/li&gt;
+  &lt;li&gt;Aenean commodo ligula eget dolor.&lt;/li&gt;
+  &lt;li&gt;Aenean massa cum sociis natoque penatibus.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
               </div>
             </div>
             

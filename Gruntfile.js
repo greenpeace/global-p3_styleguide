@@ -75,6 +75,7 @@ module.exports = function(grunt) {
             },
             lib: {
                 files: {
+                    // Note, the p3.lib file will only generate a library from files beginning with p3.
                     'dist/js/p3.lib.js': 'src/js/lib/p3.*.js'
                 }
             }
@@ -133,11 +134,12 @@ module.exports = function(grunt) {
             main: {
                 nonull: true,
                 src: 'src/css/styleguide.css',
-                dest: 'styleguide/css/styleguide.css',
-            },
+                dest: 'styleguide/css/styleguide.css'
+            }
         },
         watch: {
             js: {
+                // Files to monitor for changes before running js task
                 files: ['Gruntfile.js', 'package.json', 'src/**/*.js'],
                 tasks: ['js'],
                 options: {
@@ -145,6 +147,7 @@ module.exports = function(grunt) {
                 }
             },
             less: {
+                // Files to monitor for changes before running css task
                 files: ['Gruntfile.js', 'package.json', 'src/**/*.less'],
                 tasks: ['css'],
                 options: {

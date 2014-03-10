@@ -13,9 +13,7 @@
 
     // GET parameters to send with each request
     var parameters = {
-            page: 300507, // ID of the current page
-            key: '78d245e17c455859b4863ad34674f2b8', // API access key - tied to the referring domain
-            expire: '2013-11-02'
+            action: 685 // ID of the current page
         },
         // API URL Demonstration showing parameters passed in the URL
         pledgeURL = 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/',

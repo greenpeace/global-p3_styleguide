@@ -5,7 +5,7 @@
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.2.2
+ * @version         0.2.3
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -23,6 +23,8 @@
             jsonURL: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
             /* parameters to be added to the request url */
             params: {},
+            /* Force UTC timezone if no time zone data is returned */
+            mangleTime: true,
             /* selects which element holds the time data attribute */
             timeSelector: '.since',
             /* selects which attribute contains timestamps */
@@ -117,28 +119,21 @@
                     data: params
                 }).success(function(json) {
                     $(config.dataElement).data(config.dataNamespace, json);
-                }).fail(function(e1, e2, e3) {
+                }).fail(function(e1) {
                     var message = prefix + 'Failed to load "' + request.url + '"';
 
                     if (config.abortOnError) {
                         throw new Error(message, e1);
-                    } else {
-                        console.error(message);
-                        console.error(e1);
-                        console.error(e2);
-                        console.error(e3);
                     }
                 }).always(function() {
                     $.event.trigger(config.fetchCompleteEvent);
                 });
             },
             parsePledgeData = function() {
-                // Load from the parameter if set,
-                // else load from the data stored in an element if eventDriven
                 var jsonData = $(config.dataElement).data(config.dataNamespace);
 
                 // Add fetch first, since array is popped not shifted
-                if (refreshNum++ < config.maxRefreshes && !config.externalTrigger) {
+                if (!config.externalTrigger && refreshNum++ < config.maxRefreshes) {
                     pledgeQueue.actions.push(function() {
                         clearTimeout(timer);
                         timer = setTimeout(function() {
@@ -151,6 +146,7 @@
                     if (config.abortOnError) {
                         throw new Error(prefix + 'JSON data invalid');
                     } else {
+                        // Trigger next fetch and stop parsing
                         pledgeQueue.run();
                         return;
                     }
@@ -190,11 +186,16 @@
             },
             /**
              * Retrieves human readable time string from timestamp
+             * Forces UTC if no timezone identifier is found
              * @param {string} timestamp
              * @returns {string}
              */
             getTimeString = function(time) {
                 if (time) {
+                    if (config.mangleTime) {
+                        // Assume timestamp is UTC if trimmed string includes a space
+                        time = $.trim(time).replace(/\s/,'Z');
+                    }
                     return $.timeago(time);
                 }
             },

@@ -27,7 +27,16 @@
 
     <script src="dist/js/modernizr.min.js"></script>        
     <link rel="stylesheet" type="text/css" href="dist/css/action-template.min.css"/>
-
+    <style type="text/css">
+        .desktop .action-template #main-container {
+            background-image: url(//www.greenpeace.org/international/Global/international/artwork/climate/2013/Shell_hell_bg_2.jpg);
+        } 
+        @media only screen and (min-width : 1024px) {
+            .action-template #main-container {
+                background-image: url(//www.greenpeace.org/international/Global/international/artwork/climate/2013/Shell_hell_bg_2.jpg);
+            } 
+        }
+    </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
 
@@ -102,7 +111,7 @@
                     </div>
                 </div>
                 <div id="action-form-message">
-                <div class="textearea">
+                <div class="textarea">
                     <label for="ActionMessage">Your message</label>
                     <textarea rows="5" id="ActionMessage" name="ActionMessage">
 Dear Mr Wrobel,
@@ -140,7 +149,9 @@ Please don't let this happen. Thank you.
             <span class="objectives"></span>
             <span style="width:0%" class="completed">&nbsp;</span>
         </div>
-        <div id="action-counter-textual">&nbsp;</div>
+        <div id="action-counter-textual">
+            <span class="count">&hellip;</span> have joined so far. The target is <span class="total">&hellip;</span>.
+        </div>
     </div>
 
     <!-- Action details block -->

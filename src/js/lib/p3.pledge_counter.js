@@ -5,7 +5,7 @@
  *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, which
  *                  enables reusing the JSON with another plugin (eg Recent Signers)
- * @version         0.3.2
+ * @version         0.3.3
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -24,7 +24,8 @@
     defaults = {
         meterElement:       '.completed',               /* Selector for the bar to animated */
         meterWrapper:       '#action-counter-graphical',/* Selector for the bar wrap element */
-        textElement:        '#action-counter-textual',  /* Selector for the text to update, eg 100 have joined so far. The target is 200 */
+        countElement:       '.count',                   /* Selector for the current count text to update (within the wrapper element) */
+        totalElement:       '.total',                   /* Selector for the pledge total target text to update (within the wrapper element) */
         fetchFrequency:     30000,                      /* time to wait to fetch next value from server (in milliseconds) */
         updateSpeed:        25,                         /* this is the value update speed (in milliseconds). Change this value to make animation faster or slower */
         initialAnimationTotalDuration: 2500,            /* change this value to set the total duration of the first fetch animation (how many milliseconds takes
@@ -44,7 +45,8 @@
 
         var config = $.extend(true, defaults, options || {}),
         $meter = $(config.meterElement, el),
-        $text = $(config.textElement, el),
+        $count = $(config.countElement, el),
+        $total = $(config.totalElement, el),
         paused = false,
         currentValue = 0,
         step = 0,
@@ -73,7 +75,8 @@
             if (step <= 0) {
                 step = 1;
             }
-            $text.text(addCommas(progress.count) + ' have joined so far. The target is ' + addCommas(progress.target) + '.');
+            $count.text(addCommas(progress.count))  ;
+            $total.text(addCommas(progress.target));
 
             animateProgress();
         },
