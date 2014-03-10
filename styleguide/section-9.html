@@ -20,7 +20,7 @@
             <h1 class="kss-doc-title"><a href="./">Planet 3 Styleguide</a></h1>
           </header>
           <nav class="kss-nav">
-            <ul class="kss-menu" data-kss-ref="6">
+            <ul class="kss-menu" data-kss-ref="9">
               <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
               
               <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Color palette</span></a></li>
@@ -57,59 +57,82 @@
         <article class="kss-article">
           
           
-          <section id="section-6" class="kss-section kss-depth-1">
-            <h1 class="kss-title"><span class="kss-ref">6</span> Breadcrumb navigation</h1>
+          <section id="section-9" class="kss-section kss-depth-1">
+            <h1 class="kss-title"><span class="kss-ref">9</span> Recent Signers</h1>
             
             
             <div class="kss-description">
-              <p>All list items are displayed inline and separated by &quot;&gt;&quot;</p>
+              <p>Shows the signers signers in the current action. It has a min-height of 14em. <br/>
+    <code>li</code>        One line, ellipsis if content doesn&apos;t fit. <br/>
+    <code>.since</code>    Timestamp in gray text. <br/>
+    <code>.country</code>  Country name in grayutext. <br/>
+    <code>.flag</code>     Flag icon margin.</p>
 
             </div>
             
             <div class="kss-modifier-block">
               <div class="kss-modifier kss-modifier-original">
                 <div class="kss-modifier-example">
-                  <div id="breadcrumbs">
-    <ul class="breadcrumbs-holder" itemprop="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">
-        <li typeof="v:Breadcrumb"><a class="{$modifiers}" rel="v:url" property="v:title" href="#" title="Home">Home</a></li>
-        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="What we do">What we do</a></li>
-        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Nuclear">Nuclear</a></li>
-        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Stop radioactive investment!">Stop radioactive investment!</a></li>
-        <li>Help stop the next Fukushima disaster</li>
-    </ul>
-</div>
-                </div>
-              </div>
-              
-              <div class="kss-modifier">
-                <div class="kss-modifier-head">
-                  <div class="kss-modifier-name">:hover</div>
-                  <div class="kss-modifier-description">
-                    <p>Standar link hover in &quot;Home&quot;.</p>
-
-                  </div>
-                </div>
-                <div class="kss-modifier-example">
-                  <div id="breadcrumbs">
-    <ul class="breadcrumbs-holder" itemprop="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">
-        <li typeof="v:Breadcrumb"><a class="pseudo-class-hover" rel="v:url" property="v:title" href="#" title="Home">Home</a></li>
-        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="What we do">What we do</a></li>
-        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Nuclear">Nuclear</a></li>
-        <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Stop radioactive investment!">Stop radioactive investment!</a></li>
-        <li>Help stop the next Fukushima disaster</li>
+                  <div id="action-recent-signers">
+    <h3>Recent Signers</h3>
+    <ul>
+        <li>
+            <span class="since" data-since="2013-10-21 12:00:00">an hour ago</span>
+            <span class="icon flag in"></span>
+            <span class="name">James Norther,</span>
+            <span class="country">India</span>
+        </li>
+        <li>
+            <span class="since" data-since="2013-10-12 12:00:00">8 hours ago</span>
+            <span class="icon flag nz"></span>
+            <span class="name">Nick Younger,</span>
+            <span class="country">New-zealand</span>
+        </li>
+        <li>
+            <span class="since" data-since="2013-10-11 12:00:00">19 hours ago</span>
+            <span class="icon flag nl"></span>
+            <span class="name">Eoin Dubskyer,</span>
+            <span class="country">Netherlands</span>
+        </li>
+        <li>
+            <span class="since" data-since="2013-10-10 12:00:00">a day ago</span>
+            <span class="icon flag fr"></span>
+            <span class="name">Mr Splashy Pants,</span>
+            <span class="country">France</span>
+        </li>
     </ul>
 </div>
                 </div>
               </div>
               
               <div class="kss-markup">
-                <pre><code data-language="html">&lt;div id=&quot;breadcrumbs&quot;&gt;
-    &lt;ul class=&quot;breadcrumbs-holder&quot; itemprop=&quot;breadcrumb&quot; xmlns:v=&quot;http://rdf.data-vocabulary.org/#&quot;&gt;
-        &lt;li typeof=&quot;v:Breadcrumb&quot;&gt;&lt;a class=&quot;{$modifiers}&quot; rel=&quot;v:url&quot; property=&quot;v:title&quot; href=&quot;#&quot; title=&quot;Home&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
-        &lt;li typeof=&quot;v:Breadcrumb&quot;&gt;&lt;a rel=&quot;v:url&quot; property=&quot;v:title&quot; href=&quot;#&quot; title=&quot;What we do&quot;&gt;What we do&lt;/a&gt;&lt;/li&gt;
-        &lt;li typeof=&quot;v:Breadcrumb&quot;&gt;&lt;a rel=&quot;v:url&quot; property=&quot;v:title&quot; href=&quot;#&quot; title=&quot;Nuclear&quot;&gt;Nuclear&lt;/a&gt;&lt;/li&gt;
-        &lt;li typeof=&quot;v:Breadcrumb&quot;&gt;&lt;a rel=&quot;v:url&quot; property=&quot;v:title&quot; href=&quot;#&quot; title=&quot;Stop radioactive investment!&quot;&gt;Stop radioactive investment!&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;Help stop the next Fukushima disaster&lt;/li&gt;
+                <pre><code data-language="html">&lt;div id=&quot;action-recent-signers&quot;&gt;
+    &lt;h3&gt;Recent Signers&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;span class=&quot;since&quot; data-since=&quot;2013-10-21 12:00:00&quot;&gt;an hour ago&lt;/span&gt;
+            &lt;span class=&quot;icon flag in&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;name&quot;&gt;James Norther,&lt;/span&gt;
+            &lt;span class=&quot;country&quot;&gt;India&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;span class=&quot;since&quot; data-since=&quot;2013-10-12 12:00:00&quot;&gt;8 hours ago&lt;/span&gt;
+            &lt;span class=&quot;icon flag nz&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;name&quot;&gt;Nick Younger,&lt;/span&gt;
+            &lt;span class=&quot;country&quot;&gt;New-zealand&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;span class=&quot;since&quot; data-since=&quot;2013-10-11 12:00:00&quot;&gt;19 hours ago&lt;/span&gt;
+            &lt;span class=&quot;icon flag nl&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;name&quot;&gt;Eoin Dubskyer,&lt;/span&gt;
+            &lt;span class=&quot;country&quot;&gt;Netherlands&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;span class=&quot;since&quot; data-since=&quot;2013-10-10 12:00:00&quot;&gt;a day ago&lt;/span&gt;
+            &lt;span class=&quot;icon flag fr&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;name&quot;&gt;Mr Splashy Pants,&lt;/span&gt;
+            &lt;span class=&quot;country&quot;&gt;France&lt;/span&gt;
+        &lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
               </div>
