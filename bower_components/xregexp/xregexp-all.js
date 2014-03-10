@@ -1,1872 +1,6 @@
-'use strict';
-// Source: src/js/vendor/jquery-plugins/jquery.cookie.js
-/*!
- * jQuery Cookie Plugin v1.4.0
- * https://github.com/carhartl/jquery-cookie
- *
- * Copyright 2013 Klaus Hartl
- * Released under the MIT license
- */
-(function (factory) {
-	if (typeof define === 'function' && define.amd) {
-		// AMD. Register as anonymous module.
-		define(['jquery'], factory);
-	} else {
-		// Browser globals.
-		factory(jQuery);
-	}
-}(function ($) {
 
-	var pluses = /\+/g;
+/***** xregexp.js *****/
 
-	function encode(s) {
-		return config.raw ? s : encodeURIComponent(s);
-	}
-
-	function decode(s) {
-		return config.raw ? s : decodeURIComponent(s);
-	}
-
-	function stringifyCookieValue(value) {
-		return encode(config.json ? JSON.stringify(value) : String(value));
-	}
-
-	function parseCookieValue(s) {
-		if (s.indexOf('"') === 0) {
-			// This is a quoted cookie as according to RFC2068, unescape...
-			s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
-		}
-
-		try {
-			// Replace server-side written pluses with spaces.
-			// If we can't decode the cookie, ignore it, it's unusable.
-			s = decodeURIComponent(s.replace(pluses, ' '));
-		} catch(e) {
-			return;
-		}
-
-		try {
-			// If we can't parse the cookie, ignore it, it's unusable.
-			return config.json ? JSON.parse(s) : s;
-		} catch(e) {}
-	}
-
-	function read(s, converter) {
-		var value = config.raw ? s : parseCookieValue(s);
-		return $.isFunction(converter) ? converter(value) : value;
-	}
-
-	var config = $.cookie = function (key, value, options) {
-
-		// Write
-		if (value !== undefined && !$.isFunction(value)) {
-			options = $.extend({}, config.defaults, options);
-
-			if (typeof options.expires === 'number') {
-				var days = options.expires, t = options.expires = new Date();
-				t.setDate(t.getDate() + days);
-			}
-
-			return (document.cookie = [
-				encode(key), '=', stringifyCookieValue(value),
-				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
-				options.path    ? '; path=' + options.path : '',
-				options.domain  ? '; domain=' + options.domain : '',
-				options.secure  ? '; secure' : ''
-			].join(''));
-		}
-
-		// Read
-
-		var result = key ? undefined : {};
-
-		// To prevent the for loop in the first place assign an empty array
-		// in case there are no cookies at all. Also prevents odd result when
-		// calling $.cookie().
-		var cookies = document.cookie ? document.cookie.split('; ') : [];
-
-		for (var i = 0, l = cookies.length; i < l; i++) {
-			var parts = cookies[i].split('=');
-			var name = decode(parts.shift());
-			var cookie = parts.join('=');
-
-			if (key && key === name) {
-				// If second argument (value) is a function it's a converter...
-				result = read(cookie, value);
-				break;
-			}
-
-			// Prevent storing a cookie that we couldn't decode.
-			if (!key && (cookie = read(cookie)) !== undefined) {
-				result[name] = cookie;
-			}
-		}
-
-		return result;
-	};
-
-	config.defaults = {};
-
-	$.removeCookie = function (key, options) {
-		if ($.cookie(key) !== undefined) {
-			// Must not alter options, thus extending a fresh object...
-			$.cookie(key, '', $.extend({}, options, { expires: -1 }));
-			return true;
-		}
-		return false;
-	};
-
-}));
-
-;// Source: src/js/vendor/jquery-plugins/jquery.dropdown.js
-/*
- * jQuery dropdown: A simple dropdown plugin
- *
- * Inspired by Bootstrap: http://twitter.github.com/bootstrap/javascript.html#dropdowns
- * Copyright 2013 Cory LaViska for A Beautiful Site, LLC. (http://abeautifulsite.net/)
- * Dual licensed under the MIT / GPL Version 2 licenses
- *
-*/
-if(jQuery) (function($) {
-    
-    $.extend($.fn, {
-        dropdown: function(method, data) {
-            
-            switch( method ) {
-                case 'hide':
-                    hide();
-                    return $(this);
-                case 'attach':
-                    return $(this).attr('data-dropdown', data);
-                case 'detach':
-                    hide();
-                    return $(this).removeAttr('data-dropdown');
-                case 'disable':
-                    return $(this).addClass('dropdown-disabled');
-                case 'enable':
-                    hide();
-                    return $(this).removeClass('dropdown-disabled');
-            }
-            
-        }
-    });
-    
-    function show(event) {
-        
-        var trigger = $(this),
-            dropdown = $(trigger.attr('data-dropdown')),
-            isOpen = trigger.hasClass('dropdown-open');
-        
-        // In some cases we don't want to show it
-        if( trigger !== event.target && $(event.target).hasClass('dropdown-ignore') ) return;
-        
-        event.preventDefault();
-        event.stopPropagation();
-        hide();
-        
-        if( isOpen || trigger.hasClass('dropdown-disabled') ) return;
-        
-        // Show it
-        trigger.addClass('dropdown-open');
-        dropdown
-            .data('dropdown-trigger', trigger)
-            .show();
-            
-        // Position it
-        position();
-        
-        // Trigger the show callback
-        dropdown
-            .trigger('show', {
-                dropdown: dropdown,
-                trigger: trigger
-            });
-        
-    }
-    
-    function hide(event) {
-        
-        // In some cases we don't hide them
-        var targetGroup = event ? $(event.target).parents().addBack() : null;
-        
-        // Are we clicking anywhere in a dropdown?
-        if( targetGroup && targetGroup.is('.dropdown') ) {
-            // Is it a dropdown menu?
-            if( targetGroup.is('.dropdown-list') ) {
-                // Did we click on an option? If so close it.
-                if( !targetGroup.is('a') ) return;
-            } else {
-                // Nope, it's a panel. Leave it open.
-                return;
-            }
-        }
-        
-        // Hide any dropdown that may be showing
-        $(document).find('.dropdown:visible').each( function() {
-            var dropdown = $(this);
-            dropdown
-                .hide()
-                .removeData('dropdown-trigger')
-                .trigger('hide', { dropdown: dropdown });
-        });
-        
-        // Remove all dropdown-open classes
-        $(document).find('.dropdown-open').removeClass('dropdown-open');
-        
-    }
-    
-    function position() {
-        
-        var dropdown = $('.dropdown:visible').eq(0),
-            trigger = dropdown.data('dropdown-trigger'),
-            hOffset = trigger ? parseInt(trigger.attr('data-horizontal-offset') || 0, 10) : null,
-            vOffset = trigger ? parseInt(trigger.attr('data-vertical-offset') || 0, 10) : null;
-        
-        if( dropdown.length === 0 || !trigger ) return;
-        
-        /* Position the dropdown
-        dropdown
-            .css({
-                left: dropdown.hasClass('dropdown-anchor-right') ? 
-                    trigger.offset().left - (dropdown.outerWidth() - trigger.outerWidth()) + hOffset : trigger.offset().left + hOffset,
-                top: trigger.offset().top + trigger.outerHeight() + vOffset
-            });
-        */
-    }
-    
-    $(document).on('click.dropdown', '[data-dropdown]', show);
-    $(document).on('click.dropdown', hide);
-    $(window).on('resize', position);
-    
-})(jQuery);
-
-;// Source: src/js/vendor/jquery-plugins/jquery.placeholder.js
-/*! http://mths.be/placeholder v2.0.7 by @mathias */
-;(function(window, document, $) {
-
-	var isInputSupported = 'placeholder' in document.createElement('input'),
-	    isTextareaSupported = 'placeholder' in document.createElement('textarea'),
-	    prototype = $.fn,
-	    valHooks = $.valHooks,
-	    hooks,
-	    placeholder;
-
-	if (isInputSupported && isTextareaSupported) {
-
-		placeholder = prototype.placeholder = function() {
-			return this;
-		};
-
-		placeholder.input = placeholder.textarea = true;
-
-	} else {
-
-		placeholder = prototype.placeholder = function() {
-			var $this = this;
-			$this
-				.filter((isInputSupported ? 'textarea' : ':input') + '[placeholder]')
-				.not('.placeholder')
-				.bind({
-					'focus.placeholder': clearPlaceholder,
-					'blur.placeholder': setPlaceholder
-				})
-				.data('placeholder-enabled', true)
-				.trigger('blur.placeholder');
-			return $this;
-		};
-
-		placeholder.input = isInputSupported;
-		placeholder.textarea = isTextareaSupported;
-
-		hooks = {
-			'get': function(element) {
-				var $element = $(element);
-				return $element.data('placeholder-enabled') && $element.hasClass('placeholder') ? '' : element.value;
-			},
-			'set': function(element, value) {
-				var $element = $(element);
-				if (!$element.data('placeholder-enabled')) {
-					return element.value = value;
-				}
-				if (value == '') {
-					element.value = value;
-					// Issue #56: Setting the placeholder causes problems if the element continues to have focus.
-					if (element != document.activeElement) {
-						// We can’t use `triggerHandler` here because of dummy text/password inputs :(
-						setPlaceholder.call(element);
-					}
-				} else if ($element.hasClass('placeholder')) {
-					clearPlaceholder.call(element, true, value) || (element.value = value);
-				} else {
-					element.value = value;
-				}
-				// `set` can not return `undefined`; see http://jsapi.info/jquery/1.7.1/val#L2363
-				return $element;
-			}
-		};
-
-		isInputSupported || (valHooks.input = hooks);
-		isTextareaSupported || (valHooks.textarea = hooks);
-
-		$(function() {
-			// Look for forms
-			$(document).delegate('form', 'submit.placeholder', function() {
-				// Clear the placeholder values so they don’t get submitted
-				var $inputs = $('.placeholder', this).each(clearPlaceholder);
-				setTimeout(function() {
-					$inputs.each(setPlaceholder);
-				}, 10);
-			});
-		});
-
-		// Clear placeholder values upon page reload
-		$(window).bind('beforeunload.placeholder', function() {
-			$('.placeholder').each(function() {
-				this.value = '';
-			});
-		});
-
-	}
-
-	function args(elem) {
-		// Return an object of element attributes
-		var newAttrs = {},
-		    rinlinejQuery = /^jQuery\d+$/;
-		$.each(elem.attributes, function(i, attr) {
-			if (attr.specified && !rinlinejQuery.test(attr.name)) {
-				newAttrs[attr.name] = attr.value;
-			}
-		});
-		return newAttrs;
-	}
-
-	function clearPlaceholder(event, value) {
-		var input = this,
-		    $input = $(input);
-		if (input.value == $input.attr('placeholder') && $input.hasClass('placeholder')) {
-			if ($input.data('placeholder-password')) {
-				$input = $input.hide().next().show().attr('id', $input.removeAttr('id').data('placeholder-id'));
-				// If `clearPlaceholder` was called from `$.valHooks.input.set`
-				if (event === true) {
-					return $input[0].value = value;
-				}
-				$input.focus();
-			} else {
-				input.value = '';
-				$input.removeClass('placeholder');
-				input == document.activeElement && input.select();
-			}
-		}
-	}
-
-	function setPlaceholder() {
-		var $replacement,
-		    input = this,
-		    $input = $(input),
-		    $origInput = $input,
-		    id = this.id;
-		if (input.value == '') {
-			if (input.type == 'password') {
-				if (!$input.data('placeholder-textinput')) {
-					try {
-						$replacement = $input.clone().attr({ 'type': 'text' });
-					} catch(e) {
-						$replacement = $('<input>').attr($.extend(args(this), { 'type': 'text' }));
-					}
-					$replacement
-						.removeAttr('name')
-						.data({
-							'placeholder-password': true,
-							'placeholder-id': id
-						})
-						.bind('focus.placeholder', clearPlaceholder);
-					$input
-						.data({
-							'placeholder-textinput': $replacement,
-							'placeholder-id': id
-						})
-						.before($replacement);
-				}
-				$input = $input.removeAttr('id').hide().prev().attr('id', id).show();
-				// Note: `$input[0] != input` now!
-			}
-			$input.addClass('placeholder');
-			$input[0].value = $input.attr('placeholder');
-		} else {
-			$input.removeClass('placeholder');
-		}
-	}
-
-}(this, document, jQuery));
-;// Source: src/js/vendor/jquery-plugins/jquery.timeago.js
-/**
- * Timeago is a jQuery plugin that makes it easy to support automatically
- * updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago").
- *
- * @name timeago
- * @version 1.4.0
- * @requires jQuery v1.2.3+
- * @author Ryan McGeary
- * @license MIT License - http://www.opensource.org/licenses/mit-license.php
- *
- * For usage and examples, visit:
- * http://timeago.yarp.com/
- *
- * Copyright (c) 2008-2013, Ryan McGeary (ryan -[at]- mcgeary [*dot*] org)
- */
-
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['jquery'], factory);
-  } else {
-    // Browser globals
-    factory(jQuery);
-  }
-}(function ($) {
-  $.timeago = function(timestamp) {
-    if (timestamp instanceof Date) {
-      return inWords(timestamp);
-    } else if (typeof timestamp === "string") {
-      return inWords($.timeago.parse(timestamp));
-    } else if (typeof timestamp === "number") {
-      return inWords(new Date(timestamp));
-    } else {
-      return inWords($.timeago.datetime(timestamp));
-    }
-  };
-  var $t = $.timeago;
-
-  $.extend($.timeago, {
-    settings: {
-      refreshMillis: 60000,
-      allowPast: true,
-      allowFuture: false,
-      localeTitle: false,
-      cutoff: 0,
-      strings: {
-        prefixAgo: null,
-        prefixFromNow: null,
-        suffixAgo: "ago",
-        suffixFromNow: "from now",
-        inPast: 'any moment now',
-        seconds: "less than a minute",
-        minute: "about a minute",
-        minutes: "%d minutes",
-        hour: "about an hour",
-        hours: "about %d hours",
-        day: "a day",
-        days: "%d days",
-        month: "about a month",
-        months: "%d months",
-        year: "about a year",
-        years: "%d years",
-        wordSeparator: " ",
-        numbers: []
-      }
-    },
-
-    inWords: function(distanceMillis) {
-      if(!this.settings.allowPast && ! this.settings.allowFuture) {
-          throw 'timeago allowPast and allowFuture settings can not both be set to false.';
-      }
-
-      var $l = this.settings.strings;
-      var prefix = $l.prefixAgo;
-      var suffix = $l.suffixAgo;
-      if (this.settings.allowFuture) {
-        if (distanceMillis < 0) {
-          prefix = $l.prefixFromNow;
-          suffix = $l.suffixFromNow;
-        }
-      }
-
-      if(!this.settings.allowPast && distanceMillis >= 0) {
-        return this.settings.strings.inPast;
-      }
-
-      var seconds = Math.abs(distanceMillis) / 1000;
-      var minutes = seconds / 60;
-      var hours = minutes / 60;
-      var days = hours / 24;
-      var years = days / 365;
-
-      function substitute(stringOrFunction, number) {
-        var string = $.isFunction(stringOrFunction) ? stringOrFunction(number, distanceMillis) : stringOrFunction;
-        var value = ($l.numbers && $l.numbers[number]) || number;
-        return string.replace(/%d/i, value);
-      }
-
-      var words = seconds < 45 && substitute($l.seconds, Math.round(seconds)) ||
-        seconds < 90 && substitute($l.minute, 1) ||
-        minutes < 45 && substitute($l.minutes, Math.round(minutes)) ||
-        minutes < 90 && substitute($l.hour, 1) ||
-        hours < 24 && substitute($l.hours, Math.round(hours)) ||
-        hours < 42 && substitute($l.day, 1) ||
-        days < 30 && substitute($l.days, Math.round(days)) ||
-        days < 45 && substitute($l.month, 1) ||
-        days < 365 && substitute($l.months, Math.round(days / 30)) ||
-        years < 1.5 && substitute($l.year, 1) ||
-        substitute($l.years, Math.round(years));
-
-      var separator = $l.wordSeparator || "";
-      if ($l.wordSeparator === undefined) { separator = " "; }
-      return $.trim([prefix, words, suffix].join(separator));
-    },
-
-    parse: function(iso8601) {
-      var s = $.trim(iso8601);
-      s = s.replace(/\.\d+/,""); // remove milliseconds
-      s = s.replace(/-/,"/").replace(/-/,"/");
-      s = s.replace(/T/," ").replace(/Z/," UTC");
-      s = s.replace(/([\+\-]\d\d)\:?(\d\d)/," $1$2"); // -04:00 -> -0400
-      s = s.replace(/([\+\-]\d\d)$/," $100"); // +09 -> +0900
-      return new Date(s);
-    },
-    datetime: function(elem) {
-      var iso8601 = $t.isTime(elem) ? $(elem).attr("datetime") : $(elem).attr("title");
-      return $t.parse(iso8601);
-    },
-    isTime: function(elem) {
-      // jQuery's `is()` doesn't play well with HTML5 in IE
-      return $(elem).get(0).tagName.toLowerCase() === "time"; // $(elem).is("time");
-    }
-  });
-
-  // functions that can be called via $(el).timeago('action')
-  // init is default when no action is given
-  // functions are called with context of a single element
-  var functions = {
-    init: function(){
-      var refresh_el = $.proxy(refresh, this);
-      refresh_el();
-      var $s = $t.settings;
-      if ($s.refreshMillis > 0) {
-        this._timeagoInterval = setInterval(refresh_el, $s.refreshMillis);
-      }
-    },
-    update: function(time){
-      var parsedTime = $t.parse(time);
-      $(this).data('timeago', { datetime: parsedTime });
-      if($t.settings.localeTitle) $(this).attr("title", parsedTime.toLocaleString());
-      refresh.apply(this);
-    },
-    updateFromDOM: function(){
-      $(this).data('timeago', { datetime: $t.parse( $t.isTime(this) ? $(this).attr("datetime") : $(this).attr("title") ) });
-      refresh.apply(this);
-    },
-    dispose: function () {
-      if (this._timeagoInterval) {
-        window.clearInterval(this._timeagoInterval);
-        this._timeagoInterval = null;
-      }
-    }
-  };
-
-  $.fn.timeago = function(action, options) {
-    var fn = action ? functions[action] : functions.init;
-    if(!fn){
-      throw new Error("Unknown function name '"+ action +"' for timeago");
-    }
-    // each over objects here and call the requested function
-    this.each(function(){
-      fn.call(this, options);
-    });
-    return this;
-  };
-
-  function refresh() {
-    var data = prepareData(this);
-    var $s = $t.settings;
-
-    if (!isNaN(data.datetime)) {
-      if ( $s.cutoff == 0 || distance(data.datetime) < $s.cutoff) {
-        $(this).text(inWords(data.datetime));
-      }
-    }
-    return this;
-  }
-
-  function prepareData(element) {
-    element = $(element);
-    if (!element.data("timeago")) {
-      element.data("timeago", { datetime: $t.datetime(element) });
-      var text = $.trim(element.text());
-      if ($t.settings.localeTitle) {
-        element.attr("title", element.data('timeago').datetime.toLocaleString());
-      } else if (text.length > 0 && !($t.isTime(element) && element.attr("title"))) {
-        element.attr("title", text);
-      }
-    }
-    return element.data("timeago");
-  }
-
-  function inWords(date) {
-    return $t.inWords(distance(date));
-  }
-
-  function distance(date) {
-    return (new Date().getTime() - date.getTime());
-  }
-
-  // fix for IE6 suckage
-  document.createElement("abbr");
-  document.createElement("time");
-}));
-
-;// Source: src/js/vendor/jquery-plugins/jquery.validate.js
-/*!
- * jQuery Validation Plugin 1.12.0pre
- *
- * http://jqueryvalidation.org//
- *
- * Copyright 2013 Jörn Zaefferer
- * Released under the MIT license:
- *   http://www.opensource.org/licenses/mit-license.php
- */
-
-(function($) {
-
-$.extend($.fn, {
-	// http://jqueryvalidation.org/validate/
-	validate: function( options ) {
-
-		// if nothing is selected, return nothing; can't chain anyway
-		if ( !this.length ) {
-			if ( options && options.debug && window.console ) {
-				console.warn( "Nothing selected, can't validate, returning nothing." );
-			}
-			return;
-		}
-
-		// check if a validator for this form was already created
-		var validator = $.data( this[0], "validator" );
-		if ( validator ) {
-			return validator;
-		}
-
-		// Add novalidate tag if HTML5.
-		this.attr( "novalidate", "novalidate" );
-
-		validator = new $.validator( options, this[0] );
-		$.data( this[0], "validator", validator );
-
-		if ( validator.settings.onsubmit ) {
-
-			this.validateDelegate( ":submit", "click", function( event ) {
-				if ( validator.settings.submitHandler ) {
-					validator.submitButton = event.target;
-				}
-				// allow suppressing validation by adding a cancel class to the submit button
-				if ( $(event.target).hasClass("cancel") ) {
-					validator.cancelSubmit = true;
-				}
-
-				// allow suppressing validation by adding the html5 formnovalidate attribute to the submit button
-				if ( $(event.target).attr("formnovalidate") !== undefined ) {
-					validator.cancelSubmit = true;
-				}
-			});
-
-			// validate the form on submit
-			this.submit( function( event ) {
-				if ( validator.settings.debug ) {
-					// prevent form submit to be able to see console output
-					event.preventDefault();
-				}
-				function handle() {
-					var hidden;
-					if ( validator.settings.submitHandler ) {
-						if ( validator.submitButton ) {
-							// insert a hidden input as a replacement for the missing submit button
-							hidden = $("<input type='hidden'/>").attr("name", validator.submitButton.name).val( $(validator.submitButton).val() ).appendTo(validator.currentForm);
-						}
-						validator.settings.submitHandler.call( validator, validator.currentForm, event );
-						if ( validator.submitButton ) {
-							// and clean up afterwards; thanks to no-block-scope, hidden can be referenced
-							hidden.remove();
-						}
-						return false;
-					}
-					return true;
-				}
-
-				// prevent submit for invalid forms or custom submit handlers
-				if ( validator.cancelSubmit ) {
-					validator.cancelSubmit = false;
-					return handle();
-				}
-				if ( validator.form() ) {
-					if ( validator.pendingRequest ) {
-						validator.formSubmitted = true;
-						return false;
-					}
-					return handle();
-				} else {
-					validator.focusInvalid();
-					return false;
-				}
-			});
-		}
-
-		return validator;
-	},
-	// http://jqueryvalidation.org/valid/
-	valid: function() {
-		if ( $(this[0]).is("form")) {
-			return this.validate().form();
-		} else {
-			var valid = true;
-			var validator = $(this[0].form).validate();
-			this.each(function() {
-				valid = valid && validator.element(this);
-			});
-			return valid;
-		}
-	},
-	// attributes: space separated list of attributes to retrieve and remove
-	removeAttrs: function( attributes ) {
-		var result = {},
-			$element = this;
-		$.each(attributes.split(/\s/), function( index, value ) {
-			result[value] = $element.attr(value);
-			$element.removeAttr(value);
-		});
-		return result;
-	},
-	// http://jqueryvalidation.org/rules/
-	rules: function( command, argument ) {
-		var element = this[0];
-
-		if ( command ) {
-			var settings = $.data(element.form, "validator").settings;
-			var staticRules = settings.rules;
-			var existingRules = $.validator.staticRules(element);
-			switch(command) {
-			case "add":
-				$.extend(existingRules, $.validator.normalizeRule(argument));
-				// remove messages from rules, but allow them to be set separetely
-				delete existingRules.messages;
-				staticRules[element.name] = existingRules;
-				if ( argument.messages ) {
-					settings.messages[element.name] = $.extend( settings.messages[element.name], argument.messages );
-				}
-				break;
-			case "remove":
-				if ( !argument ) {
-					delete staticRules[element.name];
-					return existingRules;
-				}
-				var filtered = {};
-				$.each(argument.split(/\s/), function( index, method ) {
-					filtered[method] = existingRules[method];
-					delete existingRules[method];
-				});
-				return filtered;
-			}
-		}
-
-		var data = $.validator.normalizeRules(
-		$.extend(
-			{},
-			$.validator.classRules(element),
-			$.validator.attributeRules(element),
-			$.validator.dataRules(element),
-			$.validator.staticRules(element)
-		), element);
-
-		// make sure required is at front
-		if ( data.required ) {
-			var param = data.required;
-			delete data.required;
-			data = $.extend({required: param}, data);
-		}
-
-		return data;
-	}
-});
-
-// Custom selectors
-$.extend($.expr[":"], {
-	// http://jqueryvalidation.org/blank-selector/
-	blank: function( a ) { return !$.trim("" + $(a).val()); },
-	// http://jqueryvalidation.org/filled-selector/
-	filled: function( a ) { return !!$.trim("" + $(a).val()); },
-	// http://jqueryvalidation.org/unchecked-selector/
-	unchecked: function( a ) { return !$(a).prop("checked"); }
-});
-
-// constructor for validator
-$.validator = function( options, form ) {
-	this.settings = $.extend( true, {}, $.validator.defaults, options );
-	this.currentForm = form;
-	this.init();
-};
-
-// http://jqueryvalidation.org/jQuery.validator.format/
-$.validator.format = function( source, params ) {
-	if ( arguments.length === 1 ) {
-		return function() {
-			var args = $.makeArray(arguments);
-			args.unshift(source);
-			return $.validator.format.apply( this, args );
-		};
-	}
-	if ( arguments.length > 2 && params.constructor !== Array  ) {
-		params = $.makeArray(arguments).slice(1);
-	}
-	if ( params.constructor !== Array ) {
-		params = [ params ];
-	}
-	$.each(params, function( i, n ) {
-		source = source.replace( new RegExp("\\{" + i + "\\}", "g"), function() {
-			return n;
-		});
-	});
-	return source;
-};
-
-$.extend($.validator, {
-
-	defaults: {
-		messages: {},
-		groups: {},
-		rules: {},
-		errorClass: "error",
-		validClass: "valid",
-		errorElement: "label",
-		focusInvalid: true,
-		errorContainer: $([]),
-		errorLabelContainer: $([]),
-		onsubmit: true,
-		ignore: ":hidden",
-		ignoreTitle: false,
-		onfocusin: function( element, event ) {
-			this.lastActive = element;
-
-			// hide error label and remove error class on focus if enabled
-			if ( this.settings.focusCleanup && !this.blockFocusCleanup ) {
-				if ( this.settings.unhighlight ) {
-					this.settings.unhighlight.call( this, element, this.settings.errorClass, this.settings.validClass );
-				}
-				this.addWrapper(this.errorsFor(element)).hide();
-			}
-		},
-		onfocusout: function( element, event ) {
-			if ( !this.checkable(element) && (element.name in this.submitted || !this.optional(element)) ) {
-				this.element(element);
-			}
-		},
-		onkeyup: function( element, event ) {
-			if ( event.which === 9 && this.elementValue(element) === "" ) {
-				return;
-			} else if ( element.name in this.submitted || element === this.lastElement ) {
-				this.element(element);
-			}
-		},
-		onclick: function( element, event ) {
-			// click on selects, radiobuttons and checkboxes
-			if ( element.name in this.submitted ) {
-				this.element(element);
-			}
-			// or option elements, check parent select in that case
-			else if ( element.parentNode.name in this.submitted ) {
-				this.element(element.parentNode);
-			}
-		},
-		highlight: function( element, errorClass, validClass ) {
-			if ( element.type === "radio" ) {
-				this.findByName(element.name).addClass(errorClass).removeClass(validClass);
-			} else {
-				$(element).addClass(errorClass).removeClass(validClass);
-			}
-		},
-		unhighlight: function( element, errorClass, validClass ) {
-			if ( element.type === "radio" ) {
-				this.findByName(element.name).removeClass(errorClass).addClass(validClass);
-			} else {
-				$(element).removeClass(errorClass).addClass(validClass);
-			}
-		}
-	},
-
-	// http://jqueryvalidation.org/jQuery.validator.setDefaults/
-	setDefaults: function( settings ) {
-		$.extend( $.validator.defaults, settings );
-	},
-
-	messages: {
-		required: "This field is required.",
-		remote: "Please fix this field.",
-		email: "Please enter a valid email address.",
-		url: "Please enter a valid URL.",
-		date: "Please enter a valid date.",
-		dateISO: "Please enter a valid date (ISO).",
-		number: "Please enter a valid number.",
-		digits: "Please enter only digits.",
-		creditcard: "Please enter a valid credit card number.",
-		equalTo: "Please enter the same value again.",
-		maxlength: $.validator.format("Please enter no more than {0} characters."),
-		minlength: $.validator.format("Please enter at least {0} characters."),
-		rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
-		range: $.validator.format("Please enter a value between {0} and {1}."),
-		max: $.validator.format("Please enter a value less than or equal to {0}."),
-		min: $.validator.format("Please enter a value greater than or equal to {0}.")
-	},
-
-	autoCreateRanges: false,
-
-	prototype: {
-
-		init: function() {
-			this.labelContainer = $(this.settings.errorLabelContainer);
-			this.errorContext = this.labelContainer.length && this.labelContainer || $(this.currentForm);
-			this.containers = $(this.settings.errorContainer).add( this.settings.errorLabelContainer );
-			this.submitted = {};
-			this.valueCache = {};
-			this.pendingRequest = 0;
-			this.pending = {};
-			this.invalid = {};
-			this.reset();
-
-			var groups = (this.groups = {});
-			$.each(this.settings.groups, function( key, value ) {
-				if ( typeof value === "string" ) {
-					value = value.split(/\s/);
-				}
-				$.each(value, function( index, name ) {
-					groups[name] = key;
-				});
-			});
-			var rules = this.settings.rules;
-			$.each(rules, function( key, value ) {
-				rules[key] = $.validator.normalizeRule(value);
-			});
-
-			function delegate(event) {
-				var validator = $.data(this[0].form, "validator"),
-					eventType = "on" + event.type.replace(/^validate/, "");
-				if ( validator.settings[eventType] ) {
-					validator.settings[eventType].call(validator, this[0], event);
-				}
-			}
-			$(this.currentForm)
-				.validateDelegate(":text, [type='password'], [type='file'], select, textarea, " +
-					"[type='number'], [type='search'] ,[type='tel'], [type='url'], " +
-					"[type='email'], [type='datetime'], [type='date'], [type='month'], " +
-					"[type='week'], [type='time'], [type='datetime-local'], " +
-					"[type='range'], [type='color'] ",
-					"focusin focusout keyup", delegate)
-				.validateDelegate("[type='radio'], [type='checkbox'], select, option", "click", delegate);
-
-			if ( this.settings.invalidHandler ) {
-				$(this.currentForm).bind("invalid-form.validate", this.settings.invalidHandler);
-			}
-		},
-
-		// http://jqueryvalidation.org/Validator.form/
-		form: function() {
-			this.checkForm();
-			$.extend(this.submitted, this.errorMap);
-			this.invalid = $.extend({}, this.errorMap);
-			if ( !this.valid() ) {
-				$(this.currentForm).triggerHandler("invalid-form", [this]);
-			}
-			this.showErrors();
-			return this.valid();
-		},
-
-		checkForm: function() {
-			this.prepareForm();
-			for ( var i = 0, elements = (this.currentElements = this.elements()); elements[i]; i++ ) {
-				this.check( elements[i] );
-			}
-			return this.valid();
-		},
-
-		// http://jqueryvalidation.org/Validator.element/
-		element: function( element ) {
-			element = this.validationTargetFor( this.clean( element ) );
-			this.lastElement = element;
-			this.prepareElement( element );
-			this.currentElements = $(element);
-			var result = this.check( element ) !== false;
-			if ( result ) {
-				delete this.invalid[element.name];
-			} else {
-				this.invalid[element.name] = true;
-			}
-			if ( !this.numberOfInvalids() ) {
-				// Hide error containers on last error
-				this.toHide = this.toHide.add( this.containers );
-			}
-			this.showErrors();
-			return result;
-		},
-
-		// http://jqueryvalidation.org/Validator.showErrors/
-		showErrors: function( errors ) {
-			if ( errors ) {
-				// add items to error list and map
-				$.extend( this.errorMap, errors );
-				this.errorList = [];
-				for ( var name in errors ) {
-					this.errorList.push({
-						message: errors[name],
-						element: this.findByName(name)[0]
-					});
-				}
-				// remove items from success list
-				this.successList = $.grep( this.successList, function( element ) {
-					return !(element.name in errors);
-				});
-			}
-			if ( this.settings.showErrors ) {
-				this.settings.showErrors.call( this, this.errorMap, this.errorList );
-			} else {
-				this.defaultShowErrors();
-			}
-		},
-
-		// http://jqueryvalidation.org/Validator.resetForm/
-		resetForm: function() {
-			if ( $.fn.resetForm ) {
-				$(this.currentForm).resetForm();
-			}
-			this.submitted = {};
-			this.lastElement = null;
-			this.prepareForm();
-			this.hideErrors();
-			this.elements().removeClass( this.settings.errorClass ).removeData( "previousValue" );
-		},
-
-		numberOfInvalids: function() {
-			return this.objectLength(this.invalid);
-		},
-
-		objectLength: function( obj ) {
-			var count = 0;
-			for ( var i in obj ) {
-				count++;
-			}
-			return count;
-		},
-
-		hideErrors: function() {
-			this.addWrapper( this.toHide ).hide();
-		},
-
-		valid: function() {
-			return this.size() === 0;
-		},
-
-		size: function() {
-			return this.errorList.length;
-		},
-
-		focusInvalid: function() {
-			if ( this.settings.focusInvalid ) {
-				try {
-					$(this.findLastActive() || this.errorList.length && this.errorList[0].element || [])
-					.filter(":visible")
-					.focus()
-					// manually trigger focusin event; without it, focusin handler isn't called, findLastActive won't have anything to find
-					.trigger("focusin");
-				} catch(e) {
-					// ignore IE throwing errors when focusing hidden elements
-				}
-			}
-		},
-
-		findLastActive: function() {
-			var lastActive = this.lastActive;
-			return lastActive && $.grep(this.errorList, function( n ) {
-				return n.element.name === lastActive.name;
-			}).length === 1 && lastActive;
-		},
-
-		elements: function() {
-			var validator = this,
-				rulesCache = {};
-
-			// select all valid inputs inside the form (no submit or reset buttons)
-			return $(this.currentForm)
-			.find("input, select, textarea")
-			.not(":submit, :reset, :image, [disabled]")
-			.not( this.settings.ignore )
-			.filter(function() {
-				if ( !this.name && validator.settings.debug && window.console ) {
-					console.error( "%o has no name assigned", this);
-				}
-
-				// select only the first element for each name, and only those with rules specified
-				if ( this.name in rulesCache || !validator.objectLength($(this).rules()) ) {
-					return false;
-				}
-
-				rulesCache[this.name] = true;
-				return true;
-			});
-		},
-
-		clean: function( selector ) {
-			return $(selector)[0];
-		},
-
-		errors: function() {
-			var errorClass = this.settings.errorClass.replace(" ", ".");
-			return $(this.settings.errorElement + "." + errorClass, this.errorContext);
-		},
-
-		reset: function() {
-			this.successList = [];
-			this.errorList = [];
-			this.errorMap = {};
-			this.toShow = $([]);
-			this.toHide = $([]);
-			this.currentElements = $([]);
-		},
-
-		prepareForm: function() {
-			this.reset();
-			this.toHide = this.errors().add( this.containers );
-		},
-
-		prepareElement: function( element ) {
-			this.reset();
-			this.toHide = this.errorsFor(element);
-		},
-
-		elementValue: function( element ) {
-			var type = $(element).attr("type"),
-				val = $(element).val();
-
-			if ( type === "radio" || type === "checkbox" ) {
-				return $("input[name='" + $(element).attr("name") + "']:checked").val();
-			}
-
-			if ( typeof val === "string" ) {
-				return val.replace(/\r/g, "");
-			}
-			return val;
-		},
-
-		check: function( element ) {
-			element = this.validationTargetFor( this.clean( element ) );
-
-			var rules = $(element).rules();
-			var dependencyMismatch = false;
-			var val = this.elementValue(element);
-			var result;
-
-			for (var method in rules ) {
-				var rule = { method: method, parameters: rules[method] };
-				try {
-
-					result = $.validator.methods[method].call( this, val, element, rule.parameters );
-
-					// if a method indicates that the field is optional and therefore valid,
-					// don't mark it as valid when there are no other rules
-					if ( result === "dependency-mismatch" ) {
-						dependencyMismatch = true;
-						continue;
-					}
-					dependencyMismatch = false;
-
-					if ( result === "pending" ) {
-						this.toHide = this.toHide.not( this.errorsFor(element) );
-						return;
-					}
-
-					if ( !result ) {
-						this.formatAndAdd( element, rule );
-						return false;
-					}
-				} catch(e) {
-					if ( this.settings.debug && window.console ) {
-						console.log( "Exception occurred when checking element " + element.id + ", check the '" + rule.method + "' method.", e );
-					}
-					throw e;
-				}
-			}
-			if ( dependencyMismatch ) {
-				return;
-			}
-			if ( this.objectLength(rules) ) {
-				this.successList.push(element);
-			}
-			return true;
-		},
-
-		// return the custom message for the given element and validation method
-		// specified in the element's HTML5 data attribute
-		customDataMessage: function( element, method ) {
-			return $(element).data("msg-" + method.toLowerCase()) || (element.attributes && $(element).attr("data-msg-" + method.toLowerCase()));
-		},
-
-		// return the custom message for the given element name and validation method
-		customMessage: function( name, method ) {
-			var m = this.settings.messages[name];
-			return m && (m.constructor === String ? m : m[method]);
-		},
-
-		// return the first defined argument, allowing empty strings
-		findDefined: function() {
-			for(var i = 0; i < arguments.length; i++) {
-				if ( arguments[i] !== undefined ) {
-					return arguments[i];
-				}
-			}
-			return undefined;
-		},
-
-		defaultMessage: function( element, method ) {
-			return this.findDefined(
-				this.customMessage( element.name, method ),
-				this.customDataMessage( element, method ),
-				// title is never undefined, so handle empty string as undefined
-				!this.settings.ignoreTitle && element.title || undefined,
-				$.validator.messages[method],
-				"<strong>Warning: No message defined for " + element.name + "</strong>"
-			);
-		},
-
-		formatAndAdd: function( element, rule ) {
-			var message = this.defaultMessage( element, rule.method ),
-				theregex = /\$?\{(\d+)\}/g;
-			if ( typeof message === "function" ) {
-				message = message.call(this, rule.parameters, element);
-			} else if (theregex.test(message)) {
-				message = $.validator.format(message.replace(theregex, "{$1}"), rule.parameters);
-			}
-			this.errorList.push({
-				message: message,
-				element: element
-			});
-
-			this.errorMap[element.name] = message;
-			this.submitted[element.name] = message;
-		},
-
-		addWrapper: function( toToggle ) {
-			if ( this.settings.wrapper ) {
-				toToggle = toToggle.add( toToggle.parent( this.settings.wrapper ) );
-			}
-			return toToggle;
-		},
-
-		defaultShowErrors: function() {
-			var i, elements;
-			for ( i = 0; this.errorList[i]; i++ ) {
-				var error = this.errorList[i];
-				if ( this.settings.highlight ) {
-					this.settings.highlight.call( this, error.element, this.settings.errorClass, this.settings.validClass );
-				}
-				this.showLabel( error.element, error.message );
-			}
-			if ( this.errorList.length ) {
-				this.toShow = this.toShow.add( this.containers );
-			}
-			if ( this.settings.success ) {
-				for ( i = 0; this.successList[i]; i++ ) {
-					this.showLabel( this.successList[i] );
-				}
-			}
-			if ( this.settings.unhighlight ) {
-				for ( i = 0, elements = this.validElements(); elements[i]; i++ ) {
-					this.settings.unhighlight.call( this, elements[i], this.settings.errorClass, this.settings.validClass );
-				}
-			}
-			this.toHide = this.toHide.not( this.toShow );
-			this.hideErrors();
-			this.addWrapper( this.toShow ).show();
-		},
-
-		validElements: function() {
-			return this.currentElements.not(this.invalidElements());
-		},
-
-		invalidElements: function() {
-			return $(this.errorList).map(function() {
-				return this.element;
-			});
-		},
-
-		showLabel: function( element, message ) {
-			var label = this.errorsFor( element );
-			if ( label.length ) {
-				// refresh error/success class
-				label.removeClass( this.settings.validClass ).addClass( this.settings.errorClass );
-				// replace message on existing label
-				label.html(message);
-			} else {
-				// create label
-				label = $("<" + this.settings.errorElement + ">")
-					.attr("for", this.idOrName(element))
-					.addClass(this.settings.errorClass)
-					.html(message || "");
-				if ( this.settings.wrapper ) {
-					// make sure the element is visible, even in IE
-					// actually showing the wrapped element is handled elsewhere
-					label = label.hide().show().wrap("<" + this.settings.wrapper + "/>").parent();
-				}
-				if ( !this.labelContainer.append(label).length ) {
-					if ( this.settings.errorPlacement ) {
-						this.settings.errorPlacement(label, $(element) );
-					} else {
-						label.insertAfter(element);
-					}
-				}
-			}
-			if ( !message && this.settings.success ) {
-				label.text("");
-				if ( typeof this.settings.success === "string" ) {
-					label.addClass( this.settings.success );
-				} else {
-					this.settings.success( label, element );
-				}
-			}
-			this.toShow = this.toShow.add(label);
-		},
-
-		errorsFor: function( element ) {
-			var name = this.idOrName(element);
-			return this.errors().filter(function() {
-				return $(this).attr("for") === name;
-			});
-		},
-
-		idOrName: function( element ) {
-			return this.groups[element.name] || (this.checkable(element) ? element.name : element.id || element.name);
-		},
-
-		validationTargetFor: function( element ) {
-			// if radio/checkbox, validate first element in group instead
-			if ( this.checkable(element) ) {
-				element = this.findByName( element.name ).not(this.settings.ignore)[0];
-			}
-			return element;
-		},
-
-		checkable: function( element ) {
-			return (/radio|checkbox/i).test(element.type);
-		},
-
-		findByName: function( name ) {
-			return $(this.currentForm).find("[name='" + name + "']");
-		},
-
-		getLength: function( value, element ) {
-			switch( element.nodeName.toLowerCase() ) {
-			case "select":
-				return $("option:selected", element).length;
-			case "input":
-				if ( this.checkable( element) ) {
-					return this.findByName(element.name).filter(":checked").length;
-				}
-			}
-			return value.length;
-		},
-
-		depend: function( param, element ) {
-			return this.dependTypes[typeof param] ? this.dependTypes[typeof param](param, element) : true;
-		},
-
-		dependTypes: {
-			"boolean": function( param, element ) {
-				return param;
-			},
-			"string": function( param, element ) {
-				return !!$(param, element.form).length;
-			},
-			"function": function( param, element ) {
-				return param(element);
-			}
-		},
-
-		optional: function( element ) {
-			var val = this.elementValue(element);
-			return !$.validator.methods.required.call(this, val, element) && "dependency-mismatch";
-		},
-
-		startRequest: function( element ) {
-			if ( !this.pending[element.name] ) {
-				this.pendingRequest++;
-				this.pending[element.name] = true;
-			}
-		},
-
-		stopRequest: function( element, valid ) {
-			this.pendingRequest--;
-			// sometimes synchronization fails, make sure pendingRequest is never < 0
-			if ( this.pendingRequest < 0 ) {
-				this.pendingRequest = 0;
-			}
-			delete this.pending[element.name];
-			if ( valid && this.pendingRequest === 0 && this.formSubmitted && this.form() ) {
-				$(this.currentForm).submit();
-				this.formSubmitted = false;
-			} else if (!valid && this.pendingRequest === 0 && this.formSubmitted) {
-				$(this.currentForm).triggerHandler("invalid-form", [this]);
-				this.formSubmitted = false;
-			}
-		},
-
-		previousValue: function( element ) {
-			return $.data(element, "previousValue") || $.data(element, "previousValue", {
-				old: null,
-				valid: true,
-				message: this.defaultMessage( element, "remote" )
-			});
-		}
-
-	},
-
-	classRuleSettings: {
-		required: {required: true},
-		email: {email: true},
-		url: {url: true},
-		date: {date: true},
-		dateISO: {dateISO: true},
-		number: {number: true},
-		digits: {digits: true},
-		creditcard: {creditcard: true}
-	},
-
-	addClassRules: function( className, rules ) {
-		if ( className.constructor === String ) {
-			this.classRuleSettings[className] = rules;
-		} else {
-			$.extend(this.classRuleSettings, className);
-		}
-	},
-
-	classRules: function( element ) {
-		var rules = {};
-		var classes = $(element).attr("class");
-		if ( classes ) {
-			$.each(classes.split(" "), function() {
-				if ( this in $.validator.classRuleSettings ) {
-					$.extend(rules, $.validator.classRuleSettings[this]);
-				}
-			});
-		}
-		return rules;
-	},
-
-	attributeRules: function( element ) {
-		var rules = {};
-		var $element = $(element);
-		var type = $element[0].getAttribute("type");
-
-		for (var method in $.validator.methods) {
-			var value;
-
-			// support for <input required> in both html5 and older browsers
-			if ( method === "required" ) {
-				value = $element.get(0).getAttribute(method);
-				// Some browsers return an empty string for the required attribute
-				// and non-HTML5 browsers might have required="" markup
-				if ( value === "" ) {
-					value = true;
-				}
-				// force non-HTML5 browsers to return bool
-				value = !!value;
-			} else {
-				value = $element.attr(method);
-			}
-
-			// convert the value to a number for number inputs, and for text for backwards compability
-			// allows type="date" and others to be compared as strings
-			if ( /min|max/.test( method ) && ( type === null || /number|range|text/.test( type ) ) ) {
-				value = Number(value);
-			}
-
-			if ( value ) {
-				rules[method] = value;
-			} else if ( type === method && type !== 'range' ) {
-				// exception: the jquery validate 'range' method
-				// does not test for the html5 'range' type
-				rules[method] = true;
-			}
-		}
-
-		// maxlength may be returned as -1, 2147483647 (IE) and 524288 (safari) for text inputs
-		if ( rules.maxlength && /-1|2147483647|524288/.test(rules.maxlength) ) {
-			delete rules.maxlength;
-		}
-
-		return rules;
-	},
-
-	dataRules: function( element ) {
-		var method, value,
-			rules = {}, $element = $(element);
-		for (method in $.validator.methods) {
-			value = $element.data("rule-" + method.toLowerCase());
-			if ( value !== undefined ) {
-				rules[method] = value;
-			}
-		}
-		return rules;
-	},
-
-	staticRules: function( element ) {
-		var rules = {};
-		var validator = $.data(element.form, "validator");
-		if ( validator.settings.rules ) {
-			rules = $.validator.normalizeRule(validator.settings.rules[element.name]) || {};
-		}
-		return rules;
-	},
-
-	normalizeRules: function( rules, element ) {
-		// handle dependency check
-		$.each(rules, function( prop, val ) {
-			// ignore rule when param is explicitly false, eg. required:false
-			if ( val === false ) {
-				delete rules[prop];
-				return;
-			}
-			if ( val.param || val.depends ) {
-				var keepRule = true;
-				switch (typeof val.depends) {
-				case "string":
-					keepRule = !!$(val.depends, element.form).length;
-					break;
-				case "function":
-					keepRule = val.depends.call(element, element);
-					break;
-				}
-				if ( keepRule ) {
-					rules[prop] = val.param !== undefined ? val.param : true;
-				} else {
-					delete rules[prop];
-				}
-			}
-		});
-
-		// evaluate parameters
-		$.each(rules, function( rule, parameter ) {
-			rules[rule] = $.isFunction(parameter) ? parameter(element) : parameter;
-		});
-
-		// clean number parameters
-		$.each(['minlength', 'maxlength'], function() {
-			if ( rules[this] ) {
-				rules[this] = Number(rules[this]);
-			}
-		});
-		$.each(['rangelength', 'range'], function() {
-			var parts;
-			if ( rules[this] ) {
-				if ( $.isArray(rules[this]) ) {
-					rules[this] = [Number(rules[this][0]), Number(rules[this][1])];
-				} else if ( typeof rules[this] === "string" ) {
-					parts = rules[this].split(/[\s,]+/);
-					rules[this] = [Number(parts[0]), Number(parts[1])];
-				}
-			}
-		});
-
-		if ( $.validator.autoCreateRanges ) {
-			// auto-create ranges
-			if ( rules.min && rules.max ) {
-				rules.range = [rules.min, rules.max];
-				delete rules.min;
-				delete rules.max;
-			}
-			if ( rules.minlength && rules.maxlength ) {
-				rules.rangelength = [rules.minlength, rules.maxlength];
-				delete rules.minlength;
-				delete rules.maxlength;
-			}
-		}
-
-		return rules;
-	},
-
-	// Converts a simple string to a {string: true} rule, e.g., "required" to {required:true}
-	normalizeRule: function( data ) {
-		if ( typeof data === "string" ) {
-			var transformed = {};
-			$.each(data.split(/\s/), function() {
-				transformed[this] = true;
-			});
-			data = transformed;
-		}
-		return data;
-	},
-
-	// http://jqueryvalidation.org/jQuery.validator.addMethod/
-	addMethod: function( name, method, message ) {
-		$.validator.methods[name] = method;
-		$.validator.messages[name] = message !== undefined ? message : $.validator.messages[name];
-		if ( method.length < 3 ) {
-			$.validator.addClassRules(name, $.validator.normalizeRule(name));
-		}
-	},
-
-	methods: {
-
-		// http://jqueryvalidation.org/required-method/
-		required: function( value, element, param ) {
-			// check if dependency is met
-			if ( !this.depend(param, element) ) {
-				return "dependency-mismatch";
-			}
-			if ( element.nodeName.toLowerCase() === "select" ) {
-				// could be an array for select-multiple or a string, both are fine this way
-				var val = $(element).val();
-				return val && val.length > 0;
-			}
-			if ( this.checkable(element) ) {
-				return this.getLength(value, element) > 0;
-			}
-			return $.trim(value).length > 0;
-		},
-
-		// http://jqueryvalidation.org/email-method/
-		email: function( value, element ) {
-			// contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
-			return this.optional(element) || /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i.test(value);
-		},
-
-		// http://jqueryvalidation.org/url-method/
-		url: function( value, element ) {
-			// contributed by Scott Gonzalez: http://projects.scottsplayground.com/iri/
-			return this.optional(element) || /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
-		},
-
-		// http://jqueryvalidation.org/date-method/
-		date: function( value, element ) {
-			return this.optional(element) || !/Invalid|NaN/.test(new Date(value).toString());
-		},
-
-		// http://jqueryvalidation.org/dateISO-method/
-		dateISO: function( value, element ) {
-			return this.optional(element) || /^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/.test(value);
-		},
-
-		// http://jqueryvalidation.org/number-method/
-		number: function( value, element ) {
-			return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(value);
-		},
-
-		// http://jqueryvalidation.org/digits-method/
-		digits: function( value, element ) {
-			return this.optional(element) || /^\d+$/.test(value);
-		},
-
-		// http://jqueryvalidation.org/creditcard-method/
-		// based on http://en.wikipedia.org/wiki/Luhn/
-		creditcard: function( value, element ) {
-			if ( this.optional(element) ) {
-				return "dependency-mismatch";
-			}
-			// accept only spaces, digits and dashes
-			if ( /[^0-9 \-]+/.test(value) ) {
-				return false;
-			}
-			var nCheck = 0,
-				nDigit = 0,
-				bEven = false;
-
-			value = value.replace(/\D/g, "");
-
-			for (var n = value.length - 1; n >= 0; n--) {
-				var cDigit = value.charAt(n);
-				nDigit = parseInt(cDigit, 10);
-				if ( bEven ) {
-					if ( (nDigit *= 2) > 9 ) {
-						nDigit -= 9;
-					}
-				}
-				nCheck += nDigit;
-				bEven = !bEven;
-			}
-
-			return (nCheck % 10) === 0;
-		},
-
-		// http://jqueryvalidation.org/minlength-method/
-		minlength: function( value, element, param ) {
-			var length = $.isArray( value ) ? value.length : this.getLength($.trim(value), element);
-			return this.optional(element) || length >= param;
-		},
-
-		// http://jqueryvalidation.org/maxlength-method/
-		maxlength: function( value, element, param ) {
-			var length = $.isArray( value ) ? value.length : this.getLength($.trim(value), element);
-			return this.optional(element) || length <= param;
-		},
-
-		// http://jqueryvalidation.org/rangelength-method/
-		rangelength: function( value, element, param ) {
-			var length = $.isArray( value ) ? value.length : this.getLength($.trim(value), element);
-			return this.optional(element) || ( length >= param[0] && length <= param[1] );
-		},
-
-		// http://jqueryvalidation.org/min-method/
-		min: function( value, element, param ) {
-			return this.optional(element) || value >= param;
-		},
-
-		// http://jqueryvalidation.org/max-method/
-		max: function( value, element, param ) {
-			return this.optional(element) || value <= param;
-		},
-
-		// http://jqueryvalidation.org/range-method/
-		range: function( value, element, param ) {
-			return this.optional(element) || ( value >= param[0] && value <= param[1] );
-		},
-
-		// http://jqueryvalidation.org/equalTo-method/
-		equalTo: function( value, element, param ) {
-			// bind to the blur event of the target in order to revalidate whenever the target field is updated
-			// TODO find a way to bind the event just once, avoiding the unbind-rebind overhead
-			var target = $(param);
-			if ( this.settings.onfocusout ) {
-				target.unbind(".validate-equalTo").bind("blur.validate-equalTo", function() {
-					$(element).valid();
-				});
-			}
-			return value === target.val();
-		},
-
-		// http://jqueryvalidation.org/remote-method/
-		remote: function( value, element, param ) {
-			if ( this.optional(element) ) {
-				return "dependency-mismatch";
-			}
-
-			var previous = this.previousValue(element);
-			if (!this.settings.messages[element.name] ) {
-				this.settings.messages[element.name] = {};
-			}
-			previous.originalMessage = this.settings.messages[element.name].remote;
-			this.settings.messages[element.name].remote = previous.message;
-
-			param = typeof param === "string" && {url:param} || param;
-
-			if ( previous.old === value ) {
-				return previous.valid;
-			}
-
-			previous.old = value;
-			var validator = this;
-			this.startRequest(element);
-			var data = {};
-			data[element.name] = value;
-			$.ajax($.extend(true, {
-				url: param,
-				mode: "abort",
-				port: "validate" + element.name,
-				dataType: "json",
-				data: data,
-				success: function( response ) {
-					validator.settings.messages[element.name].remote = previous.originalMessage;
-					var valid = response === true || response === "true";
-					if ( valid ) {
-						var submitted = validator.formSubmitted;
-						validator.prepareElement(element);
-						validator.formSubmitted = submitted;
-						validator.successList.push(element);
-						delete validator.invalid[element.name];
-						validator.showErrors();
-					} else {
-						var errors = {};
-						var message = response || validator.defaultMessage( element, "remote" );
-						errors[element.name] = previous.message = $.isFunction(message) ? message(value) : message;
-						validator.invalid[element.name] = true;
-						validator.showErrors(errors);
-					}
-					previous.valid = valid;
-					validator.stopRequest(element, valid);
-				}
-			}, param));
-			return "pending";
-		}
-
-	}
-
-});
-
-// deprecated, use $.validator.format instead
-$.format = $.validator.format;
-
-}(jQuery));
-
-// ajax mode: abort
-// usage: $.ajax({ mode: "abort"[, port: "uniqueport"]});
-// if mode:"abort" is used, the previous request on that port (port can be undefined) is aborted via XMLHttpRequest.abort()
-(function($) {
-	var pendingRequests = {};
-	// Use a prefilter if available (1.5+)
-	if ( $.ajaxPrefilter ) {
-		$.ajaxPrefilter(function( settings, _, xhr ) {
-			var port = settings.port;
-			if ( settings.mode === "abort" ) {
-				if ( pendingRequests[port] ) {
-					pendingRequests[port].abort();
-				}
-				pendingRequests[port] = xhr;
-			}
-		});
-	} else {
-		// Proxy ajax
-		var ajax = $.ajax;
-		$.ajax = function( settings ) {
-			var mode = ( "mode" in settings ? settings : $.ajaxSettings ).mode,
-				port = ( "port" in settings ? settings : $.ajaxSettings ).port;
-			if ( mode === "abort" ) {
-				if ( pendingRequests[port] ) {
-					pendingRequests[port].abort();
-				}
-				pendingRequests[port] = ajax.apply(this, arguments);
-				return pendingRequests[port];
-			}
-			return ajax.apply(this, arguments);
-		};
-	}
-}(jQuery));
-
-// provides delegate(type: String, delegate: Selector, handler: Callback) plugin for easier event delegation
-// handler is only called when $(event.target).is(delegate), in the scope of the jquery-object for event.target
-(function($) {
-	$.extend($.fn, {
-		validateDelegate: function( delegate, type, handler ) {
-			return this.bind(type, function( event ) {
-				var target = $(event.target);
-				if ( target.is(delegate) ) {
-					return handler.apply(target, arguments);
-				}
-			});
-		}
-	});
-}(jQuery));
-
-;// Source: src/js/vendor/jquery-plugins/jquery.validateDelegate.js
-// provides delegate(type: String, delegate: Selector, handler: Callback) plugin for easier event delegation
-// handler is only called when $(event.target).is(delegate), in the scope of the jquery-object for event.target
-(function($) {
-        $.extend($.fn, {
-                validateDelegate: function( delegate, type, handler ) {
-                        return this.bind(type, function( event ) {
-                                var target = $(event.target);
-                                if ( target.is(delegate) ) {
-                                        return handler.apply(target, arguments);
-                                }
-                        });
-                }
-        });
-}(jQuery));/*
- */
-
-
-
-;// Source: src/js/vendor/xregexp/xregexp.js
 /*!
  * XRegExp v2.0.0
  * (c) 2007-2012 Steven Levithan <http://xregexp.com/>
@@ -1886,6 +20,8 @@ var XRegExp;
 
 // Avoid running twice; that would reset tokens and could break references to native globals
 XRegExp = XRegExp || (function (undef) {
+    "use strict";
+
 /*--------------------------------------
  *  Private variables
  *------------------------------------*/
@@ -3131,7 +1267,8 @@ XRegExp = XRegExp || (function (undef) {
 }());
 
 
-;// Source: src/js/vendor/xregexp/xregexp-unicode-base.js
+/***** unicode-base.js *****/
+
 /*!
  * XRegExp Unicode Base v1.0.0
  * (c) 2008-2012 Steven Levithan <http://xregexp.com/>
@@ -3147,7 +1284,9 @@ XRegExp = XRegExp || (function (undef) {
  * @requires XRegExp
  */
 (function (XRegExp) {
-var unicode = {};
+    "use strict";
+
+    var unicode = {};
 
 /*--------------------------------------
  *  Private helper functions
@@ -3283,7 +1422,8 @@ var unicode = {};
 }(XRegExp));
 
 
-;// Source: src/js/vendor/xregexp/xregexp-unicode-categories.js
+/***** unicode-categories.js *****/
+
 /*!
  * XRegExp Unicode Categories v1.2.0
  * (c) 2010-2012 Steven Levithan <http://xregexp.com/>
@@ -3298,7 +1438,9 @@ var unicode = {};
  * @requires XRegExp, XRegExp Unicode Base
  */
 (function (XRegExp) {
-if (!XRegExp.addUnicodePackage) {
+    "use strict";
+
+    if (!XRegExp.addUnicodePackage) {
         throw new ReferenceError("Unicode Base must be loaded before Unicode Categories");
     }
 
@@ -3380,6 +1522,786 @@ if (!XRegExp.addUnicodePackage) {
         Co: "Private_Use",
         Cs: "Surrogate",
         Cn: "Unassigned"
+    });
+
+}(XRegExp));
+
+
+/***** unicode-scripts.js *****/
+
+/*!
+ * XRegExp Unicode Scripts v1.2.0
+ * (c) 2010-2012 Steven Levithan <http://xregexp.com/>
+ * MIT License
+ * Uses Unicode 6.1 <http://unicode.org/>
+ */
+
+/**
+ * Adds support for all Unicode scripts in the Basic Multilingual Plane (U+0000-U+FFFF).
+ * E.g., `\p{Latin}`. Token names are case insensitive, and any spaces, hyphens, and underscores
+ * are ignored.
+ * @requires XRegExp, XRegExp Unicode Base
+ */
+(function (XRegExp) {
+    "use strict";
+
+    if (!XRegExp.addUnicodePackage) {
+        throw new ReferenceError("Unicode Base must be loaded before Unicode Scripts");
+    }
+
+    XRegExp.install("extensibility");
+
+    XRegExp.addUnicodePackage({
+        Arabic: "0600-06040606-060B060D-061A061E0620-063F0641-064A0656-065E066A-066F0671-06DC06DE-06FF0750-077F08A008A2-08AC08E4-08FEFB50-FBC1FBD3-FD3DFD50-FD8FFD92-FDC7FDF0-FDFCFE70-FE74FE76-FEFC",
+        Armenian: "0531-05560559-055F0561-0587058A058FFB13-FB17",
+        Balinese: "1B00-1B4B1B50-1B7C",
+        Bamum: "A6A0-A6F7",
+        Batak: "1BC0-1BF31BFC-1BFF",
+        Bengali: "0981-09830985-098C098F09900993-09A809AA-09B009B209B6-09B909BC-09C409C709C809CB-09CE09D709DC09DD09DF-09E309E6-09FB",
+        Bopomofo: "02EA02EB3105-312D31A0-31BA",
+        Braille: "2800-28FF",
+        Buginese: "1A00-1A1B1A1E1A1F",
+        Buhid: "1740-1753",
+        Canadian_Aboriginal: "1400-167F18B0-18F5",
+        Cham: "AA00-AA36AA40-AA4DAA50-AA59AA5C-AA5F",
+        Cherokee: "13A0-13F4",
+        Common: "0000-0040005B-0060007B-00A900AB-00B900BB-00BF00D700F702B9-02DF02E5-02E902EC-02FF0374037E038503870589060C061B061F06400660-066906DD096409650E3F0FD5-0FD810FB16EB-16ED173517361802180318051CD31CE11CE9-1CEC1CEE-1CF31CF51CF62000-200B200E-2064206A-20702074-207E2080-208E20A0-20B92100-21252127-2129212C-21312133-214D214F-215F21892190-23F32400-24262440-244A2460-26FF2701-27FF2900-2B4C2B50-2B592E00-2E3B2FF0-2FFB3000-300430063008-30203030-3037303C-303F309B309C30A030FB30FC3190-319F31C0-31E33220-325F327F-32CF3358-33FF4DC0-4DFFA700-A721A788-A78AA830-A839FD3EFD3FFDFDFE10-FE19FE30-FE52FE54-FE66FE68-FE6BFEFFFF01-FF20FF3B-FF40FF5B-FF65FF70FF9EFF9FFFE0-FFE6FFE8-FFEEFFF9-FFFD",
+        Coptic: "03E2-03EF2C80-2CF32CF9-2CFF",
+        Cyrillic: "0400-04840487-05271D2B1D782DE0-2DFFA640-A697A69F",
+        Devanagari: "0900-09500953-09630966-09770979-097FA8E0-A8FB",
+        Ethiopic: "1200-1248124A-124D1250-12561258125A-125D1260-1288128A-128D1290-12B012B2-12B512B8-12BE12C012C2-12C512C8-12D612D8-13101312-13151318-135A135D-137C1380-13992D80-2D962DA0-2DA62DA8-2DAE2DB0-2DB62DB8-2DBE2DC0-2DC62DC8-2DCE2DD0-2DD62DD8-2DDEAB01-AB06AB09-AB0EAB11-AB16AB20-AB26AB28-AB2E",
+        Georgian: "10A0-10C510C710CD10D0-10FA10FC-10FF2D00-2D252D272D2D",
+        Glagolitic: "2C00-2C2E2C30-2C5E",
+        Greek: "0370-03730375-0377037A-037D038403860388-038A038C038E-03A103A3-03E103F0-03FF1D26-1D2A1D5D-1D611D66-1D6A1DBF1F00-1F151F18-1F1D1F20-1F451F48-1F4D1F50-1F571F591F5B1F5D1F5F-1F7D1F80-1FB41FB6-1FC41FC6-1FD31FD6-1FDB1FDD-1FEF1FF2-1FF41FF6-1FFE2126",
+        Gujarati: "0A81-0A830A85-0A8D0A8F-0A910A93-0AA80AAA-0AB00AB20AB30AB5-0AB90ABC-0AC50AC7-0AC90ACB-0ACD0AD00AE0-0AE30AE6-0AF1",
+        Gurmukhi: "0A01-0A030A05-0A0A0A0F0A100A13-0A280A2A-0A300A320A330A350A360A380A390A3C0A3E-0A420A470A480A4B-0A4D0A510A59-0A5C0A5E0A66-0A75",
+        Han: "2E80-2E992E9B-2EF32F00-2FD5300530073021-30293038-303B3400-4DB54E00-9FCCF900-FA6DFA70-FAD9",
+        Hangul: "1100-11FF302E302F3131-318E3200-321E3260-327EA960-A97CAC00-D7A3D7B0-D7C6D7CB-D7FBFFA0-FFBEFFC2-FFC7FFCA-FFCFFFD2-FFD7FFDA-FFDC",
+        Hanunoo: "1720-1734",
+        Hebrew: "0591-05C705D0-05EA05F0-05F4FB1D-FB36FB38-FB3CFB3EFB40FB41FB43FB44FB46-FB4F",
+        Hiragana: "3041-3096309D-309F",
+        Inherited: "0300-036F04850486064B-0655065F0670095109521CD0-1CD21CD4-1CE01CE2-1CE81CED1CF41DC0-1DE61DFC-1DFF200C200D20D0-20F0302A-302D3099309AFE00-FE0FFE20-FE26",
+        Javanese: "A980-A9CDA9CF-A9D9A9DEA9DF",
+        Kannada: "0C820C830C85-0C8C0C8E-0C900C92-0CA80CAA-0CB30CB5-0CB90CBC-0CC40CC6-0CC80CCA-0CCD0CD50CD60CDE0CE0-0CE30CE6-0CEF0CF10CF2",
+        Katakana: "30A1-30FA30FD-30FF31F0-31FF32D0-32FE3300-3357FF66-FF6FFF71-FF9D",
+        Kayah_Li: "A900-A92F",
+        Khmer: "1780-17DD17E0-17E917F0-17F919E0-19FF",
+        Lao: "0E810E820E840E870E880E8A0E8D0E94-0E970E99-0E9F0EA1-0EA30EA50EA70EAA0EAB0EAD-0EB90EBB-0EBD0EC0-0EC40EC60EC8-0ECD0ED0-0ED90EDC-0EDF",
+        Latin: "0041-005A0061-007A00AA00BA00C0-00D600D8-00F600F8-02B802E0-02E41D00-1D251D2C-1D5C1D62-1D651D6B-1D771D79-1DBE1E00-1EFF2071207F2090-209C212A212B2132214E2160-21882C60-2C7FA722-A787A78B-A78EA790-A793A7A0-A7AAA7F8-A7FFFB00-FB06FF21-FF3AFF41-FF5A",
+        Lepcha: "1C00-1C371C3B-1C491C4D-1C4F",
+        Limbu: "1900-191C1920-192B1930-193B19401944-194F",
+        Lisu: "A4D0-A4FF",
+        Malayalam: "0D020D030D05-0D0C0D0E-0D100D12-0D3A0D3D-0D440D46-0D480D4A-0D4E0D570D60-0D630D66-0D750D79-0D7F",
+        Mandaic: "0840-085B085E",
+        Meetei_Mayek: "AAE0-AAF6ABC0-ABEDABF0-ABF9",
+        Mongolian: "1800180118041806-180E1810-18191820-18771880-18AA",
+        Myanmar: "1000-109FAA60-AA7B",
+        New_Tai_Lue: "1980-19AB19B0-19C919D0-19DA19DE19DF",
+        Nko: "07C0-07FA",
+        Ogham: "1680-169C",
+        Ol_Chiki: "1C50-1C7F",
+        Oriya: "0B01-0B030B05-0B0C0B0F0B100B13-0B280B2A-0B300B320B330B35-0B390B3C-0B440B470B480B4B-0B4D0B560B570B5C0B5D0B5F-0B630B66-0B77",
+        Phags_Pa: "A840-A877",
+        Rejang: "A930-A953A95F",
+        Runic: "16A0-16EA16EE-16F0",
+        Samaritan: "0800-082D0830-083E",
+        Saurashtra: "A880-A8C4A8CE-A8D9",
+        Sinhala: "0D820D830D85-0D960D9A-0DB10DB3-0DBB0DBD0DC0-0DC60DCA0DCF-0DD40DD60DD8-0DDF0DF2-0DF4",
+        Sundanese: "1B80-1BBF1CC0-1CC7",
+        Syloti_Nagri: "A800-A82B",
+        Syriac: "0700-070D070F-074A074D-074F",
+        Tagalog: "1700-170C170E-1714",
+        Tagbanwa: "1760-176C176E-177017721773",
+        Tai_Le: "1950-196D1970-1974",
+        Tai_Tham: "1A20-1A5E1A60-1A7C1A7F-1A891A90-1A991AA0-1AAD",
+        Tai_Viet: "AA80-AAC2AADB-AADF",
+        Tamil: "0B820B830B85-0B8A0B8E-0B900B92-0B950B990B9A0B9C0B9E0B9F0BA30BA40BA8-0BAA0BAE-0BB90BBE-0BC20BC6-0BC80BCA-0BCD0BD00BD70BE6-0BFA",
+        Telugu: "0C01-0C030C05-0C0C0C0E-0C100C12-0C280C2A-0C330C35-0C390C3D-0C440C46-0C480C4A-0C4D0C550C560C580C590C60-0C630C66-0C6F0C78-0C7F",
+        Thaana: "0780-07B1",
+        Thai: "0E01-0E3A0E40-0E5B",
+        Tibetan: "0F00-0F470F49-0F6C0F71-0F970F99-0FBC0FBE-0FCC0FCE-0FD40FD90FDA",
+        Tifinagh: "2D30-2D672D6F2D702D7F",
+        Vai: "A500-A62B",
+        Yi: "A000-A48CA490-A4C6"
+    });
+
+}(XRegExp));
+
+
+/***** unicode-blocks.js *****/
+
+/*!
+ * XRegExp Unicode Blocks v1.2.0
+ * (c) 2010-2012 Steven Levithan <http://xregexp.com/>
+ * MIT License
+ * Uses Unicode 6.1 <http://unicode.org/>
+ */
+
+/**
+ * Adds support for all Unicode blocks in the Basic Multilingual Plane (U+0000-U+FFFF). Unicode
+ * blocks use the prefix "In". E.g., `\p{InBasicLatin}`. Token names are case insensitive, and any
+ * spaces, hyphens, and underscores are ignored.
+ * @requires XRegExp, XRegExp Unicode Base
+ */
+(function (XRegExp) {
+    "use strict";
+
+    if (!XRegExp.addUnicodePackage) {
+        throw new ReferenceError("Unicode Base must be loaded before Unicode Blocks");
+    }
+
+    XRegExp.install("extensibility");
+
+    XRegExp.addUnicodePackage({
+        InBasic_Latin: "0000-007F",
+        InLatin_1_Supplement: "0080-00FF",
+        InLatin_Extended_A: "0100-017F",
+        InLatin_Extended_B: "0180-024F",
+        InIPA_Extensions: "0250-02AF",
+        InSpacing_Modifier_Letters: "02B0-02FF",
+        InCombining_Diacritical_Marks: "0300-036F",
+        InGreek_and_Coptic: "0370-03FF",
+        InCyrillic: "0400-04FF",
+        InCyrillic_Supplement: "0500-052F",
+        InArmenian: "0530-058F",
+        InHebrew: "0590-05FF",
+        InArabic: "0600-06FF",
+        InSyriac: "0700-074F",
+        InArabic_Supplement: "0750-077F",
+        InThaana: "0780-07BF",
+        InNKo: "07C0-07FF",
+        InSamaritan: "0800-083F",
+        InMandaic: "0840-085F",
+        InArabic_Extended_A: "08A0-08FF",
+        InDevanagari: "0900-097F",
+        InBengali: "0980-09FF",
+        InGurmukhi: "0A00-0A7F",
+        InGujarati: "0A80-0AFF",
+        InOriya: "0B00-0B7F",
+        InTamil: "0B80-0BFF",
+        InTelugu: "0C00-0C7F",
+        InKannada: "0C80-0CFF",
+        InMalayalam: "0D00-0D7F",
+        InSinhala: "0D80-0DFF",
+        InThai: "0E00-0E7F",
+        InLao: "0E80-0EFF",
+        InTibetan: "0F00-0FFF",
+        InMyanmar: "1000-109F",
+        InGeorgian: "10A0-10FF",
+        InHangul_Jamo: "1100-11FF",
+        InEthiopic: "1200-137F",
+        InEthiopic_Supplement: "1380-139F",
+        InCherokee: "13A0-13FF",
+        InUnified_Canadian_Aboriginal_Syllabics: "1400-167F",
+        InOgham: "1680-169F",
+        InRunic: "16A0-16FF",
+        InTagalog: "1700-171F",
+        InHanunoo: "1720-173F",
+        InBuhid: "1740-175F",
+        InTagbanwa: "1760-177F",
+        InKhmer: "1780-17FF",
+        InMongolian: "1800-18AF",
+        InUnified_Canadian_Aboriginal_Syllabics_Extended: "18B0-18FF",
+        InLimbu: "1900-194F",
+        InTai_Le: "1950-197F",
+        InNew_Tai_Lue: "1980-19DF",
+        InKhmer_Symbols: "19E0-19FF",
+        InBuginese: "1A00-1A1F",
+        InTai_Tham: "1A20-1AAF",
+        InBalinese: "1B00-1B7F",
+        InSundanese: "1B80-1BBF",
+        InBatak: "1BC0-1BFF",
+        InLepcha: "1C00-1C4F",
+        InOl_Chiki: "1C50-1C7F",
+        InSundanese_Supplement: "1CC0-1CCF",
+        InVedic_Extensions: "1CD0-1CFF",
+        InPhonetic_Extensions: "1D00-1D7F",
+        InPhonetic_Extensions_Supplement: "1D80-1DBF",
+        InCombining_Diacritical_Marks_Supplement: "1DC0-1DFF",
+        InLatin_Extended_Additional: "1E00-1EFF",
+        InGreek_Extended: "1F00-1FFF",
+        InGeneral_Punctuation: "2000-206F",
+        InSuperscripts_and_Subscripts: "2070-209F",
+        InCurrency_Symbols: "20A0-20CF",
+        InCombining_Diacritical_Marks_for_Symbols: "20D0-20FF",
+        InLetterlike_Symbols: "2100-214F",
+        InNumber_Forms: "2150-218F",
+        InArrows: "2190-21FF",
+        InMathematical_Operators: "2200-22FF",
+        InMiscellaneous_Technical: "2300-23FF",
+        InControl_Pictures: "2400-243F",
+        InOptical_Character_Recognition: "2440-245F",
+        InEnclosed_Alphanumerics: "2460-24FF",
+        InBox_Drawing: "2500-257F",
+        InBlock_Elements: "2580-259F",
+        InGeometric_Shapes: "25A0-25FF",
+        InMiscellaneous_Symbols: "2600-26FF",
+        InDingbats: "2700-27BF",
+        InMiscellaneous_Mathematical_Symbols_A: "27C0-27EF",
+        InSupplemental_Arrows_A: "27F0-27FF",
+        InBraille_Patterns: "2800-28FF",
+        InSupplemental_Arrows_B: "2900-297F",
+        InMiscellaneous_Mathematical_Symbols_B: "2980-29FF",
+        InSupplemental_Mathematical_Operators: "2A00-2AFF",
+        InMiscellaneous_Symbols_and_Arrows: "2B00-2BFF",
+        InGlagolitic: "2C00-2C5F",
+        InLatin_Extended_C: "2C60-2C7F",
+        InCoptic: "2C80-2CFF",
+        InGeorgian_Supplement: "2D00-2D2F",
+        InTifinagh: "2D30-2D7F",
+        InEthiopic_Extended: "2D80-2DDF",
+        InCyrillic_Extended_A: "2DE0-2DFF",
+        InSupplemental_Punctuation: "2E00-2E7F",
+        InCJK_Radicals_Supplement: "2E80-2EFF",
+        InKangxi_Radicals: "2F00-2FDF",
+        InIdeographic_Description_Characters: "2FF0-2FFF",
+        InCJK_Symbols_and_Punctuation: "3000-303F",
+        InHiragana: "3040-309F",
+        InKatakana: "30A0-30FF",
+        InBopomofo: "3100-312F",
+        InHangul_Compatibility_Jamo: "3130-318F",
+        InKanbun: "3190-319F",
+        InBopomofo_Extended: "31A0-31BF",
+        InCJK_Strokes: "31C0-31EF",
+        InKatakana_Phonetic_Extensions: "31F0-31FF",
+        InEnclosed_CJK_Letters_and_Months: "3200-32FF",
+        InCJK_Compatibility: "3300-33FF",
+        InCJK_Unified_Ideographs_Extension_A: "3400-4DBF",
+        InYijing_Hexagram_Symbols: "4DC0-4DFF",
+        InCJK_Unified_Ideographs: "4E00-9FFF",
+        InYi_Syllables: "A000-A48F",
+        InYi_Radicals: "A490-A4CF",
+        InLisu: "A4D0-A4FF",
+        InVai: "A500-A63F",
+        InCyrillic_Extended_B: "A640-A69F",
+        InBamum: "A6A0-A6FF",
+        InModifier_Tone_Letters: "A700-A71F",
+        InLatin_Extended_D: "A720-A7FF",
+        InSyloti_Nagri: "A800-A82F",
+        InCommon_Indic_Number_Forms: "A830-A83F",
+        InPhags_pa: "A840-A87F",
+        InSaurashtra: "A880-A8DF",
+        InDevanagari_Extended: "A8E0-A8FF",
+        InKayah_Li: "A900-A92F",
+        InRejang: "A930-A95F",
+        InHangul_Jamo_Extended_A: "A960-A97F",
+        InJavanese: "A980-A9DF",
+        InCham: "AA00-AA5F",
+        InMyanmar_Extended_A: "AA60-AA7F",
+        InTai_Viet: "AA80-AADF",
+        InMeetei_Mayek_Extensions: "AAE0-AAFF",
+        InEthiopic_Extended_A: "AB00-AB2F",
+        InMeetei_Mayek: "ABC0-ABFF",
+        InHangul_Syllables: "AC00-D7AF",
+        InHangul_Jamo_Extended_B: "D7B0-D7FF",
+        InHigh_Surrogates: "D800-DB7F",
+        InHigh_Private_Use_Surrogates: "DB80-DBFF",
+        InLow_Surrogates: "DC00-DFFF",
+        InPrivate_Use_Area: "E000-F8FF",
+        InCJK_Compatibility_Ideographs: "F900-FAFF",
+        InAlphabetic_Presentation_Forms: "FB00-FB4F",
+        InArabic_Presentation_Forms_A: "FB50-FDFF",
+        InVariation_Selectors: "FE00-FE0F",
+        InVertical_Forms: "FE10-FE1F",
+        InCombining_Half_Marks: "FE20-FE2F",
+        InCJK_Compatibility_Forms: "FE30-FE4F",
+        InSmall_Form_Variants: "FE50-FE6F",
+        InArabic_Presentation_Forms_B: "FE70-FEFF",
+        InHalfwidth_and_Fullwidth_Forms: "FF00-FFEF",
+        InSpecials: "FFF0-FFFF"
+    });
+
+}(XRegExp));
+
+
+/***** unicode-properties.js *****/
+
+/*!
+ * XRegExp Unicode Properties v1.0.0
+ * (c) 2012 Steven Levithan <http://xregexp.com/>
+ * MIT License
+ * Uses Unicode 6.1 <http://unicode.org/>
+ */
+
+/**
+ * Adds Unicode properties necessary to meet Level 1 Unicode support (detailed in UTS#18 RL1.2).
+ * Includes code points from the Basic Multilingual Plane (U+0000-U+FFFF) only. Token names are
+ * case insensitive, and any spaces, hyphens, and underscores are ignored.
+ * @requires XRegExp, XRegExp Unicode Base
+ */
+(function (XRegExp) {
+    "use strict";
+
+    if (!XRegExp.addUnicodePackage) {
+        throw new ReferenceError("Unicode Base must be loaded before Unicode Properties");
+    }
+
+    XRegExp.install("extensibility");
+
+    XRegExp.addUnicodePackage({
+        Alphabetic: "0041-005A0061-007A00AA00B500BA00C0-00D600D8-00F600F8-02C102C6-02D102E0-02E402EC02EE03450370-037403760377037A-037D03860388-038A038C038E-03A103A3-03F503F7-0481048A-05270531-055605590561-058705B0-05BD05BF05C105C205C405C505C705D0-05EA05F0-05F20610-061A0620-06570659-065F066E-06D306D5-06DC06E1-06E806ED-06EF06FA-06FC06FF0710-073F074D-07B107CA-07EA07F407F507FA0800-0817081A-082C0840-085808A008A2-08AC08E4-08E908F0-08FE0900-093B093D-094C094E-09500955-09630971-09770979-097F0981-09830985-098C098F09900993-09A809AA-09B009B209B6-09B909BD-09C409C709C809CB09CC09CE09D709DC09DD09DF-09E309F009F10A01-0A030A05-0A0A0A0F0A100A13-0A280A2A-0A300A320A330A350A360A380A390A3E-0A420A470A480A4B0A4C0A510A59-0A5C0A5E0A70-0A750A81-0A830A85-0A8D0A8F-0A910A93-0AA80AAA-0AB00AB20AB30AB5-0AB90ABD-0AC50AC7-0AC90ACB0ACC0AD00AE0-0AE30B01-0B030B05-0B0C0B0F0B100B13-0B280B2A-0B300B320B330B35-0B390B3D-0B440B470B480B4B0B4C0B560B570B5C0B5D0B5F-0B630B710B820B830B85-0B8A0B8E-0B900B92-0B950B990B9A0B9C0B9E0B9F0BA30BA40BA8-0BAA0BAE-0BB90BBE-0BC20BC6-0BC80BCA-0BCC0BD00BD70C01-0C030C05-0C0C0C0E-0C100C12-0C280C2A-0C330C35-0C390C3D-0C440C46-0C480C4A-0C4C0C550C560C580C590C60-0C630C820C830C85-0C8C0C8E-0C900C92-0CA80CAA-0CB30CB5-0CB90CBD-0CC40CC6-0CC80CCA-0CCC0CD50CD60CDE0CE0-0CE30CF10CF20D020D030D05-0D0C0D0E-0D100D12-0D3A0D3D-0D440D46-0D480D4A-0D4C0D4E0D570D60-0D630D7A-0D7F0D820D830D85-0D960D9A-0DB10DB3-0DBB0DBD0DC0-0DC60DCF-0DD40DD60DD8-0DDF0DF20DF30E01-0E3A0E40-0E460E4D0E810E820E840E870E880E8A0E8D0E94-0E970E99-0E9F0EA1-0EA30EA50EA70EAA0EAB0EAD-0EB90EBB-0EBD0EC0-0EC40EC60ECD0EDC-0EDF0F000F40-0F470F49-0F6C0F71-0F810F88-0F970F99-0FBC1000-10361038103B-103F1050-10621065-1068106E-1086108E109C109D10A0-10C510C710CD10D0-10FA10FC-1248124A-124D1250-12561258125A-125D1260-1288128A-128D1290-12B012B2-12B512B8-12BE12C012C2-12C512C8-12D612D8-13101312-13151318-135A135F1380-138F13A0-13F41401-166C166F-167F1681-169A16A0-16EA16EE-16F01700-170C170E-17131720-17331740-17531760-176C176E-1770177217731780-17B317B6-17C817D717DC1820-18771880-18AA18B0-18F51900-191C1920-192B1930-19381950-196D1970-19741980-19AB19B0-19C91A00-1A1B1A20-1A5E1A61-1A741AA71B00-1B331B35-1B431B45-1B4B1B80-1BA91BAC-1BAF1BBA-1BE51BE7-1BF11C00-1C351C4D-1C4F1C5A-1C7D1CE9-1CEC1CEE-1CF31CF51CF61D00-1DBF1E00-1F151F18-1F1D1F20-1F451F48-1F4D1F50-1F571F591F5B1F5D1F5F-1F7D1F80-1FB41FB6-1FBC1FBE1FC2-1FC41FC6-1FCC1FD0-1FD31FD6-1FDB1FE0-1FEC1FF2-1FF41FF6-1FFC2071207F2090-209C21022107210A-211321152119-211D212421262128212A-212D212F-2139213C-213F2145-2149214E2160-218824B6-24E92C00-2C2E2C30-2C5E2C60-2CE42CEB-2CEE2CF22CF32D00-2D252D272D2D2D30-2D672D6F2D80-2D962DA0-2DA62DA8-2DAE2DB0-2DB62DB8-2DBE2DC0-2DC62DC8-2DCE2DD0-2DD62DD8-2DDE2DE0-2DFF2E2F3005-30073021-30293031-30353038-303C3041-3096309D-309F30A1-30FA30FC-30FF3105-312D3131-318E31A0-31BA31F0-31FF3400-4DB54E00-9FCCA000-A48CA4D0-A4FDA500-A60CA610-A61FA62AA62BA640-A66EA674-A67BA67F-A697A69F-A6EFA717-A71FA722-A788A78B-A78EA790-A793A7A0-A7AAA7F8-A801A803-A805A807-A80AA80C-A827A840-A873A880-A8C3A8F2-A8F7A8FBA90A-A92AA930-A952A960-A97CA980-A9B2A9B4-A9BFA9CFAA00-AA36AA40-AA4DAA60-AA76AA7AAA80-AABEAAC0AAC2AADB-AADDAAE0-AAEFAAF2-AAF5AB01-AB06AB09-AB0EAB11-AB16AB20-AB26AB28-AB2EABC0-ABEAAC00-D7A3D7B0-D7C6D7CB-D7FBF900-FA6DFA70-FAD9FB00-FB06FB13-FB17FB1D-FB28FB2A-FB36FB38-FB3CFB3EFB40FB41FB43FB44FB46-FBB1FBD3-FD3DFD50-FD8FFD92-FDC7FDF0-FDFBFE70-FE74FE76-FEFCFF21-FF3AFF41-FF5AFF66-FFBEFFC2-FFC7FFCA-FFCFFFD2-FFD7FFDA-FFDC",
+        Uppercase: "0041-005A00C0-00D600D8-00DE01000102010401060108010A010C010E01100112011401160118011A011C011E01200122012401260128012A012C012E01300132013401360139013B013D013F0141014301450147014A014C014E01500152015401560158015A015C015E01600162016401660168016A016C016E017001720174017601780179017B017D018101820184018601870189-018B018E-0191019301940196-0198019C019D019F01A001A201A401A601A701A901AC01AE01AF01B1-01B301B501B701B801BC01C401C701CA01CD01CF01D101D301D501D701D901DB01DE01E001E201E401E601E801EA01EC01EE01F101F401F6-01F801FA01FC01FE02000202020402060208020A020C020E02100212021402160218021A021C021E02200222022402260228022A022C022E02300232023A023B023D023E02410243-02460248024A024C024E03700372037603860388-038A038C038E038F0391-03A103A3-03AB03CF03D2-03D403D803DA03DC03DE03E003E203E403E603E803EA03EC03EE03F403F703F903FA03FD-042F04600462046404660468046A046C046E04700472047404760478047A047C047E0480048A048C048E04900492049404960498049A049C049E04A004A204A404A604A804AA04AC04AE04B004B204B404B604B804BA04BC04BE04C004C104C304C504C704C904CB04CD04D004D204D404D604D804DA04DC04DE04E004E204E404E604E804EA04EC04EE04F004F204F404F604F804FA04FC04FE05000502050405060508050A050C050E05100512051405160518051A051C051E05200522052405260531-055610A0-10C510C710CD1E001E021E041E061E081E0A1E0C1E0E1E101E121E141E161E181E1A1E1C1E1E1E201E221E241E261E281E2A1E2C1E2E1E301E321E341E361E381E3A1E3C1E3E1E401E421E441E461E481E4A1E4C1E4E1E501E521E541E561E581E5A1E5C1E5E1E601E621E641E661E681E6A1E6C1E6E1E701E721E741E761E781E7A1E7C1E7E1E801E821E841E861E881E8A1E8C1E8E1E901E921E941E9E1EA01EA21EA41EA61EA81EAA1EAC1EAE1EB01EB21EB41EB61EB81EBA1EBC1EBE1EC01EC21EC41EC61EC81ECA1ECC1ECE1ED01ED21ED41ED61ED81EDA1EDC1EDE1EE01EE21EE41EE61EE81EEA1EEC1EEE1EF01EF21EF41EF61EF81EFA1EFC1EFE1F08-1F0F1F18-1F1D1F28-1F2F1F38-1F3F1F48-1F4D1F591F5B1F5D1F5F1F68-1F6F1FB8-1FBB1FC8-1FCB1FD8-1FDB1FE8-1FEC1FF8-1FFB21022107210B-210D2110-211221152119-211D212421262128212A-212D2130-2133213E213F21452160-216F218324B6-24CF2C00-2C2E2C602C62-2C642C672C692C6B2C6D-2C702C722C752C7E-2C802C822C842C862C882C8A2C8C2C8E2C902C922C942C962C982C9A2C9C2C9E2CA02CA22CA42CA62CA82CAA2CAC2CAE2CB02CB22CB42CB62CB82CBA2CBC2CBE2CC02CC22CC42CC62CC82CCA2CCC2CCE2CD02CD22CD42CD62CD82CDA2CDC2CDE2CE02CE22CEB2CED2CF2A640A642A644A646A648A64AA64CA64EA650A652A654A656A658A65AA65CA65EA660A662A664A666A668A66AA66CA680A682A684A686A688A68AA68CA68EA690A692A694A696A722A724A726A728A72AA72CA72EA732A734A736A738A73AA73CA73EA740A742A744A746A748A74AA74CA74EA750A752A754A756A758A75AA75CA75EA760A762A764A766A768A76AA76CA76EA779A77BA77DA77EA780A782A784A786A78BA78DA790A792A7A0A7A2A7A4A7A6A7A8A7AAFF21-FF3A",
+        Lowercase: "0061-007A00AA00B500BA00DF-00F600F8-00FF01010103010501070109010B010D010F01110113011501170119011B011D011F01210123012501270129012B012D012F01310133013501370138013A013C013E014001420144014601480149014B014D014F01510153015501570159015B015D015F01610163016501670169016B016D016F0171017301750177017A017C017E-0180018301850188018C018D019201950199-019B019E01A101A301A501A801AA01AB01AD01B001B401B601B901BA01BD-01BF01C601C901CC01CE01D001D201D401D601D801DA01DC01DD01DF01E101E301E501E701E901EB01ED01EF01F001F301F501F901FB01FD01FF02010203020502070209020B020D020F02110213021502170219021B021D021F02210223022502270229022B022D022F02310233-0239023C023F0240024202470249024B024D024F-02930295-02B802C002C102E0-02E40345037103730377037A-037D039003AC-03CE03D003D103D5-03D703D903DB03DD03DF03E103E303E503E703E903EB03ED03EF-03F303F503F803FB03FC0430-045F04610463046504670469046B046D046F04710473047504770479047B047D047F0481048B048D048F04910493049504970499049B049D049F04A104A304A504A704A904AB04AD04AF04B104B304B504B704B904BB04BD04BF04C204C404C604C804CA04CC04CE04CF04D104D304D504D704D904DB04DD04DF04E104E304E504E704E904EB04ED04EF04F104F304F504F704F904FB04FD04FF05010503050505070509050B050D050F05110513051505170519051B051D051F05210523052505270561-05871D00-1DBF1E011E031E051E071E091E0B1E0D1E0F1E111E131E151E171E191E1B1E1D1E1F1E211E231E251E271E291E2B1E2D1E2F1E311E331E351E371E391E3B1E3D1E3F1E411E431E451E471E491E4B1E4D1E4F1E511E531E551E571E591E5B1E5D1E5F1E611E631E651E671E691E6B1E6D1E6F1E711E731E751E771E791E7B1E7D1E7F1E811E831E851E871E891E8B1E8D1E8F1E911E931E95-1E9D1E9F1EA11EA31EA51EA71EA91EAB1EAD1EAF1EB11EB31EB51EB71EB91EBB1EBD1EBF1EC11EC31EC51EC71EC91ECB1ECD1ECF1ED11ED31ED51ED71ED91EDB1EDD1EDF1EE11EE31EE51EE71EE91EEB1EED1EEF1EF11EF31EF51EF71EF91EFB1EFD1EFF-1F071F10-1F151F20-1F271F30-1F371F40-1F451F50-1F571F60-1F671F70-1F7D1F80-1F871F90-1F971FA0-1FA71FB0-1FB41FB61FB71FBE1FC2-1FC41FC61FC71FD0-1FD31FD61FD71FE0-1FE71FF2-1FF41FF61FF72071207F2090-209C210A210E210F2113212F21342139213C213D2146-2149214E2170-217F218424D0-24E92C30-2C5E2C612C652C662C682C6A2C6C2C712C732C742C76-2C7D2C812C832C852C872C892C8B2C8D2C8F2C912C932C952C972C992C9B2C9D2C9F2CA12CA32CA52CA72CA92CAB2CAD2CAF2CB12CB32CB52CB72CB92CBB2CBD2CBF2CC12CC32CC52CC72CC92CCB2CCD2CCF2CD12CD32CD52CD72CD92CDB2CDD2CDF2CE12CE32CE42CEC2CEE2CF32D00-2D252D272D2DA641A643A645A647A649A64BA64DA64FA651A653A655A657A659A65BA65DA65FA661A663A665A667A669A66BA66DA681A683A685A687A689A68BA68DA68FA691A693A695A697A723A725A727A729A72BA72DA72F-A731A733A735A737A739A73BA73DA73FA741A743A745A747A749A74BA74DA74FA751A753A755A757A759A75BA75DA75FA761A763A765A767A769A76BA76DA76F-A778A77AA77CA77FA781A783A785A787A78CA78EA791A793A7A1A7A3A7A5A7A7A7A9A7F8-A7FAFB00-FB06FB13-FB17FF41-FF5A",
+        White_Space: "0009-000D0020008500A01680180E2000-200A20282029202F205F3000",
+        Noncharacter_Code_Point: "FDD0-FDEFFFFEFFFF",
+        Default_Ignorable_Code_Point: "00AD034F115F116017B417B5180B-180D200B-200F202A-202E2060-206F3164FE00-FE0FFEFFFFA0FFF0-FFF8",
+        // \p{Any} matches a code unit. To match any code point via surrogate pairs, use (?:[\0-\uD7FF\uDC00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF])
+        Any: "0000-FFFF", // \p{^Any} compiles to [^\u0000-\uFFFF]; [\p{^Any}] to []
+        Ascii: "0000-007F",
+        // \p{Assigned} is equivalent to \p{^Cn}
+        //Assigned: XRegExp("[\\p{^Cn}]").source.replace(/[[\]]|\\u/g, "") // Negation inside a character class triggers inversion
+        Assigned: "0000-0377037A-037E0384-038A038C038E-03A103A3-05270531-05560559-055F0561-05870589058A058F0591-05C705D0-05EA05F0-05F40600-06040606-061B061E-070D070F-074A074D-07B107C0-07FA0800-082D0830-083E0840-085B085E08A008A2-08AC08E4-08FE0900-09770979-097F0981-09830985-098C098F09900993-09A809AA-09B009B209B6-09B909BC-09C409C709C809CB-09CE09D709DC09DD09DF-09E309E6-09FB0A01-0A030A05-0A0A0A0F0A100A13-0A280A2A-0A300A320A330A350A360A380A390A3C0A3E-0A420A470A480A4B-0A4D0A510A59-0A5C0A5E0A66-0A750A81-0A830A85-0A8D0A8F-0A910A93-0AA80AAA-0AB00AB20AB30AB5-0AB90ABC-0AC50AC7-0AC90ACB-0ACD0AD00AE0-0AE30AE6-0AF10B01-0B030B05-0B0C0B0F0B100B13-0B280B2A-0B300B320B330B35-0B390B3C-0B440B470B480B4B-0B4D0B560B570B5C0B5D0B5F-0B630B66-0B770B820B830B85-0B8A0B8E-0B900B92-0B950B990B9A0B9C0B9E0B9F0BA30BA40BA8-0BAA0BAE-0BB90BBE-0BC20BC6-0BC80BCA-0BCD0BD00BD70BE6-0BFA0C01-0C030C05-0C0C0C0E-0C100C12-0C280C2A-0C330C35-0C390C3D-0C440C46-0C480C4A-0C4D0C550C560C580C590C60-0C630C66-0C6F0C78-0C7F0C820C830C85-0C8C0C8E-0C900C92-0CA80CAA-0CB30CB5-0CB90CBC-0CC40CC6-0CC80CCA-0CCD0CD50CD60CDE0CE0-0CE30CE6-0CEF0CF10CF20D020D030D05-0D0C0D0E-0D100D12-0D3A0D3D-0D440D46-0D480D4A-0D4E0D570D60-0D630D66-0D750D79-0D7F0D820D830D85-0D960D9A-0DB10DB3-0DBB0DBD0DC0-0DC60DCA0DCF-0DD40DD60DD8-0DDF0DF2-0DF40E01-0E3A0E3F-0E5B0E810E820E840E870E880E8A0E8D0E94-0E970E99-0E9F0EA1-0EA30EA50EA70EAA0EAB0EAD-0EB90EBB-0EBD0EC0-0EC40EC60EC8-0ECD0ED0-0ED90EDC-0EDF0F00-0F470F49-0F6C0F71-0F970F99-0FBC0FBE-0FCC0FCE-0FDA1000-10C510C710CD10D0-1248124A-124D1250-12561258125A-125D1260-1288128A-128D1290-12B012B2-12B512B8-12BE12C012C2-12C512C8-12D612D8-13101312-13151318-135A135D-137C1380-139913A0-13F41400-169C16A0-16F01700-170C170E-17141720-17361740-17531760-176C176E-1770177217731780-17DD17E0-17E917F0-17F91800-180E1810-18191820-18771880-18AA18B0-18F51900-191C1920-192B1930-193B19401944-196D1970-19741980-19AB19B0-19C919D0-19DA19DE-1A1B1A1E-1A5E1A60-1A7C1A7F-1A891A90-1A991AA0-1AAD1B00-1B4B1B50-1B7C1B80-1BF31BFC-1C371C3B-1C491C4D-1C7F1CC0-1CC71CD0-1CF61D00-1DE61DFC-1F151F18-1F1D1F20-1F451F48-1F4D1F50-1F571F591F5B1F5D1F5F-1F7D1F80-1FB41FB6-1FC41FC6-1FD31FD6-1FDB1FDD-1FEF1FF2-1FF41FF6-1FFE2000-2064206A-20712074-208E2090-209C20A0-20B920D0-20F02100-21892190-23F32400-24262440-244A2460-26FF2701-2B4C2B50-2B592C00-2C2E2C30-2C5E2C60-2CF32CF9-2D252D272D2D2D30-2D672D6F2D702D7F-2D962DA0-2DA62DA8-2DAE2DB0-2DB62DB8-2DBE2DC0-2DC62DC8-2DCE2DD0-2DD62DD8-2DDE2DE0-2E3B2E80-2E992E9B-2EF32F00-2FD52FF0-2FFB3000-303F3041-30963099-30FF3105-312D3131-318E3190-31BA31C0-31E331F0-321E3220-32FE3300-4DB54DC0-9FCCA000-A48CA490-A4C6A4D0-A62BA640-A697A69F-A6F7A700-A78EA790-A793A7A0-A7AAA7F8-A82BA830-A839A840-A877A880-A8C4A8CE-A8D9A8E0-A8FBA900-A953A95F-A97CA980-A9CDA9CF-A9D9A9DEA9DFAA00-AA36AA40-AA4DAA50-AA59AA5C-AA7BAA80-AAC2AADB-AAF6AB01-AB06AB09-AB0EAB11-AB16AB20-AB26AB28-AB2EABC0-ABEDABF0-ABF9AC00-D7A3D7B0-D7C6D7CB-D7FBD800-FA6DFA70-FAD9FB00-FB06FB13-FB17FB1D-FB36FB38-FB3CFB3EFB40FB41FB43FB44FB46-FBC1FBD3-FD3FFD50-FD8FFD92-FDC7FDF0-FDFDFE00-FE19FE20-FE26FE30-FE52FE54-FE66FE68-FE6BFE70-FE74FE76-FEFCFEFFFF01-FFBEFFC2-FFC7FFCA-FFCFFFD2-FFD7FFDA-FFDCFFE0-FFE6FFE8-FFEEFFF9-FFFD"
+    });
+
+}(XRegExp));
+
+
+/***** matchrecursive.js *****/
+
+/*!
+ * XRegExp.matchRecursive v0.2.0
+ * (c) 2009-2012 Steven Levithan <http://xregexp.com/>
+ * MIT License
+ */
+
+(function (XRegExp) {
+    "use strict";
+
+/**
+ * Returns a match detail object composed of the provided values.
+ * @private
+ */
+    function row(value, name, start, end) {
+        return {value:value, name:name, start:start, end:end};
+    }
+
+/**
+ * Returns an array of match strings between outermost left and right delimiters, or an array of
+ * objects with detailed match parts and position data. An error is thrown if delimiters are
+ * unbalanced within the data.
+ * @memberOf XRegExp
+ * @param {String} str String to search.
+ * @param {String} left Left delimiter as an XRegExp pattern.
+ * @param {String} right Right delimiter as an XRegExp pattern.
+ * @param {String} [flags] Flags for the left and right delimiters. Use any of: `gimnsxy`.
+ * @param {Object} [options] Lets you specify `valueNames` and `escapeChar` options.
+ * @returns {Array} Array of matches, or an empty array.
+ * @example
+ *
+ * // Basic usage
+ * var str = '(t((e))s)t()(ing)';
+ * XRegExp.matchRecursive(str, '\\(', '\\)', 'g');
+ * // -> ['t((e))s', '', 'ing']
+ *
+ * // Extended information mode with valueNames
+ * str = 'Here is <div> <div>an</div></div> example';
+ * XRegExp.matchRecursive(str, '<div\\s*>', '</div>', 'gi', {
+ *   valueNames: ['between', 'left', 'match', 'right']
+ * });
+ * // -> [
+ * // {name: 'between', value: 'Here is ',       start: 0,  end: 8},
+ * // {name: 'left',    value: '<div>',          start: 8,  end: 13},
+ * // {name: 'match',   value: ' <div>an</div>', start: 13, end: 27},
+ * // {name: 'right',   value: '</div>',         start: 27, end: 33},
+ * // {name: 'between', value: ' example',       start: 33, end: 41}
+ * // ]
+ *
+ * // Omitting unneeded parts with null valueNames, and using escapeChar
+ * str = '...{1}\\{{function(x,y){return y+x;}}';
+ * XRegExp.matchRecursive(str, '{', '}', 'g', {
+ *   valueNames: ['literal', null, 'value', null],
+ *   escapeChar: '\\'
+ * });
+ * // -> [
+ * // {name: 'literal', value: '...', start: 0, end: 3},
+ * // {name: 'value',   value: '1',   start: 4, end: 5},
+ * // {name: 'literal', value: '\\{', start: 6, end: 8},
+ * // {name: 'value',   value: 'function(x,y){return y+x;}', start: 9, end: 35}
+ * // ]
+ *
+ * // Sticky mode via flag y
+ * str = '<1><<<2>>><3>4<5>';
+ * XRegExp.matchRecursive(str, '<', '>', 'gy');
+ * // -> ['1', '<<2>>', '3']
+ */
+    XRegExp.matchRecursive = function (str, left, right, flags, options) {
+        flags = flags || "";
+        options = options || {};
+        var global = flags.indexOf("g") > -1,
+            sticky = flags.indexOf("y") > -1,
+            basicFlags = flags.replace(/y/g, ""), // Flag y controlled internally
+            escapeChar = options.escapeChar,
+            vN = options.valueNames,
+            output = [],
+            openTokens = 0,
+            delimStart = 0,
+            delimEnd = 0,
+            lastOuterEnd = 0,
+            outerStart,
+            innerStart,
+            leftMatch,
+            rightMatch,
+            esc;
+        left = XRegExp(left, basicFlags);
+        right = XRegExp(right, basicFlags);
+
+        if (escapeChar) {
+            if (escapeChar.length > 1) {
+                throw new SyntaxError("can't use more than one escape character");
+            }
+            escapeChar = XRegExp.escape(escapeChar);
+            // Using XRegExp.union safely rewrites backreferences in `left` and `right`
+            esc = new RegExp(
+                "(?:" + escapeChar + "[\\S\\s]|(?:(?!" + XRegExp.union([left, right]).source + ")[^" + escapeChar + "])+)+",
+                flags.replace(/[^im]+/g, "") // Flags gy not needed here; flags nsx handled by XRegExp
+            );
+        }
+
+        while (true) {
+            // If using an escape character, advance to the delimiter's next starting position,
+            // skipping any escaped characters in between
+            if (escapeChar) {
+                delimEnd += (XRegExp.exec(str, esc, delimEnd, "sticky") || [""])[0].length;
+            }
+            leftMatch = XRegExp.exec(str, left, delimEnd);
+            rightMatch = XRegExp.exec(str, right, delimEnd);
+            // Keep the leftmost match only
+            if (leftMatch && rightMatch) {
+                if (leftMatch.index <= rightMatch.index) {
+                    rightMatch = null;
+                } else {
+                    leftMatch = null;
+                }
+            }
+            /* Paths (LM:leftMatch, RM:rightMatch, OT:openTokens):
+            LM | RM | OT | Result
+            1  | 0  | 1  | loop
+            1  | 0  | 0  | loop
+            0  | 1  | 1  | loop
+            0  | 1  | 0  | throw
+            0  | 0  | 1  | throw
+            0  | 0  | 0  | break
+            * Doesn't include the sticky mode special case
+            * Loop ends after the first completed match if `!global` */
+            if (leftMatch || rightMatch) {
+                delimStart = (leftMatch || rightMatch).index;
+                delimEnd = delimStart + (leftMatch || rightMatch)[0].length;
+            } else if (!openTokens) {
+                break;
+            }
+            if (sticky && !openTokens && delimStart > lastOuterEnd) {
+                break;
+            }
+            if (leftMatch) {
+                if (!openTokens) {
+                    outerStart = delimStart;
+                    innerStart = delimEnd;
+                }
+                ++openTokens;
+            } else if (rightMatch && openTokens) {
+                if (!--openTokens) {
+                    if (vN) {
+                        if (vN[0] && outerStart > lastOuterEnd) {
+                            output.push(row(vN[0], str.slice(lastOuterEnd, outerStart), lastOuterEnd, outerStart));
+                        }
+                        if (vN[1]) {
+                            output.push(row(vN[1], str.slice(outerStart, innerStart), outerStart, innerStart));
+                        }
+                        if (vN[2]) {
+                            output.push(row(vN[2], str.slice(innerStart, delimStart), innerStart, delimStart));
+                        }
+                        if (vN[3]) {
+                            output.push(row(vN[3], str.slice(delimStart, delimEnd), delimStart, delimEnd));
+                        }
+                    } else {
+                        output.push(str.slice(innerStart, delimStart));
+                    }
+                    lastOuterEnd = delimEnd;
+                    if (!global) {
+                        break;
+                    }
+                }
+            } else {
+                throw new Error("string contains unbalanced delimiters");
+            }
+            // If the delimiter matched an empty string, avoid an infinite loop
+            if (delimStart === delimEnd) {
+                ++delimEnd;
+            }
+        }
+
+        if (global && !sticky && vN && vN[0] && str.length > lastOuterEnd) {
+            output.push(row(vN[0], str.slice(lastOuterEnd), lastOuterEnd, str.length));
+        }
+
+        return output;
+    };
+
+}(XRegExp));
+
+
+/***** build.js *****/
+
+/*!
+ * XRegExp.build v0.1.0
+ * (c) 2012 Steven Levithan <http://xregexp.com/>
+ * MIT License
+ * Inspired by RegExp.create by Lea Verou <http://lea.verou.me/>
+ */
+
+(function (XRegExp) {
+    "use strict";
+
+    var subparts = /(\()(?!\?)|\\([1-9]\d*)|\\[\s\S]|\[(?:[^\\\]]|\\[\s\S])*]/g,
+        parts = XRegExp.union([/\({{([\w$]+)}}\)|{{([\w$]+)}}/, subparts], "g");
+
+/**
+ * Strips a leading `^` and trailing unescaped `$`, if both are present.
+ * @private
+ * @param {String} pattern Pattern to process.
+ * @returns {String} Pattern with edge anchors removed.
+ */
+    function deanchor(pattern) {
+        var startAnchor = /^(?:\(\?:\))?\^/, // Leading `^` or `(?:)^` (handles /x cruft)
+            endAnchor = /\$(?:\(\?:\))?$/; // Trailing `$` or `$(?:)` (handles /x cruft)
+        if (endAnchor.test(pattern.replace(/\\[\s\S]/g, ""))) { // Ensure trailing `$` isn't escaped
+            return pattern.replace(startAnchor, "").replace(endAnchor, "");
+        }
+        return pattern;
+    }
+
+/**
+ * Converts the provided value to an XRegExp.
+ * @private
+ * @param {String|RegExp} value Value to convert.
+ * @returns {RegExp} XRegExp object with XRegExp syntax applied.
+ */
+    function asXRegExp(value) {
+        return XRegExp.isRegExp(value) ?
+                (value.xregexp && !value.xregexp.isNative ? value : XRegExp(value.source)) :
+                XRegExp(value);
+    }
+
+/**
+ * Builds regexes using named subpatterns, for readability and pattern reuse. Backreferences in the
+ * outer pattern and provided subpatterns are automatically renumbered to work correctly. Native
+ * flags used by provided subpatterns are ignored in favor of the `flags` argument.
+ * @memberOf XRegExp
+ * @param {String} pattern XRegExp pattern using `{{name}}` for embedded subpatterns. Allows
+ *   `({{name}})` as shorthand for `(?<name>{{name}})`. Patterns cannot be embedded within
+ *   character classes.
+ * @param {Object} subs Lookup object for named subpatterns. Values can be strings or regexes. A
+ *   leading `^` and trailing unescaped `$` are stripped from subpatterns, if both are present.
+ * @param {String} [flags] Any combination of XRegExp flags.
+ * @returns {RegExp} Regex with interpolated subpatterns.
+ * @example
+ *
+ * var time = XRegExp.build('(?x)^ {{hours}} ({{minutes}}) $', {
+ *   hours: XRegExp.build('{{h12}} : | {{h24}}', {
+ *     h12: /1[0-2]|0?[1-9]/,
+ *     h24: /2[0-3]|[01][0-9]/
+ *   }, 'x'),
+ *   minutes: /^[0-5][0-9]$/
+ * });
+ * time.test('10:59'); // -> true
+ * XRegExp.exec('10:59', time).minutes; // -> '59'
+ */
+    XRegExp.build = function (pattern, subs, flags) {
+        var inlineFlags = /^\(\?([\w$]+)\)/.exec(pattern),
+            data = {},
+            numCaps = 0, // Caps is short for captures
+            numPriorCaps,
+            numOuterCaps = 0,
+            outerCapsMap = [0],
+            outerCapNames,
+            sub,
+            p;
+
+        // Add flags within a leading mode modifier to the overall pattern's flags
+        if (inlineFlags) {
+            flags = flags || "";
+            inlineFlags[1].replace(/./g, function (flag) {
+                flags += (flags.indexOf(flag) > -1 ? "" : flag); // Don't add duplicates
+            });
+        }
+
+        for (p in subs) {
+            if (subs.hasOwnProperty(p)) {
+                // Passing to XRegExp enables entended syntax for subpatterns provided as strings
+                // and ensures independent validity, lest an unescaped `(`, `)`, `[`, or trailing
+                // `\` breaks the `(?:)` wrapper. For subpatterns provided as regexes, it dies on
+                // octals and adds the `xregexp` property, for simplicity
+                sub = asXRegExp(subs[p]);
+                // Deanchoring allows embedding independently useful anchored regexes. If you
+                // really need to keep your anchors, double them (i.e., `^^...$$`)
+                data[p] = {pattern: deanchor(sub.source), names: sub.xregexp.captureNames || []};
+            }
+        }
+
+        // Passing to XRegExp dies on octals and ensures the outer pattern is independently valid;
+        // helps keep this simple. Named captures will be put back
+        pattern = asXRegExp(pattern);
+        outerCapNames = pattern.xregexp.captureNames || [];
+        pattern = pattern.source.replace(parts, function ($0, $1, $2, $3, $4) {
+            var subName = $1 || $2, capName, intro;
+            if (subName) { // Named subpattern
+                if (!data.hasOwnProperty(subName)) {
+                    throw new ReferenceError("undefined property " + $0);
+                }
+                if ($1) { // Named subpattern was wrapped in a capturing group
+                    capName = outerCapNames[numOuterCaps];
+                    outerCapsMap[++numOuterCaps] = ++numCaps;
+                    // If it's a named group, preserve the name. Otherwise, use the subpattern name
+                    // as the capture name
+                    intro = "(?<" + (capName || subName) + ">";
+                } else {
+                    intro = "(?:";
+                }
+                numPriorCaps = numCaps;
+                return intro + data[subName].pattern.replace(subparts, function (match, paren, backref) {
+                    if (paren) { // Capturing group
+                        capName = data[subName].names[numCaps - numPriorCaps];
+                        ++numCaps;
+                        if (capName) { // If the current capture has a name, preserve the name
+                            return "(?<" + capName + ">";
+                        }
+                    } else if (backref) { // Backreference
+                        return "\\" + (+backref + numPriorCaps); // Rewrite the backreference
+                    }
+                    return match;
+                }) + ")";
+            }
+            if ($3) { // Capturing group
+                capName = outerCapNames[numOuterCaps];
+                outerCapsMap[++numOuterCaps] = ++numCaps;
+                if (capName) { // If the current capture has a name, preserve the name
+                    return "(?<" + capName + ">";
+                }
+            } else if ($4) { // Backreference
+                return "\\" + outerCapsMap[+$4]; // Rewrite the backreference
+            }
+            return $0;
+        });
+
+        return XRegExp(pattern, flags);
+    };
+
+}(XRegExp));
+
+
+/***** prototypes.js *****/
+
+/*!
+ * XRegExp Prototype Methods v1.0.0
+ * (c) 2012 Steven Levithan <http://xregexp.com/>
+ * MIT License
+ */
+
+/**
+ * Adds a collection of methods to `XRegExp.prototype`. RegExp objects copied by XRegExp are also
+ * augmented with any `XRegExp.prototype` methods. Hence, the following work equivalently:
+ *
+ * XRegExp('[a-z]', 'ig').xexec('abc');
+ * XRegExp(/[a-z]/ig).xexec('abc');
+ * XRegExp.globalize(/[a-z]/i).xexec('abc');
+ */
+(function (XRegExp) {
+    "use strict";
+
+/**
+ * Copy properties of `b` to `a`.
+ * @private
+ * @param {Object} a Object that will receive new properties.
+ * @param {Object} b Object whose properties will be copied.
+ */
+    function extend(a, b) {
+        for (var p in b) {
+            if (b.hasOwnProperty(p)) {
+                a[p] = b[p];
+            }
+        }
+        //return a;
+    }
+
+    extend(XRegExp.prototype, {
+
+/**
+ * Implicitly calls the regex's `test` method with the first value in the provided arguments array.
+ * @memberOf XRegExp.prototype
+ * @param {*} context Ignored. Accepted only for congruity with `Function.prototype.apply`.
+ * @param {Array} args Array with the string to search as its first value.
+ * @returns {Boolean} Whether the regex matched the provided value.
+ * @example
+ *
+ * XRegExp('[a-z]').apply(null, ['abc']); // -> true
+ */
+        apply: function (context, args) {
+            return this.test(args[0]);
+        },
+
+/**
+ * Implicitly calls the regex's `test` method with the provided string.
+ * @memberOf XRegExp.prototype
+ * @param {*} context Ignored. Accepted only for congruity with `Function.prototype.call`.
+ * @param {String} str String to search.
+ * @returns {Boolean} Whether the regex matched the provided value.
+ * @example
+ *
+ * XRegExp('[a-z]').call(null, 'abc'); // -> true
+ */
+        call: function (context, str) {
+            return this.test(str);
+        },
+
+/**
+ * Implicitly calls {@link #XRegExp.forEach}.
+ * @memberOf XRegExp.prototype
+ * @example
+ *
+ * XRegExp('\\d').forEach('1a2345', function (match, i) {
+ *   if (i % 2) this.push(+match[0]);
+ * }, []);
+ * // -> [2, 4]
+ */
+        forEach: function (str, callback, context) {
+            return XRegExp.forEach(str, this, callback, context);
+        },
+
+/**
+ * Implicitly calls {@link #XRegExp.globalize}.
+ * @memberOf XRegExp.prototype
+ * @example
+ *
+ * var globalCopy = XRegExp('regex').globalize();
+ * globalCopy.global; // -> true
+ */
+        globalize: function () {
+            return XRegExp.globalize(this);
+        },
+
+/**
+ * Implicitly calls {@link #XRegExp.exec}.
+ * @memberOf XRegExp.prototype
+ * @example
+ *
+ * var match = XRegExp('U\\+(?<hex>[0-9A-F]{4})').xexec('U+2620');
+ * match.hex; // -> '2620'
+ */
+        xexec: function (str, pos, sticky) {
+            return XRegExp.exec(str, this, pos, sticky);
+        },
+
+/**
+ * Implicitly calls {@link #XRegExp.test}.
+ * @memberOf XRegExp.prototype
+ * @example
+ *
+ * XRegExp('c').xtest('abc'); // -> true
+ */
+        xtest: function (str, pos, sticky) {
+            return XRegExp.test(str, this, pos, sticky);
+        }
+
     });
 
 }(XRegExp));

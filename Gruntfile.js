@@ -1,20 +1,27 @@
+var config = {
+    src: 'src',
+    dist: 'dist'
+};
+
 module.exports = function(grunt) {
 
     // ========================================================================
     // Configure task options
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        config: config,
+        pkg: grunt.file.readJSON('./package.json'),
+        bower: grunt.file.readJSON('./.bowerrc'),
         clean: {
             css: [
-                'src/css/*.css',
-                'dist/css/*.css',
+                '<%= config.src %>/css/*.css',
+                '<%= config.dist %>/css/*.css',
                 'styleguide/css/*.css'
             ],
-            js: 'dist/js'
+            js: '<%= config.dist %>/js'
         },
         lesslint: {
-            src: ['src/less/*.less']
+            src: ['<%= config.src %>/less/*.less']
         },
         less: {
             options: {
@@ -23,9 +30,9 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                cwd: "src",
+                cwd: "<%= config.src %>",
                 src: "less/*.less",
-                dest: "src/css",
+                dest: "<%= config.src %>/css",
                 ext: ".css"
             }
         },
@@ -38,9 +45,9 @@ module.exports = function(grunt) {
             },
             minify: {
                 expand: true,
-                cwd: 'src/css/',
+                cwd: '<%= config.src %>/css/',
                 src: ['*.css', '!*.min.css'],
-                dest: 'dist/css/',
+                dest: '<%= config.dist %>/css/',
                 ext: '.min.css'
             }
         },
@@ -56,7 +63,7 @@ module.exports = function(grunt) {
                     console: true
                 }
             },
-            files: ['src/js/lib/*.js', 'src/js/*.js']
+            files: ['<%= config.src %>/js/lib/*.js', '<%= config.src %>/js/*.js']
         },
         concat: {
             options: {
@@ -70,13 +77,17 @@ module.exports = function(grunt) {
             },
             vendor: {
                 files: {
-                    'dist/js/vendor.js': ['src/js/vendor/jquery.*.js', 'src/js/vendor/xregexp.js', 'src/js/vendor/xregexp-unicode.min.js', 'src/js/vendor/jquery.fs.picker.js']
+                    '<%= config.dist %>/js/vendor.js': [
+                        '<%= config.src %>/js/vendor/jquery-plugins/*.js',
+                        '<%= config.src %>/js/vendor/xregexp/xregexp.js',
+                        '<%= config.src %>/js/vendor/xregexp/xregexp-*.js',
+                    ]
                 }
             },
             lib: {
                 files: {
                     // Note, the p3.lib file will only generate a library from files beginning with p3.
-                    'dist/js/p3.lib.js': 'src/js/lib/p3.*.js'
+                    '<%= config.dist %>/js/p3.lib.js': '<%= config.src %>/js/lib/p3.*.js'
                 }
             }
         },
@@ -86,7 +97,6 @@ module.exports = function(grunt) {
                     '@date\t\t<%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright\t<%= pkg.copyright %>\n * @source\t\t<%= pkg.repository %>\n * @license <%= pkg.license %> */\n',
 //                report: 'gzip',
                 footer: '\n// @license-end',
-
                 mangle: {
                     except: ['jQuery', 'Modernizr']
                 }
@@ -97,7 +107,7 @@ module.exports = function(grunt) {
                     banner: '/**\n * @source: http://code.jquery.com/jquery-1.10.2.min.js\n * @license <%= pkg.license %>\n * @note License is a rough approximation to suit EFF standards, see http://jquery.com/license for actual licensing information */\n'
                 },
                 files: {
-                    'dist/js/jquery.min.js': 'src/js/vendor/jquery-1.10.2.min.js'
+                    '<%= config.dist %>/js/jquery.min.js': '<%= config.src %>/js/vendor/jquery.min.js'
                 }
             },
             modernizr: {
@@ -105,42 +115,56 @@ module.exports = function(grunt) {
                     banner: '/**\n * @source: http://modernizr.com/download/\n * @license magnet:?xt=urn:btih:5305d91886084f776adcf57509a648432709a7c7&dn=x11.txt X11 %>\n * @note    License is a rough approximation to suit EFF standards, see http://jquery.com/license for actual licensing information */\n'
                 },
                 files: {
-                    'dist/js/modernizr.min.js': 'src/js/vendor/modernizr*.js'
+                    '<%= config.dist %>/js/modernizr.min.js': '<%= config.src %>/js/vendor/modernizr*.js'
                 }
             },
             vendor: {
                 files: {
-                    'dist/js/vendor.min.js': 'dist/js/vendor.js'
+                    '<%= config.dist %>/js/vendor.min.js': '<%= config.dist %>/js/vendor.js'
                 }
             },
             compat: {
+                compress: false,
                 files: [{
                         expand: true,
-                        cwd: 'src/js/compat',
+                        cwd: '<%= config.src %>/js/compat',
                         src: '*.js',
-                        dest: 'dist/js/compat'
+                        dest: '<%= config.dist %>/js/compat'
                     }]
             },
             lib: {
                 files: {
-                    'dist/js/p3.min.js': ['dist/js/p3.lib.js'],
-                    'dist/js/site.js': ['src/js/site-main.js'],
-                    'dist/js/action-template.js': ['src/js/action-template-simple.js'],
-                    'dist/js/action-template-full.js': ['src/js/action-template-full.js']
+                    '<%= config.dist %>/js/p3.min.js': ['<%= config.dist %>/js/p3.lib.js'],
+                    '<%= config.dist %>/js/site.js': ['<%= config.src %>/js/site-main.js'],
+                    '<%= config.dist %>/js/action-template.js': ['<%= config.src %>/js/action-template-simple.js'],
+                    '<%= config.dist %>/js/action-template-full.js': ['<%= config.src %>/js/action-template-full.js']
                 }
             }
         },
         copy: {
-            main: {
+            styleguide: {
                 nonull: true,
-                src: 'src/css/styleguide.css',
+                src: '<%= config.src %>/css/styleguide.css',
                 dest: 'styleguide/css/styleguide.css'
+            },
+            bower: {
+                files: {
+                    '<%= config.src %>/js/vendor/jquery.min.js': '<%= bower.directory %>/jquery/jquery.min.js',
+                    '<%= config.src %>/js/vendor/jquery-plugins/jquery.placeholder.js': "<%= bower.directory %>/jquery-placeholder/jquery.placeholder.js",
+                    "<%= config.src %>/js/vendor/jquery-plugins/jquery.timeago.js": "<%= bower.directory %>/jquery-timeago/jquery.timeago.js",
+                    "<%= config.src %>/js/vendor/jquery-plugins/jquery.validate.js": "<%= bower.directory %>/jquery-validation/jquery.validate.js",
+                    "<%= config.src %>/js/vendor/jquery-plugins/jquery.cookie.js": "<%= bower.directory %>/jquery.cookie/jquery.cookie.js",
+                    "<%= config.src %>/js/vendor/compat/json.min.js": "<%= bower.directory %>/json3/lib/json3.min.js",
+                    "<%= config.src %>/js/vendor/xregexp/xregexp.js": "<%= bower.directory %>/xregexp/src/xregexp.js",
+                    "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-base.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-base.js",
+                    "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-categories.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-categories.js"
+                }
             }
         },
         watch: {
             js: {
                 // Files to monitor for changes before running js task
-                files: ['Gruntfile.js', 'package.json', 'src/**/*.js'],
+                files: ['Gruntfile.js', 'package.json', '<%= config.src %>/**/*.js'],
                 tasks: ['js'],
                 options: {
                     spawn: false
@@ -148,7 +172,7 @@ module.exports = function(grunt) {
             },
             less: {
                 // Files to monitor for changes before running css task
-                files: ['Gruntfile.js', 'package.json', 'src/**/*.less'],
+                files: ['Gruntfile.js', 'package.json', '<%= config.src %>/**/*.less'],
                 tasks: ['css'],
                 options: {
                     spawn: false
@@ -186,22 +210,24 @@ module.exports = function(grunt) {
     // ========================================================================
     // Register Tasks
 
+    grunt.registerTask('bower', ['copy:bower']);
+
     // Run 'grunt test' to view jshint and lesslint recommendations
-    grunt.registerTask('test', ['jshint', 'lesslint']);
+    grunt.registerTask('test', ['copy:bower', 'jshint', 'lesslint']);
 
     // Run 'grunt csslint' to check LESS quality, and if no errors then
     // compile LESS into CSS, combine and minify
     grunt.registerTask('csslint', ['lesslint', 'clean:css', 'less', 'cssmin']);
 
     // Run 'grunt css' to compile LESS into CSS, combine and minify
-    grunt.registerTask('css', ['clean:css', 'less', 'cssmin', 'copy']);
+    grunt.registerTask('css', ['clean:css', 'less', 'cssmin', 'copy:styleguide']);
 
     // Run 'grunt js' to check JS code quality, and if no errors
     // concatonate and minify
-    grunt.registerTask('js', ['jshint', 'clean:js', 'concat', 'uglify']);
+    grunt.registerTask('js', ['copy:bower','jshint', 'clean:js', 'concat', 'uglify']);
 
     // 'grunt' will check code quality, and if no errors,
     // compile LESS to CSS, and minify and concatonate all JS and CSS
-    grunt.registerTask('default', ['jshint', 'clean', 'less', 'copy', 'cssmin', 'concat', 'uglify']);
+    grunt.registerTask('default', ['copy:bower', 'jshint', 'clean', 'less', 'copy:styleguide', 'cssmin', 'concat', 'uglify']);
 
 };
