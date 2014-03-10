@@ -1248,9 +1248,10 @@ Markup:
   </div>
 </form>
 
-:hover		- subtle hover highlight
-:focus		- green border
-:disabled	- grey out to indicate it cannot be used
+:hover		- subtle hover highlight.
+:focus		- green border.
+:disabled	- grey out to indicate it cannot be used.
+.required   - Label and input are wrapped in div.text.required. Additional span with a star is included. Input also get the required class.
 
 Styleguide 3.1
 */
@@ -1394,7 +1395,7 @@ textarea:disabled:hover {
   background: #F3F3F3;
 }
 /*
-Textarea required and larger
+Textarea larger
 
 Labels and input are wrapped in a div with the type of the class.
 
@@ -1411,7 +1412,6 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
   </textarea>
 </div>
 
-.required			- Label and input are wrapped in div.text.required. Additional span with a star is included. Input also get the required class.
 .large   	        - Make the box bigger.
 
 Styleguide 3.5
