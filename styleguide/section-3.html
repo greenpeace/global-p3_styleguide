@@ -464,6 +464,51 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
                 </div>
               </div>
               
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.inline</div>
+                  <div class="kss-modifier-description">
+                    <p>Show label and input inline.</p>
+
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="required input text email inline">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="required email" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+</div>
+  <div class="firstname inline">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname">
+  </div>
+  <div class="lastname inline">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname">
+  </div>
+  <div class="phone inline">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone"/>
+  </div>
+  <div class="search inline">
+    <label for="search">Search</label>
+    <input name="search" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode inline">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric" required maxlength="64" type="password" id="password" placeholder="Password"/>
+  </div>
+  <div class="textarea inline">
+    <label for="ActionMessage">Your message</label>
+    <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+    </textarea>
+  </div>
+</form>
+                </div>
+              </div>
+              
               <div class="kss-markup">
                 <pre><code data-language="html">&lt;form action=&quot;#&quot; id=&quot;action-form-pledgeName&quot; method=&quot;post&quot; accept-charset=&quot;utf-8&quot; class=&quot;js-track-abandonment&quot;&gt;
   &lt;div class=&quot;required input text email {$modifiers}&quot;&gt;

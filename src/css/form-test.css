@@ -1297,6 +1297,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
 .show-default      - Default mode of showing the labels.
 .horizontal-ra     - Show labels in left side with right text alignment.
 .horizontal-la     - Show labels in left side with left text alignment.
+.inline            - Show label and input inline.
 
 Styleguide 3.2
 */
@@ -1367,6 +1368,10 @@ label {
   display: inline-block;
   width: 10%;
   text-align: left;
+}
+form .inline,
+.inline label {
+  display: inline-block;
 }
 .no-placeholder label {
   display: block;
@@ -1664,7 +1669,7 @@ a.button.disabled:active {
     Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
     Since				: version 3.0
 
-    .info				- can be used for example messages prior validation
+    .info		     - can be used for example messages prior validation
     .error			 - error messages used for validation issues
 */
 form .message {
