@@ -5070,9 +5070,77 @@ Styleguide 7.
 .flag.zw {
   background-position: -17px -948px;
 }
-/* ==========================================================================
-   Footer
-   ========================================================================== */
+/*
+Footer
+
+This is the main footer.
+
+Markup:
+<footer>
+    <div class="footer container footer-small">
+        <div class="footer-holder page-section" style="width:920px">
+            <div class="copy-box">
+                <div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2013</span></div>
+                <ul class="legal-menu">
+                    <li><a href="/international/en/Help/privacy/">Privacy statement</a></li>
+                    <li><a title="copyright policy" href="/international/en/Help/copyright2/">Copyright</a></li>
+                </ul>
+                <ul class="bottom-menu">
+                    <li><a href="/international/en/">Home</a></li>
+                    <li><a href="/international/en/about/">About us</a></li>
+                    <li><a href="/international/en/about/contactus/">Contact us</a></li>
+                    <li><a href="/international/en/press/">Press centre</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+Styleguide 10.
+*/
+/*
+Logo box and Legal menu
+
+Greenpeace logotype in the footer and legal menu links.
+
+Markup:
+<footer>
+    <div class="footer container footer-small">
+        <div class="footer-holder page-section" style="width:920px">
+            <div class="copy-box">
+                <div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2013</span></div>
+                <ul class="legal-menu">
+                    <li><a href="/international/en/Help/privacy/">Privacy statement</a></li>
+                    <li><a title="copyright policy" href="/international/en/Help/copyright2/">Copyright</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+Styleguide 10.1
+*/
+/*
+Bottom menu
+
+Markup:
+<footer>
+    <div class="footer container footer-small">
+        <div class="footer-holder page-section" style="width:920px">
+            <div class="copy-box">
+                <ul class="bottom-menu">
+                    <li><a href="/international/en/">Home</a></li>
+                    <li><a href="/international/en/about/">About us</a></li>
+                    <li><a href="/international/en/about/contactus/">Contact us</a></li>
+                    <li><a href="/international/en/press/">Press centre</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+Styleguide 10.2
+*/
 /* small bottom footer */
 .footer-small {
   background: #282d38;
