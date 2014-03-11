@@ -1043,7 +1043,7 @@ Styleguide 2.2
 Unordered List
 
 Markup:
-<div id="main-section">
+<div id="main-section" style="margin-top:0">
   <ul>
     <li>Unordered list test:</li>
     <li><ul>
@@ -1062,7 +1062,7 @@ Styleguide 2.2.1
 Ordered List
 
 Markup:
-<div id="main-section">
+<div id="main-section" style="margin-top:0">
   <ol>
     <li>Ordered list test:</li>
     <li><ol>
