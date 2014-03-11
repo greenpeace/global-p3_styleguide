@@ -3604,8 +3604,8 @@ Styleguide 6.
 */
 #breadcrumbs ul {
   padding: 0;
-  margin-bottom: 1.4em;
   font-size: .875em;
+  margin: 0 0 1.4em 0;
 }
 #breadcrumbs li {
   display: inline;
@@ -3636,19 +3636,18 @@ Styleguide 6.
   border: 1px solid #cccccc;
   display: block;
   text-align: center;
-  width: 48px;
+  width: 3.6em;
   padding: .5em 0;
   font-size: .875em;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  background: #fff;
 }
 .social-share .counterBig span {
   border: 1px solid #cccccc;
   display: block;
   text-align: center;
-  width: 90px;
+  width: 7em;
   padding: .5em .8em;
   font-size: 1.2em;
   -webkit-border-radius: 2px;
@@ -3684,7 +3683,7 @@ Styleguide 6.
   width: 1px;
   height: 1px;
   position: absolute;
-  margin-left: 56px;
+  margin-left: 4.7em;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 7px solid #cccccc;
