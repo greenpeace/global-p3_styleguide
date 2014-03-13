@@ -1043,7 +1043,7 @@ Styleguide 2.2
 Unordered List
 
 Markup:
-<div id="main-section">
+<div id="main-section" style="margin-top:0">
   <ul>
     <li>Unordered list test:</li>
     <li><ul>
@@ -1062,7 +1062,7 @@ Styleguide 2.2.1
 Ordered List
 
 Markup:
-<div id="main-section">
+<div id="main-section" style="margin-top:0">
   <ol>
     <li>Ordered list test:</li>
     <li><ol>
@@ -1359,6 +1359,50 @@ and (max-device-width : 1024px)
   /* 960 = 940 +20+20 margin */
 }
 /*
+Messages for validation error and example
+
+`<div.text.error>`, `<div.text.success>`, can be used to add status messages or example. 
+Additional messages are wrapped in `<.error-message>`, `<.success-messages>`
+
+FF2+, Chrome1+, IE?, Opera?, Safari?
+
+Since version 3.0
+
+Markup:
+<form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="input text email">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="email {$modifiers}" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+</div>
+  <div class="firstname">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus {$modifiers}" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname">
+  </div>
+  <div class="lastname">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha {$modifiers}" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname">
+  </div>
+  <div class="phone">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric {$modifiers}" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone"/>
+  </div>
+  <div class="search">
+    <label for="search">Search</label>
+    <input name="search" class="{$modifiers}" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric {$modifiers}" required maxlength="64" type="password" id="password" placeholder="Password"/>
+  </div>
+</form>
+
+.error             - error messages used for validation issues
+.error:hover       - error messages used for validation issues
+.error:focus       - error messages used for validation issues
+
+Styleguide 3.2
+*/
+/*
     Messages for validation error and example
 
     Description	: <div.text.error>, <div.text.success>, can be used to add status messages or example. 
@@ -1366,7 +1410,7 @@ and (max-device-width : 1024px)
     Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
     Since				: version 3.0
 
-    .info				- can be used for example messages prior validation
+    .info		     - can be used for example messages prior validation
     .error			 - error messages used for validation issues
 */
 form .message {
@@ -4697,9 +4741,77 @@ Styleguide 7.
 .flag.zw {
   background-position: -17px -948px;
 }
-/* ==========================================================================
-   Footer
-   ========================================================================== */
+/*
+Footer
+
+This is the main footer.
+
+Markup:
+<footer>
+    <div class="footer container footer-small">
+        <div class="footer-holder page-section" style="width:920px">
+            <div class="copy-box">
+                <div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2013</span></div>
+                <ul class="legal-menu">
+                    <li><a href="/international/en/Help/privacy/">Privacy statement</a></li>
+                    <li><a title="copyright policy" href="/international/en/Help/copyright2/">Copyright</a></li>
+                </ul>
+                <ul class="bottom-menu">
+                    <li><a href="/international/en/">Home</a></li>
+                    <li><a href="/international/en/about/">About us</a></li>
+                    <li><a href="/international/en/about/contactus/">Contact us</a></li>
+                    <li><a href="/international/en/press/">Press centre</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+Styleguide 10.
+*/
+/*
+Logo box and Legal menu
+
+Greenpeace logotype in the footer and legal menu links.
+
+Markup:
+<footer>
+    <div class="footer container footer-small">
+        <div class="footer-holder page-section" style="width:920px">
+            <div class="copy-box">
+                <div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2013</span></div>
+                <ul class="legal-menu">
+                    <li><a href="/international/en/Help/privacy/">Privacy statement</a></li>
+                    <li><a title="copyright policy" href="/international/en/Help/copyright2/">Copyright</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+Styleguide 10.1
+*/
+/*
+Bottom menu
+
+Markup:
+<footer>
+    <div class="footer container footer-small">
+        <div class="footer-holder page-section" style="width:920px">
+            <div class="copy-box">
+                <ul class="bottom-menu">
+                    <li><a href="/international/en/">Home</a></li>
+                    <li><a href="/international/en/about/">About us</a></li>
+                    <li><a href="/international/en/about/contactus/">Contact us</a></li>
+                    <li><a href="/international/en/press/">Press centre</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+Styleguide 10.2
+*/
 /* small bottom footer */
 .footer-small {
   background: #282d38;
@@ -5006,11 +5118,51 @@ Styleguide 7.
   padding-left: 0;
 }
 /*
-    Action Counter,
-    shows the number of signers both graphical and text only
+Action counter
 
-    #action-counter-graphical - graphical display as progres bar
-    #action-counter-textual   - textual display
+Shows the number of signers both graphical and text only
+
+Markup:
+<div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-graphical" style="display: block;">
+        <span class="objectives"></span>
+        <span style="width:86.2%%; transition: 25ms; -webkit- transition: 25ms;" class="completed">17,239,173&nbsp;</span>
+    </div>
+    <div id="action-counter-textual">
+        <span class="count">17,240</span> have joined so far. The target is <span class="total">20,000</span>.
+    </div>
+</div>
+
+Styleguide 8.
+*/
+/*
+Action Counter (graphic bar)
+
+Graphical display as progres bar.
+
+Markup:
+<div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-graphical" style="display: block;">
+        <span class="objectives"></span>
+        <span style="width:86.2%%; transition: 25ms; -webkit- transition: 25ms;" class="completed">17,239,173&nbsp;</span>
+    </div>
+</div>
+
+Styleguide 8.1
+*/
+/*
+Action Counter (text)
+
+Textual display.
+
+Markup:
+<div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-textual">
+        <span class="count">17,240</span> have joined so far. The target is <span class="total">20,000</span>.
+    </div>
+</div>
+
+Styleguide 8.2
 */
 #action-counter {
   margin: 0.5em 0;
@@ -5040,12 +5192,46 @@ Styleguide 7.
   font-style: italic;
 }
 /*
-    Recent Signers widget
+Recent Signers
 
-    li       - One line, ellipsis if content doesn't fit
-    .since   - Timestamp in gray text
-    .country - Country name in grayutext
-    .flag    - Flag icon margin
+Shows the signers signers in the current action. It has a min-height of 14em. <br/>
+    `li`        One line, ellipsis if content doesn't fit. <br/>
+    `.since`    Timestamp in gray text. <br/>
+    `.country`  Country name in grayutext. <br/>
+    `.flag`     Flag icon margin.
+
+Markup:
+<div id="action-recent-signers">
+    <h3>Recent Signers</h3>
+    <ul>
+        <li>
+            <span class="since" data-since="2013-10-21 12:00:00">an hour ago</span>
+            <span class="icon flag in"></span>
+            <span class="name">James Norther,</span>
+            <span class="country">India</span>
+        </li>
+        <li>
+            <span class="since" data-since="2013-10-12 12:00:00">8 hours ago</span>
+            <span class="icon flag nz"></span>
+            <span class="name">Nick Younger,</span>
+            <span class="country">New-zealand</span>
+        </li>
+        <li>
+            <span class="since" data-since="2013-10-11 12:00:00">19 hours ago</span>
+            <span class="icon flag nl"></span>
+            <span class="name">Eoin Dubskyer,</span>
+            <span class="country">Netherlands</span>
+        </li>
+        <li>
+            <span class="since" data-since="2013-10-10 12:00:00">a day ago</span>
+            <span class="icon flag fr"></span>
+            <span class="name">Mr Splashy Pants,</span>
+            <span class="country">France</span>
+        </li>
+    </ul>
+</div>
+
+Styleguide 9.
 */
 #action-recent-signers {
   clear: right;
@@ -5073,7 +5259,6 @@ Styleguide 7.
 }
 #action-recent-signers .country {
   color: #777;
-  display: none;
 }
 #action-recent-signers .flag {
   margin-right: .75em;

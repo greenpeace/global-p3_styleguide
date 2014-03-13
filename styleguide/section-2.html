@@ -37,6 +37,12 @@
               
               <li class="kss-menu-item"><a href="section-7.html"><span class="kss-ref">7</span><span class="kss-name">Flag icons</span></a></li>
               
+              <li class="kss-menu-item"><a href="section-8.html"><span class="kss-ref">8</span><span class="kss-name">Action counter</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-9.html"><span class="kss-ref">9</span><span class="kss-name">Recent Signers</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-10.html"><span class="kss-ref">10</span><span class="kss-name">Footer</span></a></li>
+              
             </ul>
             
             <ul class="kss-menu-child">
@@ -124,7 +130,7 @@
             <div class="kss-modifier-block">
               <div class="kss-modifier kss-modifier-original">
                 <div class="kss-modifier-example">
-                  <div id="main-section">
+                  <div id="main-section" style="margin-top:0">
   <ul>
     <li>Unordered list test:</li>
     <li><ul>
@@ -140,7 +146,7 @@
               </div>
               
               <div class="kss-markup">
-                <pre><code data-language="html">&lt;div id=&quot;main-section&quot;&gt;
+                <pre><code data-language="html">&lt;div id=&quot;main-section&quot; style=&quot;margin-top:0&quot;&gt;
   &lt;ul&gt;
     &lt;li&gt;Unordered list test:&lt;/li&gt;
     &lt;li&gt;&lt;ul&gt;
@@ -164,7 +170,7 @@
             <div class="kss-modifier-block">
               <div class="kss-modifier kss-modifier-original">
                 <div class="kss-modifier-example">
-                  <div id="main-section">
+                  <div id="main-section" style="margin-top:0">
   <ol>
     <li>Ordered list test:</li>
     <li><ol>
@@ -180,7 +186,7 @@
               </div>
               
               <div class="kss-markup">
-                <pre><code data-language="html">&lt;div id=&quot;main-section&quot;&gt;
+                <pre><code data-language="html">&lt;div id=&quot;main-section&quot; style=&quot;margin-top:0&quot;&gt;
   &lt;ol&gt;
     &lt;li&gt;Ordered list test:&lt;/li&gt;
     &lt;li&gt;&lt;ol&gt;
@@ -337,6 +343,53 @@ ultricies nec, pellentesque eu, pretium quis, sem.&lt;/p&gt;
           
         </article>
         <footer class="kss-footer">
+    <!-- Geolocation Trial -->
+    <div>
+      <p id="trial">Get your position with a click!:</p>
+      <button onclick="getLocation()">Try It</button>
+      <div id="mapholder"></div>
+      <script>
+      var x=document.getElementById("trial");
+      function getLocation()
+        {
+        if (navigator.geolocation)
+          {
+          navigator.geolocation.getCurrentPosition(showPosition,showError);
+          }
+        else{x.innerHTML="Geolocation is not supported by this browser.";}
+        }
+      
+      function showPosition(position)
+        {
+        var latlon=position.coords.latitude+","+position.coords.longitude;
+      
+        var img_url="http://maps.googleapis.com/maps/api/staticmap?center="
+        +latlon+"&zoom=14&size=1000x1500&sensor=false";
+        document.getElementById("mapholder").innerHTML="<img src='"+img_url+"'>";
+        }
+      
+      function showError(error)
+        {
+        switch(error.code) 
+          {
+          case error.PERMISSION_DENIED:
+            x.innerHTML="User denied the request for Geolocation."
+            break;
+          case error.POSITION_UNAVAILABLE:
+            x.innerHTML="Location information is unavailable."
+            break;
+          case error.TIMEOUT:
+            x.innerHTML="The request to get user location timed out."
+            break;
+          case error.UNKNOWN_ERROR:
+            x.innerHTML="An unknown error occurred."
+            break;
+          }
+        }
+      </script>
+    </div>
+    <!-- Geolocation Trial END -->
+          <br/>
           <div>Created using <a href="https://github.com/hughsk/kss-node">kss-node</a> and <a href="https://github.com/htanjo/kss-node-template">kss-node-template</a>.</div>
         </footer>
       </div>

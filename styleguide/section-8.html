@@ -20,7 +20,7 @@
             <h1 class="kss-doc-title"><a href="./">Planet 3 Styleguide</a></h1>
           </header>
           <nav class="kss-nav">
-            <ul class="kss-menu" data-kss-ref="4">
+            <ul class="kss-menu" data-kss-ref="8">
               <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
               
               <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Color palette</span></a></li>
@@ -51,7 +51,11 @@
               
               
               
-              <li class="kss-menu-item"><a href="#section-4.1"><span class="kss-ref">4.1</span><span class="kss-name">Generic button. </span></a></li>
+              <li class="kss-menu-item"><a href="#section-8.1"><span class="kss-ref">8.1</span><span class="kss-name">Action Counter (graphic bar)</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-8.2"><span class="kss-ref">8.2</span><span class="kss-name">Action Counter (text)</span></a></li>
               
               
             </ul>
@@ -63,136 +67,104 @@
         <article class="kss-article">
           
           
-          <section id="section-4" class="kss-section kss-depth-1">
-            <h1 class="kss-title"><span class="kss-ref">4</span> Buttons</h1>
-            
-            
-            
-          </section>
-          
-          <section id="section-4.1" class="kss-section kss-depth-2">
-            <h1 class="kss-title"><span class="kss-ref">4.1</span> Generic button. </h1>
+          <section id="section-8" class="kss-section kss-depth-1">
+            <h1 class="kss-title"><span class="kss-ref">8</span> Action counter</h1>
             
             
             <div class="kss-description">
-              <p>We support <code>&lt;input[submit]&gt;</code>, <code>&lt;input.button&gt;</code>, <code>&lt;button&gt;</code> and <code>&lt;a.button&gt;</code>
-
-</p>
-<p>Compatible    in IE6+, Firefox 2+, Safari 4+, Chrome 1+, Opera 11+</p>
+              <p>Shows the number of signers both graphical and text only</p>
 
             </div>
             
             <div class="kss-modifier-block">
               <div class="kss-modifier kss-modifier-original">
                 <div class="kss-modifier-example">
-                  <input type="submit" class="{$modifiers}" value="input[submit]" />
-<input class="button {$modifiers}" value="input.button" />
-<button class="{$modifiers}">button</button>
-<a class="button {$modifiers}">a.button</a>
-                </div>
-              </div>
-              
-              <div class="kss-modifier">
-                <div class="kss-modifier-head">
-                  <div class="kss-modifier-name">:hover</div>
-                  <div class="kss-modifier-description">
-                    <p>Subtle hover highlight and box shadow</p>
-
-                  </div>
-                </div>
-                <div class="kss-modifier-example">
-                  <input type="submit" class="pseudo-class-hover" value="input[submit]" />
-<input class="button pseudo-class-hover" value="input.button" />
-<button class="pseudo-class-hover">button</button>
-<a class="button pseudo-class-hover">a.button</a>
-                </div>
-              </div>
-              
-              <div class="kss-modifier">
-                <div class="kss-modifier-head">
-                  <div class="kss-modifier-name">:active</div>
-                  <div class="kss-modifier-description">
-                    <p>Inset box shadow and 1px offset</p>
-
-                  </div>
-                </div>
-                <div class="kss-modifier-example">
-                  <input type="submit" class="pseudo-class-active" value="input[submit]" />
-<input class="button pseudo-class-active" value="input.button" />
-<button class="pseudo-class-active">button</button>
-<a class="button pseudo-class-active">a.button</a>
-                </div>
-              </div>
-              
-              <div class="kss-modifier">
-                <div class="kss-modifier-head">
-                  <div class="kss-modifier-name">.primary</div>
-                  <div class="kss-modifier-description">
-                    <p>Primary buttons are orange</p>
-
-                  </div>
-                </div>
-                <div class="kss-modifier-example">
-                  <input type="submit" class="primary" value="input[submit]" />
-<input class="button primary" value="input.button" />
-<button class="primary">button</button>
-<a class="button primary">a.button</a>
-                </div>
-              </div>
-              
-              <div class="kss-modifier">
-                <div class="kss-modifier-head">
-                  <div class="kss-modifier-name">.disabled</div>
-                  <div class="kss-modifier-description">
-                    <p>Dims the button to indicate it cannot be used</p>
-
-                  </div>
-                </div>
-                <div class="kss-modifier-example">
-                  <input type="submit" class="disabled" value="input[submit]" />
-<input class="button disabled" value="input.button" />
-<button class="disabled">button</button>
-<a class="button disabled">a.button</a>
-                </div>
-              </div>
-              
-              <div class="kss-modifier">
-                <div class="kss-modifier-head">
-                  <div class="kss-modifier-name">.disabled:hover</div>
-                  <div class="kss-modifier-description">
-                    <p>Disabled buttons are inactive (no hover effect)</p>
-
-                  </div>
-                </div>
-                <div class="kss-modifier-example">
-                  <input type="submit" class="disabled pseudo-class-hover" value="input[submit]" />
-<input class="button disabled pseudo-class-hover" value="input.button" />
-<button class="disabled pseudo-class-hover">button</button>
-<a class="button disabled pseudo-class-hover">a.button</a>
-                </div>
-              </div>
-              
-              <div class="kss-modifier">
-                <div class="kss-modifier-head">
-                  <div class="kss-modifier-name">.disabled:active</div>
-                  <div class="kss-modifier-description">
-                    <p>Disabled buttons inactive (no active state)</p>
-
-                  </div>
-                </div>
-                <div class="kss-modifier-example">
-                  <input type="submit" class="disabled pseudo-class-active" value="input[submit]" />
-<input class="button disabled pseudo-class-active" value="input.button" />
-<button class="disabled pseudo-class-active">button</button>
-<a class="button disabled pseudo-class-active">a.button</a>
+                  <div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-graphical" style="display: block;">
+        <span class="objectives"></span>
+        <span style="width:86.2%%; transition: 25ms; -webkit- transition: 25ms;" class="completed">17,239,173&nbsp;</span>
+    </div>
+    <div id="action-counter-textual">
+        <span class="count">17,240</span> have joined so far. The target is <span class="total">20,000</span>.
+    </div>
+</div>
                 </div>
               </div>
               
               <div class="kss-markup">
-                <pre><code data-language="html">&lt;input type=&quot;submit&quot; class=&quot;{$modifiers}&quot; value=&quot;input[submit]&quot; /&gt;
-&lt;input class=&quot;button {$modifiers}&quot; value=&quot;input.button&quot; /&gt;
-&lt;button class=&quot;{$modifiers}&quot;&gt;button&lt;/button&gt;
-&lt;a class=&quot;button {$modifiers}&quot;&gt;a.button&lt;/a&gt;</code></pre>
+                <pre><code data-language="html">&lt;div id=&quot;action-counter&quot; class=&quot;counter block&quot; style=&quot;width: 520px;&quot;&gt;
+    &lt;div id=&quot;action-counter-graphical&quot; style=&quot;display: block;&quot;&gt;
+        &lt;span class=&quot;objectives&quot;&gt;&lt;/span&gt;
+        &lt;span style=&quot;width:86.2%%; transition: 25ms; -webkit- transition: 25ms;&quot; class=&quot;completed&quot;&gt;17,239,173&nbsp;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;action-counter-textual&quot;&gt;
+        &lt;span class=&quot;count&quot;&gt;17,240&lt;/span&gt; have joined so far. The target is &lt;span class=&quot;total&quot;&gt;20,000&lt;/span&gt;.
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-8.1" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">8.1</span> Action Counter (graphic bar)</h1>
+            
+            
+            <div class="kss-description">
+              <p>Graphical display as progres bar.</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-graphical" style="display: block;">
+        <span class="objectives"></span>
+        <span style="width:86.2%%; transition: 25ms; -webkit- transition: 25ms;" class="completed">17,239,173&nbsp;</span>
+    </div>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div id=&quot;action-counter&quot; class=&quot;counter block&quot; style=&quot;width: 520px;&quot;&gt;
+    &lt;div id=&quot;action-counter-graphical&quot; style=&quot;display: block;&quot;&gt;
+        &lt;span class=&quot;objectives&quot;&gt;&lt;/span&gt;
+        &lt;span style=&quot;width:86.2%%; transition: 25ms; -webkit- transition: 25ms;&quot; class=&quot;completed&quot;&gt;17,239,173&nbsp;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            
+          </section>
+          
+          <section id="section-8.2" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">8.2</span> Action Counter (text)</h1>
+            
+            
+            <div class="kss-description">
+              <p>Textual display.</p>
+
+            </div>
+            
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-textual">
+        <span class="count">17,240</span> have joined so far. The target is <span class="total">20,000</span>.
+    </div>
+</div>
+                </div>
+              </div>
+              
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div id=&quot;action-counter&quot; class=&quot;counter block&quot; style=&quot;width: 520px;&quot;&gt;
+    &lt;div id=&quot;action-counter-textual&quot;&gt;
+        &lt;span class=&quot;count&quot;&gt;17,240&lt;/span&gt; have joined so far. The target is &lt;span class=&quot;total&quot;&gt;20,000&lt;/span&gt;.
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
               </div>
             </div>
             
