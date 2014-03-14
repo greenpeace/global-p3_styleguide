@@ -2148,6 +2148,81 @@ Styleguide 5.1.3.1
   border-top-color: #ffffff;
   margin-top: -2px;
 }
+/*
+Social Buttons (small) 
+
+Small Social Buttons:
+
+Markup:
+<div class="social-share">
+<span class="socialBtn-float">
+  <div class="counter">
+    <span>&hellip;</span>
+    <i class="tip"></i>
+  </div>
+  <a href="#" class="socialBtn facebook {$modifiers}"></a>
+</span>
+</div>
+<div class="social-share">
+<span class="socialBtn-float">
+  <div class="counter">
+    <span>&hellip;</span>
+    <i class="tip"></i>
+  </div>
+  <a href="#" class="socialBtn twitter {$modifiers}"></a>
+</span>
+</div>
+<div class="social-share">
+<span class="socialBtn-float">
+  <div class="counter">
+    <span>&hellip;</span>
+    <i class="tip"></i>
+  </div>
+  <a href="#" class="socialBtn google {$modifiers}"></a>
+</span>
+</div>
+<div class="social-share">
+<span class="socialBtn-float">
+  <div class="counter">
+    <span>&hellip;</span>
+    <i class="tip"></i>
+  </div>
+  <a href="#" class="socialBtn pinterest {$modifiers}"></a>
+</span>
+</div>
+<div class="social-share">
+<span class="socialBtn-float">
+  <div class="counter">
+    <span>&hellip;</span>
+    <i class="tip"></i>
+  </div>
+  <a href="#" class="socialBtn weibo {$modifiers}"></a>
+</span>
+</div>
+<div class="social-share">
+<span class="socialBtn-float">
+  <div class="counter">
+    <span>&hellip;</span>
+    <i class="tip"></i>
+  </div>
+  <a href="#" class="socialBtn vk {$modifiers}"></a>
+</span>
+</div>
+<div class="social-share">
+<span class="socialBtn-float">
+  <div class="counter">
+    <span>&hellip;</span>
+    <i class="tip"></i>
+  </div>
+  <a href="#" class="socialBtn linkedin {$modifiers}"></a>
+</span>
+</div>
+
+:hover              - blabla
+:active             - blabla
+
+Styleguide 4.2
+*/
 /* Button style */
 .socialBtn {
   cursor: pointer;
