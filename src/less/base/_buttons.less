@@ -17,12 +17,14 @@ Markup:
 <button class="{$modifiers}">button</button>
 <a class="button {$modifiers}">a.button</a>
 
-:hover           - Subtle hover highlight and box shadow
-:active          - Inset box shadow and 1px offset
-.primary         - Primary buttons are orange
-.disabled        - Dims the button to indicate it cannot be used
-.disabled:hover  - Disabled buttons are inactive (no hover effect)
-.disabled:active - Disabled buttons inactive (no active state)
+:hover                  - Subtle hover highlight and box shadow
+:focus                  - Subtle hover highlight and box shadow
+:active                 - Inset box shadow and 1px offset
+.primary                - Primary buttons are orange
+.primary:hover          - Primary buttons are orange
+.primary:focus         - Primary buttons are orange
+.primary:active         - Primary buttons are orange
+.disabled               - Dims the button to indicate it cannot be used
 
 Styleguide 4.1
 */
@@ -73,10 +75,11 @@ a.button {
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@oranges-2', endColorstr='#e56b2b',GradientType=0 ); /* IE6-9 */
         border:1px solid #e78f01;
     }
+
     &:hover,
     &:focus {
         text-decoration: none;
-		background:#f59e10;
+		background: #f59e10;
         //-webkit-box-shadow: 0 1px 2px rgba(255,255,255,.2);
         //-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
         //box-shadow: 0 1px 2px rgba(0,0,0,.2);

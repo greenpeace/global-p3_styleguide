@@ -1370,7 +1370,7 @@ label {
   text-align: left;
 }
 form .inline,
-.inline label {
+.inline.required label {
   display: inline-block;
 }
 .no-placeholder label {
@@ -1513,12 +1513,14 @@ Markup:
 <button class="{$modifiers}">button</button>
 <a class="button {$modifiers}">a.button</a>
 
-:hover           - Subtle hover highlight and box shadow
-:active          - Inset box shadow and 1px offset
-.primary         - Primary buttons are orange
-.disabled        - Dims the button to indicate it cannot be used
-.disabled:hover  - Disabled buttons are inactive (no hover effect)
-.disabled:active - Disabled buttons inactive (no active state)
+:hover                  - Subtle hover highlight and box shadow
+:focus                  - Subtle hover highlight and box shadow
+:active                 - Inset box shadow and 1px offset
+.primary                - Primary buttons are orange
+.primary:hover          - Primary buttons are orange
+.primary:focus         - Primary buttons are orange
+.primary:active         - Primary buttons are orange
+.disabled               - Dims the button to indicate it cannot be used
 
 Styleguide 4.1
 */
