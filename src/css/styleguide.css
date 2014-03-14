@@ -1740,6 +1740,12 @@ a.button {
   color: #333333;
   border: 1px solid #cccccc;
   background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #fafafa, #ededed);
+  background-image: -ms-linear-gradient(top, #fafafa, #ededed);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#ededed));
+  background-image: -webkit-linear-gradient(top, #fafafa, #ededed);
+  background-image: -o-linear-gradient(top, #fafafa, #ededed);
+  background-image: linear-gradient(top, #fafafa, #ededed);
 }
 .button.primary,
 input[type=submit].primary,
@@ -1754,6 +1760,19 @@ a.button.primary {
   /* IE6-9 */
   border: 1px solid #e78f01;
 }
+.button.primary:hover,
+input[type=submit].primary:hover,
+input.button.primary:hover,
+button.primary:hover,
+a.button.primary:hover,
+.button.primary:focus,
+input[type=submit].primary:focus,
+input.button.primary:focus,
+button.primary:focus,
+a.button.primary:focus {
+  text-decoration: none;
+  background: #f59e10;
+}
 .button:hover,
 input[type=submit]:hover,
 input.button:hover,
@@ -1765,7 +1784,9 @@ input.button:focus,
 button:focus,
 a.button:focus {
   text-decoration: none;
-  background: #f59e10;
+  -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .button:active,
 input[type=submit]:active,
