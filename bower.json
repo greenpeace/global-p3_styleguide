@@ -17,7 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "1.10.2",
+    "jquery": "~1.10.2",
     "xregexp": "~2.0.0",
     "jquery.cookie": "~1.4.0",
     "modernizr": "~2.7.2",
