@@ -5,7 +5,7 @@
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.2.3
+ * @version         0.2.4
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -60,21 +60,21 @@
         };
 
 
-    jQuery.timeago.settings.strings = {
+    $.timeago.settings.strings = {
         prefixAgo: null,
         prefixFromNow: null,
         suffixAgo: "ago",
         suffixFromNow: "from now",
-        seconds: "less than a minute",
-        minute: "about a minute",
+        seconds: "%d seconds",
+        minute: "a minute",
         minutes: "%d minutes",
-        hour: "about an hour",
-        hours: "about %d hours",
+        hour: "an hour",
+        hours: "%d hours",
         day: "a day",
         days: "%d days",
-        month: "about a month",
+        month: "a month",
         months: "%d months",
-        year: "about a year",
+        year: "a year",
         years: "%d years",
         wordSeparator: " ",
         numbers: []
