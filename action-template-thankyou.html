@@ -40,6 +40,7 @@
     </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
+<form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
 <div id="root-container" class="action-template petition"> 
   
   <!-- Main content -->
@@ -119,7 +120,9 @@
         <!-- Action counter -->
         <div id="action-counter" class="counter block">
           <div id="action-counter-graphical"> <span class="objectives"></span> <span style="width:0%" class="completed">&nbsp;</span> </div>
-          <div id="action-counter-textual">&nbsp;</div>
+          <div id="action-counter-textual">
+            <span class="count">&hellip;</span> have joined so far. The target is <span class="total">&hellip;</span>.
+          </div>
         </div>
         
         <!-- Action details block -->
@@ -232,7 +235,7 @@
               </ul>
             </div>
           </div>
-          <div class="tools"> 
+          <div class="tools">
             <div class="language-selector">
               <div class="dropdown-controller"> <span class="dropdown-label">Language:</span> <a href="#" data-dropdown="#dropdown-content-language">English</a> </div>
               <div id="dropdown-content-language" class="dropdown dropdown-scroll">
@@ -474,5 +477,6 @@
   <script src="dist/js/site.js"></script> 
   <script src="dist/js/action-template-full.js"></script> 
 </div>
+</form>
 </body>
 </html>
