@@ -1350,6 +1350,17 @@ and (max-device-width : 1024px)
     width: 920px;
     /* 960 = 940 +20+20 margin */
   }
+  input[type=text],
+  input[type=password],
+  input[type=email],
+  input[type=search],
+  input[type=tel],
+  textarea {
+    min-width: 17.5em;
+  }
+  select {
+    min-width: 16.25em;
+  }
 }
 .large .page-section {
   font-size: 1em;
@@ -1357,6 +1368,319 @@ and (max-device-width : 1024px)
   padding: 0 20px;
   width: 920px;
   /* 960 = 940 +20+20 margin */
+}
+.large input[type=text],
+.large input[type=password],
+.large input[type=email],
+.large input[type=search],
+.large input[type=tel],
+.large textarea {
+  min-width: 17.5em;
+}
+.large select {
+  min-width: 16.25em;
+}
+/*
+Forms
+
+Styleguide 3.
+*/
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+/*
+Generic Form Item
+
+Labels and input are wrapped in a div with the type of the class.
+
+Compatible in FF2+, Chrome1+, IE?, Opera?, Safari?
+
+Since version 3.0.
+
+Markup:
+<form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="input text email">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="email {$modifiers}" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+</div>
+  <div class="firstname">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus {$modifiers}" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname">
+  </div>
+  <div class="lastname">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha {$modifiers}" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname">
+  </div>
+  <div class="phone">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric {$modifiers}" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone"/>
+  </div>
+  <div class="search">
+    <label for="search">Search</label>
+    <input name="search" class="{$modifiers}" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric {$modifiers}" required maxlength="64" type="password" id="password" placeholder="Password"/>
+  </div>
+</form>
+
+:hover		- subtle hover highlight.
+:focus		- green border.
+:disabled	- grey out to indicate it cannot be used.
+
+Styleguide 3.1
+*/
+/*
+Labels
+
+Label and input are wrapped in div. If required class is added, additional span with a @red-1 star is included.
+
+Markup:
+<form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="required input text email {$modifiers}">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="required email" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+</div>
+  <div class="firstname {$modifiers}">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname">
+  </div>
+  <div class="lastname {$modifiers}">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname">
+  </div>
+  <div class="phone {$modifiers}">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone"/>
+  </div>
+  <div class="search {$modifiers}">
+    <label for="search">Search</label>
+    <input name="search" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode {$modifiers}">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric" required maxlength="64" type="password" id="password" placeholder="Password"/>
+  </div>
+  <div class="textarea {$modifiers}">
+    <label for="ActionMessage">Your message</label>
+    <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+    </textarea>
+  </div>
+</form>
+
+.show-default      - Default mode of showing the labels.
+.horizontal-ra     - Show labels in left side with right text alignment.
+.horizontal-la     - Show labels in left side with left text alignment.
+.inline            - Show label and input inline.
+
+Styleguide 3.3
+*/
+/*
+Radio input.
+
+Markup:
+<div class="gender">
+  <fieldset class="radio">
+    <legend>Gender</legend>
+    <label for="UserGenderMale"><input type="radio" name="gender" id="UserGenderMale" value="male">Male</label>                        
+    <label for="UserGenderFemale"><input type="radio" name="gender" id="UserGenderFemale" value="female">Female</label>                        
+  </fieldset>
+</div>
+
+Styleguide 3.4
+*/
+/*
+Checkbox input.
+
+Markup:
+<div class="newsletters">
+  <fieldset class="checkbox">
+    <legend>Subscribe to our newsletters</legend>
+    <label for="UserNewsletterGeneral"><input type="checkbox" name="newsletters" id="UserNewsletterGeneral" value="general">General</label>                        
+    <label for="UserNewsletterArctic"><input type="checkbox" name="newsletters" id="UserNewsletterArctic" value="arctic">Arctic</label>                        
+  </fieldset>
+</div>
+
+Styleguide 3.5
+*/
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=search],
+input[type=tel],
+textarea {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  padding: .4em .5em .3em .5em;
+  display: inline-block;
+  zoom: 1;
+  /* zoom and *display = ie7 hack for display:inline-block */
+  *display: inline;
+  margin: .2em 0 .5em 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+/* Large screens ----------- */
+label {
+  display: none;
+  padding: .5em 0 .5em .5em;
+}
+.show-default label {
+  display: block;
+}
+.horizontal-ra label {
+  display: inline-block;
+  width: 10%;
+  text-align: right;
+}
+.horizontal-la label {
+  display: inline-block;
+  width: 10%;
+  text-align: left;
+}
+form .inline,
+.inline.required label {
+  display: inline-block;
+}
+.no-placeholder label {
+  display: block;
+  margin-top: .225em;
+}
+.search-form label {
+  font-weight: normal;
+}
+.no-placeholder .search-form label {
+  display: none;
+}
+.lt-ie7 #search {
+  margin-top: -2px;
+}
+.lt-ie7 #search #search-submit {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-top: -24px;
+}
+/*
+Textarea
+
+Markup:
+<div class="textarea">
+  <label for="ActionMessage">Your message</label>
+  <textarea class="{$modifiers}" rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+</div>
+
+:focus		- green border
+:disabled	- grey out to indicate it cannot be used
+
+Styleguide 3.6
+*/
+textarea,
+input[type=password],
+input[type=search],
+input[type=email],
+input[type=text],
+input[type=tel] {
+  border-top: 1px solid #cccccc;
+}
+textarea,
+input[type=password]:hover,
+input[type=search]:hover,
+input[type=email]:hover,
+input[type=text]:hover,
+input[type=tel]:hover {
+  border: 1px solid #999;
+}
+textarea:focus,
+input[type=password]:focus,
+input[type=search]:focus,
+input[type=email]:focus,
+input[type=text]:focus,
+input[type=tel]:focus {
+  -webkit-box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid #66cc00;
+}
+textarea:disabled,
+input[type=password]:disabled,
+input[type=search]:disabled,
+input[type=email]:disabled,
+input[type=text]:disabled,
+input[type=tel]:disabled,
+input:disabled,
+input[type=password]:disabled:hover,
+input[type=search]:disabled:hover,
+input[type=email]:disabled:hover,
+input[type=text]:disabled:hover,
+input[type=tel]:disabled:hover,
+input:disabled:hover,
+textarea:disabled:hover {
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: 0 0 0 0;
+  -moz-box-shadow: 0 0 0 0;
+  box-shadow: 0 0 0 0;
+  cursor: normal;
+  background: #F3F3F3;
+}
+/*
+Textarea larger
+
+Labels and input are wrapped in a div with the type of the class.
+
+Compatible in FF2+, Chrome1+.
+
+Since version 3.0
+
+Markup:
+<form>
+<div class="textarea {$modifiers}">
+  <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+  </textarea>
+  <label for="ActionMessage">Your message</label>
+</div>
+</form>
+
+.large   	        - Make the box bigger.
+
+Styleguide 3.7
+*/
+.required label:after {
+  content: " *";
+  color: #d40000;
+  font-weight: bold;
+}
+textarea {
+  height: 8em;
+  width: 17.5em;
+  border: 1px solid #cccccc;
+}
+.textarea.large textarea {
+  width: 30em;
+  height: 7em;
 }
 /*
 Messages for validation error and example
