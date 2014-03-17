@@ -1,10 +1,53 @@
 /*
-    Action Counter,
-    shows the number of signers both graphical and text only
+Action counter
 
-    #action-counter-graphical - graphical display as progres bar
-    #action-counter-textual   - textual display
+Shows the number of signers both graphical and text only
+
+Markup:
+<div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-graphical" style="display: block;">
+        <span class="objectives"></span>
+        <span style="width:86.2%%; transition: 25ms; -webkit- transition: 25ms;" class="completed">17,239,173&nbsp;</span>
+    </div>
+    <div id="action-counter-textual">
+        <span class="count">17,240</span> have joined so far. The target is <span class="total">20,000</span>.
+    </div>
+</div>
+
+Styleguide 8.
 */
+
+/*
+Action Counter (graphic bar)
+
+Graphical display as progres bar.
+
+Markup:
+<div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-graphical" style="display: block;">
+        <span class="objectives"></span>
+        <span style="width:86.2%%; transition: 25ms; -webkit- transition: 25ms;" class="completed">17,239,173&nbsp;</span>
+    </div>
+</div>
+
+Styleguide 8.1
+*/
+
+/*
+Action Counter (text)
+
+Textual display.
+
+Markup:
+<div id="action-counter" class="counter block" style="width: 520px;">
+    <div id="action-counter-textual">
+        <span class="count">17,240</span> have joined so far. The target is <span class="total">20,000</span>.
+    </div>
+</div>
+
+Styleguide 8.2
+*/
+
 #action-counter {
     margin: 0.5em 0;
 
