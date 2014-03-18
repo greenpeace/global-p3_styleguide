@@ -1,0 +1,27 @@
+{
+    "status": "",
+    "errors": {},
+    "actionname": "api test",
+    "rules": {
+        "data[User][firstname]": "required",
+        "data[User][lastname]": "required",
+        "data[User][email]": {
+            "required": true,
+            "minlength": "6",
+            "email": true
+        }
+    },
+    "messages": {
+        "data[User][firstname]": "Enter your first name",
+        "data[User][lastname]": "Enter your last name",
+        "data[User][phone]": "Please enter your phone number",
+        "data[User][postcode]": "Please enter your postcode",
+        "data[User][email]": {
+            "required": "Please enter a valid email address",
+            "minlength": "Please enter a valid email address"
+        }
+    },
+    "tests": {
+        "alphanumeric": "^[\\p{L}\\p{N}]+$"
+    }
+}

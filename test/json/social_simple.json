@@ -1,0 +1,20 @@
+{
+    "status": "success",
+    "networks": {
+        "facebook": {
+            "count": 1234
+        },
+        "twitter": {
+            "count": 91551
+        },
+        "google": {
+            "count": 11951
+        },
+        "linkedin": {
+            "count": 100500
+        },
+        "pinterest": {
+            "count": 42
+        }
+    }
+}

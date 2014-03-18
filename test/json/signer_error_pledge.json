@@ -1,0 +1,29 @@
+{ 
+  "status": "error", 
+  "errors": {
+    "pledge" : {
+      "unique" : "The pledge was already signed"
+    }
+  },
+  "user": {
+    "serial": "0973",
+    "uuid": "550e8401-e29b-41d4-a716-446655440000",
+    "created": "2013-01-01 12:00:00",
+    "updated": "2011-01-01 12:00:00",
+    "verified": "2013-01-01 12:00:00",
+    "email": true,
+    "initials": true,
+    "firstname": true,
+    "lastname": true,
+    "country": true,
+    "phone": true
+  },
+  "page": {
+    "uuid": "550e8401-e29b-41d4-a716-446678440294",
+    "id": "1234",
+    "name": "save the artic (main)",
+    "title": "Save the artic!",
+    "domain": "international",
+    "friendly_url": "/international/en/savethearctic"
+  }
+}

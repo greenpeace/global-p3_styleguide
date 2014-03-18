@@ -1,0 +1,62 @@
+{
+    "status": "success",
+    "page": {
+      "uuid": "550e8401-e29b-41d4-a716-446678440294",
+      "id": "1234",
+      "name": "save the artic (main)",
+      "title": "Save the artic!",
+      "domain": "international",
+      "friendly_url": "/international/en/savethearctic"
+    },    
+    "rules": {
+        "firstname": "required",
+        "lastname": {
+            "alphaPlus": true,
+            "required": true,
+            "minlength": 4
+        },
+        "email": {
+            "required": true,
+            "minlength": "6",
+            "email": true
+        },
+        "website": {
+            "required": true,
+            "url": true
+        },
+        "postcode": {
+            "required": true,
+            "alphanumeric": true
+        },
+        "country": {
+            "required": true
+        },
+        "gender": {
+            "required": true
+        },
+        "newsletters": "required"
+    },
+    "messages": {
+        "firstname": "Enter your first name",
+        "lastname": {
+            "required": "Please enter your last name",
+            "minlength": "Last name not long enough (min length {0})",
+            "alphaPlus": "Please enter a valid name"
+        },
+        "phone": "Please enter your phone number",
+        "postcode": "Please enter your postcode",
+        "email": {
+            "required": "Please enter a valid email address",
+            "minlength": "Please enter a valid email address (at least 6 characters)"
+        },
+        "website": {
+            "required": "Please enter your website address",
+            "url": "Please enter a valid website address"
+        },
+        "gender": "Please select your gender",
+        "newsletters": "Please select a newsletter"
+    },
+    "tests": {
+        "alphanumeric": "^[\\p{L}\\p{N}]+$"
+    }
+}
