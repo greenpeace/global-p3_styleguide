@@ -49,8 +49,8 @@
         for the JavaScript code in this page.
         */
     </script>
-    <script src="dist/js/modernizr.min.js"></script>        
-    <link rel="stylesheet" type="text/css" href="dist/css/action-template-full.min.css"/>
+    <script src="js/modernizr.min.js"></script>        
+    <link rel="stylesheet" type="text/css" href="css/action-template-full.min.css"/>
     <style type="text/css">
         .desktop .action-template #main-container {
             background-image: url(//www.greenpeace.org/international/Global/international/artwork/climate/2013/Shell_hell_bg_2.jpg);
@@ -73,12 +73,12 @@
 
     <!-- Breadcrumbs -->
     <div id="breadcrumbs">
-        <ul class="breadcrumbs-holder" itemprop="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">
-            <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Home">Home</a></li>
-            <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="What we do">What we do</a></li>
-            <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Nuclear">Nuclear</a></li>
-            <li typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="#" title="Stop radioactive investment!">Stop radioactive investment!</a></li>
-            <li>Help stop the next Fukushima disaster</li>
+        <ul class="breadcrumbs-holder" itemscope itemtype="https://schema.org/breadcrumb">
+            <li><a itemprop="url" href="#" title="Home"><span itemprop="title">Home</span></a></li>
+            <li><a itemprop="url" href="#" title="What we do"><span itemprop="title">What we do</span></a></li>
+            <li><a itemprop="url" href="#" title="Nuclear"><span itemprop="title">Nuclear</span></a></li>
+            <li><a itemprop="url" href="#" title="Stop radioactive investment!"><span itemprop="title">Stop radioactive investment!</span></a></li>
+            <li><span itemprop="title">Help stop the next Fukushima disaster</span></li>
         </ul>
     </div>
 
@@ -94,7 +94,7 @@
     <!-- Action ask / intro -->
     <div id="action-ask">
         <p>
-            Demand that the comapny drops its palm oil plan in Cameroon.
+            Demand that the company drops its palm oil plan in Cameroon.
         </p>
     </div>
 
@@ -396,7 +396,7 @@
                             <option value="EH">Western Sahara</option>
                             <option value="YE">Yemen</option>
                             <option value="ZM">Zambia</option>
-                            <option value="ZW">Zimbabwe</option></select>
+                            <option value="ZW">Zimbabwe</option>
                         </select>
                     </div>
                 </div>
@@ -560,7 +560,7 @@ Please don't let this happen. Thank you.
         <!-- First header: logo, country selector, search and media links -->
         <div class="heading heading-first">
           <!-- mobile menu icon -->
-          <label class="mobilemenu-label" for="mobilemenu-toggle">Menu</label>
+          <label class="mobilemenu-label">Menu</label>
 
             <div class="heading-holder page-section">
                 <a href="/international/en/" title="Greenpeace" class="logo">
@@ -685,7 +685,7 @@ Please don't let this happen. Thank you.
                     <div id="main-nav">
 
                         <!-- mobile menu close -->
-                        <label class="mobilemenu-label mobilemenu-close" for="mobilemenu-toggle">close</label>
+                        <label class="mobilemenu-label mobilemenu-close">close</label>
 
                         <ul class="navigation" id="nav">
                             <li><a href="/international/en/" title="Home"><span>Home</span></a></li>
@@ -932,13 +932,13 @@ Please don't let this happen. Thank you.
         })();
 */
     </script>
-    <!--<script src="dist/js/jquery.min.js"></script>-->  
-    <script src="//code.jquery.com/jquery-1.10.0.js"></script>
-    <script>window.jQuery || document.write('<script src="dist/js/jquery.min.js"><\/script>')</script>
-    <script src="dist/js/vendor.min.js"></script>
-    <script src="dist/js/p3.min.js"></script>
-    <script src="dist/js/site.js"></script>
-    <script src="dist/js/action-template-full.js"></script>
+    <!--<script src="js/jquery.min.js"></script>-->  
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="js/vendor.min.js"></script>
+    <script src="js/p3.min.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/action-template-full.js"></script>
 </div>
 
 </body>

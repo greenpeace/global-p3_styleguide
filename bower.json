@@ -10,24 +10,25 @@
   "license": "MIT",
   "private": true,
   "ignore": [
-    "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "tmp",
+    "validation-*"
   ],
   "dependencies": {
-    "jquery": "~1.10.2",
-    "xregexp": "~2.0.0",
-    "jquery.cookie": "~1.4.0",
-    "modernizr": "~2.7.2",
-    "jquery-timeago": "~1.4.0",
-    "jquery-validation": "~1.11.2",
-    "json3": "~3.3.0"
+    "jquery": "~1",
+    "xregexp": "~2",
+    "jquery.cookie": "~1",
+    "modernizr": "~2",
+    "jquery-timeago": "~1",
+    "jquery-validation": "~1",
+    "json3": "~3"
   },
   "preen": {
     "jquery": [
-      "jquery*.js",
+      "dist/**",
       "README*",
       "*LICENSE*"
     ],

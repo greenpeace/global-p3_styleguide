@@ -8,7 +8,7 @@
  * @returns {undefined}
  */
 /* globals jQuery, Modernizr */
-(function($, global) {
+(function($, M, w, undef) {
     'use strict';
 
     // GET parameters to send with each request
@@ -66,13 +66,29 @@
     $.ajaxSetup({cache: false});
 
 
-    $(global.document).ready(function() {
+    $(document).ready(function() {
+
+        // Detect placeholder functionality
+        $('html').addClass((M.input.placeholder ? '' : 'no-') + 'placeholder');
+
+        // Add classes to html
+        if (!M.mq('only all')) {
+            $.p3.narrow();
+        }
 
         // Track form abandonment
         $.p3.form_tracking('.js-track-abandonment');
 
         // Focus the email field for easier form entry
         $('input[name=email]').focus();
+
+        /** Note the order of the next two plugins
+         Both p3.remember_me_cookie() and p3.autofill() plugins may
+         potentially fill the email field automatically, overwriting contents
+         Adjust the load order as required */
+
+        // Fill email field if cookie is set
+        $.p3.remember_me_cookie('#action-form');
 
         // Fill input fields from GET parameters
         $.p3.autofill('#action-form');
@@ -82,19 +98,50 @@
         // from events in a different fetch, eg p3.recent_signers
         $.p3.pledge_counter('#action-counter');
 
-        // Only call the validation plugin if you aren't using pledge_with_email,
+        // Else to have pledge_counter initiate it's own fetches use:
+//        $.p3.pledge_counter('#action-counter', {
+//            jsonURL: pledgeLive,
+//            params: parameters
+//        });
+
+
+        // Check if we can sign this pledge using email field only
+        // Includes form validation via $.p3.validation by default
+        $.p3.pledge_with_email_only('#action-form', {
+            signerCheckURL: petition.test.actions.signerCheck,
+            validationRulesURL: petition.test.actions.validation,
+            params: petition.test.parameters
+        });
+
+
+        // Only call validation plugin if you aren't using pledge_with_email,
         // or you've set pledge_with_email to not use validation
-        $.p3.validation('#action-form', {
-            jsonURL: petition.live.actions.validation,
-            params: petition.live.parameters
+//        $.p3.validation('#action-form', {
+//            jsonURL: validationTesting,
+//            params: parameters
+//        });
+
+
+        // Update social share counts
+        $.p3.social_sharing('#action-social-share', {
+            jsonURL: petition.localSocial.url.simple,
+            networks: {
+                twitter: {
+                    title: w.document.title
+                },
+                pinterest: {
+                    image: 'http://www.greenpeace.org/international/Global/international/artwork/other/2010/openspace/bigspace-photo.jpg',
+                    description: w.document.title
+                }
+            }
         });
 
         // Recent signers widget
-        $.p3.recent_signers('#action-recent-signers',{
-            jsonURL: petition.live.actions.pledges,
-            params: petition.live.parameters
+        $.p3.recent_signers('#action-recent-signers', {
+            jsonURL: petition.test.actions.pledges,
+            params: petition.test.parameters
         });
 
     });
 
-}(jQuery, this));
+}(jQuery, Modernizr, this));

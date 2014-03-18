@@ -1,9 +1,12 @@
-var config = {
-    src: 'src',
-    dist: 'dist'
-};
-
 module.exports = function(grunt) {
+    'use strict';
+
+    var config = {
+        src: 'src',
+        dist: 'dist',
+        test: 'test',
+        tmp: 'tmp'
+    };
 
     // ========================================================================
     // Configure task options
@@ -13,12 +16,81 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('./package.json'),
         bower: grunt.file.readJSON('./.bowerrc'),
         clean: {
+            html: '<%= config.dist %>/*.html',
+            images: '<%= config.dist %>/img',
             css: [
                 '<%= config.src %>/css/*.css',
                 '<%= config.dist %>/css/*.css',
                 'styleguide/css/*.css'
             ],
-            js: '<%= config.dist %>/js'
+            js: '<%= config.dist %>/js',
+            test: [
+                '<%= config.test %>/js',
+                '<%= config.test %>/css',
+                '<%= config.test %>/img'
+            ]
+        },
+        htmllint: {// https://github.com/jzaefferer/grunt-html
+            options: {
+                ignore: [
+                    'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.',
+
+                ]
+            },
+            all: ["<%= config.src %>/**/*.html"]
+        },
+        prettify: {// https://github.com/jonschlinkert/grunt-prettify
+            options: {
+                indent: 4,
+                condense: true,
+                indent_inner_html: true,
+                unformatted: [
+                    "a",
+                    "pre"
+                ]
+            },
+            src: {
+                files: [
+                    {// Prettify src HTML, store it in /tmp
+                        expand: true,
+                        cwd: '<%= config.src %>',
+                        src: ['*.html'],
+                        dest: '<%= config.tmp %>/'
+                    }
+                ]
+            }
+        },
+        htmlmin: {// https://github.com/gruntjs/grunt-contrib-htmlmin
+            test: {
+                options: {
+
+                },
+                files: [
+                    {// Copy all HTML from tmp to testing
+                        expand: true,
+                        cwd: '<%= config.tmp %>',
+                        src: ['*.html'],
+                        dest: '<%= config.test %>/'
+                    }
+                ]
+            },
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    removeRedundantAttributes: true,
+                    removeOptionalTags: true
+                },
+                files: [
+                    {// Copy production HTML from tmp to dist, except for testing
+                        expand: true,
+                        cwd: '<%= config.tmp %>',
+                        src: ['*.html', '!testing*.html'],
+                        dest: '<%= config.dist %>/'
+                    }
+                ]
+            }
+
         },
         lesslint: {
             src: ['<%= config.src %>/less/*.less']
@@ -51,7 +123,7 @@ module.exports = function(grunt) {
                 ext: '.min.css'
             }
         },
-        jshint: {
+        jshint: {// https://www.npmjs.org/package/grunt-contrib-jshint
             options: {
                 curly: true,
                 eqeqeq: true,
@@ -65,7 +137,7 @@ module.exports = function(grunt) {
             },
             files: ['<%= config.src %>/js/lib/*.js', '<%= config.src %>/js/*.js']
         },
-        concat: {
+        concat: {// https://www.npmjs.org/package/grunt-contrib-concat
             options: {
                 separator: '\n;',
                 // Remove duplicate 'use strict' declarations
@@ -80,7 +152,7 @@ module.exports = function(grunt) {
                     '<%= config.dist %>/js/vendor.js': [
                         '<%= config.src %>/js/vendor/jquery-plugins/*.js',
                         '<%= config.src %>/js/vendor/xregexp/xregexp.js',
-                        '<%= config.src %>/js/vendor/xregexp/xregexp-*.js',
+                        '<%= config.src %>/js/vendor/xregexp/xregexp-*.js'
                     ]
                 }
             },
@@ -91,7 +163,7 @@ module.exports = function(grunt) {
                 }
             }
         },
-        uglify: {
+        uglify: {// https://www.npmjs.org/package/grunt-contrib-uglify
             options: {
                 banner: '/**\n * @name\t\t<%= pkg.name %>\n * @version\t\tv<%= pkg.version %>\n * ' +
                     '@date\t\t<%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright\t<%= pkg.copyright %>\n * @source\t\t<%= pkg.repository %>\n * @license <%= pkg.license %> */\n',
@@ -141,7 +213,7 @@ module.exports = function(grunt) {
                 }
             }
         },
-        copy: {
+        copy: {// https://www.npmjs.org/package/grunt-contrib-copy
             styleguide: {
                 nonull: true,
                 src: '<%= config.src %>/css/styleguide.css',
@@ -149,8 +221,8 @@ module.exports = function(grunt) {
             },
             bower: {
                 files: {
-                    '<%= config.src %>/js/vendor/jquery.min.js': '<%= bower.directory %>/jquery/jquery.min.js',
-                    '<%= config.src %>/js/vendor/jquery-plugins/jquery.placeholder.js': "<%= bower.directory %>/jquery-placeholder/jquery.placeholder.js",
+                    "<%= config.src %>/js/vendor/jquery.min.js": "<%= bower.directory %>/jquery/dist/jquery.min.js",
+                    "<%= config.src %>/js/vendor/jquery-plugins/jquery.placeholder.js": "<%= bower.directory %>/jquery-placeholder/jquery.placeholder.js",
                     "<%= config.src %>/js/vendor/jquery-plugins/jquery.timeago.js": "<%= bower.directory %>/jquery-timeago/jquery.timeago.js",
                     "<%= config.src %>/js/vendor/jquery-plugins/jquery.validate.js": "<%= bower.directory %>/jquery-validation/jquery.validate.js",
                     "<%= config.src %>/js/vendor/jquery-plugins/jquery.cookie.js": "<%= bower.directory %>/jquery.cookie/jquery.cookie.js",
@@ -159,15 +231,92 @@ module.exports = function(grunt) {
                     "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-base.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-base.js",
                     "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-categories.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-categories.js"
                 }
+            },
+            images: {
+                files: [
+                    {// Copy src images to dist
+                        expand: true,
+                        cwd: '<%= config.src %>/img/',
+                        src: ['*'],
+                        dest: '<%= config.dist %>/img/'
+                    },
+                    {// Copy src images to test
+                        expand: true,
+                        cwd: '<%= config.src %>/img/',
+                        src: ['*'],
+                        dest: '<%= config.test %>/img/'
+                    }
+                ]
+            },
+            test: {
+                files: [
+                    {// Copy generated CSS to /test/ for unminified debugging
+                        expand: true,
+                        cwd: '<%= config.src %>/css',
+                        src: ['*.css'],
+                        dest: '<%= config.test %>/css/'
+                    },
+                    {// Copy the contents of /dist/ to /test/
+                        // ** except HTML we do that in `htmlmin`
+                        expand: true,
+                        cwd: '<%= config.dist %>',
+                        src: ['**', '!**/*.html'],
+                        dest: '<%= config.test %>/'
+                    }
+                ]
+            }
+        },
+        replace: {// https://www.npmjs.org/package/grunt-text-replace
+            test: {
+                src: ['<%= config.test %>/*.html'], // source files array (supports minimatch)
+                dest: '<%= config.test %>/', // destination directory or file
+                replacements: [
+                    {
+                        from: 'p3.min.js', // string replacement
+                        to: 'p3.lib.js'
+                    }, {
+                        from: 'vendor.min.js', // string replacement
+                        to: 'vendor.js'
+                    },
+                    {
+                        from: '.min.css', // regex replacement ('Fooo' to 'Mooo')
+                        to: '.css'
+                    }
+                ]
             }
         },
         watch: {
+            images: {
+                files: '<%= config.src %>/img/**',
+                tasks: ['images'],
+                options: {
+                    spawn: false,
+                    debounceDelay: 500
+                }
+            },
+            html: {
+                files: '<%= config.src %>/**/*.html',
+                tasks: ['html'],
+                options: {
+                    spawn: false,
+                    debounceDelay: 250
+                }
+            },
+            bower: {
+                files: '<%= bower.directory %>/**',
+                tasks: ['default'],
+                options: {
+                    spawn: false,
+                    debounceDelay: 5000
+                }
+            },
             js: {
                 // Files to monitor for changes before running js task
                 files: ['Gruntfile.js', 'package.json', '<%= config.src %>/**/*.js'],
                 tasks: ['js'],
                 options: {
-                    spawn: false
+                    spawn: false,
+                    debounceDelay: 550
                 }
             },
             less: {
@@ -175,7 +324,8 @@ module.exports = function(grunt) {
                 files: ['Gruntfile.js', 'package.json', '<%= config.src %>/**/*.less'],
                 tasks: ['css'],
                 options: {
-                    spawn: false
+                    spawn: false,
+                    debounceDelay: 550
                 }
             }
         }
@@ -207,27 +357,90 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-copy');
 
+    grunt.loadNpmTasks('grunt-html');
+
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+
+    grunt.loadNpmTasks('grunt-prettify');
+
+    grunt.loadNpmTasks('grunt-text-replace');
+
     // ========================================================================
     // Register Tasks
 
+    grunt.registerTask('html', [
+        'htmllint',
+        'prettify',
+        'htmlmin',
+        'replace:test'
+    ]);
+
+    // Run 'grunt bower' to copy updated bower components into src
     grunt.registerTask('bower', ['copy:bower']);
 
-    // Run 'grunt test' to view jshint and lesslint recommendations
-    grunt.registerTask('test', ['copy:bower', 'jshint', 'lesslint']);
+    // Run 'grunt images' to copy new images from src to dist and test
+    grunt.registerTask('images', ['copy:images']);
+
+    // Run 'grunt test' to view jshint, lesslint and HTML validator recommendations
+    grunt.registerTask('test', [
+        'validation',
+        'jshint',
+        'lesslint'
+    ]);
 
     // Run 'grunt csslint' to check LESS quality, and if no errors then
     // compile LESS into CSS, combine and minify
-    grunt.registerTask('csslint', ['lesslint', 'clean:css', 'less', 'cssmin']);
+    grunt.registerTask('csslint', [
+        'lesslint',
+        'clean:css',
+        'less',
+        'cssmin'
+    ]);
 
     // Run 'grunt css' to compile LESS into CSS, combine and minify
-    grunt.registerTask('css', ['clean:css', 'less', 'cssmin', 'copy:styleguide']);
+    grunt.registerTask('css', [
+        'clean:css',
+        'less',
+        'cssmin',
+        'copy:styleguide',
+        'clean:test',
+        'copy:test'
+    ]);
 
     // Run 'grunt js' to check JS code quality, and if no errors
     // concatonate and minify
-    grunt.registerTask('js', ['copy:bower','jshint', 'clean:js', 'concat', 'uglify']);
+    grunt.registerTask('js', [
+        'copy:bower',
+        'jshint',
+        'clean:js',
+        'concat',
+        'uglify',
+        'clean:test',
+        'copy:test'
+    ]);
 
-    // 'grunt' will check code quality, and if no errors,
-    // compile LESS to CSS, and minify and concatonate all JS and CSS
-    grunt.registerTask('default', ['copy:bower', 'jshint', 'clean', 'less', 'copy:styleguide', 'cssmin', 'concat', 'uglify']);
+    // 'grunt' will:
+    // - check code quality, and if no errors,
+    // - compile LESS to CSS,
+    // - minify and concatonate all JS and CSS,
+    // - prettify and minify HTML
+    // - copy unprocessed files to /test directory for debugging
+
+    grunt.registerTask('default', [
+        'htmllint',
+        'copy:bower',
+        'jshint',
+        'clean',
+        'less',
+        'copy:styleguide',
+        'cssmin',
+        'concat',
+        'uglify',
+        'copy:images',
+        'copy:test',
+        'prettify',
+        'htmlmin',
+        'replace:test'
+    ]);
 
 };
