@@ -953,50 +953,49 @@ Styleguide 1.6.2
 }
 /*
  * Paper Box
- */
+ 
 .paper {
-  position: relative;
-  margin: 0 0 5px 2px;
-  z-index: 0;
-  border: 1px solid #eaeaea;
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
+  position:relative;
+  margin:0 0 5px 2px;
+  z-index:0;
+  border:1px solid #eaeaea;
+  .boxshadow(0px; 3px; 6px; 0px; rgba(0, 0, 0, 0.3));
 }
 .paper-content {
-  background-color: #fbfbfb;
-  padding: 10px;
-  min-height: 25px;
+  background-color:#fbfbfb;
+  padding:10px;
+  min-height:25px;
 }
 .paper:before,
 .paper:after,
 .paper-content:before,
 .paper-content:after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-}
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+} 
 .paper:before {
-  top: -2px;
-  left: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat left top;
+  top:-2px;
+  left:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat left top;
 }
 .paper-content:before {
-  top: -2px;
-  right: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat right top;
+  top:-2px;
+  right:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat right top;
 }
 .paper:after {
-  bottom: -2px;
-  left: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat left bottom;
+  bottom:-2px;
+  left:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat left bottom;
 }
 .paper-content:after {
-  bottom: -2px;
-  right: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat right bottom;
+  bottom:-2px;
+  right:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat right bottom;
 }
+*/
 /* page level configuration shortcuts */
 .no-background {
   background: none;
@@ -1011,8 +1010,6 @@ Styleguide 1.6.2
 .no-navigation .header .language-selector {
   visibility: hidden;
 }
-/* test
-***********/
 /*
 Typography rules
 
@@ -3276,6 +3273,8 @@ Styleguide 5.1.4
     -moz-box-shadow: none;
     box-shadow: none;
     float: left;
+    height: 1.4em;
+    font-size: 0.8em;
   }
   .heading .search-form input[type=submit] {
     display: none;
@@ -3596,6 +3595,8 @@ Styleguide 5.1.4
   -moz-box-shadow: none;
   box-shadow: none;
   float: left;
+  height: 1.4em;
+  font-size: 0.8em;
 }
 .sevensome .heading .search-form input[type=submit] {
   display: none;
@@ -3917,6 +3918,8 @@ Styleguide 5.1.4
   -moz-box-shadow: none;
   box-shadow: none;
   float: left;
+  height: 1.4em;
+  font-size: 0.8em;
 }
 .lt-ie9 .heading .search-form input[type=submit] {
   display: none;
@@ -3960,7 +3963,7 @@ Styleguide 6.
 #breadcrumbs ul {
   padding: 0;
   font-size: .875em;
-  margin: 0 0 1.4em 0;
+  margin: 0 0 1em 0;
 }
 #breadcrumbs li {
   display: inline;
@@ -7324,7 +7327,8 @@ Styleguide 9.
 /*
     Page level configuration shortcuts.
 */
-.no-quick-login first-time-login {
+.no-quick-login .first-time-login,
+.no-quick-login .social-login {
   display: none;
 }
 /*
@@ -7342,6 +7346,7 @@ Styleguide 9.
 .action-template #main-section {
   background: #ffffff;
   padding-bottom: 3em;
+  padding-top: 1.25em;
 }
 .action-template h1 {
   margin-bottom: .5em;
@@ -7387,7 +7392,7 @@ Action form
   margin-top: 0.2em;
 }
 #action-smallprints .remember .longlabel {
-  margin-left: -0.9 em;
+  margin-left: -0.9em;
 }
 /* ==========================================================================
    Action Template Media Queries
@@ -7515,13 +7520,11 @@ Action form
     -o-background-size: cover;
     background-size: cover;
   }
-  .action-template #main-container-holder {
-    background: transparent url(../../img/raster.png) 0 0 repeat;
-  }
   .action-template h1 {
     float: left;
     clear: both;
     width: 100%;
+    margin-top: 0;
   }
   #action-recent-signers .country {
     display: inline;
@@ -7535,7 +7538,7 @@ Action form
   #action-recent-signers {
     float: right;
     width: 340px;
-    padding: 0 20px;
+    padding: 0 20px 10px 20px;
     margin: 0;
   }
   .action-template h2,
@@ -7547,7 +7550,7 @@ Action form
     margin-bottom: 0;
   }
   .action-template h2 {
-    padding-top: 20px;
+    padding: 20px 20px 0px 20px;
   }
   #action-form {
     padding-bottom: 20px;
@@ -7581,9 +7584,8 @@ Action form
   }
   #action-form #action-smallprints {
     width: 26em;
-  }
-  #action-form #action-smallprints {
     padding: .5em;
+    font-size: .75em;
   }
 }
 /* fallback for browsers where media queries won't work */
@@ -7594,13 +7596,11 @@ Action form
   -o-background-size: cover;
   background-size: cover;
 }
-.desktop .action-template #main-container-holder {
-  background: transparent url(../../img/raster.png) 0 0 repeat;
-}
 .desktop .action-template h1 {
   float: left;
   clear: both;
   width: 100%;
+  margin-top: 0;
 }
 .desktop #action-recent-signers .country {
   display: inline;
@@ -7614,7 +7614,7 @@ Action form
 .desktop #action-recent-signers {
   float: right;
   width: 340px;
-  padding: 0 20px;
+  padding: 0 20px 10px 20px;
   margin: 0;
 }
 .desktop .action-template h2,
@@ -7626,7 +7626,7 @@ Action form
   margin-bottom: 0;
 }
 .desktop .action-template h2 {
-  padding-top: 20px;
+  padding: 20px 20px 0px 20px;
 }
 .desktop #action-form {
   padding-bottom: 20px;
@@ -7660,9 +7660,8 @@ Action form
 }
 .desktop #action-form #action-smallprints {
   width: 26em;
-}
-.desktop #action-form #action-smallprints {
   padding: .5em;
+  font-size: .75em;
 }
 /*
 Browser specific hacks
@@ -7691,19 +7690,4 @@ Browser specific hacks
   clear: left;
   width: 360px;
   padding-bottom: .6em;
-}
-@media only screen and (min-width: 1024px) {
-  #main-section {
-    padding-top: 1.25em;
-  }
-  #action-smallprints {
-    font-size: .75em;
-  }
-}
-h1,
-#action-ask {
-  display: none;
-}
-#action-form {
-  padding-top: .5em;
 }

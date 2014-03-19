@@ -30,17 +30,23 @@
     <style type="text/css">
         .desktop .action-template #main-container {
             background-image: url(//www.greenpeace.org/international/Global/international/artwork/climate/2013/Shell_hell_bg_2.jpg);
-        } 
+        }
+         .desktop .action-template #main-container-holder {
+            background: transparent url(img/raster.png) 0 0 repeat;
+        }
         @media only screen and (min-width : 1024px) {
             .action-template #main-container {
                 background-image: url(//www.greenpeace.org/international/Global/international/artwork/climate/2013/Shell_hell_bg_2.jpg);
             } 
+            .action-template #main-container-holder {
+                background: transparent url(img/raster.png) 0 0 repeat;
+            }
         }
     </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
 
-<div id="root-container" class="action-template petition">
+<div id="root-container" class="action-template petition no-quick-login">
 
 <!-- Main content -->
 <div id="main-container" class="container">
@@ -70,7 +76,7 @@
     <!-- Action ask / intro -->
     <div id="action-ask">
         <p>
-            Tell Shell’s new CEO to scrap Arctic drilling
+            Tell Shell’s new CEO to scrap Arctic drilling!
         </p>
     </div>
 
@@ -81,11 +87,19 @@
                 <input type="hidden" name="_method" value="POST"><!-- value would be PUT on edit -->
                 <input type="text" name="hihoney" placeholder="say hi honey"><!-- honeypot -->
             </div>
-            <div id="action-form-simple">
-                <div class="input required text email">
-                    <label for="UserEmail">Email</label>
-                    <input name="email" class="required email" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
-                </div>
+            <div id="action-form-authentication">
+              <div class="social social-login login">
+                <p>Please enter your email bellow. You can also login with <a href="#" class="facebook-login"><span>facebook</span></a> or <a href="#" class="google-login"><span>google</span></a></p>
+              </div>
+              <div class="input required text email">
+                <label for="UserEmail">Email</label>
+                <input name="email" class="required email" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+              </div>
+            </div>
+            <div id="action-form-register">
+              <div class="first-time first-time-login login">
+                <p>First time here? Please fill out the form below.</p>
+              </div>
                 <div class="firstname">
                     <label for="UserFirstname">Firstname</label>
                     <input name="FIrstname" class="alphaPlus" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
@@ -288,12 +302,6 @@ Please don't let this happen. Thank you.
                 </div>
 
                 <div class="tools">
-                    <!-- tmp geo location popup
-                        <div class="notification hidden" id="geolocationNotification">
-                            (Geolocation Example:)You are located in the Netherlands.
-                            Would you like to go to the Nederlands site? 
-                            <a href="#">Yes</a> <a href="#">Nope</a>
-                        </div> -->
                     <div class="language-selector">
                         <div class="dropdown-controller">
                             <span class="dropdown-label">Language:</span>
@@ -523,10 +531,10 @@ Please don't let this happen. Thank you.
                             </li>
                             <li><a href="/international/en/supportus/" class="donate primary button" title="Donate" target="_blank">Donate</a></li>
                         </ul>
-                        <!--ul class="sign" id="signin">
+                        <ul class="sign" id="signin">
                             <li><a href="/international/en/My/login/?returnUrl=%2finternational%2fen%2fTesting%2f5019-HTML5-Sample-Candidtate%2f" title="Sign in"> Sign in</a></li>
                             <li> New here? <a href="/international/en/My/Signup/" title="Sign up!"> Sign up!</a></li>
-                        </ul-->
+                        </ul>
                     </div>
                 </nav>
             </div>

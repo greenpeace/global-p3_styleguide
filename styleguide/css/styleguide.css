@@ -953,50 +953,49 @@ Styleguide 1.6.2
 }
 /*
  * Paper Box
- */
+ 
 .paper {
-  position: relative;
-  margin: 0 0 5px 2px;
-  z-index: 0;
-  border: 1px solid #eaeaea;
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
+  position:relative;
+  margin:0 0 5px 2px;
+  z-index:0;
+  border:1px solid #eaeaea;
+  .boxshadow(0px; 3px; 6px; 0px; rgba(0, 0, 0, 0.3));
 }
 .paper-content {
-  background-color: #fbfbfb;
-  padding: 10px;
-  min-height: 25px;
+  background-color:#fbfbfb;
+  padding:10px;
+  min-height:25px;
 }
 .paper:before,
 .paper:after,
 .paper-content:before,
 .paper-content:after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-}
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+} 
 .paper:before {
-  top: -2px;
-  left: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat left top;
+  top:-2px;
+  left:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat left top;
 }
 .paper-content:before {
-  top: -2px;
-  right: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat right top;
+  top:-2px;
+  right:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat right top;
 }
 .paper:after {
-  bottom: -2px;
-  left: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat left bottom;
+  bottom:-2px;
+  left:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat left bottom;
 }
 .paper-content:after {
-  bottom: -2px;
-  right: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat right bottom;
+  bottom:-2px;
+  right:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat right bottom;
 }
+*/
 /* page level configuration shortcuts */
 .no-background {
   background: none;
@@ -1011,8 +1010,6 @@ Styleguide 1.6.2
 .no-navigation .header .language-selector {
   visibility: hidden;
 }
-/* test
-***********/
 /*
 Typography rules
 
@@ -3276,6 +3273,8 @@ Styleguide 5.1.4
     -moz-box-shadow: none;
     box-shadow: none;
     float: left;
+    height: 1.4em;
+    font-size: 0.8em;
   }
   .heading .search-form input[type=submit] {
     display: none;
@@ -3596,6 +3595,8 @@ Styleguide 5.1.4
   -moz-box-shadow: none;
   box-shadow: none;
   float: left;
+  height: 1.4em;
+  font-size: 0.8em;
 }
 .sevensome .heading .search-form input[type=submit] {
   display: none;
@@ -3917,6 +3918,8 @@ Styleguide 5.1.4
   -moz-box-shadow: none;
   box-shadow: none;
   float: left;
+  height: 1.4em;
+  font-size: 0.8em;
 }
 .lt-ie9 .heading .search-form input[type=submit] {
   display: none;
@@ -3960,7 +3963,7 @@ Styleguide 6.
 #breadcrumbs ul {
   padding: 0;
   font-size: .875em;
-  margin: 0 0 1.4em 0;
+  margin: 0 0 1em 0;
 }
 #breadcrumbs li {
   display: inline;
