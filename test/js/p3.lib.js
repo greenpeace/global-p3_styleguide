@@ -77,7 +77,7 @@ var _p3 = $.p3 || ($.p3 = {}),
  *
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.0.2
+ * @version         0.0.3
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>,
  *                  based on original work by
  *                  <a href="http://www.more-onion.com/">More Onion</a>
@@ -87,23 +87,19 @@ var _p3 = $.p3 || ($.p3 = {}),
  */
 /* global jQuery, _gaq */
 
-(function($, w, undef) {
+(function($, w, d, undef) {
 var _p3 = $.p3 || ($.p3 = {}),
         pre = '$.p3.form_tracking :: ',
         G = (typeof w._gaq === 'undefined') ? [] : w._gaq;
 
     _p3.form_tracking = function(el) {
+        var $el = $(el),
+            $input = $el.is(':input') ? $el : $(':input', $el),
+            formName = $el.closest('form').attr('id') || d.title;
+
         // Check google analytics is defined
         if (!G.length) {
             console.warn(pre + 'Google Analytics not found');
-        }
-
-        var $el = $(el),
-            $input = $el.is(':input') ? $el : $(':input', $el),
-            formName = $el.closest('form').attr('id');
-
-        if (!formName) {
-            throw new Error(pre + 'Form ' + el +' not found, aborting');
         }
 
         // Found a form, so monitor
@@ -125,7 +121,7 @@ var _p3 = $.p3 || ($.p3 = {}),
         });
     };
 
-}(jQuery, this));
+}(jQuery, this, document));
 
 ;// Source: src/js/lib/p3.mobilesearchform.js
 /**!
@@ -846,7 +842,7 @@ var _p3 = $.p3 || {},
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.0
+ * @version         0.3.1
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -935,8 +931,6 @@ var _p3 = $.p3 || {},
                 running: false,
                 delay: config.userQueueInterval,
                 actions: [],
-                callback: function() {
-                },
                 step: function() {
                     if (pledgeQueue.actions.length) {
                         try {
@@ -955,7 +949,6 @@ var _p3 = $.p3 || {},
                         setTimeout(pledgeQueue.run, pledgeQueue.delay);
                     } else {
                         pledgeQueue.running = false;
-                        pledgeQueue.callback();
                     }
                 }
             },
@@ -995,7 +988,9 @@ var _p3 = $.p3 || {},
             parsePledgeData = function() {
                 var jsonData = $(config.dataElement).data(config.dataNamespace);
 
-                // Add fetch first, since array is popped not shifted
+                // Add fetch first, since array is popped not shifted,
+                // because we're adding pledges from oldest to newest, but the
+                // data is sorted newest to oldest
                 if (!config.externalTrigger && refreshNum++ < config.maxRefreshes) {
                     pledgeQueue.actions.push(function() {
                         clearTimeout(timer);
@@ -1114,28 +1109,28 @@ var _p3 = $.p3 || {},
                 return deferred.promise();
             },
             getCountryString = function(country) {
-                var string;
-
-                // Case insensitive, although uppercase is more likely
-                string = countries[country.toUpperCase()] || countries[country.toLowerCase()];
+                var string = countries.hasOwnProperty(country.toUpperCase()) ? countries[country.toUpperCase()] : false;
 
                 if (string) {
                     return string;
                 } else {
-                    config.error(prefix + 'Country not found for code ' + country);
-
-                    if (config.abortOnError) {
-                        return false;
-                    }
+                    console.error(prefix + 'Country not found for code ' + country);
                     return country;
                 }
             },
             showUser = function(user) {
-                var $li = $('<li style="display:none"><span class="since" data-since="' +
-                    user.created + '">' + getTimeString(user.created) + '</span><span class="icon flag ' + user.country +
-                    '"></span><span class="name">' + user.firstname +
-                    ' ' + user.lastname + '</span> <span class="country">' +
-                    getCountryString(user.country) + '</span></li>');
+                var timestamp = user.created || '',
+                    timeCreated = getTimeString(timestamp),
+                    country = user.country,
+                    countryString = getCountryString(user.country),
+                    firstname = user.firstname || '',
+                    lastname = user.lastname || '',
+                    $li = $('<li style="display:none"> </li>');
+
+                $li.append('<span class="since" data-since="' + timestamp + '">' + timeCreated + '</span>')
+                    .append('<span class="icon flag ' + country + '"></span>')
+                    .append('<span class="name">' + firstname + ' ' + lastname + '</span>')
+                    .append(' <span class="country">' + countryString + '</span>');
 
                 // Add to DOM
                 $ul.prepend($li);
@@ -1145,7 +1140,9 @@ var _p3 = $.p3 || {},
 
                 // Remove any excess users
                 if (config.maxUsers && $('li', $ul).length > config.maxUsers) {
-                    $('li:last', $ul).remove();
+                    $('li:last', $ul).hide(350, function () {
+                        this.remove();
+                    });
                 }
             },
             updateTimeStamps = function() {
