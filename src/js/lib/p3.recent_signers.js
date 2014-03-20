@@ -96,8 +96,6 @@
                 running: false,
                 delay: config.userQueueInterval,
                 actions: [],
-                callback: function() {
-                },
                 step: function() {
                     if (pledgeQueue.actions.length) {
                         try {
@@ -116,7 +114,6 @@
                         setTimeout(pledgeQueue.run, pledgeQueue.delay);
                     } else {
                         pledgeQueue.running = false;
-                        pledgeQueue.callback();
                     }
                 }
             },
@@ -161,7 +158,6 @@
                 // data is sorted newest to oldest
                 if (!config.externalTrigger && refreshNum++ < config.maxRefreshes) {
                     pledgeQueue.actions.push(function() {
-                        console.log('Restart timer');
                         clearTimeout(timer);
                         timer = setTimeout(function() {
                             $.event.trigger(config.fetchDataEvent);
@@ -196,7 +192,6 @@
                     }
 
                     pledgeQueue.actions.push(function() {
-                        console.log('Show user');
                         // Enqueue this user
                         showUser(pledge.user);
                     });
@@ -310,7 +305,9 @@
 
                 // Remove any excess users
                 if (config.maxUsers && $('li', $ul).length > config.maxUsers) {
-                    $('li:last', $ul).hide(350).delay(350).remove();
+                    $('li:last', $ul).hide(350, function () {
+                        this.remove();
+                    });
                 }
             },
             updateTimeStamps = function() {
