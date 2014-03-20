@@ -2716,7 +2716,7 @@ Styleguide 7.
   width: 16px;
   height: 11px;
   display: inline-block;
-  background: url("../../img/flags.png") no-repeat 0 11px;
+  background: url("../img/flags.png") no-repeat 0 11px;
 }
 .flag.ad {
   background-position: 0 0;
@@ -4040,7 +4040,7 @@ Action form
     background-size: cover;
   }
   .action-template #main-container-holder {
-    background: transparent url(../../img/raster.png) 0 0 repeat;
+    background: transparent url(../img/raster.png) 0 0 repeat;
   }
   .action-template h1 {
     float: left;
@@ -4119,7 +4119,7 @@ Action form
   background-size: cover;
 }
 .desktop .action-template #main-container-holder {
-  background: transparent url(../../img/raster.png) 0 0 repeat;
+  background: transparent url(../img/raster.png) 0 0 repeat;
 }
 .desktop .action-template h1 {
   float: left;

@@ -1,32 +1,9 @@
 /**
  * @name		p3-styleguide
  * @version		v0.3.0
-<<<<<<< HEAD
- * @date		2014-03-01
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
- * @date		2014-02-24
-=======
- * @date		2014-02-27
->>>>>>> kss
-=======
- * @date		2014-02-28
->>>>>>> kss
-<<<<<<< HEAD
->>>>>>> develop
-=======
-=======
- * @date		2014-03-03
->>>>>>> kss
-=======
- * @date		2014-03-04
->>>>>>> kss
->>>>>>> develop
+ * @date		2014-03-20
  * @copyright	Copyright 2013, Greenpeace International
  * @source		https://github.com/greenpeace/p3_styleguide
  * @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later */
-!function(a){"use strict";var b={action:685},c="https://secured.greenpeace.org/international/en/api/v2/pledges/",d="https://secured.greenpeace.org/international/en/api/v2/pledges/validation/";a.ajaxSetup({cache:!1}),a(document).ready(function(){a.p3.form_tracking(".js-track-abandonment"),a("input[name=email]").focus(),a.p3.autofill("#action-form"),a.p3.pledge_counter("#action-counter",{jsonURL:c,params:b}),a.p3.validation("#action-form",{jsonURL:d,params:b}),a.p3.recent_signers("#action-recent-signers",{jsonURL:c,params:b})})}(jQuery,Modernizr,this);
+!function(a,b){"use strict";var c={test:{parameters:{page:404454,action:912},actions:{pledges:"http://www.greenpeace.org/international/en/Testing/gpi-api-test/",signerCheck:"http://www.greenpeace.org/international/en/Testing/gpi-api-test/signercheck/",validation:"http://www.greenpeace.org/international/en/Testing/gpi-api-test/validation/"}},relephant:{url:"http://greenpeace.relephant.nl/international/en/api/v2/pledges/",parameters:{page:300507,key:"78d245e17c455859b4863ad34674f2b8"}},live:{parameters:{action:685},actions:{pledges:"https://secured.greenpeace.org/international/en/api/v2/pledges/",signerCheck:"https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/",validation:"https://secured.greenpeace.org/international/en/api/v2/pledges/validation/"}},localPledge:{url:"json/pledges.json?fish=salmon"},localValidation:{url:"json/rules_revised.json"},localSigner:{url:{success:"signer_success.json",errorFields:"json/signer_error_fields.json",errorPledge:"json/signer_error_pledge.json"}},localSocial:{url:{simple:"json/social_simple.json",full:"json/social_full_response.json"}}};a.ajaxSetup({cache:!1}),a(b.document).ready(function(){a.p3.form_tracking(".js-track-abandonment"),a("input[name=email]").focus(),a.p3.autofill("#action-form"),a.p3.pledge_counter("#action-counter"),a.p3.validation("#action-form",{jsonURL:c.live.actions.validation,params:c.live.parameters}),a.p3.recent_signers("#action-recent-signers",{jsonURL:c.live.actions.pledges,params:c.live.parameters})})}(jQuery,this);
 // @license-end
