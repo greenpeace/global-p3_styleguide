@@ -5,7 +5,8 @@ module.exports = function(grunt) {
         src: 'src',
         dist: 'dist',
         test: 'test',
-        tmp: 'tmp'
+        tmp: 'tmp',
+        styleguide: 'styleguide'
     };
 
     // ========================================================================
@@ -21,7 +22,7 @@ module.exports = function(grunt) {
             css: [
                 '<%= config.src %>/css/*.css',
                 '<%= config.dist %>/css/*.css',
-                'styleguide/css/*.css'
+                '<%= config.styleguide %>/css/*.css'
             ],
             js: '<%= config.dist %>/js',
             test: [
@@ -36,7 +37,12 @@ module.exports = function(grunt) {
                     'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.',
                 ]
             },
-            all: ["<%= config.src %>/**/*.html"]
+            src: ["<%= config.src %>/**/*.html"],
+            processed: [
+                "<%= config.dist %>/**/*.html",
+                "<%= config.test %>/**/*.html"
+            ],
+            styleguide: ["<%= config.styleguide %>/**/*.html"]
         },
         prettify: {// https://github.com/jonschlinkert/grunt-prettify
             options: {
@@ -75,9 +81,7 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     removeComments: true,
-                    collapseWhitespace: true,
-                    removeRedundantAttributes: true,
-                    removeOptionalTags: true
+                    collapseWhitespace: true
                 },
                 files: [
                     {// Copy production HTML from tmp to dist, except for testing
@@ -220,7 +224,7 @@ module.exports = function(grunt) {
             styleguide: {
                 nonull: true,
                 src: '<%= config.src %>/css/styleguide.css',
-                dest: 'styleguide/css/styleguide.css'
+                dest: '<%= config.styleguide %>/css/styleguide.css'
             },
             bower: {
                 files: {
@@ -430,7 +434,8 @@ module.exports = function(grunt) {
         'htmllint',
         'prettify',
         'htmlmin',
-        'replace:test'
+        'replace:test',
+        'htmllint:processed'
     ]);
 
     // Run 'grunt bower' to copy updated bower components into src
@@ -495,7 +500,7 @@ module.exports = function(grunt) {
     // - copy unprocessed files to /test directory for debugging
 
     grunt.registerTask('default', [
-        'htmllint',
+        'htmllint:src',
         'copy:bower',
         'jshint',
         'clean',
@@ -510,7 +515,8 @@ module.exports = function(grunt) {
         'copy:test',
         'prettify',
         'htmlmin',
-        'replace:test'
+        'replace:test',
+        'htmllint:processed'
     ]);
 
 };
