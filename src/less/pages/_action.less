@@ -5,9 +5,16 @@
 /*
     Page level configuration shortcuts.
 */
-.no-quick-login first-time-login {
-    display: none
+.no-quick-login .first-time-login,
+.no-quick-login .social-login {
+    display: none;
 }
+
+.quick-login-email-only {
+}
+.quick-login-email-only {
+}
+
 
 /*
     Images scaling with size.
@@ -25,6 +32,7 @@
   #main-section {
       background: @white;
       padding-bottom: 3em;
+      padding-top:1.25em;
   }
   h1 {
       margin-bottom: .5em;
@@ -48,8 +56,6 @@ Action form
 	
     .smallprint {
         font-size: 1em; /* 14px */
-		
-		
     }
     label,
     input[type=checkbox],
@@ -59,7 +65,6 @@ Action form
     .longlabel {
         display: inline;
         line-height: 1.4em;
-		
     }
     .remember {
       margin: 1.3em 0 0 .5em;
@@ -72,7 +77,7 @@ Action form
           margin-top: 0.2em;
       }
 	  .longlabel {
-	  margin-left:-.8em;
+	      margin-left:-.9em;
 	  }
     }
 }
@@ -144,6 +149,7 @@ Action form
         float:left;
         clear:left;
         width:380px;
+		
     }
     // background box shenanigans
     .action-template h2,
@@ -197,6 +203,7 @@ Action form
         float:left;
         clear:both;
         width:100%;
+		margin-top:0;
     }
     // show recent signers country name
     #action-recent-signers {
@@ -214,7 +221,7 @@ Action form
     #action-recent-signers {
         float:right;
         width:340px;
-        padding:0 20px;
+        padding:0 20px 10px 20px;
         margin:0;
     }
     // background box shenanigans
@@ -227,7 +234,7 @@ Action form
         margin-bottom:0;
     }
     .action-template h2 {
-        padding-top:20px;
+        padding:20px 20px 0px 20px;
     }
     #action-form {
         padding-bottom:20px;
@@ -241,6 +248,7 @@ Action form
         float:left;
         clear:left;
         width:520px; // + 40px margin
+		
     }
     #action-counter-graphical {
         display:block;
@@ -264,10 +272,9 @@ Action form
             margin-right:0;
         }
 		#action-smallprints {
-		width:26em;
-		}
-		#action-smallprints {
-		padding:.5em;
+		    width:26em;
+		    padding:.5em;
+            font-size:.75em;
 		}
 		
 		
@@ -308,4 +315,13 @@ Browser specific hacks
           font-weight: normal;
       }
   }
+}
+
+    // action thank you page
+    
+#action-social-share-thankyou {
+    float:left;
+    clear:left;
+    width:360px; // + 40px margin
+	padding-bottom:.6em;
 }

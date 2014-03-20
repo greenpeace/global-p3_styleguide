@@ -10,7 +10,6 @@ body {
 
 #kss-node {
 
-  border-top: 4px solid @key-color;
   background: #fff;
 
   // Variables
@@ -97,11 +96,11 @@ body {
       display: inline;
     }
     a {
-      color: #08a;
+      color: #467F0D;
       text-decoration: none;
       &:hover {
         text-decoration: underline;
-        color: #068;
+        color: #467F0D;
       }
     }
     img {
@@ -176,7 +175,7 @@ body {
       position: fixed;
       top: 0;
       .kss-sidebar-inner {
-        padding-top: 40px + 4px;  // Keep border height
+        padding-top: 100px + 4px;  // Keep border height
       }
     }
   }
@@ -187,7 +186,7 @@ body {
   // Document title
   .kss-doc-title {
     .base-styles();
-    margin: 0 0 30px;
+    margin: 0;
     text-align: right;
     font-size: 20px;
     font-weight: normal;
@@ -200,7 +199,7 @@ body {
 
   // Menu
   .kss-nav {
-    margin: 30px 0;
+    margin: 5px 0;
   }
 
   .kss-menu {
@@ -277,8 +276,8 @@ body {
   // Content column
   .kss-content {
     overflow: hidden;
-    margin-left: @sidebar-width + 30px;
-    padding: 40px 0 10px;
+    margin-left: @sidebar-width + 120px;
+    padding: 120px 0 10px;
   }
 
   // Section

@@ -5,58 +5,33 @@
 	Compatible	: ?
 	Since       : ?
 */
-.social-share {
-	clear:both;
-}
-.social-share ul {
-	list-style-type:none;
-	padding:0;
-}
-.social-share li {
-	display:inline-block;
-	margin-right:.25em;
+.social-share .socialBtn-float {
+float:left;
+padding:.3em .3em 0 0;
 }
 .social-share .counter span {
 	border:1px solid @grays-4;
 	display:block;
 	text-align:center;
-	width:48px;
+	width:3.6em;
 	padding:.5em 0;
 	font-size:.875em;
 	.rounded_all(2px);
+	
+	
 }
-.social-share .action a {
+.social-share .counterBig span {
+	border:1px solid @grays-4;
 	display:block;
 	text-align:center;
-	width:50px;
-	height:25px;
-	padding:.5em;
-	padding:0;
-	margin-top:10px;
+	width:7em;
+	padding:.5em .8em;
+	font-size:1.2em;
 	.rounded_all(2px);
+	background:#fff;
+	
 }
-/* 
-	flat style icons 
-	Credit: David Bushell http://dbushell.com @dbushell
-*/
-.social-share .action a span {
-	display:none;
-}
-.social-share .facebook a {
-	background:transparent url(../img/social-map.png) 0 -90px no-repeat;
-}
-.social-share .google a {
-	background:transparent url(../img/social-map.png) 0 -45px no-repeat;
-}
-.social-share .twitter a {
-	background:transparent url(../img/social-map.png) 0 0 no-repeat;
-}
-.social-share .pinterest a {
-	background:transparent url(../img/social-map.png) 0 -175px no-repeat;
-}
-.social-share .linkedin a {
-	background:transparent url(../img/social-map.png) 0 -135px no-repeat;
-}
+
 /* some fake bubble tip shenanigans */
 .social-share .counter {
 	background:@white;
@@ -71,16 +46,33 @@
 	display: inline-block;
 	content:" ";
 }
+
+
 .social-share .tip:before{
 	border-top-color: rgba(0, 0, 0, 0.2);
 }
 .social-share .tip:after{
 	border-top-color: rgba(255, 255, 255, 1);
 	margin-top:-2px;
+	
+}
+.social-share .tipBig:before, .social-share .tipBig:after {
+	width:1px; height:1px;
+	position:absolute;
+	margin-left:4.7em;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 7px solid @grays-4;
+	display: inline-block;
+	content:" ";
+}
+.social-share .tipBig:before{
+	border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tipBig:after{
+	border-top-color: rgba(255, 255, 255, 1);
+	margin-top:-2px;
+	
 }
 
-/* IE specific */
-.lt-ie8 .social-share li {
-	display:inline;
-	margin-right:.5em;   
-}
+
