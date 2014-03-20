@@ -953,50 +953,49 @@ Styleguide 1.6.2
 }
 /*
  * Paper Box
- */
+ 
 .paper {
-  position: relative;
-  margin: 0 0 5px 2px;
-  z-index: 0;
-  border: 1px solid #eaeaea;
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
+  position:relative;
+  margin:0 0 5px 2px;
+  z-index:0;
+  border:1px solid #eaeaea;
+  .boxshadow(0px; 3px; 6px; 0px; rgba(0, 0, 0, 0.3));
 }
 .paper-content {
-  background-color: #fbfbfb;
-  padding: 10px;
-  min-height: 25px;
+  background-color:#fbfbfb;
+  padding:10px;
+  min-height:25px;
 }
 .paper:before,
 .paper:after,
 .paper-content:before,
 .paper-content:after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-}
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+} 
 .paper:before {
-  top: -2px;
-  left: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat left top;
+  top:-2px;
+  left:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat left top;
 }
 .paper-content:before {
-  top: -2px;
-  right: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat right top;
+  top:-2px;
+  right:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat right top;
 }
 .paper:after {
-  bottom: -2px;
-  left: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat left bottom;
+  bottom:-2px;
+  left:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat left bottom;
 }
 .paper-content:after {
-  bottom: -2px;
-  right: -2px;
-  background: transparent url(../../../img/v02/paper-corners.png) no-repeat right bottom;
+  bottom:-2px;
+  right:-2px;
+  background:transparent url(../../../img/v02/paper-corners.png) no-repeat right bottom;
 }
+*/
 /* page level configuration shortcuts */
 .no-background {
   background: none;
@@ -1011,8 +1010,6 @@ Styleguide 1.6.2
 .no-navigation .header .language-selector {
   visibility: hidden;
 }
-/* test
-***********/
 /*
 Typography rules
 
@@ -1043,7 +1040,7 @@ Styleguide 2.2
 Unordered List
 
 Markup:
-<div id="main-section">
+<div id="main-section" style="margin-top:0">
   <ul>
     <li>Unordered list test:</li>
     <li><ul>
@@ -1062,7 +1059,7 @@ Styleguide 2.2.1
 Ordered List
 
 Markup:
-<div id="main-section">
+<div id="main-section" style="margin-top:0">
   <ol>
     <li>Ordered list test:</li>
     <li><ol>
@@ -1409,21 +1406,21 @@ Since version 3.0.
 
 Markup:
 <form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
-  <div class="input required text email">
+  <div class="input text email">
     <label for="UserEmail">Email</label>
-    <input name="email" class="required email {$modifiers}" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
-  </div>
+    <input name="email" class="email {$modifiers}" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+</div>
   <div class="firstname">
     <label for="UserFirstname">Firstname</label>
-    <input name="FIrstname" class="alphaPlus {$modifiers}" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname*">
+    <input name="FIrstname" class="alphaPlus {$modifiers}" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname">
   </div>
   <div class="lastname">
     <label for="UserLastname">Lastname</label>
-    <input name="LAstname" class="alpha {$modifiers}" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname*">
+    <input name="LAstname" class="alpha {$modifiers}" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname">
   </div>
   <div class="phone">
     <label for="UserPhone">Mobile Phone</label>
-    <input name="phone" class="numeric {$modifiers}" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*"/>
+    <input name="phone" class="numeric {$modifiers}" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone"/>
   </div>
   <div class="search">
     <label for="search">Search</label>
@@ -1431,15 +1428,62 @@ Markup:
   </div>
   <div class="postcode">
     <label for="password">Password</label>
-    <input name="password" class="alphanumeric {$modifiers}" required maxlength="64" type="password" id="password" placeholder="Password*"/>
+    <input name="password" class="alphanumeric {$modifiers}" required maxlength="64" type="password" id="password" placeholder="Password"/>
   </div>
 </form>
 
-:hover		- subtle hover highlight
-:focus		- green border
-:disabled	- grey out to indicate it cannot be used
+:hover		- subtle hover highlight.
+:focus		- green border.
+:disabled	- grey out to indicate it cannot be used.
 
 Styleguide 3.1
+*/
+/*
+Labels
+
+Label and input are wrapped in div. If required class is added, additional span with a @red-1 star is included.
+
+Markup:
+<form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+  <div class="required input text email {$modifiers}">
+    <label for="UserEmail">Email</label>
+    <input name="email" class="required email" required maxlength="64" type="email" pattern="[^ @]*@[^ @]*\.[^ @]*" id="UserEmail" placeholder="Email*">
+</div>
+  <div class="firstname {$modifiers}">
+    <label for="UserFirstname">Firstname</label>
+    <input name="FIrstname" class="alphaPlus" required maxlength="64" type="text" id="UserFirstname" placeholder="Firstname">
+  </div>
+  <div class="lastname {$modifiers}">
+    <label for="UserLastname">Lastname</label>
+    <input name="LAstname" class="alpha" required maxlength="64" type="text" id="UserLastname" placeholder="Lastname">
+  </div>
+  <div class="phone {$modifiers}">
+    <label for="UserPhone">Mobile Phone</label>
+    <input name="phone" class="numeric" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone"/>
+  </div>
+  <div class="search {$modifiers}">
+    <label for="search">Search</label>
+    <input name="search" required maxlength="64" type="search" id="search" placeholder="Search"/>
+  </div>
+  <div class="postcode {$modifiers}">
+    <label for="password">Password</label>
+    <input name="password" class="alphanumeric" required maxlength="64" type="password" id="password" placeholder="Password"/>
+  </div>
+  <div class="textarea {$modifiers}">
+    <label for="ActionMessage">Your message</label>
+    <textarea rows="5" id="ActionMessage" name="ActionMessage">
+Dear Lorem,
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+    </textarea>
+  </div>
+</form>
+
+.show-default      - Default mode of showing the labels.
+.horizontal-ra     - Show labels in left side with right text alignment.
+.horizontal-la     - Show labels in left side with left text alignment.
+.inline            - Show label and input inline.
+
+Styleguide 3.3
 */
 /*
 Radio input.
@@ -1453,7 +1497,7 @@ Markup:
   </fieldset>
 </div>
 
-Styleguide 3.2
+Styleguide 3.4
 */
 /*
 Checkbox input.
@@ -1467,7 +1511,7 @@ Markup:
   </fieldset>
 </div>
 
-Styleguide 3.3
+Styleguide 3.5
 */
 input[type=text],
 input[type=password],
@@ -1495,6 +1539,23 @@ textarea {
 label {
   display: none;
   padding: .5em 0 .5em .5em;
+}
+.show-default label {
+  display: block;
+}
+.horizontal-ra label {
+  display: inline-block;
+  width: 10%;
+  text-align: right;
+}
+.horizontal-la label {
+  display: inline-block;
+  width: 10%;
+  text-align: left;
+}
+form .inline,
+.inline.required label {
+  display: inline-block;
 }
 .no-placeholder label {
   display: block;
@@ -1530,7 +1591,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
 :focus		- green border
 :disabled	- grey out to indicate it cannot be used
 
-Styleguide 3.4
+Styleguide 3.6
 */
 textarea,
 input[type=password],
@@ -1581,7 +1642,7 @@ textarea:disabled:hover {
   background: #F3F3F3;
 }
 /*
-Textarea required and larger
+Textarea larger
 
 Labels and input are wrapped in a div with the type of the class.
 
@@ -1590,18 +1651,19 @@ Compatible in FF2+, Chrome1+.
 Since version 3.0
 
 Markup:
+<form>
 <div class="textarea {$modifiers}">
-  <label for="ActionMessage">Your message</label>
   <textarea rows="5" id="ActionMessage" name="ActionMessage">
 Dear Lorem,
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
   </textarea>
+  <label for="ActionMessage">Your message</label>
 </div>
+</form>
 
-.required			- Label and input are wrapped in div.text.required. Additional span with a star is included. Input also get the required class.
 .large   	        - Make the box bigger.
 
-Styleguide 3.5
+Styleguide 3.7
 */
 .required label:after {
   content: " *";
@@ -1635,12 +1697,14 @@ Markup:
 <button class="{$modifiers}">button</button>
 <a class="button {$modifiers}">a.button</a>
 
-:hover           - Subtle hover highlight and box shadow
-:active          - Inset box shadow and 1px offset
-.primary         - Primary buttons are orange
-.disabled        - Dims the button to indicate it cannot be used
-.disabled:hover  - Disabled buttons are inactive (no hover effect)
-.disabled:active - Disabled buttons inactive (no active state)
+:hover                  - Subtle hover highlight and box shadow
+:focus                  - Subtle hover highlight and box shadow
+:active                 - Inset box shadow and 1px offset
+.primary                - Primary buttons are orange
+.primary:hover          - Primary buttons are orange
+.primary:focus          - Primary buttons are orange
+.primary:active         - Primary buttons are orange
+.disabled               - Dims the button to indicate it cannot be used
 
 Styleguide 4.1
 */
@@ -1667,9 +1731,9 @@ a.button {
   min-width: 6em;
   font-weight: bold;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-  -webkit-border-radius: 0.25em;
-  -moz-border-radius: 0.25em;
-  border-radius: 0.25em;
+  -webkit-border-radius: 0.1em;
+  -moz-border-radius: 0.1em;
+  border-radius: 0.1em;
   color: #333333;
   border: 1px solid #cccccc;
   background-color: #f5f5f5;
@@ -1689,21 +1753,22 @@ a.button.primary {
   text-shadow: 0 0 2px #9a9a9a;
   background: #f99713;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #f99713 0%, #e56b2b 57%, #ededed 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f99713), color-stop(57%, #e56b2b), color-stop(100%, #e56b2b));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #f99713 0%, #e56b2b 57%, #e56b2b 100%);
-  /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
   /* IE6-9 */
-  border: 1px solid #f06818;
+  border: 1px solid #e78f01;
+}
+.button.primary:hover,
+input[type=submit].primary:hover,
+input.button.primary:hover,
+button.primary:hover,
+a.button.primary:hover,
+.button.primary:focus,
+input[type=submit].primary:focus,
+input.button.primary:focus,
+button.primary:focus,
+a.button.primary:focus {
+  text-decoration: none;
+  background: #f59e10;
 }
 .button:hover,
 input[type=submit]:hover,
@@ -1716,6 +1781,7 @@ input.button:focus,
 button:focus,
 a.button:focus {
   text-decoration: none;
+  outline: 0;
   -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -2921,6 +2987,8 @@ Styleguide 5.1.4
     -moz-box-shadow: none;
     box-shadow: none;
     float: left;
+    height: 1.4em;
+    font-size: 0.8em;
   }
   .heading .search-form input[type=submit] {
     display: none;
@@ -3241,6 +3309,8 @@ Styleguide 5.1.4
   -moz-box-shadow: none;
   box-shadow: none;
   float: left;
+  height: 1.4em;
+  font-size: 0.8em;
 }
 .sevensome .heading .search-form input[type=submit] {
   display: none;
@@ -3562,6 +3632,8 @@ Styleguide 5.1.4
   -moz-box-shadow: none;
   box-shadow: none;
   float: left;
+  height: 1.4em;
+  font-size: 0.8em;
 }
 .lt-ie9 .heading .search-form input[type=submit] {
   display: none;
@@ -3604,8 +3676,8 @@ Styleguide 6.
 */
 #breadcrumbs ul {
   padding: 0;
-  margin-bottom: 1.4em;
   font-size: .875em;
+  margin: 0 0 1em 0;
 }
 #breadcrumbs li {
   display: inline;
@@ -3628,61 +3700,32 @@ Styleguide 6.
 	Compatible	: ?
 	Since       : ?
 */
-.social-share {
-  clear: both;
-}
-.social-share ul {
-  list-style-type: none;
-  padding: 0;
-}
-.social-share li {
-  display: inline-block;
-  margin-right: .25em;
+.social-share .socialBtn-float {
+  float: left;
+  padding: .3em .3em 0 0;
 }
 .social-share .counter span {
   border: 1px solid #cccccc;
   display: block;
   text-align: center;
-  width: 48px;
+  width: 3.6em;
   padding: .5em 0;
   font-size: .875em;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-.social-share .action a {
+.social-share .counterBig span {
+  border: 1px solid #cccccc;
   display: block;
   text-align: center;
-  width: 50px;
-  height: 25px;
-  padding: .5em;
-  padding: 0;
-  margin-top: 10px;
+  width: 7em;
+  padding: .5em .8em;
+  font-size: 1.2em;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-}
-/* 
-	flat style icons 
-	Credit: David Bushell http://dbushell.com @dbushell
-*/
-.social-share .action a span {
-  display: none;
-}
-.social-share .facebook a {
-  background: transparent url(../img/social-map.png) 0 -90px no-repeat;
-}
-.social-share .google a {
-  background: transparent url(../img/social-map.png) 0 -45px no-repeat;
-}
-.social-share .twitter a {
-  background: transparent url(../img/social-map.png) 0 0 no-repeat;
-}
-.social-share .pinterest a {
-  background: transparent url(../img/social-map.png) 0 -175px no-repeat;
-}
-.social-share .linkedin a {
-  background: transparent url(../img/social-map.png) 0 -135px no-repeat;
+  background: #fff;
 }
 /* some fake bubble tip shenanigans */
 .social-share .counter {
@@ -3707,10 +3750,24 @@ Styleguide 6.
   border-top-color: #ffffff;
   margin-top: -2px;
 }
-/* IE specific */
-.lt-ie8 .social-share li {
-  display: inline;
-  margin-right: .5em;
+.social-share .tipBig:before,
+.social-share .tipBig:after {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  margin-left: 4.7em;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  display: inline-block;
+  content: " ";
+}
+.social-share .tipBig:before {
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tipBig:after {
+  border-top-color: #ffffff;
+  margin-top: -2px;
 }
 /*
 Flag icons
@@ -4719,9 +4776,77 @@ Styleguide 7.
 .flag.zw {
   background-position: -17px -948px;
 }
-/* ==========================================================================
-   Footer
-   ========================================================================== */
+/*
+Footer
+
+This is the main footer.
+
+Markup:
+<footer>
+    <div class="footer container footer-small">
+        <div class="footer-holder page-section" style="width:920px">
+            <div class="copy-box">
+                <div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2013</span></div>
+                <ul class="legal-menu">
+                    <li><a href="/international/en/Help/privacy/">Privacy statement</a></li>
+                    <li><a title="copyright policy" href="/international/en/Help/copyright2/">Copyright</a></li>
+                </ul>
+                <ul class="bottom-menu">
+                    <li><a href="/international/en/">Home</a></li>
+                    <li><a href="/international/en/about/">About us</a></li>
+                    <li><a href="/international/en/about/contactus/">Contact us</a></li>
+                    <li><a href="/international/en/press/">Press centre</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+Styleguide 10.
+*/
+/*
+Logo box and Legal menu
+
+Greenpeace logotype in the footer and legal menu links.
+
+Markup:
+<footer>
+    <div class="footer container footer-small">
+        <div class="footer-holder page-section" style="width:920px">
+            <div class="copy-box">
+                <div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2013</span></div>
+                <ul class="legal-menu">
+                    <li><a href="/international/en/Help/privacy/">Privacy statement</a></li>
+                    <li><a title="copyright policy" href="/international/en/Help/copyright2/">Copyright</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+Styleguide 10.1
+*/
+/*
+Bottom menu
+
+Markup:
+<footer>
+    <div class="footer container footer-small">
+        <div class="footer-holder page-section" style="width:920px">
+            <div class="copy-box">
+                <ul class="bottom-menu">
+                    <li><a href="/international/en/">Home</a></li>
+                    <li><a href="/international/en/about/">About us</a></li>
+                    <li><a href="/international/en/about/contactus/">Contact us</a></li>
+                    <li><a href="/international/en/press/">Press centre</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+Styleguide 10.2
+*/
 /* small bottom footer */
 .footer-small {
   background: #282d38;
