@@ -24,42 +24,6 @@
                     signerCheck: 'http://www.greenpeace.org/international/en/Testing/gpi-api-test/signercheck/',
                     validation: 'http://www.greenpeace.org/international/en/Testing/gpi-api-test/validation/'
                 }
-            },
-            relephant: {
-                url: 'http://greenpeace.relephant.nl/international/en/api/v2/pledges/',
-                parameters: {
-                    page: 300507,
-                    key: '78d245e17c455859b4863ad34674f2b8' // API access key - tied to the referring domain
-                }
-            },
-            live: {
-                parameters: {
-                    action: 685
-                },
-                actions: {
-                    pledges: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
-                    signerCheck: 'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
-                    validation: 'https://secured.greenpeace.org/international/en/api/v2/pledges/validation/'
-                }
-            },
-            localPledge: {
-                url: 'json/pledges.json?fish=salmon'
-            },
-            localValidation: {
-                url: 'json/rules_revised.json'
-            },
-            localSigner: {
-                url: {
-                    success: 'signer_success.json',
-                    errorFields: 'json/signer_error_fields.json',
-                    errorPledge: 'json/signer_error_pledge.json'
-                }
-            },
-            localSocial: {
-                url: {
-                    simple: 'json/social_simple.json',
-                    full: 'json/social_full_response.json'
-                }
             }
         };
 

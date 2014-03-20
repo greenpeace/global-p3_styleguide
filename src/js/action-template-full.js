@@ -22,6 +22,12 @@
                     signerCheck: 'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
                     validation: 'https://secured.greenpeace.org/international/en/api/v2/pledges/validation/'
                 }
+            },
+            localSocial: {
+                url: {
+                    simple: '../test/json/social_simple.json',
+                    full: '../test/json/social_full_response.json'
+                }
             }
         };
 
