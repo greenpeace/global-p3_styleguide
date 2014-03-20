@@ -13,6 +13,16 @@
 
     // GET parameters to send with each request
     var petition = {
+            live: {
+                parameters: {
+                    action: 685
+                },
+                actions: {
+                    base: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
+                    signerCheck: 'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
+                    validation: 'https://secured.greenpeace.org/international/en/api/v2/pledges/validation/'
+                }
+            },
             test: {
                 parameters: {
                     page: 404454,
