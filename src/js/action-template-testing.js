@@ -16,7 +16,8 @@
             test: {
                 parameters: {
                     page: 404454,
-                    action: 912
+                    action: 912,
+                    key: 'f728ab0df8e4dff9acec2a85d4af7327'
 //                    expire: '2013-11-02'
                 },
                 actions: {
@@ -138,10 +139,9 @@
 
         // Recent signers widget
         $.p3.recent_signers('#action-recent-signers', {
-            jsonURL: petition.test.actions.pledges,
-            params: petition.test.parameters
+            jsonURL: petition.live.actions.pledges,
+            params: petition.live.parameters
         });
-
     });
 
 }(jQuery, Modernizr, this));
