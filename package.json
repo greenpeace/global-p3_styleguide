@@ -20,6 +20,7 @@
     "grunt-text-replace": "~0.3.11",
     "grunt-contrib-htmlmin": "~0.2.0",
     "grunt-prettify": "~0.3.4",
-    "grunt-html": "~1.1.0"
+    "grunt-html": "~1.1.0",
+    "grunt-jsonlint": "~1.0.4"
   }
 }

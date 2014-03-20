@@ -34,7 +34,6 @@ module.exports = function(grunt) {
             options: {
                 ignore: [
                     'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.',
-
                 ]
             },
             all: ["<%= config.src %>/**/*.html"]
@@ -63,7 +62,6 @@ module.exports = function(grunt) {
         htmlmin: {// https://github.com/gruntjs/grunt-contrib-htmlmin
             test: {
                 options: {
-
                 },
                 files: [
                     {// Copy all HTML from tmp to testing
@@ -136,6 +134,11 @@ module.exports = function(grunt) {
                 }
             },
             files: ['<%= config.src %>/js/lib/*.js', '<%= config.src %>/js/*.js']
+        },
+        jsonlint: {
+            countries: {
+                src: ['<%= config.src %>/countries/*.json']
+            }
         },
         concat: {// https://www.npmjs.org/package/grunt-contrib-concat
             options: {
@@ -248,6 +251,22 @@ module.exports = function(grunt) {
                     }
                 ]
             },
+            json: {
+                files: [
+                    {// Copy src countries json to dist
+                        expand: true,
+                        cwd: '<%= config.src %>/countries/',
+                        src: ['*'],
+                        dest: '<%= config.dist %>/countries/'
+                    },
+                     {// Copy src countries json to test
+                        expand: true,
+                        cwd: '<%= config.src %>/countries/',
+                        src: ['*'],
+                        dest: '<%= config.test %>/countries/'
+                    }
+                ]
+            },
             test: {
                 files: [
                     {// Copy generated CSS to /test/ for unminified debugging
@@ -264,6 +283,11 @@ module.exports = function(grunt) {
                         dest: '<%= config.test %>/'
                     }
                 ]
+            },
+            testJS: {
+                files: {
+                    '<%= config.test %>/js/action-template-testing.js': ['<%= config.src %>/js/action-template-testing.js']
+                }
             }
         },
         replace: {// https://www.npmjs.org/package/grunt-text-replace
@@ -291,7 +315,7 @@ module.exports = function(grunt) {
                 tasks: ['images'],
                 options: {
                     spawn: false,
-                    debounceDelay: 500
+                    debounceDelay: 250
                 }
             },
             html: {
@@ -316,7 +340,7 @@ module.exports = function(grunt) {
                 tasks: ['js'],
                 options: {
                     spawn: false,
-                    debounceDelay: 550
+                    debounceDelay: 250
                 }
             },
             less: {
@@ -325,7 +349,15 @@ module.exports = function(grunt) {
                 tasks: ['css'],
                 options: {
                     spawn: false,
-                    debounceDelay: 550
+                    debounceDelay: 250
+                }
+            },
+            json: {
+                files:['<%= config.src %>/**/*.json'],
+                tasks: ['json'],
+                options: {
+                    spawn:false,
+                    debounceDelay:250
                 }
             }
         }
@@ -365,6 +397,8 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-text-replace');
 
+    grunt.loadNpmTasks('grunt-jsonlint');
+
     // ========================================================================
     // Register Tasks
 
@@ -385,7 +419,13 @@ module.exports = function(grunt) {
     grunt.registerTask('test', [
         'validation',
         'jshint',
+        'jsonlint',
         'lesslint'
+    ]);
+
+    grunt.registerTask('json', [
+        'jsonlint',
+        'copy:json'
     ]);
 
     // Run 'grunt csslint' to check LESS quality, and if no errors then
@@ -416,6 +456,7 @@ module.exports = function(grunt) {
         'concat',
         'uglify',
         'clean:test',
+        'copy:testJS',
         'copy:test'
     ]);
 
@@ -437,6 +478,7 @@ module.exports = function(grunt) {
         'concat',
         'uglify',
         'copy:images',
+        'copy:testJS',
         'copy:test',
         'prettify',
         'htmlmin',
