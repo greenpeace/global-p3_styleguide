@@ -5,7 +5,7 @@
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.0
+ * @version         0.3.1
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -156,9 +156,12 @@
             parsePledgeData = function() {
                 var jsonData = $(config.dataElement).data(config.dataNamespace);
 
-                // Add fetch first, since array is popped not shifted
+                // Add fetch first, since array is popped not shifted,
+                // because we're adding pledges from oldest to newest, but the
+                // data is sorted newest to oldest
                 if (!config.externalTrigger && refreshNum++ < config.maxRefreshes) {
                     pledgeQueue.actions.push(function() {
+                        console.log('Restart timer');
                         clearTimeout(timer);
                         timer = setTimeout(function() {
                             $.event.trigger(config.fetchDataEvent);
@@ -193,6 +196,7 @@
                     }
 
                     pledgeQueue.actions.push(function() {
+                        console.log('Show user');
                         // Enqueue this user
                         showUser(pledge.user);
                     });
@@ -275,28 +279,28 @@
                 return deferred.promise();
             },
             getCountryString = function(country) {
-                var string;
-
-                // Case insensitive, although uppercase is more likely
-                string = countries[country.toUpperCase()] || countries[country.toLowerCase()];
+                var string = countries.hasOwnProperty(country.toUpperCase()) ? countries[country.toUpperCase()] : false;
 
                 if (string) {
                     return string;
                 } else {
-                    config.error(prefix + 'Country not found for code ' + country);
-
-                    if (config.abortOnError) {
-                        return false;
-                    }
+                    console.error(prefix + 'Country not found for code ' + country);
                     return country;
                 }
             },
             showUser = function(user) {
-                var $li = $('<li style="display:none"><span class="since" data-since="' +
-                    user.created + '">' + getTimeString(user.created) + '</span><span class="icon flag ' + user.country +
-                    '"></span><span class="name">' + user.firstname +
-                    ' ' + user.lastname + '</span> <span class="country">' +
-                    getCountryString(user.country) + '</span></li>');
+                var timestamp = user.created || '',
+                    timeCreated = getTimeString(timestamp),
+                    country = user.country,
+                    countryString = getCountryString(user.country),
+                    firstname = user.firstname || '',
+                    lastname = user.lastname || '',
+                    $li = $('<li style="display:none"> </li>');
+
+                $li.append('<span class="since" data-since="' + timestamp + '">' + timeCreated + '</span>')
+                    .append('<span class="icon flag ' + country + '"></span>')
+                    .append('<span class="name">' + firstname + ' ' + lastname + '</span>')
+                    .append(' <span class="country">' + countryString + '</span>');
 
                 // Add to DOM
                 $ul.prepend($li);
@@ -306,7 +310,7 @@
 
                 // Remove any excess users
                 if (config.maxUsers && $('li', $ul).length > config.maxUsers) {
-                    $('li:last', $ul).remove();
+                    $('li:last', $ul).hide(350).delay(350).remove();
                 }
             },
             updateTimeStamps = function() {
