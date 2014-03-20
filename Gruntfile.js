@@ -51,7 +51,9 @@ module.exports = function(grunt) {
                 indent_inner_html: true,
                 unformatted: [
                     "a",
-                    "pre"
+                    "pre",
+                    "textarea",
+                    "code"
                 ]
             },
             src: {
