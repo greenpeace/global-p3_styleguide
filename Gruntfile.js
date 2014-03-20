@@ -69,7 +69,7 @@ module.exports = function(grunt) {
         },
         htmlmin: {// https://github.com/gruntjs/grunt-contrib-htmlmin
             test: {
-                options: {
+                options: { // Do nothing for test
                 },
                 files: [
                     {// Copy all HTML from tmp to testing
@@ -289,25 +289,35 @@ module.exports = function(grunt) {
                     }
                 ]
             },
-            test: {
+            testDist: {
                 files: [
-                    {// Copy generated CSS to /test/ for unminified debugging
-                        expand: true,
-                        cwd: '<%= config.src %>/css',
-                        src: ['*.css'],
-                        dest: '<%= config.test %>/css/'
-                    },
                     {// Copy the contents of /dist/ to /test/
                         // ** except HTML we do that in `htmlmin`
                         expand: true,
                         cwd: '<%= config.dist %>',
                         src: ['**', '!**/*.html'],
                         dest: '<%= config.test %>/'
+                    },
+                    {
+
+                    }
+                ]
+            },
+            testCSS: {
+                files: [
+                    {// Copy unminified CSS to /test/ for debugging
+                        expand: true,
+                        cwd: '<%= config.src %>/css',
+                        src: ['*.css'],
+                        dest: '<%= config.test %>/css/'
                     }
                 ]
             },
             testJS: {
                 files: {
+                    '<%= config.test %>/js/site.js': ['<%= config.src %>/js/site-main.js'],
+                    '<%= config.test %>/js/action-template.js': ['<%= config.src %>/js/action-template-simple.js'],
+                    '<%= config.test %>/js/action-template-full.js': ['<%= config.src %>/js/action-template-full.js'],
                     '<%= config.test %>/js/action-template-testing.js': ['<%= config.src %>/js/action-template-testing.js']
                 }
             }
@@ -433,11 +443,12 @@ module.exports = function(grunt) {
     // Register Tasks
 
     grunt.registerTask('html', [
-        'htmllint',
-        'prettify',
-        'htmlmin',
-        'replace:test',
-        'htmllint:processed'
+//        'htmllint',         // Validates all HTML
+        'prettify',         // Cleans up the formatting, places output in `tmp`
+        'htmlmin',          // Copies and minifies `tmp` HTML to `dist` folder,
+                            // and copies unmodified `tmp` HTML to `test` folder
+        'replace:test',     // Renames source files from .min.* to .* in `test`
+        'htmllint:processed' // Lints the processed output to ensure no funny business happened in the meantime
     ]);
 
     // Run 'grunt bower' to copy updated bower components into src
@@ -477,8 +488,7 @@ module.exports = function(grunt) {
         'less',
         'cssmin',
         'copy:styleguide',
-        'clean:test',
-        'copy:test'
+        'copy:testCSS'
     ]);
 
     // Run 'grunt js' to check JS code quality, and if no errors
@@ -489,12 +499,11 @@ module.exports = function(grunt) {
         'clean:js',
         'concat',
         'uglify',
-        'clean:test',
-        'copy:testJS',
-        'copy:test'
+        'copy:testJS'
     ]);
 
     // 'grunt' will:
+    // - bring in new bower components
     // - check code quality, and if no errors,
     // - compile LESS to CSS,
     // - minify and concatonate all JS and CSS,
@@ -502,7 +511,7 @@ module.exports = function(grunt) {
     // - copy unprocessed files to /test directory for debugging
 
     grunt.registerTask('default', [
-        'htmllint:src',
+//        'htmllint:src',
         'copy:bower',
         'jshint',
         'clean',
@@ -513,8 +522,9 @@ module.exports = function(grunt) {
         'uglify',
         'copy:images',
         'copy:fonts',
+        'copy:testDist',
         'copy:testJS',
-        'copy:test',
+        'copy:testCSS',
         'prettify',
         'htmlmin',
         'replace:test',
