@@ -235,6 +235,22 @@ module.exports = function(grunt) {
                     "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-categories.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-categories.js"
                 }
             },
+            fonts: {
+                files: [
+                    {// Copy src images to dist
+                        expand: true,
+                        cwd: '<%= config.src %>/fonts/',
+                        src: ['*'],
+                        dest: '<%= config.dist %>/fonts/'
+                    },
+                    {// Copy src images to test
+                        expand: true,
+                        cwd: '<%= config.src %>/fonts/',
+                        src: ['*'],
+                        dest: '<%= config.test %>/fonts/'
+                    }
+                ]
+            },
             images: {
                 files: [
                     {// Copy src images to dist
@@ -313,6 +329,14 @@ module.exports = function(grunt) {
             images: {
                 files: '<%= config.src %>/img/**',
                 tasks: ['images'],
+                options: {
+                    spawn: false,
+                    debounceDelay: 250
+                }
+            },
+            fonts: {
+                files: '<%= config.src %>/fonts/**',
+                tasks: ['fonts'],
                 options: {
                     spawn: false,
                     debounceDelay: 250
@@ -412,7 +436,10 @@ module.exports = function(grunt) {
     // Run 'grunt bower' to copy updated bower components into src
     grunt.registerTask('bower', ['copy:bower']);
 
-    // Run 'grunt images' to copy new images from src to dist and test
+    // Run 'grunt fonts' to copy fonts from src to dist and test
+    grunt.registerTask('fonts', ['copy:fonts']);
+
+    // Run 'grunt images' to copy images from src to dist and test
     grunt.registerTask('images', ['copy:images']);
 
     // Run 'grunt test' to view jshint, lesslint and HTML validator recommendations
@@ -478,6 +505,7 @@ module.exports = function(grunt) {
         'concat',
         'uglify',
         'copy:images',
+        'copy:fonts',
         'copy:testJS',
         'copy:test',
         'prettify',
