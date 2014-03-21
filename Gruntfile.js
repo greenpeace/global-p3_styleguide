@@ -82,8 +82,8 @@ module.exports = function(grunt) {
             },
             dist: {
                 options: {
-                    removeComments: true,
-                    collapseWhitespace: true
+//                    removeComments: true,
+//                    collapseWhitespace: true
                 },
                 files: [
                     {// Copy production HTML from tmp to dist, except for testing
