@@ -25,19 +25,24 @@
 <meta property="fb:admins" content="7297163299"/>
 <meta property="twitter:card" content="summary"/>
 <meta property="twitter:site" content="Greenpeace"/>
-
-    <script src="js/modernizr.min.js"></script>        
-    <link rel="stylesheet" type="text/css" href="css/action-template-thankyou.min.css"/>
-    <style type="text/css">
-        .desktop .action-template #main-container {
+<script src="js/modernizr.min.js"></script>        
+<link rel="stylesheet" type="text/css" href="css/action-template-thankyou.min.css"/>
+<style type="text/css">
+    .desktop .action-template #main-container {
+        background-image: url(//www.greenpeace.org/international/Global/international/artwork/climate/2013/Shell_hell_bg_2.jpg);
+    }
+     .desktop .action-template #main-container-holder {
+        background: transparent url(img/raster.png) 0 0 repeat;
+    }
+    @media only screen and (min-width : 1024px) {
+        .action-template #main-container {
             background-image: url(//www.greenpeace.org/international/Global/international/artwork/climate/2013/Shell_hell_bg_2.jpg);
         } 
-        @media only screen and (min-width : 1024px) {
-            .action-template #main-container {
-                background-image: url(//www.greenpeace.org/international/Global/international/artwork/climate/2013/Shell_hell_bg_2.jpg);
-            } 
+        .action-template #main-container-holder {
+            background: transparent url(img/raster.png) 0 0 repeat;
         }
-    </style>
+    }
+</style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
 <form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
