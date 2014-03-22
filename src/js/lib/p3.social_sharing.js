@@ -6,7 +6,7 @@
  *                  Obtains share counts from JSON endpoint
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.1.4
+ * @version         0.1.5
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -19,9 +19,7 @@
     'use strict';
 
     var _p3 = $.p3 || {},
-        prefix = function () {
-            return new Date().getTime() + ' :: $.p3.social_sharing :: ';
-        }(),
+        prefix = ' :: $.p3.social_sharing :: ',
         defaults = {
             pageURL: false,
             popup: {
