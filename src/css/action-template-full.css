@@ -3987,8 +3987,8 @@ Styleguide 6.
 	Since       : ?
 */
 .social-share .socialBtn-float {
-  float: left;
-  padding: .3em .3em 0 0;
+  display: inline-block;
+  padding: .3em .3em .5em 2em;
 }
 .social-share .counter span {
   border: 1px solid #cccccc;
@@ -7445,6 +7445,15 @@ Action form
     padding: 0 20px;
     margin: 0;
   }
+  #action-social-share-thankyou {
+    float: left;
+    clear: left;
+    width: 250px;
+    padding-bottom: .6em;
+  }
+  #action-social-share-thankyou .socialBtn-float {
+    padding-left: 3em;
+  }
   #action-counter,
   #action-details,
   #action-social-share,
@@ -7485,6 +7494,15 @@ Action form
   width: 250px;
   padding: 0 20px;
   margin: 0;
+}
+.sevensome #action-social-share-thankyou {
+  float: left;
+  clear: left;
+  width: 250px;
+  padding-bottom: .6em;
+}
+.sevensome #action-social-share-thankyou .socialBtn-float {
+  padding-left: 3em;
 }
 .sevensome #action-counter,
 .sevensome #action-details,
@@ -7540,6 +7558,15 @@ Action form
     width: 340px;
     padding: 0 20px 10px 20px;
     margin: 0;
+  }
+  #action-social-share-thankyou {
+    float: left;
+    clear: left;
+    width: 360px;
+    padding-bottom: .6em;
+  }
+  #action-social-share-thankyou .socialBtn-float {
+    padding-left: 0.3em;
   }
   .action-template h2,
   #action-ask,
@@ -7617,6 +7644,15 @@ Action form
   padding: 0 20px 10px 20px;
   margin: 0;
 }
+.desktop #action-social-share-thankyou {
+  float: left;
+  clear: left;
+  width: 360px;
+  padding-bottom: .6em;
+}
+.desktop #action-social-share-thankyou .socialBtn-float {
+  padding-left: 0.3em;
+}
 .desktop .action-template h2,
 .desktop #action-ask,
 .desktop #action-form {
@@ -7684,10 +7720,4 @@ Browser specific hacks
   font-size: 0.875em;
   line-height: 1.4em;
   font-weight: normal;
-}
-#action-social-share-thankyou {
-  float: left;
-  clear: left;
-  width: 360px;
-  padding-bottom: .6em;
 }

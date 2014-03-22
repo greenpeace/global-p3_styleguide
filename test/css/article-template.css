@@ -3701,8 +3701,8 @@ Styleguide 6.
 	Since       : ?
 */
 .social-share .socialBtn-float {
-  float: left;
-  padding: .3em .3em 0 0;
+  display: inline-block;
+  padding: .3em .3em .5em 2em;
 }
 .social-share .counter span {
   border: 1px solid #cccccc;
