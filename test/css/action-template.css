@@ -4294,9 +4294,6 @@ Action form
     -o-background-size: cover;
     background-size: cover;
   }
-  .action-template #main-container-holder {
-    background: transparent url(../img/raster.png) 0 0 repeat;
-  }
   .action-template h1 {
     float: left;
     clear: both;
@@ -4372,9 +4369,6 @@ Action form
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-.desktop .action-template #main-container-holder {
-  background: transparent url(../img/raster.png) 0 0 repeat;
 }
 .desktop .action-template h1 {
   float: left;

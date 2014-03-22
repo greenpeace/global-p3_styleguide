@@ -21,6 +21,7 @@
     "grunt-contrib-htmlmin": "~0.2.0",
     "grunt-prettify": "~0.3.4",
     "grunt-html": "~1.1.0",
-    "grunt-jsonlint": "~1.0.4"
+    "grunt-jsonlint": "~1.0.4",
+    "grunt-modernizr": "^0.5.2"
   }
 }

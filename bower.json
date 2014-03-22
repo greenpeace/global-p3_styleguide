@@ -21,7 +21,6 @@
     "jquery": "~1",
     "xregexp": "~2",
     "jquery.cookie": "~1",
-    "modernizr": "~2",
     "jquery-timeago": "~1",
     "jquery-validation": "~1",
     "json3": "~3"
@@ -48,11 +47,6 @@
         "lib/*.js",
         "README.md",
         "LICENSE"
-    ],
-    "modernizr": [
-      "modernizr.js",
-      "readme.md",
-      "feature-detects/*.js"
     ],
     "xregexp": [
       "**.js",
