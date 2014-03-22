@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         htmllint: {// https://github.com/jzaefferer/grunt-html
             options: {
                 ignore: [
-                    'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.',
+                    'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.'
                 ]
             },
             src: ["<%= config.src %>/**/*.html"],
@@ -185,7 +185,8 @@ module.exports = function(grunt) {
             jquery: {
                 compress: false,
                 options: {
-                    banner: '/**\n * @source: http://code.jquery.com/jquery-1.10.2.min.js\n * @license <%= pkg.license %>\n * @note License is a rough approximation to suit EFF standards, see http://jquery.com/license for actual licensing information */\n'
+                    banner: '/**\n * @source: http://code.jquery.com/ */\n',
+                    footer: ''
                 },
                 files: {
                     '<%= config.dist %>/js/jquery.min.js': '<%= config.src %>/js/vendor/jquery.min.js'
@@ -193,7 +194,8 @@ module.exports = function(grunt) {
             },
             modernizr: {
                 options: {
-                    banner: '/**\n * @source: http://modernizr.com/download/\n * @license magnet:?xt=urn:btih:5305d91886084f776adcf57509a648432709a7c7&dn=x11.txt X11 %>\n * @note    License is a rough approximation to suit EFF standards, see http://jquery.com/license for actual licensing information */\n'
+                    banner: '/**\n * @source: http://modernizr.com/download/ */\n',
+                    footer: ''
                 },
                 files: {
                     '<%= config.dist %>/js/modernizr-custom.min.js': '<%= config.src %>/js/vendor/modernizr-custom.js'
@@ -238,8 +240,7 @@ module.exports = function(grunt) {
                     "<%= config.src %>/js/vendor/compat/json.min.js": "<%= bower.directory %>/json3/lib/json3.min.js",
                     "<%= config.src %>/js/vendor/xregexp/xregexp.js": "<%= bower.directory %>/xregexp/src/xregexp.js",
                     "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-base.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-base.js",
-                    "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-categories.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-categories.js",
-                    "<%= config.src %>/js/vendor/modernizr-dev.js": "<%= bower.directory %>/modernizr/modernizr.js"
+                    "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-categories.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-categories.js"
                 }
             },
             fonts: {
@@ -359,7 +360,7 @@ module.exports = function(grunt) {
         modernizr: {
             src: {
                 // [REQUIRED] Path to the build you're using for development.
-                devFile: "src/js/vendor/modernizr-dev.js",
+                devFile: "src/js/vendor/modernizr-custom.js",
                 // [REQUIRED] Path to save out the built file.
                 outputFile: "src/js/vendor/modernizr-custom.js",
                 // Based on default settings on http://modernizr.com/download/
@@ -585,6 +586,8 @@ module.exports = function(grunt) {
         'copy:styleguide',
         'cssmin',
         'concat',
+        'modernizr',    // Not included in standard tasks as it's a fairly long process
+                        // Be sure to re-run `grunt modernizr` to update customised version after adding new tests
         'uglify',
         'copy:images',
         'copy:fonts',
@@ -594,8 +597,6 @@ module.exports = function(grunt) {
         'prettify',
         'htmlmin',
         'replace',
-//        'modernizr',  // Not included in standard tasks as it's a fairly long process
-                        // Be sure to re-run `grunt modernizr` to update customised version after adding new tests
         'htmllint:processed'
     ]);
 
