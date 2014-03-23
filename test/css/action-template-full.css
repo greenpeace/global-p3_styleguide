@@ -7444,6 +7444,7 @@ Action form
     width: 250px;
     padding: 0 20px;
     margin: 0;
+    clear: right;
   }
   #action-social-share-thankyou {
     float: left;
@@ -7494,6 +7495,7 @@ Action form
   width: 250px;
   padding: 0 20px;
   margin: 0;
+  clear: right;
 }
 .sevensome #action-social-share-thankyou {
   float: left;
@@ -7532,7 +7534,6 @@ Action form
 /* Desktops and laptops */
 @media only screen and (min-width: 1024px) {
   .action-template #main-container {
-    background: transparent url() center 0 no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -7620,7 +7621,6 @@ Action form
 }
 /* fallback for browsers where media queries won't work */
 .desktop .action-template #main-container {
-  background: transparent url() center 0 no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

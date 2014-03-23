@@ -2515,14 +2515,14 @@ Styleguide 5.1.3.1
  * media queries
  */
 @media only screen and (min-width: 768px) {
-  html .header a {
+  .header a {
     color: #ffffff;
   }
-  html .header a:focus,
-  html .header a:hover {
+  .header a:focus,
+  .header a:hover {
     color: #ffffff;
   }
-  html .heading-second {
+  .heading-second {
     height: 1.6875em;
     /* 27px */
     background: #56b105;
@@ -4218,6 +4218,7 @@ Action form
     width: 250px;
     padding: 0 20px;
     margin: 0;
+    clear: right;
   }
   #action-social-share-thankyou {
     float: left;
@@ -4268,6 +4269,7 @@ Action form
   width: 250px;
   padding: 0 20px;
   margin: 0;
+  clear: right;
 }
 .sevensome #action-social-share-thankyou {
   float: left;
@@ -4306,7 +4308,6 @@ Action form
 /* Desktops and laptops */
 @media only screen and (min-width: 1024px) {
   .action-template #main-container {
-    background: transparent url() center 0 no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -4394,7 +4395,6 @@ Action form
 }
 /* fallback for browsers where media queries won't work */
 .desktop .action-template #main-container {
-  background: transparent url() center 0 no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

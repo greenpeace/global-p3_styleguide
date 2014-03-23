@@ -2566,6 +2566,82 @@ Styleguide 5.1.3.1
   display: none;
 }
 /*
+	Social Button
+
+	Description	: share buttons with counters
+	Compatible	: ?
+	Since       : ?
+*/
+.social-share .socialBtn-float {
+  display: inline-block;
+  padding: .3em .3em .5em 2em;
+}
+.social-share .counter span {
+  border: 1px solid #cccccc;
+  display: block;
+  text-align: center;
+  width: 3.6em;
+  padding: .5em 0;
+  font-size: .875em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.social-share .counterBig span {
+  border: 1px solid #cccccc;
+  display: block;
+  text-align: center;
+  width: 7em;
+  padding: .5em .8em;
+  font-size: 1.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: #fff;
+}
+/* some fake bubble tip shenanigans */
+.social-share .counter {
+  background: #ffffff;
+}
+.social-share .tip:before,
+.social-share .tip:after {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  margin-left: 17px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  display: inline-block;
+  content: " ";
+}
+.social-share .tip:before {
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tip:after {
+  border-top-color: #ffffff;
+  margin-top: -2px;
+}
+.social-share .tipBig:before,
+.social-share .tipBig:after {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  margin-left: 4.7em;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  display: inline-block;
+  content: " ";
+}
+.social-share .tipBig:before {
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tipBig:after {
+  border-top-color: #ffffff;
+  margin-top: -2px;
+}
+/*
 Flag icons
 
 Classes are used to choose the right flag for each country.
@@ -4022,79 +4098,6 @@ Styleguide 8.2
   font-size: .775em;
   font-style: italic;
 }
-/*
-Recent Signers
-
-Shows the signers signers in the current action. It has a min-height of 14em. <br/>
-    `li`        One line, ellipsis if content doesn't fit. <br/>
-    `.since`    Timestamp in gray text. <br/>
-    `.country`  Country name in grayutext. <br/>
-    `.flag`     Flag icon margin.
-
-Markup:
-<div id="action-recent-signers">
-    <h3>Recent Signers</h3>
-    <ul>
-        <li>
-            <span class="since" data-since="2013-10-21 12:00:00">an hour ago</span>
-            <span class="icon flag in"></span>
-            <span class="name">James Norther,</span>
-            <span class="country">India</span>
-        </li>
-        <li>
-            <span class="since" data-since="2013-10-12 12:00:00">8 hours ago</span>
-            <span class="icon flag nz"></span>
-            <span class="name">Nick Younger,</span>
-            <span class="country">New-zealand</span>
-        </li>
-        <li>
-            <span class="since" data-since="2013-10-11 12:00:00">19 hours ago</span>
-            <span class="icon flag nl"></span>
-            <span class="name">Eoin Dubskyer,</span>
-            <span class="country">Netherlands</span>
-        </li>
-        <li>
-            <span class="since" data-since="2013-10-10 12:00:00">a day ago</span>
-            <span class="icon flag fr"></span>
-            <span class="name">Mr Splashy Pants,</span>
-            <span class="country">France</span>
-        </li>
-    </ul>
-</div>
-
-Styleguide 9.
-*/
-#action-recent-signers {
-  clear: right;
-  min-height: 14em;
-}
-#action-recent-signers ul {
-  padding: 0;
-  font-size: 0.913em;
-}
-#action-recent-signers li {
-  list-style-type: none;
-  font-size: 0.813em;
-  margin-bottom: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -ms-text-overflow: ellipsis;
-}
-#action-recent-signers .since {
-  min-width: 8em;
-  display: inline-block;
-  font-size: 0.813em;
-  vertical-align: 1px;
-  color: #666666;
-}
-#action-recent-signers .country {
-  color: #777;
-}
-#action-recent-signers .flag {
-  margin-right: .75em;
-  vertical-align: -1px;
-}
 /* ==========================================================================
      Action Template or Action Related Widgets
    ========================================================================== */
@@ -4392,6 +4395,112 @@ Action form
     padding: .5em;
     font-size: .75em;
   }
+  .action-template #action-ask,
+  .action-template #action-multimedia-teaser {
+    display: none;
+  }
+  .header,
+  heading-first,
+  .header .logo {
+    height: 3em;
+    margin: 0;
+    padding: 0;
+  }
+  .header .logo {
+    width: 380px;
+    background: rgba(255, 255, 255, 0.9) url(../../src/img/ocean/GP_logo_header.png) 1em 1em no-repeat;
+    position: absolute;
+    margin: 41px 0 0 2px;
+    padding: 0;
+  }
+  .heading-first {
+    background: transparent;
+    position: relative;
+    margin: auto;
+    width: 960px;
+  }
+  .heading-first .heading-holder {
+    float: right;
+    width: 410px;
+    margin: 0;
+    padding: 0;
+  }
+  .heading-second {
+    display: none;
+  }
+  .action-template #main-section {
+    background: transparent;
+  }
+  .action-template h2 {
+    padding-bottom: 1em;
+  }
+  .action-template h2,
+  .action-template #action-details,
+  .action-template #action-form {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  .action-template h2 {
+    color: #45668e;
+    font-size: 2em;
+    font-family: GistRoughUprBoldTwo;
+    width: 120px;
+    padding-right: 240px;
+    padding-bottom: 0;
+    text-transform: uppercase;
+    line-height: 1.1em;
+  }
+  .action-template #action-details {
+    font-size: 18px;
+    padding: 0 1em;
+    width: 490px;
+  }
+  .action-template #action-details:after,
+  .action-template #action-details:before {
+    display: block;
+    height: 50px;
+    content: ' ';
+    position: absolute;
+    width: 526px;
+    margin-top: 2em;
+  }
+  .action-template #action-details:before {
+    background: transparent url(../../src/img/ocean/SOS_border_top.png) top left no-repeat;
+    height: 179px;
+    margin: -179px 0 0 -1em;
+  }
+  .action-template #action-details:after {
+    background: transparent url(../../src/img/ocean/SOS_border_bottom.png) top left no-repeat;
+    height: 75px;
+    margin: 0 0 0 -1em;
+  }
+  .action-template .footer {
+    background-color: transparent;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .footer-small .logo-box .logo {
+    background: transparent url(../../src/img/ocean/GP_logo_footer.png) top left no-repeat;
+  }
+  .action-template #main-container-holder {
+    background: transparent;
+  }
+  body {
+    background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_petition.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  #root-container {
+    height: 100%;
+    background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
+  }
 }
 /* fallback for browsers where media queries won't work */
 .desktop .action-template #main-container {
@@ -4479,6 +4588,112 @@ Action form
   padding: .5em;
   font-size: .75em;
 }
+.desktop .action-template #action-ask,
+.desktop .action-template #action-multimedia-teaser {
+  display: none;
+}
+.desktop .header,
+.desktop heading-first,
+.desktop .header .logo {
+  height: 3em;
+  margin: 0;
+  padding: 0;
+}
+.desktop .header .logo {
+  width: 380px;
+  background: rgba(255, 255, 255, 0.9) url(../../src/img/ocean/GP_logo_header.png) 1em 1em no-repeat;
+  position: absolute;
+  margin: 41px 0 0 2px;
+  padding: 0;
+}
+.desktop .heading-first {
+  background: transparent;
+  position: relative;
+  margin: auto;
+  width: 960px;
+}
+.desktop .heading-first .heading-holder {
+  float: right;
+  width: 410px;
+  margin: 0;
+  padding: 0;
+}
+.desktop .heading-second {
+  display: none;
+}
+.desktop .action-template #main-section {
+  background: transparent;
+}
+.desktop .action-template h2 {
+  padding-bottom: 1em;
+}
+.desktop .action-template h2,
+.desktop .action-template #action-details,
+.desktop .action-template #action-form {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.desktop .action-template h2 {
+  color: #45668e;
+  font-size: 2em;
+  font-family: GistRoughUprBoldTwo;
+  width: 120px;
+  padding-right: 240px;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  line-height: 1.1em;
+}
+.desktop .action-template #action-details {
+  font-size: 18px;
+  padding: 0 1em;
+  width: 490px;
+}
+.desktop .action-template #action-details:after,
+.desktop .action-template #action-details:before {
+  display: block;
+  height: 50px;
+  content: ' ';
+  position: absolute;
+  width: 526px;
+  margin-top: 2em;
+}
+.desktop .action-template #action-details:before {
+  background: transparent url(../../src/img/ocean/SOS_border_top.png) top left no-repeat;
+  height: 179px;
+  margin: -179px 0 0 -1em;
+}
+.desktop .action-template #action-details:after {
+  background: transparent url(../../src/img/ocean/SOS_border_bottom.png) top left no-repeat;
+  height: 75px;
+  margin: 0 0 0 -1em;
+}
+.desktop .action-template .footer {
+  background-color: transparent;
+}
+.desktop .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.desktop .footer-small .logo-box .logo {
+  background: transparent url(../../src/img/ocean/GP_logo_footer.png) top left no-repeat;
+}
+.desktop .action-template #main-container-holder {
+  background: transparent;
+}
+.desktop body {
+  background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_petition.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.desktop #root-container {
+  height: 100%;
+  background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
+}
 /*
 Browser specific hacks
 
@@ -4500,4 +4715,35 @@ Browser specific hacks
   font-size: 0.875em;
   line-height: 1.4em;
   font-weight: normal;
+}
+/**
+ * @license
+ * MyFonts Webfont Build ID 2769558, 2014-03-14T09:30:27-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Gist Rough Upr Bold Two by Yellow Design Studio
+ * URL: http://www.myfonts.com/fonts/yellow-design/gist-rough/upr-bold-two/
+ * Copyright: Copyright (c) 2014 by Yellow Design Studio. All rights reserved.
+ * Licensed pageviews: 25,000
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2769558
+ * 
+ * © 2014 MyFonts Inc
+*/
+/* @import must be at top of file, otherwise CSS will not work */
+@font-face {
+  font-family: 'GistRoughUprBoldTwo';
+  src: url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.eot');
+  src: url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.eot?#iefix') format('embedded-opentype'), url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.woff') format('woff'), url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.ttf') format('truetype');
+}
+.action-template h1,
+.action-template #action-counter,
+.action-template #action-recent-signers {
+  display: none;
 }
