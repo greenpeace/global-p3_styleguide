@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         htmllint: {// https://github.com/jzaefferer/grunt-html
             options: {
                 ignore: [
-                    'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.',
+                    'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.'
                 ]
             },
             src: ["<%= config.src %>/**/*.html"],
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
         },
         htmlmin: {// https://github.com/gruntjs/grunt-contrib-htmlmin
             test: {
-                options: { // Do nothing for test
+                options: {// Do nothing for test
                 },
                 files: [
                     {// Copy all HTML from tmp to testing
@@ -185,7 +185,8 @@ module.exports = function(grunt) {
             jquery: {
                 compress: false,
                 options: {
-                    banner: '/**\n * @source: http://code.jquery.com/jquery-1.10.2.min.js\n * @license <%= pkg.license %>\n * @note License is a rough approximation to suit EFF standards, see http://jquery.com/license for actual licensing information */\n'
+                    banner: '/**\n * @source: http://code.jquery.com/ */\n',
+                    footer: ''
                 },
                 files: {
                     '<%= config.dist %>/js/jquery.min.js': '<%= config.src %>/js/vendor/jquery.min.js'
@@ -193,10 +194,11 @@ module.exports = function(grunt) {
             },
             modernizr: {
                 options: {
-                    banner: '/**\n * @source: http://modernizr.com/download/\n * @license magnet:?xt=urn:btih:5305d91886084f776adcf57509a648432709a7c7&dn=x11.txt X11 %>\n * @note    License is a rough approximation to suit EFF standards, see http://jquery.com/license for actual licensing information */\n'
+                    banner: '/**\n * @source: http://modernizr.com/download/ */\n',
+                    footer: ''
                 },
                 files: {
-                    '<%= config.dist %>/js/modernizr.min.js': '<%= config.src %>/js/vendor/modernizr*.js'
+                    '<%= config.dist %>/js/modernizr-custom.min.js': '<%= config.src %>/js/vendor/modernizr-custom.js'
                 }
             },
             vendor: {
@@ -281,7 +283,7 @@ module.exports = function(grunt) {
                         src: ['*'],
                         dest: '<%= config.dist %>/countries/'
                     },
-                     {// Copy src countries json to test
+                    {// Copy src countries json to test
                         expand: true,
                         cwd: '<%= config.src %>/countries/',
                         src: ['*'],
@@ -299,7 +301,6 @@ module.exports = function(grunt) {
                         dest: '<%= config.test %>/'
                     },
                     {
-
                     }
                 ]
             },
@@ -316,6 +317,7 @@ module.exports = function(grunt) {
             testJS: {
                 files: {
                     '<%= config.test %>/js/site.js': ['<%= config.src %>/js/site-main.js'],
+                    '<%= config.test %>/js/modernizr-custom.js': ['<%= config.src %>/js/vendor/modernizr-custom.js'],
                     '<%= config.test %>/js/action-template.js': ['<%= config.src %>/js/action-template-simple.js'],
                     '<%= config.test %>/js/action-template-full.js': ['<%= config.src %>/js/action-template-full.js'],
                     '<%= config.test %>/js/action-template-testing.js': ['<%= config.src %>/js/action-template-testing.js']
@@ -323,10 +325,24 @@ module.exports = function(grunt) {
             }
         },
         replace: {// https://www.npmjs.org/package/grunt-text-replace
+            dist: {
+                src: ['<%= config.dist %>/*.html'],
+                dest: ['<%= config.dist %>/'],
+                replacements: [
+                    { //
+                        from: 'vendor/modernizr-custom.js', // string replacement
+                        to: 'modernizr-custom.min.js'
+                    }
+                ]
+            },
             test: {
                 src: ['<%= config.test %>/*.html'], // source files array (supports minimatch)
                 dest: '<%= config.test %>/', // destination directory or file
                 replacements: [
+                    {
+                        from: 'vendor/modernizr',
+                        to: 'modernizr'
+                    },
                     {
                         from: 'p3.min.js', // string replacement
                         to: 'p3.lib.js'
@@ -340,6 +356,54 @@ module.exports = function(grunt) {
                     }
                 ]
             }
+        },
+        modernizr: {
+            src: {
+                // [REQUIRED] Path to the build you're using for development.
+                devFile: "src/js/vendor/modernizr-custom.js",
+                // [REQUIRED] Path to save out the built file.
+                outputFile: "src/js/vendor/modernizr-custom.js",
+                // Based on default settings on http://modernizr.com/download/
+                extra: {
+                    shiv: true,
+                    printshiv: false,
+                    load: true,
+                    mq: true,
+                    cssclasses: true
+                },
+                // Based on default settings on http://modernizr.com/download/
+                extensibility: {
+                    addtest: false,
+                    prefixed: true,
+                    teststyles: false,
+                    testprops: false,
+                    testallprops: false,
+                    hasevents: false,
+                    prefixes: false,
+                    domprefixes: false
+                },
+                // By default, source is uglified before saving
+                uglify: false,
+                // Define any tests you want to implicitly include.
+                tests: [],
+                // By default, this task will crawl your project for references to Modernizr tests.
+                // Set to false to disable.
+                parseFiles: true,
+                // When parseFiles = true, this task will crawl all *.js, *.css, *.scss files, except files that are in node_modules/.
+                // You can override this by defining a files array below.
+                files: {
+                    src: [
+                        '<%= config.src %>/**/*.css',
+                        '<%= config.src %>/**/*.js'
+                    ]
+                },
+                // When parseFiles = true, matchCommunityTests = true will attempt to
+                // match user-contributed tests.
+                matchCommunityTests: false,
+                // Have custom Modernizr tests? Add paths to their location here.
+                customTests: []
+            }
+
         },
         watch: {
             images: {
@@ -393,11 +457,11 @@ module.exports = function(grunt) {
                 }
             },
             json: {
-                files:['<%= config.src %>/**/*.json'],
+                files: ['<%= config.src %>/**/*.json'],
                 tasks: ['json'],
                 options: {
-                    spawn:false,
-                    debounceDelay:250
+                    spawn: false,
+                    debounceDelay: 250
                 }
             }
         }
@@ -439,15 +503,17 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-jsonlint');
 
+    grunt.loadNpmTasks('grunt-modernizr');
+
     // ========================================================================
     // Register Tasks
 
     grunt.registerTask('html', [
 //        'htmllint',         // Validates all HTML
-        'prettify',         // Cleans up the formatting, places output in `tmp`
-        'htmlmin',          // Copies and minifies `tmp` HTML to `dist` folder,
-                            // and copies unmodified `tmp` HTML to `test` folder
-        'replace:test',     // Renames source files from .min.* to .* in `test`
+        'prettify', // Cleans up the formatting, places output in `tmp`
+        'htmlmin',  // Copies and minifies `tmp` HTML to `dist` folder,
+                    // and copies unmodified `tmp` HTML to `test` folder
+        'replace', // Renames source references in HTML from .min.* to .* in `test`
         'htmllint:processed' // Lints the processed output to ensure no funny business happened in the meantime
     ]);
 
@@ -498,6 +564,7 @@ module.exports = function(grunt) {
         'jshint',
         'clean:js',
         'concat',
+        'modernizr',
         'uglify',
         'copy:testJS'
     ]);
@@ -519,6 +586,8 @@ module.exports = function(grunt) {
         'copy:styleguide',
         'cssmin',
         'concat',
+        'modernizr',    // Not included in standard tasks as it's a fairly long process
+                        // Be sure to re-run `grunt modernizr` to update customised version after adding new tests
         'uglify',
         'copy:images',
         'copy:fonts',
@@ -527,8 +596,8 @@ module.exports = function(grunt) {
         'copy:testCSS',
         'prettify',
         'htmlmin',
-        'replace:test',
-//        'htmllint:processed'
+        'replace',
+        'htmllint:processed'
     ]);
 
 };
