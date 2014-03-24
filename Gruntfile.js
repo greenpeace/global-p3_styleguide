@@ -566,7 +566,7 @@ module.exports = function(grunt) {
         'jshint',
         'clean:js',
         'concat',
-        'modernizr',
+//        'modernizr',
         'uglify',
         'copy:testJS'
     ]);
@@ -588,7 +588,7 @@ module.exports = function(grunt) {
         'copy:styleguide',
         'cssmin',
         'concat',
-        'modernizr',    // Not included in standard tasks as it's a fairly long process
+//        'modernizr',    // Not included in standard tasks as it's a fairly long process
                         // Be sure to re-run `grunt modernizr` to update customised version after adding new tests
         'uglify',
         'copy:images',
