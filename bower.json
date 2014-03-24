@@ -1,0 +1,57 @@
+{
+  "name": "p3_styleguide",
+  "version": "0.3.0",
+  "homepage": "https://github.com/greenpeace/p3_styleguide",
+  "authors": [
+    "Greenpeace International <supporter.services.int@greenpeace.org>",
+    "Ray Walker <hello@raywalker.it>"
+  ],
+  "description": "Reusable and optimised front-end code for greenpeace.org and greenwire",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "tmp",
+    "validation-*"
+  ],
+  "dependencies": {
+    "jquery": "~1",
+    "xregexp": "~2",
+    "jquery.cookie": "~1",
+    "jquery-timeago": "~1",
+    "jquery-validation": "~1",
+    "json3": "~3"
+  },
+  "preen": {
+    "jquery": [
+      "dist/**",
+      "README*",
+      "*LICENSE*"
+    ],
+    "jquery-placeholder": [
+      "**/jquery.placeholder.js"
+    ],
+    "jquery-timeago": [
+      "jquery.timeago.js",
+      "locales/**"
+    ],
+    "jquery-validation": [
+      "jquery.validate.js",
+      "additional-methods.js",
+      "localization/**"
+    ],
+    "json3": [
+        "lib/*.js",
+        "README.md",
+        "LICENSE"
+    ],
+    "xregexp": [
+      "**.js",
+      "min/*.js",
+      "src/**"
+    ]
+  }
+}

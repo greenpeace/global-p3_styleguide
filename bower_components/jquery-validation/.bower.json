@@ -1,0 +1,23 @@
+{
+  "name": "jquery-validation",
+  "version": "1.11.2",
+  "main": "jquery.validate.js",
+  "scripts": [
+    "jquery.validate.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "homepage": "https://github.com/niftylettuce/jquery-validation",
+  "_release": "1.11.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.11.2",
+    "commit": "d98e70246086e2a5039f89ebc392bd3ae0c8cf87"
+  },
+  "_source": "git://github.com/niftylettuce/jquery-validation.git",
+  "_target": "~1",
+  "_originalSource": "jquery-validation"
+}

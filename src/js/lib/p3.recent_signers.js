@@ -5,7 +5,7 @@
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.2.3
+ * @version         0.3.1
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -29,8 +29,11 @@
             timeSelector: '.since',
             /* selects which attribute contains timestamps */
             timeDataAttr: 'data-since',
-            /* selector for the country dropdown to map country codes to names */
+            /* selector for the country dropdown to map country codes to names
+             * set to false to force sourcing information from JSON instead */
             countrySelector: '#UserCountry',
+            /* source country information from a JSON file */
+            countryJSON: 'countries/countries_en.json',
             /* set to true to delay execution until externally triggered by event */
             externalTrigger: false,
             /* element to store returned pledge data */
@@ -59,12 +62,33 @@
             abortOnError: false
         };
 
+    $.timeago.settings.strings = {
+        prefixAgo: null,
+        prefixFromNow: null,
+        suffixAgo: "ago",
+        suffixFromNow: "from now",
+        seconds: "%d seconds",
+        minute: "a minute",
+        minutes: "%d minutes",
+        hour: "an hour",
+        hours: "%d hours",
+        day: "a day",
+        days: "%d days",
+        month: "a month",
+        months: "%d months",
+        year: "a year",
+        years: "%d years",
+        wordSeparator: " ",
+        numbers: []
+    };
+
     _p3.recent_signers = function(el, options) {
         var config = $.extend(true, defaults, options),
             $el = $(el),
             $ul = false,
             request = $.p3.request(config.jsonURL),
             users = [],
+            countries = [],
             timer = false,
             refreshNum = 0,
             prefix = '$.p3.recent_signers :: ',
@@ -72,8 +96,6 @@
                 running: false,
                 delay: config.userQueueInterval,
                 actions: [],
-                callback: function() {
-                },
                 step: function() {
                     if (pledgeQueue.actions.length) {
                         try {
@@ -92,7 +114,6 @@
                         setTimeout(pledgeQueue.run, pledgeQueue.delay);
                     } else {
                         pledgeQueue.running = false;
-                        pledgeQueue.callback();
                     }
                 }
             },
@@ -132,7 +153,9 @@
             parsePledgeData = function() {
                 var jsonData = $(config.dataElement).data(config.dataNamespace);
 
-                // Add fetch first, since array is popped not shifted
+                // Add fetch first, since array is popped not shifted,
+                // because we're adding pledges from oldest to newest, but the
+                // data is sorted newest to oldest
                 if (!config.externalTrigger && refreshNum++ < config.maxRefreshes) {
                     pledgeQueue.actions.push(function() {
                         clearTimeout(timer);
@@ -184,6 +207,7 @@
                 pledgeQueue.run();
 
             },
+
             /**
              * Retrieves human readable time string from timestamp
              * Forces UTC if no timezone identifier is found
@@ -199,16 +223,79 @@
                     return $.timeago(time);
                 }
             },
+            parseCountryData = function() {
+                var deferred = $.Deferred(),
+                    size = 0;
+
+                if (config.countrySelector) {
+                    // Parse the country element for code => name pairs
+                    $.each($(config.countrySelector + ' option'), function (i, option) {
+
+                        var $option = $(option),
+                            val = $option.val();
+
+                        if (val) {
+                            // Force uppercase (not lowercase)
+                            countries[val.toUpperCase()] = $option.text();
+                            size++;
+                        }
+                    });
+
+                    if (size > 0) {
+                        // Happy with that.
+                        deferred.resolve();
+                        return deferred.promise();
+                    } else {
+                        // No countries found in the selector element
+                        console.warn(prefix + 'No countries found in ' + config.countrySelector);
+                        if (config.abortOnError) {
+                            // Exit here with a failure
+                            deferred.reject('Aborting', countries);
+                            return deferred.promise();
+                        }
+                        // Continue with an attempt to read the country data from JSON
+                    }
+                }
+
+                if (config.countryJSON) {
+                    // fetch JSON country data
+                    $.ajax({
+                        url: config.countryJSON,
+                        timeout: config.timeout,
+                        dataType: 'json'
+                    }).success( function(data) {
+                        countries = data;
+                        deferred.resolve();
+                    }).fail(function (e) {
+                        deferred.reject('Error fetching JSON from ' + config.countryJSON, e);
+                    });
+                }
+
+                return deferred.promise();
+            },
             getCountryString = function(country) {
-                var string = $(config.countrySelector + ' option:valueNoCase(' + country + ')').text();
-                return string ? string : config.abortOnError ? '' : country;
+                var string = countries.hasOwnProperty(country.toUpperCase()) ? countries[country.toUpperCase()] : false;
+
+                if (string) {
+                    return string;
+                } else {
+                    console.error(prefix + 'Country not found for code ' + country);
+                    return country;
+                }
             },
             showUser = function(user) {
-                var $li = $('<li style="display:none"><span class="since" data-since="' +
-                    user.created + '">' + getTimeString(user.created) + '</span><span class="icon flag ' + user.country +
-                    '"></span><span class="name">' + user.firstname +
-                    ' ' + user.lastname + '</span> <span class="country">' +
-                    getCountryString(user.country) + '</span></li>');
+                var timestamp = user.created || '',
+                    timeCreated = getTimeString(timestamp),
+                    country = user.country,
+                    countryString = getCountryString(user.country),
+                    firstname = user.firstname || '',
+                    lastname = user.lastname || '',
+                    $li = $('<li style="display:none"> </li>');
+
+                $li.append('<span class="since" data-since="' + timestamp + '">' + timeCreated + '</span>')
+                    .append('<span class="icon flag ' + country + '"></span>')
+                    .append('<span class="name">' + firstname + ' ' + lastname + '</span>')
+                    .append(' <span class="country">' + countryString + '</span>');
 
                 // Add to DOM
                 $ul.prepend($li);
@@ -218,7 +305,9 @@
 
                 // Remove any excess users
                 if (config.maxUsers && $('li', $ul).length > config.maxUsers) {
-                    $('li:last', $ul).hide(350).remove();
+                    $('li:last', $ul).hide(350, function () {
+                        this.remove();
+                    });
                 }
             },
             updateTimeStamps = function() {
@@ -244,28 +333,41 @@
         M.load({
             test: window.JSON,
             nope: [
-                'js/vendor/json.min.js'
+                'js/compat/json.min.js'
             ],
             complete: function() {
-                // Apply human readable string to existing timestamps
-                updateTimeStamps();
+                // parseCountryData() may rely on an AJAX call,
+                // so we defer processing the rest of the application
+                var promise = parseCountryData();
 
-                // Event driven fetch and processing means we can decouple data
-                // from this plugin, allowing us to reuse the data without
-                // performing multiple requests
+                promise.done(function () {
+                    // Successfuly parsed Countries, we can now register events
 
-                $(document).on(config.fetchDataEvent, function() {
-                    fetchJSON();
+                    // Apply human readable string to existing timestamps
+                    updateTimeStamps();
+
+                    // Event driven fetch and processing means we can decouple data
+                    // from this plugin, allowing us to reuse the data without
+                    // performing multiple requests
+
+                    $(document).on(config.fetchDataEvent, function() {
+                        fetchJSON();
+                    });
+
+                    $(document).on(config.fetchCompleteEvent, function() {
+                        parsePledgeData();
+                    });
+
+                    // Trigger listen event unless configured to listen externally
+                    if (!config.externalTrigger) {
+                        $.event.trigger(config.fetchDataEvent);
+                    }
                 });
 
-                $(document).on(config.fetchCompleteEvent, function() {
-                    parsePledgeData();
+                promise.fail(function(message, error) {
+                    // An error occurred parsing the countries list
+                    console.error(message, error);
                 });
-
-                // Trigger listen event unless configured to listen externally
-                if (!config.externalTrigger) {
-                    $.event.trigger(config.fetchDataEvent);
-                }
             }
         });
 

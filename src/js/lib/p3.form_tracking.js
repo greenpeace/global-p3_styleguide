@@ -3,7 +3,7 @@
  *
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.0.2
+ * @version         0.0.3
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>,
  *                  based on original work by
  *                  <a href="http://www.more-onion.com/">More Onion</a>
@@ -13,7 +13,7 @@
  */
 /* global jQuery, _gaq */
 
-(function($, w, undef) {
+(function($, w, d, undef) {
     'use strict';
 
     var _p3 = $.p3 || ($.p3 = {}),
@@ -21,17 +21,13 @@
         G = (typeof w._gaq === 'undefined') ? [] : w._gaq;
 
     _p3.form_tracking = function(el) {
+        var $el = $(el),
+            $input = $el.is(':input') ? $el : $(':input', $el),
+            formName = $el.closest('form').attr('id') || d.title;
+
         // Check google analytics is defined
         if (!G.length) {
             console.warn(pre + 'Google Analytics not found');
-        }
-
-        var $el = $(el),
-            $input = $el.is(':input') ? $el : $(':input', $el),
-            formName = $el.closest('form').attr('id');
-
-        if (!formName) {
-            throw new Error(pre + 'Form ' + el +' not found, aborting');
         }
 
         // Found a form, so monitor
@@ -53,4 +49,4 @@
         });
     };
 
-}(jQuery, this));
+}(jQuery, this, document));

@@ -5,9 +5,16 @@
 /*
     Page level configuration shortcuts.
 */
-.no-quick-login first-time-login {
-    display: none
+.no-quick-login .first-time-login,
+.no-quick-login .social-login {
+    display: none;
 }
+
+.quick-login-email-only {
+}
+.quick-login-email-only {
+}
+
 
 /*
     Images scaling with size.
@@ -25,6 +32,7 @@
   #main-section {
       background: @white;
       padding-bottom: 3em;
+      padding-top:1.25em;
   }
   h1 {
       margin-bottom: .5em;
@@ -48,8 +56,6 @@ Action form
 	
     .smallprint {
         font-size: 1em; /* 14px */
-		
-		
     }
     label,
     input[type=checkbox],
@@ -59,7 +65,6 @@ Action form
     .longlabel {
         display: inline;
         line-height: 1.4em;
-		
     }
     .remember {
       margin: 1.3em 0 0 .5em;
@@ -72,8 +77,7 @@ Action form
           margin-top: 0.2em;
       }
 	  .longlabel {
-	  margin-left:-.9
-	 em;
+	      margin-left:-.9em;
 	  }
     }
 }
@@ -136,7 +140,17 @@ Action form
         width:250px;
         padding:0 20px;
         margin:0;
+        clear:right;
     }
+    #action-social-share-thankyou {
+        float:left;
+        clear:left;
+        width:250px;
+	    padding-bottom:.6em;
+    }
+        #action-social-share-thankyou .socialBtn-float {
+            padding-left: 3em;
+        }
     // west side
     #action-counter,
     #action-details,
@@ -183,15 +197,11 @@ Action form
 .action_template_desktop() {
     // show background image
     .action-template #main-container {
-        background: transparent url() center 0 no-repeat;
+        //background: transparent url() center 0 no-repeat;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-    }
-
-    .action-template #main-container-holder {
-        background: transparent url(../../img/raster.png) 0 0 repeat;
     }
 
     // page section = 940 + 20 + 20px
@@ -199,6 +209,7 @@ Action form
         float:left;
         clear:both;
         width:100%;
+		margin-top:0;
     }
     // show recent signers country name
     #action-recent-signers {
@@ -216,9 +227,18 @@ Action form
     #action-recent-signers {
         float:right;
         width:340px;
-        padding:0 20px;
+        padding:0 20px 10px 20px;
         margin:0;
     }
+    #action-social-share-thankyou {
+        float:left;
+        clear:left;
+        width:360px; // + 40px margin
+	    padding-bottom:.6em;
+    }
+        #action-social-share-thankyou .socialBtn-float {
+            padding-left: 0.3em;
+        }
     // background box shenanigans
     .action-template h2,
     #action-ask,
@@ -229,7 +249,7 @@ Action form
         margin-bottom:0;
     }
     .action-template h2 {
-        padding-top:20px;
+        padding:20px 20px 0px 20px;
     }
     #action-form {
         padding-bottom:20px;
@@ -267,10 +287,9 @@ Action form
             margin-right:0;
         }
 		#action-smallprints {
-		width:26em;
-		}
-		#action-smallprints {
-		padding:.5em;
+		    width:26em;
+		    padding:.5em;
+            font-size:.75em;
 		}
 		
 		
@@ -312,14 +331,3 @@ Browser specific hacks
       }
   }
 }
-
-    // action thank you page
-    
-    #action-social-share-thankyou
-    {
-        float:left;
-        clear:left;
-        width:360px; // + 40px margin
-		padding-bottom:.6em;
-		
-    }
