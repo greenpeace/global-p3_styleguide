@@ -598,7 +598,7 @@ module.exports = function(grunt) {
         'prettify',
         'htmlmin',
         'replace',
-        'htmllint:processed'
+//        'htmllint:processed'
     ]);
 
 };

@@ -25,25 +25,6 @@
         <meta property="fb:admins" content="7297163299">
         <meta property="twitter:card" content="summary">
         <meta property="twitter:site" content="Greenpeace">
-        <script>
-        /*    
-        @licstart  The following is the entire license notice for the 
-        JavaScript code in this page.
-        Copyright (c) 2013 Greenpeace
-        This program is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 3 of the License, or
-        (at your option) any later version.
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
-        You should have received a copy of the GNU General Public License
-        along with this program.  If not, see <http://www.gnu.org/licenses/>.  
-        @licend  The above is the entire license notice
-        for the JavaScript code in this page.
-        */
-        </script>
         <script src="js/modernizr-custom.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/action-template-full.min.css">
         <style type="text/css">
@@ -180,10 +161,6 @@
                                                 <input type="checkbox" name="newsletters" id="UserNewsletterArctic" value="arctic">Arctic</label>
                                         </fieldset>
                                     </div>
-                                    <!--                <div class="input text required postcode error">
-                    <label for="UserPostcode">Postcode</label>
-                    <input name="postcode" class="required alphanumeric" required maxlength="64" type="text" id="UserPostcode" placeholder="Postcode*"/>
-                </div>-->
                                     <div class="select required country">
                                         <label for="UserCountry">Country</label>
                                         <div class="select-styling">
@@ -714,12 +691,6 @@ Please don't let this happen. Thank you.
                                 </div>
                             </div>
                             <div class="tools">
-                                <!-- tmp geo location popup
-                        <div class="notification hidden" id="geolocationNotification">
-                            (Geolocation Example:)You are located in the Netherlands.
-                            Would you like to go to the Nederlands site? 
-                            <a href="#">Yes</a> <a href="#">Nope</a>
-                        </div> -->
                                 <div class="language-selector">
                                     <div class="dropdown-controller">
                                         <span class="dropdown-label">Language:</span>
@@ -1032,10 +1003,12 @@ Please don't let this happen. Thank you.
                                         <li><a href="/international/en/supportus/" class="donate primary button" title="Donate" target="_blank">Donate</a>
                                         </li>
                                     </ul>
-                                    <!--ul class="sign" id="signin">
-                            <li><a href="/international/en/My/login/?returnUrl=%2finternational%2fen%2fTesting%2f5019-HTML5-Sample-Candidtate%2f" title="Sign in"> Sign in</a></li>
-                            <li> New here? <a href="/international/en/My/Signup/" title="Sign up!"> Sign up!</a></li>
-                        </ul-->
+                                    <ul class="sign" id="signin">
+                                        <li><a href="/international/en/My/login/?returnUrl=%2finternational%2fen%2fTesting%2f5019-HTML5-Sample-Candidtate%2f" title="Sign in"> Sign in</a>
+                                        </li>
+                                        <li>New here? <a href="/international/en/My/Signup/" title="Sign up!"> Sign up!</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </nav>
                         </div>
@@ -1098,7 +1071,6 @@ Please don't let this happen. Thank you.
         })();
 */
             </script>
-            <!--<script src="js/jquery.min.js"></script>-->
             <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
             <script>
             window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
