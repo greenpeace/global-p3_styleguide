@@ -4737,7 +4737,6 @@ Browser specific hacks
   src: url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.eot?#iefix') format('embedded-opentype'), url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.woff') format('woff'), url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.ttf') format('truetype');
 }
 .action-template h1,
-.action-template #action-counter,
 .action-template #action-recent-signers {
   display: none;
 }
