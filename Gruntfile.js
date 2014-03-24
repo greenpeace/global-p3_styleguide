@@ -318,6 +318,7 @@ module.exports = function(grunt) {
             testJS: {
                 files: {
                     '<%= config.test %>/js/site.js': ['<%= config.src %>/js/site-main.js'],
+                    '<%= config.test %>/js/p3.lib.js': ['<%= config.dist %>/js/p3.lib.js'],
                     '<%= config.test %>/js/modernizr-custom.js': ['<%= config.src %>/js/vendor/modernizr-custom.js'],
                     '<%= config.test %>/js/action-template.js': ['<%= config.src %>/js/action-template-simple.js'],
                     '<%= config.test %>/js/action-template-full.js': ['<%= config.src %>/js/action-template-full.js'],
@@ -565,7 +566,7 @@ module.exports = function(grunt) {
         'jshint',
         'clean:js',
         'concat',
-        'modernizr',
+//        'modernizr',
         'uglify',
         'copy:testJS'
     ]);
@@ -587,7 +588,7 @@ module.exports = function(grunt) {
         'copy:styleguide',
         'cssmin',
         'concat',
-        'modernizr',    // Not included in standard tasks as it's a fairly long process
+//        'modernizr',    // Not included in standard tasks as it's a fairly long process
                         // Be sure to re-run `grunt modernizr` to update customised version after adding new tests
         'uglify',
         'copy:images',
