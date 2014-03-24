@@ -16,14 +16,14 @@
             test: {
                 parameters: {
                     page: 404454,
-                    action: 912,
+//                    action: 912,
                     key: 'f728ab0df8e4dff9acec2a85d4af7327'
 //                    expire: '2013-11-02'
                 },
                 actions: {
-                    pledges: 'http://www.greenpeace.org/international/en/Testing/gpi-api-test/',
-                    signerCheck: 'http://www.greenpeace.org/international/en/Testing/gpi-api-test/signercheck/',
-                    validation: 'http://www.greenpeace.org/international/en/Testing/gpi-api-test/validation/'
+                    pledges: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
+                    signerCheck: 'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
+                    validation: 'https://secured.greenpeace.org/international/en/api/v2/pledges/validation/'
                 }
             },
             relephant: {
@@ -139,8 +139,8 @@
 
         // Recent signers widget
         $.p3.recent_signers('#action-recent-signers', {
-            jsonURL: petition.live.actions.pledges,
-            params: petition.live.parameters
+            jsonURL: petition.test.actions.pledges,
+            params: petition.test.parameters
         });
     });
 

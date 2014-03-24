@@ -2921,6 +2921,21 @@ Styleguide 5.1.4
   .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
     background: #56b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
   }
+  .sign {
+    margin: 0 2px 0 0;
+    padding: 0;
+    list-style: none;
+    right: 0;
+    display: inline;
+    position: absolute;
+  }
+  .sign li {
+    float: left;
+    font: bold 12px/29px Helvetica, "Trebuchet MS", sans-serif;
+    color: #000000;
+    padding: 0 5px 0 5px;
+    display: inline;
+  }
   .navigation .button.primary {
     margin: .2em 0 0;
     text-align: center;
@@ -3242,6 +3257,21 @@ Styleguide 5.1.4
 .sevensome .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
 .sevensome .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
   background: #56b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
+}
+.sevensome .sign {
+  margin: 0 2px 0 0;
+  padding: 0;
+  list-style: none;
+  right: 0;
+  display: inline;
+  position: absolute;
+}
+.sevensome .sign li {
+  float: left;
+  font: bold 12px/29px Helvetica, "Trebuchet MS", sans-serif;
+  color: #000000;
+  padding: 0 5px 0 5px;
+  display: inline;
 }
 .sevensome .navigation .button.primary {
   margin: .2em 0 0;
@@ -3565,6 +3595,21 @@ Styleguide 5.1.4
 .lt-ie9 .navigation .drop-content ul li:hover ul li:hover ul li:hover a.drop2,
 .lt-ie9 .navigation .drop-content ul li:focus ul li:focus ul li:focus a.drop2 {
   background: #56b105 url(../../img/nav-arrow.png) no-repeat 95% -25px;
+}
+.lt-ie9 .sign {
+  margin: 0 2px 0 0;
+  padding: 0;
+  list-style: none;
+  right: 0;
+  display: inline;
+  position: absolute;
+}
+.lt-ie9 .sign li {
+  float: left;
+  font: bold 12px/29px Helvetica, "Trebuchet MS", sans-serif;
+  color: #000000;
+  padding: 0 5px 0 5px;
+  display: inline;
 }
 .lt-ie9 .navigation .button.primary {
   margin: .2em 0 0;
