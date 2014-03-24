@@ -301,6 +301,7 @@ module.exports = function(grunt) {
                         dest: '<%= config.test %>/'
                     },
                     {
+
                     }
                 ]
             },
