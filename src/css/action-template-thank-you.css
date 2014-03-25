@@ -1698,176 +1698,6 @@ textarea {
   height: 7em;
 }
 /*
-Buttons
-
-Styleguide 4.
-*/
-/*
-Generic button. 
-
-We support `<input[submit]>`, `<input.button>`, `<button>` and `<a.button>`
-
-Compatible	in IE6+, Firefox 2+, Safari 4+, Chrome 1+, Opera 11+
-
-Markup:
-<input type="submit" class="{$modifiers}" value="input[submit]" />
-<input class="button {$modifiers}" value="input.button" />
-<button class="{$modifiers}">button</button>
-<a class="button {$modifiers}">a.button</a>
-
-:hover                  - Subtle hover highlight and box shadow
-:focus                  - Subtle hover highlight and box shadow
-:active                 - Inset box shadow and 1px offset
-.primary                - Primary buttons are orange
-.primary:hover          - Primary buttons are orange
-.primary:focus          - Primary buttons are orange
-.primary:active         - Primary buttons are orange
-.disabled               - Dims the button to indicate it cannot be used
-
-Styleguide 4.1
-*/
-.button,
-input[type=submit],
-input.button,
-button,
-a.button {
-  position: relative;
-  font-family: Helvetica, Arial, Geneva, sans-serif;
-  font-size: 100%;
-  display: inline-block;
-  zoom: 1;
-  /* zoom and *display = ie7 hack for display:inline-block */
-  *display: inline;
-  vertical-align: baseline;
-  margin: 0;
-  outline: none;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  padding: .3125em .625em;
-  /* 5/10px when base is 16px */
-  min-width: 6em;
-  font-weight: bold;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-  -webkit-border-radius: 0.1em;
-  -moz-border-radius: 0.1em;
-  border-radius: 0.1em;
-  color: #333333;
-  border: 1px solid #cccccc;
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top, #fafafa, #ededed);
-  background-image: -ms-linear-gradient(top, #fafafa, #ededed);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#ededed));
-  background-image: -webkit-linear-gradient(top, #fafafa, #ededed);
-  background-image: -o-linear-gradient(top, #fafafa, #ededed);
-  background-image: linear-gradient(top, #fafafa, #ededed);
-}
-.button.primary,
-input[type=submit].primary,
-input.button.primary,
-button.primary,
-a.button.primary {
-  color: #ffffff;
-  text-shadow: 0 0 2px #9a9a9a;
-  background: #f99713;
-  /* Old browsers */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
-  /* IE6-9 */
-  border: 1px solid #e78f01;
-}
-.button.primary:hover,
-input[type=submit].primary:hover,
-input.button.primary:hover,
-button.primary:hover,
-a.button.primary:hover,
-.button.primary:focus,
-input[type=submit].primary:focus,
-input.button.primary:focus,
-button.primary:focus,
-a.button.primary:focus {
-  text-decoration: none;
-  background: #f59e10;
-}
-.button:hover,
-input[type=submit]:hover,
-input.button:hover,
-button:hover,
-a.button:hover,
-.button:focus,
-input[type=submit]:focus,
-input.button:focus,
-button:focus,
-a.button:focus {
-  text-decoration: none;
-  outline: 0;
-  -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
-  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-.button:active,
-input[type=submit]:active,
-input.button:active,
-button:active,
-a.button:active {
-  position: relative;
-  top: 1px;
-  -webkit-box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-.button.disabled,
-input[type=submit].disabled,
-input.button.disabled,
-button.disabled,
-a.button.disabled {
-  cursor: default;
-  color: #888;
-  background: #ffffff;
-}
-.button.disabled:hover,
-input[type=submit].disabled:hover,
-input.button.disabled:hover,
-button.disabled:hover,
-a.button.disabled:hover,
-.button.disabled:active,
-input[type=submit].disabled:active,
-input.button.disabled:active,
-button.disabled:active,
-a.button.disabled:active {
-  -webkit-box-shadow: 0 0 0;
-  -moz-box-shadow: 0 0 0;
-  box-shadow: 0 0 0;
-  top: 0;
-  border: 1px solid #cccccc;
-}
-.submit {
-  display: inline-block;
-  /* in case there is a div wrapper */
-}
-.lt-ie7 .sevensome a.donate {
-  color: #ffffff;
-  text-shadow: 0 0 2px #9a9a9a;
-  background: #f99713;
-  /* Old browsers */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
-  /* IE6-9 */
-  border: 1px solid #f06818;
-  width: 6em;
-  text-align: center;
-}
-.sevensome .header .button {
-  font-size: 12px;
-  padding: 3px 1px;
-  margin-top: 3px;
-}
-@media only screen and (min-width: 768px) {
-  .header .button {
-    font-size: 12px;
-    padding: 3px 1px;
-    margin-top: 3px;
-  }
-}
-/*
 Messages for validation error and example
 
 `<div.text.error>`, `<div.text.success>`, can be used to add status messages or example. 
@@ -2582,6 +2412,82 @@ Styleguide 5.1.3.1
 }
 #breadcrumbs {
   display: none;
+}
+/*
+	Social Button
+
+	Description	: share buttons with counters
+	Compatible	: ?
+	Since       : ?
+*/
+.social-share .socialBtn-float {
+  display: inline-block;
+  padding: .3em .3em .5em 2em;
+}
+.social-share .counter span {
+  border: 1px solid #cccccc;
+  display: block;
+  text-align: center;
+  width: 3.6em;
+  padding: .5em 0;
+  font-size: .875em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.social-share .counterBig span {
+  border: 1px solid #cccccc;
+  display: block;
+  text-align: center;
+  width: 7em;
+  padding: .5em .8em;
+  font-size: 1.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: #fff;
+}
+/* some fake bubble tip shenanigans */
+.social-share .counter {
+  background: #ffffff;
+}
+.social-share .tip:before,
+.social-share .tip:after {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  margin-left: 17px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  display: inline-block;
+  content: " ";
+}
+.social-share .tip:before {
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tip:after {
+  border-top-color: #ffffff;
+  margin-top: -2px;
+}
+.social-share .tipBig:before,
+.social-share .tipBig:after {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  margin-left: 4.7em;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  display: inline-block;
+  content: " ";
+}
+.social-share .tipBig:before {
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tipBig:after {
+  border-top-color: #ffffff;
+  margin-top: -2px;
 }
 /*
 Social Buttons (small) 
@@ -4320,82 +4226,6 @@ Styleguide 4.3
   content: "\f196";
 }
 /*
-	Social Button
-
-	Description	: share buttons with counters
-	Compatible	: ?
-	Since       : ?
-*/
-.social-share .socialBtn-float {
-  display: inline-block;
-  padding: .3em .3em .5em 2em;
-}
-.social-share .counter span {
-  border: 1px solid #cccccc;
-  display: block;
-  text-align: center;
-  width: 3.6em;
-  padding: .5em 0;
-  font-size: .875em;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-.social-share .counterBig span {
-  border: 1px solid #cccccc;
-  display: block;
-  text-align: center;
-  width: 7em;
-  padding: .5em .8em;
-  font-size: 1.2em;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  background: #fff;
-}
-/* some fake bubble tip shenanigans */
-.social-share .counter {
-  background: #ffffff;
-}
-.social-share .tip:before,
-.social-share .tip:after {
-  width: 1px;
-  height: 1px;
-  position: absolute;
-  margin-left: 17px;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #cccccc;
-  display: inline-block;
-  content: " ";
-}
-.social-share .tip:before {
-  border-top-color: rgba(0, 0, 0, 0.2);
-}
-.social-share .tip:after {
-  border-top-color: #ffffff;
-  margin-top: -2px;
-}
-.social-share .tipBig:before,
-.social-share .tipBig:after {
-  width: 1px;
-  height: 1px;
-  position: absolute;
-  margin-left: 4.7em;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #cccccc;
-  display: inline-block;
-  content: " ";
-}
-.social-share .tipBig:before {
-  border-top-color: rgba(0, 0, 0, 0.2);
-}
-.social-share .tipBig:after {
-  border-top-color: #ffffff;
-  margin-top: -2px;
-}
-/*
 Flag icons
 
 Classes are used to choose the right flag for each country.
@@ -5851,6 +5681,79 @@ Styleguide 8.2
   color: #666666;
   font-size: .775em;
   font-style: italic;
+}
+/*
+Recent Signers
+
+Shows the signers signers in the current action. It has a min-height of 14em. <br/>
+    `li`        One line, ellipsis if content doesn't fit. <br/>
+    `.since`    Timestamp in gray text. <br/>
+    `.country`  Country name in grayutext. <br/>
+    `.flag`     Flag icon margin.
+
+Markup:
+<div id="action-recent-signers">
+    <h3>Recent Signers</h3>
+    <ul>
+        <li>
+            <span class="since" data-since="2013-10-21 12:00:00">an hour ago</span>
+            <span class="icon flag in"></span>
+            <span class="name">James Norther,</span>
+            <span class="country">India</span>
+        </li>
+        <li>
+            <span class="since" data-since="2013-10-12 12:00:00">8 hours ago</span>
+            <span class="icon flag nz"></span>
+            <span class="name">Nick Younger,</span>
+            <span class="country">New-zealand</span>
+        </li>
+        <li>
+            <span class="since" data-since="2013-10-11 12:00:00">19 hours ago</span>
+            <span class="icon flag nl"></span>
+            <span class="name">Eoin Dubskyer,</span>
+            <span class="country">Netherlands</span>
+        </li>
+        <li>
+            <span class="since" data-since="2013-10-10 12:00:00">a day ago</span>
+            <span class="icon flag fr"></span>
+            <span class="name">Mr Splashy Pants,</span>
+            <span class="country">France</span>
+        </li>
+    </ul>
+</div>
+
+Styleguide 9.
+*/
+#action-recent-signers {
+  clear: right;
+  min-height: 14em;
+}
+#action-recent-signers ul {
+  padding: 0;
+  font-size: 0.913em;
+}
+#action-recent-signers li {
+  list-style-type: none;
+  font-size: 0.813em;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+}
+#action-recent-signers .since {
+  min-width: 8em;
+  display: inline-block;
+  font-size: 0.813em;
+  vertical-align: 1px;
+  color: #666666;
+}
+#action-recent-signers .country {
+  color: #777;
+}
+#action-recent-signers .flag {
+  margin-right: .75em;
+  vertical-align: -1px;
 }
 /* ==========================================================================
      Action Template or Action Related Widgets

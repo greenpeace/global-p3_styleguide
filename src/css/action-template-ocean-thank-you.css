@@ -1248,12 +1248,42 @@ body {
     /* 14px */
     max-width: 320px;
   }
+  #action-ask {
+    display: none;
+  }
+  .thankyouocean {
+    padding-top: 1em;
+  }
+  #action-details {
+    font-size: 1.15em;
+  }
+  #action-ask {
+    display: none;
+  }
+  .thankyouocean {
+    padding-top: 1em;
+  }
 }
 .threetwo .page-section {
   width: 90%;
   font-size: 0.875em;
   /* 14px */
   max-width: 320px;
+}
+.threetwo #action-ask {
+  display: none;
+}
+.threetwo .thankyouocean {
+  padding-top: 1em;
+}
+.threetwo #action-details {
+  font-size: 1.15em;
+}
+.threetwo #action-ask {
+  display: none;
+}
+.threetwo .thankyouocean {
+  padding-top: 1em;
 }
 @media only screen and (min-width: 480px) {
   .page-section {
@@ -1678,6 +1708,176 @@ textarea {
 .textarea.large textarea {
   width: 30em;
   height: 7em;
+}
+/*
+Buttons
+
+Styleguide 4.
+*/
+/*
+Generic button. 
+
+We support `<input[submit]>`, `<input.button>`, `<button>` and `<a.button>`
+
+Compatible	in IE6+, Firefox 2+, Safari 4+, Chrome 1+, Opera 11+
+
+Markup:
+<input type="submit" class="{$modifiers}" value="input[submit]" />
+<input class="button {$modifiers}" value="input.button" />
+<button class="{$modifiers}">button</button>
+<a class="button {$modifiers}">a.button</a>
+
+:hover                  - Subtle hover highlight and box shadow
+:focus                  - Subtle hover highlight and box shadow
+:active                 - Inset box shadow and 1px offset
+.primary                - Primary buttons are orange
+.primary:hover          - Primary buttons are orange
+.primary:focus          - Primary buttons are orange
+.primary:active         - Primary buttons are orange
+.disabled               - Dims the button to indicate it cannot be used
+
+Styleguide 4.1
+*/
+.button,
+input[type=submit],
+input.button,
+button,
+a.button {
+  position: relative;
+  font-family: Helvetica, Arial, Geneva, sans-serif;
+  font-size: 100%;
+  display: inline-block;
+  zoom: 1;
+  /* zoom and *display = ie7 hack for display:inline-block */
+  *display: inline;
+  vertical-align: baseline;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  padding: .3125em .625em;
+  /* 5/10px when base is 16px */
+  min-width: 6em;
+  font-weight: bold;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  -webkit-border-radius: 0.1em;
+  -moz-border-radius: 0.1em;
+  border-radius: 0.1em;
+  color: #333333;
+  border: 1px solid #cccccc;
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #fafafa, #ededed);
+  background-image: -ms-linear-gradient(top, #fafafa, #ededed);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#ededed));
+  background-image: -webkit-linear-gradient(top, #fafafa, #ededed);
+  background-image: -o-linear-gradient(top, #fafafa, #ededed);
+  background-image: linear-gradient(top, #fafafa, #ededed);
+}
+.button.primary,
+input[type=submit].primary,
+input.button.primary,
+button.primary,
+a.button.primary {
+  color: #ffffff;
+  text-shadow: 0 0 2px #9a9a9a;
+  background: #f99713;
+  /* Old browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
+  /* IE6-9 */
+  border: 1px solid #e78f01;
+}
+.button.primary:hover,
+input[type=submit].primary:hover,
+input.button.primary:hover,
+button.primary:hover,
+a.button.primary:hover,
+.button.primary:focus,
+input[type=submit].primary:focus,
+input.button.primary:focus,
+button.primary:focus,
+a.button.primary:focus {
+  text-decoration: none;
+  background: #f59e10;
+}
+.button:hover,
+input[type=submit]:hover,
+input.button:hover,
+button:hover,
+a.button:hover,
+.button:focus,
+input[type=submit]:focus,
+input.button:focus,
+button:focus,
+a.button:focus {
+  text-decoration: none;
+  outline: 0;
+  -webkit-box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.button:active,
+input[type=submit]:active,
+input.button:active,
+button:active,
+a.button:active {
+  position: relative;
+  top: 1px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.button.disabled,
+input[type=submit].disabled,
+input.button.disabled,
+button.disabled,
+a.button.disabled {
+  cursor: default;
+  color: #888;
+  background: #ffffff;
+}
+.button.disabled:hover,
+input[type=submit].disabled:hover,
+input.button.disabled:hover,
+button.disabled:hover,
+a.button.disabled:hover,
+.button.disabled:active,
+input[type=submit].disabled:active,
+input.button.disabled:active,
+button.disabled:active,
+a.button.disabled:active {
+  -webkit-box-shadow: 0 0 0;
+  -moz-box-shadow: 0 0 0;
+  box-shadow: 0 0 0;
+  top: 0;
+  border: 1px solid #cccccc;
+}
+.submit {
+  display: inline-block;
+  /* in case there is a div wrapper */
+}
+.lt-ie7 .sevensome a.donate {
+  color: #ffffff;
+  text-shadow: 0 0 2px #9a9a9a;
+  background: #f99713;
+  /* Old browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@oranges-2', endColorstr='#e56b2b', GradientType=0);
+  /* IE6-9 */
+  border: 1px solid #f06818;
+  width: 6em;
+  text-align: center;
+}
+.sevensome .header .button {
+  font-size: 12px;
+  padding: 3px 1px;
+  margin-top: 3px;
+}
+@media only screen and (min-width: 768px) {
+  .header .button {
+    font-size: 12px;
+    padding: 3px 1px;
+    margin-top: 3px;
+  }
 }
 /*
 Messages for validation error and example
@@ -2394,82 +2594,6 @@ Styleguide 5.1.3.1
 }
 #breadcrumbs {
   display: none;
-}
-/*
-	Social Button
-
-	Description	: share buttons with counters
-	Compatible	: ?
-	Since       : ?
-*/
-.social-share .socialBtn-float {
-  display: inline-block;
-  padding: .3em .3em .5em 2em;
-}
-.social-share .counter span {
-  border: 1px solid #cccccc;
-  display: block;
-  text-align: center;
-  width: 3.6em;
-  padding: .5em 0;
-  font-size: .875em;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-.social-share .counterBig span {
-  border: 1px solid #cccccc;
-  display: block;
-  text-align: center;
-  width: 7em;
-  padding: .5em .8em;
-  font-size: 1.2em;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  background: #fff;
-}
-/* some fake bubble tip shenanigans */
-.social-share .counter {
-  background: #ffffff;
-}
-.social-share .tip:before,
-.social-share .tip:after {
-  width: 1px;
-  height: 1px;
-  position: absolute;
-  margin-left: 17px;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #cccccc;
-  display: inline-block;
-  content: " ";
-}
-.social-share .tip:before {
-  border-top-color: rgba(0, 0, 0, 0.2);
-}
-.social-share .tip:after {
-  border-top-color: #ffffff;
-  margin-top: -2px;
-}
-.social-share .tipBig:before,
-.social-share .tipBig:after {
-  width: 1px;
-  height: 1px;
-  position: absolute;
-  margin-left: 4.7em;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #cccccc;
-  display: inline-block;
-  content: " ";
-}
-.social-share .tipBig:before {
-  border-top-color: rgba(0, 0, 0, 0.2);
-}
-.social-share .tipBig:after {
-  border-top-color: #ffffff;
-  margin-top: -2px;
 }
 /*
 Social Buttons (small) 
@@ -4208,6 +4332,82 @@ Styleguide 4.3
   content: "\f196";
 }
 /*
+	Social Button
+
+	Description	: share buttons with counters
+	Compatible	: ?
+	Since       : ?
+*/
+.social-share .socialBtn-float {
+  display: inline-block;
+  padding: .3em .3em .5em 2em;
+}
+.social-share .counter span {
+  border: 1px solid #cccccc;
+  display: block;
+  text-align: center;
+  width: 3.6em;
+  padding: .5em 0;
+  font-size: .875em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.social-share .counterBig span {
+  border: 1px solid #cccccc;
+  display: block;
+  text-align: center;
+  width: 7em;
+  padding: .5em .8em;
+  font-size: 1.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: #fff;
+}
+/* some fake bubble tip shenanigans */
+.social-share .counter {
+  background: #ffffff;
+}
+.social-share .tip:before,
+.social-share .tip:after {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  margin-left: 17px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  display: inline-block;
+  content: " ";
+}
+.social-share .tip:before {
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tip:after {
+  border-top-color: #ffffff;
+  margin-top: -2px;
+}
+.social-share .tipBig:before,
+.social-share .tipBig:after {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  margin-left: 4.7em;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  display: inline-block;
+  content: " ";
+}
+.social-share .tipBig:before {
+  border-top-color: rgba(0, 0, 0, 0.2);
+}
+.social-share .tipBig:after {
+  border-top-color: #ffffff;
+  margin-top: -2px;
+}
+/*
 Flag icons
 
 Classes are used to choose the right flag for each country.
@@ -5664,79 +5864,6 @@ Styleguide 8.2
   font-size: .775em;
   font-style: italic;
 }
-/*
-Recent Signers
-
-Shows the signers signers in the current action. It has a min-height of 14em. <br/>
-    `li`        One line, ellipsis if content doesn't fit. <br/>
-    `.since`    Timestamp in gray text. <br/>
-    `.country`  Country name in grayutext. <br/>
-    `.flag`     Flag icon margin.
-
-Markup:
-<div id="action-recent-signers">
-    <h3>Recent Signers</h3>
-    <ul>
-        <li>
-            <span class="since" data-since="2013-10-21 12:00:00">an hour ago</span>
-            <span class="icon flag in"></span>
-            <span class="name">James Norther,</span>
-            <span class="country">India</span>
-        </li>
-        <li>
-            <span class="since" data-since="2013-10-12 12:00:00">8 hours ago</span>
-            <span class="icon flag nz"></span>
-            <span class="name">Nick Younger,</span>
-            <span class="country">New-zealand</span>
-        </li>
-        <li>
-            <span class="since" data-since="2013-10-11 12:00:00">19 hours ago</span>
-            <span class="icon flag nl"></span>
-            <span class="name">Eoin Dubskyer,</span>
-            <span class="country">Netherlands</span>
-        </li>
-        <li>
-            <span class="since" data-since="2013-10-10 12:00:00">a day ago</span>
-            <span class="icon flag fr"></span>
-            <span class="name">Mr Splashy Pants,</span>
-            <span class="country">France</span>
-        </li>
-    </ul>
-</div>
-
-Styleguide 9.
-*/
-#action-recent-signers {
-  clear: right;
-  min-height: 14em;
-}
-#action-recent-signers ul {
-  padding: 0;
-  font-size: 0.913em;
-}
-#action-recent-signers li {
-  list-style-type: none;
-  font-size: 0.813em;
-  margin-bottom: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -ms-text-overflow: ellipsis;
-}
-#action-recent-signers .since {
-  min-width: 8em;
-  display: inline-block;
-  font-size: 0.813em;
-  vertical-align: 1px;
-  color: #666666;
-}
-#action-recent-signers .country {
-  color: #777;
-}
-#action-recent-signers .flag {
-  margin-right: .75em;
-  vertical-align: -1px;
-}
 /* ==========================================================================
      Action Template or Action Related Widgets
    ========================================================================== */
@@ -6031,6 +6158,191 @@ Action form
     padding: .5em;
     font-size: .75em;
   }
+  .action-template #action-ask,
+  .action-template #action-multimedia-teaser {
+    display: none;
+  }
+  input[type=text],
+  input[type=password],
+  input[type=email],
+  input[type=search],
+  input[type=tel],
+  textarea {
+    border: 1px solid #029afb;
+  }
+  #action-smallprints {
+    margin: .25em 0 0 0;
+  }
+  #action-smallprints .smallprint a {
+    display: block;
+    padding-top: 1em;
+  }
+  textarea:focus,
+  input[type=password]:focus,
+  input[type=search]:focus,
+  input[type=email]:focus,
+  input[type=text]:focus,
+  input[type=tel]:focus {
+    -webkit-box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.2);
+    -moz-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid #029afb;
+  }
+  .header,
+  heading-first,
+  .header .logo {
+    height: 3em;
+    margin: 0;
+    padding: 0;
+  }
+  .header .logo {
+    width: 380px;
+    background: rgba(255, 255, 255, 0.9) url(../../src/img/ocean/GP_logo_header.png) 1em 1em no-repeat;
+    position: absolute;
+    margin: 41px 0 0 2px;
+    padding: 0;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-top-left-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-topleft: 3px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+  }
+  .heading-first {
+    background: transparent;
+    position: relative;
+    margin: auto;
+    width: 960px;
+  }
+  .heading-first .heading-holder {
+    float: right;
+    width: 410px;
+    margin: 0;
+    padding: 0;
+  }
+  .heading-second {
+    display: none;
+  }
+  .action-template #main-section {
+    background: transparent;
+  }
+  .action-template h2 {
+    padding-bottom: 1em;
+  }
+  .action-template #action-form {
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  .action-template h2,
+  .action-template #action-details,
+  .action-template #action-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding-top: 20px;
+  }
+  .action-template h2 .strong,
+  .action-template #action-details .strong,
+  .action-template #action-form .strong {
+    font-weight: bold;
+  }
+  .action-template h2 .orange,
+  .action-template #action-details .orange,
+  .action-template #action-form .orange {
+    color: #f1490b;
+  }
+  .action-template h2 {
+    color: #45668e;
+    font-size: 2.1em;
+    letter-spacing: 0.1em;
+    font-family: GistRoughUprBoldTwo;
+    width: 120px;
+    padding-right: 240px;
+    padding-bottom: 0;
+    text-transform: uppercase;
+    line-height: 1.1em;
+  }
+  .action-template a {
+    color: #45668e;
+  }
+  .action-template .thankyouocean {
+    padding-top: 30px;
+    line-height: 1.4em;
+  }
+  .action-template #action-details {
+    font-size: 18px;
+    padding: 0 1em;
+    width: 490px;
+    margin-top: 35px;
+  }
+  .action-template #action-details:after,
+  .action-template #action-details:before {
+    display: block;
+    height: 50px;
+    content: ' ';
+    position: absolute;
+    width: 526px;
+    margin-top: 4em;
+  }
+  .action-template #action-details:before {
+    background: transparent url(../../src/img/ocean/SOS_border_top.png) top left no-repeat;
+    height: 179px;
+    margin: -179px 0 0 -1em;
+  }
+  .action-template #action-details:after {
+    background: transparent url(../../src/img/ocean/SOS_border_bottom.png) top left no-repeat;
+    height: 75px;
+    margin: 0 0 0 -1em;
+  }
+  .action-template .footer {
+    background-color: transparent;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-left: 600px;
+  }
+  .footer .bottom-menu {
+    display: none;
+  }
+  .footer-small .logo-box .logo {
+    background: transparent url(../../src/img/ocean/GP_logo_footer.png) top left no-repeat;
+    width: 100px;
+  }
+  .action-template #main-container-holder {
+    background: transparent;
+  }
+  body {
+    background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_petition.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  #root-container {
+    height: 100%;
+    background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
+  }
+  body {
+    background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_thank_you.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  #root-container {
+    height: 100%;
+    background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
+  }
 }
 /* fallback for browsers where media queries won't work */
 .desktop .action-template #main-container {
@@ -6115,6 +6427,191 @@ Action form
   padding: .5em;
   font-size: .75em;
 }
+.desktop .action-template #action-ask,
+.desktop .action-template #action-multimedia-teaser {
+  display: none;
+}
+.desktop input[type=text],
+.desktop input[type=password],
+.desktop input[type=email],
+.desktop input[type=search],
+.desktop input[type=tel],
+.desktop textarea {
+  border: 1px solid #029afb;
+}
+.desktop #action-smallprints {
+  margin: .25em 0 0 0;
+}
+.desktop #action-smallprints .smallprint a {
+  display: block;
+  padding-top: 1em;
+}
+.desktop textarea:focus,
+.desktop input[type=password]:focus,
+.desktop input[type=search]:focus,
+.desktop input[type=email]:focus,
+.desktop input[type=text]:focus,
+.desktop input[type=tel]:focus {
+  -webkit-box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid #029afb;
+}
+.desktop .header,
+.desktop heading-first,
+.desktop .header .logo {
+  height: 3em;
+  margin: 0;
+  padding: 0;
+}
+.desktop .header .logo {
+  width: 380px;
+  background: rgba(255, 255, 255, 0.9) url(../../src/img/ocean/GP_logo_header.png) 1em 1em no-repeat;
+  position: absolute;
+  margin: 41px 0 0 2px;
+  padding: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.desktop .heading-first {
+  background: transparent;
+  position: relative;
+  margin: auto;
+  width: 960px;
+}
+.desktop .heading-first .heading-holder {
+  float: right;
+  width: 410px;
+  margin: 0;
+  padding: 0;
+}
+.desktop .heading-second {
+  display: none;
+}
+.desktop .action-template #main-section {
+  background: transparent;
+}
+.desktop .action-template h2 {
+  padding-bottom: 1em;
+}
+.desktop .action-template #action-form {
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.desktop .action-template h2,
+.desktop .action-template #action-details,
+.desktop .action-template #action-form {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-top: 20px;
+}
+.desktop .action-template h2 .strong,
+.desktop .action-template #action-details .strong,
+.desktop .action-template #action-form .strong {
+  font-weight: bold;
+}
+.desktop .action-template h2 .orange,
+.desktop .action-template #action-details .orange,
+.desktop .action-template #action-form .orange {
+  color: #f1490b;
+}
+.desktop .action-template h2 {
+  color: #45668e;
+  font-size: 2.1em;
+  letter-spacing: 0.1em;
+  font-family: GistRoughUprBoldTwo;
+  width: 120px;
+  padding-right: 240px;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  line-height: 1.1em;
+}
+.desktop .action-template a {
+  color: #45668e;
+}
+.desktop .action-template .thankyouocean {
+  padding-top: 30px;
+  line-height: 1.4em;
+}
+.desktop .action-template #action-details {
+  font-size: 18px;
+  padding: 0 1em;
+  width: 490px;
+  margin-top: 35px;
+}
+.desktop .action-template #action-details:after,
+.desktop .action-template #action-details:before {
+  display: block;
+  height: 50px;
+  content: ' ';
+  position: absolute;
+  width: 526px;
+  margin-top: 4em;
+}
+.desktop .action-template #action-details:before {
+  background: transparent url(../../src/img/ocean/SOS_border_top.png) top left no-repeat;
+  height: 179px;
+  margin: -179px 0 0 -1em;
+}
+.desktop .action-template #action-details:after {
+  background: transparent url(../../src/img/ocean/SOS_border_bottom.png) top left no-repeat;
+  height: 75px;
+  margin: 0 0 0 -1em;
+}
+.desktop .action-template .footer {
+  background-color: transparent;
+}
+.desktop .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-left: 600px;
+}
+.desktop .footer .bottom-menu {
+  display: none;
+}
+.desktop .footer-small .logo-box .logo {
+  background: transparent url(../../src/img/ocean/GP_logo_footer.png) top left no-repeat;
+  width: 100px;
+}
+.desktop .action-template #main-container-holder {
+  background: transparent;
+}
+.desktop body {
+  background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_petition.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.desktop #root-container {
+  height: 100%;
+  background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
+}
+.desktop body {
+  background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_thank_you.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.desktop #root-container {
+  height: 100%;
+  background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
+}
 /*
 Browser specific hacks
 
@@ -6137,3 +6634,55 @@ Browser specific hacks
   line-height: 1.4em;
   font-weight: normal;
 }
+/**
+ * @license
+ * MyFonts Webfont Build ID 2769558, 2014-03-14T09:30:27-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Gist Rough Upr Bold Two by Yellow Design Studio
+ * URL: http://www.myfonts.com/fonts/yellow-design/gist-rough/upr-bold-two/
+ * Copyright: Copyright (c) 2014 by Yellow Design Studio. All rights reserved.
+ * Licensed pageviews: 25,000
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2769558
+ * 
+ * © 2014 MyFonts Inc
+*/
+/* @import must be at top of file, otherwise CSS will not work */
+@font-face {
+  font-family: 'GistRoughUprBoldTwo';
+  src: url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.eot');
+  src: url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.eot?#iefix') format('embedded-opentype'), url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.woff') format('woff'), url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/fonts/2A4296_0_0.ttf') format('truetype');
+}
+.action-template h1,
+.action-template #action-counter,
+.action-template #action-recent-signers {
+  display: none;
+}
+/**
+ * @license
+ * MyFonts Webfont Build ID 2769558, 2014-03-14T09:30:27-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Gist Rough Upr Bold Two by Yellow Design Studio
+ * URL: http://www.myfonts.com/fonts/yellow-design/gist-rough/upr-bold-two/
+ * Copyright: Copyright (c) 2014 by Yellow Design Studio. All rights reserved.
+ * Licensed pageviews: 25,000
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2769558
+ * 
+ * © 2014 MyFonts Inc
+*/
+/* @import must be at top of file, otherwise CSS will not work */
