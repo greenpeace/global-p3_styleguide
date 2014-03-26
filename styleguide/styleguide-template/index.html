@@ -14,13 +14,52 @@
   </head>
 
   <body id="kss-node">
+    <!-- HEADER -->
+    <div class="heading heading-first">
+      <div class="heading-holder page-section">
+        <a href="/international/en/" title="Greenpeace" class="logo">
+          <span class="visuallyhidden">Greenpeace</span>
+        </a>
+      </div>
+    </div>
+<div class="heading heading-second">
+    <div class="heading-holder page-section">
+        <nav>
+            <div id="main-nav">
+                <ul class="navigation" id="nav">
+                    <li><a href="./" title="Home"><span>PLanet 3 Styleguide</span></a></li>
+                    <li>
+                        <a href="section-1.html" title="CSS"><span>CSS</span></a>
+                        <div class="drop-holder">
+                            <div class="drop-content">
+                                <ul class="kss-menu" data-kss-ref="{{rootNumber}}">
+                                  {{#eachRoot}}
+                                  <li class="kss-menu-item"><a href="section-{{reference}}.html"><span class="kss-ref">{{reference}}</span><span class="kss-name">{{header}}</span></a></li>
+                                  {{/eachRoot}}
+                                </ul>
+                                {{#if overview}}
+                                {{else}}
+                                <ul class="kss-menu-child">
+                                  {{#eachSection rootNumber}}
+                                  {{#whenDepth 1}}
+                                  {{else}}
+                                  <li class="kss-menu-item"><a href="#section-{{reference}}"><span class="kss-ref">{{reference}}</span><span class="kss-name">{{header}}</span></a></li>
+                                  {{/whenDepth}}
+                                  {{/eachSection}}
+                                </ul>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
 
     <div class="kss-wrapper">
       <div class="kss-sidebar">
         <div class="kss-sidebar-inner">
-          <div class="kss-header">
-            <h1 class="kss-doc-title"><a href="./">Planet 3 Styleguide</a></h1>
-          </div>
           <nav class="kss-nav">
             <ul class="kss-menu" data-kss-ref="{{rootNumber}}">
               <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
