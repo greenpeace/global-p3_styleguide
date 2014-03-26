@@ -5961,7 +5961,7 @@ Action form
   width: 94%;
 }
 .action-template .submit.full {
-  width: 105%;
+  width: 111%;
   font-size: 1.25em;
 }
 .action-template #action-submit-full {
@@ -5988,6 +5988,9 @@ Action form
     padding: 0 20px;
     margin: 0;
     clear: right;
+  }
+  .action-template .submit.full {
+    width: 105%;
   }
   #action-social-share-thankyou {
     float: left;
@@ -6039,6 +6042,9 @@ Action form
   padding: 0 20px;
   margin: 0;
   clear: right;
+}
+.sevensome .action-template .submit.full {
+  width: 105%;
 }
 .sevensome #action-social-share-thankyou {
   float: left;
