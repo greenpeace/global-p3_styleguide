@@ -6336,7 +6336,7 @@ Action form
     background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
   }
   body {
-    background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_thank_you.jpg') no-repeat center center fixed;
+    background: transparent url('../img/ocean/bg_thank_you.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -6605,7 +6605,7 @@ Action form
   background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
 }
 .desktop body {
-  background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_thank_you.jpg') no-repeat center center fixed;
+  background: transparent url('../img/ocean/bg_thank_you.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
