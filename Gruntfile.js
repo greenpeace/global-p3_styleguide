@@ -220,7 +220,8 @@ module.exports = function(grunt) {
                     '<%= config.dist %>/js/p3.min.js': ['<%= config.dist %>/js/p3.lib.js'],
                     '<%= config.dist %>/js/site.js': ['<%= config.src %>/js/site-main.js'],
                     '<%= config.dist %>/js/action-template.js': ['<%= config.src %>/js/action-template-simple.js'],
-                    '<%= config.dist %>/js/action-template-full.js': ['<%= config.src %>/js/action-template-full.js']
+                    '<%= config.dist %>/js/action-template-full.js': ['<%= config.src %>/js/action-template-full.js'],
+                    '<%= config.dist %>/js/action-template-ocean.js': ['<%= config.src %>/js/action-template-ocean.js']
                 }
             }
         },

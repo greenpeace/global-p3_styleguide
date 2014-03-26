@@ -33,7 +33,7 @@
              * set to false to force sourcing information from JSON instead */
             countrySelector: '#UserCountry',
             /* source country information from a JSON file */
-            countryJSON: 'countries/countries_en.json',
+            countryJSON: 'json/countries/countries_en.json',
             /* set to true to delay execution until externally triggered by event */
             externalTrigger: false,
             /* element to store returned pledge data */
