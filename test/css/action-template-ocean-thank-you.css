@@ -6336,7 +6336,7 @@ Action form
     background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
   }
   body {
-    background: transparent url('../img/ocean/bg_thank_you.jpg') no-repeat center center fixed;
+    background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_thank_you.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -6605,7 +6605,7 @@ Action form
   background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
 }
 .desktop body {
-  background: transparent url('../img/ocean/bg_thank_you.jpg') no-repeat center center fixed;
+  background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_thank_you.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -6671,24 +6671,3 @@ Browser specific hacks
 .action-template #action-recent-signers {
   display: none;
 }
-/**
- * @license
- * MyFonts Webfont Build ID 2769558, 2014-03-14T09:30:27-0400
- * 
- * The fonts listed in this notice are subject to the End User License
- * Agreement(s) entered into by the website owner. All other parties are 
- * explicitly restricted from using the Licensed Webfonts(s).
- * 
- * You may obtain a valid license at the URLs below.
- * 
- * Webfont: Gist Rough Upr Bold Two by Yellow Design Studio
- * URL: http://www.myfonts.com/fonts/yellow-design/gist-rough/upr-bold-two/
- * Copyright: Copyright (c) 2014 by Yellow Design Studio. All rights reserved.
- * Licensed pageviews: 25,000
- * 
- * 
- * License: http://www.myfonts.com/viewlicense?type=web&buildid=2769558
- * 
- * © 2014 MyFonts Inc
-*/
-/* @import must be at top of file, otherwise CSS will not work */
