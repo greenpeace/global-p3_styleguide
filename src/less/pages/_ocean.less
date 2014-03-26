@@ -37,36 +37,34 @@
     .action-template #action-ask,
     .action-template #action-multimedia-teaser {
         display:none;
-		}
-input[type=text],
-input[type=password],
-input[type=email],
-input[type=search],
-input[type=tel],
-textarea {
-    border:1px solid #029afb;  
-}
-#action-smallprints {
-    margin: .25em 0 0 0;;
-	
-    .smallprint a{
+	}
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=search],
+    input[type=tel],
+    textarea {
+        border:1px solid #029afb;  
+    }
+    #action-smallprints {
+        margin: .25em 0 0 0;
+	}
+    .smallprint a {
         display:block;
 		padding-top:1em;
     }
-	}
-textarea:focus,
-input[type=password]:focus,
-input[type=search]:focus,
-input[type=email]:focus,
-input[type=text]:focus,
-input[type=tel]:focus {
-    -webkit-box-shadow: inset 1px 1px 2px rgba(255,255,255,.2);
-    -moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
-    box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
-    border:1px solid #029afb;
-}
+    textarea:focus,
+    input[type=password]:focus,
+    input[type=search]:focus,
+    input[type=email]:focus,
+    input[type=text]:focus,
+    input[type=tel]:focus {
+        -webkit-box-shadow: inset 1px 1px 2px rgba(255,255,255,.2);
+        -moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
+        box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
+        border:1px solid #029afb;
+    }
 
-    
     // header
     .header, heading-first, .header .logo {
         height:3em;
@@ -80,11 +78,11 @@ input[type=tel]:focus {
         margin:41px 0 0 2px;
         padding:0;
 		-webkit-border-top-right-radius: 3px;
--webkit-border-top-left-radius: 3px;
--moz-border-radius-topright: 3px;
--moz-border-radius-topleft: 3px;
-border-top-right-radius: 3px;
-border-top-left-radius: 3px;
+        -webkit-border-top-left-radius: 3px;
+        -moz-border-radius-topright: 3px;
+        -moz-border-radius-topleft: 3px;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
     }
     .heading-first {
         background:transparent;
@@ -110,12 +108,12 @@ border-top-left-radius: 3px;
         padding-bottom:1em;
     }
 	.action-template #action-form {
-	-webkit-border-bottom-right-radius: 3px;
--webkit-border-bottom-left-radius: 3px;
--moz-border-radius-bottomright: 3px;
--moz-border-radius-bottomleft: 3px;
-border-bottom-right-radius: 3px;
-border-bottom-left-radius: 3px;
+	    -webkit-border-bottom-right-radius: 3px;
+        -webkit-border-bottom-left-radius: 3px;
+        -moz-border-radius-bottomright: 3px;
+        -moz-border-radius-bottomleft: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
 	}
 	
     .action-template h2,
@@ -124,16 +122,12 @@ border-bottom-left-radius: 3px;
         background-color:rgba(255, 255, 255, 0.9);
 		padding-top:20px;
 		
-		.strong {
-	font-weight:bold;
-	}
-	.orange {
-	color:#f1490b;
-	}
-	
-
-	
-	
+	    .strong {
+	        font-weight:bold;
+	    }
+	    .orange {
+	        color:#f1490b;
+	    }
     }
 	
     .action-template h2 {
@@ -148,11 +142,9 @@ border-bottom-left-radius: 3px;
         line-height:1.1em;
     }
 	.action-template a {
-	color:#45668e;
+	    color:#45668e;
 	}
-	.action-template .thankyouocean {
-	padding-top:30px; line-height:1.4em;
-	}
+
 
     // Action details
     .action-template #action-details {
@@ -166,21 +158,20 @@ border-bottom-left-radius: 3px;
         display:block;
         height:50px;
         content: ' ';
-        position:absolute;
         width:526px;
-        margin-top:4em;
     }
-	
-	
+
     .action-template #action-details:before {
         background: transparent url(../../src/img/ocean/SOS_border_top.png) top left no-repeat;
         height:179px;
         margin:-179px 0 0 -1em;
+        position:float;
     }
-	    .action-template #action-details:after {
+	.action-template #action-details:after {
         background: transparent url(../../src/img/ocean/SOS_border_bottom.png) top left no-repeat;
         height:75px;
         margin:0 0 0 -1em;
+        position:absolute;
     }
 
     // Footer 
@@ -193,18 +184,16 @@ border-bottom-left-radius: 3px;
         bottom:0;
         width:100%;   
 		padding-left:600px; 
+        z-index:0;
 		
     }
 	.footer .bottom-menu {
-display:none;
-}
-
+        display:none;
+    }
 
     .footer-small .logo-box .logo {
         background: transparent url(../../src/img/ocean/GP_logo_footer.png) top left no-repeat;
 		width:100px;
-		
-		
     }
 
     // Background
@@ -223,19 +212,20 @@ display:none;
     } 
     #root-container {
         height:100%;
+        width:100%;
+        position:absolute;
         background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
     }
 
 }
-
 .layout_phablet() {
-#action-ask {
-display:none;
-}
-.thankyouocean {
-padding-top:1em;
-}
-#action-details{
-font-size:1.15em;
-}
+    #action-ask {
+        display:none;
+    }
+    .thankyouocean {
+        padding-top:1em;
+    }
+    #action-details{
+        font-size:1.15em;
+    }
 }

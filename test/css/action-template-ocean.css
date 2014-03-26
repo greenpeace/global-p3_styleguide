@@ -6167,7 +6167,7 @@ Action form
   #action-smallprints {
     margin: .25em 0 0 0;
   }
-  #action-smallprints .smallprint a {
+  .smallprint a {
     display: block;
     padding-top: 1em;
   }
@@ -6261,10 +6261,6 @@ Action form
   .action-template a {
     color: #45668e;
   }
-  .action-template .thankyouocean {
-    padding-top: 30px;
-    line-height: 1.4em;
-  }
   .action-template #action-details {
     font-size: 18px;
     padding: 0 1em;
@@ -6276,19 +6272,19 @@ Action form
     display: block;
     height: 50px;
     content: ' ';
-    position: absolute;
     width: 526px;
-    margin-top: 4em;
   }
   .action-template #action-details:before {
     background: transparent url(../../src/img/ocean/SOS_border_top.png) top left no-repeat;
     height: 179px;
     margin: -179px 0 0 -1em;
+    position: float;
   }
   .action-template #action-details:after {
     background: transparent url(../../src/img/ocean/SOS_border_bottom.png) top left no-repeat;
     height: 75px;
     margin: 0 0 0 -1em;
+    position: absolute;
   }
   .action-template .footer {
     background-color: transparent;
@@ -6298,6 +6294,7 @@ Action form
     bottom: 0;
     width: 100%;
     padding-left: 600px;
+    z-index: 0;
   }
   .footer .bottom-menu {
     display: none;
@@ -6321,6 +6318,8 @@ Action form
   }
   #root-container {
     height: 100%;
+    width: 100%;
+    position: absolute;
     background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
   }
 }
@@ -6422,7 +6421,7 @@ Action form
 .desktop #action-smallprints {
   margin: .25em 0 0 0;
 }
-.desktop #action-smallprints .smallprint a {
+.desktop .smallprint a {
   display: block;
   padding-top: 1em;
 }
@@ -6516,10 +6515,6 @@ Action form
 .desktop .action-template a {
   color: #45668e;
 }
-.desktop .action-template .thankyouocean {
-  padding-top: 30px;
-  line-height: 1.4em;
-}
 .desktop .action-template #action-details {
   font-size: 18px;
   padding: 0 1em;
@@ -6531,19 +6526,19 @@ Action form
   display: block;
   height: 50px;
   content: ' ';
-  position: absolute;
   width: 526px;
-  margin-top: 4em;
 }
 .desktop .action-template #action-details:before {
   background: transparent url(../../src/img/ocean/SOS_border_top.png) top left no-repeat;
   height: 179px;
   margin: -179px 0 0 -1em;
+  position: float;
 }
 .desktop .action-template #action-details:after {
   background: transparent url(../../src/img/ocean/SOS_border_bottom.png) top left no-repeat;
   height: 75px;
   margin: 0 0 0 -1em;
+  position: absolute;
 }
 .desktop .action-template .footer {
   background-color: transparent;
@@ -6553,6 +6548,7 @@ Action form
   bottom: 0;
   width: 100%;
   padding-left: 600px;
+  z-index: 0;
 }
 .desktop .footer .bottom-menu {
   display: none;
@@ -6576,6 +6572,8 @@ Action form
 }
 .desktop #root-container {
   height: 100%;
+  width: 100%;
+  position: absolute;
   background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/raster.png) 0 0 repeat;
 }
 /*
