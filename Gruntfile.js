@@ -223,7 +223,8 @@ module.exports = function(grunt) {
                     '<%= config.dist %>/js/site.js': ['<%= config.src %>/js/site-main.js'],
                     '<%= config.dist %>/js/action-template.js': ['<%= config.src %>/js/action-template-simple.js'],
                     '<%= config.dist %>/js/action-template-full.js': ['<%= config.src %>/js/action-template-full.js'],
-                    '<%= config.dist %>/js/action-template-ocean.js': ['<%= config.src %>/js/action-template-ocean.js']
+                    '<%= config.dist %>/js/action-template-ocean.js': ['<%= config.src %>/js/action-template-ocean.js'],
+                    '<%= config.dist %>/js/action-template-thankyou.js': ['<%= config.src %>/js/action-template-thankyou.js']
                 }
             }
         },
