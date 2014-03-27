@@ -1420,7 +1420,7 @@ var _p3 = $.p3 || {};
  *                  Obtains share counts from JSON endpoint
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.1.6
+ * @version         0.2.0s
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -1437,8 +1437,8 @@ var _p3 = $.p3 || {},
             popup: {
                 top: 200,
                 left: 100,
-                width: 550,
-                height: 350
+                width: 650,
+                height: 380
             },
             networks: {
                 facebook: {
@@ -1472,7 +1472,7 @@ var _p3 = $.p3 || {},
                 }
             },
             precision: 1,
-            jsonURL: 'https://www.greenpeace.org/api/p3/pledge/social.json'
+            api: 'https://www.greenpeace.org/api/p3/pledge/social.json'
         };
 
     _p3.social_sharing = function(el, options) {
@@ -1523,7 +1523,7 @@ var _p3 = $.p3 || {},
             $.each(config.networks, function(network, data) {
                 if (data.enabled !== false) {
                     var $a = $('a.' + network, $el),
-                        $counter = $('span', $a.prev()),
+                        $counter = $('span', $a.prev()) || false,
                         url = data.url;
 
                     switch (network) {
@@ -1536,7 +1536,7 @@ var _p3 = $.p3 || {},
                             if (data.description === false) {
 //                                throw new Error('Pinterest sharing requires a description');
                                 console.warn(prefix + 'Pinterest sharing requires a description.');
-                                data.description = '';
+                                data.description = document.title;
                             }
                             url = url.replace('__IMAGE__', encodeURIComponent(data.image));
                             url = url.replace('__DESCRIPTION__', encodeURIComponent(data.description));
@@ -1545,7 +1545,7 @@ var _p3 = $.p3 || {},
                             if (data.title === false) {
 //                                throw new Error('Twitter sharing requires a title');
                                 console.warn(prefix + 'Twitter sharing requires a title.');
-                                data.title = '';
+                                data.title = document.title;
                             }
                             url = url.replace('__TITLE__', encodeURIComponent(data.title));
                             url = url.replace('__ACCOUNT__', encodeURIComponent(data.account));
@@ -1568,34 +1568,43 @@ var _p3 = $.p3 || {},
                     });
 
                     // Set counter to humanised number
-                    $counter.text(humanise(data.count));
+                    if ($counter) {
+                        $counter.text(humanise(data.count));
+                    }
                 } // else { console.log(network + ' disabled'); }
             });
 
         }
 
-        M.load({
-            test: w.JSON,
-            nope: [
-                'dist/js/compat/json.min.js'
-            ],
-            complete: function() {
-                $.getJSON(config.jsonURL, function(json) {
-                    $.extend(true, config, json);
+        if (config.api) {
+            // load data from JSON endpoint
+            M.load({
+                test: w.JSON,
+                nope: [
+                    'dist/js/compat/json.min.js'
+                ],
+                complete: function() {
+                    $.getJSON(config.api, function(json) {
+                        $.extend(true, config, json);
 
-                    if (json.status === 'success') {
-                        init();
-                    } else {
-                        console.warn(json);
-                        throw new Error(prefix + 'Status: ' + json.status + ': server reported a problem');
-                    }
+                        if (json.status === 'success') {
+                            init();
+                        } else {
+                            console.warn(json);
+                            throw new Error(prefix + 'Status: ' + json.status + ': server reported a problem');
+                        }
 
-                }).fail(function() {
-                    throw new Error(prefix + 'Failed to load JSON: "' + config.jsonURL + '"');
-                });
+                    }).fail(function() {
+                        throw new Error(prefix + 'Failed to load JSON: "' + config.api + '"');
+                    });
 
-            }
-        });
+                }
+            });
+        } else {
+            // Just parse what we've got
+            init();
+        }
+
 
     };
 
