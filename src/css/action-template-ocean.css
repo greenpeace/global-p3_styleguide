@@ -6289,13 +6289,17 @@ Action form
   }
   .action-template .footer {
     background-color: transparent;
-  }
-  .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    width: 100%;
-    padding-left: 600px;
-    z-index: 0;
+  }
+  .action-template .footer-holder {
+    position: relative;
+    width: 960px;
+    margin: auto;
+  }
+  .action-template .footer .copy-box {
+    width: 380px;
+    float: right;
   }
   .footer .bottom-menu {
     display: none;
@@ -6543,13 +6547,17 @@ Action form
 }
 .desktop .action-template .footer {
   background-color: transparent;
-}
-.desktop .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  width: 100%;
-  padding-left: 600px;
-  z-index: 0;
+}
+.desktop .action-template .footer-holder {
+  position: relative;
+  width: 960px;
+  margin: auto;
+}
+.desktop .action-template .footer .copy-box {
+  width: 380px;
+  float: right;
 }
 .desktop .footer .bottom-menu {
   display: none;

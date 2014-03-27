@@ -20,14 +20,6 @@
             "minlength": "6",
             "email": true
         },
-        "website": {
-            "required": true,
-            "url": true
-        },
-        "postcode": {
-            "required": true,
-            "alphanumeric": true
-        },
         "country": {
             "required": true
         }
