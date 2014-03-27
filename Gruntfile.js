@@ -34,7 +34,9 @@ module.exports = function(grunt) {
         htmllint: {// https://github.com/jzaefferer/grunt-html
             options: {
                 ignore: [
-                    'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.'
+                    'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.',
+                    'Saw a “form” start tag, but there was already an active “form” element. Nested forms are not allowed. Ignoring the tag.',
+                    'End tag “form” seen, but there were open elements.'
                 ]
             },
             src: ["<%= config.src %>/**/*.html"],
@@ -522,7 +524,7 @@ module.exports = function(grunt) {
     // Register Tasks
 
     grunt.registerTask('html', [
-//        'htmllint',         // Validates all HTML
+        'htmllint:src',         // Validates all source HTML
         'prettify', // Cleans up the formatting, places output in `tmp`
         'htmlmin',  // Copies and minifies `tmp` HTML to `dist` folder,
                     // and copies unmodified `tmp` HTML to `test` folder
