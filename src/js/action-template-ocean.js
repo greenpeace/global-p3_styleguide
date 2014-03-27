@@ -21,7 +21,7 @@
                     base: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
                     signerCheck: 'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
                     validation: 'json/rules_ocean_en.json',
-                   // validation: 'https://secured.greenpeace.org/international/Global/international/code/2014/sos/json/rules_ocean_en.json'
+                   //validation: 'https://secured.greenpeace.org/international/Global/international/code/2014/sos/json/rules_ocean_en.json'
                 }
             }
         };
