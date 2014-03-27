@@ -4498,6 +4498,7 @@ Styleguide 4.3
   -moz-box-shadow: 0 0px 0, 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 1px rgba(255, 255, 255, 0.5) inset;
   box-shadow: 0 0px 0 #d62a31, 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 1px rgba(255, 255, 255, 0.5) inset;
 }
+/* Import Font Awesome external */
 /*!
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -4513,7 +4514,7 @@ Styleguide 4.3
 }
 .fa {
   display: inline-block;
-  font-family: "FontAwesome";
+  font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
   line-height: 1;

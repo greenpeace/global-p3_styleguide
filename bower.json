@@ -23,7 +23,8 @@
     "jquery.cookie": "~1",
     "jquery-timeago": "~1",
     "jquery-validation": "~1",
-    "json3": "~3"
+    "json3": "~3",
+    "fontawesome": "~4"
   },
   "preen": {
     "jquery": [
@@ -44,9 +45,9 @@
       "localization/**"
     ],
     "json3": [
-        "lib/*.js",
-        "README.md",
-        "LICENSE"
+      "lib/*.js",
+      "README.md",
+      "LICENSE"
     ],
     "xregexp": [
       "**.js",

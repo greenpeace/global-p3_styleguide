@@ -232,7 +232,7 @@ module.exports = function(grunt) {
                 dest: '<%= config.styleguide %>/css/styleguide.css'
             },
             bower: {
-                files: {
+                files: [{
                     "<%= config.src %>/js/vendor/jquery.min.js": "<%= bower.directory %>/jquery/dist/jquery.min.js",
                     "<%= config.src %>/js/vendor/jquery-plugins/jquery.placeholder.js": "<%= bower.directory %>/jquery-placeholder/jquery.placeholder.js",
                     "<%= config.src %>/js/vendor/jquery-plugins/jquery.timeago.js": "<%= bower.directory %>/jquery-timeago/jquery.timeago.js",
@@ -242,7 +242,17 @@ module.exports = function(grunt) {
                     "<%= config.src %>/js/vendor/xregexp/xregexp.js": "<%= bower.directory %>/xregexp/src/xregexp.js",
                     "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-base.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-base.js",
                     "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-categories.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-categories.js"
-                }
+                },{ // Font Awesome LESS files
+                    expand: true,
+                    cwd: '<%= bower.directory %>/fontawesome/less/',
+                    src: ['*'],
+                    dest: '<%= config.src %>/less/components/font-awesome/'
+                }, {
+                    expand: true,
+                    cwd: '<%= bower.directory %>/fontawesome/fonts/',
+                    src: ['*'],
+                    dest: '<%= config.src %>/fonts/'
+                }]
             },
             fonts: {
                 files: [
@@ -438,7 +448,7 @@ module.exports = function(grunt) {
                 tasks: ['default'],
                 options: {
                     spawn: false,
-                    debounceDelay: 5000
+                    debounceDelay: 1000
                 }
             },
             js: {
