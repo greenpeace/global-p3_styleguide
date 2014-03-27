@@ -1420,7 +1420,7 @@ var _p3 = $.p3 || {};
  *                  Obtains share counts from JSON endpoint
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.1.5
+ * @version         0.1.6
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -1522,9 +1522,8 @@ var _p3 = $.p3 || {},
 
             $.each(config.networks, function(network, data) {
                 if (data.enabled !== false) {
-                    var $li = $('li.' + network, $el),
-                        $counter = $('.counter span', $li),
-                        $a = $('a', $li),
+                    var $a = $('a.' + network, $el),
+                        $counter = $('span', $a.prev()),
                         url = data.url;
 
                     switch (network) {
