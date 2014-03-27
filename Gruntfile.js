@@ -174,10 +174,10 @@ module.exports = function(grunt) {
         },
         uglify: {// https://www.npmjs.org/package/grunt-contrib-uglify
             options: {
-                banner: '/**\n * @name\t\t<%= pkg.name %>\n * @version\t\tv<%= pkg.version %>\n * ' +
-                    '@date\t\t<%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright\t<%= pkg.copyright %>\n * @source\t\t<%= pkg.repository %>\n * @license <%= pkg.license %> */\n',
+                banner: '/*\n * @name\t\t<%= pkg.name %>\n * @version\t\tv<%= pkg.version %>\n * ' +
+                    '@date\t\t<%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright\t<%= pkg.copyright %>\n * @source\t\t<%= pkg.repository %>*/\n/* @license <%= pkg.license %> */\n',
 //                report: 'gzip',
-                footer: '\n// @license-end',
+                footer: '\n/* @license-end */',
                 mangle: {
                     except: ['jQuery', 'Modernizr']
                 }
