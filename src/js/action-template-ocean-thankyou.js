@@ -15,7 +15,12 @@
         // Track form abandonment
         $.p3.social_sharing('#action-form',{
             api: false,
+            pageURL: 'http://www.greenpeace.org/SOS-oceans',
             networks: {
+                twitter: {
+                    url: "https://twitter.com/intent/tweet?original_referer=__REFERRER__&source=tweetbutton&text=__TITLE__&url=__REFERRER__",
+                    title: "Our #oceans need your help! Send an #SOS and ask the World's leaders to support #OceanSanctuaries at the #UN:"
+                },
                 google: {
                     enabled: false
                 },

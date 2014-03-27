@@ -1420,7 +1420,7 @@ var _p3 = $.p3 || {};
  *                  Obtains share counts from JSON endpoint
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.2.0s
+ * @version         0.2.0
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
