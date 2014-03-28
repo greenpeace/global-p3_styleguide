@@ -8,16 +8,16 @@
  * @returns {undefined}
  */
 /* globals jQuery, Modernizr */
-(function($, M, w, undef) {
+(function($, w) {
     'use strict';
 
     $.ajaxSetup({cache: false});
 
-    $(document).ready(function() {
+    $(w.document).ready(function() {
 
         // Update social share counts
         $.p3.social_sharing('#action-social-share', {
-            //jsonURL: petition.localSocial.url.simple,
+            //api: petition.localSocial.url.simple,
             networks: {
                 twitter: {
                     title: w.document.title
@@ -27,4 +27,4 @@
 
     });
 
-}(jQuery, Modernizr, this));
+}(jQuery, this));

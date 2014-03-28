@@ -35,6 +35,7 @@ module.exports = function(grunt) {
             options: {
                 ignore: [
                     'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.',
+                    // NESTED form tags! Nested FORM tags! NESTED FORM TAGS!
                     'Saw a “form” start tag, but there was already an active “form” element. Nested forms are not allowed. Ignoring the tag.',
                     'End tag “form” seen, but there were open elements.'
                 ]

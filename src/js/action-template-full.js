@@ -92,7 +92,7 @@
 
         // Update social share counts
         $.p3.social_sharing('#action-social-share', {
-            jsonURL: petition.localSocial.url.simple,
+            api: petition.localSocial.url.simple,
             networks: {
                 twitter: {
                     title: w.document.title

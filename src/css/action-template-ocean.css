@@ -6287,17 +6287,12 @@ Action form
     margin: 0 0 0 -1em;
     position: absolute;
   }
-  .action-template .footer {
+  #main-container-holder .action-template .footer {
     background-color: transparent;
-    position: fixed;
-    bottom: 0;
-  }
-  .action-template .footer-holder {
-    position: relative;
     width: 960px;
     margin: auto;
   }
-  .action-template .footer .copy-box {
+  .action-template .footer-holder {
     width: 380px;
     float: right;
   }
@@ -6545,17 +6540,12 @@ Action form
   margin: 0 0 0 -1em;
   position: absolute;
 }
-.desktop .action-template .footer {
+.desktop #main-container-holder .action-template .footer {
   background-color: transparent;
-  position: fixed;
-  bottom: 0;
-}
-.desktop .action-template .footer-holder {
-  position: relative;
   width: 960px;
   margin: auto;
 }
-.desktop .action-template .footer .copy-box {
+.desktop .action-template .footer-holder {
   width: 380px;
   float: right;
 }
