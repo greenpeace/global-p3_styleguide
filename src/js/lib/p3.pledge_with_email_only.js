@@ -5,7 +5,7 @@
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.8
+ * @version         0.4.0
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -62,6 +62,7 @@
             $form = ($el.is('form')) ? $el : $('form', $el),
             $emailField = $(config.emailField),
             $submit = $('input[type=submit]', $form),
+            originalSubmit = $submit.prop('value'),
             // Keep track of emails we've tested against the signer check endpoint
             checkedUserEmails = [],
             request = $.p3.request(config.signerCheckURL),
@@ -102,14 +103,18 @@
                     console.warn(prefix + 'No expiry date set');
                 }
             },
+            disableSubmit = function () {
+                // Disable form input until we've obtained signer check status
+                $submit.prop('disabled', true).addClass('disabled').prop('value', 'Please wait...');
+            },
+            enableSubmit = function () {
+                $submit.removeClass('disabled').removeProp('disabled').prop('value', originalSubmit);
+            },
             /**
              * Performs the json query against signer check endpoint
              * @returns     {boolean} True if user can pledge using only email address, false if not
              */
             checkEmail = function(hash) {
-
-                // Disable form input until we've obtained signer check status
-                $submit.prop('disabled', 'disabled').addClass('disabled');
 
                 checkedUserEmails[hash] = {
                     checked: false,
@@ -119,9 +124,6 @@
                 $.getJSON(query.url, query.parameters, function(response) {
                     // Mark this email as having been tested against the endpoint
                     checkedUserEmails[hash].checked = true;
-
-                    // Re-enable form submit
-                    $submit.removeProp('disabled').removeClass('disabled');
 
                     if (response.status === 'success') {
                         // User can sign using email only
@@ -150,7 +152,6 @@
                                 // Errors 6 through 12 are not relevant to this operation
                             case 13:
                                 // This user has already signed this pledge
-//                        console.log(prefix + 'User has already signed this pledge');
                                 var $emailContainer = $emailField.parents('.email:first'),
                                     $message = $('.message', $emailContainer);
 
@@ -167,14 +168,12 @@
                                 break;
                             case 15:
                                 // User does not exist
-//                        console.log(prefix + 'New user, show all fields');
                                 $('.first-time', $form).show(config.animationDuration);
                                 checkedUserEmails[hash].valid = true;
                                 showAllFormFields();
                                 break;
                             case 16:
                                 // User exists, but is missing required fields
-//                        console.warn(prefix + 'User exists, but is missing fields');
                                 checkedUserEmails[hash].valid = true;
                                 $('.first-time', $form).html('<p>Welcome back!<br/>We just need a little more information for this pledge</p>').show(config.animationDuration);
                                 showMissingFields(response.user);
@@ -182,13 +181,16 @@
                             default:
                                 console.warn('Unhandled error code: ' + response.error.code, response.error);
                         }
+
+                        // Re-enable form submit
+                        enableSubmit();
                     }
 
                 }).fail(function() {
                     if (!config.disableOnError) {
                         console.warn(prefix + 'Failed to load JSON, all form inputs re-enabled');
                         showAllFormFields();
-                        $submit.removeProp('disabled').removeClass('disabled');
+                        $submit.removeClass('disabled');
                     } else {
                         throw new Error('$.p3.pledge_with_email_only.js :: Signer API request failed');
                     }
@@ -201,6 +203,9 @@
                 } else {
                     if (!$(':input[type=submit]', $form).is(':disabled')) {
                         $form.submit();
+                        disableSubmit();
+                    } else {
+                        console.log('disabled');
                     }
                 }
             },
@@ -245,23 +250,16 @@
                 setPageIdentifier();
                 setExpiryDate();
 
-                // Intercept form submission on regular form fields by the enter key
-                $(':input[type!=submit]', $form).keypress(function(e) {
-                    if (e.which === 13) {
-                        var $this = $(this);
 
-                        if ($this.is('textarea')) {
-                            return true;
-                        } else {
-                            e.preventDefault();
-                            $this.blur();
-                            $submit.focus().click();
-                            return false;
-                        }
-                    }
-                });
 
                 $submit.click(function(e) {
+
+                    if ($submit.is('.disabled')) {
+                        return false;
+                    }
+
+                    disableSubmit();
+
                     // Initialise user parameter with email form field
                     var user = setUserIdentifier();
 
@@ -274,6 +272,7 @@
                                     $emailField.parent().find('.error').show(config.animationDuration);
                                 }, config.animationDuration);
                             }
+                            enableSubmit();
                         } else {
                             // Haven't checked this email, so prevent form submission
                             e.preventDefault();
@@ -291,11 +290,13 @@
                                 checkEmail(user);
                             } else {
                                 submitForm();
+                                enableSubmit();
                             }
                         }
                     } else {
                         hideFormFields();
                         submitForm();
+                        enableSubmit();
                     }
 
                 });
@@ -310,6 +311,21 @@
                         disableOnError: config.disableOnError
                     });
                 }
+
+                // Intercept form submission on regular form fields by the enter key
+                $(':input[type!=submit]', $form).keypress(function(e) {
+                    if (e.which === 13) {
+                        var $this = $(this);
+
+                        if ($this.is('textarea')) {
+                            return true;
+                        } else {
+                            e.preventDefault();
+                            $submit.focus().click();
+                            return false;
+                        }
+                    }
+                });
 
             };
 
