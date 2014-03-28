@@ -14,6 +14,7 @@
     // GET parameters to send with each request
     var petition = {
             test: {
+                // http://www.greenpeace.org/international/en/Testing/gpi-api-test/
                 parameters: {
                     page: 404454,
 //                    action: 912,

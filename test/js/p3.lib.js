@@ -312,7 +312,7 @@ var _p3 = $.p3 || {},
  *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, which
  *                  enables reusing the JSON with another plugin (eg Recent Signers)
- * @version         0.3.3
+ * @version         0.3.4
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -380,7 +380,7 @@ var _p3 = $.p3 || {},
             if (step <= 0) {
                 step = 1;
             }
-            $count.text(addCommas(progress.count))  ;
+            $count.text(addCommas(progress.count));
             $total.text(addCommas(progress.target));
 
             animateProgress();
@@ -388,19 +388,21 @@ var _p3 = $.p3 || {},
         animateProgress = function () {
 //            console.log(progress.count + ' / ' + progress.target + ' step: ' + initialStep);
 
-            if (currentValue >= progress.count * 1.0) {
+            if (currentValue >= +progress.count) {
+                // Finished
                 paused = false;
-                // Restart the process to check for live changes
+                // If we fetch from the API
                 if (!config.externalTrigger) {
+                    // Restart the process to check for live changes
                     setTimeout(fetchJSON, config.fetchFrequency);
                 }
                 return;
             }
 
-            if (currentValue + step < progress.count){
-                currentValue += step;
+            if (+(currentValue + step) < +progress.count){
+                currentValue += +step;
             } else {
-                currentValue = progress.count;
+                currentValue = +progress.count;
             }
 
             var percent = currentValue / progress.target * 100;
@@ -531,7 +533,7 @@ var _p3 = $.p3 || {},
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.8
+ * @version         0.4.0
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -586,6 +588,7 @@ var _p3 = $.p3 || {},
             $form = ($el.is('form')) ? $el : $('form', $el),
             $emailField = $(config.emailField),
             $submit = $('input[type=submit]', $form),
+            originalSubmit = $submit.prop('value'),
             // Keep track of emails we've tested against the signer check endpoint
             checkedUserEmails = [],
             request = $.p3.request(config.signerCheckURL),
@@ -626,14 +629,18 @@ var _p3 = $.p3 || {},
                     console.warn(prefix + 'No expiry date set');
                 }
             },
+            disableSubmit = function () {
+                // Disable form input until we've obtained signer check status
+                $submit.prop('disabled', true).addClass('disabled').prop('value', 'Please wait...');
+            },
+            enableSubmit = function () {
+                $submit.removeClass('disabled').removeProp('disabled').prop('value', originalSubmit);
+            },
             /**
              * Performs the json query against signer check endpoint
              * @returns     {boolean} True if user can pledge using only email address, false if not
              */
             checkEmail = function(hash) {
-
-                // Disable form input until we've obtained signer check status
-                $submit.prop('disabled', 'disabled').addClass('disabled');
 
                 checkedUserEmails[hash] = {
                     checked: false,
@@ -643,9 +650,6 @@ var _p3 = $.p3 || {},
                 $.getJSON(query.url, query.parameters, function(response) {
                     // Mark this email as having been tested against the endpoint
                     checkedUserEmails[hash].checked = true;
-
-                    // Re-enable form submit
-                    $submit.removeProp('disabled').removeClass('disabled');
 
                     if (response.status === 'success') {
                         // User can sign using email only
@@ -674,7 +678,6 @@ var _p3 = $.p3 || {},
                                 // Errors 6 through 12 are not relevant to this operation
                             case 13:
                                 // This user has already signed this pledge
-//                        console.log(prefix + 'User has already signed this pledge');
                                 var $emailContainer = $emailField.parents('.email:first'),
                                     $message = $('.message', $emailContainer);
 
@@ -691,14 +694,12 @@ var _p3 = $.p3 || {},
                                 break;
                             case 15:
                                 // User does not exist
-//                        console.log(prefix + 'New user, show all fields');
                                 $('.first-time', $form).show(config.animationDuration);
                                 checkedUserEmails[hash].valid = true;
                                 showAllFormFields();
                                 break;
                             case 16:
                                 // User exists, but is missing required fields
-//                        console.warn(prefix + 'User exists, but is missing fields');
                                 checkedUserEmails[hash].valid = true;
                                 $('.first-time', $form).html('<p>Welcome back!<br/>We just need a little more information for this pledge</p>').show(config.animationDuration);
                                 showMissingFields(response.user);
@@ -706,13 +707,16 @@ var _p3 = $.p3 || {},
                             default:
                                 console.warn('Unhandled error code: ' + response.error.code, response.error);
                         }
+
+                        // Re-enable form submit
+                        enableSubmit();
                     }
 
                 }).fail(function() {
                     if (!config.disableOnError) {
                         console.warn(prefix + 'Failed to load JSON, all form inputs re-enabled');
                         showAllFormFields();
-                        $submit.removeProp('disabled').removeClass('disabled');
+                        $submit.removeClass('disabled');
                     } else {
                         throw new Error('$.p3.pledge_with_email_only.js :: Signer API request failed');
                     }
@@ -725,6 +729,9 @@ var _p3 = $.p3 || {},
                 } else {
                     if (!$(':input[type=submit]', $form).is(':disabled')) {
                         $form.submit();
+                        disableSubmit();
+                    } else {
+                        console.log('disabled');
                     }
                 }
             },
@@ -769,23 +776,16 @@ var _p3 = $.p3 || {},
                 setPageIdentifier();
                 setExpiryDate();
 
-                // Intercept form submission on regular form fields by the enter key
-                $(':input[type!=submit]', $form).keypress(function(e) {
-                    if (e.which === 13) {
-                        var $this = $(this);
 
-                        if ($this.is('textarea')) {
-                            return true;
-                        } else {
-                            e.preventDefault();
-                            $this.blur();
-                            $submit.focus().click();
-                            return false;
-                        }
-                    }
-                });
 
                 $submit.click(function(e) {
+
+                    if ($submit.is('.disabled')) {
+                        return false;
+                    }
+
+                    disableSubmit();
+
                     // Initialise user parameter with email form field
                     var user = setUserIdentifier();
 
@@ -798,6 +798,7 @@ var _p3 = $.p3 || {},
                                     $emailField.parent().find('.error').show(config.animationDuration);
                                 }, config.animationDuration);
                             }
+                            enableSubmit();
                         } else {
                             // Haven't checked this email, so prevent form submission
                             e.preventDefault();
@@ -815,11 +816,13 @@ var _p3 = $.p3 || {},
                                 checkEmail(user);
                             } else {
                                 submitForm();
+                                enableSubmit();
                             }
                         }
                     } else {
                         hideFormFields();
                         submitForm();
+                        enableSubmit();
                     }
 
                 });
@@ -834,6 +837,21 @@ var _p3 = $.p3 || {},
                         disableOnError: config.disableOnError
                     });
                 }
+
+                // Intercept form submission on regular form fields by the enter key
+                $(':input[type!=submit]', $form).keypress(function(e) {
+                    if (e.which === 13) {
+                        var $this = $(this);
+
+                        if ($this.is('textarea')) {
+                            return true;
+                        } else {
+                            e.preventDefault();
+                            $submit.focus().click();
+                            return false;
+                        }
+                    }
+                });
 
             };
 
@@ -858,7 +876,7 @@ var _p3 = $.p3 || {},
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.1
+ * @version         0.3.2
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -952,7 +970,7 @@ var _p3 = $.p3 || {},
                         try {
                             pledgeQueue.actions.pop()();
                         } catch (e) {
-                            console.log(e);
+                            console.error(e);
                         }
                     } else {
                         pledgeQueue.running = false;
@@ -1044,7 +1062,7 @@ var _p3 = $.p3 || {},
 
                     pledgeQueue.actions.push(function() {
                         // Enqueue this user
-                        showUser(pledge.user);
+                        showUser(pledge);
                     });
 
                 });
@@ -1067,11 +1085,15 @@ var _p3 = $.p3 || {},
              */
             getTimeString = function(time) {
                 if (time) {
+                    var t = $.trim(time);
                     if (config.mangleTime) {
-                        // Assume timestamp is UTC if trimmed string includes a space
-                        time = $.trim(time).replace(/\s/,'Z');
+                        // Assume timezone is UTC if trimmed string includes a space
+                        if (t.match(/\s/)) {
+                            // Convert to ISO8601 standard timestamp
+                            t = t.replace(/\s/, 'T') + 'Z';
+                        }
                     }
-                    return $.timeago(time);
+                    return $.timeago(t);
                 }
             },
             parseCountryData = function() {
@@ -1134,8 +1156,9 @@ var _p3 = $.p3 || {},
                     return country;
                 }
             },
-            showUser = function(user) {
-                var timestamp = user.created || '',
+            showUser = function(pledge) {
+                var user = pledge.user,
+                    timestamp = pledge.created,
                     timeCreated = getTimeString(timestamp),
                     country = user.country,
                     countryString = getCountryString(user.country),
