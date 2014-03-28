@@ -6204,7 +6204,9 @@ Action form
   }
   .header .logo {
     width: 380px;
-    background: rgba(255, 255, 255, 0.9) url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/GP_logo_header.png) 1em 1em no-repeat;
+    background: url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/GP_logo_header.png) 1em 1em no-repeat;
+    background-color: #e9ecf3;
+    background-color: rgba(255, 255, 255, 0.9);
     position: absolute;
     margin: 41px 0 0 2px;
     padding: 0;
@@ -6319,7 +6321,7 @@ Action form
     background: transparent;
   }
   body {
-    background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/bg.jpg) no-repeat center center fixed;
+    background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/bg.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -6475,7 +6477,9 @@ Action form
 }
 .desktop .header .logo {
   width: 380px;
-  background: rgba(255, 255, 255, 0.9) url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/GP_logo_header.png) 1em 1em no-repeat;
+  background: url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/GP_logo_header.png) 1em 1em no-repeat;
+  background-color: #e9ecf3;
+  background-color: rgba(255, 255, 255, 0.9);
   position: absolute;
   margin: 41px 0 0 2px;
   padding: 0;
@@ -6590,7 +6594,7 @@ Action form
   background: transparent;
 }
 .desktop body {
-  background: transparent url(https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/bg.jpg) no-repeat center center fixed;
+  background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/bg.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -6675,4 +6679,34 @@ Browser specific hacks
 .action-template #action-counter,
 .action-template #action-recent-signers {
   display: none;
+}
+/* ----- Browser specific-------------------------------- */
+.lt-ie9 .action-template #action-details {
+  background-color: #eef2f6;
+}
+.lt-ie9 .action-template #action-details:before {
+  background: url(../../src/img/ocean/SOS_border_top.png) repeat-x;
+  height: 179px;
+  margin: -179px 0 0 -1em;
+}
+.lt-ie9 .action-template #action-details:after {
+  background: url(../../src/img/ocean/SOS_border_bottom.png) repeat-x;
+  height: 75px;
+  margin: 0 0 0 -1em;
+}
+.lt-ie9 .header .country-selector,
+.lt-ie9 #breadcrumbs {
+  display: none;
+}
+.lt-ie9 .footer .legal-menu li a {
+  color: #fff;
+}
+.lt-ie9 body {
+  background: transparent url('https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/bg.jpg') no-repeat center center fixed;
+}
+.lt-ie9 #root-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: none;
 }
