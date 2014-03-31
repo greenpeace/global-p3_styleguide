@@ -1706,7 +1706,6 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
         errorPlacement: function(error, element) {
             var $el = $(element),
             name = $el.prop('name').toUpperCase();
-        console.log(error);
             $el.parents(':classNoCase(' + name + ')').find('div.message').html(error);
         },
         /* Query string parameters to include in validation request */
