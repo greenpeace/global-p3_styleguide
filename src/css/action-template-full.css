@@ -1523,6 +1523,10 @@ textarea {
   border: 1px solid #cccccc;
   padding: .4em .5em .3em .5em;
   display: inline-block;
+  height: 21px;
+  /* removes ie default top padding */
+  line-height: 21px;
+  /* removes ie default top padding */
   zoom: 1;
   /* zoom and *display = ie7 hack for display:inline-block */
   *display: inline;
