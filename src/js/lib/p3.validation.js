@@ -42,7 +42,7 @@
             // Note for end users: when overriding or creating tests,
             // character strings must be double escaped: \\ instead of \
             // http://stackoverflow.com/questions/16572123/javascript-regex-invalid-range-in-character-class
-            alphaPlus: "^[\\p{L}\\p{N}\\.\\-\\'\\,\\/]+$",
+            alphaPlus: "^[\\p{L}\\p{N}\\.\\-\\'\\,\\’\\s\\/]+$",
             numeric: "^\\p{N}+$",
             alpha: "^\\p{L}+$",
             // Match a url with or without www.
