@@ -9,16 +9,16 @@
       "friendly_url": "/international/en/sos"
     },
     "rules": {
-        "firstname": "required",
-        "lastname": {
+        "Firstname": "required",
+        "Lastname": {
             "alphaPlus": true,
             "required": true
         },
-        "email": {
+        "EMAIL": {
             "required": true,
             "email": true
         },
-        "country": {
+        "Country": {
             "required": true
         }
     },
