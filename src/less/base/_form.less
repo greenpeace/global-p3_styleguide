@@ -161,7 +161,6 @@ textarea {
     //.boxshadow(inset; 0; 2px; 3px; rgba(0,0,0,0.1));
 }
 
-
 /* Large screens ----------- */
 .layout_large() {
   input[type=text],
@@ -262,6 +261,12 @@ input[type=text]:hover,
 input[type=tel]:hover {
     border:1px solid #999;
 }
+
+input[type=radio]:hover,
+input[type=checkbox]:hover {
+    border: #000; // removes ie blue hover
+}
+
 textarea:focus,
 input[type=password]:focus,
 input[type=search]:focus,

@@ -1640,6 +1640,10 @@ input[type=text]:hover,
 input[type=tel]:hover {
   border: 1px solid #999;
 }
+input[type=radio]:hover,
+input[type=checkbox]:hover {
+  border: #000;
+}
 textarea:focus,
 input[type=password]:focus,
 input[type=search]:focus,
