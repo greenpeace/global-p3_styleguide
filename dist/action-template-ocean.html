@@ -9,17 +9,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Help save the whales | Greenpeace International</title>
-        <meta name="description" content="">
+        <title>Support Ocean Sanctuaries | Greenpeace International</title>
+        <meta name="description" content="Send an SOS: ask the world's leaders to support ocean sanctuaries at the united nations.">
         <meta name="keywords" content="greenpeace,">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="robots" content="all">
-        <meta property="og:url" content="">
-        <meta property="og:title" content="">
+        <meta property="og:url" content="http://www.greenpeace.org/SOS-oceans">
+        <meta property="og:title" content="Send an SOS: ask the world's leaders to support ocean sanctuaries at the united nations.">
         <meta property="og:type" content="article">
-        <meta property="og:description" content="">
+        <meta property="og:description" content="Send an SOS: ask the world's leaders to support ocean sanctuaries at the united nations.">
         <meta property="og:country" content="us">
-        <meta property="og:image" content="//www.greenpeace.org/international/">
+        <meta property="og:image" content="https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/teaser.jpg">
         <meta property="og:site_name" content="Greenpeace International">
         <meta property="fb:app_id" content="206443473453">
         <meta property="fb:admins" content="7297163299">
@@ -27,6 +27,24 @@
         <meta property="twitter:site" content="Greenpeace">
         <script src="js/modernizr-custom.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/action-template-ocean.min.css">
+        <script>
+        var petition = {
+            live:
+            {
+                parameters:
+                {
+                    action: 685
+                },
+                actions:
+                {
+                    base: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
+                    signerCheck: 'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
+                    validation: 'json/rules_ocean_en.json',
+                    //validation: 'https://secured.greenpeace.org/international/Global/international/code/2014/sos/json/rules_ocean_en.json'
+                }
+            }
+        };
+        </script>
     </head>
     <body itemscope="" itemtype="https://schema.org/WebPage">
         <div id="root-container" class="action-template petition">
@@ -64,9 +82,12 @@
                         </div>
                         <!-- Titles -->
                         <h1>SOS</h1>
-                        <h2>Support Ocean Sanctuaries</h2>
+                        <h2>
+                            <span class="orange">S</span>upport
+                            <span class="orange">O</span>cean
+                            <span class="orange">S</span>anctuaries</h2>
                         <div id="action-multimedia-teaser">
-                            <img src="https://secured.greenpeace.org/international/Global/international/code/2014/sos/bg_petition.jpg" alt="">
+                            <img src="https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/teaser.jpg" alt="Support ocean sanctuaries">
                         </div>
                         <!-- Action ask / intro -->
                         <div id="action-ask">
@@ -96,7 +117,7 @@
                                     </div>
                                     <div class="phone">
                                         <label for="UserPhone">Mobile Phone</label>
-                                        <input name="phone" class="numeric" required="" maxlength="64" type="tel" id="UserPhone" placeholder="Phone">
+                                        <input name="phone" class="numeric" maxlength="64" type="tel" id="UserPhone" placeholder="Phone">
                                         <div class="tooltip info">
                                             <span>We need your phone number to send you update about the campaign.</span>
                                         </div>
@@ -374,7 +395,7 @@
                         <!-- Action details block -->
                         <div id="action-details">
                             <p>
-                                <span class="strong">Our oceans need your help</span>against the destructive forces of overfishing, mining, drilling, pollution and climate change.</p>
+                                <span class="strong">Our oceans need your help</span>&nbsp;against the destructive forces of overfishing, mining, drilling, pollution and climate change.</p>
                             <p>A global network of ocean sanctuaries will breath life back into our oceans, creating a safe haven for ocean creatures.</p>
                             <p>
                                 <span class="strong orange">Send an SOS:</span>
@@ -547,12 +568,6 @@
                                 </div>
                             </div>
                             <div class="tools">
-                                <!-- tmp geo location popup
-                        <div class="notification hidden" id="geolocationNotification">
-                            (Geolocation Example:)You are located in the Netherlands.
-                            Would you like to go to the Nederlands site? 
-                            <a href="#">Yes</a> <a href="#">Nope</a>
-                        </div> -->
                                 <div class="language-selector">
                                     <div class="dropdown-controller">
                                         <span class="dropdown-label">Language:</span>
@@ -865,10 +880,12 @@
                                         <li><a href="/international/en/supportus/" class="donate primary button" title="Donate" target="_blank">Donate</a>
                                         </li>
                                     </ul>
-                                    <!--ul class="sign" id="signin">
-                            <li><a href="/international/en/My/login/?returnUrl=%2finternational%2fen%2fTesting%2f5019-HTML5-Sample-Candidtate%2f" title="Sign in"> Sign in</a></li>
-                            <li> New here? <a href="/international/en/My/Signup/" title="Sign up!"> Sign up!</a></li>
-                        </ul-->
+                                    <ul class="sign" id="signin">
+                                        <li><a href="/international/en/My/login/?returnUrl=%2finternational%2fen%2fTesting%2f5019-HTML5-Sample-Candidtate%2f" title="Sign in"> Sign in</a>
+                                        </li>
+                                        <li>New here? <a href="/international/en/My/Signup/" title="Sign up!"> Sign up!</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </nav>
                         </div>
@@ -932,14 +949,14 @@
 */
             </script>
             <!--<script src="js/jquery.min.js"></script>-->
-            <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
             <script>
             window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
             </script>
             <script src="js/vendor.min.js"></script>
             <script src="js/p3.min.js"></script>
             <script src="js/site.js"></script>
-            <script src="js/action-template.js"></script>
+            <script src="js/action-template-ocean.js"></script>
         </div>
     </body>
 </html>

@@ -1,0 +1,44 @@
+{
+    "status": "success",
+    "page": {
+      "uuid": "550e8401-e29b-41d4-a716-446678440294",
+      "id": "1234",
+      "name": "SOS",
+      "title": "SOS",
+      "domain": "international",
+      "friendly_url": "/international/en/sos"
+    },
+    "rules": {
+        "firstname": "required",
+        "lastname": {
+            "alphaPlus": true,
+            "required": true,
+            "minlength": 4
+        },
+        "email": {
+            "required": true,
+            "minlength": "6",
+            "email": true
+        },
+        "country": {
+            "required": true
+        }
+    },
+    "messages": {
+        "firstname": "Enter your first name",
+        "lastname": {
+            "required": "Please enter your last name",
+            "minlength": "Last name not long enough (min length {0})",
+            "alphaPlus": "Please enter a valid name"
+        },
+        "phone": "Please enter your phone number",
+        "country": "Please select a country",
+        "email": {
+            "required": "Please enter a valid email address",
+            "minlength": "Please enter a valid email address (at least 6 characters)"
+        }
+    },
+    "tests": {
+        "alphanumeric": "^[\\p{L}\\p{N}]+$"
+    }
+}

@@ -5,7 +5,7 @@
  *                  Animated pledge percentage bar & text,
  *                  Can be event driven or directly invoked, which
  *                  enables reusing the JSON with another plugin (eg Recent Signers)
- * @version         0.3.3
+ * @version         0.3.4
  * @author          Ray Walker <hello@raywalker.it>
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
@@ -75,7 +75,7 @@
             if (step <= 0) {
                 step = 1;
             }
-            $count.text(addCommas(progress.count))  ;
+            $count.text(addCommas(progress.count));
             $total.text(addCommas(progress.target));
 
             animateProgress();
@@ -83,19 +83,21 @@
         animateProgress = function () {
 //            console.log(progress.count + ' / ' + progress.target + ' step: ' + initialStep);
 
-            if (currentValue >= progress.count * 1.0) {
+            if (currentValue >= +progress.count) {
+                // Finished
                 paused = false;
-                // Restart the process to check for live changes
+                // If we fetch from the API
                 if (!config.externalTrigger) {
+                    // Restart the process to check for live changes
                     setTimeout(fetchJSON, config.fetchFrequency);
                 }
                 return;
             }
 
-            if (currentValue + step < progress.count){
-                currentValue += step;
+            if (+(currentValue + step) < +progress.count){
+                currentValue += +step;
             } else {
-                currentValue = progress.count;
+                currentValue = +progress.count;
             }
 
             var percent = currentValue / progress.target * 100;

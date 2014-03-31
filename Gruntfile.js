@@ -34,7 +34,10 @@ module.exports = function(grunt) {
         htmllint: {// https://github.com/jzaefferer/grunt-html
             options: {
                 ignore: [
-                    'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.'
+                    'Bad value “X-UA-Compatible” for attribute “http-equiv” on XHTML element “meta”.',
+                    // NESTED form tags! Nested FORM tags! NESTED FORM TAGS!
+                    'Saw a “form” start tag, but there was already an active “form” element. Nested forms are not allowed. Ignoring the tag.',
+                    'End tag “form” seen, but there were open elements.'
                 ]
             },
             src: ["<%= config.src %>/**/*.html"],
@@ -174,10 +177,10 @@ module.exports = function(grunt) {
         },
         uglify: {// https://www.npmjs.org/package/grunt-contrib-uglify
             options: {
-                banner: '/**\n * @name\t\t<%= pkg.name %>\n * @version\t\tv<%= pkg.version %>\n * ' +
-                    '@date\t\t<%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright\t<%= pkg.copyright %>\n * @source\t\t<%= pkg.repository %>\n * @license <%= pkg.license %> */\n',
+                banner: '/*\n * @name\t\t<%= pkg.name %>\n * @version\t\tv<%= pkg.version %>\n * ' +
+                    '@date\t\t<%= grunt.template.today("yyyy-mm-dd") %>\n * @copyright\t<%= pkg.copyright %>\n * @source\t\t<%= pkg.repository %>*/\n/* @license <%= pkg.license %> */\n',
 //                report: 'gzip',
-                footer: '\n// @license-end',
+                footer: '\n/* @license-end */',
                 mangle: {
                     except: ['jQuery', 'Modernizr']
                 }
@@ -220,7 +223,10 @@ module.exports = function(grunt) {
                     '<%= config.dist %>/js/p3.min.js': ['<%= config.dist %>/js/p3.lib.js'],
                     '<%= config.dist %>/js/site.js': ['<%= config.src %>/js/site-main.js'],
                     '<%= config.dist %>/js/action-template.js': ['<%= config.src %>/js/action-template-simple.js'],
-                    '<%= config.dist %>/js/action-template-full.js': ['<%= config.src %>/js/action-template-full.js']
+                    '<%= config.dist %>/js/action-template-full.js': ['<%= config.src %>/js/action-template-full.js'],
+                    '<%= config.dist %>/js/action-template-ocean.js': ['<%= config.src %>/js/action-template-ocean.js'],
+                    '<%= config.dist %>/js/action-template-thankyou.js': ['<%= config.src %>/js/action-template-thankyou.js'],
+                    '<%= config.dist %>/js/action-template-ocean-thankyou.js': ['<%= config.src %>/js/action-template-ocean-thankyou.js']
                 }
             }
         },
@@ -231,7 +237,7 @@ module.exports = function(grunt) {
                 dest: '<%= config.styleguide %>/css/styleguide.css'
             },
             bower: {
-                files: {
+                files: [{
                     "<%= config.src %>/js/vendor/jquery.min.js": "<%= bower.directory %>/jquery/dist/jquery.min.js",
                     "<%= config.src %>/js/vendor/jquery-plugins/jquery.placeholder.js": "<%= bower.directory %>/jquery-placeholder/jquery.placeholder.js",
                     "<%= config.src %>/js/vendor/jquery-plugins/jquery.timeago.js": "<%= bower.directory %>/jquery-timeago/jquery.timeago.js",
@@ -241,7 +247,17 @@ module.exports = function(grunt) {
                     "<%= config.src %>/js/vendor/xregexp/xregexp.js": "<%= bower.directory %>/xregexp/src/xregexp.js",
                     "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-base.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-base.js",
                     "<%= config.src %>/js/vendor/xregexp/xregexp-unicode-categories.js": "<%= bower.directory %>/xregexp/src/addons/unicode/unicode-categories.js"
-                }
+                },{ // Font Awesome LESS files
+                    expand: true,
+                    cwd: '<%= bower.directory %>/fontawesome/less/',
+                    src: ['*'],
+                    dest: '<%= config.src %>/less/components/font-awesome/'
+                }, {
+                    expand: true,
+                    cwd: '<%= bower.directory %>/fontawesome/fonts/',
+                    src: ['*'],
+                    dest: '<%= config.src %>/fonts/'
+                }]
             },
             fonts: {
                 files: [
@@ -437,7 +453,7 @@ module.exports = function(grunt) {
                 tasks: ['default'],
                 options: {
                     spawn: false,
-                    debounceDelay: 5000
+                    debounceDelay: 1000
                 }
             },
             js: {
@@ -511,7 +527,7 @@ module.exports = function(grunt) {
     // Register Tasks
 
     grunt.registerTask('html', [
-//        'htmllint',         // Validates all HTML
+        'htmllint:src',         // Validates all source HTML
         'prettify', // Cleans up the formatting, places output in `tmp`
         'htmlmin',  // Copies and minifies `tmp` HTML to `dist` folder,
                     // and copies unmodified `tmp` HTML to `test` folder

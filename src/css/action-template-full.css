@@ -2156,7 +2156,7 @@ Markup:
 <div class="heading heading-first">
   <div class="heading-holder page-section">
     <a href="/international/en/" title="Greenpeace" class="logo">
-      <span style="background: url(../img/image-map.png) 0 0 no-repeat;" class="visuallyhidden">Greenpeace</span>
+      <span style="background: url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) 0 0 no-repeat;" class="visuallyhidden">Greenpeace</span>
     </a>
   </div>
 </div>
@@ -2208,7 +2208,7 @@ Styleguide 5.2
 }
 .heading .logo {
   display: block;
-  background: url(../img/image-map.png) 0 0 no-repeat;
+  background: url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) 0 0 no-repeat;
   width: 153px;
   height: 25px;
   position: absolute;
@@ -2427,7 +2427,7 @@ Styleguide 5.1.2.1
 }
 .country-selector .dropdown-controller a .country-img,
 .country-selector .dropdown-controller a:hover .country-img {
-  background: #66cc00 url(../img/image-map.png) left -42px no-repeat;
+  background: #66cc00 url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) left -42px no-repeat;
   position: absolute;
   right: 0;
   width: 51px;
@@ -2445,7 +2445,7 @@ Styleguide 5.1.2.1
 }
 .country-selector .dropdown-controller a.dropdown-open .country-img,
 .country-selector .dropdown-controller a.dropdown-open:hover .country-img {
-  background: #ffffff url(../img/image-map.png) -2px -64px no-repeat;
+  background: #ffffff url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) -2px -64px no-repeat;
 }
 .country-selector .dropdown {
   width: 100%;
@@ -2532,7 +2532,7 @@ Styleguide 5.1.3.1
   width: 12px;
   height: 10px;
   display: inline-block;
-  background: transparent url(../img/image-map.png) -30px -45px no-repeat;
+  background: transparent url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) -30px -45px no-repeat;
   margin-left: 3px;
   padding-left: 5px;
 }
@@ -2955,7 +2955,7 @@ Markup:
                     <input name="data[Search][text]" class="required" maxlength="64" type="text" id="SearchText" placeholder="search"/>
                 </div>
                 <div id="search-submit" class="submit">
-                    <span style="background:transparent url(../img/image-map.png) -136px -24px no-repeat;"><input type="submit" value="search"/></span>
+                    <span style="background:transparent url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) -136px -24px no-repeat;"><input type="submit" value="search"/></span>
                 </div>
                 </form>
             </div>
@@ -3302,7 +3302,7 @@ Styleguide 5.1.4
     height: 1em;
     margin: 1px 0 0 0;
     cursor: pointer;
-    background: transparent url(../img/image-map.png) -136px -24px no-repeat;
+    background: transparent url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) -136px -24px no-repeat;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -3639,7 +3639,7 @@ Styleguide 5.1.4
   height: 1em;
   margin: 1px 0 0 0;
   cursor: pointer;
-  background: transparent url(../img/image-map.png) -136px -24px no-repeat;
+  background: transparent url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) -136px -24px no-repeat;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -3977,7 +3977,7 @@ Styleguide 5.1.4
   height: 1em;
   margin: 1px 0 0 0;
   cursor: pointer;
-  background: transparent url(../img/image-map.png) -136px -24px no-repeat;
+  background: transparent url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) -136px -24px no-repeat;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -4498,6 +4498,7 @@ Styleguide 4.3
   -moz-box-shadow: 0 0px 0, 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 1px rgba(255, 255, 255, 0.5) inset;
   box-shadow: 0 0px 0 #d62a31, 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 1px rgba(255, 255, 255, 0.5) inset;
 }
+/* Import Font Awesome external */
 /*!
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -4513,7 +4514,7 @@ Styleguide 4.3
 }
 .fa {
   display: inline-block;
-  font-family: "FontAwesome";
+  font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
   line-height: 1;
@@ -6982,7 +6983,7 @@ Styleguide 10.2
     color: #ffffff;
   }
   .footer-small .logo-box .logo {
-    background: url(../img/image-map.png) 0 -25px no-repeat;
+    background: url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) 0 -25px no-repeat;
     width: 89px;
     height: 15px;
     margin: -2px 0.5em 0 0.2857142857em;
@@ -7039,7 +7040,7 @@ Styleguide 10.2
   color: #ffffff;
 }
 .tablet .footer-small .logo-box .logo {
-  background: url(../img/image-map.png) 0 -25px no-repeat;
+  background: url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) 0 -25px no-repeat;
   width: 89px;
   height: 15px;
   margin: -2px 0.5em 0 0.2857142857em;
@@ -7146,7 +7147,7 @@ Styleguide 10.2
   color: #ffffff;
 }
 .footer-sitemap .links a.map {
-  background: transparent url(../img/image-map.png) -60px -41px no-repeat;
+  background: transparent url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) -60px -41px no-repeat;
   padding-top: 77px;
   display: block;
 }
@@ -7166,7 +7167,7 @@ Styleguide 10.2
 }
 .footer-sitemap li.ship:before {
   content: " ";
-  background: transparent url(../img/image-map.png) 0 -83px no-repeat;
+  background: transparent url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) 0 -83px no-repeat;
   width: 21px;
   height: 15px;
   display: block;
@@ -7463,7 +7464,7 @@ Action form
   width: 94%;
 }
 .action-template .submit.full {
-  width: 105%;
+  width: 111%;
   font-size: 1.25em;
 }
 .action-template #action-submit-full {
@@ -7490,6 +7491,9 @@ Action form
     padding: 0 20px;
     margin: 0;
     clear: right;
+  }
+  .action-template .submit.full {
+    width: 105%;
   }
   #action-social-share-thankyou {
     float: left;
@@ -7541,6 +7545,9 @@ Action form
   padding: 0 20px;
   margin: 0;
   clear: right;
+}
+.sevensome .action-template .submit.full {
+  width: 105%;
 }
 .sevensome #action-social-share-thankyou {
   float: left;

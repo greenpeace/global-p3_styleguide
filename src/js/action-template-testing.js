@@ -14,6 +14,7 @@
     // GET parameters to send with each request
     var petition = {
             test: {
+                // http://www.greenpeace.org/international/en/Testing/gpi-api-test/
                 parameters: {
                     page: 404454,
 //                    action: 912,
@@ -125,7 +126,7 @@
 
         // Update social share counts
         $.p3.social_sharing('#action-social-share', {
-            jsonURL: petition.localSocial.url.simple,
+            api: petition.localSocial.url.simple,
             networks: {
                 twitter: {
                     title: w.document.title

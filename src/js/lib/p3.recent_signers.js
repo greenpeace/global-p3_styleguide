@@ -5,7 +5,7 @@
  *                  animated
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.3.1
+ * @version         0.3.2
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -33,7 +33,7 @@
              * set to false to force sourcing information from JSON instead */
             countrySelector: '#UserCountry',
             /* source country information from a JSON file */
-            countryJSON: 'countries/countries_en.json',
+            countryJSON: 'json/countries/countries_en.json',
             /* set to true to delay execution until externally triggered by event */
             externalTrigger: false,
             /* element to store returned pledge data */
@@ -101,7 +101,7 @@
                         try {
                             pledgeQueue.actions.pop()();
                         } catch (e) {
-                            console.log(e);
+                            console.error(e);
                         }
                     } else {
                         pledgeQueue.running = false;
@@ -193,7 +193,7 @@
 
                     pledgeQueue.actions.push(function() {
                         // Enqueue this user
-                        showUser(pledge.user);
+                        showUser(pledge);
                     });
 
                 });
@@ -216,11 +216,15 @@
              */
             getTimeString = function(time) {
                 if (time) {
+                    var t = $.trim(time);
                     if (config.mangleTime) {
-                        // Assume timestamp is UTC if trimmed string includes a space
-                        time = $.trim(time).replace(/\s/,'Z');
+                        // Assume timezone is UTC if trimmed string includes a space
+                        if (t.match(/\s/)) {
+                            // Convert to ISO8601 standard timestamp
+                            t = t.replace(/\s/, 'T') + 'Z';
+                        }
                     }
-                    return $.timeago(time);
+                    return $.timeago(t);
                 }
             },
             parseCountryData = function() {
@@ -283,8 +287,9 @@
                     return country;
                 }
             },
-            showUser = function(user) {
-                var timestamp = user.created || '',
+            showUser = function(pledge) {
+                var user = pledge.user,
+                    timestamp = pledge.created,
                     timeCreated = getTimeString(timestamp),
                     country = user.country,
                     countryString = getCountryString(user.country),
