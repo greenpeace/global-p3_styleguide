@@ -70,6 +70,7 @@
         errorPlacement: function(error, element) {
             var $el = $(element),
             name = $el.prop('name').toUpperCase();
+        console.log(error);
             $el.parents(':classNoCase(' + name + ')').find('div.message').html(error);
         },
         /* Query string parameters to include in validation request */
@@ -141,7 +142,6 @@
                             $summaryElement.html('<span class="error">' + message + '</span>');
                             $summaryElement.show(config.animationDuration);
                         },100);
-
 //                        $('body').animate({'scrollTop': $form.offset().offsetTop + 500 }, config.animationDuration);
                 };
 
@@ -210,7 +210,7 @@
             M.load({
                 test: w.JSON,
                 nope: [
-                    'dist/js/compat/json.min.js'
+                    'js/compat/json.min.js'
                 ],
                 complete: function() {
                     // http://stackoverflow.com/questions/20565330/ajax-call-for-json-fails-in-ie
