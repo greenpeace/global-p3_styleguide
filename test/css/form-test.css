@@ -1932,6 +1932,7 @@ select:hover {
   margin-bottom: 10px;
   padding: .25em .5em .15em .2em;
   margin: .2em 0 .5em 0;
+  border: 1px solid #cccccc;
   /*background:@white;
     .rounded_all(3px);
     border:1px solid #BBB;*/
