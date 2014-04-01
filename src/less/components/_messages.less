@@ -239,6 +239,15 @@ input[type=checkbox] + label {
     display:inline;
 }
 
+input[type=checkbox] {
+    background: @white; // ie9 fix the default background
+}
+
+input[type=radio]:hover,
+input[type=checkbox]:hover {
+    border: #000; // removes ie blue hover
+}
+
 /*
     Select
 

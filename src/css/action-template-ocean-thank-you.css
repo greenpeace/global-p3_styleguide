@@ -1637,13 +1637,6 @@ input[type=text]:hover,
 input[type=tel]:hover {
   border: 1px solid #999;
 }
-input[type=checkbox] {
-  background: #ffffff;
-}
-input[type=radio]:hover,
-input[type=checkbox]:hover {
-  border: #000;
-}
 textarea:focus,
 input[type=password]:focus,
 input[type=search]:focus,
@@ -2146,6 +2139,13 @@ input[type=checkbox] {
 input[type=checkbox] + label {
   font-weight: normal;
   display: inline;
+}
+input[type=checkbox] {
+  background: #ffffff;
+}
+input[type=radio]:hover,
+input[type=checkbox]:hover {
+  border: #000;
 }
 /*
     Select
