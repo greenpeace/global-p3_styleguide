@@ -1501,6 +1501,17 @@ textarea {
   height: 7em;
 }
 /*
+ * browser specific
+ */
+.lt-ie10 #action-form .email label,
+.lt-ie10 #action-form .firstname label,
+.lt-ie10 #action-form .lastname label,
+.lt-ie10 #action-form .phone label,
+.lt-ie10 #action-form .website label,
+.lt-ie10 #action-form .postcode label {
+  display: none;
+}
+/*
 Buttons
 
 Styleguide 4.

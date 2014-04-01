@@ -1712,6 +1712,17 @@ textarea {
   height: 7em;
 }
 /*
+ * browser specific
+ */
+.lt-ie10 #action-form .email label,
+.lt-ie10 #action-form .firstname label,
+.lt-ie10 #action-form .lastname label,
+.lt-ie10 #action-form .phone label,
+.lt-ie10 #action-form .website label,
+.lt-ie10 #action-form .postcode label {
+  display: none;
+}
+/*
 Messages for validation error and example
 
 `<div.text.error>`, `<div.text.success>`, can be used to add status messages or example. 

@@ -342,3 +342,20 @@ textarea {
     width:30em;
     height:7em;
 }
+
+/*
+ * browser specific
+ */
+
+.lt-ie10 {
+    #action-form {
+        .email label,
+        .firstname label,
+        .lastname label,
+        .phone label,
+        .website label,
+        .postcode label {
+            display: none;
+        }
+    }
+}
