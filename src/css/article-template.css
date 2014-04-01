@@ -3005,6 +3005,7 @@ Styleguide 5.1.4
     box-shadow: none;
     float: left;
     height: 1.4em;
+    line-height: 1.4em;
     font-size: 0.8em;
   }
   .heading .search-form input[type=submit] {
@@ -3342,6 +3343,7 @@ Styleguide 5.1.4
   box-shadow: none;
   float: left;
   height: 1.4em;
+  line-height: 1.4em;
   font-size: 0.8em;
 }
 .sevensome .heading .search-form input[type=submit] {
@@ -3363,6 +3365,12 @@ Styleguide 5.1.4
 /*
  * browser specific
  */
+.lt-ie10 .header .heading-first label {
+  display: none;
+}
+.lt-ie10 .header .heading-second label {
+  display: none;
+}
 .lt-ie9 .header a {
   color: #ffffff;
 }
@@ -3680,6 +3688,7 @@ Styleguide 5.1.4
   box-shadow: none;
   float: left;
   height: 1.4em;
+  line-height: 1.4em;
   font-size: 0.8em;
 }
 .lt-ie9 .heading .search-form input[type=submit] {
