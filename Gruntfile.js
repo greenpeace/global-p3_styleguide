@@ -146,7 +146,7 @@ module.exports = function(grunt) {
         },
         jsonlint: {
             countries: {
-                src: ['<%= config.src %>/countries/*.json']
+                src: ['<%= config.src %>/**/*.json']
             }
         },
         concat: {// https://www.npmjs.org/package/grunt-contrib-concat
@@ -295,15 +295,15 @@ module.exports = function(grunt) {
                 files: [
                     {// Copy src countries json to dist
                         expand: true,
-                        cwd: '<%= config.src %>/countries/',
-                        src: ['*'],
-                        dest: '<%= config.dist %>/countries/'
+                        cwd: '<%= config.src %>/json/',
+                        src: ['**'],
+                        dest: '<%= config.dist %>/json/'
                     },
                     {// Copy src countries json to test
                         expand: true,
-                        cwd: '<%= config.src %>/countries/',
-                        src: ['*'],
-                        dest: '<%= config.test %>/countries/'
+                        cwd: '<%= config.src %>/json/',
+                        src: ['**'],
+                        dest: '<%= config.test %>/json/'
                     }
                 ]
             },

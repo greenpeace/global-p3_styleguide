@@ -42,7 +42,7 @@
             // Note for end users: when overriding or creating tests,
             // character strings must be double escaped: \\ instead of \
             // http://stackoverflow.com/questions/16572123/javascript-regex-invalid-range-in-character-class
-            alphaPlus: "^[\\p{L}\\p{N}\\.\\-\\'\\,\\/]+$",
+            alphaPlus: "^[\\p{L}\\p{N}\\.\\-\\'\\,\\’\\s\\/]+$",
             numeric: "^\\p{N}+$",
             alpha: "^\\p{L}+$",
             // Match a url with or without www.
@@ -141,7 +141,6 @@
                             $summaryElement.html('<span class="error">' + message + '</span>');
                             $summaryElement.show(config.animationDuration);
                         },100);
-
 //                        $('body').animate({'scrollTop': $form.offset().offsetTop + 500 }, config.animationDuration);
                 };
 
@@ -210,7 +209,7 @@
             M.load({
                 test: w.JSON,
                 nope: [
-                    'dist/js/compat/json.min.js'
+                    'js/compat/json.min.js'
                 ],
                 complete: function() {
                     // http://stackoverflow.com/questions/20565330/ajax-call-for-json-fails-in-ie
