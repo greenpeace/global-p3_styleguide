@@ -4530,3 +4530,12 @@ Browser specific hacks
   line-height: 1.4em;
   font-weight: normal;
 }
+/*
+ * browser specific
+ */
+.lt-ie9 .action-template h2,
+.lt-ie9 #action-ask,
+.lt-ie9 #action-form,
+.lt-ie9 #action-recent-signers {
+  clear: none;
+}

@@ -6581,6 +6581,15 @@ Browser specific hacks
   line-height: 1.4em;
   font-weight: normal;
 }
+/*
+ * browser specific
+ */
+.lt-ie9 .action-template h2,
+.lt-ie9 #action-ask,
+.lt-ie9 #action-form,
+.lt-ie9 #action-recent-signers {
+  clear: none;
+}
 /**
  * @license
  * MyFonts Webfont Build ID 2769558, 2014-03-14T09:30:27-0400
