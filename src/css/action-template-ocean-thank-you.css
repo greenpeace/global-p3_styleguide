@@ -4369,7 +4369,10 @@ Styleguide 4.3
 	Since       : ?
 */
 .social-share .socialBtn-float {
+  display: -moz-inline-stack;
   display: inline-block;
+  zoom: 1;
+  *display: inline;
   padding: .3em .3em .5em 2em;
 }
 .social-share .counter span {
@@ -4408,7 +4411,10 @@ Styleguide 4.3
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 7px solid #cccccc;
+  display: -moz-inline-stack;
   display: inline-block;
+  zoom: 1;
+  *display: inline;
   content: " ";
 }
 .social-share .tip:before {
@@ -4427,7 +4433,10 @@ Styleguide 4.3
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 7px solid #cccccc;
+  display: -moz-inline-stack;
   display: inline-block;
+  zoom: 1;
+  *display: inline;
   content: " ";
 }
 .social-share .tipBig:before {
@@ -6684,7 +6693,8 @@ Browser specific hacks
 .lt-ie9 .action-template h2,
 .lt-ie9 #action-ask,
 .lt-ie9 #action-form,
-.lt-ie9 #action-recent-signers {
+.lt-ie9 #action-recent-signers,
+.lt-ie9 #action-social-share {
   clear: none;
 }
 /**

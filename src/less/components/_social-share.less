@@ -6,7 +6,10 @@
 	Since       : ?
 */
 .social-share .socialBtn-float {
-display: inline-block;
+display:-moz-inline-stack;
+display:inline-block;
+zoom:1;
+*display:inline;
 padding:.3em .3em .5em 2em;
 }
 .social-share .counter span {
@@ -43,7 +46,10 @@ padding:.3em .3em .5em 2em;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
 	border-top: 7px solid @grays-4;
-	display: inline-block;
+    display:-moz-inline-stack;
+    display:inline-block;
+    zoom:1;
+    *display:inline;
 	content:" ";
 }
 
@@ -63,7 +69,10 @@ padding:.3em .3em .5em 2em;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
 	border-top: 7px solid @grays-4;
-	display: inline-block;
+    display:-moz-inline-stack;
+    display:inline-block;
+    zoom:1;
+    *display:inline;
 	content:" ";
 }
 .social-share .tipBig:before{
