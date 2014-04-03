@@ -81,23 +81,32 @@
       <div class="kss-sidebar">
         <div class="kss-sidebar-inner">
           <nav class="kss-nav">
-            <ul class="kss-menu" data-kss-ref="{{rootNumber}}">
+            <ul class="kss-menu" data-kss-ref="0">
               <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
-              {{#eachRoot}}
-              <li class="kss-menu-item"><a href="section-{{reference}}.html"><span class="kss-ref">{{reference}}</span><span class="kss-name">{{header}}</span></a></li>
-              {{/eachRoot}}
+              
+              <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Color palette</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-2.html"><span class="kss-ref">2</span><span class="kss-name">Typography rules</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-3.html"><span class="kss-ref">3</span><span class="kss-name">Forms</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-4.html"><span class="kss-ref">4</span><span class="kss-name">Buttons</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-5.html"><span class="kss-ref">5</span><span class="kss-name">Header</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-6.html"><span class="kss-ref">6</span><span class="kss-name">Breadcrumb navigation</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-7.html"><span class="kss-ref">7</span><span class="kss-name">Flag icons</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-8.html"><span class="kss-ref">8</span><span class="kss-name">Action counter</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-9.html"><span class="kss-ref">9</span><span class="kss-name">Recent Signers</span></a></li>
+              
+              <li class="kss-menu-item"><a href="section-10.html"><span class="kss-ref">10</span><span class="kss-name">Footer</span></a></li>
+              
             </ul>
-            {{#if overview}}
-            {{else}}
-            <ul class="kss-menu-child">
-              {{#eachSection rootNumber}}
-              {{#whenDepth 1}}
-              {{else}}
-              <li class="kss-menu-item"><a href="#section-{{reference}}"><span class="kss-ref">{{reference}}</span><span class="kss-name">{{header}}</span></a></li>
-              {{/whenDepth}}
-              {{/eachSection}}
-            </ul>
-            {{/if}}
+            
+            
           </nav>
         </div>
       </div>
@@ -105,53 +114,30 @@
 
       <div class="kss-content">
         <article class="kss-article">
-          {{#if overview}}
+          
           <section id="section-0" class="kss-section kss-overview">
-            {{html overview}}
+            <h1>Greenpeace Planet 3 Styleguide JavaScript</h1>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing 
+            elit. Aenean commodo ligula eget dolor. Aenean massa 
+            <strong>strong</strong>. Cum sociis natoque penatibus 
+            et magnis dis parturient montes, nascetur ridiculus 
+            mus. Donec quam felis, ultricies nec, pellentesque 
+            eu, pretium quis, sem. Nulla consequat massa quis 
+            enim. Donec pede justo, fringilla vel, aliquet nec, 
+            vulputate eget, arcu. In enim justo, rhoncus ut, 
+            imperdiet a, venenatis vitae, justo. Nullam dictum 
+            felis eu pede <a class="external ext" href="#">link</a> 
+            mollis pretium. Integer tincidunt. Cras dapibus. 
+            Vivamus elementum semper nisi. Aenean vulputate 
+            eleifend tellus. Aenean leo ligula, porttitor eu, 
+            consequat vitae, eleifend ac, enim. Aliquam lorem ante, 
+            dapibus in, viverra quis, feugiat a, tellus. Phasellus 
+            viverra nulla ut metus varius laoreet. Quisque rutrum. 
+            Aenean imperdiet. Etiam ultricies nisi vel augue. 
+            Curabitur ullamcorper ultricies nisi.</p>
+
           </section>
-          {{else}}
-          {{#eachSection rootNumber}}
-          <section id="section-{{reference}}" class="kss-section kss-depth-{{refDepth}}">
-            <h1 class="kss-title"><span class="kss-ref">{{reference}}</span> {{header}}</h1>
-            {{#ifAny markup modifiers}}
-            {{#if description}}
-            <div class="kss-description">
-              {{html description}}
-            </div>
-            {{/if}}
-            <div class="kss-modifier-block">
-              <div class="kss-modifier kss-modifier-original">
-                <div class="kss-modifier-example">
-                  {{modifierMarkup}}
-                </div>
-              </div>
-              {{#eachModifier}}
-              <div class="kss-modifier">
-                <div class="kss-modifier-head">
-                  <div class="kss-modifier-name">{{name}}</div>
-                  <div class="kss-modifier-description">
-                    {{html description}}
-                  </div>
-                </div>
-                <div class="kss-modifier-example">
-                  {{modifierMarkup}}
-                </div>
-              </div>
-              {{/eachModifier}}
-              <div class="kss-markup">
-                <pre><code data-language="html">{{markup}}</code></pre>
-              </div>
-            </div>
-            {{else}}
-            {{#if description}}
-            <div class="kss-description">
-              {{html description}}
-            </div>
-            {{/if}}
-            {{/ifAny}}
-          </section>
-          {{/eachSection}}
-          {{/if}}
+          
         </article>
         <footer class="kss-footer">
           <div>Created using <a href="https://github.com/hughsk/kss-node">kss-node</a> and <a href="https://github.com/htanjo/kss-node-template">kss-node-template</a>.</div>
