@@ -2619,6 +2619,12 @@ Styleguide 5.1.3.1
   display: none;
 }
 /*
+ * browser specific
+ */
+.lt-ie9 #breadcrumbs {
+  display: none;
+}
+/*
 Social Buttons (small) 
 
 Small Social Buttons:
