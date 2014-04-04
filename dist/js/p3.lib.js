@@ -1,4 +1,6 @@
+// ** Built automatically in Grunt, do not edit **
 'use strict';
+
 // Source: src/js/lib/p3.autofill.js
 /**!
  * @name            p3.autofill.js
@@ -46,7 +48,8 @@ var _p3 = $.p3 || ($.p3 = {}),
     };
 
 }(jQuery, this));
-;// Source: src/js/lib/p3.console.js
+
+// Source: src/js/lib/p3.console.js
 /**
  * Protect window.console method calls, e.g. console is not defined on IE
  * unless dev tools are open, and IE doesn't define console.debug
@@ -71,7 +74,8 @@ var _p3 = $.p3 || ($.p3 = {}),
         }
     }
 })();
-;// Source: src/js/lib/p3.form_tracking.js
+
+// Source: src/js/lib/p3.form_tracking.js
 /**!
  * Track Form Abandonment through Google Analytics
  *
@@ -123,7 +127,8 @@ var _p3 = $.p3 || ($.p3 = {}),
 
 }(jQuery, this, document));
 
-;// Source: src/js/lib/p3.mobilesearchform.js
+
+// Source: src/js/lib/p3.mobilesearchform.js
 /**!
  * Moves the search form in the mobile menu (and back on desktop).
  *
@@ -181,7 +186,8 @@ var _p3 = $.p3 || ($.p3 = {}),
 }( jQuery, this ));
 
 
-;// Source: src/js/lib/p3.narrow.js
+
+// Source: src/js/lib/p3.narrow.js
 /**!
  * Adds classes to an element (body by default) based on document width
  *
@@ -304,7 +310,8 @@ var _p3 = $.p3 || {},
 
 }(jQuery, this, document));
 
-;// Source: src/js/lib/p3.pledge_counter.js
+
+// Source: src/js/lib/p3.pledge_counter.js
 /**!
  *
  * @name            p3.pledge_counter.js
@@ -386,7 +393,7 @@ var _p3 = $.p3 || {},
             animateProgress();
         },
         animateProgress = function () {
-//            console.log(progress.count + ' / ' + progress.target + ' step: ' + initialStep);
+//            
 
             if (currentValue >= +progress.count) {
                 // Finished
@@ -525,7 +532,8 @@ var _p3 = $.p3 || {},
     $.p3 = _p3;
 
 }(jQuery, Modernizr, this, document));
-;// Source: src/js/lib/p3.pledge_with_email_only.js
+
+// Source: src/js/lib/p3.pledge_with_email_only.js
 /**!
  * Greenpeace Email-only Pledge Signing for Action Template v0.3
  * @name            p3.pledge_with_email_only.js
@@ -533,7 +541,7 @@ var _p3 = $.p3 || {},
  *                  Prompts for missing fields
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
- * @version         0.4.0
+ * @version         0.4.2
  * @author          Ray Walker <hello@raywalker.it>
  * @requires        <a href="http://jquery.com/">jQuery 1.6+</a>,
  *                  <a href="http://modernizr.com/">Modernizr</a>,
@@ -570,7 +578,8 @@ var _p3 = $.p3 || {},
             /* GET variables to be added to both the signer check and form validation requests */
             params: {},
             showSummary: false,
-            messageElement: '<div class="message"></div>'
+            messageElement: '<div class="message"></div>',
+            debug: false
         };
 
     // Custom selector to match country codes to country names
@@ -585,10 +594,10 @@ var _p3 = $.p3 || {},
     _p3.pledge_with_email_only = function(el, options) {
         var config = $.extend(true, defaults, options || {}),
             $el = $(el),
-            $form = ($el.is('form')) ? $el : $('form', $el),
+            $form,
             $emailField = $(config.emailField),
-            $submit = $('input[type=submit]', $form),
-            originalSubmit = $submit.prop('value'),
+            $submit,
+            originalSubmit,
             // Keep track of emails we've tested against the signer check endpoint
             checkedUserEmails = [],
             request = $.p3.request(config.signerCheckURL),
@@ -641,6 +650,7 @@ var _p3 = $.p3 || {},
              * @returns     {boolean} True if user can pledge using only email address, false if not
              */
             checkEmail = function(hash) {
+                var deferred = $.Deferred();
 
                 checkedUserEmails[hash] = {
                     checked: false,
@@ -655,12 +665,8 @@ var _p3 = $.p3 || {},
                         // User can sign using email only
                         checkedUserEmails[hash].valid = true;
 
-                        // Hide and disable unnecessary fields, in case they were
-                        // previously displayed for a different email
-                        hideFormFields();
+                        deferred.resolve();
 
-                        // and then submit the form
-                        submitForm(hash);
                     } else {
                         // This user cannot sign with email only
 
@@ -676,6 +682,7 @@ var _p3 = $.p3 || {},
                                 console.error(response.error);
                                 throw new Error(prefix + 'Invalid parameters: ', query.parameters);
                                 // Errors 6 through 12 are not relevant to this operation
+
                             case 13:
                                 // This user has already signed this pledge
                                 var $emailContainer = $emailField.parents('.email:first'),
@@ -692,24 +699,29 @@ var _p3 = $.p3 || {},
                                 $message.append('<span class="error" for="' + $emailField.attr('id') + '">' + response.error.message + '</span>');
                                 $emailField.addClass('error');
                                 break;
+
                             case 15:
                                 // User does not exist
                                 $('.first-time', $form).show(config.animationDuration);
                                 checkedUserEmails[hash].valid = true;
                                 showAllFormFields();
                                 break;
+
                             case 16:
                                 // User exists, but is missing required fields
                                 checkedUserEmails[hash].valid = true;
                                 $('.first-time', $form).html('<p>Welcome back!<br/>We just need a little more information for this pledge</p>').show(config.animationDuration);
                                 showMissingFields(response.user);
                                 break;
+
                             default:
+                                // Haven't actually checked this email after all
                                 console.warn('Unhandled error code: ' + response.error.code, response.error);
+
+                                checkedUserEmails[hash].checked = false;
                         }
 
-                        // Re-enable form submit
-                        enableSubmit();
+                        deferred.reject();
                     }
 
                 }).fail(function() {
@@ -720,42 +732,47 @@ var _p3 = $.p3 || {},
                     } else {
                         throw new Error('$.p3.pledge_with_email_only.js :: Signer API request failed');
                     }
+
+                    deferred.reject();
                 });
+
+                return deferred.promise();
             },
             /* Executes the email-specific form submission event */
-            submitForm = function(hash) {
-                if (hash) {
-                    $.event.trigger('submit_' + hash);
-                } else {
-                    if (!$(':input[type=submit]', $form).is(':disabled')) {
-                        $form.submit();
-                        disableSubmit();
-                    } else {
-                        console.log('disabled');
-                    }
+            submitForm = function(status) {
+                if (status && config.debug) {
+                    
                 }
+                $form.submit();
+
             },
             /**
              * @param   {obj} fields JSON response.user property
              */
             showMissingFields = function(fields) {
-//            console.log(prefix + 'showMissingFields');
-                $.each(fields, function(label) {
-                    // API returns { field: false } on missing fields
-                    if (fields[label] === false) {
-                        var $field = $('div:classNoCase("' + label + '")', $form),
-                            $input = $(':input', $field);
+//            
+                $.each(fields, function(label, val) {
+                    var $field = $('div:classNoCase("' + label + '")', $form),
+                        $input = $(':input', $field);
 
-                        if ($input) {
+                    if ($input.length) {
+                        // API returns { field: false } on missing fields
+                        if (val === false) {
+
                             // Enable field
                             $input.removeProp('disabled');
 
                             // Display the field
                             $field.show(config.animationDuration);
                         } else {
-                            console.warn(prefix + '' + label + ' not found');
+                            $input.prop('disabled', true);
+                            $input[0].disabled = true;
+
                         }
+                    } else {
+                        console.warn(prefix + '' + label + ' not found');
                     }
+
 
                 });
             },
@@ -776,11 +793,10 @@ var _p3 = $.p3 || {},
                 setPageIdentifier();
                 setExpiryDate();
 
-
-
                 $submit.click(function(e) {
 
-                    if ($submit.is('.disabled')) {
+                    if ($submit.hasClass('disabled')) {
+                        
                         return false;
                     }
 
@@ -789,40 +805,51 @@ var _p3 = $.p3 || {},
                     // Initialise user parameter with email form field
                     var user = setUserIdentifier();
 
-                    if (user) {
-                        if (checkedUserEmails[user] && checkedUserEmails[user].checked) {
-                            if (checkedUserEmails[user].valid) {
-                                $.event.trigger('submit_' + user);
-                            } else {
-                                setTimeout(function() {
-                                    $emailField.parent().find('.error').show(config.animationDuration);
-                                }, config.animationDuration);
-                            }
-                            enableSubmit();
-                        } else {
-                            // Haven't checked this email, so prevent form submission
-                            e.preventDefault();
-
-                            hideFormFields();
-
-                            if ($emailField.valid()) {
-                                // listen for successful API check
-                                $(global).on('submit_' + user, function() {
-                                    // submit the form
-                                    submitForm();
-                                });
-
-                                // test the API for this email
-                                checkEmail(user);
-                            } else {
-                                submitForm();
-                                enableSubmit();
-                            }
-                        }
-                    } else {
+                    if (!user) {
+                        console.warn(prefix + 'No email specified');
                         hideFormFields();
                         submitForm();
                         enableSubmit();
+                        return false;
+                    }
+
+                    if (checkedUserEmails[user] && checkedUserEmails[user].checked) {
+                        if (checkedUserEmails[user].valid) {
+                            submitForm(prefix + 'Resubmit valid email address');
+                        } else {
+                            setTimeout(function() {
+                                $emailField.parent().find('.error').show(config.animationDuration);
+                            }, config.animationDuration);
+                        }
+                        enableSubmit();
+                    } else {
+                        // Haven't checked this email, so prevent form submission
+                        e.preventDefault();
+
+                        // Hide any form fields that may have been shown as
+                        // a result of a previous signer_check
+                        hideFormFields();
+
+                        // Check if this looks like a valid email address
+                        if ($emailField.valid()) {
+
+                            // Test the API for this email
+                            $.when(checkEmail(user)).then(function() {
+                                // This user can submit via email only
+                                submitForm('Can submit via email only, pledging ...');
+                            }, function() {
+                                // Fail, so re-enable form submit
+                                enableSubmit();
+                            });
+
+                        } else {
+                            // Not a valid email address, so pass through
+                            // to jquery.validation plugin
+                            submitForm(prefix + "Doesn't look like a valid email address");
+
+                            // And re-enable submission for retry attempts
+                            enableSubmit();
+                        }
                     }
 
                 });
@@ -845,15 +872,33 @@ var _p3 = $.p3 || {},
 
                         if ($this.is('textarea')) {
                             return true;
-                        } else {
-                            e.preventDefault();
-                            $submit.focus().click();
-                            return false;
                         }
+
+                        e.preventDefault();
+                        $submit.focus().click();
+                        return false;
+
                     }
                 });
 
             };
+
+        // Fix for strange form structure
+        if ($el.is('form')) {
+            $form = $el;
+        } else if ($('form', el).length) {
+            $form = $('form', el);
+        } else {
+            $form = $('form').first();
+        }
+
+        if (!$form) {
+            throw new Error(prefix + 'form not found');
+        }
+
+        $submit = $('input[type=submit][value!=search]', $form);
+
+        originalSubmit = $submit.prop('value');
 
         M.load({
             test: global.JSON,
@@ -868,7 +913,8 @@ var _p3 = $.p3 || {},
 
 }(jQuery, Modernizr, this));
 
-;// Source: src/js/lib/p3.recent_signers.js
+
+// Source: src/js/lib/p3.recent_signers.js
 /**!
  * Animated Recent Signers for Greenpeace Action Template v0.3
  * @name            p3.recent_signers.js
@@ -1251,7 +1297,8 @@ var _p3 = $.p3 || {},
 
 }(jQuery, Modernizr, this, document));
 
-;// Source: src/js/lib/p3.remember_me_cookie.js
+
+// Source: src/js/lib/p3.remember_me_cookie.js
 /**!
  * p3.remember_me_cookie
  *
@@ -1326,7 +1373,8 @@ var _p3 = $.p3 || {},
 
 }(jQuery, Modernizr));
 
-;// Source: src/js/lib/p3.request.js
+
+// Source: src/js/lib/p3.request.js
 /**!
  * $.p3.request
  *
@@ -1385,7 +1433,8 @@ var _p3 = $.p3 || {};
 }(jQuery));
 
 
-;// Source: src/js/lib/p3.selectors.js
+
+// Source: src/js/lib/p3.selectors.js
 /**!
  * @name            p3.selectors.js
  * @fileOverview    Selection of utility selectors for use in p3 plugins
@@ -1434,7 +1483,8 @@ var _p3 = $.p3 || {};
         return v.toUpperCase().indexOf(search.toUpperCase()) >= 0;
     };
 }(jQuery));
-;// Source: src/js/lib/p3.social_sharing.js
+
+// Source: src/js/lib/p3.social_sharing.js
 /**!
  * Social Private Sharing for Greenpeace Action Template v0.3
  *
@@ -1594,7 +1644,7 @@ var _p3 = $.p3 || {},
                     if ($counter) {
                         $counter.text(humanise(data.count));
                     }
-                } // else { console.log(network + ' disabled'); }
+                } // else {  }
             });
 
         }
@@ -1635,7 +1685,8 @@ var _p3 = $.p3 || {},
 
 }(jQuery, Modernizr, this));
 
-;// Source: src/js/lib/p3.validation.js
+
+// Source: src/js/lib/p3.validation.js
 
 /**!
  * @name            p3.validation.js
@@ -1645,7 +1696,7 @@ var _p3 = $.p3 || {},
  *                  Validates form data against XRegExp rules, optionally
  *                  obtained via remote API
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.3.2
+ * @version         0.4.0
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
@@ -1733,7 +1784,7 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
         },
         getVars = $.p3.request(w.location.href).parameters,
         $el = $(el),
-        $form = $el.is('form') ? $el : $('form', el),
+        $form,
         messageDiv = config.messageElement,
         prefix = '$.p3.validation.js :: ',
         enableForm = function () {
@@ -1830,13 +1881,25 @@ var _p3 = $.p3 || {}, // Extends existing $.p3 namespace
                 if ($.p3.pledge_with_email_only) {
                     // trigger a submit click, instead of form submission event
                     // because there may be other events intercepting form submission
-                    $('input[type=submit]', $form).click();
+                    $('input[type=submit][value!=search]', $form).click();
                 } else {
                     $form.submit();
                 }
             }
         };
 
+        // Fix for strange form structure
+        if ($el.is('form')) {
+            $form = $el;
+        } else if ($('form', el).length) {
+            $form = $('form', el);
+        } else {
+            $form = $('form').first();
+        }
+
+        if (!$form) {
+            throw new Error(prefix + 'form not found');
+        }
 
 
         if (query.url) {

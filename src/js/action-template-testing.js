@@ -45,22 +45,22 @@
                 }
             },
             localPledge: {
-                url: 'json/pledges.json?fish=salmon'
+                url: '../test/json/pledges.json?fish=salmon'
             },
             localValidation: {
-                url: 'json/rules_revised.json'
+                url: '../test/json/rules_revised.json'
             },
             localSigner: {
                 url: {
-                    success: 'signer_success.json',
-                    errorFields: 'json/signer_error_fields.json',
-                    errorPledge: 'json/signer_error_pledge.json'
+                    success: '../test/json/signer_success.json',
+                    errorFields: '../test/json/signer_error_fields.json',
+                    errorPledge: '../test/json/signer_error_pledge.json'
                 }
             },
             localSocial: {
                 url: {
-                    simple: 'json/social_simple.json',
-                    full: 'json/social_full_response.json'
+                    simple: '../test/json/social_simple.json',
+                    full: '../test/json/social_full_response.json'
                 }
             }
         };
@@ -112,7 +112,8 @@
         $.p3.pledge_with_email_only('#action-form', {
             signerCheckURL: petition.test.actions.signerCheck,
             validationRulesURL: petition.test.actions.validation,
-            params: petition.test.parameters
+            params: petition.test.parameters,
+            debug: true
         });
 
 
