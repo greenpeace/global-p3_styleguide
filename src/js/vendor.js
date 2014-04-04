@@ -1,4 +1,6 @@
+// ** Built automatically in Grunt, do not edit **
 'use strict';
+
 // Source: src/js/vendor/jquery-plugins/jquery.cookie.js
 /*!
  * jQuery Cookie Plugin v1.4.0
@@ -118,7 +120,8 @@
 
 }));
 
-;// Source: src/js/vendor/jquery-plugins/jquery.dropdown.js
+
+// Source: src/js/vendor/jquery-plugins/jquery.dropdown.js
 /*
  * jQuery dropdown: A simple dropdown plugin
  *
@@ -240,7 +243,8 @@ if(jQuery) (function($) {
     
 })(jQuery);
 
-;// Source: src/js/vendor/jquery-plugins/jquery.placeholder.js
+
+// Source: src/js/vendor/jquery-plugins/jquery.placeholder.js
 /*! http://mths.be/placeholder v2.0.7 by @mathias */
 ;(function(window, document, $) {
 
@@ -398,7 +402,8 @@ if(jQuery) (function($) {
 	}
 
 }(this, document, jQuery));
-;// Source: src/js/vendor/jquery-plugins/jquery.timeago.js
+
+// Source: src/js/vendor/jquery-plugins/jquery.timeago.js
 /**
  * Timeago is a jQuery plugin that makes it easy to support automatically
  * updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago").
@@ -614,7 +619,8 @@ if(jQuery) (function($) {
   document.createElement("time");
 }));
 
-;// Source: src/js/vendor/jquery-plugins/jquery.validate.js
+
+// Source: src/js/vendor/jquery-plugins/jquery.validate.js
 /*!
  * jQuery Validation Plugin 1.12.0pre
  *
@@ -1847,7 +1853,8 @@ $.format = $.validator.format;
 	});
 }(jQuery));
 
-;// Source: src/js/vendor/jquery-plugins/jquery.validateDelegate.js
+
+// Source: src/js/vendor/jquery-plugins/jquery.validateDelegate.js
 // provides delegate(type: String, delegate: Selector, handler: Callback) plugin for easier event delegation
 // handler is only called when $(event.target).is(delegate), in the scope of the jquery-object for event.target
 (function($) {
@@ -1866,7 +1873,8 @@ $.format = $.validator.format;
 
 
 
-;// Source: src/js/vendor/xregexp/xregexp.js
+
+// Source: src/js/vendor/xregexp/xregexp.js
 /*!
  * XRegExp v2.0.0
  * (c) 2007-2012 Steven Levithan <http://xregexp.com/>
@@ -3131,7 +3139,8 @@ XRegExp = XRegExp || (function (undef) {
 }());
 
 
-;// Source: src/js/vendor/xregexp/xregexp-unicode-base.js
+
+// Source: src/js/vendor/xregexp/xregexp-unicode-base.js
 /*!
  * XRegExp Unicode Base v1.0.0
  * (c) 2008-2012 Steven Levithan <http://xregexp.com/>
@@ -3283,7 +3292,8 @@ var unicode = {};
 }(XRegExp));
 
 
-;// Source: src/js/vendor/xregexp/xregexp-unicode-categories.js
+
+// Source: src/js/vendor/xregexp/xregexp-unicode-categories.js
 /*!
  * XRegExp Unicode Categories v1.2.0
  * (c) 2010-2012 Steven Levithan <http://xregexp.com/>

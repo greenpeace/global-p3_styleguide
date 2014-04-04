@@ -7,7 +7,7 @@
  *                  Validates form data against XRegExp rules, optionally
  *                  obtained via remote API
  * @author          <a href="mailto:hello@raywalker.it">Ray Walker</a>
- * @version         0.3.2
+ * @version         0.4.0
  * @copyright       Copyright 2013, Greenpeace International
  * @license         MIT License (opensource.org/licenses/MIT)
  * @requires        <a href="http://jquery.com/">jQuery 1.7+</a>,
@@ -97,7 +97,7 @@
         },
         getVars = $.p3.request(w.location.href).parameters,
         $el = $(el),
-        $form = $el.is('form') ? $el : $('form', el),
+        $form,
         messageDiv = config.messageElement,
         prefix = '$.p3.validation.js :: ',
         enableForm = function () {
@@ -194,13 +194,25 @@
                 if ($.p3.pledge_with_email_only) {
                     // trigger a submit click, instead of form submission event
                     // because there may be other events intercepting form submission
-                    $('input[type=submit]', $form).click();
+                    $('input[type=submit][value!=search]', $form).click();
                 } else {
                     $form.submit();
                 }
             }
         };
 
+        // Fix for strange form structure
+        if ($el.is('form')) {
+            $form = $el;
+        } else if ($('form', el).length) {
+            $form = $('form', el);
+        } else {
+            $form = $('form').first();
+        }
+
+        if (!$form) {
+            throw new Error(prefix + 'form not found');
+        }
 
 
         if (query.url) {
