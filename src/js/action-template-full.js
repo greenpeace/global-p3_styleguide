@@ -75,11 +75,11 @@
 
         // Check if we can sign this pledge using email field only
         // Includes form validation via $.p3.validation by default
-        $.p3.pledge_with_email_only('#action-form', {
-            signerCheckURL: petition.live.actions.signerCheck,
-            validationRulesURL: petition.live.actions.validation,
-            params: petition.live.parameters
-        });
+//        $.p3.pledge_with_email_only('#action-form', {
+//           signerCheckURL: petition.live.actions.signerCheck,
+//            validationRulesURL: petition.live.actions.validation,
+//            params: petition.live.parameters
+//        });
 
 
         // Only call validation plugin if you aren't using pledge_with_email,
