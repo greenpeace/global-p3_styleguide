@@ -6638,9 +6638,7 @@ Browser specific hacks
  */
 .lt-ie9 .action-template h2,
 .lt-ie9 #action-ask,
-.lt-ie9 #action-form,
-.lt-ie9 #action-recent-signers,
-.lt-ie9 #action-social-share {
+.lt-ie9 #action-form {
   clear: none;
 }
 /**
