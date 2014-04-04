@@ -2316,7 +2316,7 @@ Country selector
 
 Markup:
 <div class="heading heading-first">
-  <div class="heading-holder page-section">
+  <div class="heading-holder page-section" style="width: 90%">
     <div class="country-selector">
       <div class="dropdown-controller">
           <a class="{$modifiers}" href="#" data-dropdown="#dropdown-content-country">Greenpeace International<span class="country-img">.</span></a>
@@ -2334,7 +2334,7 @@ Country selector dropdown
 
 Markup:
 <div class="heading heading-first">
-  <div class="heading-holder page-section">
+  <div class="heading-holder page-section" style="width: 90%">
     <div class="country-selector">
         <div class="dropdown-controller">
             <a class="dropdown-open" href="#" data-dropdown="#dropdown-content-country">Greenpeace International<span class="country-img">.</span></a>
@@ -2463,22 +2463,24 @@ Styleguide 5.1.2.1
 Language Selector and Promoted Links
 
 Markup:
-    <div class="heading heading-first">
-            <div class="tools">
-                <div class="language-selector">
-                    <div class="dropdown-controller">
-                        <span class="dropdown-label">Language:</span>
-                        <a href="#" data-dropdown="#dropdown-content-language">English</a>
-                    </div>
-                </div>
-                <div class="promoted-links">
-                    <ul>
-                        <li><a style="color:white;" href="/international/en/press/">Press</a></li>
-                        <li><a style="color:white;" href="/international/en/publications/">Publications</a></li>
-                    </ul>
+<div class="heading heading-first">
+    <div class="heading-holder page-section" style="width: 90%">
+        <div class="tools">
+            <div class="language-selector">
+                <div class="dropdown-controller">
+                    <span class="dropdown-label">Language:</span>
+                    <a href="#" data-dropdown="#dropdown-content-language">English</a>
                 </div>
             </div>
+            <div class="promoted-links">
+                <ul>
+                    <li><a style="color:white;" href="/international/en/press/">Press</a></li>
+                    <li><a style="color:white;" href="/international/en/publications/">Publications</a></li>
+                </ul>
+            </div>
         </div>
+    </div>
+</div>
 
 Styleguide 5.1.3
 */
@@ -2489,6 +2491,7 @@ The content of the Language Selector displays when clicked.
 
 Markup:
     <div class="heading heading-first">
+     <div class="heading-holder page-section" style="width: 90%">
       <div class="tools">
          <div class="language-selector">
             <div class="dropdown-controller">
@@ -2503,6 +2506,7 @@ Markup:
             </div>
          </div>
        </div>
+      </div>
      </div>
 
 Styleguide 5.1.3.1
@@ -2618,68 +2622,63 @@ Social Buttons (small)
 Small Social Buttons:
 
 Markup:
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counter">
-    <span>&hellip;</span>
-    <i class="tip"></i>
-  </div>
-  <a href="#" class="socialBtn facebook {$modifiers}"></a>
-</span>
+<div id="action-social-share" class="block social-share">
+<div class="socialBtn-float">
+    <div class="counter">
+        <span>&hellip;</span>
+        <i class="tip"></i>
+    </div>
+    <a href="#" class="facebook socialBtn {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counter">
-    <span>&hellip;</span>
-    <i class="tip"></i>
-  </div>
-  <a href="#" class="socialBtn twitter {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counter">
+        <span>&hellip;</span>
+        <i class="tip"></i>
+    </div>
+    <a href="#" class="twitter socialBtn {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counter">
-    <span>&hellip;</span>
-    <i class="tip"></i>
-  </div>
-  <a href="#" class="socialBtn google {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counter">
+        <span>&hellip;</span>
+        <i class="tip"></i>
+    </div>
+    <a href="#" class="pinterest socialBtn {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counter">
-    <span>&hellip;</span>
-    <i class="tip"></i>
-  </div>
-  <a href="#" class="socialBtn pinterest {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counter">
+        <span>&hellip;</span>
+        <i class="tip"></i>
+    </div>
+    <a href="#" class="linkedin socialBtn {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counter">
-    <span>&hellip;</span>
-    <i class="tip"></i>
-  </div>
-  <a href="#" class="socialBtn weibo {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counter">
+        <span>&hellip;</span>
+        <i class="tip"></i>
+    </div>
+    <a href="#" class="google socialBtn {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counter">
-    <span>&hellip;</span>
-    <i class="tip"></i>
-  </div>
-  <a href="#" class="socialBtn vk {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counter">
+        <span>&hellip;</span>
+        <i class="tip"></i>
+    </div>
+    <a href="#" class="weibo socialBtn {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counter">
-    <span>&hellip;</span>
-    <i class="tip"></i>
-  </div>
-  <a href="#" class="socialBtn linkedin {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counter">
+        <span>&hellip;</span>
+        <i class="tip"></i>
+    </div>
+    <a href="#" class="vk socialBtn {$modifiers}"></a>
+</div>
+<div class="socialBtn-float">
+    <div class="counter">
+        <span>&hellip;</span>
+        <i class="tip"></i>
+    </div>
+    <a href="#" class="rss socialBtn {$modifiers}"></a>
+</div>
 </div>
 
 :hover              - blabla
@@ -2693,68 +2692,63 @@ Social Buttons (big)
 Big Social Buttons:
 
 Markup:
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counterBig">
-    <span>&hellip;</span>
-    <i class="tipBig"></i>
-  </div>
-  <a href="#" class="socialBtnBig facebook {$modifiers}"></a>
-</span>
+<div id="action-social-share" class="block social-share">
+<div class="socialBtn-float">
+    <div class="counterBig">
+        <span>&hellip;</span>
+        <i class="tipBig"></i>
+    </div>
+    <a href="#" class="facebook socialBtnBig {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counterBig">
-    <span>&hellip;</span>
-    <i class="tipBig"></i>
-  </div>
-  <a href="#" class="socialBtnBig twitter {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counterBig">
+        <span>&hellip;</span>
+        <i class="tipBig"></i>
+    </div>
+    <a href="#" class="twitter socialBtnBig {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counterBig">
-    <span>&hellip;</span>
-    <i class="tipBig"></i>
-  </div>
-  <a href="#" class="socialBtnBig google {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counterBig">
+        <span>&hellip;</span>
+        <i class="tipBig"></i>
+    </div>
+    <a href="#" class="pinterest socialBtnBig {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counterBig">
-    <span>&hellip;</span>
-    <i class="tipBig"></i>
-  </div>
-  <a href="#" class="socialBtnBig pinterest {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counterBig">
+        <span>&hellip;</span>
+        <i class="tipBig"></i>
+    </div>
+    <a href="#" class="linkedin socialBtnBig {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counterBig">
-    <span>&hellip;</span>
-    <i class="tipBig"></i>
-  </div>
-  <a href="#" class="socialBtnBig weibo {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counterBig">
+        <span>&hellip;</span>
+        <i class="tipBig"></i>
+    </div>
+    <a href="#" class="google socialBtnBig {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counterBig">
-    <span>&hellip;</span>
-    <i class="tipBig"></i>
-  </div>
-  <a href="#" class="socialBtnBig vk {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counterBig">
+        <span>&hellip;</span>
+        <i class="tipBig"></i>
+    </div>
+    <a href="#" class="weibo socialBtnBig {$modifiers}"></a>
 </div>
-<div class="social-share">
-<span class="socialBtn-float">
-  <div class="counterBig">
-    <span>&hellip;</span>
-    <i class="tipBig"></i>
-  </div>
-  <a href="#" class="socialBtnBig linkedin {$modifiers}"></a>
-</span>
+<div class="socialBtn-float">
+    <div class="counterBig">
+        <span>&hellip;</span>
+        <i class="tipBig"></i>
+    </div>
+    <a href="#" class="vk socialBtnBig {$modifiers}"></a>
+</div>
+<div class="socialBtn-float">
+    <div class="counterBig">
+        <span>&hellip;</span>
+        <i class="tipBig"></i>
+    </div>
+    <a href="#" class="rss socialBtnBig {$modifiers}"></a>
+</div>
 </div>
 
 :hover              - blabla
@@ -5449,7 +5443,7 @@ This is the main footer.
 Markup:
 <footer>
     <div class="footer container footer-small">
-        <div class="footer-holder page-section" style="width:920px">
+        <div class="footer-holder page-section" style="width:90%">
             <div class="copy-box">
                 <div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2013</span></div>
                 <ul class="legal-menu">
@@ -5477,7 +5471,7 @@ Greenpeace logotype in the footer and legal menu links.
 Markup:
 <footer>
     <div class="footer container footer-small">
-        <div class="footer-holder page-section" style="width:920px">
+        <div class="footer-holder page-section" style="width:90%">
             <div class="copy-box">
                 <div class="logo-box"><span>&copy;</span><strong class="logo">GREENPEACE</strong><span> 2013</span></div>
                 <ul class="legal-menu">
@@ -5497,7 +5491,7 @@ Bottom menu
 Markup:
 <footer>
     <div class="footer container footer-small">
-        <div class="footer-holder page-section" style="width:920px">
+        <div class="footer-holder page-section" style="width:90%">
             <div class="copy-box">
                 <ul class="bottom-menu">
                     <li><a href="/international/en/">Home</a></li>
@@ -5823,7 +5817,7 @@ Action counter
 Shows the number of signers both graphical and text only
 
 Markup:
-<div id="action-counter" class="counter block" style="width: 520px;">
+<div id="action-counter" class="counter block" style="width: 50%;">
     <div id="action-counter-graphical" style="display: block;">
         <span class="objectives"></span>
         <span style="width:86.2%%; transition: 25ms; -webkit- transition: 25ms;" class="completed">17,239,173&nbsp;</span>
@@ -5841,7 +5835,7 @@ Action Counter (graphic bar)
 Graphical display as progres bar.
 
 Markup:
-<div id="action-counter" class="counter block" style="width: 520px;">
+<div id="action-counter" class="counter block" style="width: 50%;">
     <div id="action-counter-graphical" style="display: block;">
         <span class="objectives"></span>
         <span style="width:86.2%%; transition: 25ms; -webkit- transition: 25ms;" class="completed">17,239,173&nbsp;</span>
