@@ -2828,7 +2828,7 @@ Styleguide 5.1.4
     float: right;
     width: 1em;
     height: 1em;
-    margin: 1px 0 0 0;
+    margin: 1px 1px 0 0;
     cursor: pointer;
     background: transparent url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) -136px -24px no-repeat;
     -webkit-border-radius: 3px;
@@ -3166,7 +3166,7 @@ Styleguide 5.1.4
   float: right;
   width: 1em;
   height: 1em;
-  margin: 1px 0 0 0;
+  margin: 1px 1px 0 0;
   cursor: pointer;
   background: transparent url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) -136px -24px no-repeat;
   -webkit-border-radius: 3px;
@@ -3511,7 +3511,7 @@ Styleguide 5.1.4
   float: right;
   width: 1em;
   height: 1em;
-  margin: 1px 0 0 0;
+  margin: 1px 1px 0 0;
   cursor: pointer;
   background: transparent url(https://secured.greenpeace.org/international/Global/international/code/p3/img/image-map.png) -136px -24px no-repeat;
   -webkit-border-radius: 3px;
