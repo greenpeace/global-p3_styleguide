@@ -153,6 +153,10 @@
                                             <span>We need your phone number to send you update about the campaign.</span>
                                         </div>
                                     </div>
+                                    <div class="birthday">
+                                        <label for="UserBirthday">Birthday</label>
+                                        <input name="birthday" class="alphanumeric" required maxlength="10" type="text" id="UserBirthday" placeholder="Birthday* (dd/mm/yyyy)" />
+                                    </div>
                                     <div class="website">
                                         <label for="UserWebsite">Website</label>
                                         <input name="website" class="required" required maxlength="64" type="text" id="UserWebsite" placeholder="Website*" />
@@ -422,6 +426,14 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="select region">
+                                        <label for="UserRegion">Country</label>
+                                        <div class="select-styling">
+                                            <select name="region" id="UserRegion">
+                                                <option selected="selected" value="">Select your region</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div id="action-form-message">
                                         <div class="textearea">
                                             <label for="ActionMessage">Your message</label>
@@ -429,8 +441,12 @@
 Dear Mr Wrobel,
 I am writting to express my strong opposition the Herakles Farm's project, throug it's subsidiary the Global Sustainable Oil Cameroom (SGSOC) is to estable the largest palm oil plantatino in the rainforest of Cameroon. THe proejct no only threaten local livelyhoods but also poses a serious environmental hazard for the faune and flora.
 Please don't let this happen. Thank you.
-                    </textarea>
+                                            </textarea>
                                         </div>
+                                    </div>
+                                    <div class="image-upload">
+                                        <label for="ImageUpload">Upload image</label>
+                                        <input name="imageupload" type="file" id="ImageUpload" accept="image/*" content="Postcode*" />
                                     </div>
                                     <div id="action-smallprints">
                                         <div class="input checkbox smallprint">
