@@ -1479,34 +1479,6 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
 
 Styleguide 3.3
 */
-/*
-Radio input.
-
-Markup:
-<div class="gender">
-  <fieldset class="radio">
-    <legend>Gender</legend>
-    <label for="UserGenderMale"><input type="radio" name="gender" id="UserGenderMale" value="male">Male</label>                        
-    <label for="UserGenderFemale"><input type="radio" name="gender" id="UserGenderFemale" value="female">Female</label>                        
-  </fieldset>
-</div>
-
-Styleguide 3.4
-*/
-/*
-Checkbox input.
-
-Markup:
-<div class="newsletters">
-  <fieldset class="checkbox">
-    <legend>Subscribe to our newsletters</legend>
-    <label for="UserNewsletterGeneral"><input type="checkbox" name="newsletters" id="UserNewsletterGeneral" value="general">General</label>                        
-    <label for="UserNewsletterArctic"><input type="checkbox" name="newsletters" id="UserNewsletterArctic" value="arctic">Arctic</label>                        
-  </fieldset>
-</div>
-
-Styleguide 3.5
-*/
 input[type=text],
 input[type=password],
 input[type=email],
