@@ -2386,6 +2386,9 @@ Styleguide 5.1.3.1
   color: #ffffff;
   font-weight: bold;
 }
+.language-selector .dropdown-controller a {
+  color: #ffffff;
+}
 .language-selector .dropdown {
   right: 0;
   top: 1.6em;
