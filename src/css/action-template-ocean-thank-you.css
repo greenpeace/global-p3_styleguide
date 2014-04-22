@@ -2115,7 +2115,6 @@ fieldset.radio legend {
 .checkbox.styled label,
 .radio.styled label {
   display: inline-block;
-  cursor: pointer;
   position: relative;
   padding-left: 1.6em;
   margin-left: 1em;
