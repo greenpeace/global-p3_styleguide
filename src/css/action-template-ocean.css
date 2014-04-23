@@ -4450,257 +4450,254 @@ Flag icons
 
 Classes are used to choose the right flag for each country.
 
-Markup:
-<span class="flag icon {$modifiers}"></span>
+Most of the classes are the ISO 3166-2 code for each country. More info [here](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements).
 
-.flag.ad              - flag
-.flag.ae              - flag
-.flag.af              - flag
-.flag.ag              - flag
-.flag.ai              - flag
-.flag.al              - flag
-.flag.am              - flag
-.flag.an              - flag
-.flag.ao              - flag
-.flag.ar              - flag
-.flag.as              - flag
-.flag.at              - flag
-.flag.au              - flag
-.flag.aw              - flag
-.flag.ax              - flag
-.flag.az              - flag
-.flag.ba              - flag
-.flag.bb              - flag
-.flag.bd              - flag
-.flag.be              - flag
-.flag.bf              - flag
-.flag.bg              - flag
-.flag.bh              - flag
-.flag.bi              - flag
-.flag.bj              - flag
-.flag.bm              - flag
-.flag.bn              - flag
-.flag.bo              - flag
-.flag.br              - flag
-.flag.bs              - flag
-.flag.bt              - flag
-.flag.bv              - flag
-.flag.bw              - flag
-.flag.by              - flag
-.flag.bz              - flag
-.flag.ca              - flag
-.flag.catalonia       - flag
-.flag.cc              - flag
-.flag.cd              - flag
-.flag.cf              - flag
-.flag.cg              - flag
-.flag.ch              - flag
-.flag.ci              - flag
-.flag.ck              - flag
-.flag.cl              - flag
-.flag.cm              - flag
-.flag.cn              - flag
-.flag.co              - flag
-.flag.cr              - flag
-.flag.cs              - flag
-.flag.cu              - flag
-.flag.cv              - flag
-.flag.cx              - flag
-.flag.cy              - flag
-.flag.cz              - flag
-.flag.de              - flag
-.flag.dj              - flag
-.flag.dk              - flag
-.flag.dm              - flag
-.flag.do              - flag
-.flag.dz              - flag
-.flag.ec              - flag
-.flag.ee              - flag
-.flag.eg              - flag
-.flag.eh              - flag
-.flag.england         - flag
-.flag.er              - flag
-.flag.es              - flag
-.flag.et              - flag
-.flag.europeanunion   - flag
-.flag.fam             - flag
-.flag.fi              - flag
-.flag.fj              - flag
-.flag.fk              - flag
-.flag.fm              - flag
-.flag.fo              - flag
-.flag.fr              - flag
-.flag.ga              - flag
-.flag.gb              - flag
-.flag.uk              - flag
-.flag.gd              - flag
-.flag.ge              - flag
-.flag.gf              - flag
-.flag.gh              - flag
-.flag.gi              - flag
-.flag.gl              - flag
-.flag.gm              - flag
-.flag.gn              - flag
-.flag.gp              - flag
-.flag.gq              - flag
-.flag.gr              - flag
-.flag.gs              - flag
-.flag.gt              - flag
-.flag.gu              - flag
-.flag.gw              - flag
-.flag.gy              - flag
-.flag.hk              - flag
-.flag.hm              - flag
-.flag.hn              - flag
-.flag.hr              - flag
-.flag.ht              - flag
-.flag.hu              - flag
-.flag.id              - flag
-.flag.ie              - flag
-.flag.il              - flag
-.flag.in              - flag
-.flag.io              - flag
-.flag.iq              - flag
-.flag.ir              - flag
-.flag.is              - flag
-.flag.it              - flag
-.flag.jm              - flag
-.flag.jo              - flag
-.flag.jp              - flag
-.flag.ke              - flag
-.flag.kg              - flag
-.flag.kh              - flag
-.flag.ki              - flag
-.flag.km              - flag
-.flag.kn              - flag
-.flag.kp              - flag
-.flag.kr              - flag
-.flag.kw              - flag
-.flag.ky              - flag
-.flag.kz              - flag
-.flag.la              - flag
-.flag.lb              - flag
-.flag.lc              - flag
-.flag.li              - flag
-.flag.lk              - flag
-.flag.lr              - flag
-.flag.ls              - flag
-.flag.lt              - flag
-.flag.lu              - flag
-.flag.lv              - flag
-.flag.ly              - flag
-.flag.ma              - flag
-.flag.mc              - flag
-.flag.md              - flag
-.flag.me              - flag
-.flag.mg              - flag
-.flag.mh              - flag
-.flag.mk              - flag
-.flag.ml              - flag
-.flag.mm              - flag
-.flag.mn              - flag
-.flag.mo              - flag
-.flag.mp              - flag
-.flag.mq              - flag
-.flag.mr              - flag
-.flag.ms              - flag
-.flag.mt              - flag
-.flag.mu              - flag
-.flag.mv              - flag
-.flag.mw              - flag
-.flag.mx              - flag
-.flag.my              - flag
-.flag.mz              - flag
-.flag.na              - flag
-.flag.nc              - flag
-.flag.ne              - flag
-.flag.nf              - flag
-.flag.ng              - flag
-.flag.ni              - flag
-.flag.nl              - flag
-.flag.no              - flag
-.flag.np              - flag
-.flag.nr              - flag
-.flag.nu              - flag
-.flag.nz              - flag
-.flag.om              - flag
-.flag.pa              - flag
-.flag.pe              - flag
-.flag.pf              - flag
-.flag.pg              - flag
-.flag.ph              - flag
-.flag.pk              - flag
-.flag.pl              - flag
-.flag.pm              - flag
-.flag.pn              - flag
-.flag.pr              - flag
-.flag.ps              - flag
-.flag.pt              - flag
-.flag.pw              - flag
-.flag.py              - flag
-.flag.qa              - flag
-.flag.re              - flag
-.flag.ro              - flag
-.flag.rs              - flag
-.flag.ru              - flag
-.flag.rw              - flag
-.flag.sa              - flag
-.flag.sb              - flag
-.flag.sc              - flag
-.flag.scotland        - flag
-.flag.sd              - flag
-.flag.se              - flag
-.flag.sg              - flag
-.flag.sh              - flag
-.flag.si              - flag
-.flag.sj              - flag
-.flag.sk              - flag
-.flag.sl              - flag
-.flag.sm              - flag
-.flag.sn              - flag
-.flag.so              - flag
-.flag.sr              - flag
-.flag.st              - flag
-.flag.sv              - flag
-.flag.sy              - flag
-.flag.sz              - flag
-.flag.tc              - flag
-.flag.td              - flag
-.flag.tf              - flag
-.flag.tg              - flag
-.flag.th              - flag
-.flag.tj              - flag
-.flag.tk              - flag
-.flag.tl              - flag
-.flag.tm              - flag
-.flag.tn              - flag
-.flag.to              - flag
-.flag.tr              - flag
-.flag.tt              - flag
-.flag.tv              - flag
-.flag.tw              - flag
-.flag.tz              - flag
-.flag.ua              - flag
-.flag.ug              - flag
-.flag.um              - flag
-.flag.us              - flag
-.flag.uy              - flag
-.flag.uz              - flag
-.flag.va              - flag
-.flag.vc              - flag
-.flag.ve              - flag
-.flag.vg              - flag
-.flag.vi              - flag
-.flag.vn              - flag
-.flag.vu              - flag
-.flag.wales           - flag
-.flag.wf              - flag
-.flag.ws              - flag
-.flag.ye              - flag
-.flag.yt              - flag
-.flag.za              - flag
-.flag.zm              - flag
-.flag.zw              - flag
+Markup:
+<span class="icon {$modifiers}"></span>
+
+.flag.ad              - Andorra
+.flag.ae              - United Arab Emirates
+.flag.af              - Afghanistan
+.flag.ag              - Antigua and Barbuda
+.flag.ai              - Anguilla
+.flag.al              - Albania
+.flag.am              - Armenia
+.flag.an              - Netherlands Antilles
+.flag.ao              - Angola
+.flag.ar              - Argentina
+.flag.as              - American Samoa
+.flag.at              - Austria
+.flag.au              - Australia
+.flag.aw              - Aruba
+.flag.ax              - Åland Islands
+.flag.az              - Azerbaijan
+.flag.ba              - Bosnia and Herzegovina
+.flag.bb              - Barbados
+.flag.bd              - Bangladesh
+.flag.be              - Belgium
+.flag.bf              - Burkina Faso
+.flag.bg              - Bulgaria
+.flag.bh              - Bahrain
+.flag.bi              - Burundi
+.flag.bj              - Benin
+.flag.bm              - Bermuda
+.flag.bn              - Brunei Darussalam
+.flag.bo              - Bolivia, Plurinational State of
+.flag.br              - Brazil
+.flag.bs              - Bahamas
+.flag.bt              - Bhutan
+.flag.bv              - Bouvet Island
+.flag.bw              - Botswana
+.flag.by              - Belarus
+.flag.bz              - Belize
+.flag.ca              - Canada
+.flag.cc              - Cocos (Keeling) Islands
+.flag.cd              - Congo, the Democratic Republic of the
+.flag.cf              - Central African Republic
+.flag.cg              - Congo
+.flag.ch              - Switzerland
+.flag.ci              - Côte d'Ivoire
+.flag.ck              - Cook Islands
+.flag.cl              - Chile
+.flag.cm              - Cameroon
+.flag.cn              - China
+.flag.co              - Colombia
+.flag.cr              - Costa Rica
+.flag.cu              - Cuba
+.flag.cv              - Cape Verde
+.flag.cx              - Christmas Island
+.flag.cy              - Cyprus
+.flag.cz              - Czech Republic
+.flag.de              - Germany
+.flag.dj              - Djibouti
+.flag.dk              - Denmark
+.flag.dm              - Dominica
+.flag.do              - Dominican Republic
+.flag.dz              - Algeria
+.flag.ec              - Ecuador
+.flag.ee              - Estonia
+.flag.eg              - Egypt
+.flag.eh              - Western Sahara
+.flag.england         - England
+.flag.er              - Eritrea
+.flag.es              - Spain
+.flag.et              - Ethiopia
+.flag.europeanunion   - Europe Union
+.flag.fi              - Finland
+.flag.fj              - Fiji
+.flag.fk              - Falkland Islands (Malvinas)	
+.flag.fm              - Micronesia, Federated States of	
+.flag.fo              - Faroe Islands	
+.flag.fr              - France
+.flag.ga              - Gabon
+.flag.gb              - Great Britain
+.flag.uk              - United Kingdom
+.flag.gd              - Grenada
+.flag.ge              - Georgia
+.flag.gf              - French Guiana
+.flag.gh              - Ghana
+.flag.gi              - Gibraltar
+.flag.gl              - Greenland
+.flag.gm              - Gambia
+.flag.gn              - Guinea
+.flag.gq              - Equatorial Guinea
+.flag.gr              - Greece
+.flag.gs              - South Georgia and the South Sandwich Islands
+.flag.gt              - Guatemala
+.flag.gu              - Guam
+.flag.gw              - Guinea-Bissau
+.flag.gy              - Guyana
+.flag.hk              - Hong Kong
+.flag.hm              - Heard Island and McDonald Islands
+.flag.hn              - Honduras
+.flag.hr              - Croatia
+.flag.ht              - Haiti
+.flag.hu              - Hungary
+.flag.id              - Indonesia
+.flag.ie              - Ireland
+.flag.il              - Israel
+.flag.in              - India
+.flag.iq              - Iraq
+.flag.ir              - Iran, Islamic Republic of
+.flag.is              - Iceland
+.flag.it              - Italy
+.flag.jm              - Jamaica
+.flag.jo              - Jordan
+.flag.jp              - Japan
+.flag.ke              - Kenya
+.flag.kg              - Kyrgyzstan
+.flag.kh              - Cambodia
+.flag.ki              - Kiribati
+.flag.km              - Comoros
+.flag.kn              - Saint Kitts and Nevis
+.flag.kp              - Korea, Democratic People's Republic of (North Korea)
+.flag.kr              - Korea, Republic of (South Korea)
+.flag.kw              - Kuwait
+.flag.ky              - Cayman Islands
+.flag.kz              - Kazakhstan
+.flag.la              - Lao People's Democratic Republic
+.flag.lb              - Lebanon
+.flag.lc              - Saint Lucia
+.flag.li              - Liechtenstein
+.flag.lk              - Sri Lanka
+.flag.lr              - Liberia
+.flag.ls              - Lesotho
+.flag.lt              - Lithuania
+.flag.lu              - Luxembourg
+.flag.lv              - Latvia
+.flag.ly              - Libya
+.flag.ma              - Morocco
+.flag.mc              - Monaco
+.flag.md              - Moldova, Republic of
+.flag.me              - Montenegro
+.flag.mg              - Madagascar
+.flag.mh              - Marshall Islands
+.flag.mk              - Macedonia, the former Yugoslav Republic of	
+.flag.ml              - Mali
+.flag.mm              - Myanmar
+.flag.mn              - Mongolia
+.flag.mo              - Macao
+.flag.mp              - Northern Mariana Islands
+.flag.mq              - Martinique
+.flag.mr              - Mauritania
+.flag.ms              - Montserrat
+.flag.mt              - Malta
+.flag.mu              - Mauritius
+.flag.mv              - Maldives
+.flag.mw              - Malawi
+.flag.mx              - Mexico
+.flag.my              - Malaysia
+.flag.mz              - Mozambique
+.flag.na              - Namibia
+.flag.nc              - New Caledonia
+.flag.ne              - Niger
+.flag.nf              - Norfolk Island
+.flag.ng              - Nigeria
+.flag.ni              - Nicaragua
+.flag.nl              - Netherlands
+.flag.no              - Norway
+.flag.np              - Nepal
+.flag.nr              - Nauru
+.flag.nu              - Niue
+.flag.nz              - New Zealand
+.flag.om              - Oman
+.flag.pa              - Panama
+.flag.pe              - Peru
+.flag.pf              - French Polynesia
+.flag.pg              - Papua New Guinea
+.flag.ph              - Philippines
+.flag.pk              - Pakistan
+.flag.pl              - Poland
+.flag.pm              - Saint Pierre and Miquelon
+.flag.pn              - Pitcairn
+.flag.pr              - Puerto Rico
+.flag.ps              - Palestine, State of
+.flag.pt              - Portugal
+.flag.pw              - Palau
+.flag.py              - Paraguay
+.flag.qa              - Qatar
+.flag.re              - Réunion
+.flag.ro              - Romania
+.flag.rs              - Serbia
+.flag.ru              - Russian Federation
+.flag.rw              - Rwanda
+.flag.sa              - Saudi Arabia
+.flag.sb              - Solomon Islands
+.flag.sc              - Seychelles
+.flag.scotland        - Scotland
+.flag.sd              - Sudan
+.flag.se              - Sweden
+.flag.sg              - Singapore
+.flag.sh              - Saint Helena, Ascension and Tristan da Cunha
+.flag.si              - Slovenia
+.flag.sj              - Svalbard and Jan Mayen
+.flag.sk              - Slovakia
+.flag.sl              - Sierra Leone
+.flag.sm              - San Marino
+.flag.sn              - Senegal
+.flag.so              - Somalia
+.flag.sr              - Suriname
+.flag.st              - Sao Tome and Principe
+.flag.sv              - El Salvador
+.flag.sy              - Syrian Arab Republic
+.flag.sz              - Swaziland
+.flag.tc              - Turks and Caicos Islands	
+.flag.td              - Chad
+.flag.tf              - French Southern Territories
+.flag.tg              - Togo
+.flag.th              - Thailand
+.flag.tj              - Tajikistan
+.flag.tk              - Tokelau
+.flag.tl              - Timor-Leste
+.flag.tm              - Turkmenistan
+.flag.tn              - Tunisia
+.flag.to              - Tonga
+.flag.tr              - Turkey
+.flag.tt              - Trinidad and Tobago
+.flag.tv              - Tuvalu
+.flag.tw              - Taiwan, Province of China
+.flag.tz              - Tanzania, United Republic of
+.flag.ua              - Ukraine
+.flag.ug              - Uganda	
+.flag.um              - United States Minor Outlying Islands
+.flag.us              - United States
+.flag.uy              - Uruguay
+.flag.uz              - Uzbekistan
+.flag.va              - Holy See (Vatican City State)
+.flag.vc              - Saint Vincent and the Grenadines
+.flag.ve              - Venezuela, Bolivarian Republic of
+.flag.vg              - Virgin Islands, British
+.flag.vi              - Virgin Islands, U.S.	
+.flag.vn              - Viet Nam (Vietnam)
+.flag.vu              - Vanuatu
+.flag.wales           - Wales
+.flag.wf              - Wallis and Futuna
+.flag.ws              - Samoa
+.flag.ye              - Yemen
+.flag.yt              - Mayotte
+.flag.za              - South Africa
+.flag.zm              - Zambia
+.flag.zw              - Zimbabwe
 
 Styleguide 7.
 */
