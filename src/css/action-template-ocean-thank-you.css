@@ -2162,6 +2162,25 @@ input[type=checkbox] {
   text-align: center;
   line-height: 1em;
 }
+.lt-ie9 .checkbox.styled label,
+.lt-ie9 .radio.styled label {
+  margin-left: 0;
+  padding-left: 0;
+}
+.lt-ie9 .checkbox.styled label:before,
+.lt-ie9 .radio.styled label:before {
+  display: none;
+}
+.lt-ie9 input[type=radio],
+.lt-ie9 input[type=checkbox] {
+  display: inline-block;
+  width: 15px;
+  margin-left: .6em;
+}
+.lt-ie9 fieldset.checkbox,
+.lt-ie9 fieldset.radio {
+  padding-bottom: 0;
+}
 /*
     Select
 

@@ -289,6 +289,28 @@ input[type=checkbox] {
     line-height: 1em;
 }
 
+.lt-ie9 {
+    .checkbox.styled label,
+    .radio.styled label {
+        margin-left: 0;	    
+        padding-left: 0;
+    }
+    .checkbox.styled label:before,
+    .radio.styled label:before {
+	    display: none;
+    }
+    input[type=radio],
+    input[type=checkbox] {
+	    display: inline-block;
+        width: 15px;
+        margin-left: .6em;
+    }
+    fieldset.checkbox,
+    fieldset.radio {
+        padding-bottom: 0;
+    }
+}
+
 /*
     Select
 
