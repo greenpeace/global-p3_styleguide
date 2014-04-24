@@ -1146,7 +1146,8 @@ body form input[type=search],
 body form input[type=tel],
 body form textarea,
 body form label,
-body form legend {
+body form legend,
+body form select {
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333333;
   font-size: .875em;

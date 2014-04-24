@@ -1146,7 +1146,8 @@ body form input[type=search],
 body form input[type=tel],
 body form textarea,
 body form label,
-body form legend {
+body form legend,
+body form select {
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   color: #333333;
   font-size: .875em;
@@ -2168,16 +2169,37 @@ input[type=checkbox] {
     Compatible	: ?
     Since				: version 3.0
 */
-select,
-select:hover {
-  width: 15.25em;
-  margin-bottom: 10px;
-  padding: .25em .5em .15em .2em;
-  margin: .2em 0 .5em 0;
+.select-styling {
+  width: 94%;
+  cursor: pointer;
+  position: relative;
+  border-radius: 3px;
+  background-clip: padding-box;
+  background-color: #ffffff;
+  display: inline-block;
+  color: 0 1px 3px rgba(0, 0, 0, 0.13), inset 0 1px 0 #ffffff;
+  background-image: linear-gradient(bottom, #dcdcdc 0%, #dcdcdc 2%, #f3f3f3 100%);
   border: 1px solid #cccccc;
-  /*background:@white;
-    .rounded_all(3px);
-    border:1px solid #BBB;*/
+}
+.select-styling:hover {
+  border: 1px solid #999;
+}
+.select-styling select {
+  float: left;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  height: 30px;
+  display: block;
+  padding: 5px 25px 4px 7px;
+  margin: 0;
+  -moz-appearance: window;
+  -moz-padding-end: 19px;
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 /* system fields */
 .system.fields {
