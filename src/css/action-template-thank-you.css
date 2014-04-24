@@ -2032,6 +2032,12 @@ input[type=checkbox] {
   -webkit-appearance: none;
   appearance: none;
 }
+.select-styling select::-ms-expand {
+  display: none;
+}
+.lt-ie10 .select-styling select {
+  width: 105%;
+}
 /* system fields */
 .system.fields {
   display: none;
