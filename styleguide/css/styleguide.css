@@ -2155,6 +2155,7 @@ input[type=checkbox] {
   border: 1px solid #999;
 }
 .select-styling select {
+  width: 100%;
   float: left;
   cursor: pointer;
   position: relative;

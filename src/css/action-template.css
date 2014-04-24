@@ -2155,6 +2155,7 @@ input[type=checkbox] {
   border: 1px solid #999;
 }
 .select-styling select {
+  width: 100%;
   float: left;
   cursor: pointer;
   position: relative;
@@ -4253,9 +4254,6 @@ Action form
 .action-template textarea,
 .action-template input {
   width: 90%;
-}
-.action-template select {
-  width: 94%;
 }
 .action-template .submit.full {
   width: 111%;
