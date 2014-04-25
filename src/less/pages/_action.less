@@ -270,29 +270,19 @@ Action form
     }
     // input length to fit the sidebar
     #action-form {
-        .action-template textarea,
-        .action-template input[type=text] {
-            width:19em;
-        }
-        .action-template select {
-            width:20em;
-        }
-        .action-template textarea {
-            width:23.5em;
-        }
-        .action-template .submit.full input{
-            width:16.75em;
-        }
-        .action-template #action-submit-quick.submit {
-            margin-right:0;
+        #action-form-register .phone {
+            position: relative;
+            .tooltip.info {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
         }
 		#action-smallprints {
 		    width:26em;
 		    padding:.5em;
             font-size:.75em;
-		}
-		
-		
+		}	
     }
 }
 @media only screen and (min-width : 1024px) {

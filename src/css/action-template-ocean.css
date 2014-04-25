@@ -6220,21 +6220,13 @@ Action form
   #action-counter-graphical {
     display: block;
   }
-  #action-form .action-template textarea,
-  #action-form .action-template input[type=text] {
-    width: 19em;
+  #action-form #action-form-register .phone {
+    position: relative;
   }
-  #action-form .action-template select {
-    width: 20em;
-  }
-  #action-form .action-template textarea {
-    width: 23.5em;
-  }
-  #action-form .action-template .submit.full input {
-    width: 16.75em;
-  }
-  #action-form .action-template #action-submit-quick.submit {
-    margin-right: 0;
+  #action-form #action-form-register .phone .tooltip.info {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
   #action-form #action-smallprints {
     width: 26em;
@@ -6475,21 +6467,13 @@ Action form
 .desktop #action-counter-graphical {
   display: block;
 }
-.desktop #action-form .action-template textarea,
-.desktop #action-form .action-template input[type=text] {
-  width: 19em;
+.desktop #action-form #action-form-register .phone {
+  position: relative;
 }
-.desktop #action-form .action-template select {
-  width: 20em;
-}
-.desktop #action-form .action-template textarea {
-  width: 23.5em;
-}
-.desktop #action-form .action-template .submit.full input {
-  width: 16.75em;
-}
-.desktop #action-form .action-template #action-submit-quick.submit {
-  margin-right: 0;
+.desktop #action-form #action-form-register .phone .tooltip.info {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .desktop #action-form #action-smallprints {
   width: 26em;
