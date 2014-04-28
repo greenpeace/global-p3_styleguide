@@ -2204,6 +2204,19 @@ input[type=checkbox] {
 .select-styling:hover {
   border: 1px solid #999;
 }
+.select-styling:after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 60%;
+  line-height: 30px;
+  padding: 0 7px;
+  background: #000;
+  background-color: #ffffff;
+  color: #333333;
+}
 .select-styling select {
   width: 100%;
   float: left;
@@ -2227,6 +2240,9 @@ input[type=checkbox] {
 }
 .lt-ie10 .select-styling select {
   width: 105%;
+}
+.lt-ie10 .select-styling:after {
+  display: none;
 }
 /* system fields */
 .system.fields {
