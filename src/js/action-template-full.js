@@ -113,6 +113,9 @@
         // Populate and show regions
         $.p3.regions('#UserCountry', '#UserRegion', '#selectRegion');
 
+        // Birthday input masked
+        $ ("#UserBirthday").mask ("99/99/9999");
+
     });
 
 }(jQuery, Modernizr, this));

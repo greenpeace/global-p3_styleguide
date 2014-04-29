@@ -6249,10 +6249,12 @@ Action form
   #action-counter-graphical {
     display: block;
   }
-  #action-form #action-form-register .phone {
+  #action-form #action-form-register .phone,
+  #action-form #action-form-register .birthday {
     position: relative;
   }
-  #action-form #action-form-register .phone .tooltip.info {
+  #action-form #action-form-register .phone .tooltip.info,
+  #action-form #action-form-register .birthday .tooltip.info {
     position: absolute;
     right: 0;
     top: 0;
@@ -6514,10 +6516,12 @@ Action form
 .desktop #action-counter-graphical {
   display: block;
 }
-.desktop #action-form #action-form-register .phone {
+.desktop #action-form #action-form-register .phone,
+.desktop #action-form #action-form-register .birthday {
   position: relative;
 }
-.desktop #action-form #action-form-register .phone .tooltip.info {
+.desktop #action-form #action-form-register .phone .tooltip.info,
+.desktop #action-form #action-form-register .birthday .tooltip.info {
   position: absolute;
   right: 0;
   top: 0;
