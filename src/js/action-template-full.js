@@ -110,6 +110,9 @@
             params: petition.live.parameters
         });
 
+        // Populate and show regions
+        $.p3.regions('#UserCountry', '#UserRegion', '#selectRegion');
+
     });
 
 }(jQuery, Modernizr, this));
