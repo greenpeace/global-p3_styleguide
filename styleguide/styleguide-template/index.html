@@ -76,32 +76,36 @@
         </div>
     </div>
 
-<!-- ORIGINAL SIDE BAR
+
     <div class="kss-wrapper">
       <div class="kss-sidebar">
-        <div class="kss-sidebar-inner">
-          <nav class="kss-nav">
-            <ul class="kss-menu" data-kss-ref="{{rootNumber}}">
-              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
-              {{#eachRoot}}
-              <li class="kss-menu-item"><a href="section-{{reference}}.html"><span class="kss-ref">{{reference}}</span><span class="kss-name">{{header}}</span></a></li>
-              {{/eachRoot}}
-            </ul>
-            {{#if overview}}
-            {{else}}
-            <ul class="kss-menu-child">
-              {{#eachSection rootNumber}}
-              {{#whenDepth 1}}
-              {{else}}
-              <li class="kss-menu-item"><a href="#section-{{reference}}"><span class="kss-ref">{{reference}}</span><span class="kss-name">{{header}}</span></a></li>
-              {{/whenDepth}}
-              {{/eachSection}}
-            </ul>
-            {{/if}}
-          </nav>
-        </div>
+          <div class="kss-menu">
+            <h2 class="title"><a href="css.html" title="CSS">CSS</a></h2>
+            <div class="kss-submenu">
+                <h3 class="first subtitle"><a href="css.html" title="CSS">Base</a></h3>
+                    <ol class="sections">
+                        <li class=""><a href="section-1.html">Color palette</a></li>
+                        <li class=""><a href="section-2.html">Typography rules</a></li>
+                        <li class=""><a href="section-3.html">Forms</a></li>
+                        <li class=""><a href="section-4.html">Buttons</a></li>
+                    </ol>
+
+                <h3 class="subtitle"><a href="css.html" title="CSS">Components</a></h3>
+                    <ol class="sections" start="5">
+                        <li class=""><a href="section-5.html">Header</a></li>
+                        <li class=""><a href="section-6.html">Breadcrumb navigation</a></li>
+                        <li class=""><a href="section-7.html">Flag icons</a></li>
+                        <li class=""><a href="section-8.html">Action counter</a></li>
+                        <li class=""><a href="section-9.html">Recent signers</a></li>
+                        <li class=""><a href="section-10.html">Footer</a></li>
+                    </ol>
+            </div>
+            <h2 class="title"><a href="js.html" title="CSS">JS</a></h2>
+            <div class="kss-submenu">
+            </div>
+           </div>
       </div>
--->
+
 
       <div class="kss-content">
         <article class="kss-article">
