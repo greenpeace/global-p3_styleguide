@@ -1338,12 +1338,12 @@ label {
 }
 .horizontal-ra label {
   display: inline-block;
-  width: 10%;
+  width: 7em;
   text-align: right;
 }
 .horizontal-la label {
   display: inline-block;
-  width: 10%;
+  width: 7em;
   text-align: left;
 }
 form .inline,
