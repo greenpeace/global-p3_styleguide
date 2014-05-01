@@ -1565,7 +1565,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
 :focus		- green border
 :disabled	- grey out to indicate it cannot be used
 
-Styleguide 3.6
+Styleguide 3.7
 */
 textarea,
 input[type=password],
@@ -1637,7 +1637,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
 
 .large   	        - Make the box bigger.
 
-Styleguide 3.7
+Styleguide 3.8
 */
 .required label:after {
   content: " *";
@@ -1835,6 +1835,38 @@ a.button.disabled:active {
   }
 }
 /*
+Tooltip
+
+FF2+, Chrome1+, IE?8+, Opera?, Safari?
+
+Markup:
+<div id="action-form">
+    <form action="#" id="action-form-pledgeName" method="post" accept-charset="utf-8" class="js-track-abandonment">
+        <div class="phone">
+            <label for="UserPhone">Mobile Phone</label>
+            <input name="phone" class="numeric" required maxlength="64" type="tel" id="UserPhone" placeholder="Phone*" />
+            <div class="tooltip info" style="float:none; display:inline-block;">
+                <span>We need your phone number to send you update about the campaign.</span>
+            </div>
+        </div>
+    </form>
+</div>
+
+Styleguide 3.4
+*/
+form .message {
+  position: relative;
+  padding: 0 0 0 0.8em;
+}
+form .tooltip {
+  padding: 0;
+}
+form .tooltip,
+form .message {
+  background-color: transparent;
+  border: 0;
+}
+/*
 Messages for validation error and example
 
 `<div.text.error>`, `<div.text.success>`, can be used to add status messages or example. 
@@ -1860,29 +1892,6 @@ Markup:
 
 Styleguide 3.2
 */
-/*
-    Messages for validation error and example
-
-    Description	: <div.text.error>, <div.text.success>, can be used to add status messages or example. 
-                                 Additional messages are wrapped in <.error-message>, <.success-messages>
-    Compatible	: FF2+, Chrome1+, IE?, Opera?, Safari?
-    Since				: version 3.0
-
-    .info		     - can be used for example messages prior validation
-    .error			 - error messages used for validation issues
-*/
-form .message {
-  position: relative;
-  padding: 0 0 0 0.8em;
-}
-form .tooltip {
-  padding: 0;
-}
-form .tooltip,
-form .message {
-  background-color: transparent;
-  border: 0;
-}
 form .message .error {
   display: block;
   padding: 0 0.5em 1em;
@@ -2034,7 +2043,7 @@ Markup:
     </fieldset>
 </div>
 
-Styleguide 3.4
+Styleguide 3.5
 */
 /*
 Checkbox input.
@@ -2050,7 +2059,7 @@ Markup:
     </fieldset>
 </div>
 
-Styleguide 3.5
+Styleguide 3.6
 */
 fieldset.checkbox,
 fieldset.radio {
