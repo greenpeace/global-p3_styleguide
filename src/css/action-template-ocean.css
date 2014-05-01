@@ -6013,6 +6013,13 @@ Action form
   position: absolute;
   bottom: .5em;
 }
+.lt-ie9 #action-smallprints .remember .longlabel {
+  padding-left: 0;
+}
+.lt-ie9 #action-smallprints .remember input[type=checkbox] {
+  display: inline;
+  vertical-align: middle;
+}
 /* ==========================================================================
    Action Template Media Queries
    ==========================================================================
