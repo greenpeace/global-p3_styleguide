@@ -40,7 +40,6 @@
                     base: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
                     signerCheck: 'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
                     validation: 'json/rules_ocean_en.json',
-                    //validation: 'https://secured.greenpeace.org/international/Global/international/code/2014/sos/json/rules_ocean_en.json'
                 }
             }
         };
@@ -48,11 +47,9 @@
     </head>
     <body itemscope itemtype="https://schema.org/WebPage">
         <div id="root-container" class="action-template petition">
-            <!-- Main content -->
             <div id="main-container" class="container">
                 <div id="main-container-holder" class="container">
                     <div id="main-section" class="page-section">
-                        <!-- Breadcrumbs -->
                         <div id="breadcrumbs">
                             <ul class="breadcrumbs-holder" itemscope itemtype="https://schema.org/breadcrumb">
                                 <li>
@@ -80,7 +77,6 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- Titles -->
                         <h1>SOS</h1>
                         <h2>
                             <span class="orange">S</span>upport
@@ -89,18 +85,14 @@
                         <div id="action-multimedia-teaser">
                             <img src="https://secured.greenpeace.org/international/Global/international/code/2014/sos/img/teaser.jpg" alt="Support ocean sanctuaries" />
                         </div>
-                        <!-- Action ask / intro -->
                         <div id="action-ask">
                             Ask the world's leaders to support ocean sanctuaries at the united nations
                         </div>
-                        <!-- Action form -->
                         <div id="action-form">
                             <form action="#" id="action-form-savetharctic" method="post" accept-charset="utf-8" class="js-track-abandonment">
                                 <div id="action-system-fields" class="system fields">
                                     <input type="hidden" name="_method" value="POST">
-                                    <!-- value would be PUT on edit -->
                                     <input type="text" name="hihoney" placeholder="say hi honey">
-                                    <!-- honeypot -->
                                 </div>
                                 <div id="action-form-simple">
                                     <div class="input required text email">
@@ -381,7 +373,6 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- Action counter -->
                         <div id="action-counter" class="counter block">
                             <div id="action-counter-graphical">
                                 <span class="objectives"></span>
@@ -392,7 +383,6 @@
                                 <span class="total">&hellip;</span>.
                             </div>
                         </div>
-                        <!-- Action details block -->
                         <div id="action-details">
                             <p>
                                 <span class="strong">Our oceans need your help</span>&nbsp;against the destructive forces of overfishing, mining, drilling, pollution and climate change.</p>
@@ -402,7 +392,6 @@
                                 <span class="strong">ask the world's leaders to support ocean sanctuaries at the united nations.</span>
                             </p>
                         </div>
-                        <!-- Recent signers -->
                         <div id="action-recent-signers">
                             <h3>Recent Signers</h3>
                             <ul>
@@ -435,10 +424,8 @@
                     </div>
                 </div>
             </div>
-            <!-- Header -->
             <header>
                 <div class="header container">
-                    <!-- First header: logo, country selector, search and media links -->
                     <div class="heading heading-first">
                         <div class="heading-holder page-section">
                             <a href="/international/en/" title="Greenpeace" class="logo">
@@ -606,12 +593,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Second heading navigation and signup -->
                     <div class="heading heading-second">
                         <div class="heading-holder page-section">
                             <nav>
                                 <div id="main-nav">
-                                    <!-- mobile menu close -->
                                     <label class="mobilemenu-label mobilemenu-close">close</label>
                                     <ul class="navigation" id="nav">
                                         <li>
@@ -892,7 +877,6 @@
                     </div>
                 </div>
             </header>
-            <!-- Footer -->
             <footer>
                 <div class="footer container footer-small">
                     <div class="footer-holder page-section">
@@ -923,32 +907,7 @@
                 </div>
             </footer>
         </div>
-        <!-- Javascript -->
         <div class="scripts">
-            <script type="text/javascript">
-            /*
-        // GA Global and local account tracking
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-3355226-9']);
-        _gaq.push(['_setDomainName', '.greenpeace.org']);
-        _gaq.push(['_setAllowLinker', true]);
-        _gaq.push(['_setAllowHash', false]);
-        _gaq.push(['_setSiteSpeedSampleRate', 10]);
-        _gaq.push(['_trackPageview']);
-        _gaq.push(['b._setAccount', 'UA-XXXXX-X']);
-        _gaq.push(['b._setDomainName', '.greenpeace.org']);
-        _gaq.push(['b._setAllowLinker', true]);
-        _gaq.push(['b._setAllowHash', false]);
-        _gaq.push(['b._setSiteSpeedSampleRate', 10]);
-        _gaq.push(['b._trackPageview']);
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-*/
-            </script>
-            <!--<script src="js/jquery.min.js"></script>-->
             <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
             <script>
             window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
