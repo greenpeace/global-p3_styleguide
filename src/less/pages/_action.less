@@ -69,7 +69,6 @@ Action form
     .remember {
       margin: 1.3em 0 0 .5em;
       input[type=checkbox] {
-          display: inline;
           width: auto;
       }
       input + .picker .picker-handle {
@@ -77,8 +76,13 @@ Action form
           margin-top: 0.2em;
       }
 	  .longlabel {
-	      margin-left:-.9em;
+	      margin-left:.2em;
+          padding-left: 2em;
 	  }
+          .longlabel:before {
+              position: absolute;
+              bottom: .5em;
+          }
     }
 }
 

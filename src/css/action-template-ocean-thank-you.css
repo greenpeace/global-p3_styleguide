@@ -6011,7 +6011,6 @@ Action form
   margin: 1.3em 0 0 .5em;
 }
 #action-smallprints .remember input[type=checkbox] {
-  display: inline;
   width: auto;
 }
 #action-smallprints .remember input + .picker .picker-handle {
@@ -6019,7 +6018,12 @@ Action form
   margin-top: 0.2em;
 }
 #action-smallprints .remember .longlabel {
-  margin-left: -0.9em;
+  margin-left: .2em;
+  padding-left: 2em;
+}
+#action-smallprints .remember .longlabel:before {
+  position: absolute;
+  bottom: .5em;
 }
 /* ==========================================================================
    Action Template Media Queries
