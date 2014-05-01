@@ -306,11 +306,22 @@ input[type=checkbox] {
 }
 
 /*
-    Select
+Select dropdown.
 
-    Description	: ?
-    Compatible	: ?
-    Since				: version 3.0
+Markup:
+<div class="select required country">
+    <label for="UserCountry">Country</label>
+    <div class="select-styling">
+        <select name="country" id="UserCountry">
+            <option selected="selected" value="">Select a country</option>
+            <option value="CN">China</option>
+            <option value="NL">Netherlands</option>
+            <option value="US">United States</option>
+        </select>
+    </div>
+</div>
+
+Styleguide 3.7
 */
 .select-styling {
   width: 94%;
