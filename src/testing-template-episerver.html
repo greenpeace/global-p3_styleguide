@@ -56,7 +56,6 @@
                     base: 'https://secured.greenpeace.org/international/en/api/v2/pledges/',
                     signerCheck: 'https://secured.greenpeace.org/international/en/api/v2/pledges/signercheck/',
                     validation: 'json/rules_ocean_en.json',
-                    //validation: 'https://secured.greenpeace.org/international/Global/international/code/2014/sos/json/rules_ocean_en.json'
                 }
             },
             test:
@@ -82,11 +81,9 @@
     <body itemscope itemtype="https://schema.org/WebPage">
         <form action="../test/post.php" method="post" accept-charset="utf-8" class="js-track-abandonment">
             <div id="root-container" class="action-template petition no-quick-login">
-                <!-- Main content -->
                 <div id="main-container" class="container">
                     <div id="main-container-holder" class="container">
                         <div id="main-section" class="page-section">
-                            <!-- Breadcrumbs -->
                             <div id="breadcrumbs">
                                 <ul class="breadcrumbs-holder" itemscope itemtype="https://schema.org/breadcrumb">
                                     <li>
@@ -114,27 +111,21 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!-- Titles -->
                             <h1>Save the arctic!</h1>
                             <h2>Tell Shell’s new CEO to scrap Arctic drilling</h2>
                             <div id="action-multimedia-teaser">
                                 <!--iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/bBJ9RnbK8G4" frameborder="0" allowfullscreen></iframe-->
                                 <img src="http://www.greenpeace.org/international/Global/international/artwork/climate/2013/platform.jpg" alt="climate action Gazprom" style="width:100%;" />
                             </div>
-                            <!-- Action ask / intro -->
                             <div id="action-ask">
                                 <p>
                                     Tell Shell’s new CEO to scrap drilling and to support a global international sanctuary in the arctic.
                                 </p>
                             </div>
-                            <!-- Action form -->
                             <div id="action-form">
-                                <!-- form -->
                                 <div id="action-system-fields" class="system fields">
                                     <input type="hidden" name="_method" value="POST">
-                                    <!-- value would be PUT on edit -->
                                     <input type="text" name="hihoney" placeholder="say hi honey">
-                                    <!-- honeypot -->
                                 </div>
                                 <div id="action-form-authentication">
                                     <div class="social social-login login">
@@ -439,9 +430,7 @@ Please don't let this happen. Thank you.
                                         <input type="submit" value="Send email" class="primary">
                                     </div>
                                 </div>
-                                <!-- /form-->
                             </div>
-                            <!-- Action counter -->
                             <div id="action-counter" class="counter block">
                                 <div id="action-counter-graphical">
                                     <span class="objectives"></span>
@@ -452,7 +441,6 @@ Please don't let this happen. Thank you.
                                     <span class="total">&hellip;</span>.
                                 </div>
                             </div>
-                            <!-- Action details block -->
                             <div id="action-details">
                                 <p>
                                     Oil giant Gazprom has just annouced that it has started pumping the world's first drops of oil from beneath the icy Arctic seas, home to polar bears and where an oil spill would be impossible to clean up.
@@ -469,7 +457,6 @@ Please don't let this happen. Thank you.
                                     Tell Shell’s new CEO, Ben van Beurden, to put scrapping Arctic oil drilling and ending the risky deal with Gazprom at the top of his to-do list.
                                 </p>
                             </div>
-                            <!-- Recent signers -->
                             <div id="action-recent-signers">
                                 <h3>Recent Signers</h3>
                                 <ul>
@@ -502,10 +489,8 @@ Please don't let this happen. Thank you.
                         </div>
                     </div>
                 </div>
-                <!-- Header -->
                 <header>
                     <div class="header container">
-                        <!-- First header: logo, country selector, search and media links -->
                         <div class="heading heading-first">
                             <div class="heading-holder page-section">
                                 <a href="/international/en/" title="Greenpeace" class="logo">
@@ -658,7 +643,6 @@ Please don't let this happen. Thank you.
                                         </ul>
                                     </div>
                                     <div class="search-form">
-                                        <!--form action="#" id="search" method="post" accept-charset="utf-8"-->
                                         <div class="input text search">
                                             <label for="SearchText">Search</label>
                                             <input name="data[Search][text]" class="required" maxlength="64" type="text" id="SearchText" placeholder="search" />
@@ -668,17 +652,14 @@ Please don't let this happen. Thank you.
                                                 <input type="submit" value="search" />
                                             </span>
                                         </div>
-                                        <!-- /form -->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Second heading navigation and signup -->
                         <div class="heading heading-second">
                             <div class="heading-holder page-section">
                                 <nav>
                                     <div id="main-nav">
-                                        <!-- mobile menu close -->
                                         <label class="mobilemenu-label mobilemenu-close">close</label>
                                         <ul class="navigation" id="nav">
                                             <li>
@@ -959,7 +940,6 @@ Please don't let this happen. Thank you.
                         </div>
                     </div>
                 </header>
-                <!-- Footer -->
                 <footer>
                     <div class="footer container footer-small">
                         <div class="footer-holder page-section">
@@ -990,31 +970,7 @@ Please don't let this happen. Thank you.
                     </div>
                 </footer>
             </div>
-            <!-- Javascript -->
             <div class="scripts">
-                <script type="text/javascript">
-                /*
-        // GA Global and local account tracking
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-3355226-9']);
-        _gaq.push(['_setDomainName', '.greenpeace.org']);
-        _gaq.push(['_setAllowLinker', true]);
-        _gaq.push(['_setAllowHash', false]);
-        _gaq.push(['_setSiteSpeedSampleRate', 10]);
-        _gaq.push(['_trackPageview']);
-        _gaq.push(['b._setAccount', 'UA-XXXXX-X']);
-        _gaq.push(['b._setDomainName', '.greenpeace.org']);
-        _gaq.push(['b._setAllowLinker', true]);
-        _gaq.push(['b._setAllowHash', false]);
-        _gaq.push(['b._setSiteSpeedSampleRate', 10]);
-        _gaq.push(['b._trackPageview']);
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-*/
-                </script>
                 <script src="//code.jquery.com/jquery-1.11.0.js"></script>
                 <script>
                 window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>');
