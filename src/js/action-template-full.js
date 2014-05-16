@@ -111,7 +111,7 @@
         });
 
         // Populate and show regions
-        $.p3.regions('#UserCountry', '#UserRegion', '#selectRegion');
+        $.p3.regions();
 
         // Birthday input masked
         $ ("#UserBirthday").mask ("99/99/9999");
